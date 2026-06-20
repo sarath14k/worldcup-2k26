@@ -12,9 +12,11 @@
     <meta name="theme-color" content="#10b981" />
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
-        });
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (let registration of registrations) {
+            registration.unregister();
+          }
+        }).catch(err => console.log('SW unregistration failed:', err));
       }
     </script>
   </head>
