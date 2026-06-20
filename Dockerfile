@@ -26,8 +26,8 @@ COPY . .
 # Build the static frontend build
 RUN npm run build
 
-# Expose port 3000 for the Express server
-EXPOSE 3000
+# Expose port 10000 for the Express server (Render default)
+EXPOSE 10000
 
 # Start the Express server and scraper daemon
 CMD ["node", "server.js"]
