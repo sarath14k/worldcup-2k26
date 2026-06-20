@@ -923,11 +923,11 @@ function App() {
 
       {/* --- MAIN TABS NAV --- */}
       <nav className="relative z-10 max-w-7xl mx-auto px-4 pt-6">
-        <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-fit">
+        <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full overflow-x-auto scrollbar-none sm:w-fit whitespace-nowrap">
           <button
             id="tab-groups"
             onClick={() => setActiveTab('groups')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
               activeTab === 'groups' 
                 ? 'bg-brand-neon text-slate-950 shadow-neon' 
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
@@ -940,7 +940,7 @@ function App() {
           <button
             id="tab-bracket"
             onClick={() => setActiveTab('bracket')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
               activeTab === 'bracket' 
                 ? 'bg-brand-neon text-slate-950 shadow-neon' 
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
@@ -953,7 +953,7 @@ function App() {
           <button
             id="tab-venues"
             onClick={() => setActiveTab('venues')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
               activeTab === 'venues' 
                 ? 'bg-brand-neon text-slate-950 shadow-neon' 
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
@@ -1186,7 +1186,7 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
             
             {/* Left side: Upcoming Fixtures & Done Matches timeline */}
-            <div className="lg:col-span-1 flex flex-col gap-6">
+            <div className="lg:col-span-1 flex flex-col gap-6 order-2 lg:order-1">
               
               {/* Upcoming Fixtures widget */}
               <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
@@ -1367,7 +1367,7 @@ function App() {
             </div>
 
             {/* Right side: Detailed Group standings and match listing */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
+            <div className="lg:col-span-2 flex flex-col gap-6 order-1 lg:order-2">
 
               {/* Standings Table for selected group */}
               <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
