@@ -1211,8 +1211,8 @@ function App() {
 
                 <div className="flex flex-col gap-3 relative z-10 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
                   {upcomingFixtures.map(match => {
-                    const home = TEAMS[match.home];
-                    const away = TEAMS[match.away];
+                    const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
+                    const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                     const live = liveMatches[match.id];
                     const isMatchLive = live && live.minute !== null && live.minute !== undefined && live.minute !== 'FT' && live.minute !== '';
                     const isLiveOrDone = isMatchLive || match.isCompleted || (live && (live.minute === 'FT' || live.isCompleted));
@@ -1325,8 +1325,8 @@ function App() {
                 {/* Scrolling List */}
                 <div className="flex flex-col gap-2.5 max-h-[380px] overflow-y-auto pr-1.5 custom-scrollbar">
                   {feedMatches.map(match => {
-                    const home = TEAMS[match.home];
-                    const away = TEAMS[match.away];
+                    const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
+                    const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                     return (
                       <div 
                         key={`feed-${match.id}`} 
@@ -1487,8 +1487,8 @@ function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {groupMatches.filter(m => m.group === expandedGroup).map(match => {
-                    const home = TEAMS[match.home];
-                    const away = TEAMS[match.away];
+                    const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
+                    const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                     const live = liveMatches[match.id];
                     const isMatchLive = live && live.minute !== null && live.minute !== undefined && live.minute !== 'FT' && live.minute !== '';
                     return (
@@ -1628,9 +1628,8 @@ function App() {
 
       {/* Match Details Modal (Scorers & Stats) */}
       {selectedMatch && (() => {
-        const home = TEAMS[selectedMatch.home];
-        const away = TEAMS[selectedMatch.away];
-        if (!home || !away) return null;
+        const home = TEAMS[selectedMatch.home] || { name: selectedMatch.home || 'TBD', flag: '🏳️' };
+        const away = TEAMS[selectedMatch.away] || { name: selectedMatch.away || 'TBD', flag: '🏳️' };
 
         const live = liveMatches[selectedMatch.id];
         const details = getMatchDetails(selectedMatch, live);
