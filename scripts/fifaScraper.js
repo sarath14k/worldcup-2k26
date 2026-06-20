@@ -628,7 +628,9 @@ export async function scrapeFifa() {
         }
       });
 
-      fs.writeFileSync(filePath, JSON.stringify(incrementalLiveData, null, 2), 'utf8');
+      const tempPath = filePath + '.tmp';
+      fs.writeFileSync(tempPath, JSON.stringify(incrementalLiveData, null, 2), 'utf8');
+      fs.renameSync(tempPath, filePath);
     }
 
     // Map into the final liveData structure (redundant but ensures everything is finalized)
@@ -734,7 +736,9 @@ export async function scrapeFifa() {
     });
 
     // Write the output to live-matches.json
-    fs.writeFileSync(filePath, JSON.stringify(liveData, null, 2), 'utf8');
+    const tempPath = filePath + '.tmp';
+    fs.writeFileSync(tempPath, JSON.stringify(liveData, null, 2), 'utf8');
+    fs.renameSync(tempPath, filePath);
     console.log(`Sync complete. Saved ${Object.keys(liveData).length} matches to public/live-matches.json.`);
     
     return { success: true, count: Object.keys(liveData).length };
