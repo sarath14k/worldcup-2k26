@@ -37,6 +37,20 @@ app.use((req, res) => {
 
 // Scraper background daemon logic
 let isRunning = false;
+let lastScrapeStatus = {
+  lastRun: null,
+  success: null,
+  error: null,
+  count: 0
+};
+
+app.get('/scraper-status', (req, res) => {
+  res.json({
+    isRunning,
+    ...lastScrapeStatus
+  });
+});
+
 async function runScrape() {
   if (isRunning) {
     console.log('[Server Scraper] Scraper is already running. Skipping.');
@@ -44,11 +58,17 @@ async function runScrape() {
   }
   isRunning = true;
   console.log('[Server Scraper] Starting scraping cycle...');
+  lastScrapeStatus.lastRun = new Date().toISOString();
   try {
     const result = await scrapeFifa();
     console.log('[Server Scraper] Scraping cycle completed successfully:', result);
+    lastScrapeStatus.success = result.success;
+    lastScrapeStatus.count = result.count || 0;
+    lastScrapeStatus.error = result.error || null;
   } catch (err) {
     console.error('[Server Scraper] Scraping cycle failed:', err);
+    lastScrapeStatus.success = false;
+    lastScrapeStatus.error = err.message;
   } finally {
     isRunning = false;
   }

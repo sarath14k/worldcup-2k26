@@ -11269,33 +11269,39 @@
     ]
   },
   "27": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 0,
+    "awayScore": 1,
+    "minute": "45'+2'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
-    "events": [],
+    "events": [
+      {
+        "team": "away",
+        "player": "Franck KESSIE",
+        "minute": 30
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        54,
+        37
       ],
       "shots": [
-        10,
-        10
+        7,
+        4
       ],
       "shotsOnTarget": [
-        5,
-        5
+        1,
+        2
       ],
       "corners": [
-        5,
-        5
+        3,
+        0
       ],
       "fouls": [
-        10,
-        10
+        2,
+        3
       ],
       "yellowCards": [
         0,
@@ -11306,7 +11312,170 @@
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Germany won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kai HAVERTZ (Germany) attempts an effort on goal.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Offside",
+        "text": "Franck KESSIE (Côte d'Ivoire) is ruled offside.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kai HAVERTZ (Germany) attempts an effort on goal.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Côte d'Ivoire pulls off a save.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Foul",
+        "text": "Wilfried SINGO (Côte d'Ivoire) commits a foul.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Wilfried SINGO (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jamal MUSIALA (Germany) attempts an effort on goal.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Felix NMECHA (Germany) attempts an effort on goal.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Corner",
+        "text": "Nathaniel BROWN (Germany) takes a corner kick.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Foul",
+        "text": "Aleksandar PAVLOVIC (Germany) commits a foul.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 25,
+        "minuteStr": "25'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Amad DIALLO (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Franck KESSIE (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Franck KESSIE (Côte d'Ivoire) scores!!",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Foul",
+        "text": "Christ Inao OULAI (Côte d'Ivoire) commits a foul.",
+        "minute": 37,
+        "minuteStr": "37'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ange-Yoan BONNY (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Germany pulls off a save.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jamal MUSIALA (Germany) commits a foul.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Foul",
+        "text": "Franck KESSIE (Côte d'Ivoire) commits a foul.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Florian WIRTZ (Germany) attempts an effort on goal.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Corner",
+        "text": "Joshua KIMMICH (Germany) takes a corner kick.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jamal MUSIALA (Germany) attempts an effort on goal.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Corner",
+        "text": "Florian WIRTZ (Germany) takes a corner kick.",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Felix NMECHA (Germany) attempts an effort on goal.",
+        "minute": 45,
+        "minuteStr": "HT"
+      }
+    ]
   },
   "28": {
     "homeScore": null,
