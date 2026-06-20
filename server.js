@@ -27,15 +27,7 @@ app.get('/live-matches.json', (req, res) => {
   }
 });
 
-// Serve Vite static build assets
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// Any other requests fall back to index.html (SPA routing support)
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-// Scraper background daemon logic
+// Scraper status tracking
 let isRunning = false;
 let lastScrapeStatus = {
   lastRun: null,
@@ -49,6 +41,14 @@ app.get('/scraper-status', (req, res) => {
     isRunning,
     ...lastScrapeStatus
   });
+});
+
+// Serve Vite static build assets
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Any other requests fall back to index.html (SPA routing support)
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 async function runScrape() {
