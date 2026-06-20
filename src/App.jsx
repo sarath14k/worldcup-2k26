@@ -199,7 +199,7 @@ const generateRealisticScorers = (matchId, homeCode, awayCode, homeScore, awaySc
 
 const getMatchDetails = (match, live) => {
   const isCompleted = match.isCompleted || (live && live.minute === 'FT');
-  const isLive = live && live.minute !== 'FT';
+  const isLive = live && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined;
   const hasStarted = isCompleted || isLive;
   
   if (!hasStarted) {
@@ -298,7 +298,7 @@ function App() {
     // Filter to matches that are NOT completed, or are currently live
     const activeMatches = allMatches.filter(m => {
       const live = liveMatches[m.id];
-      const isLive = live && live.minute !== 'FT' && !live.isCompleted;
+      const isLive = live && live.minute !== 'FT' && !live.isCompleted && live.minute !== null && live.minute !== undefined;
       if (isLive) return true;
       return !m.isCompleted;
     });
@@ -1938,7 +1938,7 @@ function App() {
         const details = getMatchDetails(selectedMatch, live);
 
         const isCompleted = selectedMatch.isCompleted || (live && live.minute === 'FT');
-        const isLive = live && live.minute !== 'FT';
+        const isLive = live && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined;
         const hasStarted = isCompleted || isLive;
 
         const homeScore = live ? live.homeScore : (selectedMatch.homeScore ?? 0);
