@@ -270,6 +270,15 @@ function isRealDetailedData(cached, homeScore, awayScore) {
   return true;
 }
 
+// Helper to check if stats are default dummy values
+function isDummyStats(stats) {
+  if (!stats) return true;
+  const isDefaultPossession = stats.possession?.[0] === 50 && stats.possession?.[1] === 50;
+  const isDefaultShots = stats.shots?.[0] === 10 && stats.shots?.[1] === 10;
+  const isDefaultCorners = stats.corners?.[0] === 5 && stats.corners?.[1] === 5;
+  return isDefaultPossession && isDefaultShots && isDefaultCorners;
+}
+
 export async function scrapeFifa() {
   let browser = null;
   try {
@@ -481,8 +490,24 @@ export async function scrapeFifa() {
         console.log(`Cache MISS for App ID: ${appId || 'unknown'} (${pm.homeTeam?.abbr} vs ${pm.awayTeam?.abbr}). Scraping details...`);
         const details = await scrapeMatchDetails(page, pm.href);
         if (details) {
+          const hasRealCachedStats = cached && cached.stats && !isDummyStats(cached.stats);
+          const scrapedIsDummy = isDummyStats(details.stats);
+
+          if (hasRealCachedStats && scrapedIsDummy) {
+            console.log(`Preserving cached real stats for App ID ${appId} (new scrape returned dummy stats)`);
+            details.stats = cached.stats;
+          }
+
+          if (cached && cached.events && cached.events.length > 0 && (!details.scorers || details.scorers.length === 0)) {
+            details.scorers = cached.events;
+          }
+
+          if (cached && cached.timeline && cached.timeline.length > 0 && (!details.timeline || details.timeline.length === 0)) {
+            details.timeline = cached.timeline;
+          }
+
           pm.detailedData = details;
-          pm.isDetailedScraped = isCompleted;
+          pm.isDetailedScraped = isCompleted || (cached ? cached.isDetailedScraped : false);
         } else {
           pm.detailedData = {
             scorers: cached?.events || [],
