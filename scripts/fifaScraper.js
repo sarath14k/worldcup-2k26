@@ -569,6 +569,13 @@ export async function scrapeFifa() {
               events = parsedMatch.detailedData.scorers;
               stats = parsedMatch.detailedData.stats;
             }
+          } else {
+            const prevCached = existingLiveData[appMatch.id];
+            if (prevCached) {
+              events = prevCached.events || [];
+              stats = prevCached.stats || stats;
+              timeline = prevCached.timeline || [];
+            }
           }
 
           incrementalLiveData[appMatch.id] = {
@@ -600,6 +607,31 @@ export async function scrapeFifa() {
             winnerCode = parsedMatch.winner === 'home' ? parsedMatch.homeTeam?.abbr : parsedMatch.awayTeam?.abbr;
           }
 
+          let events = [];
+          let stats = {
+            possession: [50, 50],
+            shots: [10, 10],
+            shotsOnTarget: [5, 5],
+            corners: [5, 5],
+            fouls: [10, 10],
+            yellowCards: [0, 0],
+            redCards: [0, 0]
+          };
+          let timeline = [];
+
+          if (parsedMatch.detailedData) {
+            events = parsedMatch.detailedData.scorers || [];
+            stats = parsedMatch.detailedData.stats || stats;
+            timeline = parsedMatch.detailedData.timeline || [];
+          } else {
+            const prevCached = existingLiveData[appIdVal];
+            if (prevCached) {
+              events = prevCached.events || [];
+              stats = prevCached.stats || stats;
+              timeline = prevCached.timeline || [];
+            }
+          }
+
           incrementalLiveData[appIdVal] = {
             homeScore: parsedMatch.homeScore,
             awayScore: parsedMatch.awayScore,
@@ -609,17 +641,9 @@ export async function scrapeFifa() {
             winner: winnerCode,
             home: parsedMatch.homeTeam?.abbr,
             away: parsedMatch.awayTeam?.abbr,
-            events: parsedMatch.detailedData?.scorers || [],
-            stats: parsedMatch.detailedData?.stats || {
-              possession: [50, 50],
-              shots: [10, 10],
-              shotsOnTarget: [5, 5],
-              corners: [5, 5],
-              fouls: [10, 10],
-              yellowCards: [0, 0],
-              redCards: [0, 0]
-            },
-            timeline: parsedMatch.detailedData?.timeline || []
+            events,
+            stats,
+            timeline
           };
         } else {
           if (existingLiveData[appIdVal]) {
@@ -676,6 +700,13 @@ export async function scrapeFifa() {
             events = parsedMatch.detailedData.scorers;
             stats = parsedMatch.detailedData.stats;
           }
+        } else {
+          const prevCached = existingLiveData[appMatch.id];
+          if (prevCached) {
+            events = prevCached.events || [];
+            stats = prevCached.stats || stats;
+            timeline = prevCached.timeline || [];
+          }
         }
 
         liveData[appMatch.id] = {
@@ -707,6 +738,31 @@ export async function scrapeFifa() {
           winnerCode = parsedMatch.winner === 'home' ? parsedMatch.homeTeam?.abbr : parsedMatch.awayTeam?.abbr;
         }
 
+        let events = [];
+        let stats = {
+          possession: [50, 50],
+          shots: [10, 10],
+          shotsOnTarget: [5, 5],
+          corners: [5, 5],
+          fouls: [10, 10],
+          yellowCards: [0, 0],
+          redCards: [0, 0]
+        };
+        let timeline = [];
+
+        if (parsedMatch.detailedData) {
+          events = parsedMatch.detailedData.scorers || [];
+          stats = parsedMatch.detailedData.stats || stats;
+          timeline = parsedMatch.detailedData.timeline || [];
+        } else {
+          const prevCached = existingLiveData[appId];
+          if (prevCached) {
+            events = prevCached.events || [];
+            stats = prevCached.stats || stats;
+            timeline = prevCached.timeline || [];
+          }
+        }
+
         liveData[appId] = {
           homeScore: parsedMatch.homeScore,
           awayScore: parsedMatch.awayScore,
@@ -716,17 +772,9 @@ export async function scrapeFifa() {
           winner: winnerCode,
           home: parsedMatch.homeTeam?.abbr,
           away: parsedMatch.awayTeam?.abbr,
-          events: parsedMatch.detailedData?.scorers || [],
-          stats: parsedMatch.detailedData?.stats || {
-            possession: [50, 50],
-            shots: [10, 10],
-            shotsOnTarget: [5, 5],
-            corners: [5, 5],
-            fouls: [10, 10],
-            yellowCards: [0, 0],
-            redCards: [0, 0]
-          },
-          timeline: parsedMatch.detailedData?.timeline || []
+          events,
+          stats,
+          timeline
         };
       } else {
         if (existingLiveData[appId]) {
