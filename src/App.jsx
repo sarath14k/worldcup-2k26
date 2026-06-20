@@ -87,6 +87,40 @@ const seededRandom = (seed) => {
   return x - Math.floor(x);
 };
 
+const getAssistPlayer = (matchId, goalPlayer, teamCode, goalMinute) => {
+  const players = TEAM_PLAYERS[teamCode] || [];
+  if (players.length <= 1) return null;
+  
+  const seedStr = `${matchId}-${goalPlayer}-${teamCode}-${goalMinute}`;
+  let hash = 0;
+  for (let i = 0; i < seedStr.length; i++) {
+    hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const randomVal = Math.abs(Math.sin(hash) * 10000) % 1;
+  
+  if (randomVal > 0.75) return null;
+  
+  const otherPlayers = players.filter(p => p !== goalPlayer);
+  if (otherPlayers.length === 0) return null;
+  
+  const assistIdx = Math.floor(randomVal * otherPlayers.length);
+  return otherPlayers[assistIdx];
+};
+
+const getPossessionWithContest = (possessionArray, matchId) => {
+  const rawHome = possessionArray?.[0] || 50;
+  const rawAway = possessionArray?.[1] || 50;
+  
+  const matchNum = typeof matchId === 'number' ? matchId : (parseInt(matchId) || 42);
+  const contest = 10 + (matchNum % 9);
+  
+  const multiplier = (100 - contest) / 100;
+  const home = Math.round(rawHome * multiplier);
+  const away = 100 - contest - home;
+  
+  return [home, away, contest];
+};
+
 const getMatchDetails = (match, live) => {
   const isCompleted = match.isCompleted || (live && live.minute === 'FT');
   const isLive = live && live.minute !== 'FT';
@@ -188,15 +222,88 @@ function App() {
       return !m.isCompleted;
     });
 
-    // Sort chronologically and return the next 8 matches
+    // Sort chronologically and return the next 16 matches
     return activeMatches
       .sort((a, b) => {
         const dateA = parseMatchKickoff(a);
         const dateB = parseMatchKickoff(b);
+        if (!dateA && !dateB) return 0;
         if (!dateA) return 1;
         if (!dateB) return -1;
+        return dateA.getTime() - dateB.getTime();
       })
       .slice(0, 16);
+  }, [groupMatches, bracket, liveMatches]);
+
+  const playerStats = useMemo(() => {
+    const goalsCount = {};
+    const assistsCount = {};
+    const playerTeams = {};
+
+    const processScorers = (matchId, scorers, homeCode, awayCode) => {
+      if (!scorers) return;
+      scorers.forEach(s => {
+        const isOG = s.player.includes('(OG)') || s.player.includes('ownGoal') || s.player.includes('OG');
+        if (isOG) return;
+
+        const cleanPlayerName = s.player.replace(/\s*\(P\)/, '').trim();
+        const teamCode = s.team === 'home' ? homeCode : awayCode;
+        if (!teamCode) return;
+
+        playerTeams[cleanPlayerName] = teamCode;
+
+        // Count goal
+        goalsCount[cleanPlayerName] = (goalsCount[cleanPlayerName] || 0) + 1;
+
+        // Generate assist deterministically
+        const assistPlayer = getAssistPlayer(matchId, cleanPlayerName, teamCode, s.minute);
+        if (assistPlayer) {
+          playerTeams[assistPlayer] = teamCode;
+          assistsCount[assistPlayer] = (assistsCount[assistPlayer] || 0) + 1;
+        }
+      });
+    };
+
+    // 1. Group Stage Matches
+    groupMatches.forEach(m => {
+      const live = liveMatches[m.id];
+      const details = getMatchDetails(m, live);
+      if (details.hasStarted && details.scorers) {
+        processScorers(m.id, details.scorers, m.home, m.away);
+      }
+    });
+
+    // 2. Knockout Stage Matches
+    Object.keys(bracket).forEach(roundKey => {
+      bracket[roundKey].forEach(m => {
+        const live = liveMatches[m.id];
+        const details = getMatchDetails(m, live);
+        if (details.hasStarted && details.scorers) {
+          processScorers(m.id, details.scorers, m.home, m.away);
+        }
+      });
+    });
+
+    // Convert to sorted arrays
+    const topScorers = Object.keys(goalsCount)
+      .map(name => ({
+        name,
+        team: playerTeams[name],
+        goals: goalsCount[name]
+      }))
+      .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
+      .slice(0, 5);
+
+    const topAssists = Object.keys(assistsCount)
+      .map(name => ({
+        name,
+        team: playerTeams[name],
+        assists: assistsCount[name]
+      }))
+      .sort((a, b) => b.assists - a.assists || a.name.localeCompare(b.name))
+      .slice(0, 5);
+
+    return { topScorers, topAssists };
   }, [groupMatches, bracket, liveMatches]);
 
   useEffect(() => {
@@ -905,16 +1012,7 @@ function App() {
               </span>
               <span className="text-slate-300">World Cup Live in USA, CAN & MEX</span>
             </div>
-
-            {/* Dark Mode toggle */}
-            <button 
-              id="theme-toggle"
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-slate-800 text-slate-300 transition-all"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <Sun className="w-4.5 h-4.5 text-brand-gold" /> : <Moon className="w-4.5 h-4.5" />}
-            </button>
+            {/* Theme is permanently Dark Mode */}
 
 
           </div>
@@ -961,6 +1059,19 @@ function App() {
           >
             <MapPin className="w-4 h-4" />
             <span>Stadium Venues</span>
+          </button>
+
+          <button
+            id="tab-stats"
+            onClick={() => setActiveTab('stats')}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+              activeTab === 'stats' 
+                ? 'bg-brand-neon text-slate-950 shadow-neon' 
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
+            }`}
+          >
+            <Award className="w-4 h-4" />
+            <span>Player Stats</span>
           </button>
 
 
@@ -1279,15 +1390,23 @@ function App() {
                         {isMatchLive && live.stats && (
                           <div className="mt-1 pt-2 border-t border-slate-800/60 flex flex-col gap-2 text-[9px] text-slate-400 font-bold">
                             {/* Possession Row */}
-                            <div className="flex justify-between items-center font-mono text-slate-300">
-                              <span>{live.stats.possession?.[0] || 50}%</span>
-                              <span className="text-[7px] uppercase tracking-wider text-slate-500 font-sans">Possession</span>
-                              <span>{live.stats.possession?.[1] || 50}%</span>
-                            </div>
-                            <div className="h-1 w-full bg-slate-900 rounded-full overflow-hidden flex">
-                              <div className="bg-brand-neon h-full transition-all duration-500" style={{ width: `${live.stats.possession?.[0] || 50}%` }} />
-                              <div className="bg-brand-purple h-full transition-all duration-500" style={{ width: `${live.stats.possession?.[1] || 50}%` }} />
-                            </div>
+                            {(() => {
+                              const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(live.stats.possession, match.id);
+                              return (
+                                <>
+                                  <div className="flex justify-between items-center font-mono text-slate-300">
+                                    <span>{homePoss}%</span>
+                                    <span className="text-[7px] uppercase tracking-wider text-slate-500 font-sans">Possession ({contestPoss}% Contested)</span>
+                                    <span>{awayPoss}%</span>
+                                  </div>
+                                  <div className="h-1 w-full bg-slate-900 rounded-full overflow-hidden flex">
+                                    <div className="bg-brand-neon h-full transition-all duration-500" style={{ width: `${homePoss}%` }} />
+                                    <div className="bg-slate-700 h-full transition-all duration-500" style={{ width: `${contestPoss}%` }} />
+                                    <div className="bg-brand-purple h-full transition-all duration-500" style={{ width: `${awayPoss}%` }} />
+                                  </div>
+                                </>
+                              );
+                            })()}
 
                             {/* Stats Summary Row */}
                             <div className="flex justify-around items-center text-[8px] font-mono text-slate-400 pt-0.5">
@@ -1593,7 +1712,110 @@ function App() {
           </div>
         )}
 
+        {/* ================= PLAYER STATS TAB ================= */}
+        {activeTab === 'stats' && (
+          <div className="flex flex-col gap-6 animate-fadeIn">
+            {/* Header info */}
+            <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
+              <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <Trophy className="w-5 h-5 text-brand-gold" />
+                Tournament Player Statistics
+              </h2>
+              <p className="text-xs text-slate-400">
+                Track the tournament's top goal scorers and playmakers in real time. Stats automatically accumulate across all completed and simulated matches.
+              </p>
+            </div>
 
+            {/* Tables Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Top Scorers Table */}
+              <div className="p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
+                <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
+                  <Flame className="w-5 h-5 text-orange-500" />
+                  <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
+                    Golden Boot (Top Scorers)
+                  </h3>
+                </div>
+                
+                {playerStats.topScorers.length === 0 ? (
+                  <div className="text-center py-8 text-xs text-slate-500 font-medium">
+                    No goals recorded yet. Simulate or complete matches to update standings!
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2.5">
+                    <div className="grid grid-cols-12 text-[10px] text-slate-500 font-bold uppercase tracking-wider px-2">
+                      <span className="col-span-2">Rank</span>
+                      <span className="col-span-7">Player</span>
+                      <span className="col-span-3 text-right">Goals</span>
+                    </div>
+                    {playerStats.topScorers.map((player, idx) => (
+                      <div 
+                        key={player.name} 
+                        className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
+                      >
+                        <span className="col-span-2 text-slate-400 font-mono">
+                          #{idx + 1}
+                        </span>
+                        <div className="col-span-7 flex items-center gap-2 min-w-0">
+                          <span className="text-[10px] bg-slate-900 px-2 py-0.5 rounded border border-slate-800 text-slate-300 font-mono">
+                            {player.team}
+                          </span>
+                          <span className="truncate text-slate-100">{player.name}</span>
+                        </div>
+                        <span className="col-span-3 text-right text-brand-neon font-black text-sm">
+                          {player.goals}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Top Assists Table */}
+              <div className="p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
+                <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
+                  <Sparkles className="w-5 h-5 text-brand-neon" />
+                  <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
+                    Playmakers (Top Assists)
+                  </h3>
+                </div>
+
+                {playerStats.topAssists.length === 0 ? (
+                  <div className="text-center py-8 text-xs text-slate-500 font-medium">
+                    No assists recorded yet. Simulate or complete matches to update standings!
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2.5">
+                    <div className="grid grid-cols-12 text-[10px] text-slate-500 font-bold uppercase tracking-wider px-2">
+                      <span className="col-span-2">Rank</span>
+                      <span className="col-span-7">Player</span>
+                      <span className="col-span-3 text-right">Assists</span>
+                    </div>
+                    {playerStats.topAssists.map((player, idx) => (
+                      <div 
+                        key={player.name} 
+                        className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
+                      >
+                        <span className="col-span-2 text-slate-400 font-mono">
+                          #{idx + 1}
+                        </span>
+                        <div className="col-span-7 flex items-center gap-2 min-w-0">
+                          <span className="text-[10px] bg-slate-900 px-2 py-0.5 rounded border border-slate-800 text-slate-300 font-mono">
+                            {player.team}
+                          </span>
+                          <span className="truncate text-slate-100">{player.name}</span>
+                        </div>
+                        <span className="col-span-3 text-right text-brand-purple font-black text-sm">
+                          {player.assists}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
       </main>
 
@@ -1845,6 +2067,26 @@ function App() {
                       { label: 'Yellow Cards', key: 'yellowCards' },
                       { label: 'Red Cards', key: 'redCards' }
                     ].map(stat => {
+                      if (stat.key === 'possession') {
+                        const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(details.stats.possession, selectedMatch.id);
+                        return (
+                          <div key={stat.key} className="flex flex-col gap-1.5">
+                            <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-300 font-mono">
+                              <span>{homePoss}%</span>
+                              <span className="text-slate-400 font-sans uppercase tracking-wider text-[8px] font-black">
+                                Possession ({contestPoss}% in contest)
+                              </span>
+                              <span>{awayPoss}%</span>
+                            </div>
+                            <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden flex">
+                              <div className="bg-brand-neon h-full transition-all duration-500" style={{ width: `${homePoss}%` }} />
+                              <div className="bg-slate-700 h-full transition-all duration-500" style={{ width: `${contestPoss}%` }} />
+                              <div className="bg-brand-purple h-full transition-all duration-500" style={{ width: `${awayPoss}%` }} />
+                            </div>
+                          </div>
+                        );
+                      }
+
                       const [valHome, valAway] = details.stats[stat.key];
                       const total = valHome + valAway || 1;
                       const pctHome = Math.round((valHome / total) * 100);
