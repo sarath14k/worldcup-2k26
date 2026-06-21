@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { scrapeFifa } from './scripts/fifaScraper.js';
+import { syncWithEspn } from './scripts/espnSync.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -273,7 +273,7 @@ async function runScrape() {
   console.log('[Server Scraper] Starting scraping cycle...');
   lastScrapeStatus.lastRun = new Date().toISOString();
   try {
-    const result = await scrapeFifa();
+    const result = await syncWithEspn();
     console.log('[Server Scraper] Scraping cycle completed successfully:', result);
     lastScrapeStatus.success = result.success;
     lastScrapeStatus.count = result.count || 0;

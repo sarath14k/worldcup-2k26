@@ -2217,86 +2217,6 @@
       }
     ]
   },
-  "5": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "6": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
   "7": {
     "homeScore": 1,
     "awayScore": 1,
@@ -4250,8 +4170,8 @@
     ]
   },
   "10": {
-    "homeScore": 1,
-    "awayScore": 4,
+    "homeScore": 4,
+    "awayScore": 1,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -4843,86 +4763,6 @@
         "minuteStr": "90'+8"
       }
     ]
-  },
-  "11": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "12": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   },
   "13": {
     "homeScore": 1,
@@ -6791,8 +6631,8 @@
     ]
   },
   "16": {
-    "homeScore": 1,
-    "awayScore": 0,
+    "homeScore": 0,
+    "awayScore": 1,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -7256,86 +7096,6 @@
         "minuteStr": "90'+12"
       }
     ]
-  },
-  "17": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "18": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   },
   "19": {
     "homeScore": 4,
@@ -9159,8 +8919,8 @@
     ]
   },
   "22": {
-    "homeScore": 1,
-    "awayScore": 0,
+    "homeScore": 0,
+    "awayScore": 1,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -9912,86 +9672,6 @@
         "minuteStr": "90'+10"
       }
     ]
-  },
-  "23": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "24": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   },
   "25": {
     "homeScore": 7,
@@ -12458,86 +12138,6 @@
       }
     ]
   },
-  "29": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "30": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
   "31": {
     "homeScore": 2,
     "awayScore": 2,
@@ -14299,8 +13899,8 @@
     ]
   },
   "34": {
-    "homeScore": 4,
-    "awayScore": 0,
+    "homeScore": 0,
+    "awayScore": 4,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -14815,86 +14415,6 @@
         "minuteStr": "90'+11"
       }
     ]
-  },
-  "35": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "36": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   },
   "37": {
     "homeScore": 1,
@@ -16069,10 +15589,10 @@
   "39": {
     "homeScore": 0,
     "awayScore": 0,
-    "minute": "45'+2'",
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
+    "isCompleted": true,
+    "isDetailedScraped": true,
     "events": [
       {
         "team": "away",
@@ -16082,31 +15602,31 @@
     ],
     "stats": {
       "possession": [
-        62,
-        25
+        56,
+        32
       ],
       "shots": [
-        10,
-        2
+        21,
+        7
       ],
       "shotsOnTarget": [
-        4,
-        1
+        7,
+        3
       ],
       "corners": [
-        2,
-        1
+        4,
+        2
       ],
       "fouls": [
-        4,
-        4
+        7,
+        9
       ],
       "yellowCards": [
         1,
         1
       ],
       "redCards": [
-        0,
+        1,
         0
       ]
     },
@@ -16326,128 +15846,338 @@
         "text": "Alexis SAELEMAEKERS (Belgium) attempts an effort on goal.",
         "minute": 44,
         "minuteStr": "44'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin DE BRUYNE (Belgium) attempts an effort on goal.",
+        "minute": 48,
+        "minuteStr": "45'+3"
+      },
+      {
+        "type": "Foul",
+        "text": "Saeid EZATOLAHI (IR Iran) commits a foul.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Offside",
+        "text": "Alexis SAELEMAEKERS (Belgium) is ruled offside.",
+        "minute": 50,
+        "minuteStr": "45'+5"
+      },
+      {
+        "type": "Foul",
+        "text": "Thomas MEUNIER (Belgium) commits a foul.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 54,
+        "minuteStr": "45'+9"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Alireza JAHANBAKHSH (in) comes off the bench to replace Saleh HARDANI (out) (IR Iran)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Alireza JAHANBAKHSH (IR Iran) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin DE BRUYNE (Belgium) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Foul",
+        "text": "Alireza JAHANBAKHSH (IR Iran) commits a foul.",
+        "minute": 47,
+        "minuteStr": "47'"
+      },
+      {
+        "type": "Corner",
+        "text": "Kevin DE BRUYNE (Belgium) takes a corner kick.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Corner",
+        "text": "Kevin DE BRUYNE (Belgium) takes a corner kick.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Alexis SAELEMAEKERS (Belgium) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxim DE CUYPER (Belgium) attempts an effort on goal.",
+        "minute": 51,
+        "minuteStr": "51'"
+      },
+      {
+        "type": "Offside",
+        "text": "Leandro TROSSARD (Belgium) is ruled offside.",
+        "minute": 51,
+        "minuteStr": "51'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mehdi TAREMI (IR Iran) attempts an effort on goal.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Belgium pulls off a save.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Leandro TROSSARD (Belgium) commits a foul.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Timothy CASTAGNE (in) comes off the bench to replace Thomas MEUNIER (out) (Belgium)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Hans VANAKEN (in) comes off the bench to replace Nicolas RASKIN (out) (Belgium)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Dodi LUKEBAKIO (in) comes off the bench to replace Alexis SAELEMAEKERS (out) (Belgium)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxim DE CUYPER (Belgium) attempts an effort on goal.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Dodi LUKEBAKIO (Belgium) attempts an effort on goal.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Hans VANAKEN (Belgium) attempts an effort on goal.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Foul",
+        "text": "Saman GHODDOS (IR Iran) commits a foul.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Corner",
+        "text": "Ramin REZAEIAN (IR Iran) takes a corner kick.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Shoja KHALILZADEH (IR Iran) attempts an effort on goal.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Mehdi TORABI (in) comes off the bench to replace Mohammad MOHEBBI (out) (IR Iran)",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Milad MOHAMMADI (in) comes off the bench to replace Ehsan HAJISAFI (out) (IR Iran)",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Red card",
+        "text": "Nathan NGOY (Belgium) is sent off!",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Arthur THEATE (in) comes off the bench to replace Romelu LUKAKU (out) (Belgium)",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Shahriyar MOGHANLOO (in) comes off the bench to replace Saman GHODDOS (out) (IR Iran)",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Foul",
+        "text": "Alireza JAHANBAKHSH (IR Iran) commits a foul.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Saeid EZATOLAHI (IR Iran) attempts an effort on goal.",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Belgium pulls off a save.",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Foul",
+        "text": "Shoja KHALILZADEH (IR Iran) commits a foul.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Youri TIELEMANS (Belgium) attempts an effort on goal.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Hans VANAKEN (Belgium) attempts an effort on goal.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Amirhossein HOSSEINZADEH (in) comes off the bench to replace Saeid EZATOLAHI (out) (IR Iran)",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxim DE CUYPER (Belgium) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Offside",
+        "text": "Shahriyar MOGHANLOO (IR Iran) is ruled offside.",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Matias FERNANDEZ-PARDO (in) comes off the bench to replace Kevin DE BRUYNE (out) (Belgium)",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Amirhossein HOSSEINZADEH (IR Iran) attempts an effort on goal.",
+        "minute": 88,
+        "minuteStr": "88'"
+      },
+      {
+        "type": "Offside",
+        "text": "Milad MOHAMMADI (IR Iran) is ruled offside.",
+        "minute": 88,
+        "minuteStr": "88'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Belgium pulls off a save.",
+        "minute": 88,
+        "minuteStr": "88'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Brandon MECHELE (Belgium) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Matias FERNANDEZ-PARDO (Belgium) attempts an effort on goal.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Dodi LUKEBAKIO (Belgium) attempts an effort on goal.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 98,
+        "minuteStr": "90'+8"
       }
     ]
-  },
-  "40": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "41": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "42": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   },
   "43": {
     "homeScore": 0,
@@ -18188,126 +17918,6 @@
       }
     ]
   },
-  "46": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "47": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "48": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
   "49": {
     "homeScore": 3,
     "awayScore": 1,
@@ -19403,166 +19013,6 @@
       }
     ]
   },
-  "51": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "52": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "53": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "54": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
   "55": {
     "homeScore": 3,
     "awayScore": 0,
@@ -20648,166 +20098,6 @@
       }
     ]
   },
-  "57": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "58": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "59": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "60": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
   "61": {
     "homeScore": 1,
     "awayScore": 1,
@@ -21881,166 +21171,6 @@
         "minuteStr": "90'+17"
       }
     ]
-  },
-  "63": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "64": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "65": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "66": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   },
   "67": {
     "homeScore": 4,
@@ -23252,1509 +22382,5 @@
         "minuteStr": "90'+21"
       }
     ]
-  },
-  "69": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "70": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "71": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "72": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2A",
-    "away": "2B",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1C",
-    "away": "2F",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_3": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "GER",
-    "away": "3ABCDF",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_4": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1F",
-    "away": "2C",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_5": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2E",
-    "away": "2I",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_6": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1I",
-    "away": "3CDFGH",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_7": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "MEX",
-    "away": "3CEFHI",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_8": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1L",
-    "away": "3EHIJK",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_9": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1G",
-    "away": "3AEHIJ",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_10": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "USA",
-    "away": "3BEFIJ",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_11": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1H",
-    "away": "2J",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_12": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2K",
-    "away": "2L",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_13": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1B",
-    "away": "3EFGIJ",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_14": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2D",
-    "away": "2G",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_15": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1J",
-    "away": "2H",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_16": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1K",
-    "away": "3DEIJL",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W73",
-    "away": "W75",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W74",
-    "away": "W77",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_3": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W76",
-    "away": "W78",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_4": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W79",
-    "away": "W80",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_5": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W83",
-    "away": "W84",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_6": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W81",
-    "away": "W82",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_7": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W86",
-    "away": "W88",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_8": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W85",
-    "away": "W87",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W89",
-    "away": "W90",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W93",
-    "away": "W94",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_3": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W91",
-    "away": "W92",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_4": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W95",
-    "away": "W96",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "sf_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W97",
-    "away": "W98",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "sf_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W99",
-    "away": "W100",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "bronze": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "RU101",
-    "away": "RU102",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "final": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W101",
-    "away": "W102",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
   }
 }
