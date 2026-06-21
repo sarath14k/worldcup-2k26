@@ -16067,44 +16067,267 @@
     ]
   },
   "39": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 0,
+    "awayScore": 0,
+    "minute": "45'+2'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
-    "events": [],
+    "events": [
+      {
+        "team": "away",
+        "player": "Mehdi TAREMI",
+        "minute": 25
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        62,
+        25
       ],
       "shots": [
         10,
-        10
+        2
       ],
       "shotsOnTarget": [
-        5,
-        5
+        4,
+        1
       ],
       "corners": [
-        5,
-        5
+        2,
+        1
       ],
       "fouls": [
-        10,
-        10
+        4,
+        4
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        1
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Belgium won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxim DE CUYPER (Belgium) takes a corner kick.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Romelu LUKAKU (Belgium) is booked by the referee.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin DE BRUYNE (Belgium) attempts an effort on goal.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin DE BRUYNE (Belgium) attempts an effort on goal.",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxim DE CUYPER (Belgium) attempts an effort on goal.",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Romelu LUKAKU (Belgium) attempts an effort on goal.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Foul",
+        "text": "Brandon MECHELE (Belgium) commits a foul.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Foul",
+        "text": "Nathan NGOY (Belgium) commits a foul.",
+        "minute": 13,
+        "minuteStr": "13'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Hossein KANANI (IR Iran) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Belgium pulls off a save.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Corner",
+        "text": "Ramin REZAEIAN (IR Iran) takes a corner kick.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Saeid EZATOLAHI (IR Iran) attempts an effort on goal.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Offside",
+        "text": "Mehdi TAREMI (IR Iran) is ruled offside.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Leandro TROSSARD (Belgium) attempts an effort on goal.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Youri TIELEMANS (Belgium) attempts an effort on goal.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Corner",
+        "text": "Kevin DE BRUYNE (Belgium) takes a corner kick.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nathan NGOY (Belgium) attempts an effort on goal.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Foul",
+        "text": "Nicolas RASKIN (Belgium) commits a foul.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Offside",
+        "text": "Mehdi TAREMI (IR Iran) is ruled offside.",
+        "minute": 25,
+        "minuteStr": "25'"
+      },
+      {
+        "type": "VAR",
+        "text": "Goal disallowed",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Saeid EZATOLAHI (IR Iran) is booked by the referee.",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Offside",
+        "text": "Youri TIELEMANS (Belgium) is ruled offside.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Foul",
+        "text": "Mehdi TAREMI (IR Iran) commits a foul.",
+        "minute": 37,
+        "minuteStr": "37'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ehsan HAJISAFI (IR Iran) commits a foul.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin DE BRUYNE (Belgium) attempts an effort on goal.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Foul",
+        "text": "Mehdi TAREMI (IR Iran) commits a foul.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxim DE CUYPER (Belgium) attempts an effort on goal.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of IR Iran pulls off a save.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Alexis SAELEMAEKERS (Belgium) attempts an effort on goal.",
+        "minute": 44,
+        "minuteStr": "44'"
+      }
+    ]
   },
   "40": {
     "homeScore": null,
@@ -17406,12 +17629,12 @@
     ]
   },
   "45": {
-    "homeScore": 3,
+    "homeScore": 4,
     "awayScore": 0,
-    "minute": "31'",
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
+    "isCompleted": true,
+    "isDetailedScraped": true,
     "events": [
       {
         "team": "home",
@@ -17427,32 +17650,37 @@
         "team": "home",
         "player": "Mikel OYARZABAL",
         "minute": 24
+      },
+      {
+        "team": "home",
+        "player": "HASSAN ALTAMBAKTI (OG)",
+        "minute": 49
       }
     ],
     "stats": {
       "possession": [
-        56,
+        59,
         33
       ],
       "shots": [
-        11,
-        0
+        21,
+        3
       ],
       "shotsOnTarget": [
-        4,
-        0
+        8,
+        1
       ],
       "corners": [
-        3,
-        0
+        6,
+        1
       ],
       "fouls": [
-        1,
-        1
+        10,
+        2
       ],
       "yellowCards": [
         0,
-        0
+        2
       ],
       "redCards": [
         0,
@@ -17629,16 +17857,334 @@
         "minuteStr": "28'"
       },
       {
+        "type": "Yellow card",
+        "text": "SALEM ALDAWSARI (Saudi Arabia) is booked by the referee.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
         "type": "Attempt at Goal",
         "text": "Lamine YAMAL (Spain) attempts an effort on goal.",
         "minute": 30,
         "minuteStr": "30'"
       },
       {
+        "type": "Attempt at Goal",
+        "text": "ABDULELAH ALAMRI (Saudi Arabia) attempts an effort on goal.",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mikel OYARZABAL (Spain) attempts an effort on goal.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lamine YAMAL (Spain) attempts an effort on goal.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Saudi Arabia pulls off a save.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lamine YAMAL (Spain) attempts an effort on goal.",
+        "minute": 37,
+        "minuteStr": "37'"
+      },
+      {
+        "type": "Offside",
+        "text": "MUSAB ALJUWAYR (Saudi Arabia) is ruled offside.",
+        "minute": 37,
+        "minuteStr": "37'"
+      },
+      {
+        "type": "Foul",
+        "text": "Dani OLMO (Spain) commits a foul.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mikel OYARZABAL (Spain) attempts an effort on goal.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Corner",
+        "text": "MUSAB ALJUWAYR (Saudi Arabia) takes a corner kick.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "RODRI (Spain) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Corner",
+        "text": "Alex BAENA (Spain) takes a corner kick.",
+        "minute": 48,
+        "minuteStr": "45'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "SALEM ALDAWSARI (Saudi Arabia) attempts an effort on goal.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Offside",
+        "text": "MUSAB ALJUWAYR (Saudi Arabia) is ruled offside.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Foul",
+        "text": "Mikel OYARZABAL (Spain) commits a foul.",
+        "minute": 50,
+        "minuteStr": "45'+5"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Yeremy PINO (in) comes off the bench to replace Lamine YAMAL (out) (Spain)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Ferran TORRES (in) comes off the bench to replace Mikel OYARZABAL (out) (Spain)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins ABDULLAH ALHAMDDAN (in) comes off the bench to replace MUSAB ALJUWAYR (out) (Saudi Arabia)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins MOHAMED KANNO (in) comes off the bench to replace ABDULLAH ALKHAIBARI (out) (Saudi Arabia)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Offside",
+        "text": "SALEM ALDAWSARI (Saudi Arabia) is ruled offside.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Corner",
+        "text": "Alex BAENA (Spain) takes a corner kick.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marc CUCURELLA (Spain) attempts an effort on goal.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Saudi Arabia pulls off a save.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Own goal",
+        "text": "HASSAN ALTAMBAKTI (Saudi Arabia) scores an own goal.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Pedro PORRO (Spain) attempts an effort on goal.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Saudi Arabia pulls off a save.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ferran TORRES (Spain) attempts an effort on goal.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marc CUCURELLA (Spain) commits a foul.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Pedro PORRO (Spain) commits a foul.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
         "type": "Yellow card",
-        "text": "SALEM ALDAWSARI (Saudi Arabia) is booked by the referee.",
-        "minute": 30,
-        "minuteStr": "30'"
+        "text": "MOHAMED KANNO (Saudi Arabia) is booked by the referee.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "MOHAMMED ABU ALSHAMAT (in) comes off the bench to replace FERAS ALBRIKAN (out) (Saudi Arabia)",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "ALA ALHAJJI (in) comes off the bench to replace ABDULELAH ALAMRI (out) (Saudi Arabia)",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Mikel MERINO (in) comes off the bench to replace Dani OLMO (out) (Spain)",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nico WILLIAMS (in) comes off the bench to replace Alex BAENA (out) (Spain)",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Foul",
+        "text": "Yeremy PINO (Spain) commits a foul.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ferran TORRES (Spain) commits a foul.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ferran TORRES (Spain) attempts an effort on goal.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Corner",
+        "text": "Nico WILLIAMS (Spain) takes a corner kick.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Offside",
+        "text": "RODRI (Spain) is ruled offside.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Fabian RUIZ (in) comes off the bench to replace PEDRI (out) (Spain)",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "ABDULLAH ALHAMDDAN (Saudi Arabia) attempts an effort on goal.",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Foul",
+        "text": "Yeremy PINO (Spain) commits a foul.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marc CUCURELLA (Spain) commits a foul.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Foul",
+        "text": "Aymeric LAPORTE (Spain) commits a foul.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "KHALID ALGHANNAM (in) comes off the bench to replace NASSER ALDAWSARI (out) (Saudi Arabia)",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Offside",
+        "text": "Ferran TORRES (Spain) is ruled offside.",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "VAR",
+        "text": "Goal disallowed",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mikel MERINO (Spain) attempts an effort on goal.",
+        "minute": 98,
+        "minuteStr": "90'+8"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 99,
+        "minuteStr": "90'+9"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 100,
+        "minuteStr": "90'+10"
       }
     ]
   },
