@@ -1101,7 +1101,7 @@ function App() {
       </header>
 
       {/* --- MAIN TABS NAV --- */}
-      <nav className="relative z-10 max-w-7xl mx-auto px-4 pt-6">
+      <nav className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 pt-4 sm:pt-6">
         <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full overflow-x-auto scrollbar-none sm:w-fit whitespace-nowrap">
           <button
             id="tab-fixtures"
@@ -1173,7 +1173,7 @@ function App() {
       </nav>
 
       {/* --- CONTENT CONTAINER --- */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 py-6">
+      <main className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 py-4 sm:py-6">
         
         {/* ================= ROADMAP TREE TAB ================= */}
         {activeTab === 'bracket' && (
@@ -1388,11 +1388,11 @@ function App() {
 
         {/* ================= UPCOMING & RESULTS TAB ================= */}
         {activeTab === 'fixtures' && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 animate-fadeIn">
             {/* Left side: Upcoming Fixtures */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
+            <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
               {/* Upcoming Fixtures widget */}
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
+              <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
                 {/* Glow accent */}
                 <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none" />
@@ -1423,7 +1423,7 @@ function App() {
                       <div 
                         key={`today-${match.id}`} 
                         onClick={() => setSelectedMatch(match)}
-                        className={`p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 ${
+                        className={`p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 ${
                           isMatchLive 
                             ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20' 
                             : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
@@ -1525,9 +1525,9 @@ function App() {
             </div>
 
             {/* Right side: Done Matches feed */}
-            <div className="lg:col-span-1 flex flex-col gap-6">
+            <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
               {/* Match Timeline Feed Widget */}
-              <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
+              <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
                 <div>
                   <h2 className="text-sm font-extrabold text-slate-200 flex items-center gap-2 uppercase tracking-wider">
                     <Award className="w-4 h-4 text-brand-neon" />
@@ -1584,13 +1584,13 @@ function App() {
 
         {/* ================= GROUP STANDINGS TAB ================= */}
         {activeTab === 'groups' && (
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 animate-fadeIn">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 animate-fadeIn">
             
             {/* Left side: Detailed Group standings */}
-            <div className="lg:col-span-3 flex flex-col gap-6">
+            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-6">
 
               {/* Standings Table for selected group */}
-              <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
+              <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
                 
                 {/* Small A B C D ... Tabs to filter */}
                 <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none border-b border-slate-900/60 z-10 relative">
@@ -1640,14 +1640,14 @@ function App() {
                   <table className="w-full text-left text-xs font-medium">
                     <thead>
                       <tr className="border-b border-slate-800 text-slate-400">
-                        <th className="py-2.5 font-bold">POS</th>
-                        <th className="py-2.5 font-bold">TEAM</th>
-                        <th className="py-2.5 font-bold text-center">P</th>
-                        <th className="py-2.5 font-bold text-center">W</th>
-                        <th className="py-2.5 font-bold text-center">D</th>
-                        <th className="py-2.5 font-bold text-center">L</th>
-                        <th className="py-2.5 font-bold text-center">GD</th>
-                        <th className="py-2.5 font-bold text-center text-brand-neon">PTS</th>
+                        <th className="py-2 px-1 font-bold">POS</th>
+                        <th className="py-2 px-1 font-bold">TEAM</th>
+                        <th className="py-2 px-1 font-bold text-center">P</th>
+                        <th className="py-2 px-1 font-bold text-center">W</th>
+                        <th className="py-2 px-1 font-bold text-center">D</th>
+                        <th className="py-2 px-1 font-bold text-center">L</th>
+                        <th className="py-2 px-1 font-bold text-center">GD</th>
+                        <th className="py-2 px-1 font-bold text-center text-brand-neon">PTS</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800/50">
@@ -1656,7 +1656,7 @@ function App() {
                         const isBestThird = index === 2 && advancedTeams.thirds.some(th => th.code === t.code);
                         return (
                           <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
-                            <td className="py-3 pr-2">
+                            <td className="py-2 px-1">
                               <select
                                 value={index}
                                 onChange={(e) => handlePositionChange(expandedGroup, t.code, parseInt(e.target.value))}
@@ -1676,20 +1676,20 @@ function App() {
                                 <option value={3} className="bg-slate-950 text-slate-200">4</option>
                               </select>
                             </td>
-                            <td className="py-3 font-bold flex items-center gap-2 text-slate-200">
+                            <td className="py-2 px-1 font-bold flex items-center gap-1 sm:gap-2 text-slate-200">
                               <span className="text-lg">{t.flag}</span>
-                              <span className="truncate">{t.name}</span>
-                              {isQualifying && <span className="text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-1 rounded">R32</span>}
-                              {isBestThird && <span className="text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-1 rounded">R32 *</span>}
+                              <span className="truncate max-w-[85px] sm:max-w-none">{t.name}</span>
+                              {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold">R32</span>}
+                              {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold">R32 *</span>}
                             </td>
-                            <td className="py-3 text-center text-slate-400">{t.played}</td>
-                            <td className="py-3 text-center text-slate-400">{t.won}</td>
-                            <td className="py-3 text-center text-slate-400">{t.drawn}</td>
-                            <td className="py-3 text-center text-slate-400">{t.lost}</td>
-                            <td className={`py-3 text-center font-semibold ${t.gd > 0 ? 'text-brand-neon' : t.gd < 0 ? 'text-rose-500' : 'text-slate-400'}`}>
+                            <td className="py-2 px-1 text-center text-slate-400">{t.played}</td>
+                            <td className="py-2 px-1 text-center text-slate-400">{t.won}</td>
+                            <td className="py-2 px-1 text-center text-slate-400">{t.drawn}</td>
+                            <td className="py-2 px-1 text-center text-slate-400">{t.lost}</td>
+                            <td className={`py-2 px-1 text-center font-semibold ${t.gd > 0 ? 'text-brand-neon' : t.gd < 0 ? 'text-rose-500' : 'text-slate-400'}`}>
                               {t.gd > 0 ? `+${t.gd}` : t.gd}
                             </td>
-                            <td className="py-3 text-center font-bold text-sm text-brand-neon">{t.points}</td>
+                            <td className="py-2 px-1 text-center font-bold text-sm text-brand-neon">{t.points}</td>
                           </tr>
                         );
                       })}
@@ -1701,10 +1701,10 @@ function App() {
             </div>
 
             {/* Right side: Group match schedule */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
+            <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
 
               {/* Match list for selected group */}
-              <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
+              <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
                 <h3 className="text-base font-bold text-slate-200 mb-4 flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-brand-neon" />
                   Group {expandedGroup} Match Schedule
@@ -1782,15 +1782,15 @@ function App() {
 
         {/* ================= STADIUM VENUES TAB ================= */}
         {activeTab === 'venues' && (
-          <div className="flex flex-col gap-6 animate-fadeIn">
+          <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
             <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
               <h2 className="text-base font-bold text-white">16 Stadium Venues</h2>
               <p className="text-xs text-slate-400">Discover the iconic hosting stadiums across the United States, Canada, and Mexico.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {VENUES.map(venue => (
-                <div key={venue.name} className="p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col justify-between hover:border-brand-purple/50 transition-all hover:-translate-y-1 duration-300">
+                <div key={venue.name} className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col justify-between hover:border-brand-purple/50 transition-all hover:-translate-y-1 duration-300">
                   <div>
                     <div className="flex justify-between items-start mb-3">
                       <span className="text-xs font-bold text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
@@ -1820,7 +1820,7 @@ function App() {
 
         {/* ================= PLAYER STATS TAB ================= */}
         {activeTab === 'stats' && (
-          <div className="flex flex-col gap-6 animate-fadeIn">
+          <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
             {/* Header info */}
             <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
               <h2 className="text-base font-bold text-white flex items-center gap-2">
@@ -1833,9 +1833,9 @@ function App() {
             </div>
 
             {/* Tables Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {/* Top Scorers Table */}
-              <div className="p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
+              <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
                 <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
                   <Flame className="w-5 h-5 text-orange-500" />
                   <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
@@ -1878,7 +1878,7 @@ function App() {
               </div>
 
               {/* Top Assists Table */}
-              <div className="p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
+              <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
                 <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
                   <Sparkles className="w-5 h-5 text-brand-neon" />
                   <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
@@ -1971,11 +1971,11 @@ function App() {
 
         return (
           <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300"
+            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300"
             onClick={() => setSelectedMatch(null)}
           >
             <div 
-              className="w-full max-w-xl bg-slate-900/95 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl p-6 relative flex flex-col gap-6"
+              className="w-full max-w-xl max-h-[95vh] overflow-y-auto bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl p-4 sm:p-6 relative flex flex-col gap-4 sm:gap-6"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
