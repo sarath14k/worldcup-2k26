@@ -1239,24 +1239,17 @@ function App() {
                               return (
                                 <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
                                   <td className="py-1.5">
-                                    <select
-                                      value={index}
-                                      onChange={(e) => handlePositionChange(g, t.code, parseInt(e.target.value))}
-                                      className={`flex items-center justify-center w-8 h-5 rounded font-black text-[9px] cursor-pointer transition-all outline-none border px-0.5 ${
-                                        index === 0 
-                                          ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20' 
-                                          : index === 1 
-                                            ? 'bg-slate-400/10 border-slate-400/30 text-slate-350 hover:bg-slate-400/20' 
-                                            : index === 2 
-                                              ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal hover:bg-brand-royal/20' 
-                                              : 'bg-slate-900/50 border-slate-800 text-slate-500 hover:bg-slate-800/50'
-                                      }`}
-                                    >
-                                      <option value={0} className="bg-slate-950 text-slate-200">1</option>
-                                      <option value={1} className="bg-slate-950 text-slate-200">2</option>
-                                      <option value={2} className="bg-slate-950 text-slate-200">3</option>
-                                      <option value={3} className="bg-slate-950 text-slate-200">4</option>
-                                    </select>
+                                    <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
+                                      index === 0 
+                                        ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
+                                        : index === 1 
+                                          ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
+                                          : index === 2 
+                                            ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
+                                            : 'bg-slate-900/50 border-slate-800 text-slate-500'
+                                    }`}>
+                                      {index + 1}
+                                    </div>
                                   </td>
                                   <td className="py-1.5 text-slate-200 flex items-center gap-1.5 truncate">
                                     <span className="text-base shrink-0">{t.flag}</span>
@@ -1657,24 +1650,17 @@ function App() {
                         return (
                           <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
                             <td className="py-2 px-1">
-                              <select
-                                value={index}
-                                onChange={(e) => handlePositionChange(expandedGroup, t.code, parseInt(e.target.value))}
-                                className={`flex items-center justify-center w-8 h-6 rounded-lg font-black text-[10px] cursor-pointer transition-all outline-none border px-1 ${
-                                  index === 0 
-                                    ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20' 
-                                    : index === 1 
-                                      ? 'bg-slate-400/10 border-slate-400/30 text-slate-350 hover:bg-slate-400/20' 
-                                      : index === 2 
-                                        ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal hover:bg-brand-royal/20' 
-                                        : 'bg-slate-900/50 border-slate-800 text-slate-500 hover:bg-slate-800/50'
-                                }`}
-                              >
-                                <option value={0} className="bg-slate-950 text-slate-200">1</option>
-                                <option value={1} className="bg-slate-950 text-slate-200">2</option>
-                                <option value={2} className="bg-slate-950 text-slate-200">3</option>
-                                <option value={3} className="bg-slate-950 text-slate-200">4</option>
-                              </select>
+                              <div className={`flex items-center justify-center w-6 h-6 rounded-lg font-black text-[10px] border ${
+                                index === 0 
+                                  ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
+                                  : index === 1 
+                                    ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
+                                    : index === 2 
+                                      ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
+                                      : 'bg-slate-900/50 border-slate-800 text-slate-500'
+                              }`}>
+                                {index + 1}
+                              </div>
                             </td>
                             <td className="py-2 px-1 font-bold flex items-center gap-1 sm:gap-2 text-slate-200">
                               <span className="text-lg">{t.flag}</span>
