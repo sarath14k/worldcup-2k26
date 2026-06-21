@@ -1242,7 +1242,7 @@ function App() {
                                     <select
                                       value={index}
                                       onChange={(e) => handlePositionChange(g, t.code, parseInt(e.target.value))}
-                                      className={`flex items-center justify-center w-10 h-5 rounded font-black text-[9px] cursor-pointer transition-all outline-none border px-0.5 ${
+                                      className={`flex items-center justify-center w-8 h-5 rounded font-black text-[9px] cursor-pointer transition-all outline-none border px-0.5 ${
                                         index === 0 
                                           ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20' 
                                           : index === 1 
@@ -1252,10 +1252,10 @@ function App() {
                                               : 'bg-slate-900/50 border-slate-800 text-slate-500 hover:bg-slate-800/50'
                                       }`}
                                     >
-                                      <option value={0} className="bg-slate-950 text-slate-200">1st</option>
-                                      <option value={1} className="bg-slate-950 text-slate-200">2nd</option>
-                                      <option value={2} className="bg-slate-950 text-slate-200">3rd</option>
-                                      <option value={3} className="bg-slate-950 text-slate-200">4th</option>
+                                      <option value={0} className="bg-slate-950 text-slate-200">1</option>
+                                      <option value={1} className="bg-slate-950 text-slate-200">2</option>
+                                      <option value={2} className="bg-slate-950 text-slate-200">3</option>
+                                      <option value={3} className="bg-slate-950 text-slate-200">4</option>
                                     </select>
                                   </td>
                                   <td className="py-1.5 text-slate-200 flex items-center gap-1.5 truncate">
@@ -1660,7 +1660,7 @@ function App() {
                               <select
                                 value={index}
                                 onChange={(e) => handlePositionChange(expandedGroup, t.code, parseInt(e.target.value))}
-                                className={`flex items-center justify-center w-12 h-6 rounded-lg font-black text-[10px] cursor-pointer transition-all outline-none border px-1 ${
+                                className={`flex items-center justify-center w-8 h-6 rounded-lg font-black text-[10px] cursor-pointer transition-all outline-none border px-1 ${
                                   index === 0 
                                     ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold hover:bg-brand-gold/20' 
                                     : index === 1 
@@ -1670,10 +1670,10 @@ function App() {
                                         : 'bg-slate-900/50 border-slate-800 text-slate-500 hover:bg-slate-800/50'
                                 }`}
                               >
-                                <option value={0} className="bg-slate-950 text-slate-200">1st</option>
-                                <option value={1} className="bg-slate-950 text-slate-200">2nd</option>
-                                <option value={2} className="bg-slate-950 text-slate-200">3rd</option>
-                                <option value={3} className="bg-slate-950 text-slate-200">4th</option>
+                                <option value={0} className="bg-slate-950 text-slate-200">1</option>
+                                <option value={1} className="bg-slate-950 text-slate-200">2</option>
+                                <option value={2} className="bg-slate-950 text-slate-200">3</option>
+                                <option value={3} className="bg-slate-950 text-slate-200">4</option>
                               </select>
                             </td>
                             <td className="py-3 font-bold flex items-center gap-2 text-slate-200">
@@ -1725,7 +1725,7 @@ function App() {
                         <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
                           <span>MATCH {match.id}</span>
                           {match.isCompleted ? (
-                            <span className="text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wider font-extrabold font-mono">Completed (Real)</span>
+                            <span className="text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wider font-extrabold font-mono">FT</span>
                           ) : (
                             <span>{match.date}</span>
                           )}
