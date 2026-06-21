@@ -86,6 +86,8 @@ app.post('/api/sync-matches', express.json({ limit: '10mb' }), (req, res) => {
     console.error('[Sync API] Error writing sync data:', err);
     res.status(500).json({ error: 'Failed to write data: ' + err.message });
   }
+});
+
 // Helper to normalize team names for verification
 function normalizeTeamName(name) {
   return name

@@ -17406,9 +17406,9 @@
     ]
   },
   "45": {
-    "homeScore": 1,
+    "homeScore": 3,
     "awayScore": 0,
-    "minute": "13'",
+    "minute": "30'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
@@ -17417,27 +17417,37 @@
         "team": "home",
         "player": "Lamine YAMAL",
         "minute": 10
+      },
+      {
+        "team": "home",
+        "player": "Mikel OYARZABAL",
+        "minute": 21
+      },
+      {
+        "team": "home",
+        "player": "Mikel OYARZABAL",
+        "minute": 24
       }
     ],
     "stats": {
       "possession": [
-        74,
-        17
+        56,
+        33
       ],
       "shots": [
-        5,
+        11,
         0
       ],
       "shotsOnTarget": [
-        1,
+        4,
         0
       ],
       "corners": [
-        2,
+        3,
         0
       ],
       "fouls": [
-        0,
+        1,
         1
       ],
       "yellowCards": [
@@ -17527,6 +17537,102 @@
         "text": "PEDRI (Spain) attempts an effort on goal.",
         "minute": 13,
         "minuteStr": "13'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Alex BAENA (Spain) attempts an effort on goal.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Foul",
+        "text": "Alex BAENA (Spain) commits a foul.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mikel OYARZABAL (Spain) attempts an effort on goal.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Saudi Arabia pulls off a save.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Corner",
+        "text": "Alex BAENA (Spain) takes a corner kick.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Dani OLMO (Spain) attempts an effort on goal.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Aymeric LAPORTE.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mikel OYARZABAL (Spain) attempts an effort on goal.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Mikel OYARZABAL (Spain) scores!!",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Saudi Arabia pulls off a save.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Dani OLMO.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Mikel OYARZABAL (Spain) attempts an effort on goal.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Mikel OYARZABAL (Spain) scores!!",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 25,
+        "minuteStr": "25'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lamine YAMAL (Spain) attempts an effort on goal.",
+        "minute": 30,
+        "minuteStr": "30'"
       }
     ]
   },
