@@ -1610,40 +1610,40 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "home",
+        "team": "away",
         "player": "Michal SADILEK",
         "minute": 6
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Teboho MOKOENA (P)",
         "minute": 83
       }
     ],
     "stats": {
       "possession": [
-        32,
-        60
+        60,
+        32
       ],
       "shots": [
-        14,
-        17
+        17,
+        14
       ],
       "shotsOnTarget": [
-        3,
-        4
+        4,
+        3
       ],
       "corners": [
         5,
         5
       ],
       "fouls": [
-        12,
-        10
+        10,
+        12
       ],
       "yellowCards": [
-        1,
-        2
+        2,
+        1
       ],
       "redCards": [
         0,
@@ -4258,59 +4258,59 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "home",
+        "team": "away",
         "player": "Johan MANZAMBI",
         "minute": 74
       },
       {
-        "team": "home",
+        "team": "away",
         "player": "Ruben VARGAS",
         "minute": 84
       },
       {
-        "team": "home",
+        "team": "away",
         "player": "Johan MANZAMBI",
         "minute": 90
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Ermin MAHMIC",
         "minute": 93
       },
       {
-        "team": "home",
+        "team": "away",
         "player": "Granit XHAKA (P)",
         "minute": 97
       }
     ],
     "stats": {
       "possession": [
-        44,
-        48
+        48,
+        44
       ],
       "shots": [
-        13,
-        5
+        5,
+        13
       ],
       "shotsOnTarget": [
-        7,
-        3
+        3,
+        7
       ],
       "corners": [
-        7,
-        3
+        3,
+        7
       ],
       "fouls": [
-        7,
-        18
+        18,
+        7
       ],
       "yellowCards": [
-        1,
-        2
+        2,
+        1
       ],
       "redCards": [
-        0,
-        1
+        1,
+        0
       ]
     },
     "timeline": [
@@ -6799,35 +6799,35 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "away",
+        "team": "home",
         "player": "Ismael SAIBARI",
         "minute": 2
       }
     ],
     "stats": {
       "possession": [
-        37,
-        53
+        53,
+        37
       ],
       "shots": [
-        6,
-        12
+        12,
+        6
       ],
       "shotsOnTarget": [
-        0,
-        2
+        2,
+        0
       ],
       "corners": [
-        2,
-        5
+        5,
+        2
       ],
       "fouls": [
-        11,
-        8
+        8,
+        11
       ],
       "yellowCards": [
-        2,
-        1
+        1,
+        2
       ],
       "redCards": [
         0,
@@ -9167,27 +9167,27 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "home",
+        "team": "away",
         "player": "Matias GALARZA",
         "minute": 2
       }
     ],
     "stats": {
       "possession": [
-        26,
-        65
+        65,
+        26
       ],
       "shots": [
-        7,
-        31
+        31,
+        7
       ],
       "shotsOnTarget": [
-        2,
-        5
+        5,
+        2
       ],
       "corners": [
-        0,
-        11
+        11,
+        0
       ],
       "fouls": [
         14,
@@ -9198,8 +9198,8 @@
         2
       ],
       "redCards": [
-        1,
-        0
+        0,
+        1
       ]
     },
     "timeline": [
@@ -11269,39 +11269,49 @@
     ]
   },
   "27": {
-    "homeScore": 0,
+    "homeScore": 2,
     "awayScore": 1,
-    "minute": "45'+2'",
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
+    "isCompleted": true,
+    "isDetailedScraped": true,
     "events": [
       {
         "team": "away",
         "player": "Franck KESSIE",
         "minute": 30
+      },
+      {
+        "team": "home",
+        "player": "Deniz UNDAV",
+        "minute": 68
+      },
+      {
+        "team": "home",
+        "player": "Deniz UNDAV",
+        "minute": 94
       }
     ],
     "stats": {
       "possession": [
-        54,
-        37
+        50,
+        40
       ],
       "shots": [
-        7,
-        4
+        16,
+        9
       ],
       "shotsOnTarget": [
-        1,
+        7,
         2
       ],
       "corners": [
-        3,
-        0
+        8,
+        3
       ],
       "fouls": [
-        2,
-        3
+        5,
+        7
       ],
       "yellowCards": [
         0,
@@ -11466,56 +11476,987 @@
       {
         "type": "Corner",
         "text": "Florian WIRTZ (Germany) takes a corner kick.",
-        "minute": 45,
-        "minuteStr": "HT"
+        "minute": 46,
+        "minuteStr": "45'+1"
       },
       {
         "type": "Attempt at Goal",
         "text": "Felix NMECHA (Germany) attempts an effort on goal.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "Corner",
+        "text": "Amad DIALLO (Côte d'Ivoire) takes a corner kick.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Florian WIRTZ (Germany) attempts an effort on goal.",
+        "minute": 52,
+        "minuteStr": "45'+7"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 53,
+        "minuteStr": "45'+8"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Antonio RUEDIGER (in) comes off the bench to replace Nico SCHLOTTERBECK (out) (Germany)",
         "minute": 45,
         "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ghislain KONAN (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Corner",
+        "text": "Joshua KIMMICH (Germany) takes a corner kick.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Franck KESSIE (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Germany pulls off a save.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Christ Inao OULAI (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 51,
+        "minuteStr": "51'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Côte d'Ivoire pulls off a save.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Corner",
+        "text": "Amad DIALLO (Côte d'Ivoire) takes a corner kick.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Foul",
+        "text": "Yan DIOMANDE (Côte d'Ivoire) commits a foul.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Yan DIOMANDE (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Antonio RUEDIGER (Germany) attempts an effort on goal.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ange-Yoan BONNY (Côte d'Ivoire) commits a foul.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Corner",
+        "text": "Florian WIRTZ (Germany) takes a corner kick.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Corner",
+        "text": "Joshua KIMMICH (Germany) takes a corner kick.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Deniz UNDAV (in) comes off the bench to replace Jamal MUSIALA (out) (Germany)",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nadiem AMIRI (in) comes off the bench to replace Aleksandar PAVLOVIC (out) (Germany)",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Jamie LEWELING (in) comes off the bench to replace Leroy SANE (out) (Germany)",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jamie LEWELING (Germany) attempts an effort on goal.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Corner",
+        "text": "Joshua KIMMICH (Germany) takes a corner kick.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kai HAVERTZ (Germany) attempts an effort on goal.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Corner",
+        "text": "Joshua KIMMICH (Germany) takes a corner kick.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Foul",
+        "text": "Deniz UNDAV (Germany) commits a foul.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Nadiem AMIRI.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Deniz UNDAV (Germany) attempts an effort on goal.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Deniz UNDAV (Germany) scores!!",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Simon ADINGRA (in) comes off the bench to replace Amad DIALLO (out) (Côte d'Ivoire)",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Evann GUESSAND (in) comes off the bench to replace Ange-Yoan BONNY (out) (Côte d'Ivoire)",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Seko FOFANA (in) comes off the bench to replace Ibrahim SANGARE (out) (Côte d'Ivoire)",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Foul",
+        "text": "Felix NMECHA (Germany) commits a foul.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Foul",
+        "text": "Florian WIRTZ (Germany) commits a foul.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Guela DOUE (in) comes off the bench to replace Wilfried SINGO (out) (Côte d'Ivoire)",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Corner",
+        "text": "Simon ADINGRA (Côte d'Ivoire) takes a corner kick.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Seko FOFANA (Côte d'Ivoire) attempts an effort on goal.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nicolas PEPE (in) comes off the bench to replace Yan DIOMANDE (out) (Côte d'Ivoire)",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Leon GORETZKA (in) comes off the bench to replace Kai HAVERTZ (out) (Germany)",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Deniz UNDAV (Germany) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Côte d'Ivoire pulls off a save.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Foul",
+        "text": "Evann GUESSAND (Côte d'Ivoire) commits a foul.",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nathaniel BROWN (Germany) attempts an effort on goal.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Côte d'Ivoire pulls off a save.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nadiem AMIRI (Germany) attempts an effort on goal.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Côte d'Ivoire pulls off a save.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Foul",
+        "text": "Guela DOUE (Côte d'Ivoire) commits a foul.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Felix NMECHA.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Deniz UNDAV (Germany) attempts an effort on goal.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Goal!",
+        "text": "Deniz UNDAV (Germany) scores!!",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 98,
+        "minuteStr": "90'+8"
       }
     ]
   },
   "28": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 0,
+    "awayScore": 0,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
+    "isCompleted": true,
+    "isDetailedScraped": true,
     "events": [],
     "stats": {
       "possession": [
-        50,
-        50
+        65,
+        23
       ],
       "shots": [
-        10,
+        27,
         10
       ],
       "shotsOnTarget": [
-        5,
-        5
+        15,
+        3
       ],
       "corners": [
-        5,
-        5
+        9,
+        0
       ],
       "fouls": [
-        10,
+        7,
         10
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        5
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Ecuador won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Corner",
+        "text": "John YEBOAH (Ecuador) takes a corner kick.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Offside",
+        "text": "Enner VALENCIA (Ecuador) is ruled offside.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Sherel FLORANUS (Curaçao) attempts an effort on goal.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Offside",
+        "text": "Juergen LOCADIA (Curaçao) is ruled offside.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "John YEBOAH (Ecuador) attempts an effort on goal.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Offside",
+        "text": "Juergen LOCADIA (Curaçao) is ruled offside.",
+        "minute": 13,
+        "minuteStr": "13'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Pedro VITE (Ecuador) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gonzalo PLATA (Ecuador) attempts an effort on goal.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Livano COMENENCIA (Curaçao) attempts an effort on goal.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Foul",
+        "text": "Tahith CHONG (Curaçao) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jordy ALCIVAR (Ecuador) attempts an effort on goal.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Foul",
+        "text": "Leandro BACUNA (Curaçao) commits a foul.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Foul",
+        "text": "Willian PACHO (Ecuador) commits a foul.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gonzalo PLATA (Ecuador) attempts an effort on goal.",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Foul",
+        "text": "Alan FRANCO (Ecuador) commits a foul.",
+        "minute": 29,
+        "minuteStr": "29'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Juninho BACUNA (Curaçao) attempts an effort on goal.",
+        "minute": 29,
+        "minuteStr": "29'"
+      },
+      {
+        "type": "Foul",
+        "text": "Piero HINCAPIE (Ecuador) commits a foul.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Juninho BACUNA (Curaçao) attempts an effort on goal.",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ecuador pulls off a save.",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Jordy ALCIVAR (Ecuador) is booked by the referee.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Leandro BACUNA (Curaçao) is booked by the referee.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Foul",
+        "text": "Juergen LOCADIA (Curaçao) commits a foul.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "John YEBOAH (Ecuador) attempts an effort on goal.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Foul",
+        "text": "Pervis ESTUPINAN (Ecuador) commits a foul.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Livano COMENENCIA (Curaçao) attempts an effort on goal.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ecuador pulls off a save.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "Foul",
+        "text": "Pervis ESTUPINAN (Ecuador) commits a foul.",
+        "minute": 48,
+        "minuteStr": "45'+3"
+      },
+      {
+        "type": "Foul",
+        "text": "Livano COMENENCIA (Curaçao) commits a foul.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 50,
+        "minuteStr": "45'+5"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Kevin RODRIGUEZ (in) comes off the bench to replace Jordy ALCIVAR (out) (Ecuador)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Moises CAICEDO (Ecuador) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gonzalo PLATA (Ecuador) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jurien GAARI (Curaçao) commits a foul.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Juninho BACUNA (Curaçao) is booked by the referee.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gonzalo PLATA (Ecuador) attempts an effort on goal.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Livano COMENENCIA (Curaçao) is booked by the referee.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Leandro BACUNA (Curaçao) attempts an effort on goal.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Corner",
+        "text": "Moises CAICEDO (Ecuador) takes a corner kick.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Piero HINCAPIE (Ecuador) attempts an effort on goal.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gonzalo PLATA (Ecuador) attempts an effort on goal.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Leandro BACUNA (Curaçao) attempts an effort on goal.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ecuador pulls off a save.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Livano COMENENCIA (Curaçao) attempts an effort on goal.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ecuador pulls off a save.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Juergen LOCADIA (Curaçao) attempts an effort on goal.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin RODRIGUEZ (Ecuador) attempts an effort on goal.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Corner",
+        "text": "Gonzalo PLATA (Ecuador) takes a corner kick.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin RODRIGUEZ (Ecuador) attempts an effort on goal.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Corner",
+        "text": "Moises CAICEDO (Ecuador) takes a corner kick.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin RODRIGUEZ (Ecuador) attempts an effort on goal.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Willian PACHO (Ecuador) attempts an effort on goal.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kevin RODRIGUEZ (Ecuador) attempts an effort on goal.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Foul",
+        "text": "Pedro VITE (Ecuador) commits a foul.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nilson ANGULO (in) comes off the bench to replace Pervis ESTUPINAN (out) (Ecuador)",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nilson ANGULO (Ecuador) attempts an effort on goal.",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "John YEBOAH (Ecuador) attempts an effort on goal.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Corner",
+        "text": "John YEBOAH (Ecuador) takes a corner kick.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Piero HINCAPIE (Ecuador) attempts an effort on goal.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Juninho BACUNA (Curaçao) attempts an effort on goal.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ecuador pulls off a save.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Jurien GAARI (Curaçao) is booked by the referee.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Roshon VAN EIJMA (in) comes off the bench to replace Deveron FONVILLE (out) (Curaçao)",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Jearl MARGARITHA (in) comes off the bench to replace Tahith CHONG (out) (Curaçao)",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Kenji GORRE (in) comes off the bench to replace Juninho BACUNA (out) (Curaçao)",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Pedro VITE (Ecuador) attempts an effort on goal.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Curaçao pulls off a save.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Corner",
+        "text": "Nilson ANGULO (Ecuador) takes a corner kick.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Corner",
+        "text": "Gonzalo PLATA (Ecuador) takes a corner kick.",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Angelo PRECIADO (in) comes off the bench to replace Alan FRANCO (out) (Ecuador)",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Godfried ROEMERATOE (in) comes off the bench to replace Livano COMENENCIA (out) (Curaçao)",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Gervane KASTANEER (in) comes off the bench to replace Juergen LOCADIA (out) (Curaçao)",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enner VALENCIA (Ecuador) attempts an effort on goal.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Jordy CAICEDO (in) comes off the bench to replace John YEBOAH (out) (Ecuador)",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Corner",
+        "text": "Gonzalo PLATA (Ecuador) takes a corner kick.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Gervane KASTANEER (Curaçao) is booked by the referee.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Corner",
+        "text": "Nilson ANGULO (Ecuador) takes a corner kick.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 102,
+        "minuteStr": "90'+12"
+      }
+    ]
   },
   "29": {
     "homeScore": null,
@@ -13358,33 +14299,54 @@
     ]
   },
   "34": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 4,
+    "awayScore": 0,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "away",
+        "player": "Daichi KAMADA",
+        "minute": 4
+      },
+      {
+        "team": "away",
+        "player": "Ayase UEDA",
+        "minute": 31
+      },
+      {
+        "team": "away",
+        "player": "Junya ITO",
+        "minute": 69
+      },
+      {
+        "team": "away",
+        "player": "Ayase UEDA",
+        "minute": 83
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        36,
+        55
       ],
       "shots": [
-        10,
+        2,
         10
       ],
       "shotsOnTarget": [
-        5,
-        5
+        0,
+        4
       ],
       "corners": [
-        5,
+        3,
         5
       ],
       "fouls": [
-        10,
-        10
+        8,
+        15
       ],
       "yellowCards": [
         0,
@@ -13395,7 +14357,464 @@
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Japan won the coin toss and chose the side",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Foul",
+        "text": "Montassar TALBI (Tunisia) commits a foul.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Hannibal MEJBRI (Tunisia) attempts an effort on goal.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Keito NAKAMURA.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Daichi KAMADA (Japan) attempts an effort on goal.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Daichi KAMADA (Japan) scores!!",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ayase UEDA (Japan) attempts an effort on goal.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Foul",
+        "text": "Takehiro TOMIYASU (Japan) commits a foul.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Corner",
+        "text": "Junya ITO (Japan) takes a corner kick.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ayase UEDA (Japan) attempts an effort on goal.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Tunisia pulls off a save.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Takehiro TOMIYASU (Japan) attempts an effort on goal.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Corner",
+        "text": "Junya ITO (Japan) takes a corner kick.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Foul",
+        "text": "Elias SAAD (Tunisia) commits a foul.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ayase UEDA (Japan) commits a foul.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Corner",
+        "text": "Elias SAAD (Tunisia) takes a corner kick.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Foul",
+        "text": "Takehiro TOMIYASU (Japan) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Foul",
+        "text": "Junya ITO (Japan) commits a foul.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Foul",
+        "text": "Takehiro TOMIYASU (Japan) commits a foul.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Kou ITAKURA.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ayase UEDA (Japan) attempts an effort on goal.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Ayase UEDA (Japan) scores!!",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Foul",
+        "text": "Hannibal MEJBRI (Tunisia) commits a foul.",
+        "minute": 34,
+        "minuteStr": "34'"
+      },
+      {
+        "type": "Foul",
+        "text": "Kaishu SANO (Japan) commits a foul.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Foul",
+        "text": "Junya ITO (Japan) commits a foul.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Foul",
+        "text": "Dylan BRONN (Tunisia) commits a foul.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Foul",
+        "text": "Hannibal MEJBRI (Tunisia) commits a foul.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "Foul",
+        "text": "Kou ITAKURA (Japan) commits a foul.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Japan pulls off a save.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 50,
+        "minuteStr": "45'+5"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Mohamed Amine BEN HMIDA (in) comes off the bench to replace Dylan BRONN (out) (Tunisia)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Ismael GHARBI (in) comes off the bench to replace Elias SAAD (out) (Tunisia)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ao TANAKA (Japan) attempts an effort on goal.",
+        "minute": 48,
+        "minuteStr": "48'"
+      },
+      {
+        "type": "Foul",
+        "text": "Hiroki ITO (Japan) commits a foul.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Foul",
+        "text": "Hiroki ITO (Japan) commits a foul.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Corner",
+        "text": "Junya ITO (Japan) takes a corner kick.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ali ABDI (Tunisia) commits a foul.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Foul",
+        "text": "Hannibal MEJBRI (Tunisia) commits a foul.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ayase UEDA (Japan) attempts an effort on goal.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Corner",
+        "text": "Junya ITO (Japan) takes a corner kick.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Firas CHAOUAT (in) comes off the bench to replace Sebastian TOUNEKTI (out) (Tunisia)",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Keito NAKAMURA (Japan) attempts an effort on goal.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Foul",
+        "text": "Keito NAKAMURA (Japan) commits a foul.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Ayase UEDA.",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Junya ITO (Japan) attempts an effort on goal.",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Junya ITO (Japan) scores!!",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Yukinari SUGAWARA (in) comes off the bench to replace Ritsu DOAN (out) (Japan)",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Junnosuke SUZUKI (in) comes off the bench to replace Daichi KAMADA (out) (Japan)",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Corner",
+        "text": "Anis SLIMANE (Tunisia) takes a corner kick.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Corner",
+        "text": "Anis SLIMANE (Tunisia) takes a corner kick.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ismael GHARBI (Tunisia) attempts an effort on goal.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Offside",
+        "text": "Omar REKIK (Tunisia) is ruled offside.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Offside",
+        "text": "Keito NAKAMURA (Japan) is ruled offside.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Corner",
+        "text": "Junya ITO (Japan) takes a corner kick.",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Yuito SUZUKI (in) comes off the bench to replace Keito NAKAMURA (out) (Japan)",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Ayumu SEKO (in) comes off the bench to replace Takehiro TOMIYASU (out) (Japan)",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ao TANAKA (Japan) commits a foul.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Foul",
+        "text": "Hiroki ITO (Japan) commits a foul.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Kaishu SANO.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ayase UEDA (Japan) attempts an effort on goal.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Ayase UEDA (Japan) scores!!",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Keisuke GOTO (in) comes off the bench to replace Ayase UEDA (out) (Japan)",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Junya ITO (Japan) attempts an effort on goal.",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Elias ACHOURI (in) comes off the bench to replace Ali ABDI (out) (Tunisia)",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Rani KHEDIRA (in) comes off the bench to replace Ellyes SKHIRI (out) (Tunisia)",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ayumu SEKO (Japan) commits a foul.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Foul",
+        "text": "Kaishu SANO (Japan) commits a foul.",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Foul",
+        "text": "Yan VALERY (Tunisia) commits a foul.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 101,
+        "minuteStr": "90'+11"
+      }
+    ]
   },
   "35": {
     "homeScore": null,
@@ -21342,7 +22761,7 @@
     "isCompleted": false,
     "isDetailedScraped": false,
     "winner": null,
-    "home": "1E",
+    "home": "GER",
     "away": "3ABCDF",
     "events": [],
     "stats": {
