@@ -1862,14 +1862,13 @@ function App() {
                           const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                           return (
                             <div className="col-span-7 flex items-center gap-1.5 min-w-0">
+                              <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
+                                {player.team}
+                              </span>
                               <span className="text-base shrink-0 select-none" title={teamInfo.name}>
                                 {teamInfo.flag}
                               </span>
-                              <span className="hidden sm:inline text-[9px] text-slate-450 font-bold uppercase tracking-wider">
-                                {teamInfo.name}
-                              </span>
-                              <span className="hidden sm:inline text-slate-700">|</span>
-                              <span className="truncate text-slate-100">{player.name}</span>
+                              <span className="truncate text-slate-100 ml-1">{player.name}</span>
                             </div>
                           );
                         })()}
@@ -1924,14 +1923,13 @@ function App() {
                           const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                           return (
                             <div className="col-span-7 flex items-center gap-1.5 min-w-0">
+                              <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
+                                {player.team}
+                              </span>
                               <span className="text-base shrink-0 select-none" title={teamInfo.name}>
                                 {teamInfo.flag}
                               </span>
-                              <span className="hidden sm:inline text-[9px] text-slate-450 font-bold uppercase tracking-wider">
-                                {teamInfo.name}
-                              </span>
-                              <span className="hidden sm:inline text-slate-700">|</span>
-                              <span className="truncate text-slate-100">{player.name}</span>
+                              <span className="truncate text-slate-100 ml-1">{player.name}</span>
                             </div>
                           );
                         })()}
