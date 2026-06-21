@@ -1610,40 +1610,40 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "away",
+        "team": "home",
         "player": "Michal SADILEK",
         "minute": 6
       },
       {
-        "team": "home",
+        "team": "away",
         "player": "Teboho MOKOENA (P)",
         "minute": 83
       }
     ],
     "stats": {
       "possession": [
-        60,
-        32
+        32,
+        60
       ],
       "shots": [
-        17,
-        14
+        14,
+        17
       ],
       "shotsOnTarget": [
-        4,
-        3
+        3,
+        4
       ],
       "corners": [
         5,
         5
       ],
       "fouls": [
-        10,
-        12
+        12,
+        10
       ],
       "yellowCards": [
-        2,
-        1
+        1,
+        2
       ],
       "redCards": [
         0,
@@ -4258,59 +4258,59 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "away",
+        "team": "home",
         "player": "Johan MANZAMBI",
         "minute": 74
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Ruben VARGAS",
         "minute": 84
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Johan MANZAMBI",
         "minute": 90
       },
       {
-        "team": "home",
+        "team": "away",
         "player": "Ermin MAHMIC",
         "minute": 93
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Granit XHAKA (P)",
         "minute": 97
       }
     ],
     "stats": {
       "possession": [
-        48,
-        44
+        44,
+        48
       ],
       "shots": [
-        5,
-        13
+        13,
+        5
       ],
       "shotsOnTarget": [
-        3,
-        7
+        7,
+        3
       ],
       "corners": [
-        3,
-        7
+        7,
+        3
       ],
       "fouls": [
-        18,
-        7
+        7,
+        18
       ],
       "yellowCards": [
-        2,
-        1
+        1,
+        2
       ],
       "redCards": [
-        1,
-        0
+        0,
+        1
       ]
     },
     "timeline": [
@@ -6799,35 +6799,35 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "home",
+        "team": "away",
         "player": "Ismael SAIBARI",
         "minute": 2
       }
     ],
     "stats": {
       "possession": [
-        53,
-        37
+        37,
+        53
       ],
       "shots": [
-        12,
-        6
+        6,
+        12
       ],
       "shotsOnTarget": [
-        2,
-        0
+        0,
+        2
       ],
       "corners": [
-        5,
-        2
+        2,
+        5
       ],
       "fouls": [
-        8,
-        11
+        11,
+        8
       ],
       "yellowCards": [
-        1,
-        2
+        2,
+        1
       ],
       "redCards": [
         0,
@@ -9167,27 +9167,27 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "away",
+        "team": "home",
         "player": "Matias GALARZA",
         "minute": 2
       }
     ],
     "stats": {
       "possession": [
-        65,
-        26
+        26,
+        65
       ],
       "shots": [
-        31,
-        7
+        7,
+        31
       ],
       "shotsOnTarget": [
-        5,
-        2
+        2,
+        5
       ],
       "corners": [
-        11,
-        0
+        0,
+        11
       ],
       "fouls": [
         14,
@@ -9198,8 +9198,8 @@
         2
       ],
       "redCards": [
-        0,
-        1
+        1,
+        0
       ]
     },
     "timeline": [
@@ -11815,28 +11815,28 @@
     "events": [],
     "stats": {
       "possession": [
-        65,
-        23
+        23,
+        65
       ],
       "shots": [
-        27,
-        10
+        10,
+        27
       ],
       "shotsOnTarget": [
-        15,
-        3
+        3,
+        15
       ],
       "corners": [
-        9,
-        0
+        0,
+        9
       ],
       "fouls": [
-        7,
-        10
+        10,
+        7
       ],
       "yellowCards": [
-        1,
-        5
+        5,
+        1
       ],
       "redCards": [
         0,
@@ -14307,46 +14307,46 @@
     "isDetailedScraped": true,
     "events": [
       {
-        "team": "away",
+        "team": "home",
         "player": "Daichi KAMADA",
         "minute": 4
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Ayase UEDA",
         "minute": 31
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Junya ITO",
         "minute": 69
       },
       {
-        "team": "away",
+        "team": "home",
         "player": "Ayase UEDA",
         "minute": 83
       }
     ],
     "stats": {
       "possession": [
-        36,
-        55
+        55,
+        36
       ],
       "shots": [
-        2,
-        10
+        10,
+        2
       ],
       "shotsOnTarget": [
-        0,
-        4
+        4,
+        0
       ],
       "corners": [
-        3,
-        5
+        5,
+        3
       ],
       "fouls": [
-        8,
-        15
+        15,
+        8
       ],
       "yellowCards": [
         0,

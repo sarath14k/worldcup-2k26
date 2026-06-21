@@ -8,6 +8,40 @@ import { TEAMS, GROUPS, VENUES, generateGroupMatches, KNOCKOUT_MATCHES } from '.
 import { calculateStandings, getAdvancedTeams, populateRoundOf32, simulateScore } from './data/simulation';
 import { OFFICIAL_MATCH_DETAILS } from './data/officialMatchDetails';
 
+// Custom authentic icons for Player Stats
+const BootIcon = ({ className }) => (
+  <svg 
+    className={className} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M3 16c-1-3 0-8 3-9 2-1 4 2 6 3 2-1 6-2 8-1 2 1 2 5 1 7l-8 4-10-4z" />
+    <path d="M6 17v2M10 18v2M14 18v2M18 17v2" />
+    <path d="M9 10l2 2M11 9l2 2" />
+  </svg>
+);
+
+const PlaymakerIcon = ({ className }) => (
+  <svg 
+    className={className} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M4 14l4 4M8 14l-4 4" />
+    <path d="M7 12c3-4 7-4 10 0" />
+    <path d="M14 9h3v3" />
+    <circle cx="18" cy="15" r="2" />
+  </svg>
+);
+
 // Helper to parse match kickoff time in IST
 const parseMatchKickoff = (match) => {
   try {
@@ -1823,7 +1857,7 @@ function App() {
               {/* Top Scorers Table */}
               <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
                 <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
-                  <Flame className="w-5 h-5 text-orange-500" />
+                  <BootIcon className="w-5 h-5 text-brand-gold" />
                   <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
                     Golden Boot (Top Scorers)
                   </h3>
@@ -1884,7 +1918,7 @@ function App() {
               {/* Top Assists Table */}
               <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
                 <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
-                  <Sparkles className="w-5 h-5 text-brand-neon" />
+                  <PlaymakerIcon className="w-5 h-5 text-brand-neon" />
                   <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
                     Playmakers (Top Assists)
                   </h3>
