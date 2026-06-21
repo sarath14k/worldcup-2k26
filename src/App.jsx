@@ -1749,7 +1749,7 @@ function App() {
                                       <span>{away.name}</span>
                                     </div>
                                     <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                                      <div className="bg-brand-neon h-full transition-all duration-500 flex items-center justify-center text-slate-950 font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                                      <div className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
                                         {homePoss}%
                                       </div>
                                       <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
@@ -2604,7 +2604,7 @@ function App() {
                               <span>{away.name || 'Away'}</span>
                             </div>
                             <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                              <div className="bg-brand-neon h-full transition-all duration-500 flex items-center justify-center text-slate-950 font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                              <div className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
                                 {homePoss}%
                               </div>
                               <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
@@ -2637,15 +2637,19 @@ function App() {
                             <span>{valAway}{stat.suffix || ''}</span>
                           </div>
                           {/* Bar display */}
-                          <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden flex">
+                          <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
                             <div 
-                              className="bg-brand-neon h-full transition-all duration-500" 
+                              className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" 
                               style={{ width: `${pctHome}%` }}
-                            />
+                            >
+                              {pctHome > 12 && `${valHome}${stat.suffix || ''}`}
+                            </div>
                             <div 
-                              className="bg-brand-purple h-full transition-all duration-500" 
+                              className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" 
                               style={{ width: `${pctAway}%` }}
-                            />
+                            >
+                              {pctAway > 12 && `${valAway}${stat.suffix || ''}`}
+                            </div>
                           </div>
                         </div>
                       );
