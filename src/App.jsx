@@ -88,6 +88,40 @@ const parseMatchKickoff = (match) => {
     return null;
   }
 };
+
+const formatDisplayDate = (dateStr) => {
+  if (!dateStr) return '';
+  try {
+    const cleanDate = dateStr.replace(" IST", "").trim();
+    const parts = cleanDate.split(", ");
+    if (parts.length < 2) return cleanDate;
+    
+    const dayParts = parts[0].split(" ");
+    const monthStr = dayParts[0];
+    const dayStr = dayParts[1];
+    
+    const timeParts = parts[1].split(" ");
+    if (timeParts.length < 2) return cleanDate;
+    
+    const [hourStr, minStr] = timeParts[0].split(":");
+    let hour = parseInt(hourStr, 10);
+    if (timeParts[1] === "PM" && hour < 12) hour += 12;
+    if (timeParts[1] === "AM" && hour === 12) hour = 0;
+    
+    const months = { "June": 5, "July": 6 };
+    const monthVal = months[monthStr] !== undefined ? months[monthStr] : 5;
+    const dayVal = parseInt(dayStr, 10);
+    
+    const d = new Date(2026, monthVal, dayVal, hour, parseInt(minStr, 10));
+    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayOfWeek = weekdays[d.getDay()];
+    
+    return `${dayOfWeek}, ${monthStr} ${dayStr}, ${timeParts[0]} ${timeParts[1]}`;
+  } catch (e) {
+    return dateStr.replace(" IST", "");
+  }
+};
+
 const getMatchVenue = (match) => {
   if (!match) return 'TBD Stadium';
   if (match.venue) return match.venue;
@@ -1105,7 +1139,7 @@ function App() {
             >
               <div className="flex justify-between items-center text-[10px] text-slate-400 font-semibold tracking-tight">
                 <span>{match.title}</span>
-                <span className="text-brand-neon font-bold font-mono text-[9px]">{match.date}</span>
+                <span className="text-brand-neon font-bold font-mono text-[9px]">{formatDisplayDate(match.date)}</span>
               </div>
               
               <div className="flex flex-col gap-1.5">
@@ -1483,7 +1517,7 @@ function App() {
                       <div key={match.id} className="w-full flex flex-col gap-3">
                         <div className="text-center">
                           <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">The Grand Final</p>
-                          <p className="text-[9px] text-brand-neon font-bold font-mono">July 20, 2026 • 05:30 AM IST</p>
+                          <p className="text-[9px] text-brand-neon font-bold font-mono">{formatDisplayDate(match.date)}</p>
                           <p className="text-[8px] text-slate-500 font-semibold mt-0.5">New York/New Jersey</p>
                         </div>
 
@@ -1661,7 +1695,7 @@ function App() {
                               </span>
                             )}
                           </span>
-                          <span className="text-slate-400 font-mono">{match.date}</span>
+                          <span className="text-slate-400 font-mono">{formatDisplayDate(match.date)}</span>
                         </div>
                         
                         <div className="flex items-center justify-between gap-3 py-1">
@@ -1774,7 +1808,7 @@ function App() {
                             <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-[9px]">FT</span>
                             <span className="text-slate-500 font-mono">Match {match.id} ({match.group})</span>
                           </div>
-                          <span className="text-[9px] text-slate-500 font-mono">{match.date}</span>
+                          <span className="text-[9px] text-slate-500 font-mono">{formatDisplayDate(match.date)}</span>
                         </div>
 
                         <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-200">
@@ -1964,7 +1998,7 @@ function App() {
                           {match.isCompleted ? (
                             <span className="text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wider font-extrabold font-mono">FT</span>
                           ) : (
-                            <span>{match.date}</span>
+                            <span>{formatDisplayDate(match.date)}</span>
                           )}
                         </div>
                         
@@ -2092,7 +2126,7 @@ function App() {
                               <div key={idx} className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-900/60 flex flex-col gap-1.5 text-[11px]">
                                 <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
                                   <span className="text-brand-purple">{m.round}</span>
-                                  <span>{m.date}</span>
+                                  <span>{formatDisplayDate(m.date)}</span>
                                 </div>
                                 <div className="flex items-center justify-between">
                                   <div className="flex items-center gap-1.5 font-bold text-slate-200">
@@ -2347,7 +2381,7 @@ function App() {
                   Group {selectedMatch.group} • Match {selectedMatch.id}
                 </div>
                 <div className="text-[11px] text-slate-400 font-bold font-mono">
-                  {selectedMatch.venue || 'TBD Stadium'} • {selectedMatch.date}
+                  {selectedMatch.venue || 'TBD Stadium'} • {formatDisplayDate(selectedMatch.date)}
                 </div>
               </div>
 
