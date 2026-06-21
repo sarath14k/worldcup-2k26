@@ -1845,15 +1845,34 @@ function App() {
                         key={player.name} 
                         className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
                       >
-                        <span className="col-span-2 text-slate-400 font-mono">
-                          #{idx + 1}
-                        </span>
-                        <div className="col-span-7 flex items-center gap-2 min-w-0">
-                          <span className="text-[10px] bg-slate-900 px-2 py-0.5 rounded border border-slate-800 text-slate-300 font-mono">
-                            {player.team}
-                          </span>
-                          <span className="truncate text-slate-100">{player.name}</span>
+                        <div className="col-span-2 flex justify-start">
+                          <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
+                            idx === 0 
+                              ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
+                              : idx === 1 
+                                ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
+                                : idx === 2 
+                                  ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
+                                  : 'bg-slate-900/50 border-slate-800 text-slate-500'
+                          }`}>
+                            {idx + 1}
+                          </div>
                         </div>
+                        {(() => {
+                          const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
+                          return (
+                            <div className="col-span-7 flex items-center gap-1.5 min-w-0">
+                              <span className="text-base shrink-0 select-none" title={teamInfo.name}>
+                                {teamInfo.flag}
+                              </span>
+                              <span className="hidden sm:inline text-[9px] text-slate-450 font-bold uppercase tracking-wider">
+                                {teamInfo.name}
+                              </span>
+                              <span className="hidden sm:inline text-slate-700">|</span>
+                              <span className="truncate text-slate-100">{player.name}</span>
+                            </div>
+                          );
+                        })()}
                         <span className="col-span-3 text-right text-brand-neon font-black text-sm">
                           {player.goals}
                         </span>
@@ -1888,15 +1907,34 @@ function App() {
                         key={player.name} 
                         className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
                       >
-                        <span className="col-span-2 text-slate-400 font-mono">
-                          #{idx + 1}
-                        </span>
-                        <div className="col-span-7 flex items-center gap-2 min-w-0">
-                          <span className="text-[10px] bg-slate-900 px-2 py-0.5 rounded border border-slate-800 text-slate-300 font-mono">
-                            {player.team}
-                          </span>
-                          <span className="truncate text-slate-100">{player.name}</span>
+                        <div className="col-span-2 flex justify-start">
+                          <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
+                            idx === 0 
+                              ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
+                              : idx === 1 
+                                ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
+                                : idx === 2 
+                                  ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
+                                  : 'bg-slate-900/50 border-slate-800 text-slate-500'
+                          }`}>
+                            {idx + 1}
+                          </div>
                         </div>
+                        {(() => {
+                          const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
+                          return (
+                            <div className="col-span-7 flex items-center gap-1.5 min-w-0">
+                              <span className="text-base shrink-0 select-none" title={teamInfo.name}>
+                                {teamInfo.flag}
+                              </span>
+                              <span className="hidden sm:inline text-[9px] text-slate-450 font-bold uppercase tracking-wider">
+                                {teamInfo.name}
+                              </span>
+                              <span className="hidden sm:inline text-slate-700">|</span>
+                              <span className="truncate text-slate-100">{player.name}</span>
+                            </div>
+                          );
+                        })()}
                         <span className="col-span-3 text-right text-brand-purple font-black text-sm">
                           {player.assists}
                         </span>
