@@ -373,8 +373,6 @@ function App() {
   const [predictionSaved, setPredictionSaved] = useState(false);
   const [shareText, setShareText] = useState('Share predictions');
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [syncToast, setSyncToast] = useState(null);
   const [liveMatches, setLiveMatches] = useState({});
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [highlightsUrl, setHighlightsUrl] = useState(null);
@@ -415,10 +413,8 @@ function App() {
       setLoadingHighlights(false);
     }
   }, [selectedMatch?.id]);
-  
-  // Expanded Venue & Auto-Refresh state
+  // Expanded Venue state
   const [expandedVenue, setExpandedVenue] = useState(null);
-  const [autoRefresh, setAutoRefresh] = useState(false);
 
   const activeLiveMatchesList = useMemo(() => {
     const list = [];
@@ -487,26 +483,7 @@ function App() {
     return list;
   }, [expandedVenue, groupMatches, bracket]);
 
-  useEffect(() => {
-    if (!autoRefresh) return;
-    const triggerSync = async () => {
-      try {
-        await fetch('/api/sync-live');
-        const response = await fetch(`/live-matches.json?t=${Date.now()}`);
-        if (response.ok) {
-          const data = await response.json();
-          setLiveMatches(data);
-        }
-      } catch (e) {
-        console.error('Auto-refresh sync failed:', e);
-      }
-    };
-    // Run immediately on enable
-    triggerSync();
-    
-    const interval = setInterval(triggerSync, 20000);
-    return () => clearInterval(interval);
-  }, [autoRefresh]);
+
 
   const upcomingFixtures = useMemo(() => {
     const allMatches = [];
@@ -1002,75 +979,6 @@ function App() {
     );
   };
 
-  // Sync latest live scores from the network (real-time API fetch)
-  const handleSyncLiveScores = async () => {
-    if (isSyncing) return;
-    setIsSyncing(true);
-    
-    try {
-      // 1. Call custom server middleware endpoint to scrape live data
-      const syncResponse = await fetch('/api/sync-live');
-      const syncResult = await syncResponse.json();
-      
-      if (!syncResult.success) {
-        throw new Error(syncResult.error || 'Failed to sync with FIFA website');
-      }
-
-      // 2. Fetch the updated live matches JSON
-      const response = await fetch(`/live-matches.json?t=${Date.now()}`);
-      if (response.ok) {
-        const data = await response.json();
-        
-        // Calculate count of updated matches to display a descriptive toast
-        let updatedCount = 0;
-        
-        groupMatches.forEach(m => {
-          const live = data[m.id];
-          if (live && (live.minute === 'FT' || live.isCompleted)) {
-            if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore) {
-              updatedCount++;
-            }
-          }
-        });
-        
-        Object.keys(bracket).forEach(roundKey => {
-          bracket[roundKey].forEach(m => {
-            const live = data[m.id];
-            if (live && (live.minute === 'FT' || live.isCompleted)) {
-              if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore || m.winner !== live.winner) {
-                updatedCount++;
-              }
-            }
-          });
-        });
-
-        // 3. Set the live matches state, which automatically triggers the unified state updates
-        setLiveMatches(data);
-        
-        setSyncToast({
-          message: updatedCount > 0 
-            ? `Sync completed! Updated ${updatedCount} matches with official FIFA results.`
-            : "Synced! All matches are up to date with the official FIFA results.",
-          type: 'success'
-        });
-      } else {
-        setSyncToast({
-          message: "Failed to fetch live scores from the API server.",
-          type: 'error'
-        });
-      }
-    } catch (error) {
-      console.error('Failed to sync live scores:', error);
-      setSyncToast({
-        message: "Error during sync: " + error.message,
-        type: 'error'
-      });
-    } finally {
-      setIsSyncing(false);
-      setTimeout(() => setSyncToast(null), 5000);
-    }
-  };
-
   // Predict winner for a knockout match (advances team to next round)
   const handleKnockoutWinner = (roundKey, matchIndex, winnerCode) => {
     if (!winnerCode) return;
@@ -1442,29 +1350,6 @@ function App() {
                     );
                   })}
                 </div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-end border-t border-slate-800/60 md:border-none pt-3 md:pt-0">
-              <label className="relative inline-flex items-center cursor-pointer select-none">
-                <input 
-                  type="checkbox" 
-                  checked={autoRefresh} 
-                  onChange={(e) => setAutoRefresh(e.target.checked)} 
-                  className="sr-only peer"
-                />
-                <div className="w-9 h-5 bg-slate-850 border border-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-neon peer-checked:after:bg-slate-950 peer-checked:after:border-slate-950"></div>
-                <span className="ml-2 text-xs font-bold text-slate-300">
-                  Auto-Refresh (20s)
-                </span>
-              </label>
-              <button 
-                onClick={handleSyncLiveScores}
-                disabled={isSyncing}
-                className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-350 hover:text-white hover:border-slate-700 disabled:opacity-50 transition-all flex items-center gap-1.5 cursor-pointer"
-              >
-                <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
-                Sync Now
-              </button>
             </div>
           </div>
         )}
@@ -1714,36 +1599,13 @@ function App() {
                         );
                       })}
                     </div>
-                  ) : (
                     <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
                       {hasLiveMatches 
                         ? 'Real-time FIFA World Cup match events are currently active.' 
-                        : 'All matches are currently upcoming or completed. Toggle auto-refresh to auto-sync scores.'}
+                        : 'All matches are currently upcoming or completed.'}
                     </p>
                   )}
                 </div>
-              </div>
-              <div className="flex items-center gap-3 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-end border-t border-slate-800/60 md:border-none pt-3 md:pt-0">
-                <label className="relative inline-flex items-center cursor-pointer select-none">
-                  <input 
-                    type="checkbox" 
-                    checked={autoRefresh} 
-                    onChange={(e) => setAutoRefresh(e.target.checked)} 
-                    className="sr-only peer"
-                  />
-                  <div className="w-9 h-5 bg-slate-850 border border-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-neon peer-checked:after:bg-slate-950 peer-checked:after:border-slate-950"></div>
-                  <span className="ml-2 text-xs font-bold text-slate-300">
-                    Auto-Refresh (20s)
-                  </span>
-                </label>
-                <button 
-                  onClick={handleSyncLiveScores}
-                  disabled={isSyncing}
-                  className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-350 hover:text-white hover:border-slate-700 disabled:opacity-50 transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
-                  Sync Now
-                </button>
               </div>
             </div>
 
@@ -2442,18 +2304,7 @@ function App() {
         </div>
       </footer>
 
-      {/* Toast Notification */}
-      {syncToast && (
-        <div className="fixed bottom-6 right-6 z-50 animate-slideIn flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-slate-950 border border-brand-neon/40 backdrop-blur-xl shadow-2xl max-w-md">
-          <div className="bg-brand-neon/20 p-2 rounded-xl border border-brand-neon/30">
-            <Radio className="w-5 h-5 text-brand-neon animate-pulse shrink-0" />
-          </div>
-          <div>
-            <h4 className="text-xs font-extrabold text-slate-100 uppercase tracking-wider">Live Sync Completed</h4>
-            <p className="text-[10px] text-slate-300 mt-0.5 leading-relaxed font-medium">{syncToast.message}</p>
-          </div>
-        </div>
-      )}
+
 
       {/* Match Details Modal (Scorers & Stats) */}
       {selectedMatch && (() => {
