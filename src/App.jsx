@@ -252,7 +252,7 @@ const getMatchDetails = (match, live) => {
 
 function App() {
   // --- State ---
-  const [activeTab, setActiveTab] = useState('groups'); // 'bracket', 'groups', 'venues', 'predictions'
+  const [activeTab, setActiveTab] = useState('fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
   const [darkMode, setDarkMode] = useState(true);
   const [hoveredTeam, setHoveredTeam] = useState(null);
   
@@ -1104,6 +1104,19 @@ function App() {
       <nav className="relative z-10 max-w-7xl mx-auto px-4 pt-6">
         <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full overflow-x-auto scrollbar-none sm:w-fit whitespace-nowrap">
           <button
+            id="tab-fixtures"
+            onClick={() => setActiveTab('fixtures')}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+              activeTab === 'fixtures' 
+                ? 'bg-brand-neon text-slate-950 shadow-neon' 
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span>Upcoming & Results</span>
+          </button>
+
+          <button
             id="tab-groups"
             onClick={() => setActiveTab('groups')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
@@ -1113,7 +1126,7 @@ function App() {
             }`}
           >
             <Users className="w-4 h-4" />
-            <span>Group Stage & Fixtures</span>
+            <span>Group Standings</span>
           </button>
 
           <button
@@ -1130,19 +1143,6 @@ function App() {
           </button>
 
           <button
-            id="tab-venues"
-            onClick={() => setActiveTab('venues')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-              activeTab === 'venues' 
-                ? 'bg-brand-neon text-slate-950 shadow-neon' 
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
-            }`}
-          >
-            <MapPin className="w-4 h-4" />
-            <span>Stadium Venues</span>
-          </button>
-
-          <button
             id="tab-stats"
             onClick={() => setActiveTab('stats')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
@@ -1153,6 +1153,19 @@ function App() {
           >
             <Award className="w-4 h-4" />
             <span>Player Stats</span>
+          </button>
+
+          <button
+            id="tab-venues"
+            onClick={() => setActiveTab('venues')}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+              activeTab === 'venues' 
+                ? 'bg-brand-neon text-slate-950 shadow-neon' 
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
+            }`}
+          >
+            <MapPin className="w-4 h-4" />
+            <span>Stadium Venues</span>
           </button>
 
 
@@ -1373,35 +1386,33 @@ function App() {
           </div>
         )}
 
-        {/* ================= GROUP STANDINGS TAB ================= */}
-        {activeTab === 'groups' && (
+        {/* ================= UPCOMING & RESULTS TAB ================= */}
+        {activeTab === 'fixtures' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fadeIn">
-            
-            {/* Left side: Upcoming Fixtures & Done Matches timeline */}
-            <div className="lg:col-span-1 flex flex-col gap-6 order-2 lg:order-1">
-              
+            {/* Left side: Upcoming Fixtures */}
+            <div className="lg:col-span-2 flex flex-col gap-6">
               {/* Upcoming Fixtures widget */}
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
+              <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
                 {/* Glow accent */}
                 <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="flex items-center justify-between mb-3 relative z-10">
-                  <div className="flex items-center gap-1.5">
-                    <span className="flex h-2 w-2 relative">
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-2.5 w-2.5 relative">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-neon"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
                     </span>
-                    <h3 className="text-[10px] font-extrabold uppercase tracking-wider text-slate-100 flex items-center gap-1">
+                    <h3 className="text-sm font-black uppercase tracking-wider text-slate-100 flex items-center gap-1.5">
                       Upcoming 16 Fixtures
                     </h3>
                   </div>
-                  <span className="text-[8px] bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-2 py-0.5 rounded-full font-bold font-mono">
+                  <span className="text-[9px] bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-2.5 py-1 rounded-full font-bold font-mono">
                     LIVE STATUS
                   </span>
                 </div>
 
-                <div className="flex flex-col gap-3 relative z-10 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
+                <div className="flex flex-col gap-3.5 relative z-10 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
                   {upcomingFixtures.map(match => {
                     const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                     const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
@@ -1412,13 +1423,13 @@ function App() {
                       <div 
                         key={`today-${match.id}`} 
                         onClick={() => setSelectedMatch(match)}
-                        className={`p-3 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-1.5 cursor-pointer relative overflow-hidden shrink-0 ${
+                        className={`p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 ${
                           isMatchLive 
                             ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20' 
                             : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
                         }`}
                       >
-                        <div className="flex justify-between items-center text-[8px] text-slate-500 font-bold">
+                        <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
                           <span className="text-brand-neon uppercase font-extrabold flex items-center gap-1">
                             Group {match.group} • Match {match.id}
                             {isMatchLive && (
@@ -1428,48 +1439,48 @@ function App() {
                               </span>
                             )}
                           </span>
-                          <span className="text-slate-450 font-mono">{match.date}</span>
+                          <span className="text-slate-400 font-mono">{match.date}</span>
                         </div>
                         
-                        <div className="flex items-center justify-between gap-2 py-0.5">
+                        <div className="flex items-center justify-between gap-3 py-1">
                           {/* Home Team */}
-                          <div className={`flex items-center gap-1.5 font-bold flex-1 truncate ${isMatchLive ? 'text-xs text-slate-100 font-black' : 'text-[11px] text-slate-200'}`}>
-                            <span className={`shrink-0 ${isMatchLive ? 'text-lg' : 'text-base'}`}>{home.flag}</span>
+                          <div className={`flex items-center gap-2 font-bold flex-1 truncate ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
+                            <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
                             <span className="truncate">{home.name}</span>
                           </div>
 
                           {/* Live score / VS */}
                           {isLiveOrDone ? (
                             <div className="flex flex-col items-center gap-0.5 shrink-0">
-                              <div className={`flex items-center justify-center gap-1 px-2 py-0.5 rounded font-bold font-mono ${
+                              <div className={`flex items-center justify-center gap-1.5 px-3 py-1 rounded-lg font-bold font-mono ${
                                 isMatchLive 
-                                  ? 'bg-brand-neon/20 border border-brand-neon/30 text-brand-neon text-xs' 
-                                  : 'bg-slate-800/80 border border-slate-700/50 text-slate-300 text-[10px]'
+                                  ? 'bg-brand-neon/20 border border-brand-neon/30 text-brand-neon text-sm' 
+                                  : 'bg-slate-800/80 border border-slate-700/50 text-slate-300 text-xs'
                               }`}>
                                 <span>{match.isCompleted ? match.homeScore : live.homeScore}</span>
                                 <span>-</span>
                                 <span>{match.isCompleted ? match.awayScore : live.awayScore}</span>
                               </div>
-                              <span className={`font-extrabold tracking-wide uppercase ${isMatchLive ? 'text-[8px] text-brand-neon animate-pulse' : 'text-[7px] text-slate-400'}`}>
+                              <span className={`font-extrabold tracking-wide uppercase ${isMatchLive ? 'text-[9px] text-brand-neon animate-pulse' : 'text-[8px] text-slate-400'}`}>
                                 {match.isCompleted ? 'FT' : formatLiveMatchTime(match.id)}
                               </span>
                             </div>
                           ) : (
-                            <span className="text-[8px] font-extrabold bg-slate-900 border border-slate-800 text-slate-500 px-1.5 py-0.5 rounded font-mono shrink-0">
+                            <span className="text-[10px] font-extrabold bg-slate-900 border border-slate-800 text-slate-500 px-2.5 py-1 rounded-md font-mono shrink-0">
                               VS
                             </span>
                           )}
 
                           {/* Away Team */}
-                          <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end truncate ${isMatchLive ? 'text-xs text-slate-100 font-black' : 'text-[11px] text-slate-200'}`}>
+                          <div className={`flex items-center gap-2 font-bold flex-1 justify-end truncate ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
                             <span className="truncate text-right">{away.name}</span>
-                            <span className={`shrink-0 ${isMatchLive ? 'text-lg' : 'text-base'}`}>{away.flag}</span>
+                            <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
                           </div>
                         </div>
 
                         {/* Live match stats expansion (equivalent to space of 3 items) */}
                         {isMatchLive && live.stats && (
-                          <div className="mt-1 pt-2 border-t border-slate-800/60 flex flex-col gap-2 text-[9px] text-slate-400 font-bold">
+                          <div className="mt-2 pt-3 border-t border-slate-800/60 flex flex-col gap-2.5 text-[10px] text-slate-400 font-bold">
                             {/* Possession Row */}
                             {(() => {
                               const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(live.stats.possession, match.id);
@@ -1477,10 +1488,10 @@ function App() {
                                 <>
                                   <div className="flex justify-between items-center font-mono text-slate-300">
                                     <span>{homePoss}%</span>
-                                    <span className="text-[7px] uppercase tracking-wider text-slate-500 font-sans">Possession ({contestPoss}% Contested)</span>
+                                    <span className="text-[8px] uppercase tracking-wider text-slate-500 font-sans">Possession ({contestPoss}% Contested)</span>
                                     <span>{awayPoss}%</span>
                                   </div>
-                                  <div className="h-1 w-full bg-slate-900 rounded-full overflow-hidden flex">
+                                  <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden flex">
                                     <div className="bg-brand-neon h-full transition-all duration-500" style={{ width: `${homePoss}%` }} />
                                     <div className="bg-slate-700 h-full transition-all duration-500" style={{ width: `${contestPoss}%` }} />
                                     <div className="bg-brand-purple h-full transition-all duration-500" style={{ width: `${awayPoss}%` }} />
@@ -1490,16 +1501,16 @@ function App() {
                             })()}
 
                             {/* Stats Summary Row */}
-                            <div className="flex justify-around items-center text-[8px] font-mono text-slate-400 pt-0.5">
-                              <div className="flex items-center gap-1.5">
+                            <div className="flex justify-around items-center text-[9px] font-mono text-slate-400 pt-1">
+                              <div className="flex items-center gap-2">
                                 <span>🎯 Shots:</span>
                                 <span className="text-slate-200 font-black">{live.stats.shots?.[0] || 0} - {live.stats.shots?.[1] || 0}</span>
                               </div>
-                              <div className="flex items-center gap-1.5">
+                              <div className="flex items-center gap-2">
                                 <span>🚩 Corners:</span>
                                 <span className="text-slate-200 font-black">{live.stats.corners?.[0] || 0} - {live.stats.corners?.[1] || 0}</span>
                               </div>
-                              <div className="flex items-center gap-1.5">
+                              <div className="flex items-center gap-2">
                                 <span>⚡ Fouls:</span>
                                 <span className="text-slate-200 font-black">{live.stats.fouls?.[0] || 0} - {live.stats.fouls?.[1] || 0}</span>
                               </div>
@@ -1511,19 +1522,22 @@ function App() {
                   })}
                 </div>
               </div>
- 
+            </div>
+
+            {/* Right side: Done Matches feed */}
+            <div className="lg:col-span-1 flex flex-col gap-6">
               {/* Match Timeline Feed Widget */}
-              <div className="p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-3">
+              <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
                 <div>
-                  <h2 className="text-xs font-extrabold text-slate-200 flex items-center gap-1.5 uppercase tracking-wider">
-                    <Award className="w-3.5 h-3.5 text-brand-neon" />
+                  <h2 className="text-sm font-extrabold text-slate-200 flex items-center gap-2 uppercase tracking-wider">
+                    <Award className="w-4 h-4 text-brand-neon" />
                     Done Matches
                   </h2>
-                  <p className="text-[10px] text-slate-400">Timeline of completed tournament fixtures.</p>
+                  <p className="text-xs text-slate-400">Timeline of completed tournament fixtures.</p>
                 </div>
 
                 {/* Scrolling List */}
-                <div className="flex flex-col gap-2.5 max-h-[380px] overflow-y-auto pr-1.5 custom-scrollbar">
+                <div className="flex flex-col gap-3 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
                   {feedMatches.map(match => {
                     const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                     const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
@@ -1531,30 +1545,30 @@ function App() {
                       <div 
                         key={`feed-${match.id}`} 
                         onClick={() => setSelectedMatch(match)}
-                        className="p-2.5 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-1.5"
+                        className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2"
                       >
-                        <div className="flex justify-between items-center text-[9px] font-bold">
-                          <div className="flex items-center gap-1.5">
-                            <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-1.5 py-0.5 rounded text-[8px]">FT</span>
+                        <div className="flex justify-between items-center text-[10px] font-bold">
+                          <div className="flex items-center gap-2">
+                            <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-[9px]">FT</span>
                             <span className="text-slate-500 font-mono">Match {match.id} ({match.group})</span>
                           </div>
-                          <span className="text-[8px] text-slate-500 font-mono">{match.date}</span>
+                          <span className="text-[9px] text-slate-500 font-mono">{match.date}</span>
                         </div>
 
-                        <div className="flex items-center justify-between gap-1 text-[11px] font-semibold text-slate-200">
+                        <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-200">
                           {/* Home */}
-                          <div className="flex items-center gap-1.5 flex-1 truncate">
+                          <div className="flex items-center gap-2 flex-1 truncate">
                             <span>{home.flag}</span>
                             <span className="truncate">{home.name}</span>
                           </div>
 
                           {/* Scores */}
-                          <div className="px-2.5 py-0.5 bg-slate-950 rounded border border-slate-900 font-extrabold font-mono text-[10px] min-w-[36px] text-center shrink-0">
+                          <div className="px-2.5 py-0.5 bg-slate-950 rounded border border-slate-900 font-extrabold font-mono text-xs min-w-[40px] text-center shrink-0">
                             <span className="text-brand-neon">{match.homeScore} - {match.awayScore}</span>
                           </div>
 
                           {/* Away */}
-                          <div className="flex items-center gap-1.5 flex-1 justify-end truncate">
+                          <div className="flex items-center gap-2 flex-1 justify-end truncate">
                             <span className="truncate text-right">{away.name}</span>
                             <span>{away.flag}</span>
                           </div>
@@ -1565,9 +1579,15 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        )}
 
-            {/* Right side: Detailed Group standings and match listing */}
-            <div className="lg:col-span-2 flex flex-col gap-6 order-1 lg:order-2">
+        {/* ================= GROUP STANDINGS TAB ================= */}
+        {activeTab === 'groups' && (
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 animate-fadeIn">
+            
+            {/* Left side: Detailed Group standings */}
+            <div className="lg:col-span-3 flex flex-col gap-6">
 
               {/* Standings Table for selected group */}
               <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
@@ -1678,6 +1698,11 @@ function App() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Right side: Group match schedule */}
+            <div className="lg:col-span-2 flex flex-col gap-6">
+
               {/* Match list for selected group */}
               <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
                 <h3 className="text-base font-bold text-slate-200 mb-4 flex items-center gap-2">
@@ -1685,7 +1710,7 @@ function App() {
                   Group {expandedGroup} Match Schedule
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-3.5">
                   {groupMatches.filter(m => m.group === expandedGroup).map(match => {
                     const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                     const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
