@@ -1742,23 +1742,24 @@ function App() {
                             {(() => {
                               const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(live.stats.possession, match.id);
                               return (
-                                <>
-                                  <div className="flex justify-between items-center font-mono text-slate-400 text-[9px] font-bold">
-                                    <span>{home.name}</span>
-                                    <span className="text-slate-500 font-sans uppercase tracking-wider text-[8px] font-black">POSSESSION</span>
-                                    <span>{away.name}</span>
-                                  </div>
-                                  <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden flex">
-                                    <div className="bg-brand-neon h-full transition-all duration-500" style={{ width: `${homePoss}%` }} />
-                                    <div className="bg-slate-700 h-full transition-all duration-500" style={{ width: `${contestPoss}%` }} />
-                                    <div className="bg-brand-purple h-full transition-all duration-500" style={{ width: `${awayPoss}%` }} />
-                                  </div>
-                                  <div className="flex justify-between items-center text-[9px] font-mono font-bold px-1 mt-0.5">
-                                    <span className="text-brand-neon">{homePoss}%</span>
-                                    <span className="text-slate-400 font-medium">{contestPoss}% CONTESTED</span>
-                                    <span className="text-brand-purple">{awayPoss}%</span>
-                                  </div>
-                                </>
+                                  <>
+                                    <div className="flex justify-between items-center font-mono text-slate-400 text-[9px] font-bold">
+                                      <span>{home.name}</span>
+                                      <span className="text-slate-500 font-sans uppercase tracking-wider text-[8px] font-black">POSSESSION</span>
+                                      <span>{away.name}</span>
+                                    </div>
+                                    <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
+                                      <div className="bg-brand-neon h-full transition-all duration-500 flex items-center justify-center text-slate-950 font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                                        {homePoss}%
+                                      </div>
+                                      <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
+                                        {contestPoss}%
+                                      </div>
+                                      <div className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
+                                        {awayPoss}%
+                                      </div>
+                                    </div>
+                                  </>
                               );
                             })()}
 
@@ -2596,21 +2597,22 @@ function App() {
                       if (stat.key === 'possession') {
                         const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(details.stats.possession, selectedMatch.id);
                         return (
-                          <div key={stat.key} className="flex flex-col gap-1">
+                          <div key={stat.key} className="flex flex-col gap-1.5">
                             <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-400 font-sans uppercase tracking-wider">
                               <span>{home.name || 'Home'}</span>
                               <span className="text-slate-500 font-black text-[9px]">POSSESSION</span>
                               <span>{away.name || 'Away'}</span>
                             </div>
-                            <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden flex">
-                              <div className="bg-brand-neon h-full transition-all duration-500" style={{ width: `${homePoss}%` }} />
-                              <div className="bg-slate-700 h-full transition-all duration-500" style={{ width: `${contestPoss}%` }} />
-                              <div className="bg-brand-purple h-full transition-all duration-500" style={{ width: `${awayPoss}%` }} />
-                            </div>
-                            <div className="flex justify-between items-center text-[10px] font-mono font-bold px-1 mt-0.5">
-                              <span className="text-brand-neon">{homePoss}%</span>
-                              <span className="text-slate-400">{contestPoss}% CONTESTED</span>
-                              <span className="text-brand-purple">{awayPoss}%</span>
+                            <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
+                              <div className="bg-brand-neon h-full transition-all duration-500 flex items-center justify-center text-slate-950 font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                                {homePoss}%
+                              </div>
+                              <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
+                                {contestPoss}%
+                              </div>
+                              <div className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
+                                {awayPoss}%
+                              </div>
                             </div>
                           </div>
                         );
