@@ -1350,6 +1350,7 @@ function App() {
                     );
                   })}
                 </div>
+              </div>
             </div>
           </div>
         )}
@@ -1573,7 +1574,7 @@ function App() {
                   <h2 className="text-xs sm:text-sm font-extrabold text-slate-100 uppercase tracking-wider flex items-center gap-2">
                     {hasLiveMatches ? 'LIVE MATCH TRACKER ACTIVE' : 'NO ACTIVE LIVE MATCHES'}
                   </h2>
-                  {hasLiveMatches && activeLiveMatchesList.length > 0 ? (
+                  {hasLiveMatches && activeLiveMatchesList.length > 0 && (
                     <div className="flex flex-wrap gap-2.5 mt-2">
                       {activeLiveMatchesList.map(live => {
                         const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
@@ -1599,12 +1600,12 @@ function App() {
                         );
                       })}
                     </div>
-                    <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
-                      {hasLiveMatches 
-                        ? 'Real-time FIFA World Cup match events are currently active.' 
-                        : 'All matches are currently upcoming or completed.'}
-                    </p>
                   )}
+                  <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
+                    {hasLiveMatches 
+                      ? 'Real-time FIFA World Cup match events are currently active.' 
+                      : 'All matches are currently upcoming or completed.'}
+                  </p>
                 </div>
               </div>
             </div>
