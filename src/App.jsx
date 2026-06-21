@@ -8,20 +8,43 @@ import { TEAMS, GROUPS, VENUES, generateGroupMatches, KNOCKOUT_MATCHES } from '.
 import { calculateStandings, getAdvancedTeams, populateRoundOf32, simulateScore } from './data/simulation';
 import { OFFICIAL_MATCH_DETAILS } from './data/officialMatchDetails';
 
-// Custom authentic icons for Player Stats
-const BootIcon = ({ className }) => (
+// Custom authentic icons for World Cup and Player Stats
+const WorldCupTrophyIcon = ({ className }) => (
   <svg 
     className={className} 
     viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
+    fill="currentColor"
   >
-    <path d="M3 16c-1-3 0-8 3-9 2-1 4 2 6 3 2-1 6-2 8-1 2 1 2 5 1 7l-8 4-10-4z" />
-    <path d="M6 17v2M10 18v2M14 18v2M18 17v2" />
-    <path d="M9 10l2 2M11 9l2 2" />
+    {/* Cylindrical base */}
+    <path d="M7 21h10v1.5H7zm1-2h8v1.5H8zm.5-2h7v1.5h-7z" opacity="0.9" />
+    {/* Malachite green bands */}
+    <path d="M7 20h10v1H7zm.5-2h9v1h-9z" fill="#10b981" />
+    {/* Gold body & figures spiraling up */}
+    <path d="M9.5 17c.5-1.5.5-3 0-4.5S8.5 10 7.5 9c1-1.5 3-1.5 4 0 .5 1 1 2.5 1 4.5v-6c.5-.5 1-1 1.5-1.5s1.5-1 2 .5c-.5 1.5-2.5 4-3.5 5.5s-1 3.5-.5 5h-5z" />
+    {/* Globe */}
+    <circle cx="12.5" cy="5.5" r="3.5" />
+    {/* Globe detail lines */}
+    <path d="M9.5 5.5h6" stroke="#1e293b" strokeWidth="0.5" />
+    <path d="M12.5 2a3.5 3.5 0 0 1 0 7" stroke="#1e293b" strokeWidth="0.5" fill="none" />
+  </svg>
+);
+
+const GoldenBootTrophyIcon = ({ className }) => (
+  <svg 
+    className={className} 
+    viewBox="0 0 24 24" 
+    fill="currentColor"
+  >
+    {/* Pedestal Base */}
+    <rect x="4" y="18" width="16" height="3" rx="0.5" opacity="0.4" />
+    <rect x="6" y="16" width="12" height="2" rx="0.5" opacity="0.6" />
+    
+    {/* Shoe body */}
+    <path d="M5.5 15.5c-.8-2 0-5.5 1.5-6.5C8.5 8 10 10.5 12 11.5c1.5-1 4.5-2 6-1 1.5.5 1.5 3.5 1 5.5l-6 2.5-7.5-3z" />
+    {/* Sole & Studs */}
+    <path d="M5.5 15.5c2.5 0 5 .5 8 .5s5-1 7-2.5M7.5 16.5v1.5M10.5 17v1.5M13.5 17v1.5M16.5 16.5v1.5" stroke="#1e293b" strokeWidth="1" />
+    {/* Stripes */}
+    <path d="M11.5 10.5l-1.5 2M12.5 10l-1.5 2M13.5 9.5l-1.5 2" stroke="#1e293b" strokeWidth="0.8" />
   </svg>
 );
 
@@ -1108,7 +1131,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="bg-brand-gold/20 p-2 rounded-xl border border-brand-gold/40 glow-gold animate-float">
-              <Trophy className="w-6 h-6 text-brand-gold" />
+              <WorldCupTrophyIcon className="w-6 h-6 text-brand-gold" />
             </div>
             <div>
               <h1 className="text-lg md:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent dark:from-white">
@@ -1216,7 +1239,7 @@ function App() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 gap-4">
               <div>
                 <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-brand-neon" />
+                  <WorldCupTrophyIcon className="w-4 h-4 text-brand-gold" />
                   Tournament Bracket Roadmap
                 </h2>
                 <p className="text-xs text-slate-400">View the qualified teams and progress of the knockout rounds in real time. Hover over any country to highlight their tournament path.</p>
@@ -1323,7 +1346,7 @@ function App() {
 
                   <div className="mb-6 relative">
                     <div className="absolute inset-0 bg-brand-gold/10 rounded-full blur-xl animate-pulse"></div>
-                    <Trophy className="w-20 h-20 text-brand-gold drop-shadow-xl animate-float relative z-10" />
+                    <WorldCupTrophyIcon className="w-20 h-20 text-brand-gold drop-shadow-xl animate-float relative z-10" />
                   </div>
 
                   {/* Final match card */}
@@ -1844,7 +1867,7 @@ function App() {
             {/* Header info */}
             <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
               <h2 className="text-base font-bold text-white flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-brand-gold" />
+                <WorldCupTrophyIcon className="w-5 h-5 text-brand-gold" />
                 Tournament Player Statistics
               </h2>
               <p className="text-xs text-slate-400">
@@ -1857,7 +1880,7 @@ function App() {
               {/* Top Scorers Table */}
               <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
                 <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
-                  <BootIcon className="w-5 h-5 text-brand-gold" />
+                  <GoldenBootTrophyIcon className="w-5 h-5 text-brand-gold" />
                   <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
                     Golden Boot (Top Scorers)
                   </h3>
@@ -1985,7 +2008,7 @@ function App() {
       <footer className={`relative z-10 border-t ${darkMode ? 'border-slate-900 bg-slate-950/50' : 'border-slate-200 bg-white/50'} py-8 mt-12 text-center text-xs text-slate-500 font-bold`}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-1.5">
-            <Trophy className="w-4 h-4 text-brand-neon" />
+            <WorldCupTrophyIcon className="w-4 h-4 text-brand-neon" />
             <span>WORLDCUP 2K26 Interactive Roadmap</span>
           </div>
           <div className="flex items-center gap-1.5">
