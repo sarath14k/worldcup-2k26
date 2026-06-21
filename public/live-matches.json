@@ -17406,33 +17406,39 @@
     ]
   },
   "45": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 1,
+    "awayScore": 0,
+    "minute": "13'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
-    "events": [],
+    "events": [
+      {
+        "team": "home",
+        "player": "Lamine YAMAL",
+        "minute": 10
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        74,
+        17
       ],
       "shots": [
-        10,
-        10
+        5,
+        0
       ],
       "shotsOnTarget": [
-        5,
-        5
+        1,
+        0
       ],
       "corners": [
-        5,
-        5
+        2,
+        0
       ],
       "fouls": [
-        10,
-        10
+        0,
+        1
       ],
       "yellowCards": [
         0,
@@ -17443,7 +17449,86 @@
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Spain won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Alex BAENA (Spain) attempts an effort on goal.",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "Corner",
+        "text": "Lamine YAMAL (Spain) takes a corner kick.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lamine YAMAL (Spain) attempts an effort on goal.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Corner",
+        "text": "Alex BAENA (Spain) takes a corner kick.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Dani OLMO (Spain) attempts an effort on goal.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Foul",
+        "text": "FERAS ALBRIKAN (Saudi Arabia) commits a foul.",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Pedro PORRO (Spain) attempts an effort on goal.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Mikel OYARZABAL.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lamine YAMAL (Spain) attempts an effort on goal.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Lamine YAMAL (Spain) scores!!",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "PEDRI (Spain) attempts an effort on goal.",
+        "minute": 13,
+        "minuteStr": "13'"
+      }
+    ]
   },
   "46": {
     "homeScore": null,

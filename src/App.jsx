@@ -88,6 +88,49 @@ const parseMatchKickoff = (match) => {
     return null;
   }
 };
+const getMatchVenue = (match) => {
+  if (!match) return 'TBD Stadium';
+  if (match.venue) return match.venue;
+  
+  if (match.type !== 'group') {
+    if (match.id === 'final') return 'MetLife Stadium';
+    if (match.id === 'sf_1') return 'AT&T Stadium';
+    if (match.id === 'sf_2') return 'Mercedes-Benz Stadium';
+    if (match.id && match.id.startsWith('qf')) {
+      const qfIdx = parseInt(match.id.replace('qf_', ''));
+      const qfVenues = ['Arrowhead Stadium', 'Gillette Stadium', 'SoFi Stadium', 'Hard Rock Stadium'];
+      return qfVenues[(qfIdx - 1) % 4] || 'AT&T Stadium';
+    }
+    if (match.id && match.id.startsWith('r16')) {
+      const r16Idx = parseInt(match.id.replace('r16_', ''));
+      return VENUES[(r16Idx + 4) % VENUES.length].name;
+    }
+    if (match.id && match.id.startsWith('r32')) {
+      const r32Idx = parseInt(match.id.replace('r32_', ''));
+      return VENUES[r32Idx % VENUES.length].name;
+    }
+    return 'AT&T Stadium';
+  }
+
+  const groupVenues = {
+    A: ['Estadio Azteca', 'Estadio Akron', 'Estadio BBVA'],
+    B: ['BC Place', 'BMO Field', 'Lumen Field'],
+    C: ['SoFi Stadium', 'Levi\'s Stadium', 'Lumen Field'],
+    D: ['AT&T Stadium', 'NRG Stadium', 'Hard Rock Stadium'],
+    E: ['Mercedes-Benz Stadium', 'Hard Rock Stadium', 'Arrowhead Stadium'],
+    F: ['MetLife Stadium', 'Gillette Stadium', 'Lincoln Financial Field'],
+    G: ['Estadio Azteca', 'Estadio Akron', 'SoFi Stadium'],
+    H: ['BC Place', 'BMO Field', 'Levi\'s Stadium'],
+    I: ['AT&T Stadium', 'NRG Stadium', 'Arrowhead Stadium'],
+    J: ['Mercedes-Benz Stadium', 'MetLife Stadium', 'Gillette Stadium'],
+    K: ['Lincoln Financial Field', 'Hard Rock Stadium', 'SoFi Stadium'],
+    L: ['Estadio BBVA', 'Estadio Akron', 'Levi\'s Stadium']
+  };
+
+  const list = groupVenues[match.group] || ['MetLife Stadium'];
+  const matchIdx = (match.id - 1) % 6;
+  return list[matchIdx % list.length];
+};
 const TEAM_PLAYERS = {
   MEX: ["Santiago Giménez", "Hirving Lozano", "Edson Álvarez", "Henry Martín"],
   RSA: ["Lyle Foster", "Percy Tau", "Teboho Mokoena", "Themba Zwane"],
@@ -334,6 +377,136 @@ function App() {
   const [syncToast, setSyncToast] = useState(null);
   const [liveMatches, setLiveMatches] = useState({});
   const [selectedMatch, setSelectedMatch] = useState(null);
+  const [highlightsUrl, setHighlightsUrl] = useState(null);
+  const [loadingHighlights, setLoadingHighlights] = useState(false);
+
+  useEffect(() => {
+    if (selectedMatch) {
+      const live = liveMatches[selectedMatch.id];
+      const isCompleted = selectedMatch.isCompleted || (live && live.minute === 'FT');
+      if (isCompleted) {
+        setHighlightsUrl(null);
+        setLoadingHighlights(true);
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+        const homeName = TEAMS[selectedMatch.home]?.name || selectedMatch.home;
+        const awayName = TEAMS[selectedMatch.away]?.name || selectedMatch.away;
+        const homeParam = encodeURIComponent(homeName);
+        const awayParam = encodeURIComponent(awayName);
+        fetch(`/api/match-highlights?home=${homeParam}&away=${awayParam}`, { signal: controller.signal })
+          .then(res => {
+            clearTimeout(timeoutId);
+            return res.json();
+          })
+          .then(data => {
+            if (data.url) {
+              setHighlightsUrl(data.url);
+            }
+          })
+          .catch(err => {
+            console.warn('[Highlights Fetch] Timeout or network error:', err);
+          })
+          .finally(() => setLoadingHighlights(false));
+      }
+    } else {
+      setHighlightsUrl(null);
+      setLoadingHighlights(false);
+    }
+  }, [selectedMatch?.id]);
+  
+  // Expanded Venue & Auto-Refresh state
+  const [expandedVenue, setExpandedVenue] = useState(null);
+  const [autoRefresh, setAutoRefresh] = useState(false);
+
+  const activeLiveMatchesList = useMemo(() => {
+    const list = [];
+    Object.entries(liveMatches).forEach(([idStr, live]) => {
+      const matchId = Number(idStr);
+      if (live && !live.isCompleted && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined && live.minute !== '') {
+        let match = groupMatches.find(m => m.id === matchId);
+        let roundName = 'Group Stage';
+        if (match) {
+          roundName = `Group ${match.group}`;
+        } else {
+          Object.keys(bracket).forEach(roundKey => {
+            const found = bracket[roundKey].find(m => m.id === matchId);
+            if (found) {
+              match = found;
+              if (roundKey === 'r32') roundName = 'Round of 32';
+              else if (roundKey === 'r16') roundName = 'Round of 16';
+              else if (roundKey === 'qf') roundName = 'Quarter-Final';
+              else if (roundKey === 'sf') roundName = 'Semi-Final';
+              else if (roundKey === 'final') roundName = 'Grand Final';
+            }
+          });
+        }
+        
+        if (match) {
+          list.push({
+            id: matchId,
+            home: match.home,
+            away: match.away,
+            round: roundName,
+            homeScore: live.homeScore !== null ? live.homeScore : 0,
+            awayScore: live.awayScore !== null ? live.awayScore : 0,
+            minute: live.minute,
+            originalMatch: match
+          });
+        }
+      }
+    });
+    return list;
+  }, [liveMatches, groupMatches, bracket]);
+
+  const hasLiveMatches = useMemo(() => {
+    return activeLiveMatchesList.length > 0;
+  }, [activeLiveMatchesList]);
+
+  const matchesAtVenue = useMemo(() => {
+    if (!expandedVenue) return [];
+    const list = [];
+    groupMatches.forEach(m => {
+      if (getMatchVenue(m) === expandedVenue) {
+        list.push({ ...m, round: 'Group ' + m.group });
+      }
+    });
+    Object.keys(bracket).forEach(roundKey => {
+      bracket[roundKey].forEach(m => {
+        if (getMatchVenue(m) === expandedVenue) {
+          let roundName = 'Round of 32';
+          if (roundKey === 'r16') roundName = 'Round of 16';
+          if (roundKey === 'qf') roundName = 'Quarter-Final';
+          if (roundKey === 'sf') roundName = 'Semi-Final';
+          if (roundKey === 'final') roundName = 'Grand Final';
+          list.push({ ...m, round: roundName });
+        }
+      });
+    });
+    return list;
+  }, [expandedVenue, groupMatches, bracket]);
+
+  useEffect(() => {
+    if (!autoRefresh) return;
+    const triggerSync = async () => {
+      try {
+        await fetch('/api/sync-live');
+        const response = await fetch(`/live-matches.json?t=${Date.now()}`);
+        if (response.ok) {
+          const data = await response.json();
+          setLiveMatches(data);
+        }
+      } catch (e) {
+        console.error('Auto-refresh sync failed:', e);
+      }
+    };
+    // Run immediately on enable
+    triggerSync();
+    
+    const interval = setInterval(triggerSync, 20000);
+    return () => clearInterval(interval);
+  }, [autoRefresh]);
 
   const upcomingFixtures = useMemo(() => {
     const allMatches = [];
@@ -352,11 +525,11 @@ function App() {
       });
     });
 
-    // Filter to matches that are NOT completed, or are currently live
+    // Filter to matches that are NOT completed and are NOT currently live
     const activeMatches = allMatches.filter(m => {
       const live = liveMatches[m.id];
-      const isLive = live && live.minute !== 'FT' && !live.isCompleted && live.minute !== null && live.minute !== undefined;
-      if (isLive) return true;
+      const isLive = live && live.minute !== 'FT' && !live.isCompleted && live.minute !== null && live.minute !== undefined && live.minute !== '';
+      if (isLive) return false;
       return !m.isCompleted;
     });
 
@@ -1438,7 +1611,79 @@ function App() {
 
         {/* ================= UPCOMING & RESULTS TAB ================= */}
         {activeTab === 'fixtures' && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 animate-fadeIn">
+          <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
+            {/* Live Tracker Banner & Auto-Refresh Toggle */}
+            <div className="p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden">
+              <div className="absolute -top-12 -left-12 w-24 h-24 bg-brand-neon/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="flex items-center gap-3 relative z-10">
+                <span className="flex h-3 w-3 relative shrink-0">
+                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75 ${hasLiveMatches ? '' : 'hidden'}`}></span>
+                  <span className={`relative inline-flex rounded-full h-3 w-3 ${hasLiveMatches ? 'bg-brand-neon animate-pulse' : 'bg-slate-600'}`}></span>
+                </span>
+                <div>
+                  <h2 className="text-xs sm:text-sm font-extrabold text-slate-100 uppercase tracking-wider flex items-center gap-2">
+                    {hasLiveMatches ? 'LIVE MATCH TRACKER ACTIVE' : 'NO ACTIVE LIVE MATCHES'}
+                  </h2>
+                  {hasLiveMatches && activeLiveMatchesList.length > 0 ? (
+                    <div className="flex flex-wrap gap-2.5 mt-2">
+                      {activeLiveMatchesList.map(live => {
+                        const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
+                        const awayTeam = TEAMS[live.away] || { flag: '🏳️', name: live.away || 'TBD' };
+                        return (
+                          <div 
+                            key={live.id} 
+                            onClick={() => setSelectedMatch(live.originalMatch)}
+                            title="Click to view live stats & timeline commentary"
+                            className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-slate-950/70 border border-slate-900 hover:border-slate-800 hover:bg-slate-900/60 text-[10px] sm:text-xs font-mono font-bold text-slate-200 cursor-pointer select-none transition-all"
+                          >
+                            <span className="text-[8px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1.5 py-0.5 rounded font-black shrink-0">{live.minute}'</span>
+                            <span className="flex items-center gap-1 font-bold">
+                              <span>{homeTeam.flag}</span>
+                              <span className="text-slate-100">{live.home}</span>
+                            </span>
+                            <span className="text-brand-neon font-black px-1.5 py-0.5 bg-slate-900 rounded border border-slate-800/80">{live.homeScore} - {live.awayScore}</span>
+                            <span className="flex items-center gap-1 font-bold">
+                              <span className="text-slate-100">{live.away}</span>
+                              <span>{awayTeam.flag}</span>
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
+                      {hasLiveMatches 
+                        ? 'Real-time FIFA World Cup match events are currently active.' 
+                        : 'All matches are currently upcoming or completed. Toggle auto-refresh to auto-sync scores.'}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center gap-3 shrink-0 relative z-10 w-full md:w-auto justify-between md:justify-end border-t border-slate-800/60 md:border-none pt-3 md:pt-0">
+                <label className="relative inline-flex items-center cursor-pointer select-none">
+                  <input 
+                    type="checkbox" 
+                    checked={autoRefresh} 
+                    onChange={(e) => setAutoRefresh(e.target.checked)} 
+                    className="sr-only peer"
+                  />
+                  <div className="w-9 h-5 bg-slate-850 border border-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-neon peer-checked:after:bg-slate-950 peer-checked:after:border-slate-950"></div>
+                  <span className="ml-2 text-xs font-bold text-slate-300">
+                    Auto-Refresh (20s)
+                  </span>
+                </label>
+                <button 
+                  onClick={handleSyncLiveScores}
+                  disabled={isSyncing}
+                  className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-350 hover:text-white hover:border-slate-700 disabled:opacity-50 transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+                  Sync Now
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Left side: Upcoming Fixtures */}
             <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
               {/* Upcoming Fixtures widget */}
@@ -1630,7 +1875,8 @@ function App() {
               </div>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
         {/* ================= GROUP STANDINGS TAB ================= */}
         {activeTab === 'groups' && (
@@ -1698,6 +1944,7 @@ function App() {
                         <th className="py-2 px-1 font-bold text-center">L</th>
                         <th className="py-2 px-1 font-bold text-center">GD</th>
                         <th className="py-2 px-1 font-bold text-center text-brand-neon">PTS</th>
+                        <th className="py-2 px-1 font-bold text-center hidden md:table-cell">FORM</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800/50">
@@ -1733,6 +1980,26 @@ function App() {
                               {t.gd > 0 ? `+${t.gd}` : t.gd}
                             </td>
                             <td className="py-2 px-1 text-center font-bold text-sm text-brand-neon">{t.points}</td>
+                            <td className="py-2 px-1 text-center hidden md:table-cell">
+                              <div className="flex items-center justify-center gap-1 select-none">
+                                {(t.form || []).map((res, i) => (
+                                  <span
+                                    key={i}
+                                    title={res === 'W' ? 'Won' : res === 'D' ? 'Draw' : 'Lost'}
+                                    className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black text-white shrink-0 ${
+                                      res === 'W'
+                                        ? 'bg-emerald-600 border border-emerald-500/30'
+                                        : res === 'L'
+                                          ? 'bg-rose-600 border border-rose-500/30'
+                                          : 'bg-slate-600 border border-slate-500/30'
+                                    }`}
+                                  >
+                                    {res}
+                                  </span>
+                                ))}
+                                {(!t.form || t.form.length === 0) && <span className="text-slate-600 text-[10px]">-</span>}
+                              </div>
+                            </td>
                           </tr>
                         );
                       })}
@@ -1832,31 +2099,122 @@ function App() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {VENUES.map(venue => (
-                <div key={venue.name} className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col justify-between hover:border-brand-purple/50 transition-all hover:-translate-y-1 duration-300">
-                  <div>
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-xs font-bold text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                        {venue.flag} {venue.country}
-                      </span>
-                      <span className="text-[10px] text-slate-400 font-bold">
-                        Cap: {venue.capacity.toLocaleString()}
-                      </span>
+              {VENUES.map(venue => {
+                const isExpanded = expandedVenue === venue.name;
+                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.name + ', ' + venue.city)}`;
+                return (
+                  <div 
+                    key={venue.name} 
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setExpandedVenue(isExpanded ? null : venue.name)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setExpandedVenue(isExpanded ? null : venue.name);
+                      }
+                    }}
+                    className={`p-4 sm:p-5 rounded-2xl border bg-brand-cardBg flex flex-col justify-between transition-all cursor-pointer select-none ${
+                      isExpanded 
+                        ? 'border-brand-purple shadow-[0_0_15px_rgba(139,92,246,0.15)] ring-1 ring-brand-purple/35' 
+                        : 'border-slate-800/80 sm:hover:border-brand-purple/50 sm:hover:-translate-y-0.5 duration-300'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex justify-between items-start mb-3">
+                        <span className="text-xs font-bold text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                          {venue.flag} {venue.country}
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-bold">
+                          Cap: {venue.capacity.toLocaleString()}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-extrabold text-slate-100 mb-1">{venue.name}</h3>
+                      <p className="text-xs font-semibold text-brand-purple flex items-center gap-1 mb-3">
+                        <MapPin className="w-3.5 h-3.5" />
+                        {venue.city}
+                      </p>
+                      <p className="text-xs text-slate-400 leading-relaxed">{venue.desc}</p>
                     </div>
-                    <h3 className="text-base font-extrabold text-slate-100 mb-1">{venue.name}</h3>
-                    <p className="text-xs font-semibold text-brand-purple flex items-center gap-1 mb-3">
-                      <MapPin className="w-3.5 h-3.5" />
-                      {venue.city}
-                    </p>
-                    <p className="text-xs text-slate-400 leading-relaxed">{venue.desc}</p>
+
+                    {isExpanded && (
+                      <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-col gap-3 animate-fadeIn">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold">Scheduled Matches</span>
+                          <span className="text-[9px] bg-slate-900 border border-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono font-bold">
+                            {matchesAtVenue.length} Matches
+                          </span>
+                        </div>
+                        
+                        <div className="flex flex-col gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                          {matchesAtVenue.map((m, idx) => {
+                            const homeTeamObj = TEAMS[m.home];
+                            const awayTeamObj = TEAMS[m.away];
+                            const homeFlag = homeTeamObj ? homeTeamObj.flag : '🏳️';
+                            const awayFlag = awayTeamObj ? awayTeamObj.flag : '🏳️';
+                            const homeName = m.home || 'TBD';
+                            const awayName = m.away || 'TBD';
+                            
+                            const live = liveMatches[m.id];
+                            const isLive = live && live.minute !== null && live.minute !== undefined && live.minute !== 'FT' && live.minute !== '';
+                            const hasScore = m.isCompleted || (live && (live.minute === 'FT' || live.isCompleted || live.homeScore !== null));
+                            const homeScore = m.isCompleted ? m.homeScore : (live ? live.homeScore : null);
+                            const awayScore = m.isCompleted ? m.awayScore : (live ? live.awayScore : null);
+
+                            return (
+                              <div key={idx} className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-900/60 flex flex-col gap-1.5 text-[11px]">
+                                <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
+                                  <span className="text-brand-purple">{m.round}</span>
+                                  <span>{m.date}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                  <div className="flex items-center gap-1.5 font-bold text-slate-200">
+                                    <span>{homeFlag}</span>
+                                    <span>{homeName}</span>
+                                  </div>
+                                  {hasScore ? (
+                                    <div className="flex items-center gap-1 font-mono font-black text-brand-neon">
+                                      <span>{homeScore}</span>
+                                      <span className="text-slate-600">:</span>
+                                      <span>{awayScore}</span>
+                                      {isLive && <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse ml-1" />}
+                                    </div>
+                                  ) : (
+                                    <span className="text-[9px] font-extrabold text-slate-600 font-mono">VS</span>
+                                  )}
+                                  <div className="flex items-center gap-1.5 font-bold text-slate-200">
+                                    <span>{awayName}</span>
+                                    <span>{awayFlag}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                          {matchesAtVenue.length === 0 && (
+                            <span className="text-[10px] text-slate-500 text-center py-4">No matches scheduled.</span>
+                          )}
+                        </div>
+                        
+                        <a 
+                          href={mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 text-xs font-bold text-slate-350 hover:text-white transition-all w-full mt-1"
+                        >
+                          <MapPin className="w-3.5 h-3.5 text-brand-neon" />
+                          <span>Get Directions (Google Maps)</span>
+                        </a>
+                      </div>
+                    )}
+                    
+                    <div className="border-t border-slate-800/60 mt-4 pt-3 flex justify-between items-center text-[10px] text-slate-500 font-bold">
+                      <span>{isExpanded ? 'CLICK TO COLLAPSE' : 'CLICK TO VIEW MATCHES'}</span>
+                      <span>2026 WORLD CUP HOST</span>
+                    </div>
                   </div>
-                  
-                  <div className="border-t border-slate-800/60 mt-4 pt-3 flex justify-between items-center text-[10px] text-slate-500 font-bold">
-                    <span>FIFA STANDARD STADIUM</span>
-                    <span>2026 WORLD CUP HOST</span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -2120,6 +2478,33 @@ function App() {
                   <span className="text-xs font-black text-slate-100 truncate text-center w-full">{away.name}</span>
                 </div>
               </div>
+
+              {isCompleted && (
+                <div className="flex justify-center -mt-2">
+                  {loadingHighlights ? (
+                    <div className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-950 border border-slate-900 text-xs font-bold text-slate-500 w-full justify-center select-none">
+                      <span className="w-3.5 h-3.5 border-2 border-slate-700 border-t-red-500 rounded-full animate-spin"></span>
+                      <span>Searching video highlights...</span>
+                    </div>
+                  ) : highlightsUrl ? (
+                    <a
+                      href={highlightsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 border border-red-500/20 hover:border-red-500/60 text-xs font-bold text-white shadow-[0_0_15px_rgba(239,68,68,0.15)] hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] w-full transition-all"
+                    >
+                      <svg className="w-3.5 h-3.5 text-white fill-white shrink-0" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <span>Watch Match Highlights</span>
+                    </a>
+                  ) : (
+                    <div className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-950 border border-slate-905 text-xs font-bold text-slate-500 w-full justify-center select-none">
+                      <span>Highlights unavailable</span>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Scorers Section */}
               {hasStarted && (

@@ -57,7 +57,8 @@ export const calculateStandings = (teams, groupMatches) => {
       ...teams[code],
       code,
       played: 0, won: 0, drawn: 0, lost: 0,
-      gf: 0, ga: 0, gd: 0, points: 0
+      gf: 0, ga: 0, gd: 0, points: 0,
+      form: []
     };
   });
 
@@ -87,15 +88,21 @@ export const calculateStandings = (teams, groupMatches) => {
       homeTeam.won += 1;
       homeTeam.points += 3;
       awayTeam.lost += 1;
+      homeTeam.form.push('W');
+      awayTeam.form.push('L');
     } else if (hs < as) {
       awayTeam.won += 1;
       awayTeam.points += 3;
       homeTeam.lost += 1;
+      homeTeam.form.push('L');
+      awayTeam.form.push('W');
     } else {
       homeTeam.drawn += 1;
       homeTeam.points += 1;
       awayTeam.drawn += 1;
       awayTeam.points += 1;
+      homeTeam.form.push('D');
+      awayTeam.form.push('D');
     }
   });
 
@@ -103,6 +110,7 @@ export const calculateStandings = (teams, groupMatches) => {
   const groupsData = {};
   Object.keys(standings).forEach(code => {
     const t = standings[code];
+    t.form = t.form.slice(-5);
     if (!groupsData[t.group]) {
       groupsData[t.group] = [];
     }
