@@ -113,10 +113,11 @@ const formatDisplayDate = (dateStr) => {
     const dayVal = parseInt(dayStr, 10);
     
     const d = new Date(2026, monthVal, dayVal, hour, parseInt(minStr, 10));
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const dayOfWeek = weekdays[d.getDay()];
+    const shortMonth = monthStr.substring(0, 3);
     
-    return `${dayOfWeek}, ${monthStr} ${dayStr}, ${timeParts[0]} ${timeParts[1]}`;
+    return `${dayOfWeek}, ${shortMonth} ${dayStr}, ${timeParts[0]} ${timeParts[1]}`;
   } catch (e) {
     return dateStr.replace(" IST", "");
   }
