@@ -85,6 +85,17 @@ app.post('/api/sync-matches', express.json({ limit: '10mb' }), (req, res) => {
   }
 });
 
+// Team name aliases for matching YouTube highlight titles
+const TEAM_ALIASES = {
+  'united states': ['usa', 'united states', 'us'],
+  'south korea': ['korea republic', 'south korea', 'korea'],
+  'czechia': ['czechia', 'czech republic'],
+  'turkey': ['turkiye', 'turkey'],
+  'ivory coast': ['cote divoire', 'ivory coast'],
+  'dr congo': ['dr congo', 'congo dr', 'democratic republic of congo'],
+  'cape verde': ['cabo verde', 'cape verde']
+};
+
 // Helper to normalize team names for verification
 function normalizeTeamName(name) {
   return name
@@ -216,13 +227,8 @@ app.get('/api/match-highlights', async (req, res) => {
             const normAway = normalizeTeamName(away);
             
             const checkTeam = (normName) => {
-              if (normName === 'usa') {
-                return normTitle.includes('usa') || normTitle.includes('united states');
-              }
-              if (normName === 'uae') {
-                return normTitle.includes('uae') || normTitle.includes('united arab emirates');
-              }
-              if (normTitle.includes(normName)) {
+              const aliases = TEAM_ALIASES[normName] || [normName];
+              if (aliases.some(alias => normTitle.includes(alias))) {
                 return true;
               }
               const words = normName.split(' ').filter(w => w.length > 3);
