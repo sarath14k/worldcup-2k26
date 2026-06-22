@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ListFilter, Check, Star } from 'lucide-react';
 import { GROUPS, TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
@@ -14,6 +14,83 @@ export const BracketTab = ({
   const [showGroupSelectors, setShowGroupSelectors] = useState(false);
   const [hoveredTeam, setHoveredTeam] = useState(null);
   const [activeRoundTab, setActiveRoundTab] = useState('r32');
+  const [lines, setLines] = useState([]);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const updateLines = () => {
+      if (!containerRef.current) return;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const newLines = [];
+
+      const rounds = ['r32', 'r16', 'qf', 'sf'];
+      rounds.forEach(rk => {
+        const matches = bracket[rk] || [];
+        matches.forEach(match => {
+          if (!match.nextId) return;
+
+          const totalInRound = matches.length;
+          const isLeftSide = match.slot <= totalInRound / 2;
+          const side = isLeftSide ? 'left' : 'right';
+
+          const fromEl = document.getElementById(`card-${match.id}`);
+          
+          let toSlot = 'home';
+          if (match.position === 'away' || match.position === 'bottom') {
+            toSlot = 'away';
+          }
+
+          let toId = `slot-${match.nextId}-${toSlot}`;
+          if (match.nextId === 'final') {
+            toId = `slot-final-${toSlot}`;
+          }
+          const toEl = document.getElementById(toId);
+
+          if (fromEl && toEl) {
+            const fromRect = fromEl.getBoundingClientRect();
+            const toRect = toEl.getBoundingClientRect();
+
+            let x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+            if (side === 'left') {
+              x1 = fromRect.right - containerRect.left;
+              y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
+              x2 = toRect.left - containerRect.left;
+              y2 = toRect.top + toRect.height / 2 - containerRect.top;
+            } else {
+              x1 = fromRect.left - containerRect.left;
+              y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
+              x2 = toRect.right - containerRect.left;
+              y2 = toRect.top + toRect.height / 2 - containerRect.top;
+            }
+
+            newLines.push({
+              id: `${match.id}-${match.nextId}`,
+              x1, y1, x2, y2,
+              side,
+              activeTeamCode: match.winner
+            });
+          }
+        });
+      });
+
+      setLines(newLines);
+    };
+
+    const timer = setTimeout(updateLines, 100);
+
+    const observer = new ResizeObserver(updateLines);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    window.addEventListener('resize', updateLines);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+      window.removeEventListener('resize', updateLines);
+    };
+  }, [bracket, hoveredTeam]);
 
   const renderMobileRound = () => {
     const roundKey = activeRoundTab;
@@ -26,7 +103,7 @@ export const BracketTab = ({
 
     if (roundKey === 'final') {
       return (
-        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950/90 border border-brand-gold/20 shadow-gold relative mt-2">
+        <div className={`flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950/90 border border-brand-gold/20 shadow-gold relative mt-2 transition-all duration-500 ${tournamentChampion ? 'holo-card-shine shadow-gold/60 border-brand-gold/50' : ''}`}>
           <div className="absolute top-4 right-4 flex items-center gap-1 text-[10px] text-brand-gold font-bold">
             <Star className="w-3.5 h-3.5 fill-brand-gold" />
             <span>CHAMPIONS</span>
@@ -43,6 +120,8 @@ export const BracketTab = ({
             const awayTeam = TEAMS[match.away];
             const isHomeWinner = match.winner === match.home && match.winner !== null;
             const isAwayWinner = match.winner === match.away && match.winner !== null;
+            const isHomeHovered = hoveredTeam && match.home === hoveredTeam;
+            const isAwayHovered = hoveredTeam && match.away === hoveredTeam;
 
             return (
               <div key={match.id} className="w-full flex flex-col gap-3">
@@ -60,9 +139,11 @@ export const BracketTab = ({
                     className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
                       !match.home 
                         ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                        : isHomeWinner 
-                          ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                          : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
+                        : isHomeHovered
+                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                          : isHomeWinner 
+                            ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
+                            : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -79,9 +160,11 @@ export const BracketTab = ({
                     className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
                       !match.away 
                         ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                        : isAwayWinner 
-                          ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                          : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
+                        : isAwayHovered
+                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                          : isAwayWinner 
+                            ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
+                            : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -99,7 +182,7 @@ export const BracketTab = ({
           {tournamentChampion ? (
             <div className="mt-5 text-center animate-bounce">
               <p className="text-[10px] text-brand-neon font-bold tracking-widest">WORLD CUP CHAMPION</p>
-              <p className="text-base font-extrabold text-white flex items-center gap-1.5 justify-center mt-1">
+              <p className="text-base font-extrabold text-white flex items-center gap-1.5 justify-center mt-1 holo-shine">
                 <span>{tournamentChampion.flag}</span>
                 <span>{tournamentChampion.name.toUpperCase()}</span>
               </p>
@@ -123,11 +206,13 @@ export const BracketTab = ({
             const isHomeWinner = match.winner === match.home && match.winner !== null;
             const isAwayWinner = match.winner === match.away && match.winner !== null;
             const isHoveredMatch = hoveredTeam && (match.home === hoveredTeam || match.away === hoveredTeam);
+            const isHomeHovered = hoveredTeam && match.home === hoveredTeam;
+            const isAwayHovered = hoveredTeam && match.away === hoveredTeam;
 
             return (
               <div 
                 key={match.id} 
-                className={`p-3.5 rounded-2xl transition-all duration-300 relative border ${
+                className={`p-3.5 rounded-2xl transition-all duration-300 relative border card-shimmer ${
                   isHoveredMatch 
                     ? 'border-brand-neon bg-slate-900/90 shadow-neon ring-1 ring-brand-neon/30' 
                     : 'border-slate-800/80 bg-brand-cardBg'
@@ -146,9 +231,11 @@ export const BracketTab = ({
                     className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
                       !match.home 
                         ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                        : isHomeWinner 
-                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
-                          : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
+                        : isHomeHovered
+                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                          : isHomeWinner 
+                            ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
+                            : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -165,9 +252,11 @@ export const BracketTab = ({
                     className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
                       !match.away 
                         ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                        : isAwayWinner 
-                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
-                          : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
+                        : isAwayHovered
+                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                          : isAwayWinner 
+                            ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
+                            : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -207,11 +296,14 @@ export const BracketTab = ({
           const isHomeWinner = match.winner === match.home && match.winner !== null;
           const isAwayWinner = match.winner === match.away && match.winner !== null;
           const isHoveredMatch = hoveredTeam && (match.home === hoveredTeam || match.away === hoveredTeam);
+          const isHomeHovered = hoveredTeam && match.home === hoveredTeam;
+          const isAwayHovered = hoveredTeam && match.away === hoveredTeam;
 
           return (
             <div 
               key={match.id} 
-              className={`p-3 rounded-xl transition-all duration-300 relative border ${
+              id={`card-${match.id}`}
+              className={`p-3 rounded-xl transition-all duration-300 relative border card-shimmer ${
                 isHoveredMatch 
                   ? 'border-brand-neon bg-slate-900/90 shadow-neon ring-1 ring-brand-neon/30' 
                   : 'border-slate-800/80 bg-brand-cardBg'
@@ -232,9 +324,11 @@ export const BracketTab = ({
                   className={`flex items-center justify-between w-full p-2 rounded-lg text-left transition-all text-xs font-semibold ${
                     !match.home 
                       ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                      : isHomeWinner 
-                        ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
-                        : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
+                      : isHomeHovered
+                        ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                        : isHomeWinner 
+                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
+                          : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                   }`}
                 >
                   <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -253,9 +347,11 @@ export const BracketTab = ({
                   className={`flex items-center justify-between w-full p-2 rounded-lg text-left transition-all text-xs font-semibold ${
                     !match.away 
                       ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                      : isAwayWinner 
-                        ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
-                        : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
+                      : isAwayHovered
+                        ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                        : isAwayWinner 
+                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
+                          : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                   }`}
                 >
                   <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -394,7 +490,33 @@ export const BracketTab = ({
 
       {/* Tree Bracket Container (Scrollable horizontally) - Desktop Only */}
       <div className="hidden md:block overflow-x-auto pb-6">
-        <div className="min-w-[1280px] flex gap-4 items-center justify-between select-none">
+        <div className="min-w-[1280px] flex gap-4 items-center justify-between select-none relative z-10" ref={containerRef}>
+          
+          {/* SVG overlay for connector lines */}
+          <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-[5]" style={{ overflow: 'visible' }}>
+            {lines.map(line => {
+              const isHovered = hoveredTeam && line.activeTeamCode === hoveredTeam;
+              const dx = Math.abs(line.x2 - line.x1) / 2;
+              const pathData = line.side === 'left'
+                ? `M ${line.x1} ${line.y1} C ${line.x1 + dx} ${line.y1}, ${line.x2 - dx} ${line.y2}, ${line.x2} ${line.y2}`
+                : `M ${line.x1} ${line.y1} C ${line.x1 - dx} ${line.y1}, ${line.x2 + dx} ${line.y2}, ${line.x2} ${line.y2}`;
+
+              return (
+                <path
+                  key={line.id}
+                  d={pathData}
+                  fill="none"
+                  stroke={isHovered ? 'var(--color-brand-neon)' : 'rgba(255, 255, 255, 0.18)'}
+                  strokeWidth={isHovered ? 3 : 2}
+                  strokeLinecap="round"
+                  className={isHovered ? 'active-connector-path transition-all duration-300' : 'transition-all duration-300'}
+                  style={{
+                    filter: isHovered ? 'drop-shadow(0 0 6px var(--color-brand-neon))' : 'none'
+                  }}
+                />
+              );
+            })}
+          </svg>
           
           {/* --- LEFT BRACKET --- */}
           {renderBracketColumn('r32', bracket.r32.slice(0, 8))}
@@ -403,7 +525,7 @@ export const BracketTab = ({
           {renderBracketColumn('sf', bracket.sf.slice(0, 1))}
 
           {/* --- CENTER: TROPHY & FINAL --- */}
-          <div className="flex flex-col items-center justify-center min-w-[280px] p-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950/90 border border-brand-gold/20 shadow-gold relative">
+          <div className={`flex flex-col items-center justify-center min-w-[280px] p-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950/90 border border-brand-gold/20 shadow-gold relative transition-all duration-500 ${tournamentChampion ? 'holo-card-shine shadow-gold/60 border-brand-gold/50' : ''}`}>
             <div className="absolute top-4 right-4 flex items-center gap-1 text-[10px] text-brand-gold font-bold">
               <Star className="w-3 h-3 fill-brand-gold" />
               <span>CHAMPIONS</span>
@@ -420,6 +542,8 @@ export const BracketTab = ({
               const awayTeam = TEAMS[match.away];
               const isHomeWinner = match.winner === match.home && match.winner !== null;
               const isAwayWinner = match.winner === match.away && match.winner !== null;
+              const isHomeHovered = hoveredTeam && match.home === hoveredTeam;
+              const isAwayHovered = hoveredTeam && match.away === hoveredTeam;
 
               return (
                 <div key={match.id} className="w-full flex flex-col gap-3">
@@ -429,7 +553,7 @@ export const BracketTab = ({
                     <p className="text-[8px] text-slate-500 font-semibold mt-0.5">New York/New Jersey</p>
                   </div>
 
-                  <div className="flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
+                  <div id={`card-${match.id}`} className="flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
                     {/* Home */}
                     <div
                       id={`slot-final-home`}
@@ -439,9 +563,11 @@ export const BracketTab = ({
                       className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
                         !match.home 
                           ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                          : isHomeWinner 
-                            ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                            : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
+                          : isHomeHovered
+                            ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                            : isHomeWinner 
+                              ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
+                              : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                       }`}
                     >
                       <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -460,9 +586,11 @@ export const BracketTab = ({
                       className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
                         !match.away 
                           ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                          : isAwayWinner 
-                            ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                            : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
+                          : isAwayHovered
+                            ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
+                            : isAwayWinner 
+                              ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
+                              : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                       }`}
                     >
                       <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
@@ -480,7 +608,7 @@ export const BracketTab = ({
             {tournamentChampion ? (
               <div className="mt-5 text-center animate-bounce">
                 <p className="text-[10px] text-brand-neon font-bold tracking-widest">WORLD CUP CHAMPION</p>
-                <p className="text-lg font-extrabold text-white flex items-center gap-1.5 justify-center mt-1">
+                <p className="text-lg font-extrabold text-white flex items-center gap-1.5 justify-center mt-1 holo-shine">
                   <span>{tournamentChampion.flag}</span>
                   <span>{tournamentChampion.name.toUpperCase()}</span>
                 </p>

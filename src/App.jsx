@@ -24,6 +24,19 @@ function App() {
   // --- State ---
   const [activeTab, setActiveTab] = useState('fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
   const [theme, setTheme] = useState(() => localStorage.getItem('worldcup2026_theme') || 'dark');
+  const [accent, setAccent] = useState(() => localStorage.getItem('worldcup2026_accent') || 'neon');
+
+  useEffect(() => {
+    const accents = {
+      neon: { main: '#00FF87', shadow: 'rgba(0, 255, 135, 0.4)' },
+      royal: { main: '#3B82F6', shadow: 'rgba(59, 130, 246, 0.4)' },
+      gold: { main: '#FBBF24', shadow: 'rgba(251, 191, 36, 0.4)' },
+      purple: { main: '#8B5CF6', shadow: 'rgba(139, 92, 246, 0.4)' }
+    };
+    const choice = accents[accent] || accents.neon;
+    document.documentElement.style.setProperty('--color-brand-neon', choice.main);
+    document.documentElement.style.setProperty('--shadow-neon', `0 0 15px ${choice.shadow}`);
+  }, [accent]);
 
 
   // Group Stage State
@@ -737,7 +750,7 @@ function App() {
   }, [feedMatches]);
 
   return (
-    <div className={`min-h-screen ${theme === 'pitch-black' ? 'bg-black' : 'bg-brand-darkBg'} text-slate-100 font-sans antialiased transition-colors duration-300`}>
+    <div className={`min-h-screen ${theme === 'pitch-black' ? 'bg-black' : 'bg-brand-darkBg'} text-slate-100 font-sans antialiased transition-colors duration-300 dot-grid-bg`}>
       {/* Background glow effects for visual wow-factor */}
       {theme !== 'pitch-black' && (
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -769,6 +782,31 @@ function App() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-neon"></span>
               </span>
               <span className="text-slate-300">World Cup Live in USA, CAN & MEX</span>
+            </div>
+
+            {/* Color Accent Picker */}
+            <div className="flex items-center gap-1.5 bg-slate-900/60 px-2.5 py-1.5 rounded-full border border-slate-800/60 select-none">
+              {[
+                { id: 'neon', color: '#00FF87', label: 'Green' },
+                { id: 'royal', color: '#3B82F6', label: 'Blue' },
+                { id: 'gold', color: '#FBBF24', label: 'Gold' },
+                { id: 'purple', color: '#8B5CF6', label: 'Purple' }
+              ].map(opt => (
+                <button
+                  key={opt.id}
+                  onClick={() => {
+                    localStorage.setItem('worldcup2026_accent', opt.id);
+                    setAccent(opt.id);
+                  }}
+                  className={`w-3.5 h-3.5 rounded-full border transition-all cursor-pointer shrink-0 ${
+                    accent === opt.id 
+                      ? 'scale-125 ring-2 ring-white/50 border-white shadow-lg' 
+                      : 'border-transparent hover:scale-110'
+                  }`}
+                  style={{ backgroundColor: opt.color }}
+                  title={`Use ${opt.label} Accent`}
+                />
+              ))}
             </div>
 
             {/* Theme Selector Toggle */}

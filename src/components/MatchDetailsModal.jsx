@@ -189,25 +189,32 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                   else if (typeLower.includes('red')) icon = '🟥';
                   else if (typeLower.includes('sub')) icon = '🔄';
 
+                  const isGoal = typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score');
                   return (
                     <div 
                       key={`timeline-${idx}`} 
-                      className="flex items-start gap-3 bg-slate-950/40 border border-slate-800/50 rounded-xl p-2.5 hover:border-slate-700/50 transition-all duration-300 relative"
+                      className={`flex items-start gap-3 bg-slate-950/40 border rounded-xl p-2.5 hover:bg-slate-900/40 transition-all duration-300 relative animate-fadeIn ${
+                        isGoal 
+                          ? 'border-brand-neon/40 shadow-neon/10 bg-brand-neon/5' 
+                          : 'border-slate-800/50 hover:border-slate-700/50'
+                      }`}
                     >
-                      <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 text-[11px] shrink-0">
+                      <div className={`flex items-center justify-center w-6 h-6 rounded-lg bg-slate-900 border text-[11px] shrink-0 ${
+                        isGoal ? 'border-brand-neon/60 text-brand-neon shadow-neon' : 'border-slate-800'
+                      }`}>
                         {icon}
                       </div>
 
                       <div className="flex-1 flex flex-col gap-0.5">
                         <div className="flex items-center justify-between">
-                          <span className="text-[9px] font-black text-slate-400 uppercase tracking-wider">
+                          <span className={`text-[9px] font-black uppercase tracking-wider ${isGoal ? 'text-brand-neon font-black' : 'text-slate-400'}`}>
                             {event.type}
                           </span>
-                          <span className="text-[10px] font-bold font-mono text-brand-neon">
+                          <span className={`text-[10px] font-bold font-mono ${isGoal ? 'text-brand-neon animate-pulse font-black' : 'text-brand-neon'}`}>
                             {event.minuteStr}
                           </span>
                         </div>
-                        <p className="text-[10px] text-slate-300 font-bold leading-relaxed pr-6">
+                        <p className={`text-[10px] leading-relaxed pr-6 ${isGoal ? 'text-white font-extrabold' : 'text-slate-350 font-semibold'}`}>
                           {event.text}
                         </p>
                         {eventFlag && (
@@ -250,13 +257,13 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                         <span>{away.name || 'Away'}</span>
                       </div>
                       <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                        <div className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                        <div className="possession-flow-home h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
                           {homePoss}%
                         </div>
                         <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
                           {contestPoss}%
                         </div>
-                        <div className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
+                        <div className="possession-flow-away h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
                           {awayPoss}%
                         </div>
                       </div>
@@ -282,20 +289,16 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                       <span className="text-slate-400 font-sans uppercase tracking-wider text-[8px] font-black">{stat.label}</span>
                       <span>{valAway}{stat.suffix || ''}</span>
                     </div>
-                    {/* Bar display */}
-                    <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
+                    {/* Premium Double-sided progress bar with a gap and rounded corners */}
+                    <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden flex relative gap-0.5">
                       <div 
-                        className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" 
+                        className="bg-gradient-to-r from-red-600 to-red-500 h-full transition-all duration-500 rounded-r-sm" 
                         style={{ width: `${pctHome}%` }}
-                      >
-                        {pctHome > 12 && `${valHome}${stat.suffix || ''}`}
-                      </div>
+                      />
                       <div 
-                        className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" 
+                        className="bg-gradient-to-l from-brand-purple to-indigo-500 h-full transition-all duration-500 rounded-l-sm ml-auto" 
                         style={{ width: `${pctAway}%` }}
-                      >
-                        {pctAway > 12 && `${valAway}${stat.suffix || ''}`}
-                      </div>
+                      />
                     </div>
                   </div>
                 );

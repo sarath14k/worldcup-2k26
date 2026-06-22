@@ -79,7 +79,7 @@ export const FixturesTab = ({
                   <div 
                     key={`today-${match.id}`} 
                     onClick={() => setSelectedMatch(match)}
-                    className={`p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 ${
+                    className={`p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 card-shimmer ${
                       isMatchLive 
                         ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20' 
                         : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
@@ -148,13 +148,13 @@ export const FixturesTab = ({
                                 <span>{away.name}</span>
                               </div>
                               <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                                <div className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                                <div className="possession-flow-home h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
                                   {homePoss}%
                                 </div>
                                 <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
                                   {contestPoss}%
                                 </div>
-                                <div className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
+                                <div className="possession-flow-away h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
                                   {awayPoss}%
                                 </div>
                               </div>
@@ -215,7 +215,7 @@ export const FixturesTab = ({
                   <div 
                     key={`feed-${match.id}`} 
                     onClick={() => setSelectedMatch(match)}
-                    className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2"
+                    className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2 card-shimmer"
                   >
                     <div className="flex justify-between items-center text-[10px] font-bold">
                       <div className="flex items-center gap-2">

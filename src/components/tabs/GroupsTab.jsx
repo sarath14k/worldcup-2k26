@@ -177,7 +177,7 @@ export const GroupsTab = ({
                 <div 
                   key={match.id} 
                   onClick={() => setSelectedMatch(match)}
-                  className="p-3 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/30 cursor-pointer transition-all flex flex-col gap-2"
+                  className="p-3 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/30 cursor-pointer transition-all flex flex-col gap-2 card-shimmer"
                 >
                   <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
                     <span>MATCH {match.id}</span>
