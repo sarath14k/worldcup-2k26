@@ -109,12 +109,15 @@ function normalizeTeamName(name) {
 
 // Endpoint to search and fetch direct YouTube highlights link
 app.get('/api/match-highlights', async (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   const { home, away } = req.query;
   if (!home || !away) {
     return res.status(400).json({ error: 'home and away parameters are required' });
   }
 
-  const query = `FIFA ${home} v ${away} World Cup highlights`;
+  const cleanHome = home.replace(/&/g, 'and');
+  const cleanAway = away.replace(/&/g, 'and');
+  const query = `FIFA ${cleanHome} v ${cleanAway} World Cup highlights`;
 
   try {
     const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
@@ -170,7 +173,7 @@ app.get('/api/match-highlights', async (req, res) => {
             'game play', 'fifa 25', 'ea sports fc', 'fc 24', 'fc 25', 'fifa 19', 'fifa 20', 'fifa 21',
             'alt cast', 'alt-cast', 'alternative cast', 'preview', 'prediction',
             'fake', 'concept', 'fan-made', 'fan made', 'parody', 'mockup', 'mock',
-            'short', 'shorts'
+            'short', 'shorts', 'u20', 'u-20', 'u17', 'u-17', 'u23', 'u-23', 'women', 'womens', 'wnt'
           ];
           
           const realVideos = videos.filter(v => {
