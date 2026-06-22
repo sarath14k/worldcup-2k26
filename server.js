@@ -91,9 +91,10 @@ const TEAM_ALIASES = {
   'south korea': ['korea republic', 'south korea', 'korea'],
   'czechia': ['czechia', 'czech republic'],
   'turkey': ['turkiye', 'turkey'],
-  'ivory coast': ['cote divoire', 'ivory coast'],
+  'ivory coast': ["cote d'ivoire", 'cote divoire', 'ivory coast'],
   'dr congo': ['dr congo', 'congo dr', 'democratic republic of congo'],
-  'cape verde': ['cabo verde', 'cape verde']
+  'cape verde': ['cabo verde', 'cape verde'],
+  'bosnia  herzegovina': ['bosnia and herzegovina', 'bosnia & herzegovina', 'bosnia']
 };
 
 // Helper to normalize team names for verification
