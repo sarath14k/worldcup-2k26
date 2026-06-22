@@ -266,6 +266,53 @@ app.get('/api/match-highlights', async (req, res) => {
   }
 });
 
+app.get('/api/debug-highlights', async (req, res) => {
+  const { home, away } = req.query;
+  const cleanHome = (home || '').replace(/&/g, 'and');
+  const cleanAway = (away || '').replace(/&/g, 'and');
+  const query = `FIFA ${cleanHome} v ${cleanAway} World Cup highlights`;
+  const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+  try {
+    const response = await fetch(searchUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
+    const html = await response.text();
+    const dataMatch = html.match(/ytInitialData\s*=\s*({.+?});/);
+    if (dataMatch) {
+      const data = JSON.parse(dataMatch[1]);
+      const contents = data.contents?.twoColumnSearchResultsRenderer?.primaryContents?.sectionListRenderer?.contents;
+      if (contents) {
+        const videos = [];
+        for (const section of contents) {
+          const itemSection = section.itemSectionRenderer;
+          if (itemSection && itemSection.contents) {
+            for (const item of itemSection.contents) {
+              if (item.videoRenderer) {
+                const vr = item.videoRenderer;
+                videos.push({
+                  title: vr.title?.runs?.[0]?.text,
+                  videoId: vr.videoId,
+                  channel: vr.ownerText?.runs?.[0]?.text || vr.shortBylineText?.runs?.[0]?.text,
+                  channelUrl: vr.ownerText?.runs?.[0]?.navigationEndpoint?.browseEndpoint?.canonicalBaseUrl 
+                    || vr.shortBylineText?.runs?.[0]?.navigationEndpoint?.browseEndpoint?.canonicalBaseUrl 
+                    || '',
+                  duration: vr.lengthText?.simpleText || ''
+                });
+              }
+            }
+          }
+        }
+        return res.json({ query, videos });
+      }
+    }
+    res.json({ error: 'ytInitialData not found', htmlSnippet: html.substring(0, 500) });
+  } catch (err) {
+    res.json({ error: err.message });
+  }
+});
+
 // Serve Vite static build assets
 app.use(express.static(path.join(__dirname, 'dist')));
 
