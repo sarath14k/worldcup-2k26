@@ -326,7 +326,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                 {homePlayers.length === 0 ? (
                   <div className="text-[10px] text-slate-500 italic py-1">No ratings available</div>
                 ) : (
-                  homePlayers.slice(0, 8).map((p, idx) => (
+                  homePlayers.map((p, idx) => (
                     <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
                       <span className="text-slate-300 truncate pr-2">{p.name}</span>
                       <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
@@ -351,7 +351,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                 {awayPlayers.length === 0 ? (
                   <div className="text-[10px] text-slate-500 italic py-1 text-right">No ratings available</div>
                 ) : (
-                  awayPlayers.slice(0, 8).map((p, idx) => (
+                  awayPlayers.map((p, idx) => (
                     <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
                       <span className="text-slate-300 truncate pr-2">{p.name}</span>
                       <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
