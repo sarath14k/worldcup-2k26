@@ -410,6 +410,8 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [liveMatches, setLiveMatches] = useState({});
   const [selectedMatch, setSelectedMatch] = useState(null);
+  const [showAllUpcoming, setShowAllUpcoming] = useState(false);
+  const [showAllDone, setShowAllDone] = useState(false);
 
   // Expanded Venue state
   const [expandedVenue, setExpandedVenue] = useState(null);
@@ -1649,7 +1651,7 @@ function App() {
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
                     </span>
                     <h3 className="text-sm font-black uppercase tracking-wider text-slate-100 flex items-center gap-1.5">
-                      Upcoming 16 Fixtures
+                      Upcoming Fixtures
                     </h3>
                   </div>
                   <span className="text-[9px] bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-2.5 py-1 rounded-full font-bold font-mono">
@@ -1658,7 +1660,7 @@ function App() {
                 </div>
 
                 <div className="flex flex-col gap-3.5 relative z-10 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
-                  {upcomingFixtures.map(match => {
+                  {(showAllUpcoming ? upcomingFixtures : upcomingFixtures.slice(0, 3)).map(match => {
                     const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                     const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                     const live = liveMatches[match.id];
@@ -1772,6 +1774,14 @@ function App() {
                     );
                   })}
                 </div>
+                {upcomingFixtures.length > 3 && (
+                  <button
+                    onClick={() => setShowAllUpcoming(!showAllUpcoming)}
+                    className="mt-3 w-full py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5"
+                  >
+                    {showAllUpcoming ? 'View Less' : 'View More'}
+                  </button>
+                )}
               </div>
             </div>
 
@@ -1788,9 +1798,8 @@ function App() {
                   <p className="text-xs text-slate-400">Timeline of completed tournament fixtures.</p>
                 </div>
 
-                {/* Scrolling List */}
                 <div className="flex flex-col gap-3 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
-                  {feedMatches.map(match => {
+                  {(showAllDone ? feedMatches : feedMatches.slice(0, 3)).map(match => {
                     const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                     const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                     return (
@@ -1860,6 +1869,14 @@ function App() {
                     );
                   })}
                 </div>
+                {feedMatches.length > 3 && (
+                  <button
+                    onClick={() => setShowAllDone(!showAllDone)}
+                    className="mt-3 w-full py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5"
+                  >
+                    {showAllDone ? 'View Less' : 'View More'}
+                  </button>
+                )}
               </div>
             </div>
           </div>
