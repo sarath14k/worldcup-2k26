@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { TEAMS } from '../data/worldcupData';
-import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch } from '../utils/matchHelpers';
+import { TEAMS, VENUES } from '../data/worldcupData';
+import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
 
 const ScrollingName = ({ name }) => {
   const containerRef = useRef(null);
@@ -98,7 +98,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
               {selectedMatch.type === 'group' ? `Group ${selectedMatch.group}` : selectedMatch.round || 'Knockout'} • Match {selectedMatch.id}
             </div>
             <div className="text-[10px] sm:text-[11px] text-slate-400 font-bold font-mono truncate max-w-[240px] sm:max-w-md">
-              {selectedMatch.venue || 'TBD Stadium'} • {formatDisplayDate(selectedMatch.date)}
+              {getMatchVenue(selectedMatch, VENUES)} • {formatDisplayDate(selectedMatch.date)}
             </div>
           </div>
           
