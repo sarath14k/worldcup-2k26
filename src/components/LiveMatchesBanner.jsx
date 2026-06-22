@@ -2,7 +2,7 @@ import { TEAMS } from '../data/worldcupData';
 
 export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => {
   return (
-    <div className="flex flex-wrap gap-2.5 mt-2">
+    <div className="flex flex-col gap-3.5 mt-4 w-full">
       {activeLiveMatchesList.map(live => {
         const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
         const awayTeam = TEAMS[live.away] || { flag: '🏳️', name: live.away || 'TBD' };
@@ -11,22 +11,44 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
             key={live.id} 
             onClick={() => setSelectedMatch(live.originalMatch)}
             title="Click to view live stats & timeline commentary"
-            className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-slate-950/70 border border-slate-900 hover:border-slate-800 hover:bg-slate-900/60 text-[10px] sm:text-xs font-mono font-bold text-slate-200 cursor-pointer select-none transition-all"
+            className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-slate-950/80 border border-slate-850 hover:border-brand-neon/60 hover:bg-slate-900/30 cursor-pointer select-none transition-all duration-300 shadow-glass group w-full"
           >
-            <span className="text-[8px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1.5 py-0.5 rounded font-black shrink-0">
-              {live.minute}'
-            </span>
-            <span className="flex items-center gap-1 font-bold">
-              <span>{homeTeam.flag}</span>
-              <span className="text-slate-100">{live.home}</span>
-            </span>
-            <span className="text-brand-neon font-black px-1.5 py-0.5 bg-slate-900 rounded border border-slate-800/80">
-              {live.homeScore} - {live.awayScore}
-            </span>
-            <span className="flex items-center gap-1 font-bold">
-              <span className="text-slate-100">{live.away}</span>
-              <span>{awayTeam.flag}</span>
-            </span>
+            {/* Live Indicator & Status */}
+            <div className="flex items-center gap-2.5 shrink-0 self-start sm:self-center">
+              <span className="flex h-3 w-3 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-neon"></span>
+              </span>
+              <span className="text-[10px] sm:text-xs bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-3 py-1 rounded-xl font-black tracking-widest uppercase animate-pulse">
+                LIVE {live.minute}'
+              </span>
+            </div>
+
+            {/* Teams & Score Row */}
+            <div className="flex items-center justify-between gap-4 sm:gap-8 flex-1 w-full sm:w-auto">
+              {/* Home Team */}
+              <div className="flex items-center gap-3 font-extrabold text-slate-100 text-sm sm:text-base md:text-lg justify-end flex-1 truncate">
+                <span className="truncate uppercase tracking-wide">{homeTeam.name}</span>
+                <span className="text-2xl sm:text-3xl shrink-0 drop-shadow">{homeTeam.flag}</span>
+              </div>
+
+              {/* Big Score Box */}
+              <div className="text-brand-neon font-black px-5 py-2 sm:px-6 sm:py-2.5 bg-slate-900 border border-slate-800 rounded-2xl text-lg sm:text-xl md:text-2xl font-mono shadow-inner group-hover:scale-105 transition-transform shrink-0 tracking-wider">
+                {live.homeScore} <span className="text-slate-600 font-normal px-0.5">:</span> {live.awayScore}
+              </div>
+
+              {/* Away Team */}
+              <div className="flex items-center gap-3 font-extrabold text-slate-100 text-sm sm:text-base md:text-lg flex-1 truncate">
+                <span className="text-2xl sm:text-3xl shrink-0 drop-shadow">{awayTeam.flag}</span>
+                <span className="truncate uppercase tracking-wide">{awayTeam.name}</span>
+              </div>
+            </div>
+
+            {/* Click to expand hint for accessibility */}
+            <div className="hidden lg:flex items-center text-[10px] font-bold text-slate-500 uppercase tracking-widest gap-1 group-hover:text-brand-neon transition-colors shrink-0">
+              <span>Stats</span>
+              <span>→</span>
+            </div>
           </div>
         );
       })}
