@@ -12,6 +12,177 @@ export const BracketTab = ({
 }) => {
   const [showGroupSelectors, setShowGroupSelectors] = useState(false);
   const [hoveredTeam, setHoveredTeam] = useState(null);
+  const [activeRoundTab, setActiveRoundTab] = useState('r32');
+
+  const renderMobileRound = () => {
+    const roundKey = activeRoundTab;
+    const matches = bracket[roundKey] || [];
+    const roundLabel =
+      roundKey === 'r32' ? 'Round of 32' :
+      roundKey === 'r16' ? 'Round of 16' :
+      roundKey === 'qf'  ? 'Quarter-Finals' :
+      roundKey === 'sf'  ? 'Semi-Finals' : 'Grand Final';
+
+    if (roundKey === 'final') {
+      return (
+        <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950/90 border border-brand-gold/20 shadow-gold relative mt-2">
+          <div className="absolute top-4 right-4 flex items-center gap-1 text-[10px] text-brand-gold font-bold">
+            <Star className="w-3.5 h-3.5 fill-brand-gold" />
+            <span>CHAMPIONS</span>
+          </div>
+
+          <div className="mb-6 relative">
+            <div className="absolute inset-0 bg-brand-gold/10 rounded-full blur-xl animate-pulse"></div>
+            <WorldCupTrophyIcon className="w-16 h-16 text-brand-gold drop-shadow-xl animate-float relative z-10" />
+          </div>
+
+          {/* Final match card */}
+          {matches.map((match, idx) => {
+            const homeTeam = TEAMS[match.home];
+            const awayTeam = TEAMS[match.away];
+            const isHomeWinner = match.winner === match.home && match.winner !== null;
+            const isAwayWinner = match.winner === match.away && match.winner !== null;
+
+            return (
+              <div key={match.id} className="w-full flex flex-col gap-3">
+                <div className="text-center">
+                  <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">The Grand Final</p>
+                  <p className="text-[9px] text-brand-neon font-bold font-mono">{formatDisplayDate(match.date)}</p>
+                  <p className="text-[8px] text-slate-500 font-semibold mt-0.5">New York/New Jersey</p>
+                </div>
+
+                <div className="flex flex-col gap-2 bg-slate-950/80 p-3 rounded-2xl border border-slate-800">
+                  {/* Home */}
+                  <div
+                    id={`m-slot-final-home`}
+                    onClick={() => match.home && handleKnockoutWinner('final', idx, match.home)}
+                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
+                      !match.home 
+                        ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
+                        : isHomeWinner 
+                          ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
+                          : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 overflow-hidden truncate">
+                      <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
+                      <span className="truncate">{homeTeam ? homeTeam.name : 'TBD SF 1 Winner'}</span>
+                    </div>
+                    {isHomeWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
+                  </div>
+
+                  {/* Away */}
+                  <div
+                    id={`m-slot-final-away`}
+                    onClick={() => match.away && handleKnockoutWinner('final', idx, match.away)}
+                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
+                      !match.away 
+                        ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
+                        : isAwayWinner 
+                          ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
+                          : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 overflow-hidden truncate">
+                      <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
+                      <span className="truncate">{awayTeam ? awayTeam.name : 'TBD SF 2 Winner'}</span>
+                    </div>
+                    {isAwayWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Champion Reveal Box */}
+          {tournamentChampion ? (
+            <div className="mt-5 text-center animate-bounce">
+              <p className="text-[10px] text-brand-neon font-bold tracking-widest">WORLD CUP CHAMPION</p>
+              <p className="text-base font-extrabold text-white flex items-center gap-1.5 justify-center mt-1">
+                <span>{tournamentChampion.flag}</span>
+                <span>{tournamentChampion.name.toUpperCase()}</span>
+              </p>
+            </div>
+          ) : (
+            <p className="text-[10px] text-slate-500 mt-4 text-center">Predict all matches to crown the champion!</p>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-col gap-3.5 mt-2">
+        <h3 className="text-center font-bold text-xs tracking-wider text-slate-400 uppercase border-b border-slate-800/60 pb-2 mb-2">
+          {roundLabel} Matches
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          {matches.map((match, idx) => {
+            const homeTeam = TEAMS[match.home];
+            const awayTeam = TEAMS[match.away];
+            const isHomeWinner = match.winner === match.home && match.winner !== null;
+            const isAwayWinner = match.winner === match.away && match.winner !== null;
+            const isHoveredMatch = hoveredTeam && (match.home === hoveredTeam || match.away === hoveredTeam);
+
+            return (
+              <div 
+                key={match.id} 
+                className={`p-3.5 rounded-2xl transition-all duration-300 relative border ${
+                  isHoveredMatch 
+                    ? 'border-brand-neon bg-slate-900/90 shadow-neon ring-1 ring-brand-neon/30' 
+                    : 'border-slate-800/80 bg-brand-cardBg'
+                } flex flex-col gap-2.5`}
+              >
+                <div className="flex justify-between items-center text-[10px] text-slate-400 font-bold tracking-tight">
+                  <span className="bg-slate-950/60 px-2 py-0.5 rounded border border-slate-900/40 text-[9px]">{match.title}</span>
+                  <span className="text-brand-neon font-black font-mono text-[9px]">{formatDisplayDate(match.date)}</span>
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  {/* Home Team */}
+                  <div
+                    id={`m-slot-${match.id}-home`}
+                    onClick={() => match.home && handleKnockoutWinner(roundKey, idx, match.home)}
+                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
+                      !match.home 
+                        ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
+                        : isHomeWinner 
+                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
+                          : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 overflow-hidden truncate">
+                      <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
+                      <span className="truncate">{homeTeam ? homeTeam.name : 'TBD (Group Stage)'}</span>
+                    </div>
+                    {isHomeWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
+                  </div>
+
+                  {/* Away Team */}
+                  <div
+                    id={`m-slot-${match.id}-away`}
+                    onClick={() => match.away && handleKnockoutWinner(roundKey, idx, match.away)}
+                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
+                      !match.away 
+                        ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
+                        : isAwayWinner 
+                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
+                          : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 overflow-hidden truncate">
+                      <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
+                      <span className="truncate">{awayTeam ? awayTeam.name : 'TBD (Group Stage)'}</span>
+                    </div>
+                    {isAwayWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   const renderBracketColumn = (roundKey, matches, isRight = false) => {
     const rightOffset = isRight
@@ -194,8 +365,32 @@ export const BracketTab = ({
         )}
       </div>
 
-      {/* Tree Bracket Container (Scrollable horizontally) */}
-      <div className="overflow-x-auto pb-6">
+      {/* Mobile-optimized Vertical/Pill Bracket view */}
+      <div className="block md:hidden">
+        {/* Pills Selector */}
+        <div className="flex items-center justify-between bg-slate-950/60 p-1 rounded-xl border border-slate-900 mb-4 gap-1">
+          {['r32', 'r16', 'qf', 'sf', 'final'].map((rk) => {
+            const label = rk === 'r32' ? 'R32' : rk === 'r16' ? 'R16' : rk === 'qf' ? 'QF' : rk === 'sf' ? 'SF' : 'Final';
+            return (
+              <button
+                key={rk}
+                onClick={() => setActiveRoundTab(rk)}
+                className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-center transition-all cursor-pointer ${
+                  activeRoundTab === rk 
+                    ? 'bg-brand-neon text-slate-950 shadow-neon font-black' 
+                    : 'text-slate-400 hover:text-slate-205'
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+        {renderMobileRound()}
+      </div>
+
+      {/* Tree Bracket Container (Scrollable horizontally) - Desktop Only */}
+      <div className="hidden md:block overflow-x-auto pb-6">
         <div className="min-w-[1280px] flex gap-4 items-center justify-between select-none">
           
           {/* --- LEFT BRACKET --- */}
