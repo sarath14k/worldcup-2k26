@@ -89,6 +89,8 @@ const parseMatchKickoff = (match) => {
   }
 };
 
+const isMobile = typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 const formatDisplayDate = (dateStr) => {
   if (!dateStr) return '';
   try {
@@ -1851,8 +1853,8 @@ function App() {
                             return (
                               <a
                                 href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={isMobile ? undefined : "_blank"}
+                                rel={isMobile ? undefined : "noopener noreferrer"}
                                 onClick={(e) => e.stopPropagation()}
                                 className="mt-1 py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]"
                               >
