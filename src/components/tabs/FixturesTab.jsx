@@ -23,14 +23,10 @@ export const FixturesTab = ({
       {/* Live Tracker Banner & Auto-Refresh Toggle */}
       <div className="p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden">
         <div className="absolute -top-12 -left-12 w-24 h-24 bg-brand-neon/5 rounded-full blur-2xl pointer-events-none" />
-        <div className="flex items-center gap-3 relative z-10 w-full">
-          <span className="flex h-3 w-3 relative shrink-0">
-            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75 ${hasLiveMatches ? '' : 'hidden'}`}></span>
-            <span className={`relative inline-flex rounded-full h-3 w-3 ${hasLiveMatches ? 'bg-brand-neon animate-pulse' : 'bg-slate-600'}`}></span>
-          </span>
+        <div className="flex items-center relative z-10 w-full">
           <div className="w-full">
             <h2 className="text-xs sm:text-sm font-extrabold text-slate-100 uppercase tracking-wider flex items-center gap-2">
-              {hasLiveMatches ? 'LIVE MATCH TRACKER ACTIVE' : 'NO ACTIVE LIVE MATCHES'}
+              {hasLiveMatches ? 'LIVE NOW' : 'NO ACTIVE LIVE MATCHES'}
             </h2>
             {hasLiveMatches && activeLiveMatchesList.length > 0 && (
               <LiveMatchesList 
