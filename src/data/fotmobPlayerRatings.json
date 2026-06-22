@@ -1,0 +1,5476 @@
+[
+  {
+    "rank": 1,
+    "name": "Lionel Messi",
+    "team": "ARG",
+    "rating": 9.18,
+    "playerId": "30981"
+  },
+  {
+    "rank": 2,
+    "name": "Erling Haaland",
+    "team": "NOR",
+    "rating": 9.17,
+    "playerId": "737066"
+  },
+  {
+    "rank": 3,
+    "name": "Harry Kane",
+    "team": "ENG",
+    "rating": 9.01,
+    "playerId": "194165"
+  },
+  {
+    "rank": 4,
+    "name": "Luis Díaz",
+    "team": "COL",
+    "rating": 8.94,
+    "playerId": "860914"
+  },
+  {
+    "rank": 5,
+    "name": "Brian Brobbey",
+    "team": "NED",
+    "rating": 8.84,
+    "playerId": "940446"
+  },
+  {
+    "rank": 6,
+    "name": "Deniz Undav",
+    "team": "GER",
+    "rating": 8.76,
+    "playerId": "661519"
+  },
+  {
+    "rank": 7,
+    "name": "Kylian Mbappé",
+    "team": "FRA",
+    "rating": 8.42,
+    "playerId": "701154"
+  },
+  {
+    "rank": 8,
+    "name": "Felix Nmecha",
+    "team": "GER",
+    "rating": 8.38,
+    "playerId": "966019"
+  },
+  {
+    "rank": 9,
+    "name": "Alexander Isak",
+    "team": "SWE",
+    "rating": 8.37,
+    "playerId": "690107"
+  },
+  {
+    "rank": 10,
+    "name": "Nathan Saliba",
+    "team": "CAN",
+    "rating": 8.35,
+    "playerId": "1216798"
+  },
+  {
+    "rank": 11,
+    "name": "Alex Freeman",
+    "team": "USA",
+    "rating": 8.32,
+    "playerId": "1338696"
+  },
+  {
+    "rank": 12,
+    "name": "Pedro Porro",
+    "team": "ESP",
+    "rating": 8.32,
+    "playerId": "941573"
+  },
+  {
+    "rank": 13,
+    "name": "Jude Bellingham",
+    "team": "ENG",
+    "rating": 8.3,
+    "playerId": "1077894"
+  },
+  {
+    "rank": 14,
+    "name": "Cody Gakpo",
+    "team": "NED",
+    "rating": 8.27,
+    "playerId": "806552"
+  },
+  {
+    "rank": 15,
+    "name": "Ko Itakura",
+    "team": "JPN",
+    "rating": 8.26,
+    "playerId": "620917"
+  },
+  {
+    "rank": 16,
+    "name": "Caleb Yirenkyi",
+    "team": "GHA",
+    "rating": 8.21,
+    "playerId": "1615927"
+  },
+  {
+    "rank": 17,
+    "name": "Julio Enciso",
+    "team": "PAR",
+    "rating": 8.2,
+    "playerId": "1073742"
+  },
+  {
+    "rank": 18,
+    "name": "Maxi Araújo",
+    "team": "URU",
+    "rating": 8.19,
+    "playerId": "1031656"
+  },
+  {
+    "rank": 19,
+    "name": "Joshua Kimmich",
+    "team": "GER",
+    "rating": 8.16,
+    "playerId": "460632"
+  },
+  {
+    "rank": 20,
+    "name": "João Neves",
+    "team": "POR",
+    "rating": 8.15,
+    "playerId": "1342757"
+  },
+  {
+    "rank": 20,
+    "name": "Rubén Vargas",
+    "team": "SUI",
+    "rating": 8.15,
+    "playerId": "860752"
+  },
+  {
+    "rank": 22,
+    "name": "Florian Wirtz",
+    "team": "GER",
+    "rating": 8.14,
+    "playerId": "1152455"
+  },
+  {
+    "rank": 23,
+    "name": "Jonathan David",
+    "team": "CAN",
+    "rating": 8.12,
+    "playerId": "939569"
+  },
+  {
+    "rank": 24,
+    "name": "Keito Nakamura",
+    "team": "JPN",
+    "rating": 8.11,
+    "playerId": "887704"
+  },
+  {
+    "rank": 25,
+    "name": "Daniel Muñoz",
+    "team": "COL",
+    "rating": 8.09,
+    "playerId": "859282"
+  },
+  {
+    "rank": 25,
+    "name": "Rodrigo Bentancur",
+    "team": "URU",
+    "rating": 8.09,
+    "playerId": "620618"
+  },
+  {
+    "rank": 27,
+    "name": "Mohamed Salah",
+    "team": "EGY",
+    "rating": 8.08,
+    "playerId": "292462"
+  },
+  {
+    "rank": 28,
+    "name": "Crysencio Summerville",
+    "team": "NED",
+    "rating": 8.07,
+    "playerId": "941213"
+  },
+  {
+    "rank": 28,
+    "name": "Matías Galarza",
+    "team": "PAR",
+    "rating": 8.07,
+    "playerId": "1241957"
+  },
+  {
+    "rank": 30,
+    "name": "Richie Laryea",
+    "team": "CAN",
+    "rating": 8.06,
+    "playerId": "729506"
+  },
+  {
+    "rank": 31,
+    "name": "Rodri",
+    "team": "ESP",
+    "rating": 8.04,
+    "playerId": "675088"
+  },
+  {
+    "rank": 32,
+    "name": "Mostafa Ahmed Shobeir",
+    "team": "EGY",
+    "rating": 8.02,
+    "playerId": "1228546"
+  },
+  {
+    "rank": 33,
+    "name": "Jovo Lukic",
+    "team": "BIH",
+    "rating": 8.01,
+    "playerId": "1174844"
+  },
+  {
+    "rank": 34,
+    "name": "Pedri",
+    "team": "ESP",
+    "rating": 8,
+    "playerId": "1083323"
+  },
+  {
+    "rank": 35,
+    "name": "Elliot Anderson",
+    "team": "ENG",
+    "rating": 7.98,
+    "playerId": "1089691"
+  },
+  {
+    "rank": 35,
+    "name": "Luis Romo",
+    "team": "MEX",
+    "rating": 7.98,
+    "playerId": "921174"
+  },
+  {
+    "rank": 37,
+    "name": "Raúl Rangel",
+    "team": "MEX",
+    "rating": 7.93,
+    "playerId": "1227878"
+  },
+  {
+    "rank": 38,
+    "name": "Granit Xhaka",
+    "team": "SUI",
+    "rating": 7.93,
+    "playerId": "207236"
+  },
+  {
+    "rank": 39,
+    "name": "Vinícius Júnior",
+    "team": "BRA",
+    "rating": 7.92,
+    "playerId": "846033"
+  },
+  {
+    "rank": 39,
+    "name": "Daichi Kamada",
+    "team": "JPN",
+    "rating": 7.92,
+    "playerId": "621515"
+  },
+  {
+    "rank": 41,
+    "name": "Jonas Adjetey",
+    "team": "GHA",
+    "rating": 7.9,
+    "playerId": "1432344"
+  },
+  {
+    "rank": 41,
+    "name": "Marcos Llorente",
+    "team": "ESP",
+    "rating": 7.9,
+    "playerId": "602563"
+  },
+  {
+    "rank": 43,
+    "name": "Noor Al-Rawabdeh",
+    "team": "JOR",
+    "rating": 7.89,
+    "playerId": "1036253"
+  },
+  {
+    "rank": 44,
+    "name": "Ayase Ueda",
+    "team": "JPN",
+    "rating": 7.89,
+    "playerId": "942393"
+  },
+  {
+    "rank": 45,
+    "name": "Ivan Perisic",
+    "team": "CRO",
+    "rating": 7.87,
+    "playerId": "163670"
+  },
+  {
+    "rank": 46,
+    "name": "Nico Schlotterbeck",
+    "team": "GER",
+    "rating": 7.85,
+    "playerId": "1002058"
+  },
+  {
+    "rank": 47,
+    "name": "Christian Pulisic",
+    "team": "USA",
+    "rating": 7.85,
+    "playerId": "688295"
+  },
+  {
+    "rank": 47,
+    "name": "Martin Baturina",
+    "team": "CRO",
+    "rating": 7.85,
+    "playerId": "1215064"
+  },
+  {
+    "rank": 47,
+    "name": "Viktor Gyökeres",
+    "team": "SWE",
+    "rating": 7.85,
+    "playerId": "664500"
+  },
+  {
+    "rank": 50,
+    "name": "Ismael Saibari",
+    "team": "MAR",
+    "rating": 7.84,
+    "playerId": "1180288"
+  },
+  {
+    "rank": 51,
+    "name": "Pau Cubarsí",
+    "team": "ESP",
+    "rating": 7.83,
+    "playerId": "1532137"
+  },
+  {
+    "rank": 52,
+    "name": "Joshua Brenet",
+    "team": "CUW",
+    "rating": 7.82,
+    "playerId": "389845"
+  },
+  {
+    "rank": 53,
+    "name": "Elijah Just",
+    "team": "NZL",
+    "rating": 7.82,
+    "playerId": "1053736"
+  },
+  {
+    "rank": 54,
+    "name": "Kang-In Lee",
+    "team": "KOR",
+    "rating": 7.81,
+    "playerId": "940976"
+  },
+  {
+    "rank": 55,
+    "name": "Malik Tillman",
+    "team": "USA",
+    "rating": 7.78,
+    "playerId": "1126058"
+  },
+  {
+    "rank": 55,
+    "name": "Aymeric Laporte",
+    "team": "ESP",
+    "rating": 7.78,
+    "playerId": "411617"
+  },
+  {
+    "rank": 57,
+    "name": "Benjamin Asare",
+    "team": "GHA",
+    "rating": 7.77,
+    "playerId": "1806615"
+  },
+  {
+    "rank": 57,
+    "name": "Frenkie de Jong",
+    "team": "NED",
+    "rating": 7.77,
+    "playerId": "638622"
+  },
+  {
+    "rank": 59,
+    "name": "Mikel Oyarzabal",
+    "team": "ESP",
+    "rating": 7.75,
+    "playerId": "678234"
+  },
+  {
+    "rank": 60,
+    "name": "Gustavo Puerta",
+    "team": "COL",
+    "rating": 7.75,
+    "playerId": "1331597"
+  },
+  {
+    "rank": 61,
+    "name": "Julián Quiñones",
+    "team": "MEX",
+    "rating": 7.74,
+    "playerId": "720560"
+  },
+  {
+    "rank": 62,
+    "name": "Ryan Gravenberch",
+    "team": "NED",
+    "rating": 7.73,
+    "playerId": "956683"
+  },
+  {
+    "rank": 63,
+    "name": "Alistair Johnston",
+    "team": "CAN",
+    "rating": 7.71,
+    "playerId": "1055426"
+  },
+  {
+    "rank": 63,
+    "name": "Breel Embolo",
+    "team": "SUI",
+    "rating": 7.71,
+    "playerId": "527103"
+  },
+  {
+    "rank": 63,
+    "name": "Denzel Dumfries",
+    "team": "NED",
+    "rating": 7.71,
+    "playerId": "593118"
+  },
+  {
+    "rank": 63,
+    "name": "Enzo Fernández",
+    "team": "ARG",
+    "rating": 7.71,
+    "playerId": "1137705"
+  },
+  {
+    "rank": 67,
+    "name": "Ali Iyad Olwan",
+    "team": "JOR",
+    "rating": 7.7,
+    "playerId": "1028896"
+  },
+  {
+    "rank": 67,
+    "name": "Yan Diomande",
+    "team": "CIV",
+    "rating": 7.7,
+    "playerId": "1735453"
+  },
+  {
+    "rank": 69,
+    "name": "Folarin Balogun",
+    "team": "USA",
+    "rating": 7.7,
+    "playerId": "982677"
+  },
+  {
+    "rank": 70,
+    "name": "Pedro Vite",
+    "team": "ECU",
+    "rating": 7.7,
+    "playerId": "1108611"
+  },
+  {
+    "rank": 71,
+    "name": "Wilfried Singo",
+    "team": "CIV",
+    "rating": 7.69,
+    "playerId": "1027472"
+  },
+  {
+    "rank": 72,
+    "name": "Jamal Musiala",
+    "team": "GER",
+    "rating": 7.68,
+    "playerId": "1156141"
+  },
+  {
+    "rank": 73,
+    "name": "Kai Havertz",
+    "team": "GER",
+    "rating": 7.67,
+    "playerId": "749736"
+  },
+  {
+    "rank": 73,
+    "name": "Antonee Robinson",
+    "team": "USA",
+    "rating": 7.67,
+    "playerId": "662428"
+  },
+  {
+    "rank": 73,
+    "name": "Ramin Rezaeian",
+    "team": "IRN",
+    "rating": 7.67,
+    "playerId": "505959"
+  },
+  {
+    "rank": 76,
+    "name": "Diney Borges",
+    "team": "CPV",
+    "rating": 7.66,
+    "playerId": "496648"
+  },
+  {
+    "rank": 76,
+    "name": "Mert Müldür",
+    "team": "TUR",
+    "rating": 7.66,
+    "playerId": "904098"
+  },
+  {
+    "rank": 76,
+    "name": "Philipp Lienhart",
+    "team": "AUT",
+    "rating": 7.66,
+    "playerId": "643724"
+  },
+  {
+    "rank": 76,
+    "name": "Stephen Eustaquio",
+    "team": "CAN",
+    "rating": 7.66,
+    "playerId": "816223"
+  },
+  {
+    "rank": 76,
+    "name": "Thibaut Courtois",
+    "team": "BEL",
+    "rating": 7.66,
+    "playerId": "170323"
+  },
+  {
+    "rank": 76,
+    "name": "Tyler Adams",
+    "team": "USA",
+    "rating": 7.66,
+    "playerId": "729769"
+  },
+  {
+    "rank": 82,
+    "name": "Dani Olmo",
+    "team": "ESP",
+    "rating": 7.65,
+    "playerId": "614834"
+  },
+  {
+    "rank": 82,
+    "name": "Sander Berge",
+    "team": "NOR",
+    "rating": 7.65,
+    "playerId": "540963"
+  },
+  {
+    "rank": 84,
+    "name": "Declan Rice",
+    "team": "ENG",
+    "rating": 7.63,
+    "playerId": "654096"
+  },
+  {
+    "rank": 84,
+    "name": "Manuel Akanji",
+    "team": "SUI",
+    "rating": 7.63,
+    "playerId": "521318"
+  },
+  {
+    "rank": 86,
+    "name": "Jaminton Campaz",
+    "team": "COL",
+    "rating": 7.62,
+    "playerId": "837870"
+  },
+  {
+    "rank": 86,
+    "name": "Lisandro Martínez",
+    "team": "ARG",
+    "rating": 7.62,
+    "playerId": "847983"
+  },
+  {
+    "rank": 88,
+    "name": "Patrick Beach",
+    "team": "AUS",
+    "rating": 7.62,
+    "playerId": "1335765"
+  },
+  {
+    "rank": 89,
+    "name": "Lucas Paquetá",
+    "team": "BRA",
+    "rating": 7.62,
+    "playerId": "766435"
+  },
+  {
+    "rank": 90,
+    "name": "Matheus Cunha",
+    "team": "BRA",
+    "rating": 7.61,
+    "playerId": "863098"
+  },
+  {
+    "rank": 91,
+    "name": "Aaron Wan-Bissaka",
+    "team": "COD",
+    "rating": 7.61,
+    "playerId": "760320"
+  },
+  {
+    "rank": 91,
+    "name": "Arthur Masuaku",
+    "team": "COD",
+    "rating": 7.61,
+    "playerId": "418137"
+  },
+  {
+    "rank": 91,
+    "name": "Weston McKennie",
+    "team": "USA",
+    "rating": 7.61,
+    "playerId": "848266"
+  },
+  {
+    "rank": 94,
+    "name": "Emam Ashour",
+    "team": "EGY",
+    "rating": 7.61,
+    "playerId": "979376"
+  },
+  {
+    "rank": 95,
+    "name": "Moisés Caicedo",
+    "team": "ECU",
+    "rating": 7.61,
+    "playerId": "1137668"
+  },
+  {
+    "rank": 96,
+    "name": "Vozinha",
+    "team": "CPV",
+    "rating": 7.6,
+    "playerId": "422149"
+  },
+  {
+    "rank": 97,
+    "name": "Roberto Alvarado",
+    "team": "MEX",
+    "rating": 7.6,
+    "playerId": "720737"
+  },
+  {
+    "rank": 98,
+    "name": "Alireza Beiranvand",
+    "team": "IRN",
+    "rating": 7.6,
+    "playerId": "505313"
+  },
+  {
+    "rank": 99,
+    "name": "Rodrigo De Paul",
+    "team": "ARG",
+    "rating": 7.59,
+    "playerId": "324578"
+  },
+  {
+    "rank": 99,
+    "name": "Unai Simón",
+    "team": "ESP",
+    "rating": 7.59,
+    "playerId": "660625"
+  },
+  {
+    "rank": 101,
+    "name": "Guéla Doué",
+    "team": "CIV",
+    "rating": 7.58,
+    "playerId": "1395704"
+  },
+  {
+    "rank": 101,
+    "name": "Neil El Aynaoui",
+    "team": "MAR",
+    "rating": 7.58,
+    "playerId": "1274060"
+  },
+  {
+    "rank": 101,
+    "name": "Michael Olise",
+    "team": "FRA",
+    "rating": 7.58,
+    "playerId": "1029063"
+  },
+  {
+    "rank": 104,
+    "name": "Ladislav Krejcí",
+    "team": "CZE",
+    "rating": 7.57,
+    "playerId": "798029"
+  },
+  {
+    "rank": 104,
+    "name": "Brandon Mechele",
+    "team": "BEL",
+    "rating": 7.57,
+    "playerId": "445873"
+  },
+  {
+    "rank": 104,
+    "name": "Youri Tielemans",
+    "team": "BEL",
+    "rating": 7.57,
+    "playerId": "465960"
+  },
+  {
+    "rank": 107,
+    "name": "Yasin Ayari",
+    "team": "SWE",
+    "rating": 7.56,
+    "playerId": "1168311"
+  },
+  {
+    "rank": 108,
+    "name": "Cyle Larin",
+    "team": "CAN",
+    "rating": 7.56,
+    "playerId": "544312"
+  },
+  {
+    "rank": 109,
+    "name": "Ricardo Rodríguez",
+    "team": "SUI",
+    "rating": 7.54,
+    "playerId": "115591"
+  },
+  {
+    "rank": 110,
+    "name": "Teboho Mokoena",
+    "team": "RSA",
+    "rating": 7.53,
+    "playerId": "848361"
+  },
+  {
+    "rank": 111,
+    "name": "Facundo Medina",
+    "team": "ARG",
+    "rating": 7.53,
+    "playerId": "812652"
+  },
+  {
+    "rank": 111,
+    "name": "Hakan Çalhanoglu",
+    "team": "TUR",
+    "rating": 7.53,
+    "playerId": "304733"
+  },
+  {
+    "rank": 113,
+    "name": "Aurélien Tchouaméni",
+    "team": "FRA",
+    "rating": 7.52,
+    "playerId": "914458"
+  },
+  {
+    "rank": 113,
+    "name": "Jiovany Ramos",
+    "team": "PAN",
+    "rating": 7.52,
+    "playerId": "688448"
+  },
+  {
+    "rank": 115,
+    "name": "Charles De Ketelaere",
+    "team": "BEL",
+    "rating": 7.51,
+    "playerId": "1095432"
+  },
+  {
+    "rank": 115,
+    "name": "Abdülkerim Bardakci",
+    "team": "TUR",
+    "rating": 7.51,
+    "playerId": "291399"
+  },
+  {
+    "rank": 117,
+    "name": "Julian Ryerson",
+    "team": "NOR",
+    "rating": 7.5,
+    "playerId": "659272"
+  },
+  {
+    "rank": 117,
+    "name": "Mohanad Lasheen",
+    "team": "EGY",
+    "rating": 7.5,
+    "playerId": "906944"
+  },
+  {
+    "rank": 119,
+    "name": "Bukayo Saka",
+    "team": "ENG",
+    "rating": 7.49,
+    "playerId": "961995"
+  },
+  {
+    "rank": 119,
+    "name": "Jefferson Lerma",
+    "team": "COL",
+    "rating": 7.49,
+    "playerId": "466672"
+  },
+  {
+    "rank": 119,
+    "name": "Noni Madueke",
+    "team": "ENG",
+    "rating": 7.49,
+    "playerId": "1084981"
+  },
+  {
+    "rank": 119,
+    "name": "Achraf Hakimi",
+    "team": "MAR",
+    "rating": 7.49,
+    "playerId": "770881"
+  },
+  {
+    "rank": 119,
+    "name": "Gonzalo Plata",
+    "team": "ECU",
+    "rating": 7.49,
+    "playerId": "980311"
+  },
+  {
+    "rank": 124,
+    "name": "Ao Tanaka",
+    "team": "JPN",
+    "rating": 7.48,
+    "playerId": "935728"
+  },
+  {
+    "rank": 124,
+    "name": "Behruzjon Karimov",
+    "team": "UZB",
+    "rating": 7.48,
+    "playerId": "1898281"
+  },
+  {
+    "rank": 124,
+    "name": "Davinson Sánchez",
+    "team": "COL",
+    "rating": 7.48,
+    "playerId": "643533"
+  },
+  {
+    "rank": 124,
+    "name": "Yoane Wissa",
+    "team": "COD",
+    "rating": 7.48,
+    "playerId": "666857"
+  },
+  {
+    "rank": 128,
+    "name": "Nathaniel Brown",
+    "team": "GER",
+    "rating": 7.47,
+    "playerId": "1395447"
+  },
+  {
+    "rank": 128,
+    "name": "Petar Sucic",
+    "team": "CRO",
+    "rating": 7.47,
+    "playerId": "1382000"
+  },
+  {
+    "rank": 128,
+    "name": "Virgil van Dijk",
+    "team": "NED",
+    "rating": 7.47,
+    "playerId": "209405"
+  },
+  {
+    "rank": 131,
+    "name": "In-Beom Hwang",
+    "team": "KOR",
+    "rating": 7.46,
+    "playerId": "623698"
+  },
+  {
+    "rank": 132,
+    "name": "Denis Zakaria",
+    "team": "SUI",
+    "rating": 7.45,
+    "playerId": "598355"
+  },
+  {
+    "rank": 132,
+    "name": "Martin Ødegaard",
+    "team": "NOR",
+    "rating": 7.45,
+    "playerId": "534670"
+  },
+  {
+    "rank": 134,
+    "name": "Marc Cucurella",
+    "team": "ESP",
+    "rating": 7.44,
+    "playerId": "873289"
+  },
+  {
+    "rank": 134,
+    "name": "Marvin Senaya",
+    "team": "GHA",
+    "rating": 7.44,
+    "playerId": "1201760"
+  },
+  {
+    "rank": 136,
+    "name": "Juan Cáceres",
+    "team": "PAR",
+    "rating": 7.43,
+    "playerId": "1133495"
+  },
+  {
+    "rank": 137,
+    "name": "Anthony Elanga",
+    "team": "SWE",
+    "rating": 7.42,
+    "playerId": "1050166"
+  },
+  {
+    "rank": 137,
+    "name": "Mauricio",
+    "team": "PAR",
+    "rating": 7.42,
+    "playerId": "1059490"
+  },
+  {
+    "rank": 137,
+    "name": "Chris Richards",
+    "team": "USA",
+    "rating": 7.42,
+    "playerId": "950829"
+  },
+  {
+    "rank": 137,
+    "name": "Lamine Yamal",
+    "team": "ESP",
+    "rating": 7.42,
+    "playerId": "1467236"
+  },
+  {
+    "rank": 141,
+    "name": "Nicolas Seiwald",
+    "team": "AUT",
+    "rating": 7.41,
+    "playerId": "1024672"
+  },
+  {
+    "rank": 142,
+    "name": "Jerome Opoku",
+    "team": "GHA",
+    "rating": 7.4,
+    "playerId": "873227"
+  },
+  {
+    "rank": 143,
+    "name": "Désiré Doué",
+    "team": "FRA",
+    "rating": 7.39,
+    "playerId": "1339208"
+  },
+  {
+    "rank": 143,
+    "name": "Brahim Díaz",
+    "team": "MAR",
+    "rating": 7.39,
+    "playerId": "750027"
+  },
+  {
+    "rank": 143,
+    "name": "Leandro Trossard",
+    "team": "BEL",
+    "rating": 7.39,
+    "playerId": "318615"
+  },
+  {
+    "rank": 143,
+    "name": "Tim Ream",
+    "team": "USA",
+    "rating": 7.39,
+    "playerId": "198444"
+  },
+  {
+    "rank": 147,
+    "name": "Dayot Upamecano",
+    "team": "FRA",
+    "rating": 7.38,
+    "playerId": "658554"
+  },
+  {
+    "rank": 148,
+    "name": "Douglas Santos",
+    "team": "BRA",
+    "rating": 7.37,
+    "playerId": "346000"
+  },
+  {
+    "rank": 149,
+    "name": "Nico Elvedi",
+    "team": "SUI",
+    "rating": 7.36,
+    "playerId": "517346"
+  },
+  {
+    "rank": 149,
+    "name": "Bilal El Khannouss",
+    "team": "MAR",
+    "rating": 7.36,
+    "playerId": "1340895"
+  },
+  {
+    "rank": 151,
+    "name": "Brandon Thomas-Asante",
+    "team": "GHA",
+    "rating": 7.35,
+    "playerId": "776184"
+  },
+  {
+    "rank": 152,
+    "name": "Amir Murillo",
+    "team": "PAN",
+    "rating": 7.34,
+    "playerId": "643635"
+  },
+  {
+    "rank": 152,
+    "name": "Leo Østigard",
+    "team": "NOR",
+    "rating": 7.34,
+    "playerId": "740944"
+  },
+  {
+    "rank": 152,
+    "name": "Paul Okon-Engstler",
+    "team": "AUS",
+    "rating": 7.34,
+    "playerId": "1527363"
+  },
+  {
+    "rank": 152,
+    "name": "Angus Gunn",
+    "team": "SCO",
+    "rating": 7.34,
+    "playerId": "760746"
+  },
+  {
+    "rank": 152,
+    "name": "Emiliano Martínez",
+    "team": "ARG",
+    "rating": 7.34,
+    "playerId": "268375"
+  },
+  {
+    "rank": 157,
+    "name": "David Alaba",
+    "team": "AUT",
+    "rating": 7.33,
+    "playerId": "121633"
+  },
+  {
+    "rank": 157,
+    "name": "Juriën Gaari",
+    "team": "CUW",
+    "rating": 7.33,
+    "playerId": "708738"
+  },
+  {
+    "rank": 157,
+    "name": "Mostafa Ziko",
+    "team": "EGY",
+    "rating": 7.33,
+    "playerId": "1426403"
+  },
+  {
+    "rank": 160,
+    "name": "Ferdi Kadioglu",
+    "team": "TUR",
+    "rating": 7.32,
+    "playerId": "774448"
+  },
+  {
+    "rank": 160,
+    "name": "Vladimír Coufal",
+    "team": "CZE",
+    "rating": 7.32,
+    "playerId": "307317"
+  },
+  {
+    "rank": 160,
+    "name": "Yahia Fofana",
+    "team": "CIV",
+    "rating": 7.32,
+    "playerId": "873566"
+  },
+  {
+    "rank": 163,
+    "name": "Franck Kessié",
+    "team": "CIV",
+    "rating": 7.31,
+    "playerId": "579747"
+  },
+  {
+    "rank": 163,
+    "name": "Kenan Yildiz",
+    "team": "TUR",
+    "rating": 7.31,
+    "playerId": "1412132"
+  },
+  {
+    "rank": 163,
+    "name": "Ahmed Abou El Fotouh",
+    "team": "EGY",
+    "rating": 7.31,
+    "playerId": "849334"
+  },
+  {
+    "rank": 163,
+    "name": "Timothy Castagne",
+    "team": "BEL",
+    "rating": 7.31,
+    "playerId": "465750"
+  },
+  {
+    "rank": 167,
+    "name": "Alexis Mac Allister",
+    "team": "ARG",
+    "rating": 7.3,
+    "playerId": "831489"
+  },
+  {
+    "rank": 167,
+    "name": "Dan Ndoye",
+    "team": "SUI",
+    "rating": 7.3,
+    "playerId": "1022649"
+  },
+  {
+    "rank": 167,
+    "name": "David Møller Wolfe",
+    "team": "NOR",
+    "rating": 7.3,
+    "playerId": "1049679"
+  },
+  {
+    "rank": 167,
+    "name": "Érik Lira",
+    "team": "MEX",
+    "rating": 7.3,
+    "playerId": "971628"
+  },
+  {
+    "rank": 167,
+    "name": "Alisson Becker",
+    "team": "BRA",
+    "rating": 7.3,
+    "playerId": "319784"
+  },
+  {
+    "rank": 172,
+    "name": "Aaron Hickey",
+    "team": "SCO",
+    "rating": 7.28,
+    "playerId": "1002039"
+  },
+  {
+    "rank": 172,
+    "name": "Jesús Gallardo",
+    "team": "MEX",
+    "rating": 7.28,
+    "playerId": "597976"
+  },
+  {
+    "rank": 172,
+    "name": "Lawrence Ati-Zigi",
+    "team": "GHA",
+    "rating": 7.28,
+    "playerId": "615411"
+  },
+  {
+    "rank": 172,
+    "name": "Jonathan Tah",
+    "team": "GER",
+    "rating": 7.28,
+    "playerId": "469700"
+  },
+  {
+    "rank": 176,
+    "name": "Bruno Guimarães",
+    "team": "BRA",
+    "rating": 7.27,
+    "playerId": "850354"
+  },
+  {
+    "rank": 176,
+    "name": "Amad Diallo",
+    "team": "CIV",
+    "rating": 7.27,
+    "playerId": "1070052"
+  },
+  {
+    "rank": 176,
+    "name": "Arda Güler",
+    "team": "TUR",
+    "rating": 7.27,
+    "playerId": "1253890"
+  },
+  {
+    "rank": 176,
+    "name": "Mohamed Hany",
+    "team": "EGY",
+    "rating": 7.27,
+    "playerId": "660213"
+  },
+  {
+    "rank": 180,
+    "name": "Hernán Galindez",
+    "team": "ECU",
+    "rating": 7.26,
+    "playerId": "146801"
+  },
+  {
+    "rank": 180,
+    "name": "Omar Marmoush",
+    "team": "EGY",
+    "rating": 7.26,
+    "playerId": "839204"
+  },
+  {
+    "rank": 182,
+    "name": "Tomás Araújo",
+    "team": "POR",
+    "rating": 7.25,
+    "playerId": "1187283"
+  },
+  {
+    "rank": 183,
+    "name": "Johan Manzambi",
+    "team": "SUI",
+    "rating": 7.25,
+    "playerId": "1520063"
+  },
+  {
+    "rank": 184,
+    "name": "Kevin De Bruyne",
+    "team": "BEL",
+    "rating": 7.25,
+    "playerId": "169200"
+  },
+  {
+    "rank": 185,
+    "name": "Álvaro Fidalgo",
+    "team": "MEX",
+    "rating": 7.24,
+    "playerId": "895954"
+  },
+  {
+    "rank": 185,
+    "name": "Hossein Kanaani",
+    "team": "IRN",
+    "rating": 7.24,
+    "playerId": "500637"
+  },
+  {
+    "rank": 185,
+    "name": "Noussair Mazraoui",
+    "team": "MAR",
+    "rating": 7.24,
+    "playerId": "775539"
+  },
+  {
+    "rank": 188,
+    "name": "Mohannad Abu Taha",
+    "team": "JOR",
+    "rating": 7.23,
+    "playerId": "1247001"
+  },
+  {
+    "rank": 188,
+    "name": "Nadiem Amiri",
+    "team": "GER",
+    "rating": 7.23,
+    "playerId": "614449"
+  },
+  {
+    "rank": 190,
+    "name": "Torbjørn Heggem",
+    "team": "NOR",
+    "rating": 7.22,
+    "playerId": "935550"
+  },
+  {
+    "rank": 190,
+    "name": "Yassine Bounou",
+    "team": "MAR",
+    "rating": 7.22,
+    "playerId": "340020"
+  },
+  {
+    "rank": 190,
+    "name": "Alan Franco",
+    "team": "ECU",
+    "rating": 7.22,
+    "playerId": "832171"
+  },
+  {
+    "rank": 190,
+    "name": "Edson Álvarez",
+    "team": "MEX",
+    "rating": 7.22,
+    "playerId": "783505"
+  },
+  {
+    "rank": 190,
+    "name": "Jan Paul van Hecke",
+    "team": "NED",
+    "rating": 7.22,
+    "playerId": "974618"
+  },
+  {
+    "rank": 190,
+    "name": "Nahuel Molina",
+    "team": "ARG",
+    "rating": 7.22,
+    "playerId": "726345"
+  },
+  {
+    "rank": 196,
+    "name": "Agustín Canobbio",
+    "team": "URU",
+    "rating": 7.21,
+    "playerId": "840212"
+  },
+  {
+    "rank": 196,
+    "name": "Kristoffer Ajer",
+    "team": "NOR",
+    "rating": 7.21,
+    "playerId": "552718"
+  },
+  {
+    "rank": 196,
+    "name": "Michel Aebischer",
+    "team": "SUI",
+    "rating": 7.21,
+    "playerId": "792756"
+  },
+  {
+    "rank": 196,
+    "name": "Connor Metcalfe",
+    "team": "AUS",
+    "rating": 7.21,
+    "playerId": "885870"
+  },
+  {
+    "rank": 196,
+    "name": "Maxim De Cuyper",
+    "team": "BEL",
+    "rating": 7.21,
+    "playerId": "1134871"
+  },
+  {
+    "rank": 201,
+    "name": "Can Uzun",
+    "team": "TUR",
+    "rating": 7.2,
+    "playerId": "1367924"
+  },
+  {
+    "rank": 201,
+    "name": "Juninho Bacuna",
+    "team": "CUW",
+    "rating": 7.2,
+    "playerId": "614574"
+  },
+  {
+    "rank": 201,
+    "name": "Marwan Ateya",
+    "team": "EGY",
+    "rating": 7.2,
+    "playerId": "1418549"
+  },
+  {
+    "rank": 201,
+    "name": "Remo Freuler",
+    "team": "SUI",
+    "rating": 7.2,
+    "playerId": "201704"
+  },
+  {
+    "rank": 201,
+    "name": "Kevin Pina",
+    "team": "CPV",
+    "rating": 7.2,
+    "playerId": "890503"
+  },
+  {
+    "rank": 201,
+    "name": "Maxime Crépeau",
+    "team": "CAN",
+    "rating": 7.2,
+    "playerId": "464919"
+  },
+  {
+    "rank": 207,
+    "name": "Pedro Neto",
+    "team": "POR",
+    "rating": 7.19,
+    "playerId": "843040"
+  },
+  {
+    "rank": 207,
+    "name": "Takefusa Kubo",
+    "team": "JPN",
+    "rating": 7.19,
+    "playerId": "848289"
+  },
+  {
+    "rank": 207,
+    "name": "Aiden O'Neill",
+    "team": "AUS",
+    "rating": 7.19,
+    "playerId": "785377"
+  },
+  {
+    "rank": 207,
+    "name": "Lewis Ferguson",
+    "team": "SCO",
+    "rating": 7.19,
+    "playerId": "888921"
+  },
+  {
+    "rank": 207,
+    "name": "Piero Hincapié",
+    "team": "ECU",
+    "rating": 7.19,
+    "playerId": "1137667"
+  },
+  {
+    "rank": 207,
+    "name": "Romano Schmid",
+    "team": "AUT",
+    "rating": 7.19,
+    "playerId": "749488"
+  },
+  {
+    "rank": 213,
+    "name": "Josip Stanisic",
+    "team": "CRO",
+    "rating": 7.18,
+    "playerId": "950824"
+  },
+  {
+    "rank": 213,
+    "name": "Junya Ito",
+    "team": "JPN",
+    "rating": 7.18,
+    "playerId": "604044"
+  },
+  {
+    "rank": 215,
+    "name": "Luc De Fougerolles",
+    "team": "CAN",
+    "rating": 7.17,
+    "playerId": "1399943"
+  },
+  {
+    "rank": 215,
+    "name": "Roberto Lopes",
+    "team": "CPV",
+    "rating": 7.17,
+    "playerId": "230134"
+  },
+  {
+    "rank": 215,
+    "name": "Aleksandar Pavlovic",
+    "team": "GER",
+    "rating": 7.17,
+    "playerId": "1473580"
+  },
+  {
+    "rank": 218,
+    "name": "Kaishu Sano",
+    "team": "JPN",
+    "rating": 7.16,
+    "playerId": "1033111"
+  },
+  {
+    "rank": 218,
+    "name": "Marcus Rashford",
+    "team": "ENG",
+    "rating": 7.16,
+    "playerId": "696365"
+  },
+  {
+    "rank": 218,
+    "name": "Min-Jae Kim",
+    "team": "KOR",
+    "rating": 7.16,
+    "playerId": "828159"
+  },
+  {
+    "rank": 221,
+    "name": "Tahith Chong",
+    "team": "CUW",
+    "rating": 7.15,
+    "playerId": "751066"
+  },
+  {
+    "rank": 221,
+    "name": "Azzedine Ounahi",
+    "team": "MAR",
+    "rating": 7.15,
+    "playerId": "1073143"
+  },
+  {
+    "rank": 221,
+    "name": "Tarik Muharemovic",
+    "team": "BIH",
+    "rating": 7.15,
+    "playerId": "1250485"
+  },
+  {
+    "rank": 224,
+    "name": "Chris Wood",
+    "team": "NZL",
+    "rating": 7.14,
+    "playerId": "169719"
+  },
+  {
+    "rank": 224,
+    "name": "Edo Kayembe",
+    "team": "COD",
+    "rating": 7.14,
+    "playerId": "909803"
+  },
+  {
+    "rank": 224,
+    "name": "Gideon Mensah",
+    "team": "GHA",
+    "rating": 7.14,
+    "playerId": "771630"
+  },
+  {
+    "rank": 227,
+    "name": "Abbosbek Fayzullayev",
+    "team": "UZB",
+    "rating": 7.13,
+    "playerId": "1249993"
+  },
+  {
+    "rank": 227,
+    "name": "Cristian Romero",
+    "team": "ARG",
+    "rating": 7.13,
+    "playerId": "789066"
+  },
+  {
+    "rank": 227,
+    "name": "John Yeboah",
+    "team": "ECU",
+    "rating": 7.13,
+    "playerId": "845368"
+  },
+  {
+    "rank": 227,
+    "name": "Marcel Sabitzer",
+    "team": "AUT",
+    "rating": 7.13,
+    "playerId": "215151"
+  },
+  {
+    "rank": 231,
+    "name": "Nikola Katic",
+    "team": "BIH",
+    "rating": 7.13,
+    "playerId": "725655"
+  },
+  {
+    "rank": 232,
+    "name": "Thiago Almada",
+    "team": "ARG",
+    "rating": 7.11,
+    "playerId": "955271"
+  },
+  {
+    "rank": 232,
+    "name": "Trezeguet",
+    "team": "EGY",
+    "rating": 7.11,
+    "playerId": "513492"
+  },
+  {
+    "rank": 232,
+    "name": "Willian Pacho",
+    "team": "ECU",
+    "rating": 7.11,
+    "playerId": "1137670"
+  },
+  {
+    "rank": 235,
+    "name": "João Cancelo",
+    "team": "POR",
+    "rating": 7.1,
+    "playerId": "361757"
+  },
+  {
+    "rank": 235,
+    "name": "Raul Jiménez",
+    "team": "MEX",
+    "rating": 7.1,
+    "playerId": "292313"
+  },
+  {
+    "rank": 237,
+    "name": "Adrien Rabiot",
+    "team": "FRA",
+    "rating": 7.09,
+    "playerId": "352879"
+  },
+  {
+    "rank": 237,
+    "name": "Cédric Bakambu",
+    "team": "COD",
+    "rating": 7.09,
+    "playerId": "201939"
+  },
+  {
+    "rank": 237,
+    "name": "Marquinhos",
+    "team": "BRA",
+    "rating": 7.09,
+    "playerId": "267365"
+  },
+  {
+    "rank": 237,
+    "name": "Shoja Khalilzadeh",
+    "team": "IRN",
+    "rating": 7.09,
+    "playerId": "511397"
+  },
+  {
+    "rank": 241,
+    "name": "Fabián Ruiz",
+    "team": "ESP",
+    "rating": 7.08,
+    "playerId": "605654"
+  },
+  {
+    "rank": 241,
+    "name": "Ibrahim Mbaye",
+    "team": "SEN",
+    "rating": 7.08,
+    "playerId": "1593857"
+  },
+  {
+    "rank": 241,
+    "name": "Luis Suárez",
+    "team": "COL",
+    "rating": 7.08,
+    "playerId": "792303"
+  },
+  {
+    "rank": 241,
+    "name": "Mohammad Mohebi",
+    "team": "IRN",
+    "rating": 7.08,
+    "playerId": "1073012"
+  },
+  {
+    "rank": 245,
+    "name": "Andrés Andrade",
+    "team": "PAN",
+    "rating": 7.06,
+    "playerId": "688449"
+  },
+  {
+    "rank": 245,
+    "name": "Gabriel",
+    "team": "BRA",
+    "rating": 7.06,
+    "playerId": "795179"
+  },
+  {
+    "rank": 245,
+    "name": "Hannibal Mejbri",
+    "team": "TUN",
+    "rating": 7.06,
+    "playerId": "1113785"
+  },
+  {
+    "rank": 245,
+    "name": "Sergiño Dest",
+    "team": "USA",
+    "rating": 7.06,
+    "playerId": "892816"
+  },
+  {
+    "rank": 245,
+    "name": "Ayyoub Bouaddi",
+    "team": "MAR",
+    "rating": 7.06,
+    "playerId": "1561552"
+  },
+  {
+    "rank": 245,
+    "name": "Gi-Hyuk Lee",
+    "team": "KOR",
+    "rating": 7.06,
+    "playerId": "1232264"
+  },
+  {
+    "rank": 251,
+    "name": "Alexandr Sojka",
+    "team": "CZE",
+    "rating": 7.05,
+    "playerId": "1478281"
+  },
+  {
+    "rank": 251,
+    "name": "Casemiro",
+    "team": "BRA",
+    "rating": 7.05,
+    "playerId": "208494"
+  },
+  {
+    "rank": 251,
+    "name": "Emmanuel Agbadou",
+    "team": "CIV",
+    "rating": 7.05,
+    "playerId": "1114979"
+  },
+  {
+    "rank": 254,
+    "name": "Bruno Fernandes",
+    "team": "POR",
+    "rating": 7.04,
+    "playerId": "422685"
+  },
+  {
+    "rank": 254,
+    "name": "Jovane Cabral",
+    "team": "CPV",
+    "rating": 7.04,
+    "playerId": "785716"
+  },
+  {
+    "rank": 254,
+    "name": "Tomás Holes",
+    "team": "CZE",
+    "rating": 7.04,
+    "playerId": "306168"
+  },
+  {
+    "rank": 254,
+    "name": "Chadi Riad",
+    "team": "MAR",
+    "rating": 7.04,
+    "playerId": "1187506"
+  },
+  {
+    "rank": 254,
+    "name": "Zion Suzuki",
+    "team": "JPN",
+    "rating": 7.04,
+    "playerId": "1053679"
+  },
+  {
+    "rank": 259,
+    "name": "Finn Surman",
+    "team": "NZL",
+    "rating": 7.03,
+    "playerId": "1325761"
+  },
+  {
+    "rank": 259,
+    "name": "Guillermo Varela",
+    "team": "URU",
+    "rating": 7.03,
+    "playerId": "465614"
+  },
+  {
+    "rank": 259,
+    "name": "Livano Comenencia",
+    "team": "CUW",
+    "rating": 7.03,
+    "playerId": "1243246"
+  },
+  {
+    "rank": 259,
+    "name": "Lukás Cerv",
+    "team": "CZE",
+    "rating": 7.03,
+    "playerId": "1151313"
+  },
+  {
+    "rank": 259,
+    "name": "Alessandro Circati",
+    "team": "AUS",
+    "rating": 7.03,
+    "playerId": "1318686"
+  },
+  {
+    "rank": 259,
+    "name": "Matt Freese",
+    "team": "USA",
+    "rating": 7.03,
+    "playerId": "1026065"
+  },
+  {
+    "rank": 265,
+    "name": "Christ Inao Oulaï",
+    "team": "CIV",
+    "rating": 7.02,
+    "playerId": "1666494"
+  },
+  {
+    "rank": 265,
+    "name": "Lucas Bergvall",
+    "team": "SWE",
+    "rating": 7.02,
+    "playerId": "1386775"
+  },
+  {
+    "rank": 265,
+    "name": "Johan Vásquez",
+    "team": "MEX",
+    "rating": 7.02,
+    "playerId": "914103"
+  },
+  {
+    "rank": 268,
+    "name": "Hélio Varela",
+    "team": "CPV",
+    "rating": 7.01,
+    "playerId": "1524518"
+  },
+  {
+    "rank": 268,
+    "name": "Khuliso Mudau",
+    "team": "RSA",
+    "rating": 7.01,
+    "playerId": "940010"
+  },
+  {
+    "rank": 268,
+    "name": "Nicolas Raskin",
+    "team": "BEL",
+    "rating": 7.01,
+    "playerId": "863869"
+  },
+  {
+    "rank": 268,
+    "name": "Saman Ghoddos",
+    "team": "IRN",
+    "rating": 7.01,
+    "playerId": "532220"
+  },
+  {
+    "rank": 272,
+    "name": "Álex Baena",
+    "team": "ESP",
+    "rating": 7,
+    "playerId": "942372"
+  },
+  {
+    "rank": 272,
+    "name": "Gregor Kobel",
+    "team": "SUI",
+    "rating": 7,
+    "playerId": "764018"
+  },
+  {
+    "rank": 272,
+    "name": "Jhon Arias",
+    "team": "COL",
+    "rating": 7,
+    "playerId": "1023030"
+  },
+  {
+    "rank": 272,
+    "name": "Petar Musa",
+    "team": "CRO",
+    "rating": 7,
+    "playerId": "709796"
+  },
+  {
+    "rank": 272,
+    "name": "Sidny Lopes Cabral",
+    "team": "CPV",
+    "rating": 7,
+    "playerId": "1441786"
+  },
+  {
+    "rank": 272,
+    "name": "Vladimír Darida",
+    "team": "CZE",
+    "rating": 7,
+    "playerId": "196311"
+  },
+  {
+    "rank": 272,
+    "name": "Mohammed Al Owais",
+    "team": "KSA",
+    "rating": 7,
+    "playerId": "535669"
+  },
+  {
+    "rank": 279,
+    "name": "Andrew Robertson",
+    "team": "SCO",
+    "rating": 6.99,
+    "playerId": "357880"
+  },
+  {
+    "rank": 280,
+    "name": "John McGinn",
+    "team": "SCO",
+    "rating": 6.99,
+    "playerId": "356406"
+  },
+  {
+    "rank": 281,
+    "name": "Saeid Ezatolahi",
+    "team": "IRN",
+    "rating": 6.98,
+    "playerId": "505281"
+  },
+  {
+    "rank": 281,
+    "name": "Derek Cornelius",
+    "team": "CAN",
+    "rating": 6.98,
+    "playerId": "847629"
+  },
+  {
+    "rank": 281,
+    "name": "Hamdi Fathi",
+    "team": "EGY",
+    "rating": 6.98,
+    "playerId": "1022128"
+  },
+  {
+    "rank": 281,
+    "name": "Nathan Ngoy",
+    "team": "BEL",
+    "rating": 6.98,
+    "playerId": "1252070"
+  },
+  {
+    "rank": 285,
+    "name": "Chancel Mbemba",
+    "team": "COD",
+    "rating": 6.97,
+    "playerId": "277761"
+  },
+  {
+    "rank": 285,
+    "name": "Federico Valverde",
+    "team": "URU",
+    "rating": 6.97,
+    "playerId": "743533"
+  },
+  {
+    "rank": 285,
+    "name": "Ismail Yüksek",
+    "team": "TUR",
+    "rating": 6.97,
+    "playerId": "1183589"
+  },
+  {
+    "rank": 288,
+    "name": "Morgan Rogers",
+    "team": "ENG",
+    "rating": 6.96,
+    "playerId": "883080"
+  },
+  {
+    "rank": 288,
+    "name": "Orlando Gill",
+    "team": "PAR",
+    "rating": 6.96,
+    "playerId": "1683391"
+  },
+  {
+    "rank": 290,
+    "name": "Jules Koundé",
+    "team": "FRA",
+    "rating": 6.95,
+    "playerId": "705450"
+  },
+  {
+    "rank": 290,
+    "name": "Micky van de Ven",
+    "team": "NED",
+    "rating": 6.95,
+    "playerId": "1097466"
+  },
+  {
+    "rank": 292,
+    "name": "Nizar Al Rashdan",
+    "team": "JOR",
+    "rating": 6.94,
+    "playerId": "1195369"
+  },
+  {
+    "rank": 292,
+    "name": "Theo Hernández",
+    "team": "FRA",
+    "rating": 6.94,
+    "playerId": "724371"
+  },
+  {
+    "rank": 294,
+    "name": "Jhon Lucumí",
+    "team": "COL",
+    "rating": 6.93,
+    "playerId": "860913"
+  },
+  {
+    "rank": 294,
+    "name": "Joel Ordóñez",
+    "team": "ECU",
+    "rating": 6.93,
+    "playerId": "1354085"
+  },
+  {
+    "rank": 294,
+    "name": "Leroy Sané",
+    "team": "GER",
+    "rating": 6.93,
+    "playerId": "530859"
+  },
+  {
+    "rank": 294,
+    "name": "Nestory Irankunda",
+    "team": "AUS",
+    "rating": 6.93,
+    "playerId": "1327214"
+  },
+  {
+    "rank": 298,
+    "name": "Mehdi Taremi",
+    "team": "IRN",
+    "rating": 6.92,
+    "playerId": "619506"
+  },
+  {
+    "rank": 298,
+    "name": "Danley Jean Jacques",
+    "team": "HAI",
+    "rating": 6.92,
+    "playerId": "1329461"
+  },
+  {
+    "rank": 298,
+    "name": "Sead Kolasinac",
+    "team": "BIH",
+    "rating": 6.92,
+    "playerId": "304345"
+  },
+  {
+    "rank": 301,
+    "name": "Aubrey Maphosa Modiba",
+    "team": "RSA",
+    "rating": 6.9,
+    "playerId": "616179"
+  },
+  {
+    "rank": 301,
+    "name": "Tae-Seok Lee",
+    "team": "KOR",
+    "rating": 6.9,
+    "playerId": "1107251"
+  },
+  {
+    "rank": 301,
+    "name": "Takehiro Tomiyasu",
+    "team": "JPN",
+    "rating": 6.9,
+    "playerId": "664444"
+  },
+  {
+    "rank": 304,
+    "name": "Krépin Diatta",
+    "team": "SEN",
+    "rating": 6.89,
+    "playerId": "837061"
+  },
+  {
+    "rank": 304,
+    "name": "Jae-Sung Lee",
+    "team": "KOR",
+    "rating": 6.89,
+    "playerId": "523749"
+  },
+  {
+    "rank": 304,
+    "name": "Nicolás de la Cruz",
+    "team": "URU",
+    "rating": 6.89,
+    "playerId": "751198"
+  },
+  {
+    "rank": 307,
+    "name": "Ali Al Hamadi",
+    "team": "IRQ",
+    "rating": 6.88,
+    "playerId": "1113688"
+  },
+  {
+    "rank": 307,
+    "name": "Orkun Kökcü",
+    "team": "TUR",
+    "rating": 6.88,
+    "playerId": "935409"
+  },
+  {
+    "rank": 309,
+    "name": "Xaver Schlager",
+    "team": "AUT",
+    "rating": 6.87,
+    "playerId": "620027"
+  },
+  {
+    "rank": 310,
+    "name": "Bart Verbruggen",
+    "team": "NED",
+    "rating": 6.87,
+    "playerId": "1131987"
+  },
+  {
+    "rank": 310,
+    "name": "Ousmane Dembélé",
+    "team": "FRA",
+    "rating": 6.87,
+    "playerId": "692984"
+  },
+  {
+    "rank": 312,
+    "name": "Jordan Ayew",
+    "team": "GHA",
+    "rating": 6.86,
+    "playerId": "154280"
+  },
+  {
+    "rank": 313,
+    "name": "Amadou Onana",
+    "team": "BEL",
+    "rating": 6.85,
+    "playerId": "1185748"
+  },
+  {
+    "rank": 313,
+    "name": "Armin Gigovic",
+    "team": "BIH",
+    "rating": 6.85,
+    "playerId": "1057426"
+  },
+  {
+    "rank": 313,
+    "name": "Brian Gutiérrez",
+    "team": "MEX",
+    "rating": 6.85,
+    "playerId": "1170238"
+  },
+  {
+    "rank": 313,
+    "name": "Bradley Barcola",
+    "team": "FRA",
+    "rating": 6.85,
+    "playerId": "1297165"
+  },
+  {
+    "rank": 313,
+    "name": "Han-Beom Lee",
+    "team": "KOR",
+    "rating": 6.85,
+    "playerId": "1232253"
+  },
+  {
+    "rank": 313,
+    "name": "Harry Souttar",
+    "team": "AUS",
+    "rating": 6.85,
+    "playerId": "671518"
+  },
+  {
+    "rank": 319,
+    "name": "Gonzalo Montiel",
+    "team": "ARG",
+    "rating": 6.84,
+    "playerId": "687008"
+  },
+  {
+    "rank": 319,
+    "name": "Mathías Olivera",
+    "team": "URU",
+    "rating": 6.84,
+    "playerId": "729093"
+  },
+  {
+    "rank": 319,
+    "name": "Nicolás González",
+    "team": "ARG",
+    "rating": 6.84,
+    "playerId": "841672"
+  },
+  {
+    "rank": 319,
+    "name": "Heung-Min Son",
+    "team": "KOR",
+    "rating": 6.84,
+    "playerId": "212867"
+  },
+  {
+    "rank": 323,
+    "name": "Yazan Abu Al-Arab",
+    "team": "JOR",
+    "rating": 6.83,
+    "playerId": "852168"
+  },
+  {
+    "rank": 323,
+    "name": "Jamiro Monteiro",
+    "team": "CPV",
+    "rating": 6.83,
+    "playerId": "680905"
+  },
+  {
+    "rank": 325,
+    "name": "Gavi",
+    "team": "ESP",
+    "rating": 6.82,
+    "playerId": "1279040"
+  },
+  {
+    "rank": 325,
+    "name": "Jean-Ricner Bellegarde",
+    "team": "HAI",
+    "rating": 6.82,
+    "playerId": "769166"
+  },
+  {
+    "rank": 325,
+    "name": "Merih Demiral",
+    "team": "TUR",
+    "rating": 6.82,
+    "playerId": "823078"
+  },
+  {
+    "rank": 325,
+    "name": "Steve Kapuadi",
+    "team": "COD",
+    "rating": 6.82,
+    "playerId": "1132814"
+  },
+  {
+    "rank": 329,
+    "name": "Jorge Sánchez",
+    "team": "MEX",
+    "rating": 6.81,
+    "playerId": "727586"
+  },
+  {
+    "rank": 329,
+    "name": "Thapelo Maseko",
+    "team": "RSA",
+    "rating": 6.81,
+    "playerId": "1394951"
+  },
+  {
+    "rank": 329,
+    "name": "Ghislain Konan",
+    "team": "CIV",
+    "rating": 6.81,
+    "playerId": "740997"
+  },
+  {
+    "rank": 332,
+    "name": "Cristian Volpato",
+    "team": "AUS",
+    "rating": 6.8,
+    "playerId": "1308909"
+  },
+  {
+    "rank": 332,
+    "name": "Diogo Costa",
+    "team": "POR",
+    "rating": 6.8,
+    "playerId": "795630"
+  },
+  {
+    "rank": 332,
+    "name": "Ibrahim Sangaré",
+    "team": "CIV",
+    "rating": 6.8,
+    "playerId": "795371"
+  },
+  {
+    "rank": 335,
+    "name": "Ime Okon",
+    "team": "RSA",
+    "rating": 6.79,
+    "playerId": "1600334"
+  },
+  {
+    "rank": 335,
+    "name": "Ivan Basic",
+    "team": "BIH",
+    "rating": 6.79,
+    "playerId": "1179875"
+  },
+  {
+    "rank": 335,
+    "name": "Mateo Kovacic",
+    "team": "CRO",
+    "rating": 6.79,
+    "playerId": "239219"
+  },
+  {
+    "rank": 335,
+    "name": "Federico Viñas",
+    "team": "URU",
+    "rating": 6.79,
+    "playerId": "1032811"
+  },
+  {
+    "rank": 339,
+    "name": "Lawrence Shankland",
+    "team": "SCO",
+    "rating": 6.78,
+    "playerId": "317544"
+  },
+  {
+    "rank": 339,
+    "name": "Marko Arnautovic",
+    "team": "AUT",
+    "rating": 6.78,
+    "playerId": "110148"
+  },
+  {
+    "rank": 339,
+    "name": "Otabek Shukurov",
+    "team": "UZB",
+    "rating": 6.78,
+    "playerId": "624405"
+  },
+  {
+    "rank": 339,
+    "name": "Nasser Al-Dawsari",
+    "team": "KSA",
+    "rating": 6.78,
+    "playerId": "848612"
+  },
+  {
+    "rank": 339,
+    "name": "Seung-Ho Paik",
+    "team": "KOR",
+    "rating": 6.78,
+    "playerId": "848102"
+  },
+  {
+    "rank": 344,
+    "name": "Fredrik Aursnes",
+    "team": "NOR",
+    "rating": 6.77,
+    "playerId": "310768"
+  },
+  {
+    "rank": 344,
+    "name": "Renato Veiga",
+    "team": "POR",
+    "rating": 6.77,
+    "playerId": "1343750"
+  },
+  {
+    "rank": 344,
+    "name": "Vitinha",
+    "team": "POR",
+    "rating": 6.77,
+    "playerId": "1061249"
+  },
+  {
+    "rank": 344,
+    "name": "Ryan Mendes",
+    "team": "CPV",
+    "rating": 6.77,
+    "playerId": "172615"
+  },
+  {
+    "rank": 348,
+    "name": "Israel Reyes",
+    "team": "MEX",
+    "rating": 6.76,
+    "playerId": "1074586"
+  },
+  {
+    "rank": 348,
+    "name": "Jack Hendry",
+    "team": "SCO",
+    "rating": 6.76,
+    "playerId": "640642"
+  },
+  {
+    "rank": 348,
+    "name": "Liam Millar",
+    "team": "CAN",
+    "rating": 6.76,
+    "playerId": "932308"
+  },
+  {
+    "rank": 348,
+    "name": "Mario Pasalic",
+    "team": "CRO",
+    "rating": 6.76,
+    "playerId": "446266"
+  },
+  {
+    "rank": 348,
+    "name": "Michal Sadílek",
+    "team": "CZE",
+    "rating": 6.76,
+    "playerId": "806551"
+  },
+  {
+    "rank": 348,
+    "name": "Shahriar Moghanlou",
+    "team": "IRN",
+    "rating": 6.76,
+    "playerId": "641121"
+  },
+  {
+    "rank": 348,
+    "name": "Tajon Buchanan",
+    "team": "CAN",
+    "rating": 6.76,
+    "playerId": "1026135"
+  },
+  {
+    "rank": 355,
+    "name": "Johan Mojica",
+    "team": "COL",
+    "rating": 6.75,
+    "playerId": "474673"
+  },
+  {
+    "rank": 355,
+    "name": "Koki Ogawa",
+    "team": "JPN",
+    "rating": 6.75,
+    "playerId": "727837"
+  },
+  {
+    "rank": 355,
+    "name": "Nabil Bentaleb",
+    "team": "ALG",
+    "rating": 6.75,
+    "playerId": "500520"
+  },
+  {
+    "rank": 355,
+    "name": "Nico O'Reilly",
+    "team": "ENG",
+    "rating": 6.75,
+    "playerId": "1300526"
+  },
+  {
+    "rank": 355,
+    "name": "Odeh Fakhouri",
+    "team": "JOR",
+    "rating": 6.75,
+    "playerId": "1823348"
+  },
+  {
+    "rank": 355,
+    "name": "Rami Rabia",
+    "team": "EGY",
+    "rating": 6.75,
+    "playerId": "505872"
+  },
+  {
+    "rank": 355,
+    "name": "Hiroki Ito",
+    "team": "JPN",
+    "rating": 6.75,
+    "playerId": "851626"
+  },
+  {
+    "rank": 355,
+    "name": "Martin Expérience",
+    "team": "HAI",
+    "rating": 6.75,
+    "playerId": "1181438"
+  },
+  {
+    "rank": 363,
+    "name": "César Blackman",
+    "team": "PAN",
+    "rating": 6.74,
+    "playerId": "888966"
+  },
+  {
+    "rank": 363,
+    "name": "Seung-Gyu Kim",
+    "team": "KOR",
+    "rating": 6.74,
+    "playerId": "167247"
+  },
+  {
+    "rank": 363,
+    "name": "William Saliba",
+    "team": "FRA",
+    "rating": 6.74,
+    "playerId": "955406"
+  },
+  {
+    "rank": 363,
+    "name": "Matej Kovár",
+    "team": "CZE",
+    "rating": 6.74,
+    "playerId": "1077903"
+  },
+  {
+    "rank": 367,
+    "name": "Issa Diop",
+    "team": "MAR",
+    "rating": 6.73,
+    "playerId": "696443"
+  },
+  {
+    "rank": 367,
+    "name": "Mohamed Kanno",
+    "team": "KSA",
+    "rating": 6.73,
+    "playerId": "866373"
+  },
+  {
+    "rank": 367,
+    "name": "Silvan Widmer",
+    "team": "SUI",
+    "rating": 6.73,
+    "playerId": "275034"
+  },
+  {
+    "rank": 367,
+    "name": "Yoel Bárcenas",
+    "team": "PAN",
+    "rating": 6.73,
+    "playerId": "526710"
+  },
+  {
+    "rank": 367,
+    "name": "Andrés Cubas",
+    "team": "PAR",
+    "rating": 6.73,
+    "playerId": "529625"
+  },
+  {
+    "rank": 367,
+    "name": "Lautaro Martínez",
+    "team": "ARG",
+    "rating": 6.73,
+    "playerId": "690230"
+  },
+  {
+    "rank": 373,
+    "name": "Danilo",
+    "team": "BRA",
+    "rating": 6.72,
+    "playerId": "208077"
+  },
+  {
+    "rank": 373,
+    "name": "Nicolas Pépé",
+    "team": "CIV",
+    "rating": 6.72,
+    "playerId": "575735"
+  },
+  {
+    "rank": 373,
+    "name": "Oswin Appollis",
+    "team": "RSA",
+    "rating": 6.72,
+    "playerId": "1054166"
+  },
+  {
+    "rank": 373,
+    "name": "Thomas Meunier",
+    "team": "BEL",
+    "rating": 6.72,
+    "playerId": "277771"
+  },
+  {
+    "rank": 377,
+    "name": "Kieran Tierney",
+    "team": "SCO",
+    "rating": 6.71,
+    "playerId": "582499"
+  },
+  {
+    "rank": 378,
+    "name": "Ismael Díaz",
+    "team": "PAN",
+    "rating": 6.7,
+    "playerId": "574077"
+  },
+  {
+    "rank": 378,
+    "name": "Ritsu Doan",
+    "team": "JPN",
+    "rating": 6.7,
+    "playerId": "629805"
+  },
+  {
+    "rank": 378,
+    "name": "Ismaël Koné",
+    "team": "CAN",
+    "rating": 6.7,
+    "playerId": "1288119"
+  },
+  {
+    "rank": 378,
+    "name": "Yasser Ibrahim",
+    "team": "EGY",
+    "rating": 6.7,
+    "playerId": "533403"
+  },
+  {
+    "rank": 382,
+    "name": "Alexander Bernhardsson",
+    "team": "SWE",
+    "rating": 6.69,
+    "playerId": "1014688"
+  },
+  {
+    "rank": 382,
+    "name": "Djibril Sow",
+    "team": "SUI",
+    "rating": 6.69,
+    "playerId": "707970"
+  },
+  {
+    "rank": 382,
+    "name": "Lionel Mpasi-Nzau",
+    "team": "COD",
+    "rating": 6.69,
+    "playerId": "912286"
+  },
+  {
+    "rank": 382,
+    "name": "Sebastián Cáceres",
+    "team": "URU",
+    "rating": 6.69,
+    "playerId": "1020026"
+  },
+  {
+    "rank": 382,
+    "name": "Callum McCowatt",
+    "team": "NZL",
+    "rating": 6.69,
+    "playerId": "848352"
+  },
+  {
+    "rank": 387,
+    "name": "Eloy Room",
+    "team": "CUW",
+    "rating": 6.68,
+    "playerId": "150242"
+  },
+  {
+    "rank": 388,
+    "name": "Dostonbek Khamdamov",
+    "team": "UZB",
+    "rating": 6.68,
+    "playerId": "619508"
+  },
+  {
+    "rank": 388,
+    "name": "Juan Hernández",
+    "team": "COL",
+    "rating": 6.68,
+    "playerId": "852071"
+  },
+  {
+    "rank": 388,
+    "name": "Manuel Neuer",
+    "team": "GER",
+    "rating": 6.68,
+    "playerId": "27299"
+  },
+  {
+    "rank": 391,
+    "name": "Antonio Nusa",
+    "team": "NOR",
+    "rating": 6.67,
+    "playerId": "1248482"
+  },
+  {
+    "rank": 391,
+    "name": "Deroy Duarte",
+    "team": "CPV",
+    "rating": 6.67,
+    "playerId": "798069"
+  },
+  {
+    "rank": 391,
+    "name": "Gabriel Gudmundsson",
+    "team": "SWE",
+    "rating": 6.67,
+    "playerId": "744494"
+  },
+  {
+    "rank": 391,
+    "name": "Scott McTominay",
+    "team": "SCO",
+    "rating": 6.67,
+    "playerId": "843099"
+  },
+  {
+    "rank": 395,
+    "name": "Abdulelah Al Amri",
+    "team": "KSA",
+    "rating": 6.66,
+    "playerId": "848600"
+  },
+  {
+    "rank": 395,
+    "name": "Elisha Owusu",
+    "team": "GHA",
+    "rating": 6.66,
+    "playerId": "883823"
+  },
+  {
+    "rank": 395,
+    "name": "James Rodríguez",
+    "team": "COL",
+    "rating": 6.66,
+    "playerId": "164684"
+  },
+  {
+    "rank": 395,
+    "name": "Roger Ibañez",
+    "team": "BRA",
+    "rating": 6.66,
+    "playerId": "862538"
+  },
+  {
+    "rank": 395,
+    "name": "Grant Hanley",
+    "team": "SCO",
+    "rating": 6.66,
+    "playerId": "202180"
+  },
+  {
+    "rank": 395,
+    "name": "Jacob Italiano",
+    "team": "AUS",
+    "rating": 6.66,
+    "playerId": "889093"
+  },
+  {
+    "rank": 401,
+    "name": "Cristiano Ronaldo",
+    "team": "POR",
+    "rating": 6.65,
+    "playerId": "30893"
+  },
+  {
+    "rank": 401,
+    "name": "Ricardo Adé",
+    "team": "HAI",
+    "rating": 6.65,
+    "playerId": "532700"
+  },
+  {
+    "rank": 401,
+    "name": "Shogo Taniguchi",
+    "team": "JPN",
+    "rating": 6.65,
+    "playerId": "523731"
+  },
+  {
+    "rank": 401,
+    "name": "Fabian Rieder",
+    "team": "SUI",
+    "rating": 6.65,
+    "playerId": "1161211"
+  },
+  {
+    "rank": 401,
+    "name": "Manuel Ugarte",
+    "team": "URU",
+    "rating": 6.65,
+    "playerId": "1035614"
+  },
+  {
+    "rank": 406,
+    "name": "Ali Jasim",
+    "team": "IRQ",
+    "rating": 6.64,
+    "playerId": "1478238"
+  },
+  {
+    "rank": 406,
+    "name": "Dominique Simon",
+    "team": "HAI",
+    "rating": 6.64,
+    "playerId": "1356595"
+  },
+  {
+    "rank": 406,
+    "name": "Farès Chaïbi",
+    "team": "ALG",
+    "rating": 6.64,
+    "playerId": "1345875"
+  },
+  {
+    "rank": 406,
+    "name": "Hyun-Gyu Oh",
+    "team": "KOR",
+    "rating": 6.64,
+    "playerId": "1044299"
+  },
+  {
+    "rank": 406,
+    "name": "Jordy Alcívar",
+    "team": "ECU",
+    "rating": 6.64,
+    "playerId": "950396"
+  },
+  {
+    "rank": 406,
+    "name": "Nuno Mendes",
+    "team": "POR",
+    "rating": 6.64,
+    "playerId": "1158945"
+  },
+  {
+    "rank": 412,
+    "name": "Odilon Kossounou",
+    "team": "CIV",
+    "rating": 6.63,
+    "playerId": "1014496"
+  },
+  {
+    "rank": 412,
+    "name": "Sontje Hansen",
+    "team": "CUW",
+    "rating": 6.63,
+    "playerId": "1050160"
+  },
+  {
+    "rank": 412,
+    "name": "Sultan Al Brake",
+    "team": "QAT",
+    "rating": 6.63,
+    "playerId": "644014"
+  },
+  {
+    "rank": 412,
+    "name": "Ali Ahmed",
+    "team": "CAN",
+    "rating": 6.63,
+    "playerId": "1359536"
+  },
+  {
+    "rank": 416,
+    "name": "Promise David",
+    "team": "CAN",
+    "rating": 6.62,
+    "playerId": "1252132"
+  },
+  {
+    "rank": 416,
+    "name": "Ji-Sung Eom",
+    "team": "KOR",
+    "rating": 6.62,
+    "playerId": "1107283"
+  },
+  {
+    "rank": 418,
+    "name": "Elye Wahi",
+    "team": "CIV",
+    "rating": 6.61,
+    "playerId": "1213430"
+  },
+  {
+    "rank": 418,
+    "name": "Tsuyoshi Watanabe",
+    "team": "JPN",
+    "rating": 6.61,
+    "playerId": "1023887"
+  },
+  {
+    "rank": 418,
+    "name": "Donyell Malen",
+    "team": "NED",
+    "rating": 6.61,
+    "playerId": "660301"
+  },
+  {
+    "rank": 421,
+    "name": "Abdul Fatawu",
+    "team": "GHA",
+    "rating": 6.6,
+    "playerId": "1265626"
+  },
+  {
+    "rank": 421,
+    "name": "Antoine Semenyo",
+    "team": "GHA",
+    "rating": 6.6,
+    "playerId": "933576"
+  },
+  {
+    "rank": 421,
+    "name": "Ayumu Seko",
+    "team": "JPN",
+    "rating": 6.6,
+    "playerId": "857120"
+  },
+  {
+    "rank": 421,
+    "name": "Zeki Amdouni",
+    "team": "SUI",
+    "rating": 6.6,
+    "playerId": "1067168"
+  },
+  {
+    "rank": 425,
+    "name": "Azarías Londoño",
+    "team": "PAN",
+    "rating": 6.58,
+    "playerId": "1404414"
+  },
+  {
+    "rank": 425,
+    "name": "Diego Gómez",
+    "team": "PAR",
+    "rating": 6.58,
+    "playerId": "1354561"
+  },
+  {
+    "rank": 425,
+    "name": "Taha Abdi Ali",
+    "team": "SWE",
+    "rating": 6.58,
+    "playerId": "1135782"
+  },
+  {
+    "rank": 425,
+    "name": "Jaroslav Zeleny",
+    "team": "CZE",
+    "rating": 6.58,
+    "playerId": "249063"
+  },
+  {
+    "rank": 429,
+    "name": "Kouadio Koné",
+    "team": "FRA",
+    "rating": 6.57,
+    "playerId": "1016132"
+  },
+  {
+    "rank": 429,
+    "name": "Liberato Cacace",
+    "team": "NZL",
+    "rating": 6.57,
+    "playerId": "919671"
+  },
+  {
+    "rank": 429,
+    "name": "Steven Moreira",
+    "team": "CPV",
+    "rating": 6.57,
+    "playerId": "444000"
+  },
+  {
+    "rank": 432,
+    "name": "Alan Minda",
+    "team": "ECU",
+    "rating": 6.56,
+    "playerId": "1274400"
+  },
+  {
+    "rank": 432,
+    "name": "João Paulo",
+    "team": "CPV",
+    "rating": 6.56,
+    "playerId": "1241301"
+  },
+  {
+    "rank": 432,
+    "name": "Joris Kayembe Ditu",
+    "team": "COD",
+    "rating": 6.56,
+    "playerId": "500932"
+  },
+  {
+    "rank": 432,
+    "name": "Kevin Danso",
+    "team": "AUT",
+    "rating": 6.56,
+    "playerId": "754126"
+  },
+  {
+    "rank": 432,
+    "name": "Laros Duarte",
+    "team": "CPV",
+    "rating": 6.56,
+    "playerId": "665167"
+  },
+  {
+    "rank": 432,
+    "name": "Mohammed Abu Al Shamat",
+    "team": "KSA",
+    "rating": 6.56,
+    "playerId": "1543647"
+  },
+  {
+    "rank": 438,
+    "name": "Hashmi Al Hussain",
+    "team": "QAT",
+    "rating": 6.55,
+    "playerId": "1642780"
+  },
+  {
+    "rank": 438,
+    "name": "Lukás Provod",
+    "team": "CZE",
+    "rating": 6.55,
+    "playerId": "791682"
+  },
+  {
+    "rank": 438,
+    "name": "Yannick Semedo",
+    "team": "CPV",
+    "rating": 6.55,
+    "playerId": "1205410"
+  },
+  {
+    "rank": 438,
+    "name": "Amir Al-Ammari",
+    "team": "IRQ",
+    "rating": 6.55,
+    "playerId": "858340"
+  },
+  {
+    "rank": 442,
+    "name": "Issa Laye",
+    "team": "QAT",
+    "rating": 6.54,
+    "playerId": "1839745"
+  },
+  {
+    "rank": 442,
+    "name": "Anis Ben Slimane",
+    "team": "TUN",
+    "rating": 6.54,
+    "playerId": "1055316"
+  },
+  {
+    "rank": 442,
+    "name": "Ben Gannon-Doak",
+    "team": "SCO",
+    "rating": 6.54,
+    "playerId": "1324871"
+  },
+  {
+    "rank": 442,
+    "name": "Enner Valencia",
+    "team": "ECU",
+    "rating": 6.54,
+    "playerId": "195927"
+  },
+  {
+    "rank": 442,
+    "name": "Jordan Bos",
+    "team": "AUS",
+    "rating": 6.54,
+    "playerId": "1316930"
+  },
+  {
+    "rank": 442,
+    "name": "Young-Woo Seol",
+    "team": "KOR",
+    "rating": 6.54,
+    "playerId": "1132818"
+  },
+  {
+    "rank": 448,
+    "name": "Akram Afif",
+    "team": "QAT",
+    "rating": 6.53,
+    "playerId": "613792"
+  },
+  {
+    "rank": 448,
+    "name": "Luis Chávez",
+    "team": "MEX",
+    "rating": 6.53,
+    "playerId": "527616"
+  },
+  {
+    "rank": 448,
+    "name": "Orlando Mosquera",
+    "team": "PAN",
+    "rating": 6.53,
+    "playerId": "531913"
+  },
+  {
+    "rank": 448,
+    "name": "Sasa Kalajdzic",
+    "team": "AUT",
+    "rating": 6.53,
+    "playerId": "858198"
+  },
+  {
+    "rank": 448,
+    "name": "Omar Alderete",
+    "team": "PAR",
+    "rating": 6.53,
+    "playerId": "751998"
+  },
+  {
+    "rank": 453,
+    "name": "Dominik Livakovic",
+    "team": "CRO",
+    "rating": 6.52,
+    "playerId": "383971"
+  },
+  {
+    "rank": 453,
+    "name": "Pavel Sulc",
+    "team": "CZE",
+    "rating": 6.52,
+    "playerId": "1037539"
+  },
+  {
+    "rank": 453,
+    "name": "Sebastian Berhalter",
+    "team": "USA",
+    "rating": 6.52,
+    "playerId": "1136096"
+  },
+  {
+    "rank": 456,
+    "name": "Ehsan Haddad",
+    "team": "JOR",
+    "rating": 6.51,
+    "playerId": "546201"
+  },
+  {
+    "rank": 456,
+    "name": "Luiz Henrique",
+    "team": "BRA",
+    "rating": 6.51,
+    "playerId": "1176214"
+  },
+  {
+    "rank": 456,
+    "name": "Ali Nemati",
+    "team": "IRN",
+    "rating": 6.51,
+    "playerId": "872575"
+  },
+  {
+    "rank": 456,
+    "name": "Amar Dedic",
+    "team": "BIH",
+    "rating": 6.51,
+    "playerId": "958010"
+  },
+  {
+    "rank": 460,
+    "name": "Igor Thiago",
+    "team": "BRA",
+    "rating": 6.5,
+    "playerId": "1302005"
+  },
+  {
+    "rank": 460,
+    "name": "Mbekezeli Mbokazi",
+    "team": "RSA",
+    "rating": 6.5,
+    "playerId": "1719066"
+  },
+  {
+    "rank": 460,
+    "name": "Musab Al-Juwayr",
+    "team": "KSA",
+    "rating": 6.5,
+    "playerId": "1235341"
+  },
+  {
+    "rank": 463,
+    "name": "Aria Yousefi",
+    "team": "IRN",
+    "rating": 6.49,
+    "playerId": "1350138"
+  },
+  {
+    "rank": 463,
+    "name": "Ørjan Håskjold Nyland",
+    "team": "NOR",
+    "rating": 6.49,
+    "playerId": "73409"
+  },
+  {
+    "rank": 463,
+    "name": "Ramy Bensebaini",
+    "team": "ALG",
+    "rating": 6.49,
+    "playerId": "559065"
+  },
+  {
+    "rank": 466,
+    "name": "Aïssa Mandi",
+    "team": "ALG",
+    "rating": 6.48,
+    "playerId": "210683"
+  },
+  {
+    "rank": 466,
+    "name": "Hadj Mahmoud",
+    "team": "TUN",
+    "rating": 6.48,
+    "playerId": "1131896"
+  },
+  {
+    "rank": 466,
+    "name": "Miguel Almirón",
+    "team": "PAR",
+    "rating": 6.48,
+    "playerId": "442277"
+  },
+  {
+    "rank": 469,
+    "name": "Evidence Makgopa",
+    "team": "RSA",
+    "rating": 6.47,
+    "playerId": "1137059"
+  },
+  {
+    "rank": 469,
+    "name": "John Stones",
+    "team": "ENG",
+    "rating": 6.47,
+    "playerId": "263653"
+  },
+  {
+    "rank": 469,
+    "name": "Nicolás Otamendi",
+    "team": "ARG",
+    "rating": 6.47,
+    "playerId": "174321"
+  },
+  {
+    "rank": 469,
+    "name": "Obed Vargas",
+    "team": "MEX",
+    "rating": 6.47,
+    "playerId": "1254394"
+  },
+  {
+    "rank": 469,
+    "name": "Seko Fofana",
+    "team": "CIV",
+    "rating": 6.47,
+    "playerId": "602211"
+  },
+  {
+    "rank": 474,
+    "name": "Axel Tuanzebe",
+    "team": "COD",
+    "rating": 6.46,
+    "playerId": "690149"
+  },
+  {
+    "rank": 474,
+    "name": "Quinten Timber",
+    "team": "NED",
+    "rating": 6.46,
+    "playerId": "970563"
+  },
+  {
+    "rank": 474,
+    "name": "Tijjani Reijnders",
+    "team": "NED",
+    "rating": 6.46,
+    "playerId": "868344"
+  },
+  {
+    "rank": 474,
+    "name": "Zidane Iqbal",
+    "team": "IRQ",
+    "rating": 6.46,
+    "playerId": "1138592"
+  },
+  {
+    "rank": 474,
+    "name": "Mikel Merino",
+    "team": "ESP",
+    "rating": 6.46,
+    "playerId": "574645"
+  },
+  {
+    "rank": 479,
+    "name": "Edin Dzeko",
+    "team": "BIH",
+    "rating": 6.45,
+    "playerId": "15403"
+  },
+  {
+    "rank": 479,
+    "name": "Ehsan Haji Safi",
+    "team": "IRN",
+    "rating": 6.45,
+    "playerId": "117222"
+  },
+  {
+    "rank": 479,
+    "name": "Juan Sanabria",
+    "team": "URU",
+    "rating": 6.45,
+    "playerId": "1053963"
+  },
+  {
+    "rank": 479,
+    "name": "Kamaldeen Sulemana",
+    "team": "GHA",
+    "rating": 6.45,
+    "playerId": "1130691"
+  },
+  {
+    "rank": 479,
+    "name": "Konrad Laimer",
+    "team": "AUT",
+    "rating": 6.45,
+    "playerId": "526827"
+  },
+  {
+    "rank": 479,
+    "name": "Lucas Digne",
+    "team": "FRA",
+    "rating": 6.45,
+    "playerId": "210111"
+  },
+  {
+    "rank": 479,
+    "name": "Ferran Torres",
+    "team": "ESP",
+    "rating": 6.45,
+    "playerId": "881771"
+  },
+  {
+    "rank": 486,
+    "name": "Ahmed Fathi",
+    "team": "QAT",
+    "rating": 6.44,
+    "playerId": "898424"
+  },
+  {
+    "rank": 487,
+    "name": "Eren Elmali",
+    "team": "TUR",
+    "rating": 6.43,
+    "playerId": "1041660"
+  },
+  {
+    "rank": 487,
+    "name": "Luka Vuskovic",
+    "team": "CRO",
+    "rating": 6.43,
+    "playerId": "1413996"
+  },
+  {
+    "rank": 487,
+    "name": "Phillipp Mwene",
+    "team": "AUT",
+    "rating": 6.43,
+    "playerId": "423812"
+  },
+  {
+    "rank": 490,
+    "name": "Alexis Saelemaekers",
+    "team": "BEL",
+    "rating": 6.42,
+    "playerId": "921341"
+  },
+  {
+    "rank": 490,
+    "name": "Ali Alipour",
+    "team": "IRN",
+    "rating": 6.42,
+    "playerId": "505960"
+  },
+  {
+    "rank": 490,
+    "name": "Farrukh Sayfiev",
+    "team": "UZB",
+    "rating": 6.42,
+    "playerId": "589585"
+  },
+  {
+    "rank": 490,
+    "name": "Joe Bell",
+    "team": "NZL",
+    "rating": 6.42,
+    "playerId": "848345"
+  },
+  {
+    "rank": 490,
+    "name": "Mehdi Torabi",
+    "team": "IRN",
+    "rating": 6.42,
+    "playerId": "621519"
+  },
+  {
+    "rank": 490,
+    "name": "Zeki Çelik",
+    "team": "TUR",
+    "rating": 6.42,
+    "playerId": "867225"
+  },
+  {
+    "rank": 490,
+    "name": "Abdullah Alkhaibari",
+    "team": "KSA",
+    "rating": 6.42,
+    "playerId": "823457"
+  },
+  {
+    "rank": 497,
+    "name": "Ahmed Alaaeldin",
+    "team": "QAT",
+    "rating": 6.41,
+    "playerId": "264096"
+  },
+  {
+    "rank": 497,
+    "name": "Raphinha",
+    "team": "BRA",
+    "rating": 6.41,
+    "playerId": "696679"
+  },
+  {
+    "rank": 497,
+    "name": "Nilson Angulo",
+    "team": "ECU",
+    "rating": 6.41,
+    "playerId": "1287010"
+  },
+  {
+    "rank": 497,
+    "name": "Zaid Ismael",
+    "team": "IRQ",
+    "rating": 6.41,
+    "playerId": "1642820"
+  },
+  {
+    "rank": 501,
+    "name": "Abdallah Nasib",
+    "team": "JOR",
+    "rating": 6.4,
+    "playerId": "1312681"
+  },
+  {
+    "rank": 501,
+    "name": "Garry Rodrigues",
+    "team": "CPV",
+    "rating": 6.4,
+    "playerId": "302912"
+  },
+  {
+    "rank": 501,
+    "name": "Jeremy Antonisse",
+    "team": "CUW",
+    "rating": 6.4,
+    "playerId": "1210947"
+  },
+  {
+    "rank": 501,
+    "name": "Jérémy Doku",
+    "team": "BEL",
+    "rating": 6.4,
+    "playerId": "942368"
+  },
+  {
+    "rank": 501,
+    "name": "Noah Sadiki",
+    "team": "COD",
+    "rating": 6.4,
+    "playerId": "1359649"
+  },
+  {
+    "rank": 501,
+    "name": "Samuel Moutoussamy",
+    "team": "COD",
+    "rating": 6.4,
+    "playerId": "866108"
+  },
+  {
+    "rank": 501,
+    "name": "Yukinari Sugawara",
+    "team": "JPN",
+    "rating": 6.4,
+    "playerId": "924610"
+  },
+  {
+    "rank": 501,
+    "name": "Kevin Rodríguez",
+    "team": "ECU",
+    "rating": 6.4,
+    "playerId": "1421270"
+  },
+  {
+    "rank": 501,
+    "name": "Yusuf Abdurisag",
+    "team": "QAT",
+    "rating": 6.4,
+    "playerId": "1053987"
+  },
+  {
+    "rank": 510,
+    "name": "Cristian Martínez",
+    "team": "PAN",
+    "rating": 6.39,
+    "playerId": "727101"
+  },
+  {
+    "rank": 510,
+    "name": "Kenny McLean",
+    "team": "SCO",
+    "rating": 6.39,
+    "playerId": "190851"
+  },
+  {
+    "rank": 510,
+    "name": "Mahmud Abunada",
+    "team": "QAT",
+    "rating": 6.39,
+    "playerId": "1213141"
+  },
+  {
+    "rank": 510,
+    "name": "Antonio Rüdiger",
+    "team": "GER",
+    "rating": 6.39,
+    "playerId": "276738"
+  },
+  {
+    "rank": 514,
+    "name": "David Zima",
+    "team": "CZE",
+    "rating": 6.38,
+    "playerId": "1085401"
+  },
+  {
+    "rank": 514,
+    "name": "Hyun-Jun Yang",
+    "team": "KOR",
+    "rating": 6.38,
+    "playerId": "1232560"
+  },
+  {
+    "rank": 514,
+    "name": "Jordan Pickford",
+    "team": "ENG",
+    "rating": 6.38,
+    "playerId": "303919"
+  },
+  {
+    "rank": 514,
+    "name": "Amine Ben Hamida",
+    "team": "TUN",
+    "rating": 6.38,
+    "playerId": "1131928"
+  },
+  {
+    "rank": 518,
+    "name": "Arthur Theate",
+    "team": "BEL",
+    "rating": 6.37,
+    "playerId": "1173250"
+  },
+  {
+    "rank": 518,
+    "name": "Jamie Leweling",
+    "team": "GER",
+    "rating": 6.37,
+    "playerId": "1074968"
+  },
+  {
+    "rank": 518,
+    "name": "Marko Lawk Farji",
+    "team": "IRQ",
+    "rating": 6.37,
+    "playerId": "1162514"
+  },
+  {
+    "rank": 518,
+    "name": "Merchas Doski",
+    "team": "IRQ",
+    "rating": 6.37,
+    "playerId": "1199113"
+  },
+  {
+    "rank": 518,
+    "name": "Thalente Mbatha",
+    "team": "RSA",
+    "rating": 6.37,
+    "playerId": "1124424"
+  },
+  {
+    "rank": 523,
+    "name": "Alexander Schlager",
+    "team": "AUT",
+    "rating": 6.36,
+    "playerId": "450739"
+  },
+  {
+    "rank": 523,
+    "name": "Francisco Conceição",
+    "team": "POR",
+    "rating": 6.36,
+    "playerId": "1185336"
+  },
+  {
+    "rank": 523,
+    "name": "Leandro Bacuna",
+    "team": "CUW",
+    "rating": 6.36,
+    "playerId": "183500"
+  },
+  {
+    "rank": 523,
+    "name": "Matías Viña",
+    "team": "URU",
+    "rating": 6.36,
+    "playerId": "840184"
+  },
+  {
+    "rank": 523,
+    "name": "Riyad Mahrez",
+    "team": "ALG",
+    "rating": 6.36,
+    "playerId": "278343"
+  },
+  {
+    "rank": 523,
+    "name": "Sadio Mané",
+    "team": "SEN",
+    "rating": 6.36,
+    "playerId": "303339"
+  },
+  {
+    "rank": 523,
+    "name": "Saleh Hardani",
+    "team": "IRN",
+    "rating": 6.36,
+    "playerId": "1221526"
+  },
+  {
+    "rank": 530,
+    "name": "Alexander Sørloth",
+    "team": "NOR",
+    "rating": 6.35,
+    "playerId": "440330"
+  },
+  {
+    "rank": 530,
+    "name": "Gabriel Martinelli",
+    "team": "BRA",
+    "rating": 6.35,
+    "playerId": "1021586"
+  },
+  {
+    "rank": 530,
+    "name": "Memphis Depay",
+    "team": "NED",
+    "rating": 6.35,
+    "playerId": "303824"
+  },
+  {
+    "rank": 530,
+    "name": "Nathan Patterson",
+    "team": "SCO",
+    "rating": 6.35,
+    "playerId": "1112684"
+  },
+  {
+    "rank": 534,
+    "name": "Hee-Chan Hwang",
+    "team": "KOR",
+    "rating": 6.34,
+    "playerId": "620026"
+  },
+  {
+    "rank": 534,
+    "name": "Mousa Tamari",
+    "team": "JOR",
+    "rating": 6.34,
+    "playerId": "813055"
+  },
+  {
+    "rank": 534,
+    "name": "Rayan",
+    "team": "BRA",
+    "rating": 6.34,
+    "playerId": "1478295"
+  },
+  {
+    "rank": 537,
+    "name": "Besfort Zeneli",
+    "team": "SWE",
+    "rating": 6.33,
+    "playerId": "1338361"
+  },
+  {
+    "rank": 537,
+    "name": "Djed Spence",
+    "team": "ENG",
+    "rating": 6.33,
+    "playerId": "894803"
+  },
+  {
+    "rank": 537,
+    "name": "Hicham Boudaoui",
+    "team": "ALG",
+    "rating": 6.33,
+    "playerId": "1033099"
+  },
+  {
+    "rank": 537,
+    "name": "Karim Boudiaf",
+    "team": "QAT",
+    "rating": 6.33,
+    "playerId": "309153"
+  },
+  {
+    "rank": 537,
+    "name": "Rustamjon Ashurmatov",
+    "team": "UZB",
+    "rating": 6.33,
+    "playerId": "643624"
+  },
+  {
+    "rank": 537,
+    "name": "Sarpreet Singh",
+    "team": "NZL",
+    "rating": 6.33,
+    "playerId": "724531"
+  },
+  {
+    "rank": 543,
+    "name": "Amirhossein Hosseinzadeh",
+    "team": "IRN",
+    "rating": 6.32,
+    "playerId": "1031319"
+  },
+  {
+    "rank": 543,
+    "name": "Benjamin Tahirovic",
+    "team": "BIH",
+    "rating": 6.32,
+    "playerId": "1415104"
+  },
+  {
+    "rank": 543,
+    "name": "Gilson Benchimol",
+    "team": "CPV",
+    "rating": 6.32,
+    "playerId": "1241302"
+  },
+  {
+    "rank": 543,
+    "name": "Jesse Randall",
+    "team": "NZL",
+    "rating": 6.32,
+    "playerId": "1460327"
+  },
+  {
+    "rank": 543,
+    "name": "Moïse Bombito",
+    "team": "CAN",
+    "rating": 6.32,
+    "playerId": "1440009"
+  },
+  {
+    "rank": 543,
+    "name": "Roshon van Eijma",
+    "team": "CUW",
+    "rating": 6.32,
+    "playerId": "924844"
+  },
+  {
+    "rank": 543,
+    "name": "Jacob Shaffelburg",
+    "team": "CAN",
+    "rating": 6.32,
+    "playerId": "1023943"
+  },
+  {
+    "rank": 550,
+    "name": "Darwin Núñez",
+    "team": "URU",
+    "rating": 6.31,
+    "playerId": "950561"
+  },
+  {
+    "rank": 550,
+    "name": "Fabinho",
+    "team": "BRA",
+    "rating": 6.31,
+    "playerId": "359188"
+  },
+  {
+    "rank": 550,
+    "name": "Idrissa Gana Gueye",
+    "team": "SEN",
+    "rating": 6.31,
+    "playerId": "179410"
+  },
+  {
+    "rank": 550,
+    "name": "Moon-Hwan Kim",
+    "team": "KOR",
+    "rating": 6.31,
+    "playerId": "828273"
+  },
+  {
+    "rank": 550,
+    "name": "Oscar Bobb",
+    "team": "NOR",
+    "rating": 6.31,
+    "playerId": "1113790"
+  },
+  {
+    "rank": 550,
+    "name": "Ermedin Demirovic",
+    "team": "BIH",
+    "rating": 6.31,
+    "playerId": "840241"
+  },
+  {
+    "rank": 550,
+    "name": "Ibrahim Bayesh",
+    "team": "IRQ",
+    "rating": 6.31,
+    "playerId": "942834"
+  },
+  {
+    "rank": 557,
+    "name": "Jesper Karlström",
+    "team": "SWE",
+    "rating": 6.3,
+    "playerId": "322003"
+  },
+  {
+    "rank": 557,
+    "name": "José Córdoba",
+    "team": "PAN",
+    "rating": 6.3,
+    "playerId": "1223132"
+  },
+  {
+    "rank": 557,
+    "name": "Joseph Scally",
+    "team": "USA",
+    "rating": 6.3,
+    "playerId": "959696"
+  },
+  {
+    "rank": 557,
+    "name": "Oston Urunov",
+    "team": "UZB",
+    "rating": 6.3,
+    "playerId": "1057486"
+  },
+  {
+    "rank": 557,
+    "name": "Tim Payne",
+    "team": "NZL",
+    "rating": 6.3,
+    "playerId": "324305"
+  },
+  {
+    "rank": 557,
+    "name": "Ruben Providence",
+    "team": "HAI",
+    "rating": 6.3,
+    "playerId": "1200016"
+  },
+  {
+    "rank": 563,
+    "name": "Armando Obispo",
+    "team": "CUW",
+    "rating": 6.29,
+    "playerId": "794244"
+  },
+  {
+    "rank": 563,
+    "name": "Callan Elliot",
+    "team": "NZL",
+    "rating": 6.29,
+    "playerId": "1013276"
+  },
+  {
+    "rank": 563,
+    "name": "Gustavo Gómez",
+    "team": "PAR",
+    "rating": 6.29,
+    "playerId": "274392"
+  },
+  {
+    "rank": 563,
+    "name": "Telmo Arcanjo",
+    "team": "CPV",
+    "rating": 6.29,
+    "playerId": "1165477"
+  },
+  {
+    "rank": 563,
+    "name": "Yunus Akgün",
+    "team": "TUR",
+    "rating": 6.29,
+    "playerId": "845991"
+  },
+  {
+    "rank": 563,
+    "name": "Jason Geria",
+    "team": "AUS",
+    "rating": 6.29,
+    "playerId": "418799"
+  },
+  {
+    "rank": 563,
+    "name": "Milad Mohammadi",
+    "team": "IRN",
+    "rating": 6.29,
+    "playerId": "630459"
+  },
+  {
+    "rank": 563,
+    "name": "Teun Koopmeiners",
+    "team": "NED",
+    "rating": 6.29,
+    "playerId": "866516"
+  },
+  {
+    "rank": 571,
+    "name": "Alireza Jahanbakhsh",
+    "team": "IRN",
+    "rating": 6.28,
+    "playerId": "466890"
+  },
+  {
+    "rank": 571,
+    "name": "David Raum",
+    "team": "GER",
+    "rating": 6.28,
+    "playerId": "806669"
+  },
+  {
+    "rank": 571,
+    "name": "Ngal Ayel Mukau",
+    "team": "COD",
+    "rating": 6.28,
+    "playerId": "1428153"
+  },
+  {
+    "rank": 571,
+    "name": "Ramón Sosa",
+    "team": "PAR",
+    "rating": 6.28,
+    "playerId": "1132960"
+  },
+  {
+    "rank": 571,
+    "name": "Firas Al-Buraikan",
+    "team": "KSA",
+    "rating": 6.28,
+    "playerId": "844226"
+  },
+  {
+    "rank": 571,
+    "name": "Marko Stamenic",
+    "team": "NZL",
+    "rating": 6.28,
+    "playerId": "1209597"
+  },
+  {
+    "rank": 571,
+    "name": "Stefan Posch",
+    "team": "AUT",
+    "rating": 6.28,
+    "playerId": "557325"
+  },
+  {
+    "rank": 578,
+    "name": "Abdullah Al-Hamdan",
+    "team": "KSA",
+    "rating": 6.27,
+    "playerId": "909198"
+  },
+  {
+    "rank": 578,
+    "name": "Kerim Alajbegovic",
+    "team": "BIH",
+    "rating": 6.27,
+    "playerId": "1684401"
+  },
+  {
+    "rank": 578,
+    "name": "Mo Abualnadi",
+    "team": "JOR",
+    "rating": 6.27,
+    "playerId": "1033300"
+  },
+  {
+    "rank": 578,
+    "name": "Jayden Adams",
+    "team": "RSA",
+    "rating": 6.27,
+    "playerId": "1178629"
+  },
+  {
+    "rank": 578,
+    "name": "Saud Abdulhamid",
+    "team": "KSA",
+    "rating": 6.27,
+    "playerId": "1002617"
+  },
+  {
+    "rank": 583,
+    "name": "Ibrahim Maza",
+    "team": "ALG",
+    "rating": 6.26,
+    "playerId": "1457626"
+  },
+  {
+    "rank": 583,
+    "name": "Jackson Irvine",
+    "team": "AUS",
+    "rating": 6.26,
+    "playerId": "369742"
+  },
+  {
+    "rank": 583,
+    "name": "Pervis Estupinán",
+    "team": "ECU",
+    "rating": 6.26,
+    "playerId": "688278"
+  },
+  {
+    "rank": 583,
+    "name": "Rayan Aït-Nouri",
+    "team": "ALG",
+    "rating": 6.26,
+    "playerId": "933845"
+  },
+  {
+    "rank": 583,
+    "name": "Salem Al-Dawsari",
+    "team": "KSA",
+    "rating": 6.26,
+    "playerId": "307753"
+  },
+  {
+    "rank": 588,
+    "name": "Gilberto Mora",
+    "team": "MEX",
+    "rating": 6.25,
+    "playerId": "1670377"
+  },
+  {
+    "rank": 589,
+    "name": "Ayoube Amaimouni-Echghouyab",
+    "team": "MAR",
+    "rating": 6.24,
+    "playerId": "1680173"
+  },
+  {
+    "rank": 589,
+    "name": "Samir El Mourabet",
+    "team": "MAR",
+    "rating": 6.24,
+    "playerId": "1598170"
+  },
+  {
+    "rank": 589,
+    "name": "Tete Yengi",
+    "team": "AUS",
+    "rating": 6.24,
+    "playerId": "1220549"
+  },
+  {
+    "rank": 589,
+    "name": "Amar Memic",
+    "team": "BIH",
+    "rating": 6.24,
+    "playerId": "1300385"
+  },
+  {
+    "rank": 593,
+    "name": "Alaa Hajji",
+    "team": "KSA",
+    "rating": 6.23,
+    "playerId": "697618"
+  },
+  {
+    "rank": 593,
+    "name": "Alexander Prass",
+    "team": "AUT",
+    "rating": 6.23,
+    "playerId": "1027194"
+  },
+  {
+    "rank": 593,
+    "name": "Junnosuke Suzuki",
+    "team": "JPN",
+    "rating": 6.23,
+    "playerId": "1337765"
+  },
+  {
+    "rank": 593,
+    "name": "Nico Paz",
+    "team": "ARG",
+    "rating": 6.23,
+    "playerId": "1347574"
+  },
+  {
+    "rank": 593,
+    "name": "Nicolas Jackson",
+    "team": "SEN",
+    "rating": 6.23,
+    "playerId": "1197347"
+  },
+  {
+    "rank": 593,
+    "name": "Ange-Yoan Bonny",
+    "team": "CIV",
+    "rating": 6.23,
+    "playerId": "1199383"
+  },
+  {
+    "rank": 593,
+    "name": "Jassem Gaber",
+    "team": "QAT",
+    "rating": 6.23,
+    "playerId": "1195865"
+  },
+  {
+    "rank": 600,
+    "name": "Akmal Mozgovoy",
+    "team": "UZB",
+    "rating": 6.22,
+    "playerId": "929168"
+  },
+  {
+    "rank": 600,
+    "name": "Anis Hadj Moussa",
+    "team": "ALG",
+    "rating": 6.22,
+    "playerId": "1576876"
+  },
+  {
+    "rank": 600,
+    "name": "Bazoumana Touré",
+    "team": "CIV",
+    "rating": 6.22,
+    "playerId": "1624586"
+  },
+  {
+    "rank": 600,
+    "name": "Júnior Alonso",
+    "team": "PAR",
+    "rating": 6.22,
+    "playerId": "466214"
+  },
+  {
+    "rank": 600,
+    "name": "Mohamed Touré",
+    "team": "AUS",
+    "rating": 6.22,
+    "playerId": "1132069"
+  },
+  {
+    "rank": 605,
+    "name": "Anthony Gordon",
+    "team": "ENG",
+    "rating": 6.21,
+    "playerId": "906937"
+  },
+  {
+    "rank": 605,
+    "name": "Ché Adams",
+    "team": "SCO",
+    "rating": 6.21,
+    "playerId": "599353"
+  },
+  {
+    "rank": 605,
+    "name": "Pape Gueye",
+    "team": "SEN",
+    "rating": 6.21,
+    "playerId": "844544"
+  },
+  {
+    "rank": 605,
+    "name": "Relebohile Mofokeng",
+    "team": "RSA",
+    "rating": 6.21,
+    "playerId": "1471333"
+  },
+  {
+    "rank": 609,
+    "name": "Kwasi Sibo",
+    "team": "GHA",
+    "rating": 6.2,
+    "playerId": "948745"
+  },
+  {
+    "rank": 609,
+    "name": "Nuno da Costa",
+    "team": "CPV",
+    "rating": 6.2,
+    "playerId": "671326"
+  },
+  {
+    "rank": 611,
+    "name": "Elliot Stroud",
+    "team": "SWE",
+    "rating": 6.19,
+    "playerId": "1272349"
+  },
+  {
+    "rank": 611,
+    "name": "Hans Vanaken",
+    "team": "BEL",
+    "rating": 6.19,
+    "playerId": "203666"
+  },
+  {
+    "rank": 611,
+    "name": "Kristian Thorstvedt",
+    "team": "NOR",
+    "rating": 6.19,
+    "playerId": "921921"
+  },
+  {
+    "rank": 611,
+    "name": "Reece James",
+    "team": "ENG",
+    "rating": 6.19,
+    "playerId": "807729"
+  },
+  {
+    "rank": 611,
+    "name": "Tani Oluwaseyi",
+    "team": "CAN",
+    "rating": 6.19,
+    "playerId": "1338740"
+  },
+  {
+    "rank": 611,
+    "name": "Ricardo Pepi",
+    "team": "USA",
+    "rating": 6.19,
+    "playerId": "1036401"
+  },
+  {
+    "rank": 617,
+    "name": "Auston Trusty",
+    "team": "USA",
+    "rating": 6.18,
+    "playerId": "688271"
+  },
+  {
+    "rank": 617,
+    "name": "Elias Achouri",
+    "team": "TUN",
+    "rating": 6.18,
+    "playerId": "1015128"
+  },
+  {
+    "rank": 617,
+    "name": "Marco Pasalic",
+    "team": "CRO",
+    "rating": 6.18,
+    "playerId": "1199714"
+  },
+  {
+    "rank": 617,
+    "name": "Mike Maignan",
+    "team": "FRA",
+    "rating": 6.18,
+    "playerId": "466439"
+  },
+  {
+    "rank": 617,
+    "name": "Ronwen Williams",
+    "team": "RSA",
+    "rating": 6.18,
+    "playerId": "253991"
+  },
+  {
+    "rank": 622,
+    "name": "Ernest Nuamah",
+    "team": "GHA",
+    "rating": 6.17,
+    "playerId": "1338390"
+  },
+  {
+    "rank": 622,
+    "name": "Timothy Weah",
+    "team": "USA",
+    "rating": 6.17,
+    "playerId": "889536"
+  },
+  {
+    "rank": 624,
+    "name": "Carlos Harvey",
+    "team": "PAN",
+    "rating": 6.16,
+    "playerId": "1017520"
+  },
+  {
+    "rank": 624,
+    "name": "Ismaïla Sarr",
+    "team": "SEN",
+    "rating": 6.16,
+    "playerId": "771294"
+  },
+  {
+    "rank": 624,
+    "name": "Mustafa Saadoun",
+    "team": "IRQ",
+    "rating": 6.16,
+    "playerId": "1554123"
+  },
+  {
+    "rank": 624,
+    "name": "Tomás Soucek",
+    "team": "CZE",
+    "rating": 6.16,
+    "playerId": "524437"
+  },
+  {
+    "rank": 628,
+    "name": "Ayman Hussein",
+    "team": "IRQ",
+    "rating": 6.15,
+    "playerId": "674332"
+  },
+  {
+    "rank": 628,
+    "name": "Ryan Christie",
+    "team": "SCO",
+    "rating": 6.15,
+    "playerId": "439369"
+  },
+  {
+    "rank": 630,
+    "name": "Alejandro Romero",
+    "team": "PAR",
+    "rating": 6.14,
+    "playerId": "600850"
+  },
+  {
+    "rank": 630,
+    "name": "Benjamin Nygren",
+    "team": "SWE",
+    "rating": 6.14,
+    "playerId": "931605"
+  },
+  {
+    "rank": 630,
+    "name": "Paul Wanner",
+    "team": "AUT",
+    "rating": 6.14,
+    "playerId": "1327149"
+  },
+  {
+    "rank": 630,
+    "name": "Yuito Suzuki",
+    "team": "JPN",
+    "rating": 6.14,
+    "playerId": "1134467"
+  },
+  {
+    "rank": 634,
+    "name": "Andrej Kramaric",
+    "team": "CRO",
+    "rating": 6.13,
+    "playerId": "173461"
+  },
+  {
+    "rank": 634,
+    "name": "Don Deedson Louicius",
+    "team": "HAI",
+    "rating": 6.13,
+    "playerId": "1079194"
+  },
+  {
+    "rank": 634,
+    "name": "Josip Sutalo",
+    "team": "CRO",
+    "rating": 6.13,
+    "playerId": "1186228"
+  },
+  {
+    "rank": 634,
+    "name": "Rafael Leão",
+    "team": "POR",
+    "rating": 6.13,
+    "playerId": "848844"
+  },
+  {
+    "rank": 634,
+    "name": "Ugurcan Çakir",
+    "team": "TUR",
+    "rating": 6.13,
+    "playerId": "603669"
+  },
+  {
+    "rank": 639,
+    "name": "Danilo",
+    "team": "BRA",
+    "rating": 6.12,
+    "playerId": "1181700"
+  },
+  {
+    "rank": 639,
+    "name": "Matthew Leckie",
+    "team": "AUS",
+    "rating": 6.12,
+    "playerId": "185014"
+  },
+  {
+    "rank": 641,
+    "name": "Andreas Schjelderup",
+    "team": "NOR",
+    "rating": 6.11,
+    "playerId": "1228558"
+  },
+  {
+    "rank": 641,
+    "name": "Jakhongir Urozov",
+    "team": "UZB",
+    "rating": 6.11,
+    "playerId": "1477513"
+  },
+  {
+    "rank": 641,
+    "name": "Yéremi Pino",
+    "team": "ESP",
+    "rating": 6.11,
+    "playerId": "1047676"
+  },
+  {
+    "rank": 641,
+    "name": "Julián Álvarez",
+    "team": "ARG",
+    "rating": 6.11,
+    "playerId": "974753"
+  },
+  {
+    "rank": 645,
+    "name": "Guus Til",
+    "team": "NED",
+    "rating": 6.1,
+    "playerId": "774947"
+  },
+  {
+    "rank": 645,
+    "name": "Gustavo Velázquez",
+    "team": "PAR",
+    "rating": 6.1,
+    "playerId": "497352"
+  },
+  {
+    "rank": 645,
+    "name": "Ryan Thomas",
+    "team": "NZL",
+    "rating": 6.1,
+    "playerId": "496356"
+  },
+  {
+    "rank": 648,
+    "name": "Habib Diarra",
+    "team": "SEN",
+    "rating": 6.09,
+    "playerId": "1285866"
+  },
+  {
+    "rank": 648,
+    "name": "Rafik Belghali",
+    "team": "ALG",
+    "rating": 6.09,
+    "playerId": "1231029"
+  },
+  {
+    "rank": 648,
+    "name": "Edmílson Junior",
+    "team": "QAT",
+    "rating": 6.09,
+    "playerId": "365245"
+  },
+  {
+    "rank": 651,
+    "name": "Kenji Gorré",
+    "team": "CUW",
+    "rating": 6.08,
+    "playerId": "643232"
+  },
+  {
+    "rank": 651,
+    "name": "Michael Gregoritsch",
+    "team": "AUT",
+    "rating": 6.08,
+    "playerId": "198316"
+  },
+  {
+    "rank": 651,
+    "name": "Sherel Floranus",
+    "team": "CUW",
+    "rating": 6.08,
+    "playerId": "671327"
+  },
+  {
+    "rank": 651,
+    "name": "Boualem Khoukhi",
+    "team": "QAT",
+    "rating": 6.08,
+    "playerId": "308921"
+  },
+  {
+    "rank": 655,
+    "name": "Endrick",
+    "team": "BRA",
+    "rating": 6.07,
+    "playerId": "1406729"
+  },
+  {
+    "rank": 655,
+    "name": "Ezri Konsa",
+    "team": "ENG",
+    "rating": 6.07,
+    "playerId": "710159"
+  },
+  {
+    "rank": 655,
+    "name": "Simon Adingra",
+    "team": "CIV",
+    "rating": 6.07,
+    "playerId": "1227012"
+  },
+  {
+    "rank": 655,
+    "name": "Hamza Abdelkarim",
+    "team": "EGY",
+    "rating": 6.07,
+    "playerId": "1708842"
+  },
+  {
+    "rank": 659,
+    "name": "Mehdi Ghayedi",
+    "team": "IRN",
+    "rating": 6.06,
+    "playerId": "848314"
+  },
+  {
+    "rank": 659,
+    "name": "Nishan Velupillay",
+    "team": "AUS",
+    "rating": 6.06,
+    "playerId": "1250885"
+  },
+  {
+    "rank": 659,
+    "name": "Pedro Miguel",
+    "team": "QAT",
+    "rating": 6.06,
+    "playerId": "734637"
+  },
+  {
+    "rank": 659,
+    "name": "Moteb Al-Harbi",
+    "team": "KSA",
+    "rating": 6.06,
+    "playerId": "1138003"
+  },
+  {
+    "rank": 659,
+    "name": "Patrik Schick",
+    "team": "CZE",
+    "rating": 6.06,
+    "playerId": "540097"
+  },
+  {
+    "rank": 659,
+    "name": "Robin Hranác",
+    "team": "CZE",
+    "rating": 6.06,
+    "playerId": "1225995"
+  },
+  {
+    "rank": 665,
+    "name": "César Montes",
+    "team": "MEX",
+    "rating": 6.05,
+    "playerId": "664644"
+  },
+  {
+    "rank": 665,
+    "name": "Chemsdine Talbi",
+    "team": "MAR",
+    "rating": 6.05,
+    "playerId": "1368654"
+  },
+  {
+    "rank": 665,
+    "name": "Dodi Lukébakio",
+    "team": "BEL",
+    "rating": 6.05,
+    "playerId": "688876"
+  },
+  {
+    "rank": 665,
+    "name": "Lyndon Dykes",
+    "team": "SCO",
+    "rating": 6.05,
+    "playerId": "768635"
+  },
+  {
+    "rank": 665,
+    "name": "Mohamed Amoura",
+    "team": "ALG",
+    "rating": 6.05,
+    "playerId": "1134206"
+  },
+  {
+    "rank": 670,
+    "name": "Ángelo Preciado",
+    "team": "ECU",
+    "rating": 6.04,
+    "playerId": "848593"
+  },
+  {
+    "rank": 670,
+    "name": "Charles Pickel",
+    "team": "COD",
+    "rating": 6.04,
+    "playerId": "743720"
+  },
+  {
+    "rank": 670,
+    "name": "Daizen Maeda",
+    "team": "JPN",
+    "rating": 6.04,
+    "playerId": "728765"
+  },
+  {
+    "rank": 670,
+    "name": "Malick Diouf",
+    "team": "SEN",
+    "rating": 6.04,
+    "playerId": "1451265"
+  },
+  {
+    "rank": 670,
+    "name": "Nélson Semedo",
+    "team": "POR",
+    "rating": 6.04,
+    "playerId": "470834"
+  },
+  {
+    "rank": 670,
+    "name": "Benjamin Old",
+    "team": "NZL",
+    "rating": 6.04,
+    "playerId": "1257745"
+  },
+  {
+    "rank": 670,
+    "name": "Kerem Aktürkoglu",
+    "team": "TUR",
+    "rating": 6.04,
+    "playerId": "1117570"
+  },
+  {
+    "rank": 677,
+    "name": "Cameron Burgess",
+    "team": "AUS",
+    "rating": 6.03,
+    "playerId": "564842"
+  },
+  {
+    "rank": 678,
+    "name": "Lamine Camara",
+    "team": "SEN",
+    "rating": 6.02,
+    "playerId": "1436305"
+  },
+  {
+    "rank": 678,
+    "name": "Esmir Bajraktarevic",
+    "team": "BIH",
+    "rating": 6.02,
+    "playerId": "1346860"
+  },
+  {
+    "rank": 680,
+    "name": "Ivan Sunjic",
+    "team": "BIH",
+    "rating": 6.01,
+    "playerId": "541551"
+  },
+  {
+    "rank": 680,
+    "name": "Patrick Wimmer",
+    "team": "AUT",
+    "rating": 6.01,
+    "playerId": "1073498"
+  },
+  {
+    "rank": 682,
+    "name": "Álex Arce",
+    "team": "PAR",
+    "rating": 6,
+    "playerId": "1320444"
+  },
+  {
+    "rank": 682,
+    "name": "Leon Goretzka",
+    "team": "GER",
+    "rating": 6,
+    "playerId": "343748"
+  },
+  {
+    "rank": 682,
+    "name": "Marco Friedl",
+    "team": "AUT",
+    "rating": 6,
+    "playerId": "767789"
+  },
+  {
+    "rank": 682,
+    "name": "Isak Hien",
+    "team": "SWE",
+    "rating": 6,
+    "playerId": "939780"
+  },
+  {
+    "rank": 682,
+    "name": "Lenny Joseph",
+    "team": "HAI",
+    "rating": 6,
+    "playerId": "1242314"
+  },
+  {
+    "rank": 687,
+    "name": "Alexis Vega",
+    "team": "MEX",
+    "rating": 5.99,
+    "playerId": "728365"
+  },
+  {
+    "rank": 687,
+    "name": "Michael Boxall",
+    "team": "NZL",
+    "rating": 5.99,
+    "playerId": "128949"
+  },
+  {
+    "rank": 687,
+    "name": "Nikola Vlasic",
+    "team": "CRO",
+    "rating": 5.99,
+    "playerId": "557677"
+  },
+  {
+    "rank": 687,
+    "name": "Hannes Delcroix",
+    "team": "HAI",
+    "rating": 5.99,
+    "playerId": "822716"
+  },
+  {
+    "rank": 691,
+    "name": "Mohanad Ali",
+    "team": "IRQ",
+    "rating": 5.98,
+    "playerId": "926484"
+  },
+  {
+    "rank": 691,
+    "name": "Samed Bazdar",
+    "team": "BIH",
+    "rating": 5.98,
+    "playerId": "1284492"
+  },
+  {
+    "rank": 691,
+    "name": "Wilson Isidor",
+    "team": "HAI",
+    "rating": 5.98,
+    "playerId": "887703"
+  },
+  {
+    "rank": 694,
+    "name": "Ismaël Gharbi",
+    "team": "TUN",
+    "rating": 5.97,
+    "playerId": "1244924"
+  },
+  {
+    "rank": 694,
+    "name": "Kalidou Koulibaly",
+    "team": "SEN",
+    "rating": 5.97,
+    "playerId": "210428"
+  },
+  {
+    "rank": 694,
+    "name": "Romelu Lukaku",
+    "team": "BEL",
+    "rating": 5.97,
+    "playerId": "181276"
+  },
+  {
+    "rank": 697,
+    "name": "Houssem Aouar",
+    "team": "ALG",
+    "rating": 5.96,
+    "playerId": "776299"
+  },
+  {
+    "rank": 697,
+    "name": "Orbelín Pineda",
+    "team": "MEX",
+    "rating": 5.96,
+    "playerId": "559986"
+  },
+  {
+    "rank": 697,
+    "name": "Richard Ríos",
+    "team": "COL",
+    "rating": 5.96,
+    "playerId": "1174630"
+  },
+  {
+    "rank": 697,
+    "name": "Gustaf Lagerbielke",
+    "team": "SWE",
+    "rating": 5.96,
+    "playerId": "919848"
+  },
+  {
+    "rank": 697,
+    "name": "Jürgen Locadia",
+    "team": "CUW",
+    "rating": 5.96,
+    "playerId": "289441"
+  },
+  {
+    "rank": 702,
+    "name": "Dailon Livramento",
+    "team": "CPV",
+    "rating": 5.95,
+    "playerId": "1309634"
+  },
+  {
+    "rank": 702,
+    "name": "Igor Matanovic",
+    "team": "CRO",
+    "rating": 5.95,
+    "playerId": "1210893"
+  },
+  {
+    "rank": 704,
+    "name": "Akam Hashem",
+    "team": "IRQ",
+    "rating": 5.94,
+    "playerId": "1606279"
+  },
+  {
+    "rank": 704,
+    "name": "Armando González",
+    "team": "MEX",
+    "rating": 5.94,
+    "playerId": "1456983"
+  },
+  {
+    "rank": 704,
+    "name": "José Fajardo",
+    "team": "PAN",
+    "rating": 5.94,
+    "playerId": "940334"
+  },
+  {
+    "rank": 704,
+    "name": "Saleem Obaid",
+    "team": "JOR",
+    "rating": 5.94,
+    "playerId": "847766"
+  },
+  {
+    "rank": 704,
+    "name": "Yan Valery",
+    "team": "TUN",
+    "rating": 5.94,
+    "playerId": "789596"
+  },
+  {
+    "rank": 709,
+    "name": "Anass Salah-Eddine",
+    "team": "MAR",
+    "rating": 5.93,
+    "playerId": "1050838"
+  },
+  {
+    "rank": 709,
+    "name": "Evann Guessand",
+    "team": "CIV",
+    "rating": 5.93,
+    "playerId": "1087966"
+  },
+  {
+    "rank": 711,
+    "name": "Dylan Bronn",
+    "team": "TUN",
+    "rating": 5.92,
+    "playerId": "771686"
+  },
+  {
+    "rank": 711,
+    "name": "Gue-Sung Cho",
+    "team": "KOR",
+    "rating": 5.92,
+    "playerId": "1026781"
+  },
+  {
+    "rank": 711,
+    "name": "Johny Placide",
+    "team": "HAI",
+    "rating": 5.92,
+    "playerId": "103468"
+  },
+  {
+    "rank": 711,
+    "name": "Luka Modric",
+    "team": "CRO",
+    "rating": 5.92,
+    "playerId": "31097"
+  },
+  {
+    "rank": 711,
+    "name": "Omar Rekik",
+    "team": "TUN",
+    "rating": 5.92,
+    "playerId": "1160097"
+  },
+  {
+    "rank": 716,
+    "name": "Carney Chukwuemeka",
+    "team": "AUT",
+    "rating": 5.91,
+    "playerId": "1089685"
+  },
+  {
+    "rank": 716,
+    "name": "Elias Saad",
+    "team": "TUN",
+    "rating": 5.91,
+    "playerId": "1285773"
+  },
+  {
+    "rank": 716,
+    "name": "Hussein Ali",
+    "team": "IRQ",
+    "rating": 5.91,
+    "playerId": "1092563"
+  },
+  {
+    "rank": 716,
+    "name": "Willy Semedo",
+    "team": "CPV",
+    "rating": 5.91,
+    "playerId": "873832"
+  },
+  {
+    "rank": 716,
+    "name": "Baris Alper Yilmaz",
+    "team": "TUR",
+    "rating": 5.91,
+    "playerId": "890232"
+  },
+  {
+    "rank": 716,
+    "name": "Carlens Arcus",
+    "team": "HAI",
+    "rating": 5.91,
+    "playerId": "634110"
+  },
+  {
+    "rank": 716,
+    "name": "Frantzdy Pierrot",
+    "team": "HAI",
+    "rating": 5.91,
+    "playerId": "833641"
+  },
+  {
+    "rank": 723,
+    "name": "Nikola Vasilj",
+    "team": "BIH",
+    "rating": 5.9,
+    "playerId": "466867"
+  },
+  {
+    "rank": 724,
+    "name": "Adam Hlozek",
+    "team": "CZE",
+    "rating": 5.89,
+    "playerId": "969870"
+  },
+  {
+    "rank": 724,
+    "name": "Ahmed Qasem",
+    "team": "IRQ",
+    "rating": 5.89,
+    "playerId": "1224691"
+  },
+  {
+    "rank": 724,
+    "name": "Victor Nilsson Lindelöf",
+    "team": "SWE",
+    "rating": 5.89,
+    "playerId": "258269"
+  },
+  {
+    "rank": 727,
+    "name": "Tomás Chory",
+    "team": "CZE",
+    "rating": 5.88,
+    "playerId": "523217"
+  },
+  {
+    "rank": 728,
+    "name": "Homam Elamin",
+    "team": "QAT",
+    "rating": 5.86,
+    "playerId": "937414"
+  },
+  {
+    "rank": 728,
+    "name": "Jearl Margaritha",
+    "team": "CUW",
+    "rating": 5.86,
+    "playerId": "1180784"
+  },
+  {
+    "rank": 730,
+    "name": "Deveron Fonville",
+    "team": "CUW",
+    "rating": 5.85,
+    "playerId": "1335315"
+  },
+  {
+    "rank": 731,
+    "name": "Deniz Gül",
+    "team": "TUR",
+    "rating": 5.84,
+    "playerId": "1406300"
+  },
+  {
+    "rank": 731,
+    "name": "Nico Williams",
+    "team": "ESP",
+    "rating": 5.84,
+    "playerId": "1202110"
+  },
+  {
+    "rank": 731,
+    "name": "Damián Bobadilla",
+    "team": "PAR",
+    "rating": 5.84,
+    "playerId": "1252913"
+  },
+  {
+    "rank": 734,
+    "name": "Amine Gouiri",
+    "team": "ALG",
+    "rating": 5.83,
+    "playerId": "844437"
+  },
+  {
+    "rank": 735,
+    "name": "Max Crocombe",
+    "team": "NZL",
+    "rating": 5.82,
+    "playerId": "315201"
+  },
+  {
+    "rank": 736,
+    "name": "Azizbek Amonov",
+    "team": "UZB",
+    "rating": 5.81,
+    "playerId": "933051"
+  },
+  {
+    "rank": 736,
+    "name": "Nkosinathi Sibisi",
+    "team": "RSA",
+    "rating": 5.81,
+    "playerId": "716819"
+  },
+  {
+    "rank": 738,
+    "name": "Camilo Vargas",
+    "team": "COL",
+    "rating": 5.79,
+    "playerId": "50207"
+  },
+  {
+    "rank": 739,
+    "name": "Ali Lajami",
+    "team": "KSA",
+    "rating": 5.77,
+    "playerId": "640284"
+  },
+  {
+    "rank": 739,
+    "name": "Firas Chaouat",
+    "team": "TUN",
+    "rating": 5.77,
+    "playerId": "845336"
+  },
+  {
+    "rank": 741,
+    "name": "Abdukodir Khusanov",
+    "team": "UZB",
+    "rating": 5.76,
+    "playerId": "1362998"
+  },
+  {
+    "rank": 742,
+    "name": "Jackson Porozo",
+    "team": "ECU",
+    "rating": 5.75,
+    "playerId": "1032039"
+  },
+  {
+    "rank": 742,
+    "name": "José Luis Rodriguez",
+    "team": "PAN",
+    "rating": 5.75,
+    "playerId": "940333"
+  },
+  {
+    "rank": 744,
+    "name": "Antonio Sanabria",
+    "team": "PAR",
+    "rating": 5.74,
+    "playerId": "474448"
+  },
+  {
+    "rank": 744,
+    "name": "Rani Khedira",
+    "team": "TUN",
+    "rating": 5.74,
+    "playerId": "304348"
+  },
+  {
+    "rank": 744,
+    "name": "Zizo",
+    "team": "EGY",
+    "rating": 5.74,
+    "playerId": "532766"
+  },
+  {
+    "rank": 747,
+    "name": "Assim Madibo",
+    "team": "QAT",
+    "rating": 5.72,
+    "playerId": "615414"
+  },
+  {
+    "rank": 748,
+    "name": "Ayoub Al Oui",
+    "team": "QAT",
+    "rating": 5.7,
+    "playerId": "1432180"
+  },
+  {
+    "rank": 749,
+    "name": "Jean-Kévin Duverne",
+    "team": "HAI",
+    "rating": 5.69,
+    "playerId": "769168"
+  },
+  {
+    "rank": 750,
+    "name": "Josko Gvardiol",
+    "team": "CRO",
+    "rating": 5.68,
+    "playerId": "1070712"
+  },
+  {
+    "rank": 751,
+    "name": "Bernardo Silva",
+    "team": "POR",
+    "rating": 5.67,
+    "playerId": "488139"
+  },
+  {
+    "rank": 751,
+    "name": "Santiago Giménez",
+    "team": "MEX",
+    "rating": 5.67,
+    "playerId": "954092"
+  },
+  {
+    "rank": 753,
+    "name": "Cecilio Waterman",
+    "team": "PAN",
+    "rating": 5.66,
+    "playerId": "312159"
+  },
+  {
+    "rank": 753,
+    "name": "Sherzod Nasrulloev",
+    "team": "UZB",
+    "rating": 5.66,
+    "playerId": "1258316"
+  },
+  {
+    "rank": 753,
+    "name": "Stepán Chaloupek",
+    "team": "CZE",
+    "rating": 5.66,
+    "playerId": "1288146"
+  },
+  {
+    "rank": 753,
+    "name": "Ali Abdi",
+    "team": "TUN",
+    "rating": 5.66,
+    "playerId": "566187"
+  },
+  {
+    "rank": 753,
+    "name": "Sebastian Tounekti",
+    "team": "TUN",
+    "rating": 5.66,
+    "playerId": "921919"
+  },
+  {
+    "rank": 758,
+    "name": "Isidro Pitta",
+    "team": "PAR",
+    "rating": 5.65,
+    "playerId": "1033279"
+  },
+  {
+    "rank": 759,
+    "name": "Iqraam Rayners",
+    "team": "RSA",
+    "rating": 5.64,
+    "playerId": "1076668"
+  },
+  {
+    "rank": 760,
+    "name": "Ellyes Skhiri",
+    "team": "TUN",
+    "rating": 5.63,
+    "playerId": "574642"
+  },
+  {
+    "rank": 761,
+    "name": "Abdulla Abdullaev",
+    "team": "UZB",
+    "rating": 5.61,
+    "playerId": "1294120"
+  },
+  {
+    "rank": 762,
+    "name": "Moussa Niakhaté",
+    "team": "SEN",
+    "rating": 5.6,
+    "playerId": "592102"
+  },
+  {
+    "rank": 763,
+    "name": "Yazeed Yazeed Abulaila",
+    "team": "JOR",
+    "rating": 5.56,
+    "playerId": "734654"
+  },
+  {
+    "rank": 764,
+    "name": "Lyle Foster",
+    "team": "RSA",
+    "rating": 5.55,
+    "playerId": "881500"
+  },
+  {
+    "rank": 765,
+    "name": "Édouard Mendy",
+    "team": "SEN",
+    "rating": 5.54,
+    "playerId": "773229"
+  },
+  {
+    "rank": 766,
+    "name": "Josué Casimir",
+    "team": "HAI",
+    "rating": 5.51,
+    "playerId": "1199382"
+  },
+  {
+    "rank": 767,
+    "name": "Eldor Shomurodov",
+    "team": "UZB",
+    "rating": 5.49,
+    "playerId": "619513"
+  },
+  {
+    "rank": 768,
+    "name": "Luca Zidane",
+    "team": "ALG",
+    "rating": 5.45,
+    "playerId": "770880"
+  },
+  {
+    "rank": 769,
+    "name": "Kristoffer Nordfeldt",
+    "team": "SWE",
+    "rating": 5.43,
+    "playerId": "73462"
+  },
+  {
+    "rank": 770,
+    "name": "Hassan Al Tambakti",
+    "team": "KSA",
+    "rating": 5.42,
+    "playerId": "848607"
+  },
+  {
+    "rank": 771,
+    "name": "Ahmed Basil Fadhil",
+    "team": "IRQ",
+    "rating": 5.32,
+    "playerId": "1132570"
+  },
+  {
+    "rank": 772,
+    "name": "Montassar Talbi",
+    "team": "TUN",
+    "rating": 5.26,
+    "playerId": "846392"
+  },
+  {
+    "rank": 773,
+    "name": "Jalal Hassan",
+    "team": "IRQ",
+    "rating": 5.15,
+    "playerId": "578761"
+  },
+  {
+    "rank": 774,
+    "name": "Fernando Muslera",
+    "team": "URU",
+    "rating": 5.06,
+    "playerId": "56829"
+  },
+  {
+    "rank": 775,
+    "name": "Zaid Tahseen",
+    "team": "IRQ",
+    "rating": 5,
+    "playerId": "1420369"
+  },
+  {
+    "rank": 776,
+    "name": "Utkir Yusupov",
+    "team": "UZB",
+    "rating": 4.99,
+    "playerId": "619700"
+  },
+  {
+    "rank": 777,
+    "name": "Mohamed Al Mannai",
+    "team": "QAT",
+    "rating": 4.93,
+    "playerId": "1553870"
+  },
+  {
+    "rank": 778,
+    "name": "Themba Zwane",
+    "team": "RSA",
+    "rating": 4.9,
+    "playerId": "303609"
+  },
+  {
+    "rank": 779,
+    "name": "Aymen Dahmen",
+    "team": "TUN",
+    "rating": 4.86,
+    "playerId": "982855"
+  },
+  {
+    "rank": 780,
+    "name": "Riechedly Bazoer",
+    "team": "CUW",
+    "rating": 4.1,
+    "playerId": "467479"
+  },
+  {
+    "rank": 781,
+    "name": "Sphephelo Sithole",
+    "team": "RSA",
+    "rating": 3.54,
+    "playerId": "1107735"
+  },
+  {
+    "rank": 782,
+    "name": "Abdelmouhib Chamakh",
+    "team": "TUN",
+    "rating": 1.9,
+    "playerId": "1718458"
+  }
+]

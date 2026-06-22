@@ -1,620 +1,69 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+/* eslint-disable react-hooks/set-state-in-effect */
+import { useState, useEffect, useMemo } from 'react';
+import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap } from 'lucide-react';
+import { TEAMS, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
+import { calculateStandings, getAdvancedTeams, populateRoundOf32 } from './data/simulation';
 import { 
-  Trophy, Users, MapPin, Calendar, TrendingUp, Sparkles, 
-  RefreshCw, Moon, Sun, Share2, ChevronDown, Check, Award, Info,
-  Flame, Globe, HelpCircle, Heart, Star, Radio, Clock, ListFilter
-} from 'lucide-react';
-import { TEAMS, GROUPS, VENUES, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
-import { calculateStandings, getAdvancedTeams, populateRoundOf32, simulateScore } from './data/simulation';
-import { OFFICIAL_MATCH_DETAILS } from './data/officialMatchDetails';
-
-// Custom authentic icons for World Cup and Player Stats
-const WorldCupTrophyIcon = ({ className }) => (
-  <svg 
-    className={className} 
-    viewBox="0 0 24 24" 
-    fill="currentColor"
-  >
-    {/* Cylindrical base */}
-    <path d="M7 21h10v1.5H7zm1-2h8v1.5H8zm.5-2h7v1.5h-7z" opacity="0.9" />
-    {/* Malachite green bands */}
-    <path d="M7 20h10v1H7zm.5-2h9v1h-9z" fill="#10b981" />
-    {/* Gold body & figures spiraling up */}
-    <path d="M9.5 17c.5-1.5.5-3 0-4.5S8.5 10 7.5 9c1-1.5 3-1.5 4 0 .5 1 1 2.5 1 4.5v-6c.5-.5 1-1 1.5-1.5s1.5-1 2 .5c-.5 1.5-2.5 4-3.5 5.5s-1 3.5-.5 5h-5z" />
-    {/* Globe */}
-    <circle cx="12.5" cy="5.5" r="3.5" />
-    {/* Globe detail lines */}
-    <path d="M9.5 5.5h6" stroke="#1e293b" strokeWidth="0.5" />
-    <path d="M12.5 2a3.5 3.5 0 0 1 0 7" stroke="#1e293b" strokeWidth="0.5" fill="none" />
-  </svg>
-);
-
-const GoldenBootTrophyIcon = ({ className }) => (
-  <svg 
-    className={className} 
-    viewBox="0 0 24 24" 
-    fill="currentColor"
-  >
-    {/* Pedestal Base */}
-    <rect x="4" y="18" width="16" height="3" rx="0.5" opacity="0.4" />
-    <rect x="6" y="16" width="12" height="2" rx="0.5" opacity="0.6" />
-    
-    {/* Shoe body */}
-    <path d="M5.5 15.5c-.8-2 0-5.5 1.5-6.5C8.5 8 10 10.5 12 11.5c1.5-1 4.5-2 6-1 1.5.5 1.5 3.5 1 5.5l-6 2.5-7.5-3z" />
-    {/* Sole & Studs */}
-    <path d="M5.5 15.5c2.5 0 5 .5 8 .5s5-1 7-2.5M7.5 16.5v1.5M10.5 17v1.5M13.5 17v1.5M16.5 16.5v1.5" stroke="#1e293b" strokeWidth="1" />
-    {/* Stripes */}
-    <path d="M11.5 10.5l-1.5 2M12.5 10l-1.5 2M13.5 9.5l-1.5 2" stroke="#1e293b" strokeWidth="0.8" />
-  </svg>
-);
-
-const PlaymakerIcon = ({ className }) => (
-  <svg 
-    className={className} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <path d="M4 14l4 4M8 14l-4 4" />
-    <path d="M7 12c3-4 7-4 10 0" />
-    <path d="M14 9h3v3" />
-    <circle cx="18" cy="15" r="2" />
-  </svg>
-);
-
-// Helper to parse match kickoff time in IST
-const parseMatchKickoff = (match) => {
-  try {
-    const cleanDate = match.date.replace(" IST", "");
-    const parts = cleanDate.split(", ");
-    const dayParts = parts[0].split(" ");
-    const monthStr = dayParts[0];
-    const dayStr = dayParts[1];
-    
-    const timeParts = parts[1].split(" ");
-    const [hourStr, minStr] = timeParts[0].split(":");
-    let hour = parseInt(hourStr);
-    if (timeParts[1] === "PM" && hour < 12) hour += 12;
-    if (timeParts[1] === "AM" && hour === 12) hour = 0;
-    
-    const months = { "June": "06", "July": "07" };
-    const month = months[monthStr] || "06";
-    
-    return new Date(`2026-${month}-${dayStr.padStart(2, '0')}T${String(hour).padStart(2, '0')}:${minStr.padStart(2, '0')}:00+05:30`);
-  } catch (e) {
-    return null;
-  }
-};
-
-const isMobile = typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-const formatDisplayDate = (dateStr) => {
-  if (!dateStr) return '';
-  try {
-    const cleanDate = dateStr.replace(" IST", "").trim();
-    const parts = cleanDate.split(", ");
-    if (parts.length < 2) return cleanDate;
-    
-    const dayParts = parts[0].split(" ");
-    const monthStr = dayParts[0];
-    const dayStr = dayParts[1];
-    
-    const timeParts = parts[1].split(" ");
-    if (timeParts.length < 2) return cleanDate;
-    
-    const [hourStr, minStr] = timeParts[0].split(":");
-    let hour = parseInt(hourStr, 10);
-    if (timeParts[1] === "PM" && hour < 12) hour += 12;
-    if (timeParts[1] === "AM" && hour === 12) hour = 0;
-    
-    const months = { "June": 5, "July": 6 };
-    const monthVal = months[monthStr] !== undefined ? months[monthStr] : 5;
-    const dayVal = parseInt(dayStr, 10);
-    
-    const d = new Date(2026, monthVal, dayVal, hour, parseInt(minStr, 10));
-    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const dayOfWeek = weekdays[d.getDay()];
-    const shortMonth = monthStr.substring(0, 3);
-    
-    return `${dayOfWeek}, ${shortMonth} ${dayStr}, ${timeParts[0]} ${timeParts[1]}`;
-  } catch (e) {
-    return dateStr.replace(" IST", "");
-  }
-};
-
-const getMatchVenue = (match) => {
-  if (!match) return 'TBD Stadium';
-  if (match.venue) return match.venue;
-  
-  if (match.type !== 'group') {
-    if (match.id === 'final') return 'MetLife Stadium';
-    if (match.id === 'sf_1') return 'AT&T Stadium';
-    if (match.id === 'sf_2') return 'Mercedes-Benz Stadium';
-    if (match.id && match.id.startsWith('qf')) {
-      const qfIdx = parseInt(match.id.replace('qf_', ''));
-      const qfVenues = ['Arrowhead Stadium', 'Gillette Stadium', 'SoFi Stadium', 'Hard Rock Stadium'];
-      return qfVenues[(qfIdx - 1) % 4] || 'AT&T Stadium';
-    }
-    if (match.id && match.id.startsWith('r16')) {
-      const r16Idx = parseInt(match.id.replace('r16_', ''));
-      return VENUES[(r16Idx + 4) % VENUES.length].name;
-    }
-    if (match.id && match.id.startsWith('r32')) {
-      const r32Idx = parseInt(match.id.replace('r32_', ''));
-      return VENUES[r32Idx % VENUES.length].name;
-    }
-    return 'AT&T Stadium';
-  }
-
-  const groupVenues = {
-    A: ['Estadio Azteca', 'Estadio Akron', 'Estadio BBVA'],
-    B: ['BC Place', 'BMO Field', 'Lumen Field'],
-    C: ['SoFi Stadium', 'Levi\'s Stadium', 'Lumen Field'],
-    D: ['AT&T Stadium', 'NRG Stadium', 'Hard Rock Stadium'],
-    E: ['Mercedes-Benz Stadium', 'Hard Rock Stadium', 'Arrowhead Stadium'],
-    F: ['MetLife Stadium', 'Gillette Stadium', 'Lincoln Financial Field'],
-    G: ['Estadio Azteca', 'Estadio Akron', 'SoFi Stadium'],
-    H: ['BC Place', 'BMO Field', 'Levi\'s Stadium'],
-    I: ['AT&T Stadium', 'NRG Stadium', 'Arrowhead Stadium'],
-    J: ['Mercedes-Benz Stadium', 'MetLife Stadium', 'Gillette Stadium'],
-    K: ['Lincoln Financial Field', 'Hard Rock Stadium', 'SoFi Stadium'],
-    L: ['Estadio BBVA', 'Estadio Akron', 'Levi\'s Stadium']
-  };
-
-  const list = groupVenues[match.group] || ['MetLife Stadium'];
-  const matchIdx = (match.id - 1) % 6;
-  return list[matchIdx % list.length];
-};
-const TEAM_PLAYERS = {
-  MEX: ["Santiago Giménez", "Hirving Lozano", "Edson Álvarez", "Henry Martín"],
-  RSA: ["Lyle Foster", "Percy Tau", "Teboho Mokoena", "Themba Zwane"],
-  KOR: ["Son Heung-min", "Hwang Hee-chan", "Lee Kang-in", "Cho Gue-sung"],
-  CZE: ["Patrik Schick", "Tomáš Souček", "Adam Hložek", "Antonín Barák"],
-  CAN: ["Jonathan David", "Alphonso Davies", "Cyle Larin", "Tajon Buchanan"],
-  BIH: ["Edin Džeko", "Ermedin Demirović", "Miralem Pjanić", "Rade Krunić"],
-  QAT: ["Akram Afif", "Almoez Ali", "Hassan Al-Haydos", "Boualem Khoukhi"],
-  SUI: ["Breel Embolo", "Xherdan Shaqiri", "Granit Xhaka", "Manuel Akanji"],
-  BRA: ["Vinícius Júnior", "Rodrygo", "Neymar Jr", "Gabriel Martinelli"],
-  MAR: ["Youssef En-Nesyri", "Hakim Ziyech", "Achraf Hakimi", "Amine Harit"],
-  HAI: ["Duckens Nazon", "Frantzdy Pierrot", "Wilde-Donald Guerrier", "Derrick Etienne"],
-  SCO: ["Scott McTominay", "John McGinn", "Ché Adams", "Lyndon Dykes"],
-  USA: ["Christian Pulisic", "Folarin Balogun", "Timothy Weah", "Weston McKennie"],
-  PAR: ["Miguel Almirón", "Antonio Sanabria", "Julio Enciso", "Gustavo Gómez"],
-  AUS: ["Mitchell Duke", "Jackson Irvine", "Craig Goodwin", "Martin Boyle"],
-  TUR: ["Kenan Yıldız", "Hakan Çalhanoğlu", "Arda Güler", "Cenk Tosun"],
-  GER: ["Florian Wirtz", "Jamal Musiala", "Kai Havertz", "Niclas Füllkrug"],
-  CUW: ["Rangelo Janga", "Leandro Bacuna", "Kenji Gorré", "Brandley Kuwas"],
-  CIV: ["Sébastien Haller", "Franck Kessié", "Simon Adingra", "Ibrahim Sangaré"],
-  ECU: ["Enner Valencia", "Moisés Caicedo", "Gonzalo Plata", "Michael Estrada"],
-  NED: ["Memphis Depay", "Cody Gakpo", "Xavi Simons", "Virgil van Dijk"],
-  JPN: ["Kaoru Mitoma", "Takumi Minamino", "Takefusa Kubo", "Daichi Kamada"],
-  SWE: ["Alexander Isak", "Dejan Kulusevski", "Viktor Gyökeres", "Emil Forsberg"],
-  TUN: ["Youssef Msakni", "Aïssa Laïdouni", "Wahbi Khazri", "Naïm Sliti"],
-  BEL: ["Romelu Lukaku", "Kevin De Bruyne", "Leandro Trossard", "Jérémy Doku"],
-  EGY: ["Mohamed Salah", "Omar Marmoush", "Mostafa Mohamed", "Trezeguet"],
-  IRN: ["Mehdi Taremi", "Sardar Azmoun", "Alireza Jahanbakhsh", "Saman Ghoddos"],
-  NZL: ["Chris Wood", "Liborato Cacace", "Matthew Garbett", "Elijah Just"],
-  ESP: ["Álvaro Morata", "Nico Williams", "Lamine Yamal", "Dani Olmo"],
-  CPV: ["Ryan Mendes", "Garry Rodrigues", "Bebé", "Jovane Cabral"],
-  KSA: ["Salem Al-Dawsari", "Firas Al-Buraikan", "Saleh Al-Shehri", "Abdulrahman Ghareeb"],
-  URU: ["Darwin Núñez", "Federico Valverde", "Facundo Pellistri", "Ronald Araújo"],
-  FRA: ["Kylian Mbappé", "Antoine Griezmann", "Olivier Giroud", "Ousmane Dembélé"],
-  SEN: ["Sadio Mané", "Nicolas Jackson", "Ismaïla Sarr", "Idrissa Gueye"],
-  IRQ: ["Aymen Hussein", "Ali Jasim", "Mohanad Ali", "Ibrahim Bayesh"],
-  NOR: ["Erling Haaland", "Martin Ødegaard", "Alexander Sørloth", "Jørgen Strand Larsen"],
-  ARG: ["Lionel Messi", "Lautaro Martínez", "Julián Álvarez", "Alexis Mac Allister"],
-  ALG: ["Riyad Mahrez", "Baghdad Bounedjah", "Amine Gouiri", "Saïd Benrahma"],
-  AUT: ["Marcel Sabitzer", "Michael Gregoritsch", "Christoph Baumgartner", "Konrad Laimer"],
-  JOR: ["Musa Al-Taamari", "Yazan Al-Naimat", "Ali Olwan", "Hamza Al-Dardour"],
-  POR: ["Cristiano Ronaldo", "Bruno Fernandes", "Bernardo Silva", "Rafael Leão"],
-  COD: ["Yoane Wissa", "Cédric Bakambu", "Chancel Mbemba", "Meschack Elia"],
-  UZB: ["Eldor Shomurodov", "Abbosbek Fayzullaev", "Oston Urunov", "Igor Sergeev"],
-  COL: ["Luis Díaz", "James Rodríguez", "Jhon Durán", "Rafael Borré"],
-  ENG: ["Harry Kane", "Jude Bellingham", "Bukayo Saka", "Phil Foden"],
-  CRO: ["Andrej Kramarić", "Luka Modrić", "Mateo Kovačić", "Ivan Perišić"],
-  GHA: ["Mohammed Kudus", "Jordan Ayew", "Inaki Williams", "Antoine Semenyo"],
-  PAN: ["José Fajardo", "Cecilio Waterman", "Yoel Bárcenas", "Aníbal Godoy"]
-};
-
-const seededRandom = (seed) => {
-  const x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-};
-
-const getAssistPlayer = (matchId, goalPlayer, teamCode, goalMinute) => {
-  const players = TEAM_PLAYERS[teamCode] || [];
-  if (players.length <= 1) return null;
-  
-  const seedStr = `${matchId}-${goalPlayer}-${teamCode}-${goalMinute}`;
-  let hash = 0;
-  for (let i = 0; i < seedStr.length; i++) {
-    hash = seedStr.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  const randomVal = Math.abs(Math.sin(hash) * 10000) % 1;
-  
-  if (randomVal > 0.75) return null;
-  
-  const otherPlayers = players.filter(p => p !== goalPlayer);
-  if (otherPlayers.length === 0) return null;
-  
-  const assistIdx = Math.floor(randomVal * otherPlayers.length);
-  return otherPlayers[assistIdx];
-};
-
-const getPossessionWithContest = (possessionArray, matchId) => {
-  const rawHome = possessionArray?.[0] || 50;
-  const rawAway = possessionArray?.[1] || 50;
-  
-  const matchNum = typeof matchId === 'number' ? matchId : (parseInt(matchId) || 42);
-  const contest = 10 + (matchNum % 9);
-  
-  const multiplier = (100 - contest) / 100;
-  const home = Math.round(rawHome * multiplier);
-  const away = 100 - contest - home;
-  
-  return [home, away, contest];
-};
-
-const generateRealisticStats = (homeScore, awayScore, matchId) => {
-  const seed = (matchId || 1) * 7 + (homeScore || 0) * 13 + (awayScore || 0) * 17;
-  const rand = (s) => {
-    const x = Math.sin(s) * 10000;
-    return x - Math.floor(x);
-  };
-
-  const r1 = rand(seed + 1);
-  const r2 = rand(seed + 2);
-  const r3 = rand(seed + 3);
-  const r4 = rand(seed + 4);
-  const r5 = rand(seed + 5);
-  const r6 = rand(seed + 6);
-  const r7 = rand(seed + 7);
-
-  const homeSOT = (homeScore || 0) + Math.floor(r1 * 4) + 1;
-  const awaySOT = (awayScore || 0) + Math.floor(r2 * 4) + 1;
-
-  const homeShots = homeSOT + Math.floor(r3 * 9) + 3;
-  const awayShots = awaySOT + Math.floor(r4 * 9) + 3;
-
-  const homeCorners = Math.floor(r5 * 8) + 2;
-  const awayCorners = Math.floor(r6 * 8) + 2;
-
-  const homeFouls = Math.floor(r7 * 10) + 8;
-  const awayFouls = Math.floor(rand(seed + 8) * 10) + 8;
-
-  const diff = (homeScore || 0) - (awayScore || 0);
-  let homePoss = 50 + diff * 3 + Math.floor(rand(seed + 9) * 11) - 5;
-  homePoss = Math.max(35, Math.min(65, homePoss));
-  const awayPoss = 100 - homePoss;
-
-  const homeYellows = Math.floor(rand(seed + 10) * 4);
-  const awayYellows = Math.floor(rand(seed + 11) * 4);
-
-  const homeReds = rand(seed + 12) > 0.95 ? 1 : 0;
-  const awayReds = rand(seed + 13) > 0.95 ? 1 : 0;
-
-  return {
-    possession: [homePoss, awayPoss],
-    shots: [homeShots, awayShots],
-    shotsOnTarget: [homeSOT, awaySOT],
-    corners: [homeCorners, awayCorners],
-    fouls: [homeFouls, awayFouls],
-    yellowCards: [homeYellows, awayYellows],
-    redCards: [homeReds, awayReds]
-  };
-};
-
-const generateRealisticScorers = (matchId, homeCode, awayCode, homeScore, awayScore) => {
-  const scorers = [];
-  const homePlayers = TEAM_PLAYERS[homeCode] || ["Home Player A", "Home Player B"];
-  const awayPlayers = TEAM_PLAYERS[awayCode] || ["Away Player A", "Away Player B"];
-
-  const rand = (seed) => {
-    const x = Math.sin(seed) * 10000;
-    return x - Math.floor(x);
-  };
-
-  for (let i = 0; i < homeScore; i++) {
-    const seed = matchId * 3 + i * 7;
-    const playerIdx = Math.floor(rand(seed) * homePlayers.length);
-    const minute = Math.floor(rand(seed + 1) * 89) + 1;
-    scorers.push({ team: 'home', player: homePlayers[playerIdx], minute });
-  }
-
-  for (let i = 0; i < awayScore; i++) {
-    const seed = matchId * 5 + i * 11;
-    const playerIdx = Math.floor(rand(seed) * awayPlayers.length);
-    const minute = Math.floor(rand(seed + 2) * 89) + 1;
-    scorers.push({ team: 'away', player: awayPlayers[playerIdx], minute });
-  }
-
-  return scorers.sort((a, b) => a.minute - b.minute);
-};
-
-const getMatchDetails = (match, live) => {
-  const isCompleted = match.isCompleted || (live && live.minute === 'FT');
-  const isLive = live && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined;
-  const hasStarted = isCompleted || isLive;
-  
-  if (!hasStarted) {
-    return { hasStarted: false };
-  }
-
-  const homeScore = live ? live.homeScore : (match.homeScore ?? 0);
-  const awayScore = live ? live.awayScore : (match.awayScore ?? 0);
-  const generatedFallbackStats = generateRealisticStats(homeScore, awayScore, match.id);
-  const generatedFallbackScorers = generateRealisticScorers(match.id, match.home, match.away, homeScore, awayScore);
-
-  // If it's in liveMatches (scraped live or completed from the FIFA website) AND has detailed data:
-  if (live && live.isDetailedScraped) {
-    return {
-      hasStarted: true,
-      scorers: live.events && live.events.length > 0 ? live.events : generatedFallbackScorers,
-      stats: live.stats || generatedFallbackStats,
-      timeline: live.timeline || []
-    };
-  }
-
-  // If we don't have scraped details but it's a completed match in OFFICIAL_MATCH_DETAILS:
-  if (OFFICIAL_MATCH_DETAILS[match.id]) {
-    return {
-      hasStarted: true,
-      scorers: OFFICIAL_MATCH_DETAILS[match.id].scorers || generatedFallbackScorers,
-      stats: OFFICIAL_MATCH_DETAILS[match.id].stats || generatedFallbackStats,
-      timeline: OFFICIAL_MATCH_DETAILS[match.id].timeline || []
-    };
-  }
-
-  // Fallback for live matches without detailed scraping yet:
-  if (live) {
-    return {
-      hasStarted: true,
-      scorers: live.events && live.events.length > 0 ? live.events : generatedFallbackScorers,
-      stats: live.stats || generatedFallbackStats,
-      timeline: live.timeline || []
-    };
-  }
-
-  // Otherwise, it's a simulated match:
-  return {
-    hasStarted: true,
-    scorers: generatedFallbackScorers,
-    stats: generatedFallbackStats,
-    timeline: []
-  };
-};
+  parseMatchKickoff, 
+  isLiveMatch, 
+  getMatchDetails, 
+  WorldCupTrophyIcon,
+  getAssistPlayer,
+  TEAM_PLAYERS
+} from './utils/matchHelpers';
+import { MatchDetailsModal } from './components/MatchDetailsModal';
+import { LiveMatchesBanner } from './components/LiveMatchesBanner';
+import { FixturesTab } from './components/tabs/FixturesTab';
+import { GroupsTab } from './components/tabs/GroupsTab';
+import { BracketTab } from './components/tabs/BracketTab';
+import { StatsTab } from './components/tabs/StatsTab';
+import { VenuesTab } from './components/tabs/VenuesTab';
+import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
 
 function App() {
   // --- State ---
   const [activeTab, setActiveTab] = useState('fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
-  const [darkMode, setDarkMode] = useState(true);
-  const [hoveredTeam, setHoveredTeam] = useState(null);
-  
+  const [theme, setTheme] = useState(() => localStorage.getItem('worldcup2026_theme') || 'dark');
+
+
   // Group Stage State
   const [groupMatches, setGroupMatches] = useState([]);
-  const [expandedGroup, setExpandedGroup] = useState('A');
   
   // Bracket State
   const [bracket, setBracket] = useState(KNOCKOUT_MATCHES);
   
   // Group Standing Override State
   const [standingsOverrides, setStandingsOverrides] = useState({});
-  const [showGroupSelectors, setShowGroupSelectors] = useState(true);
   
-  // Awards / Extras
-  const [goldenBoot, setGoldenBoot] = useState('');
-  const [goldenBall, setGoldenBall] = useState('');
-  const [predictionSaved, setPredictionSaved] = useState(false);
-  const [shareText, setShareText] = useState('Share predictions');
+  // Scraper / Live polling states
   const [isLoaded, setIsLoaded] = useState(false);
   const [liveMatches, setLiveMatches] = useState({});
   const [selectedMatch, setSelectedMatch] = useState(null);
-  const [showAllUpcoming, setShowAllUpcoming] = useState(false);
-  const [showAllDone, setShowAllDone] = useState(false);
 
-  // Expanded Venue state
-  const [expandedVenue, setExpandedVenue] = useState(null);
+  // Highlights polling states
+  const [highlightsMap, setHighlightsMap] = useState({});
+  const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
+  const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
 
-  const activeLiveMatchesList = useMemo(() => {
-    const list = [];
-    Object.entries(liveMatches).forEach(([idStr, live]) => {
-      const matchId = Number(idStr);
-      if (live && !live.isCompleted && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined && live.minute !== '') {
-        let match = groupMatches.find(m => m.id === matchId);
-        let roundName = 'Group Stage';
-        if (match) {
-          roundName = `Group ${match.group}`;
-        } else {
-          Object.keys(bracket).forEach(roundKey => {
-            const found = bracket[roundKey].find(m => m.id === matchId);
-            if (found) {
-              match = found;
-              if (roundKey === 'r32') roundName = 'Round of 32';
-              else if (roundKey === 'r16') roundName = 'Round of 16';
-              else if (roundKey === 'qf') roundName = 'Quarter-Final';
-              else if (roundKey === 'sf') roundName = 'Semi-Final';
-              else if (roundKey === 'final') roundName = 'Grand Final';
-            }
-          });
-        }
-        
-        if (match) {
-          list.push({
-            id: matchId,
-            home: match.home,
-            away: match.away,
-            round: roundName,
-            homeScore: live.homeScore !== null ? live.homeScore : 0,
-            awayScore: live.awayScore !== null ? live.awayScore : 0,
-            minute: live.minute,
-            originalMatch: match
-          });
-        }
-      }
-    });
-    return list;
-  }, [liveMatches, groupMatches, bracket]);
-
-  const hasLiveMatches = useMemo(() => {
-    return activeLiveMatchesList.length > 0;
-  }, [activeLiveMatchesList]);
-
-  const matchesAtVenue = useMemo(() => {
-    if (!expandedVenue) return [];
-    const list = [];
-    groupMatches.forEach(m => {
-      if (getMatchVenue(m) === expandedVenue) {
-        list.push({ ...m, round: 'Group ' + m.group });
-      }
-    });
-    Object.keys(bracket).forEach(roundKey => {
-      bracket[roundKey].forEach(m => {
-        if (getMatchVenue(m) === expandedVenue) {
-          let roundName = 'Round of 32';
-          if (roundKey === 'r16') roundName = 'Round of 16';
-          if (roundKey === 'qf') roundName = 'Quarter-Final';
-          if (roundKey === 'sf') roundName = 'Semi-Final';
-          if (roundKey === 'final') roundName = 'Grand Final';
-          list.push({ ...m, round: roundName });
-        }
-      });
-    });
-    return list;
-  }, [expandedVenue, groupMatches, bracket]);
-
-
-
-  const upcomingFixtures = useMemo(() => {
-    const allMatches = [];
-    
-    // Add group stage matches
-    groupMatches.forEach(m => {
-      allMatches.push({ ...m, stage: 'group' });
-    });
-    
-    // Add knockout matches that have teams assigned
-    Object.keys(bracket).forEach(roundKey => {
-      bracket[roundKey].forEach(m => {
-        if (m.home && m.away) {
-          allMatches.push({ ...m, stage: 'knockout' });
-        }
-      });
-    });
-
-    // Filter to matches that are NOT completed and are NOT currently live
-    const activeMatches = allMatches.filter(m => {
-      const live = liveMatches[m.id];
-      const isLive = live && live.minute !== 'FT' && !live.isCompleted && live.minute !== null && live.minute !== undefined && live.minute !== '';
-      if (isLive) return false;
-      return !m.isCompleted;
-    });
-
-    // Sort chronologically and return the next 16 matches
-    return activeMatches
-      .sort((a, b) => {
-        const dateA = parseMatchKickoff(a);
-        const dateB = parseMatchKickoff(b);
-        if (!dateA && !dateB) return 0;
-        if (!dateA) return 1;
-        if (!dateB) return -1;
-        return dateA.getTime() - dateB.getTime();
-      })
-      .slice(0, 16);
-  }, [groupMatches, bracket, liveMatches]);
-
-  const playerStats = useMemo(() => {
-    const goalsCount = {};
-    const assistsCount = {};
-    const playerTeams = {};
-
-    const processScorers = (matchId, scorers, homeCode, awayCode) => {
-      if (!scorers) return;
-      scorers.forEach(s => {
-        const isOG = s.player.includes('(OG)') || s.player.includes('ownGoal') || s.player.includes('OG');
-        if (isOG) return;
-
-        const cleanPlayerName = s.player.replace(/\s*\(P\)/, '').trim();
-        const teamCode = s.team === 'home' ? homeCode : awayCode;
-        if (!teamCode) return;
-
-        playerTeams[cleanPlayerName] = teamCode;
-
-        // Count goal
-        goalsCount[cleanPlayerName] = (goalsCount[cleanPlayerName] || 0) + 1;
-
-        // Generate assist deterministically
-        const assistPlayer = getAssistPlayer(matchId, cleanPlayerName, teamCode, s.minute);
-        if (assistPlayer) {
-          playerTeams[assistPlayer] = teamCode;
-          assistsCount[assistPlayer] = (assistsCount[assistPlayer] || 0) + 1;
-        }
-      });
-    };
-
-    // 1. Group Stage Matches
-    groupMatches.forEach(m => {
-      const live = liveMatches[m.id];
-      const details = getMatchDetails(m, live);
-      if (details.hasStarted && details.scorers) {
-        processScorers(m.id, details.scorers, m.home, m.away);
-      }
-    });
-
-    // 2. Knockout Stage Matches
-    Object.keys(bracket).forEach(roundKey => {
-      bracket[roundKey].forEach(m => {
-        const live = liveMatches[m.id];
-        const details = getMatchDetails(m, live);
-        if (details.hasStarted && details.scorers) {
-          processScorers(m.id, details.scorers, m.home, m.away);
-        }
-      });
-    });
-
-    // Convert to sorted arrays
-    const topScorers = Object.keys(goalsCount)
-      .map(name => ({
-        name,
-        team: playerTeams[name],
-        goals: goalsCount[name]
-      }))
-      .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
-      .slice(0, 5);
-
-    const topAssists = Object.keys(assistsCount)
-      .map(name => ({
-        name,
-        team: playerTeams[name],
-        assists: assistsCount[name]
-      }))
-      .sort((a, b) => b.assists - a.assists || a.name.localeCompare(b.name))
-      .slice(0, 5);
-
-    return { topScorers, topAssists };
-  }, [groupMatches, bracket, liveMatches]);
-
+  // --- Live Data Polling Effect ---
   useEffect(() => {
-    // Disable polling when predicting (on groups or bracket tabs)
-    if (activeTab === 'groups' || activeTab === 'bracket') {
-      return;
-    }
+    // Only poll when not on the 'bracket' tab (Roadmap Tree) to prevent losing user updates
+    if (activeTab === 'bracket') return;
 
-    const fetchLiveScores = async () => {
-      try {
-        const response = await fetch(`/live-matches.json?t=${Date.now()}`);
-        if (response.ok) {
-          const data = await response.json();
-          setLiveMatches(data);
-        }
-      } catch (error) {
-        console.error('Failed to fetch live scores:', error);
-      }
+    const fetchLiveScores = () => {
+      fetch('/live-matches.json')
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          if (data && typeof data === 'object') {
+            setLiveMatches(data);
+          }
+        })
+        .catch(err => console.warn('[Live Polling] Ignored failure during live updates fetch:', err));
     };
 
-    // Initial fetch
     fetchLiveScores();
 
     // Poll endpoint every 15 seconds (15000ms)
@@ -622,21 +71,32 @@ function App() {
     return () => clearInterval(timer);
   }, [activeTab]);
 
-  const formatLiveMatchTime = useCallback((matchId) => {
-    const m = liveMatches[matchId];
-    if (!m) return '';
-    if (m.minute === 'FT' || m.isCompleted) return 'FT';
-    if (m.minute === 'HT') return 'HT';
-    if (m.minute === undefined || m.minute === null || m.minute === '') return 'LIVE';
-    const minStr = String(m.minute).padStart(2, '0');
-    const secStr = m.second !== undefined && m.second !== null ? String(m.second).padStart(2, '0') : '00';
-    return `LIVE ${minStr}:${secStr}`;
-  }, [liveMatches]);
+  // --- Ratings Polling Effect ---
+  useEffect(() => {
+    const fetchRatings = () => {
+      fetch('/fotmobPlayerRatings.json')
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          if (Array.isArray(data)) {
+            setFotmobRatings(data);
+          }
+        })
+        .catch(err => console.warn('[Ratings Polling] Ignored failure during ratings fetch:', err));
+    };
 
-  // Auto-complete finished matches in both groupMatches and bracket states
+    fetchRatings();
+    const timer = setInterval(fetchRatings, 30000); // refresh ratings every 30s
+    return () => clearInterval(timer);
+  }, []);
+
+  // --- Auto-complete finished matches in both groupMatches and bracket states ---
   useEffect(() => {
     if (Object.keys(liveMatches).length === 0) return;
 
+    // Always keep group match scores up-to-date
     setGroupMatches(prevMatches => {
       let changed = false;
       const nextMatches = prevMatches.map(m => {
@@ -656,6 +116,9 @@ function App() {
       });
       return changed ? nextMatches : prevMatches;
     });
+
+    // Do NOT touch the bracket while the user is actively editing it on the Roadmap tab
+    if (activeTab === 'bracket') return;
 
     setBracket(prevBracket => {
       let changed = false;
@@ -703,18 +166,14 @@ function App() {
 
       return changed ? nextBracket : prevBracket;
     });
-  }, [liveMatches]);
+  }, [liveMatches, activeTab]);
 
   // --- Initialize Group Stage & Load Predictions ---
   useEffect(() => {
     const savedMatches = localStorage.getItem('worldcup2026_groupMatches');
     const savedBracket = localStorage.getItem('worldcup2026_bracket');
-    const savedBoot = localStorage.getItem('worldcup2026_goldenBoot');
-    const savedBall = localStorage.getItem('worldcup2026_goldenBall');
     const savedOverrides = localStorage.getItem('worldcup2026_standingsOverrides');
 
-    if (savedBoot) setGoldenBoot(savedBoot);
-    if (savedBall) setGoldenBall(savedBall);
     if (savedOverrides) {
       try {
         setStandingsOverrides(JSON.parse(savedOverrides));
@@ -727,7 +186,6 @@ function App() {
 
     if (savedMatches && savedBracket) {
       const freshMatches = generateGroupMatches();
-      // Clean up matches: force future/live matches to have NO scores (be unscheduled/scheduled)
       const parsedMatches = JSON.parse(savedMatches).map(m => {
         const fresh = freshMatches.find(f => f.id === m.id);
         const updatedDate = fresh ? fresh.date : m.date;
@@ -747,7 +205,6 @@ function App() {
       setGroupMatches(parsedMatches);
       setBracket(JSON.parse(savedBracket));
     } else {
-      // Generate matches and clear any future/live ones
       const initialMatches = generateGroupMatches().map(m => {
         const kickoff = parseMatchKickoff(m);
         if (kickoff) {
@@ -768,18 +225,26 @@ function App() {
     if (!isLoaded) return;
     localStorage.setItem('worldcup2026_groupMatches', JSON.stringify(groupMatches));
     localStorage.setItem('worldcup2026_bracket', JSON.stringify(bracket));
-    localStorage.setItem('worldcup2026_goldenBoot', goldenBoot);
-    localStorage.setItem('worldcup2026_goldenBall', goldenBall);
     localStorage.setItem('worldcup2026_standingsOverrides', JSON.stringify(standingsOverrides));
-  }, [groupMatches, bracket, goldenBoot, goldenBall, standingsOverrides, isLoaded]);
+  }, [groupMatches, bracket, standingsOverrides, isLoaded]);
+
+  // --- Theme synchronization effect ---
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark', 'pitch-black');
+    if (theme === 'pitch-black') {
+      root.classList.add('dark', 'pitch-black');
+    } else {
+      root.classList.add('dark');
+    }
+    localStorage.setItem('worldcup2026_theme', theme);
+  }, [theme]);
 
   // --- Calculate Standings & Populate R32 ---
   const standings = useMemo(() => {
     if (groupMatches.length === 0) return {};
-    // Calculate standings purely from completed matches (real-world data only)
     const calculated = calculateStandings(TEAMS, groupMatches.filter(m => m.isCompleted));
     
-    // Apply overrides if present
     const finalStandings = {};
     Object.keys(calculated).forEach(groupKey => {
       if (standingsOverrides[groupKey]) {
@@ -788,7 +253,6 @@ function App() {
           calculated[groupKey].find(t => t.code === code)
         ).filter(Boolean);
         
-        // Fill in any missing teams
         calculated[groupKey].forEach(t => {
           if (!groupTeamsStats.some(s => s.code === t.code)) {
             groupTeamsStats.push(t);
@@ -807,10 +271,10 @@ function App() {
     return getAdvancedTeams(standings);
   }, [standings]);
 
-  // Sync group standings changes into the R32 Bracket ONLY if the R32 qualified teams differ.
-  // This preserves any predicted knockout paths unless the group standings actually change who advances.
+  // Sync group standings changes into the R32 Bracket ONLY if the R32 qualified teams differ
   useEffect(() => {
     if (!isLoaded || Object.keys(standings).length === 0) return;
+    if (activeTab === 'bracket') return;
 
     let hasR32Changed = false;
     const { firsts, seconds, thirds } = advancedTeams;
@@ -840,7 +304,6 @@ function App() {
     for (let i = 0; i < r32Mappings.length; i++) {
       const match = bracket.r32[i];
       const mapping = r32Mappings[i];
-      // If bracket R32 slots don't match computed advanced teams, we need to sync and reset descendants.
       if (!match || match.home !== mapping.home || match.away !== mapping.away) {
         hasR32Changed = true;
         break;
@@ -892,101 +355,10 @@ function App() {
         return nextBracket;
       });
     }
-  }, [advancedTeams, isLoaded, liveMatches]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [advancedTeams, isLoaded, liveMatches, bracket, activeTab]);
 
-  // --- Dark Mode Effect ---
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  // --- Handler Functions ---
-  
-  // Update a single group match score (skips completed matches)
-  const handleGroupScoreChange = (matchId, teamType, value) => {
-    const scoreVal = value === '' ? null : parseInt(value);
-    if (scoreVal !== null && isNaN(scoreVal)) return;
-
-    setGroupMatches(prevMatches => 
-      prevMatches.map(m => {
-        if (m.id === matchId) {
-          if (m.isCompleted) return m; // Skip modifying completed matches
-          return {
-            ...m,
-            [teamType === 'home' ? 'homeScore' : 'awayScore']: scoreVal
-          };
-        }
-        return m;
-      })
-    );
-  };
-
-  // Simulate all group matches (preserves real completed matches)
-  const handleSimulateAllGroups = () => {
-    setGroupMatches(prevMatches => 
-      prevMatches.map(match => {
-        if (match.isCompleted) return match; // Keep real scores
-        const { homeScore, awayScore } = simulateScore(match.home, match.away);
-        return { ...match, homeScore, awayScore };
-      })
-    );
-  };
-
-  const handlePositionChange = (groupKey, teamCode, targetIndex) => {
-    setStandingsOverrides(prev => {
-      const currentOrder = prev[groupKey] 
-        ? [...prev[groupKey]] 
-        : (standings[groupKey] || []).map(t => t.code);
-        
-      if (currentOrder.length < 4) return prev;
-      
-      const currentIndex = currentOrder.indexOf(teamCode);
-      if (currentIndex === -1) return prev;
-      
-      // Swap positions
-      const nextOrder = [...currentOrder];
-      const swappedTeam = nextOrder[targetIndex];
-      nextOrder[targetIndex] = teamCode;
-      nextOrder[currentIndex] = swappedTeam;
-      
-      return {
-        ...prev,
-        [groupKey]: nextOrder
-      };
-    });
-  };
-
-  const handlePrevGroup = () => {
-    const currentIndex = GROUPS.indexOf(expandedGroup);
-    if (currentIndex === -1) return;
-    const prevIndex = (currentIndex - 1 + GROUPS.length) % GROUPS.length;
-    setExpandedGroup(GROUPS[prevIndex]);
-  };
-
-  const handleNextGroup = () => {
-    const currentIndex = GROUPS.indexOf(expandedGroup);
-    if (currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % GROUPS.length;
-    setExpandedGroup(GROUPS[nextIndex]);
-  };
-
-  // Reset all group match predictions (preserves real completed matches)
-  const handleResetGroups = () => {
-    setGroupMatches(prevMatches => 
-      prevMatches.map(match => {
-        if (match.isCompleted) return match; // Keep real scores
-        return { ...match, homeScore: null, awayScore: null };
-      })
-    );
-  };
-
-  // Predict winner for a knockout match (advances team to next round)
+  // --- Predict winner for a knockout match (advances team to next round) ---
   const handleKnockoutWinner = (roundKey, matchIndex, winnerCode) => {
     if (!winnerCode) return;
     
@@ -1011,7 +383,6 @@ function App() {
         if (!nextMatch) break;
         
         const isHome = currentPosition === 'top' || currentPosition === 'home';
-        const previousTargetTeam = isHome ? nextMatch.home : nextMatch.away;
         
         // Update the next match's participant slot
         if (isHome) {
@@ -1036,153 +407,50 @@ function App() {
     });
   };
 
-  // Get current winner of the tournament
-  const tournamentChampion = useMemo(() => {
-    const finalMatch = bracket.final[0];
-    if (finalMatch && finalMatch.winner) {
-      return TEAMS[finalMatch.winner];
-    }
-    return null;
-  }, [bracket]);
-
-  // Custom helper to check if a team is still active in a user's prediction path
-  const isTeamInMatchPath = (teamCode, matchId) => {
-    if (!teamCode) return false;
-    // Walk through bracket and see if teamCode appears in any matches
-    let found = false;
-    Object.keys(bracket).forEach(round => {
-      bracket[round].forEach(m => {
-        if (m.id === matchId && (m.home === teamCode || m.away === teamCode)) {
-          found = true;
+  // --- Memoized calculations for matches, ticker, stats ---
+  const activeLiveMatchesList = useMemo(() => {
+    const list = [];
+    Object.entries(liveMatches).forEach(([idStr, live]) => {
+      const matchId = Number(idStr);
+      if (live && !live.isCompleted && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined && live.minute !== '') {
+        let match = groupMatches.find(m => m.id === matchId);
+        let roundName = 'Group Stage';
+        if (match) {
+          roundName = `Group ${match.group}`;
+        } else {
+          Object.keys(bracket).forEach(roundKey => {
+            const found = bracket[roundKey].find(m => m.id === matchId);
+            if (found) {
+              match = found;
+              if (roundKey === 'r32') roundName = 'Round of 32';
+              else if (roundKey === 'r16') roundName = 'Round of 16';
+              else if (roundKey === 'qf') roundName = 'Quarter-Final';
+              else if (roundKey === 'sf') roundName = 'Semi-Final';
+              else if (roundKey === 'final') roundName = 'Grand Final';
+            }
+          });
         }
-      });
+        
+        if (match) {
+          list.push({
+            id: matchId,
+            home: match.home,
+            away: match.away,
+            round: roundName,
+            homeScore: live.homeScore !== null ? live.homeScore : 0,
+            awayScore: live.awayScore !== null ? live.awayScore : 0,
+            minute: live.minute,
+            originalMatch: match
+          });
+        }
+      }
     });
-    return found;
-  };
+    return list;
+  }, [liveMatches, groupMatches, bracket]);
 
-  // Share prediction callback
-  const handleShare = () => {
-    const text = tournamentChampion 
-      ? `My FIFA World Cup 2026 champion is ${tournamentChampion.flag} ${tournamentChampion.name}! Predict yours here.`
-      : "Predict the FIFA World Cup 2026 bracket and explore host cities!";
-    
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
-      setShareText('Copied Link!');
-      setTimeout(() => setShareText('Share predictions'), 2000);
-    } else {
-      alert("Bracket URL copied to clipboard!");
-    }
-  };
-
-  // Save prediction configuration
-  const handleSavePredictions = () => {
-    setPredictionSaved(true);
-    setTimeout(() => setPredictionSaved(false), 3000);
-  };
-
-  // Render Bracket Column List (Left or Right)
-  const renderBracketColumn = (roundKey, matches, isRight = false) => {
-    return (
-      <div className="flex flex-col justify-around h-full gap-4 py-4 min-w-[240px] md:min-w-[280px]">
-        <h3 className="text-center font-semibold text-xs tracking-wider text-slate-400 uppercase border-b border-slate-700/50 pb-2 mb-2">
-          {roundKey === 'r32' && 'Round of 32'}
-          {roundKey === 'r16' && 'Round of 16'}
-          {roundKey === 'qf' && 'Quarter-Finals'}
-          {roundKey === 'sf' && 'Semi-Finals'}
-        </h3>
-        {matches.map((match, idx) => {
-          const actualIdx = idx + (isRight ? (roundKey === 'r32' ? 8 : roundKey === 'r16' ? 4 : roundKey === 'qf' ? 2 : roundKey === 'sf' ? 1 : 0) : 0);
-          const homeTeam = TEAMS[match.home];
-          const awayTeam = TEAMS[match.away];
-          const isHomeWinner = match.winner === match.home && match.winner !== null;
-          const isAwayWinner = match.winner === match.away && match.winner !== null;
-          
-          const isHoveredMatch = hoveredTeam && (match.home === hoveredTeam || match.away === hoveredTeam);
-          const isWinnerHovered = hoveredTeam && match.winner === hoveredTeam;
-
-          return (
-            <div 
-              key={match.id} 
-              className={`p-3 rounded-xl transition-all duration-300 relative border ${
-                isHoveredMatch 
-                  ? 'border-brand-neon bg-slate-900/90 shadow-neon ring-1 ring-brand-neon/30' 
-                  : 'border-slate-800/80 bg-brand-cardBg'
-              } flex flex-col gap-2`}
-            >
-              <div className="flex justify-between items-center text-[10px] text-slate-400 font-semibold tracking-tight">
-                <span>{match.title}</span>
-                <span className="text-brand-neon font-bold font-mono text-[9px]">{formatDisplayDate(match.date)}</span>
-              </div>
-              
-              <div className="flex flex-col gap-1.5">
-                {/* Home Team */}
-                <div
-                  id={`slot-${match.id}-home`}
-                  onMouseEnter={() => match.home && setHoveredTeam(match.home)}
-                  onMouseLeave={() => setHoveredTeam(null)}
-                  onClick={() => match.home && handleKnockoutWinner(roundKey, actualIdx, match.home)}
-                  className={`flex items-center justify-between w-full p-2 rounded-lg text-left transition-all text-xs font-semibold ${
-                    !match.home 
-                      ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                      : isHomeWinner 
-                        ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
-                        : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 overflow-hidden truncate">
-                    <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                    <span className="truncate">{homeTeam ? homeTeam.name : 'TBD (Group Stage)'}</span>
-                  </div>
-                  {isHomeWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
-                </div>
-
-                {/* Away Team */}
-                <div
-                  id={`slot-${match.id}-away`}
-                  onMouseEnter={() => match.away && setHoveredTeam(match.away)}
-                  onMouseLeave={() => setHoveredTeam(null)}
-                  onClick={() => match.away && handleKnockoutWinner(roundKey, actualIdx, match.away)}
-                  className={`flex items-center justify-between w-full p-2 rounded-lg text-left transition-all text-xs font-semibold ${
-                    !match.away 
-                      ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                      : isAwayWinner 
-                        ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
-                        : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 overflow-hidden truncate">
-                    <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                    <span className="truncate">{awayTeam ? awayTeam.name : 'TBD (Group Stage)'}</span>
-                  </div>
-                  {isAwayWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const getMatchTimeStatus = useCallback((match) => {
-    if (match.isCompleted) {
-      return { type: 'prev', isLive: false, isCompleted: true };
-    }
-    const kickoff = parseMatchKickoff(match);
-    if (!kickoff) return { type: 'upcoming', isLive: false, isCompleted: false };
-    
-    const now = new Date();
-    const end = new Date(kickoff.getTime() + 105 * 60000);
-    
-    if (now < kickoff) {
-      return { type: 'upcoming', isLive: false, isCompleted: false };
-    } else if (now >= end) {
-      return { type: 'prev', isLive: false, isCompleted: true };
-    } else {
-      return { type: 'current', isLive: true, isCompleted: false };
-    }
-  }, []);
+  const hasLiveMatches = useMemo(() => {
+    return activeLiveMatchesList.length > 0;
+  }, [activeLiveMatchesList]);
 
   const sortedMatches = useMemo(() => {
     return [...groupMatches].sort((a, b) => {
@@ -1198,23 +466,263 @@ function App() {
   const feedMatches = useMemo(() => {
     return sortedMatches
       .filter(m => m.isCompleted)
-      .slice()
       .reverse();
   }, [sortedMatches]);
 
-  const [highlightsMap, setHighlightsMap] = useState({});
-  const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
+  const upcomingFixtures = useMemo(() => {
+    const allMatches = [];
+    groupMatches.forEach(m => {
+      allMatches.push({ ...m, stage: 'group' });
+    });
+    Object.keys(bracket).forEach(roundKey => {
+      bracket[roundKey].forEach(m => {
+        if (m.home && m.away) {
+          allMatches.push({ ...m, stage: 'knockout' });
+        }
+      });
+    });
 
+    const activeMatches = allMatches.filter(m => {
+      const live = liveMatches[m.id];
+      const isLive = live && live.minute !== 'FT' && !live.isCompleted && live.minute !== null && live.minute !== undefined && live.minute !== '';
+      if (isLive) return false;
+      return !m.isCompleted;
+    });
+
+    return activeMatches
+      .sort((a, b) => {
+        const dateA = parseMatchKickoff(a);
+        const dateB = parseMatchKickoff(b);
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        return dateA.getTime() - dateB.getTime();
+      })
+      .slice(0, 16);
+  }, [groupMatches, bracket, liveMatches]);
+
+  const playerStats = useMemo(() => {
+    const goalsCount = {};
+    const assistsCount = {};
+    const playerTeams = {};
+    const playerRatingsTracker = {};
+
+    const baseRatings = {
+      "Lionel Messi": 8.4,
+      "Erling Haaland": 8.3,
+      "Kylian Mbappé": 8.3,
+      "Harry Kane": 8.2,
+      "Luis Díaz": 8.1,
+      "Jude Bellingham": 8.1,
+      "Vinícius Júnior": 8.1,
+      "Kevin De Bruyne": 8.1,
+      "Mohamed Salah": 8.1,
+      "Lamine Yamal": 8.0,
+      "Florian Wirtz": 8.0,
+      "Jamal Musiala": 8.0,
+      "Martin Ødegaard": 8.0,
+      "Cristiano Ronaldo": 7.9,
+      "Bruno Fernandes": 7.9,
+      "Nico Williams": 7.9,
+      "Bukayo Saka": 7.9,
+      "Phil Foden": 7.9,
+      "Darwin Núñez": 7.8,
+      "Federico Valverde": 7.8,
+      "Son Heung-min": 7.8,
+      "Alphonso Davies": 7.8,
+      "Alexander Isak": 7.8,
+      "Cody Gakpo": 7.8,
+      "Memphis Depay": 7.7,
+      "Antoine Griezmann": 7.7,
+      "Luka Modrić": 7.7,
+      "James Rodríguez": 7.7,
+      "Christian Pulisic": 7.6,
+      "Scott McTominay": 7.6,
+      "Victor Gyökeres": 7.6,
+      "Lautaro Martínez": 7.6,
+      "Julián Álvarez": 7.6,
+      "Youssef En-Nesyri": 7.5,
+      "Achraf Hakimi": 7.5,
+      "Hakan Çalhanoğlu": 7.5,
+      "Arda Güler": 7.5,
+      "Romelu Lukaku": 7.5,
+      "Jérémy Doku": 7.5,
+      "Percy Tau": 7.4,
+      "Santiago Giménez": 7.4,
+      "Patrik Schick": 7.4,
+      "Edin Džeko": 7.4,
+      "Kaoru Mitoma": 7.4,
+      "Takefusa Kubo": 7.4,
+      "Sadio Mané": 7.4,
+      "Nicolas Jackson": 7.4,
+      "Marcel Sabitzer": 7.4,
+      "Alexis Mac Allister": 7.4,
+      "Lyle Foster": 7.3,
+      "Lee Kang-in": 7.3,
+      "Hwang Hee-chan": 7.3,
+      "Tomáš Souček": 7.3,
+      "Granit Xhaka": 7.3,
+      "Manuel Akanji": 7.3,
+      "Miguel Almirón": 7.3,
+      "Julio Enciso": 7.3,
+      "Weston McKennie": 7.2,
+      "Folarin Balogun": 7.2,
+      "Kenan Yıldız": 7.2,
+      "Moisés Caicedo": 7.2,
+      "Xavi Simons": 7.2,
+      "Virgil van Dijk": 7.2,
+      "Takumi Minamino": 7.2,
+      "Mateo Kovačić": 7.2,
+      "Mohammed Kudus": 7.2,
+      "Yoane Wissa": 7.2,
+    };
+
+    const processMatch = (m, live) => {
+      const details = getMatchDetails(m, live);
+      if (!details.hasStarted) return;
+
+      const homeCode = m.home;
+      const awayCode = m.away;
+      if (!homeCode || !awayCode) return;
+
+      const homeScore = live ? live.homeScore : (m.homeScore ?? 0);
+      const awayScore = live ? live.awayScore : (m.awayScore ?? 0);
+
+      // Process scorers & assists
+      const matchScorers = details.scorers || [];
+      const scorersPerPlayer = {};
+      const assistsPerPlayer = {};
+
+      matchScorers.forEach(s => {
+        const isOG = s.player.includes('(OG)') || s.player.includes('ownGoal') || s.player.includes('OG');
+        if (isOG) return;
+
+        const cleanPlayerName = s.player.replace(/\s*\(P\)/, '').trim();
+        const teamCode = s.team === 'home' ? homeCode : awayCode;
+        if (!teamCode) return;
+
+        playerTeams[cleanPlayerName] = teamCode;
+        goalsCount[cleanPlayerName] = (goalsCount[cleanPlayerName] || 0) + 1;
+        scorersPerPlayer[cleanPlayerName] = (scorersPerPlayer[cleanPlayerName] || 0) + 1;
+
+        // Determine assist player
+        const assistPlayerName = getAssistPlayer(m.id, cleanPlayerName, teamCode, s.minute);
+        if (assistPlayerName) {
+          playerTeams[assistPlayerName] = teamCode;
+          assistsCount[assistPlayerName] = (assistsCount[assistPlayerName] || 0) + 1;
+          assistsPerPlayer[assistPlayerName] = (assistsPerPlayer[assistPlayerName] || 0) + 1;
+        }
+      });
+
+      // Process player match ratings for star players of both teams
+      const homePlayers = TEAM_PLAYERS[homeCode] || [];
+      const awayPlayers = TEAM_PLAYERS[awayCode] || [];
+
+      const processPlayerRating = (playerName, teamCode, isHome) => {
+        playerTeams[playerName] = teamCode;
+        
+        // Base rating
+        const base = baseRatings[playerName] || 6.8;
+
+        // Adjustments
+        let scoreBonus = 0;
+        const playerGoals = scorersPerPlayer[playerName] || 0;
+        const playerAssists = assistsPerPlayer[playerName] || 0;
+
+        scoreBonus += playerGoals * 1.0;
+        scoreBonus += playerAssists * 0.6;
+
+        // Team result bonus
+        let resultBonus = 0;
+        if (homeScore === awayScore) {
+          resultBonus = 0.1;
+        } else {
+          const isWinner = isHome ? (homeScore > awayScore) : (awayScore > homeScore);
+          resultBonus = isWinner ? 0.4 : -0.3;
+        }
+
+        // Noise
+        const rand = (s) => {
+          const x = Math.sin(s) * 10000;
+          return x - Math.floor(x);
+        };
+        const seed = m.id * 7 + playerName.charCodeAt(0);
+        const noise = rand(seed) * 0.6 - 0.3; // -0.3 to +0.3
+
+        let matchRating = base + scoreBonus + resultBonus + noise;
+        matchRating = Math.max(3.0, Math.min(10.0, matchRating));
+
+        // Track overall rating
+        if (!playerRatingsTracker[playerName]) {
+          playerRatingsTracker[playerName] = { totalRating: 0, matchesPlayed: 0 };
+        }
+        playerRatingsTracker[playerName].totalRating += matchRating;
+        playerRatingsTracker[playerName].matchesPlayed += 1;
+      };
+
+      homePlayers.forEach(p => processPlayerRating(p, homeCode, true));
+      awayPlayers.forEach(p => processPlayerRating(p, awayCode, false));
+    };
+
+    groupMatches.forEach(m => {
+      const live = liveMatches[m.id];
+      processMatch(m, live);
+    });
+
+    Object.keys(bracket).forEach(roundKey => {
+      bracket[roundKey].forEach(m => {
+        const live = liveMatches[m.id];
+        processMatch(m, live);
+      });
+    });
+
+    const topScorers = Object.entries(goalsCount)
+      .map(([name, goals]) => ({ name, goals, team: playerTeams[name] }))
+      .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
+      .slice(0, 10);
+
+    const topAssists = Object.entries(assistsCount)
+      .map(([name, assists]) => ({ name, assists, team: playerTeams[name] }))
+      .sort((a, b) => b.assists - a.assists || a.name.localeCompare(b.name))
+      .slice(0, 10);
+
+    const topRatings = fotmobRatings.slice(0, 10);
+
+    return { topScorers, topAssists, topRatings };
+  }, [groupMatches, bracket, liveMatches, fotmobRatings]);
+
+  const tournamentChampion = useMemo(() => {
+    const finalMatch = bracket.final[0];
+    if (finalMatch && finalMatch.winner) {
+      return TEAMS[finalMatch.winner];
+    }
+    return null;
+  }, [bracket]);
+
+  // Fetch YouTube highlights for all completed matches
   useEffect(() => {
-    feedMatches.forEach(match => {
-      if (highlightsMap[match.id] || loadingHighlightsMap[match.id]) return;
+    const pending = feedMatches.filter(
+      m => !highlightsMap[m.id] && !loadingHighlightsMap[m.id]
+    );
+    if (pending.length === 0) return;
 
-      setLoadingHighlightsMap(prev => ({ ...prev, [match.id]: true }));
+    setLoadingHighlightsMap(prev => {
+      const next = { ...prev };
+      pending.forEach(m => { next[m.id] = true; });
+      return next;
+    });
+
+    pending.forEach(match => {
       const homeName = TEAMS[match.home]?.name || match.home;
       const awayName = TEAMS[match.away]?.name || match.away;
+      const homeCode = match.home;
+      const awayCode = match.away;
 
-      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}`)
-        .then(res => res.json())
+      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(homeCode)}&awayCode=${encodeURIComponent(awayCode)}`)
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
         .then(data => {
           if (data.url) {
             setHighlightsMap(prev => ({ ...prev, [match.id]: data.url }));
@@ -1225,13 +733,13 @@ function App() {
           setLoadingHighlightsMap(prev => ({ ...prev, [match.id]: false }));
         });
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [feedMatches]);
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-brand-darkBg text-slate-100' : 'bg-[#F1F5F9] text-slate-800'} font-sans antialiased transition-colors duration-300`}>
-      
+    <div className={`min-h-screen ${theme === 'pitch-black' ? 'bg-black' : 'bg-brand-darkBg'} text-slate-100 font-sans antialiased transition-colors duration-300`}>
       {/* Background glow effects for visual wow-factor */}
-      {darkMode && (
+      {theme !== 'pitch-black' && (
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <div className="absolute -top-40 right-10 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl opacity-50"></div>
           <div className="absolute top-1/3 -left-40 w-96 h-96 bg-brand-neon/10 rounded-full blur-3xl opacity-40"></div>
@@ -1240,32 +748,51 @@ function App() {
       )}
 
       {/* --- HEADER --- */}
-      <header className={`relative z-10 border-b ${darkMode ? 'border-slate-800/80 bg-slate-950/80' : 'border-slate-200 bg-white/80'} backdrop-blur-md sticky top-0`}>
+      <header className="relative z-10 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="bg-brand-gold/20 p-2 rounded-xl border border-brand-gold/40 glow-gold animate-float">
               <WorldCupTrophyIcon className="w-6 h-6 text-brand-gold" />
             </div>
             <div>
-              <h1 className="text-lg md:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent dark:from-white">
+              <h1 className="text-lg md:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent">
                 WORLDCUP 2K26
               </h1>
               <p className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">Interactive Roadmap & Bracket</p>
             </div>
           </div>
 
-          {/* Countdown & Navigation Actions */}
           <div className="flex items-center gap-3">
-            <div className="hidden lg:flex items-center gap-2 bg-slate-900/60 dark:bg-slate-900/60 px-3.5 py-1.5 rounded-full border border-slate-800/60 text-xs font-semibold">
+            <div className="hidden lg:flex items-center gap-2 bg-slate-900/60 px-3.5 py-1.5 rounded-full border border-slate-800/60 text-xs font-semibold">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-neon"></span>
               </span>
               <span className="text-slate-300">World Cup Live in USA, CAN & MEX</span>
             </div>
-            {/* Theme is permanently Dark Mode */}
 
-
+            {/* Theme Selector Toggle */}
+            <button
+              onClick={() => setTheme(prev => prev === 'dark' ? 'pitch-black' : 'dark')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer select-none ${
+                theme === 'pitch-black'
+                  ? 'bg-zinc-900 border-zinc-800 text-brand-neon hover:bg-zinc-850'
+                  : 'bg-slate-900/60 border-slate-800/60 text-slate-300 hover:bg-slate-850/80 hover:text-white'
+              }`}
+              title={theme === 'pitch-black' ? 'Switch to Dark Stadium Theme' : 'Switch to Pitch Black Theme'}
+            >
+              {theme === 'pitch-black' ? (
+                <>
+                  <Zap className="w-3.5 h-3.5 text-brand-neon fill-brand-neon animate-pulse" />
+                  <span className="hidden sm:inline font-black uppercase tracking-wider text-[10px]">Pitch Black</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-slate-400" />
+                  <span className="hidden sm:inline font-bold text-[10px]">Dark Stadium</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
       </header>
@@ -1273,1109 +800,99 @@ function App() {
       {/* --- MAIN TABS NAV --- */}
       <nav className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 pt-4 sm:pt-6">
         <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full overflow-x-auto scrollbar-none sm:w-fit whitespace-nowrap">
-          <button
-            id="tab-fixtures"
-            onClick={() => setActiveTab('fixtures')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-              activeTab === 'fixtures' 
-                ? 'bg-brand-neon text-slate-950 shadow-neon' 
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
-            }`}
-          >
-            <Calendar className="w-4 h-4" />
-            <span>Upcoming & Results</span>
-          </button>
-
-          <button
-            id="tab-groups"
-            onClick={() => setActiveTab('groups')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-              activeTab === 'groups' 
-                ? 'bg-brand-neon text-slate-950 shadow-neon' 
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
-            }`}
-          >
-            <Users className="w-4 h-4" />
-            <span>Group Standings</span>
-          </button>
-
-          <button
-            id="tab-bracket"
-            onClick={() => setActiveTab('bracket')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-              activeTab === 'bracket' 
-                ? 'bg-brand-neon text-slate-950 shadow-neon' 
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
-            }`}
-          >
-            <TrendingUp className="w-4 h-4" />
-            <span>Roadmap Tree</span>
-          </button>
-
-          <button
-            id="tab-stats"
-            onClick={() => setActiveTab('stats')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-              activeTab === 'stats' 
-                ? 'bg-brand-neon text-slate-950 shadow-neon' 
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
-            }`}
-          >
-            <Award className="w-4 h-4" />
-            <span>Player Stats</span>
-          </button>
-
-          <button
-            id="tab-venues"
-            onClick={() => setActiveTab('venues')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-              activeTab === 'venues' 
-                ? 'bg-brand-neon text-slate-950 shadow-neon' 
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
-            }`}
-          >
-            <MapPin className="w-4 h-4" />
-            <span>Stadium Venues</span>
-          </button>
-
-
+          {[
+            { id: 'fixtures', label: 'Upcoming & Results', icon: Calendar },
+            { id: 'groups', label: 'Group Standings', icon: Users },
+            { id: 'bracket', label: 'Roadmap Tree', icon: TrendingUp },
+            { id: 'stats', label: 'Player Stats', icon: Award },
+            { id: 'venues', label: 'Stadium Venues', icon: MapPin },
+          ].map(tab => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                id={`tab-${tab.id}`}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 select-none cursor-pointer ${
+                  isActive 
+                    ? 'bg-brand-neon text-slate-950 shadow-neon font-black' 
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
         </div>
       </nav>
 
       {/* --- CONTENT CONTAINER --- */}
       <main className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 py-4 sm:py-6">
-        {/* Global Live Tracker Banner (Visible on all tabs when matches are active) */}
-        {hasLiveMatches && activeTab !== 'fixtures' && (
-          <div className="mb-6 p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden animate-fadeIn">
-            <div className="absolute -top-12 -left-12 w-24 h-24 bg-brand-neon/5 rounded-full blur-2xl pointer-events-none" />
-            <div className="flex items-center gap-3 relative z-10">
-              <span className="flex h-3 w-3 relative shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-neon animate-pulse"></span>
-              </span>
-              <div>
-                <h2 className="text-xs sm:text-sm font-extrabold text-slate-100 uppercase tracking-wider flex items-center gap-2">
-                  LIVE MATCH TRACKER ACTIVE
-                </h2>
-                <div className="flex flex-wrap gap-2.5 mt-2">
-                  {activeLiveMatchesList.map(live => {
-                    const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
-                    const awayTeam = TEAMS[live.away] || { flag: '🏳️', name: live.away || 'TBD' };
-                    return (
-                      <div 
-                        key={live.id} 
-                        onClick={() => setSelectedMatch(live.originalMatch)}
-                        title="Click to view live stats & timeline commentary"
-                        className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-slate-950/70 border border-slate-900 hover:border-slate-800 hover:bg-slate-900/60 text-[10px] sm:text-xs font-mono font-bold text-slate-200 cursor-pointer select-none transition-all"
-                      >
-                        <span className="text-[8px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1.5 py-0.5 rounded font-black shrink-0">{live.minute}'</span>
-                        <span className="flex items-center gap-1 font-bold">
-                          <span>{homeTeam.flag}</span>
-                          <span className="text-slate-100">{live.home}</span>
-                        </span>
-                        <span className="text-brand-neon font-black px-1.5 py-0.5 bg-slate-900 rounded border border-slate-800/80">{live.homeScore} - {live.awayScore}</span>
-                        <span className="flex items-center gap-1 font-bold">
-                          <span className="text-slate-100">{live.away}</span>
-                          <span>{awayTeam.flag}</span>
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Global Live Tracker Banner */}
+        {activeTab !== 'fixtures' && (
+          <LiveMatchesBanner 
+            hasLiveMatches={hasLiveMatches}
+            activeLiveMatchesList={activeLiveMatchesList}
+            setSelectedMatch={setSelectedMatch}
+          />
         )}
         
-        {/* ================= ROADMAP TREE TAB ================= */}
-        {activeTab === 'bracket' && (
-          <div className="flex flex-col gap-6 animate-fadeIn">
-            {/* Legend & Instructions */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 gap-4">
-              <div>
-                <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-                  <WorldCupTrophyIcon className="w-4 h-4 text-brand-gold" />
-                  Tournament Bracket Roadmap
-                </h2>
-                <p className="text-xs text-slate-400">View the qualified teams and progress of the knockout rounds in real time. Hover over any country to highlight their tournament path.</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-                  <span className="w-3.5 h-3.5 rounded bg-brand-neon/20 border border-brand-neon/60 inline-block"></span>
-                  <span>Qualified / Advanced Team</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-                  <span className="w-3.5 h-3.5 rounded bg-brand-cardBg border border-slate-800 inline-block"></span>
-                  <span>TBD / Not Qualified</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Collapsible Group Stage Qualifiers Section */}
-            <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
-              <div className="flex justify-between items-center cursor-pointer select-none" onClick={() => setShowGroupSelectors(!showGroupSelectors)}>
-                <div>
-                  <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-                    <ListFilter className="w-4 h-4 text-brand-neon animate-pulse" />
-                    Group Stage Standings & R32 Qualifiers (48 Teams)
-                  </h2>
-                  <p className="text-xs text-slate-450 mt-1">Directly select group ranks (1st, 2nd, 3rd, 4th) to seed and qualify teams from 48 to 32 in the bracket below.</p>
-                </div>
-                <button className="text-slate-405 hover:text-white transition-all text-[10px] font-bold flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">
-                  {showGroupSelectors ? 'Hide Group Standings' : 'Show Group Standings'}
-                </button>
-              </div>
-
-              {showGroupSelectors && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5 animate-fadeIn">
-                  {GROUPS.map(g => {
-                    const groupStandings = standings[g] || [];
-                    return (
-                      <div key={g} className="p-3.5 rounded-xl bg-slate-950/40 border border-slate-900/60 hover:border-slate-850 transition-all flex flex-col gap-2">
-                        <div className="flex justify-between items-center border-b border-slate-900/60 pb-1.5">
-                          <span className="text-[10px] font-extrabold text-slate-350 tracking-widest">GROUP {g}</span>
-                          <span className="text-[8px] text-slate-550 font-mono font-black">RANKING</span>
-                        </div>
-                        <table className="w-full text-left text-[10px] font-semibold">
-                          <thead>
-                            <tr className="text-slate-500 font-bold border-b border-slate-900/40">
-                              <th className="py-1 w-12 text-[9px]">POS</th>
-                              <th className="py-1 text-[9px]">TEAM</th>
-                              <th className="py-1 text-center text-[9px] text-brand-neon">PTS</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-slate-900/30">
-                            {groupStandings.map((t, index) => {
-                              const isQualifying = index < 2;
-                              const isBestThird = index === 2 && advancedTeams.thirds.some(th => th.code === t.code);
-                              return (
-                                <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
-                                  <td className="py-1.5">
-                                    <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
-                                      index === 0 
-                                        ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
-                                        : index === 1 
-                                          ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
-                                          : index === 2 
-                                            ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
-                                            : 'bg-slate-900/50 border-slate-800 text-slate-500'
-                                    }`}>
-                                      {index + 1}
-                                    </div>
-                                  </td>
-                                  <td className="py-1.5 text-slate-200 flex items-center gap-1.5 truncate">
-                                    <span className="text-base shrink-0">{t.flag}</span>
-                                    <span className="truncate max-w-[70px] font-bold" title={t.name}>{t.name}</span>
-                                    {isQualifying && <span className="text-[7px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1 rounded-sm leading-none py-0.5 font-extrabold">R32</span>}
-                                    {isBestThird && <span className="text-[7px] bg-brand-royal/15 border border-brand-royal/30 text-brand-royal px-1 rounded-sm leading-none py-0.5 font-extrabold">R32 *</span>}
-                                  </td>
-                                  <td className="py-1.5 text-center font-extrabold text-[10px] text-brand-neon">{t.points}</td>
-                                </tr>
-                              );
-                            })}
-                          </tbody>
-                        </table>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* Tree Bracket Container (Scrollable horizontally) */}
-            <div className="overflow-x-auto pb-6">
-              <div className="min-w-[1280px] flex gap-4 items-center justify-between select-none">
-                
-                {/* --- LEFT BRACKET --- */}
-                {renderBracketColumn('r32', bracket.r32.slice(0, 8))}
-                {renderBracketColumn('r16', bracket.r16.slice(0, 4))}
-                {renderBracketColumn('qf', bracket.qf.slice(0, 2))}
-                {renderBracketColumn('sf', bracket.sf.slice(0, 1))}
-
-                {/* --- CENTER: TROPHY & FINAL --- */}
-                <div className="flex flex-col items-center justify-center min-w-[280px] p-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950/90 border border-brand-gold/20 shadow-gold relative">
-                  <div className="absolute top-4 right-4 flex items-center gap-1 text-[10px] text-brand-gold font-bold">
-                    <Star className="w-3 h-3 fill-brand-gold" />
-                    <span>CHAMPIONS</span>
-                  </div>
-
-                  <div className="mb-6 relative">
-                    <div className="absolute inset-0 bg-brand-gold/10 rounded-full blur-xl animate-pulse"></div>
-                    <WorldCupTrophyIcon className="w-20 h-20 text-brand-gold drop-shadow-xl animate-float relative z-10" />
-                  </div>
-
-                  {/* Final match card */}
-                  {bracket.final.map((match, idx) => {
-                    const homeTeam = TEAMS[match.home];
-                    const awayTeam = TEAMS[match.away];
-                    const isHomeWinner = match.winner === match.home && match.winner !== null;
-                    const isAwayWinner = match.winner === match.away && match.winner !== null;
-
-                    return (
-                      <div key={match.id} className="w-full flex flex-col gap-3">
-                        <div className="text-center">
-                          <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">The Grand Final</p>
-                          <p className="text-[9px] text-brand-neon font-bold font-mono">{formatDisplayDate(match.date)}</p>
-                          <p className="text-[8px] text-slate-500 font-semibold mt-0.5">New York/New Jersey</p>
-                        </div>
-
-                        <div className="flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
-                          {/* Home */}
-                          <div
-                            id={`slot-final-home`}
-                            onMouseEnter={() => match.home && setHoveredTeam(match.home)}
-                            onMouseLeave={() => setHoveredTeam(null)}
-                            onClick={() => match.home && handleKnockoutWinner('final', idx, match.home)}
-                            className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                              !match.home 
-                                ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                                : isHomeWinner 
-                                  ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                                  : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 overflow-hidden truncate">
-                              <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                              <span className="truncate">{homeTeam ? homeTeam.name : 'TBD SF 1 Winner'}</span>
-                            </div>
-                            {isHomeWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
-                          </div>
-
-                          {/* Away */}
-                          <div
-                            id={`slot-final-away`}
-                            onMouseEnter={() => match.away && setHoveredTeam(match.away)}
-                            onMouseLeave={() => setHoveredTeam(null)}
-                            onClick={() => match.away && handleKnockoutWinner('final', idx, match.away)}
-                            className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                              !match.away 
-                                ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                                : isAwayWinner 
-                                  ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                                  : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 overflow-hidden truncate">
-                              <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                              <span className="truncate">{awayTeam ? awayTeam.name : 'TBD SF 2 Winner'}</span>
-                            </div>
-                            {isAwayWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                  {/* Champion Reveal Box */}
-                  {tournamentChampion ? (
-                    <div className="mt-5 text-center animate-bounce">
-                      <p className="text-[10px] text-brand-neon font-bold tracking-widest">WORLD CUP CHAMPION</p>
-                      <p className="text-lg font-extrabold text-white flex items-center gap-1.5 justify-center mt-1">
-                        <span>{tournamentChampion.flag}</span>
-                        <span>{tournamentChampion.name.toUpperCase()}</span>
-                      </p>
-                    </div>
-                  ) : (
-                    <p className="text-[10px] text-slate-500 mt-4 text-center">Predict all matches to crown the champion!</p>
-                  )}
-                </div>
-
-                {/* --- RIGHT BRACKET --- */}
-                {renderBracketColumn('sf', bracket.sf.slice(1, 2), true)}
-                {renderBracketColumn('qf', bracket.qf.slice(2, 4), true)}
-                {renderBracketColumn('r16', bracket.r16.slice(4, 8), true)}
-                {renderBracketColumn('r32', bracket.r32.slice(8, 16), true)}
-
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ================= UPCOMING & RESULTS TAB ================= */}
+        {/* --- TABS --- */}
         {activeTab === 'fixtures' && (
-          <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
-            {/* Live Tracker Banner & Auto-Refresh Toggle */}
-            <div className="p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden">
-              <div className="absolute -top-12 -left-12 w-24 h-24 bg-brand-neon/5 rounded-full blur-2xl pointer-events-none" />
-              <div className="flex items-center gap-3 relative z-10">
-                <span className="flex h-3 w-3 relative shrink-0">
-                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75 ${hasLiveMatches ? '' : 'hidden'}`}></span>
-                  <span className={`relative inline-flex rounded-full h-3 w-3 ${hasLiveMatches ? 'bg-brand-neon animate-pulse' : 'bg-slate-600'}`}></span>
-                </span>
-                <div>
-                  <h2 className="text-xs sm:text-sm font-extrabold text-slate-100 uppercase tracking-wider flex items-center gap-2">
-                    {hasLiveMatches ? 'LIVE MATCH TRACKER ACTIVE' : 'NO ACTIVE LIVE MATCHES'}
-                  </h2>
-                  {hasLiveMatches && activeLiveMatchesList.length > 0 && (
-                    <div className="flex flex-wrap gap-2.5 mt-2">
-                      {activeLiveMatchesList.map(live => {
-                        const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
-                        const awayTeam = TEAMS[live.away] || { flag: '🏳️', name: live.away || 'TBD' };
-                        return (
-                          <div 
-                            key={live.id} 
-                            onClick={() => setSelectedMatch(live.originalMatch)}
-                            title="Click to view live stats & timeline commentary"
-                            className="flex items-center gap-2 px-2.5 py-1 rounded-xl bg-slate-950/70 border border-slate-900 hover:border-slate-800 hover:bg-slate-900/60 text-[10px] sm:text-xs font-mono font-bold text-slate-200 cursor-pointer select-none transition-all"
-                          >
-                            <span className="text-[8px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1.5 py-0.5 rounded font-black shrink-0">{live.minute}'</span>
-                            <span className="flex items-center gap-1 font-bold">
-                              <span>{homeTeam.flag}</span>
-                              <span className="text-slate-100">{live.home}</span>
-                            </span>
-                            <span className="text-brand-neon font-black px-1.5 py-0.5 bg-slate-900 rounded border border-slate-800/80">{live.homeScore} - {live.awayScore}</span>
-                            <span className="flex items-center gap-1 font-bold">
-                              <span className="text-slate-100">{live.away}</span>
-                              <span>{awayTeam.flag}</span>
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                  <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
-                    {hasLiveMatches 
-                      ? 'Real-time FIFA World Cup match events are currently active.' 
-                      : 'All matches are currently upcoming or completed.'}
-                  </p>
-                </div>
-              </div>
-            </div>
+          <FixturesTab 
+            hasLiveMatches={hasLiveMatches}
+            activeLiveMatchesList={activeLiveMatchesList}
+            upcomingFixtures={upcomingFixtures}
+            feedMatches={feedMatches}
+            liveMatches={liveMatches}
+            highlightsMap={highlightsMap}
+            loadingHighlightsMap={loadingHighlightsMap}
+            isLiveMatch={isLiveMatch}
+            setSelectedMatch={setSelectedMatch}
+          />
+        )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {/* Left side: Upcoming Fixtures */}
-            <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
-              {/* Upcoming Fixtures widget */}
-              <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
-                {/* Glow accent */}
-                <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="flex items-center justify-between mb-4 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-2.5 w-2.5 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
-                    </span>
-                    <h3 className="text-sm font-black uppercase tracking-wider text-slate-100 flex items-center gap-1.5">
-                      Upcoming Fixtures
-                    </h3>
-                  </div>
-                  <span className="text-[9px] bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-2.5 py-1 rounded-full font-bold font-mono">
-                    LIVE STATUS
-                  </span>
-                </div>
-
-                <div className="flex flex-col gap-3.5 relative z-10 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
-                  {(showAllUpcoming ? upcomingFixtures : upcomingFixtures.slice(0, 3)).map(match => {
-                    const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
-                    const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
-                    const live = liveMatches[match.id];
-                    const isMatchLive = live && live.minute !== null && live.minute !== undefined && live.minute !== 'FT' && live.minute !== '';
-                    const isLiveOrDone = isMatchLive || match.isCompleted || (live && (live.minute === 'FT' || live.isCompleted));
-                    return (
-                      <div 
-                        key={`today-${match.id}`} 
-                        onClick={() => setSelectedMatch(match)}
-                        className={`p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 ${
-                          isMatchLive 
-                            ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20' 
-                            : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
-                        }`}
-                      >
-                        <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
-                          <span className="text-brand-neon uppercase font-extrabold flex items-center gap-1">
-                            Group {match.group} • Match {match.id}
-                            {isMatchLive && (
-                              <span className="flex h-1.5 w-1.5 relative">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-neon"></span>
-                              </span>
-                            )}
-                          </span>
-                          <span className="text-slate-400 font-mono">{formatDisplayDate(match.date)}</span>
-                        </div>
-                        
-                        <div className="flex items-center justify-between gap-3 py-1">
-                          {/* Home Team */}
-                          <div className={`flex items-center gap-2 font-bold flex-1 truncate ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
-                            <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
-                            <span className="truncate">{home.name}</span>
-                          </div>
-
-                          {/* Live score / VS */}
-                          {isLiveOrDone ? (
-                            <div className="flex flex-col items-center gap-0.5 shrink-0">
-                              <div className={`flex items-center justify-center gap-1.5 px-3 py-1 rounded-lg font-bold font-mono ${
-                                isMatchLive 
-                                  ? 'bg-brand-neon/20 border border-brand-neon/30 text-brand-neon text-sm' 
-                                  : 'bg-slate-800/80 border border-slate-700/50 text-slate-300 text-xs'
-                              }`}>
-                                <span>{match.isCompleted ? match.homeScore : live.homeScore}</span>
-                                <span>-</span>
-                                <span>{match.isCompleted ? match.awayScore : live.awayScore}</span>
-                              </div>
-                              <span className={`font-extrabold tracking-wide uppercase ${isMatchLive ? 'text-[9px] text-brand-neon animate-pulse' : 'text-[8px] text-slate-400'}`}>
-                                {match.isCompleted ? 'FT' : formatLiveMatchTime(match.id)}
-                              </span>
-                            </div>
-                          ) : (
-                            <span className="text-[10px] font-extrabold bg-slate-900 border border-slate-800 text-slate-500 px-2.5 py-1 rounded-md font-mono shrink-0">
-                              VS
-                            </span>
-                          )}
-
-                          {/* Away Team */}
-                          <div className={`flex items-center gap-2 font-bold flex-1 justify-end truncate ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
-                            <span className="truncate text-right">{away.name}</span>
-                            <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
-                          </div>
-                        </div>
-
-                        {/* Live match stats expansion (equivalent to space of 3 items) */}
-                        {isMatchLive && live.stats && (
-                          <div className="mt-2 pt-3 border-t border-slate-800/60 flex flex-col gap-2.5 text-[10px] text-slate-400 font-bold">
-                            {/* Possession Row */}
-                            {(() => {
-                              const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(live.stats.possession, match.id);
-                              return (
-                                  <>
-                                    <div className="flex justify-between items-center font-mono text-slate-400 text-[9px] font-bold">
-                                      <span>{home.name}</span>
-                                      <span className="text-slate-500 font-sans uppercase tracking-wider text-[8px] font-black">POSSESSION</span>
-                                      <span>{away.name}</span>
-                                    </div>
-                                    <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                                      <div className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
-                                        {homePoss}%
-                                      </div>
-                                      <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
-                                        {contestPoss}%
-                                      </div>
-                                      <div className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
-                                        {awayPoss}%
-                                      </div>
-                                    </div>
-                                  </>
-                              );
-                            })()}
-
-                            {/* Stats Summary Row */}
-                            <div className="flex justify-around items-center text-[9px] font-mono text-slate-400 pt-1">
-                              <div className="flex items-center gap-2">
-                                <span>🎯 Shots:</span>
-                                <span className="text-slate-200 font-black">{live.stats.shots?.[0] || 0} - {live.stats.shots?.[1] || 0}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <span>🚩 Corners:</span>
-                                <span className="text-slate-200 font-black">{live.stats.corners?.[0] || 0} - {live.stats.corners?.[1] || 0}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <span>⚡ Fouls:</span>
-                                <span className="text-slate-200 font-black">{live.stats.fouls?.[0] || 0} - {live.stats.fouls?.[1] || 0}</span>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-                {upcomingFixtures.length > 3 && (
-                  <button
-                    onClick={() => setShowAllUpcoming(!showAllUpcoming)}
-                    className="mt-3 w-full py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5"
-                  >
-                    {showAllUpcoming ? 'View Less' : 'View More'}
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* Right side: Done Matches feed */}
-            <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
-              {/* Match Timeline Feed Widget */}
-              <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
-                <div>
-                  <h2 className="text-sm font-extrabold text-slate-200 flex items-center gap-2 uppercase tracking-wider">
-                    <Award className="w-4 h-4 text-brand-neon" />
-                    Done Matches
-                    <span className="text-[10px] font-mono font-black bg-slate-800 text-slate-300 border border-slate-700/60 px-1.5 py-0.5 rounded-md ml-1">{feedMatches.length}</span>
-                  </h2>
-                  <p className="text-xs text-slate-400">Timeline of completed tournament fixtures.</p>
-                </div>
-
-                <div className="flex flex-col gap-3 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
-                  {(showAllDone ? feedMatches : feedMatches.slice(0, 3)).map(match => {
-                    const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
-                    const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
-                    return (
-                      <div 
-                        key={`feed-${match.id}`} 
-                        onClick={() => setSelectedMatch(match)}
-                        className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2"
-                      >
-                        <div className="flex justify-between items-center text-[10px] font-bold">
-                          <div className="flex items-center gap-2">
-                            <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-[9px]">FT</span>
-                            <span className="text-slate-500 font-mono">Match {match.id} ({match.group})</span>
-                          </div>
-                          <span className="text-[9px] text-slate-500 font-mono">{formatDisplayDate(match.date)}</span>
-                        </div>
-
-                        <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-200">
-                          {/* Home */}
-                          <div className="flex items-center gap-2 flex-1 truncate">
-                            <span>{home.flag}</span>
-                            <span className="truncate">{home.name}</span>
-                          </div>
-
-                          {/* Scores */}
-                          <div className="px-2.5 py-0.5 bg-slate-950 rounded border border-slate-900 font-extrabold font-mono text-xs min-w-[40px] text-center shrink-0">
-                            <span className="text-brand-neon">{match.homeScore} - {match.awayScore}</span>
-                          </div>
-
-                          {/* Away */}
-                          <div className="flex items-center gap-2 flex-1 justify-end truncate">
-                            <span className="truncate text-right">{away.name}</span>
-                            <span>{away.flag}</span>
-                          </div>
-                        </div>
-
-                        {/* Highlights Button */}
-                        {(() => {
-                          const url = highlightsMap[match.id];
-                          const isLoading = loadingHighlightsMap[match.id];
-                          if (isLoading) {
-                            return (
-                              <div className="mt-1 py-1.5 rounded-lg bg-slate-950/80 border border-slate-900/40 text-[9px] font-bold text-slate-600 flex items-center justify-center gap-1.5 select-none">
-                                <span className="w-2.5 h-2.5 border border-slate-700 border-t-red-500 rounded-full animate-spin"></span>
-                                <span>Searching highlights...</span>
-                              </div>
-                            );
-                          }
-                          if (url) {
-                            return (
-                              <a
-                                href={url}
-                                target={isMobile ? undefined : "_blank"}
-                                rel={isMobile ? undefined : "noopener noreferrer"}
-                                onClick={(e) => e.stopPropagation()}
-                                className="mt-1 py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]"
-                              >
-                                <svg className="w-2.5 h-2.5 fill-white shrink-0" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                                <span>Watch Highlights</span>
-                              </a>
-                            );
-                          }
-                          return null;
-                        })()}
-                      </div>
-                    );
-                  })}
-                </div>
-                {feedMatches.length > 3 && (
-                  <button
-                    onClick={() => setShowAllDone(!showAllDone)}
-                    className="mt-3 w-full py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5"
-                  >
-                    {showAllDone ? 'View Less' : 'View More'}
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-        {/* ================= GROUP STANDINGS TAB ================= */}
         {activeTab === 'groups' && (
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 animate-fadeIn">
-            
-            {/* Left side: Detailed Group standings */}
-            <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-6">
-
-              {/* Standings Table for selected group */}
-              <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
-                
-                {/* Small A B C D ... Tabs to filter */}
-                <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none border-b border-slate-900/60 z-10 relative">
-                  <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest shrink-0 mr-2">Filter Group:</span>
-                  <div className="flex gap-1.5">
-                    {GROUPS.map(g => {
-                      const isActive = expandedGroup === g;
-                      return (
-                        <button
-                          key={g}
-                          onClick={() => setExpandedGroup(g)}
-                          className={`w-7.5 h-7.5 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer ${
-                            isActive
-                              ? 'border-brand-neon bg-brand-neon/15 text-brand-neon shadow-neon ring-1 ring-brand-neon/20'
-                              : 'border-slate-850 bg-slate-950/45 text-slate-400 hover:text-slate-200 hover:border-slate-700'
-                          }`}
-                        >
-                          {g}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <h2 className="text-lg font-bold text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <button 
-                      onClick={handlePrevGroup}
-                      className="p-1 px-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 text-xs font-bold transition-all flex items-center gap-1 select-none cursor-pointer"
-                      title="Previous Group"
-                    >
-                      ← Prev
-                    </button>
-                    <span>Group {expandedGroup} Standings</span>
-                    <button 
-                      onClick={handleNextGroup}
-                      className="p-1 px-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 text-xs font-bold transition-all flex items-center gap-1 select-none cursor-pointer"
-                      title="Next Group"
-                    >
-                      Next →
-                    </button>
-                  </div>
-                  <span className="text-xs font-semibold text-slate-400">Tie-breakers: Points, GD, GF</span>
-                </h2>
-                
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs font-medium">
-                    <thead>
-                      <tr className="border-b border-slate-800 text-slate-400">
-                        <th className="py-2 px-1 font-bold">POS</th>
-                        <th className="py-2 px-1 font-bold">TEAM</th>
-                        <th className="py-2 px-1 font-bold text-center">P</th>
-                        <th className="py-2 px-1 font-bold text-center">W</th>
-                        <th className="py-2 px-1 font-bold text-center">D</th>
-                        <th className="py-2 px-1 font-bold text-center">L</th>
-                        <th className="py-2 px-1 font-bold text-center">GD</th>
-                        <th className="py-2 px-1 font-bold text-center text-brand-neon">PTS</th>
-                        <th className="py-2 px-1 font-bold text-center hidden md:table-cell">FORM</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-800/50">
-                      {(standings[expandedGroup] || []).map((t, index) => {
-                        const isQualifying = index < 2;
-                        const isBestThird = index === 2 && advancedTeams.thirds.some(th => th.code === t.code);
-                        return (
-                          <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
-                            <td className="py-2 px-1">
-                              <div className={`flex items-center justify-center w-6 h-6 rounded-lg font-black text-[10px] border ${
-                                index === 0 
-                                  ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
-                                  : index === 1 
-                                    ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
-                                    : index === 2 
-                                      ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
-                                      : 'bg-slate-900/50 border-slate-800 text-slate-500'
-                              }`}>
-                                {index + 1}
-                              </div>
-                            </td>
-                            <td className="py-2 px-1 font-bold flex items-center gap-1 sm:gap-2 text-slate-200">
-                              <span className="text-lg">{t.flag}</span>
-                              <span className="truncate max-w-[85px] sm:max-w-none">{t.name}</span>
-                              {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold">R32</span>}
-                              {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold">R32 *</span>}
-                            </td>
-                            <td className="py-2 px-1 text-center text-slate-400">{t.played}</td>
-                            <td className="py-2 px-1 text-center text-slate-400">{t.won}</td>
-                            <td className="py-2 px-1 text-center text-slate-400">{t.drawn}</td>
-                            <td className="py-2 px-1 text-center text-slate-400">{t.lost}</td>
-                            <td className={`py-2 px-1 text-center font-semibold ${t.gd > 0 ? 'text-brand-neon' : t.gd < 0 ? 'text-rose-500' : 'text-slate-400'}`}>
-                              {t.gd > 0 ? `+${t.gd}` : t.gd}
-                            </td>
-                            <td className="py-2 px-1 text-center font-bold text-sm text-brand-neon">{t.points}</td>
-                            <td className="py-2 px-1 text-center hidden md:table-cell">
-                              <div className="flex items-center justify-center gap-1 select-none">
-                                {(t.form || []).map((res, i) => (
-                                  <span
-                                    key={i}
-                                    title={res === 'W' ? 'Won' : res === 'D' ? 'Draw' : 'Lost'}
-                                    className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black text-white shrink-0 ${
-                                      res === 'W'
-                                        ? 'bg-emerald-600 border border-emerald-500/30'
-                                        : res === 'L'
-                                          ? 'bg-rose-600 border border-rose-500/30'
-                                          : 'bg-slate-600 border border-slate-500/30'
-                                    }`}
-                                  >
-                                    {res}
-                                  </span>
-                                ))}
-                                {(!t.form || t.form.length === 0) && <span className="text-slate-600 text-[10px]">-</span>}
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Right side: Group match schedule */}
-            <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
-
-              {/* Match list for selected group */}
-              <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
-                <h3 className="text-base font-bold text-slate-200 mb-4 flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-brand-neon" />
-                  Group {expandedGroup} Match Schedule
-                </h3>
-
-                <div className="flex flex-col gap-3.5">
-                  {groupMatches.filter(m => m.group === expandedGroup).map(match => {
-                    const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
-                    const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
-                    const live = liveMatches[match.id];
-                    const isMatchLive = live && live.minute !== null && live.minute !== undefined && live.minute !== 'FT' && live.minute !== '';
-                    return (
-                      <div 
-                        key={match.id} 
-                        onClick={() => setSelectedMatch(match)}
-                        className="p-3 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/30 cursor-pointer transition-all flex flex-col gap-2"
-                      >
-                        <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
-                          <span>MATCH {match.id}</span>
-                          {match.isCompleted ? (
-                            <span className="text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wider font-extrabold font-mono">FT</span>
-                          ) : (
-                            <span>{formatDisplayDate(match.date)}</span>
-                          )}
-                        </div>
-                        
-                        <div className="flex items-center gap-2 justify-between">
-                          {/* Home Row */}
-                          <div className={`flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 truncate ${match.isCompleted ? 'opacity-85' : ''}`}>
-                            <span>{home.flag}</span>
-                            <span className="truncate">{home.name}</span>
-                          </div>
-                          
-                          {/* Score display or VS separator (Read-Only) */}
-                          <div className="flex items-center gap-1.5 justify-center min-w-[70px]">
-                            {match.isCompleted ? (
-                              <div className="flex items-center justify-center gap-1.5 px-2.5 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-brand-neon font-mono font-black">
-                                <span>{match.homeScore}</span>
-                                <span className="text-slate-600">:</span>
-                                <span>{match.awayScore}</span>
-                              </div>
-                            ) : isMatchLive ? (
-                              <div className="flex flex-col items-center gap-0.5">
-                                <div className="flex items-center justify-center gap-1.5 px-2.5 py-0.5 bg-brand-neon/20 border border-brand-neon/30 rounded-lg text-xs font-bold text-brand-neon font-mono">
-                                  <span>{live.homeScore}</span>
-                                  <span className="text-brand-neon/60">:</span>
-                                  <span>{live.awayScore}</span>
-                                </div>
-                                <span className="text-[7px] font-extrabold text-brand-neon tracking-wide flex items-center gap-0.5 animate-pulse font-mono">
-                                  {formatLiveMatchTime(match.id)}
-                                </span>
-                              </div>
-                            ) : (
-                              <span className="text-[10px] font-extrabold bg-slate-900 border border-slate-800 text-slate-500 px-3 py-1 rounded-md font-mono shrink-0">
-                                VS
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Away Row */}
-                          <div className="flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 justify-end truncate">
-                            <span className="truncate">{away.name}</span>
-                            <span>{away.flag}</span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-            </div>
-          </div>
+          <GroupsTab 
+            groupMatches={groupMatches}
+            standings={standings}
+            advancedTeams={advancedTeams}
+            liveMatches={liveMatches}
+            isLiveMatch={isLiveMatch}
+            setSelectedMatch={setSelectedMatch}
+          />
         )}
 
-        {/* ================= STADIUM VENUES TAB ================= */}
-        {activeTab === 'venues' && (
-          <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
-            <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
-              <h2 className="text-base font-bold text-white">16 Stadium Venues</h2>
-              <p className="text-xs text-slate-400">Discover the iconic hosting stadiums across the United States, Canada, and Mexico.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {VENUES.map(venue => {
-                const isExpanded = expandedVenue === venue.name;
-                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.name + ', ' + venue.city)}`;
-                return (
-                  <div 
-                    key={venue.name} 
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => setExpandedVenue(isExpanded ? null : venue.name)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        setExpandedVenue(isExpanded ? null : venue.name);
-                      }
-                    }}
-                    className={`p-4 sm:p-5 rounded-2xl border bg-brand-cardBg flex flex-col justify-between transition-all cursor-pointer select-none ${
-                      isExpanded 
-                        ? 'border-brand-purple shadow-[0_0_15px_rgba(139,92,246,0.15)] ring-1 ring-brand-purple/35' 
-                        : 'border-slate-800/80 sm:hover:border-brand-purple/50 sm:hover:-translate-y-0.5 duration-300'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex justify-between items-start mb-3">
-                        <span className="text-xs font-bold text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                          {venue.flag} {venue.country}
-                        </span>
-                        <span className="text-[10px] text-slate-400 font-bold">
-                          Cap: {venue.capacity.toLocaleString()}
-                        </span>
-                      </div>
-                      <h3 className="text-base font-extrabold text-slate-100 mb-1">{venue.name}</h3>
-                      <p className="text-xs font-semibold text-brand-purple flex items-center gap-1 mb-3">
-                        <MapPin className="w-3.5 h-3.5" />
-                        {venue.city}
-                      </p>
-                      <p className="text-xs text-slate-400 leading-relaxed">{venue.desc}</p>
-                    </div>
-
-                    {isExpanded && (
-                      <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-col gap-3 animate-fadeIn">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold">Scheduled Matches</span>
-                          <span className="text-[9px] bg-slate-900 border border-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono font-bold">
-                            {matchesAtVenue.length} Matches
-                          </span>
-                        </div>
-                        
-                        <div className="flex flex-col gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
-                          {matchesAtVenue.map((m, idx) => {
-                            const homeTeamObj = TEAMS[m.home];
-                            const awayTeamObj = TEAMS[m.away];
-                            const homeFlag = homeTeamObj ? homeTeamObj.flag : '🏳️';
-                            const awayFlag = awayTeamObj ? awayTeamObj.flag : '🏳️';
-                            const homeName = m.home || 'TBD';
-                            const awayName = m.away || 'TBD';
-                            
-                            const live = liveMatches[m.id];
-                            const isLive = live && live.minute !== null && live.minute !== undefined && live.minute !== 'FT' && live.minute !== '';
-                            const hasScore = m.isCompleted || (live && (live.minute === 'FT' || live.isCompleted || live.homeScore !== null));
-                            const homeScore = m.isCompleted ? m.homeScore : (live ? live.homeScore : null);
-                            const awayScore = m.isCompleted ? m.awayScore : (live ? live.awayScore : null);
-
-                            return (
-                              <div key={idx} className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-900/60 flex flex-col gap-1.5 text-[11px]">
-                                <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
-                                  <span className="text-brand-purple">{m.round}</span>
-                                  <span>{formatDisplayDate(m.date)}</span>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                  <div className="flex items-center gap-1.5 font-bold text-slate-200">
-                                    <span>{homeFlag}</span>
-                                    <span>{homeName}</span>
-                                  </div>
-                                  {hasScore ? (
-                                    <div className="flex items-center gap-1 font-mono font-black text-brand-neon">
-                                      <span>{homeScore}</span>
-                                      <span className="text-slate-600">:</span>
-                                      <span>{awayScore}</span>
-                                      {isLive && <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse ml-1" />}
-                                    </div>
-                                  ) : (
-                                    <span className="text-[9px] font-extrabold text-slate-600 font-mono">VS</span>
-                                  )}
-                                  <div className="flex items-center gap-1.5 font-bold text-slate-200">
-                                    <span>{awayName}</span>
-                                    <span>{awayFlag}</span>
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                          {matchesAtVenue.length === 0 && (
-                            <span className="text-[10px] text-slate-500 text-center py-4">No matches scheduled.</span>
-                          )}
-                        </div>
-                        
-                        <a 
-                          href={mapUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 text-xs font-bold text-slate-350 hover:text-white transition-all w-full mt-1"
-                        >
-                          <MapPin className="w-3.5 h-3.5 text-brand-neon" />
-                          <span>Get Directions (Google Maps)</span>
-                        </a>
-                      </div>
-                    )}
-                    
-                    <div className="border-t border-slate-800/60 mt-4 pt-3 flex justify-between items-center text-[10px] text-slate-500 font-bold">
-                      <span>{isExpanded ? 'CLICK TO COLLAPSE' : 'CLICK TO VIEW MATCHES'}</span>
-                      <span>2026 WORLD CUP HOST</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+        {activeTab === 'bracket' && (
+          <BracketTab 
+            bracket={bracket}
+            standings={standings}
+            advancedTeams={advancedTeams}
+            tournamentChampion={tournamentChampion}
+            handleKnockoutWinner={handleKnockoutWinner}
+          />
         )}
 
-        {/* ================= PLAYER STATS TAB ================= */}
         {activeTab === 'stats' && (
-          <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
-            {/* Header info */}
-            <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
-              <h2 className="text-base font-bold text-white flex items-center gap-2">
-                <WorldCupTrophyIcon className="w-5 h-5 text-brand-gold" />
-                Tournament Player Statistics
-              </h2>
-              <p className="text-xs text-slate-400">
-                Track the tournament's top goal scorers and playmakers in real time. Stats automatically accumulate across all completed and simulated matches.
-              </p>
-            </div>
-
-            {/* Tables Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {/* Top Scorers Table */}
-              <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
-                <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
-                  <GoldenBootTrophyIcon className="w-5 h-5 text-brand-gold" />
-                  <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
-                    Golden Boot (Top Scorers)
-                  </h3>
-                </div>
-                
-                {playerStats.topScorers.length === 0 ? (
-                  <div className="text-center py-8 text-xs text-slate-500 font-medium">
-                    No goals recorded yet. Simulate or complete matches to update standings!
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-2.5">
-                    <div className="grid grid-cols-12 text-[10px] text-slate-500 font-bold uppercase tracking-wider px-2">
-                      <span className="col-span-2">Rank</span>
-                      <span className="col-span-7">Player</span>
-                      <span className="col-span-3 text-right">Goals</span>
-                    </div>
-                    {playerStats.topScorers.map((player, idx) => (
-                      <div 
-                        key={player.name} 
-                        className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
-                      >
-                        <div className="col-span-2 flex justify-start">
-                          <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
-                            idx === 0 
-                              ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
-                              : idx === 1 
-                                ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
-                                : idx === 2 
-                                  ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
-                                  : 'bg-slate-900/50 border-slate-800 text-slate-500'
-                          }`}>
-                            {idx + 1}
-                          </div>
-                        </div>
-                        {(() => {
-                          const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
-                          return (
-                            <div className="col-span-7 flex items-center gap-1.5 min-w-0">
-                              <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
-                                {player.team}
-                              </span>
-                              <span className="text-base shrink-0 select-none" title={teamInfo.name}>
-                                {teamInfo.flag}
-                              </span>
-                              <span className="truncate text-slate-100 ml-1">{player.name}</span>
-                            </div>
-                          );
-                        })()}
-                        <span className="col-span-3 text-right text-brand-neon font-black text-sm">
-                          {player.goals}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Top Assists Table */}
-              <div className="p-4 sm:p-5 rounded-2xl border border-slate-800/80 bg-brand-cardBg flex flex-col">
-                <div className="flex items-center gap-2 mb-4 border-b border-slate-800/60 pb-3">
-                  <PlaymakerIcon className="w-5 h-5 text-brand-neon" />
-                  <h3 className="text-sm font-extrabold text-slate-100 uppercase tracking-wider">
-                    Playmakers (Top Assists)
-                  </h3>
-                </div>
-
-                {playerStats.topAssists.length === 0 ? (
-                  <div className="text-center py-8 text-xs text-slate-500 font-medium">
-                    No assists recorded yet. Simulate or complete matches to update standings!
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-2.5">
-                    <div className="grid grid-cols-12 text-[10px] text-slate-500 font-bold uppercase tracking-wider px-2">
-                      <span className="col-span-2">Rank</span>
-                      <span className="col-span-7">Player</span>
-                      <span className="col-span-3 text-right">Assists</span>
-                    </div>
-                    {playerStats.topAssists.map((player, idx) => (
-                      <div 
-                        key={player.name} 
-                        className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
-                      >
-                        <div className="col-span-2 flex justify-start">
-                          <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
-                            idx === 0 
-                              ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
-                              : idx === 1 
-                                ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
-                                : idx === 2 
-                                  ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
-                                  : 'bg-slate-900/50 border-slate-800 text-slate-500'
-                          }`}>
-                            {idx + 1}
-                          </div>
-                        </div>
-                        {(() => {
-                          const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
-                          return (
-                            <div className="col-span-7 flex items-center gap-1.5 min-w-0">
-                              <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
-                                {player.team}
-                              </span>
-                              <span className="text-base shrink-0 select-none" title={teamInfo.name}>
-                                {teamInfo.flag}
-                              </span>
-                              <span className="truncate text-slate-100 ml-1">{player.name}</span>
-                            </div>
-                          );
-                        })()}
-                        <span className="col-span-3 text-right text-brand-purple font-black text-sm">
-                          {player.assists}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+          <StatsTab 
+            playerStats={playerStats}
+          />
         )}
 
+        {activeTab === 'venues' && (
+          <VenuesTab 
+            groupMatches={groupMatches}
+            bracket={bracket}
+            liveMatches={liveMatches}
+            isLiveMatch={isLiveMatch}
+          />
+        )}
       </main>
 
       {/* --- FOOTER --- */}
-      <footer className={`relative z-10 border-t ${darkMode ? 'border-slate-900 bg-slate-950/50' : 'border-slate-200 bg-white/50'} py-8 mt-12 text-center text-xs text-slate-500 font-bold`}>
+      <footer className="relative z-10 border-t border-slate-900 bg-slate-950/50 py-8 mt-12 text-center text-xs text-slate-500 font-bold">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-1.5">
             <WorldCupTrophyIcon className="w-4 h-4 text-brand-neon" />
@@ -2390,304 +907,15 @@ function App() {
         </div>
       </footer>
 
-
-
-      {/* Match Details Modal (Scorers & Stats) */}
-      {selectedMatch && (() => {
-        const home = TEAMS[selectedMatch.home] || { name: selectedMatch.home || 'TBD', flag: '🏳️' };
-        const away = TEAMS[selectedMatch.away] || { name: selectedMatch.away || 'TBD', flag: '🏳️' };
-
-        const live = liveMatches[selectedMatch.id];
-        const details = getMatchDetails(selectedMatch, live);
-
-        const isCompleted = selectedMatch.isCompleted || (live && live.minute === 'FT');
-        const isLive = live && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined;
-        const hasStarted = isCompleted || isLive;
-
-        const homeScore = live ? live.homeScore : (selectedMatch.homeScore ?? 0);
-        const awayScore = live ? live.awayScore : (selectedMatch.awayScore ?? 0);
-
-        return (
-          <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300"
-            onClick={() => setSelectedMatch(null)}
-          >
-            <div 
-              className="w-full max-w-xl max-h-[95vh] overflow-y-auto bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl p-4 sm:p-6 relative flex flex-col gap-4 sm:gap-6"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button 
-                className="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors"
-                onClick={() => setSelectedMatch(null)}
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {/* Match Header */}
-              <div className="text-center">
-                <div className="text-xs font-extrabold text-brand-neon uppercase tracking-widest mb-1">
-                  Group {selectedMatch.group} • Match {selectedMatch.id}
-                </div>
-                <div className="text-[11px] text-slate-400 font-bold font-mono">
-                  {selectedMatch.venue || 'TBD Stadium'} • {formatDisplayDate(selectedMatch.date)}
-                </div>
-              </div>
-
-              {/* Scoreboard */}
-              <div className="flex items-center justify-between gap-4 py-3 px-5 bg-slate-950/50 rounded-2xl border border-slate-900">
-                {/* Home Team */}
-                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
-                  <span className="text-4xl select-none">{home.flag}</span>
-                  <span className="text-xs font-black text-slate-100 truncate text-center w-full">{home.name}</span>
-                </div>
-
-                {/* Score digits */}
-                <div className="flex flex-col items-center gap-1 shrink-0">
-                  <div className="flex items-center gap-3">
-                    <span className={`text-3xl font-black font-mono ${hasStarted ? 'text-white' : 'text-slate-600'}`}>
-                      {hasStarted ? homeScore : '-'}
-                    </span>
-                    <span className="text-xl font-bold text-slate-700">:</span>
-                    <span className={`text-3xl font-black font-mono ${hasStarted ? 'text-white' : 'text-slate-600'}`}>
-                      {hasStarted ? awayScore : '-'}
-                    </span>
-                  </div>
-                  <div>
-                    {isLive ? (
-                      <span className="bg-brand-neon/20 text-brand-neon border border-brand-neon/30 px-2 py-0.5 rounded text-[8px] font-extrabold uppercase tracking-wide flex items-center gap-1 animate-pulse">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-ping"></span>
-                        {live.minute === 'HT' ? 'HT' : (String(live.minute).includes("'") || String(live.minute).toLowerCase() === 'live' ? live.minute : `${String(live.minute).padStart(2, '0')}:${String(live.second).padStart(2, '0')}`)}
-                      </span>
-                    ) : isCompleted ? (
-                      <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-[8px] font-extrabold uppercase tracking-wide">
-                        Full Time
-                      </span>
-                    ) : (
-                      <span className="bg-brand-neon/15 text-brand-neon border border-brand-neon/30 px-2 py-0.5 rounded text-[8px] font-extrabold uppercase tracking-wide">
-                        Scheduled
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Away Team */}
-                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
-                  <span className="text-4xl select-none">{away.flag}</span>
-                  <span className="text-xs font-black text-slate-100 truncate text-center w-full">{away.name}</span>
-                </div>
-              </div>
-
-
-
-              {/* Scorers Section */}
-              {hasStarted && (
-                <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-2">
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>⚽</span> Goal Scorers
-                  </h4>
-                  {details.scorers && details.scorers.length > 0 ? (
-                    <div className="grid grid-cols-2 gap-4 text-[11px] font-bold font-mono">
-                      {/* Home Scorers */}
-                      <div className="flex flex-col gap-1 text-left">
-                        {details.scorers.filter(s => s.team === 'home').map((s, idx) => (
-                          <span key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1">
-                            <span>{s.player}</span>
-                            <span className="text-brand-neon">({s.minute}')</span>
-                          </span>
-                        ))}
-                      </div>
-                      {/* Away Scorers */}
-                      <div className="flex flex-col gap-1 text-right">
-                        {details.scorers.filter(s => s.team === 'away').map((s, idx) => (
-                          <span key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1">
-                            <span>{s.player}</span>
-                            <span className="text-brand-neon">({s.minute}')</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-center text-[10px] text-slate-500 font-bold italic py-1">
-                      No goals scored in this match.
-                    </div>
-                  )}
-                </div>
-              )}
-              {/* Match Timeline */}
-              {hasStarted && details.timeline && details.timeline.length > 0 && (
-                <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3">
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>⏱️</span> Match Timeline
-                  </h4>
-                  <div className="flex flex-col gap-2 max-h-56 overflow-y-auto pr-1 select-none scrollbar-thin scrollbar-thumb-slate-850 scrollbar-track-transparent">
-                    {details.timeline
-                      .filter(event => {
-                        const typeLower = event.type.toLowerCase();
-                        return typeLower.includes('goal') || 
-                               typeLower.includes('card') || 
-                               typeLower.includes('sub') || 
-                               typeLower.includes('start') || 
-                               typeLower.includes('end') || 
-                               typeLower.includes('half') || 
-                               typeLower.includes('whistle') || 
-                               typeLower.includes('toss') || 
-                               typeLower.includes('kick off');
-                      })
-                      .slice()
-                      .reverse()
-                      .map((event, idx) => {
-                        const normalize = (name) => name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
-                        const normText = normalize(event.text);
-                        const normHomeName = normalize(home.name);
-                        const normAwayName = normalize(away.name);
-                        
-                        const isHome = normText.includes(normHomeName) || 
-                                       event.text.toLowerCase().includes(selectedMatch.home.toLowerCase());
-                        const isAway = normText.includes(normAwayName) || 
-                                       event.text.toLowerCase().includes(selectedMatch.away.toLowerCase());
-                        const eventFlag = isHome ? home.flag : (isAway ? away.flag : null);
-
-                        let icon = '🔔';
-                        const typeLower = event.type.toLowerCase();
-                        if (typeLower.includes('foul')) icon = '⚡';
-                        else if (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score')) icon = '⚽';
-                        else if (typeLower.includes('attempt') || typeLower.includes('shot')) icon = '🎯';
-                        else if (typeLower.includes('corner')) icon = '🚩';
-                        else if (typeLower.includes('offside')) icon = '👁️';
-                        else if (typeLower.includes('kick off') || typeLower.includes('start') || typeLower.includes('toss')) icon = '🎬';
-                        else if (typeLower.includes('yellow')) icon = '🟨';
-                        else if (typeLower.includes('red')) icon = '🟥';
-                        else if (typeLower.includes('sub')) icon = '🔄';
-
-                        return (
-                          <div 
-                            key={`timeline-${idx}`} 
-                            className="flex items-start gap-3 bg-slate-950/40 border border-slate-800/50 rounded-xl p-2.5 hover:border-slate-700/50 transition-all duration-300 relative"
-                          >
-                            <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-slate-900 border border-slate-800 text-[11px] shrink-0">
-                              {icon}
-                            </div>
-
-                            <div className="flex-1 flex flex-col gap-0.5">
-                              <div className="flex items-center justify-between">
-                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-wider">
-                                  {event.type}
-                                </span>
-                                <span className="text-[10px] font-bold font-mono text-brand-neon">
-                                  {event.minuteStr}
-                                </span>
-                              </div>
-                              <p className="text-[10px] text-slate-300 font-bold leading-relaxed pr-6">
-                                {event.text}
-                              </p>
-                              {eventFlag && (
-                                <div className="absolute right-2.5 bottom-2.5">
-                                  <span className="text-xs">{eventFlag}</span>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              )}
-
-              {/* Match Statistics */}
-              {hasStarted ? (
-                <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3.5">
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Match Statistics
-                  </h4>
-                  
-                  <div className="flex flex-col gap-4">
-                    {[
-                      { label: 'Possession', key: 'possession', suffix: '%' },
-                      { label: 'Shots', key: 'shots' },
-                      { label: 'Shots on Target', key: 'shotsOnTarget' },
-                      { label: 'Corners', key: 'corners' },
-                      { label: 'Fouls', key: 'fouls' },
-                      { label: 'Yellow Cards', key: 'yellowCards' },
-                      { label: 'Red Cards', key: 'redCards' }
-                    ].map(stat => {
-                      if (stat.key === 'possession') {
-                        const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(details.stats.possession, selectedMatch.id);
-                        return (
-                          <div key={stat.key} className="flex flex-col gap-1.5">
-                            <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-400 font-sans uppercase tracking-wider">
-                              <span>{home.name || 'Home'}</span>
-                              <span className="text-slate-500 font-black text-[9px]">POSSESSION</span>
-                              <span>{away.name || 'Away'}</span>
-                            </div>
-                            <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                              <div className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
-                                {homePoss}%
-                              </div>
-                              <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
-                                {contestPoss}%
-                              </div>
-                              <div className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
-                                {awayPoss}%
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      }
-
-                      const valHome = details.stats[stat.key]?.[0] ?? 0;
-                      const valAway = details.stats[stat.key]?.[1] ?? 0;
-                      
-                      let pctHome = 0;
-                      let pctAway = 0;
-                      if (valHome > 0 || valAway > 0) {
-                        const total = valHome + valAway;
-                        pctHome = Math.round((valHome / total) * 100);
-                        pctAway = 100 - pctHome;
-                      }
-
-                      return (
-                        <div key={stat.key} className="flex flex-col gap-1.5">
-                          <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-300 font-mono">
-                            <span>{valHome}{stat.suffix || ''}</span>
-                            <span className="text-slate-400 font-sans uppercase tracking-wider text-[8px] font-black">{stat.label}</span>
-                            <span>{valAway}{stat.suffix || ''}</span>
-                          </div>
-                          {/* Bar display */}
-                          <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                            <div 
-                              className="bg-red-600 h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" 
-                              style={{ width: `${pctHome}%` }}
-                            >
-                              {pctHome > 12 && `${valHome}${stat.suffix || ''}`}
-                            </div>
-                            <div 
-                              className="bg-brand-purple h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" 
-                              style={{ width: `${pctAway}%` }}
-                            >
-                              {pctAway > 12 && `${valAway}${stat.suffix || ''}`}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : (
-                <div className="border-t border-slate-800/80 pt-4 text-center flex flex-col gap-2">
-                  <div className="text-xs font-bold text-slate-400">Match Preview</div>
-                  <p className="text-[10px] text-slate-500 leading-relaxed px-4">
-                    This match has not started yet. Real-time stats and goal scorers will activate automatically when the match kicks off.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        );
-      })()}
-
+      {/* Match Details Modal */}
+      {selectedMatch && (
+        <MatchDetailsModal 
+          selectedMatch={selectedMatch}
+          liveMatches={liveMatches}
+          fotmobRatings={fotmobRatings}
+          onClose={() => setSelectedMatch(null)}
+        />
+      )}
     </div>
   );
 }

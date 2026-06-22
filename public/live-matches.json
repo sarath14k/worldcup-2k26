@@ -2217,6 +2217,86 @@
       }
     ]
   },
+  "5": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "6": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
   "7": {
     "homeScore": 1,
     "awayScore": 1,
@@ -4170,8 +4250,8 @@
     ]
   },
   "10": {
-    "homeScore": 4,
-    "awayScore": 1,
+    "homeScore": 1,
+    "awayScore": 4,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -4763,6 +4843,86 @@
         "minuteStr": "90'+8"
       }
     ]
+  },
+  "11": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "12": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
   },
   "13": {
     "homeScore": 1,
@@ -6631,8 +6791,8 @@
     ]
   },
   "16": {
-    "homeScore": 0,
-    "awayScore": 1,
+    "homeScore": 1,
+    "awayScore": 0,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -7096,6 +7256,86 @@
         "minuteStr": "90'+12"
       }
     ]
+  },
+  "17": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "18": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
   },
   "19": {
     "homeScore": 4,
@@ -8919,8 +9159,8 @@
     ]
   },
   "22": {
-    "homeScore": 0,
-    "awayScore": 1,
+    "homeScore": 1,
+    "awayScore": 0,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -9672,6 +9912,86 @@
         "minuteStr": "90'+10"
       }
     ]
+  },
+  "23": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "24": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
   },
   "25": {
     "homeScore": 7,
@@ -12138,6 +12458,86 @@
       }
     ]
   },
+  "29": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "30": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
   "31": {
     "homeScore": 2,
     "awayScore": 2,
@@ -13899,8 +14299,8 @@
     ]
   },
   "34": {
-    "homeScore": 0,
-    "awayScore": 4,
+    "homeScore": 4,
+    "awayScore": 0,
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
@@ -14415,6 +14815,86 @@
         "minuteStr": "90'+11"
       }
     ]
+  },
+  "35": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "36": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
   },
   "37": {
     "homeScore": 1,
@@ -16179,6 +16659,754 @@
       }
     ]
   },
+  "40": {
+    "homeScore": 3,
+    "awayScore": 1,
+    "minute": "FT",
+    "second": 0,
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Finn SURMAN",
+        "minute": 15
+      },
+      {
+        "team": "away",
+        "player": "MOSTAFA ZICO",
+        "minute": 58
+      },
+      {
+        "team": "away",
+        "player": "MOHAMED SALAH",
+        "minute": 67
+      },
+      {
+        "team": "away",
+        "player": "TREZEGUET",
+        "minute": 82
+      }
+    ],
+    "stats": {
+      "possession": [
+        39,
+        50
+      ],
+      "shots": [
+        11,
+        19
+      ],
+      "shotsOnTarget": [
+        5,
+        7
+      ],
+      "corners": [
+        4,
+        3
+      ],
+      "fouls": [
+        14,
+        8
+      ],
+      "yellowCards": [
+        2,
+        1
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "New Zealand won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Foul",
+        "text": "Finn SURMAN (New Zealand) commits a foul.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Foul",
+        "text": "Joe BELL (New Zealand) commits a foul.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOHAMED SALAH (Egypt) attempts an effort on goal.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Sarpreet SINGH (New Zealand) attempts an effort on goal.",
+        "minute": 7,
+        "minuteStr": "7'"
+      },
+      {
+        "type": "Foul",
+        "text": "Elijah JUST (New Zealand) commits a foul.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Foul",
+        "text": "MOSTAFA ZICO (Egypt) commits a foul.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Elijah JUST (New Zealand) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Egypt pulls off a save.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Tim PAYNE.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Corner",
+        "text": "Tim PAYNE (New Zealand) takes a corner kick.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Finn SURMAN (New Zealand) attempts an effort on goal.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Finn SURMAN (New Zealand) scores!!",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "MOHANAD LASHIN (Egypt) is booked by the referee.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Elijah JUST (New Zealand) attempts an effort on goal.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Callum McCOWATT (New Zealand) attempts an effort on goal.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Egypt pulls off a save.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Sarpreet SINGH (New Zealand) is booked by the referee.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOHAMED HANY (Egypt) attempts an effort on goal.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Corner",
+        "text": "MOHAMED SALAH (Egypt) takes a corner kick.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOSTAFA ZICO (Egypt) attempts an effort on goal.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Joe BELL (New Zealand) attempts an effort on goal.",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "OMAR MARMOUSH (Egypt) attempts an effort on goal.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of New Zealand pulls off a save.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Chris WOOD (New Zealand) attempts an effort on goal.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Foul",
+        "text": "Michael BOXALL (New Zealand) commits a foul.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Callum McCOWATT (New Zealand) is booked by the referee.",
+        "minute": 34,
+        "minuteStr": "34'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOHAMED SALAH (Egypt) attempts an effort on goal.",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "Offside",
+        "text": "Chris WOOD (New Zealand) is ruled offside.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Substitution",
+        "text": "RAMY RABIA (in) comes off the bench to replace HAMDY FATHY (out) (Egypt)",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Offside",
+        "text": "Chris WOOD (New Zealand) is ruled offside.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Foul",
+        "text": "Tim PAYNE (New Zealand) commits a foul.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Foul",
+        "text": "Joe BELL (New Zealand) commits a foul.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "EMAM ASHOUR (Egypt) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Foul",
+        "text": "Finn SURMAN (New Zealand) commits a foul.",
+        "minute": 48,
+        "minuteStr": "45'+3"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 50,
+        "minuteStr": "45'+5"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOHAMED SALAH (Egypt) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of New Zealand pulls off a save.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Foul",
+        "text": "Callum McCOWATT (New Zealand) commits a foul.",
+        "minute": 47,
+        "minuteStr": "47'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "OMAR MARMOUSH (Egypt) attempts an effort on goal.",
+        "minute": 47,
+        "minuteStr": "47'"
+      },
+      {
+        "type": "Foul",
+        "text": "MOSTAFA ZICO (Egypt) commits a foul.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOSTAFA ZICO (Egypt) attempts an effort on goal.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "EMAM ASHOUR (Egypt) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "OMAR MARMOUSH (Egypt) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Callum McCOWATT (New Zealand) attempts an effort on goal.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Egypt pulls off a save.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Corner",
+        "text": "Tim PAYNE (New Zealand) takes a corner kick.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Finn SURMAN (New Zealand) commits a foul.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOSTAFA ZICO (Egypt) attempts an effort on goal.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "EMAM ASHOUR (Egypt) attempts an effort on goal.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Corner",
+        "text": "MOHAMED SALAH (Egypt) takes a corner kick.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by MOHAMED HANY.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOSTAFA ZICO (Egypt) attempts an effort on goal.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Goal!",
+        "text": "MOSTAFA ZICO (Egypt) scores!!",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of New Zealand pulls off a save.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Foul",
+        "text": "Liberato CACACE (New Zealand) commits a foul.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Foul",
+        "text": "RAMY RABIA (Egypt) commits a foul.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marko STAMENIC (New Zealand) attempts an effort on goal.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Foul",
+        "text": "RAMY RABIA (Egypt) commits a foul.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Ben OLD (in) comes off the bench to replace Callum McCOWATT (out) (New Zealand)",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by MOSTAFA ZICO.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOHAMED SALAH (Egypt) attempts an effort on goal.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Goal!",
+        "text": "MOHAMED SALAH (Egypt) scores!!",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Jesse RANDALL (in) comes off the bench to replace Liberato CACACE (out) (New Zealand)",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Ryan THOMAS (in) comes off the bench to replace Sarpreet SINGH (out) (New Zealand)",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Substitution",
+        "text": "TREZEGUET (in) comes off the bench to replace OMAR MARMOUSH (out) (Egypt)",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Substitution",
+        "text": "HAMZA ABDELKARIM (in) comes off the bench to replace MOSTAFA ZICO (out) (Egypt)",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Foul",
+        "text": "EMAM ASHOUR (Egypt) commits a foul.",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Foul",
+        "text": "TREZEGUET (Egypt) commits a foul.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Foul",
+        "text": "Chris WOOD (New Zealand) commits a foul.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "AHMED FATOUH (Egypt) attempts an effort on goal.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of New Zealand pulls off a save.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "MOHAMED SALAH (Egypt) attempts an effort on goal.",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by MOHAMED SALAH.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Corner",
+        "text": "MOHAMED SALAH (Egypt) takes a corner kick.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "TREZEGUET (Egypt) attempts an effort on goal.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Goal!",
+        "text": "TREZEGUET (Egypt) scores!!",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Foul",
+        "text": "HAMZA ABDELKARIM (Egypt) commits a foul.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of New Zealand pulls off a save.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "HOSSAM ABDELMAGUID (in) comes off the bench to replace MOHAMED SALAH (out) (Egypt)",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "ZIZO (in) comes off the bench to replace EMAM ASHOUR (out) (Egypt)",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Francis DE VRIES (in) comes off the bench to replace Elijah JUST (out) (New Zealand)",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Tyler BINDON (in) comes off the bench to replace Tim PAYNE (out) (New Zealand)",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Corner",
+        "text": "Francis DE VRIES (New Zealand) takes a corner kick.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Offside",
+        "text": "Chris WOOD (New Zealand) is ruled offside.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "Tyler BINDON (New Zealand) commits a foul.",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "ZIZO (Egypt) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of New Zealand pulls off a save.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Corner",
+        "text": "Francis DE VRIES (New Zealand) takes a corner kick.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marko STAMENIC (New Zealand) attempts an effort on goal.",
+        "minute": 98,
+        "minuteStr": "90'+8"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Tyler BINDON (New Zealand) attempts an effort on goal.",
+        "minute": 98,
+        "minuteStr": "90'+8"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Egypt pulls off a save.",
+        "minute": 98,
+        "minuteStr": "90'+8"
+      },
+      {
+        "type": "Substitution",
+        "text": "MOHAMED ABDELMONEIM (in) comes off the bench to replace HOSSAM ABDELMAGUID (out) (Egypt)",
+        "minute": 99,
+        "minuteStr": "90'+9"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 101,
+        "minuteStr": "90'+11"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 103,
+        "minuteStr": "90'+13"
+      }
+    ]
+  },
+  "41": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "42": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
   "43": {
     "homeScore": 0,
     "awayScore": 0,
@@ -17918,6 +19146,676 @@
       }
     ]
   },
+  "46": {
+    "homeScore": 2,
+    "awayScore": 2,
+    "minute": "FT",
+    "second": 0,
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "away",
+        "player": "KEVIN PINA",
+        "minute": 21
+      },
+      {
+        "team": "home",
+        "player": "Maxi ARAUJO",
+        "minute": 44
+      },
+      {
+        "team": "home",
+        "player": "Agustin CANOBBIO",
+        "minute": 51
+      },
+      {
+        "team": "away",
+        "player": "HELIO VARELA",
+        "minute": 61
+      }
+    ],
+    "stats": {
+      "possession": [
+        54,
+        33
+      ],
+      "shots": [
+        17,
+        12
+      ],
+      "shotsOnTarget": [
+        2,
+        4
+      ],
+      "corners": [
+        11,
+        4
+      ],
+      "fouls": [
+        11,
+        4
+      ],
+      "yellowCards": [
+        2,
+        2
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Uruguay won the coin toss and chose the side",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Foul",
+        "text": "Agustin CANOBBIO (Uruguay) commits a foul.",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "Foul",
+        "text": "Rodrigo BENTANCUR (Uruguay) commits a foul.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "SIDNY LOPES CABRAL (Cabo Verde) is booked by the referee.",
+        "minute": 5,
+        "minuteStr": "5'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxi ARAUJO (Uruguay) takes a corner kick.",
+        "minute": 7,
+        "minuteStr": "7'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Rodrigo BENTANCUR (Uruguay) attempts an effort on goal.",
+        "minute": 7,
+        "minuteStr": "7'"
+      },
+      {
+        "type": "Offside",
+        "text": "Federico VINAS (Uruguay) is ruled offside.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Offside",
+        "text": "Maxi ARAUJO (Uruguay) is ruled offside.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxi ARAUJO (Uruguay) takes a corner kick.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Foul",
+        "text": "KEVIN PINA (Cabo Verde) commits a foul.",
+        "minute": 13,
+        "minuteStr": "13'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxi ARAUJO (Uruguay) takes a corner kick.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Foul",
+        "text": "Agustin CANOBBIO (Uruguay) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Rodrigo BENTANCUR (Uruguay) is booked by the referee.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "KEVIN PINA (Cabo Verde) attempts an effort on goal.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Goal!",
+        "text": "KEVIN PINA (Cabo Verde) scores!!",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxi ARAUJO (Uruguay) takes a corner kick.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 25,
+        "minuteStr": "25'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Foul",
+        "text": "Manuel UGARTE (Uruguay) commits a foul.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Manuel UGARTE (Uruguay) attempts an effort on goal.",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 34,
+        "minuteStr": "34'"
+      },
+      {
+        "type": "Foul",
+        "text": "Agustin CANOBBIO (Uruguay) commits a foul.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Corner",
+        "text": "SIDNY LOPES CABRAL (Cabo Verde) takes a corner kick.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxi ARAUJO (Uruguay) attempts an effort on goal.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Sebastian CACERES (Uruguay) attempts an effort on goal.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "DINEY BORGES (Cabo Verde) attempts an effort on goal.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Maxi ARAUJO (Uruguay) attempts an effort on goal.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Maxi ARAUJO (Uruguay) scores!!",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Maxi ARAUJO.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Agustin CANOBBIO (Uruguay) attempts an effort on goal.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "Goal!",
+        "text": "Agustin CANOBBIO (Uruguay) scores!!",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 54,
+        "minuteStr": "45'+9"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins DEROY DUARTE (in) comes off the bench to replace TELMO ARCANJO (out) (Cabo Verde)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxi ARAUJO (Uruguay) takes a corner kick.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Foul",
+        "text": "Maxi ARAUJO (Uruguay) commits a foul.",
+        "minute": 51,
+        "minuteStr": "51'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "SIDNY LOPES CABRAL (Cabo Verde) attempts an effort on goal.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Mathias OLIVERA (Uruguay) is booked by the referee.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Substitution",
+        "text": "NUNO DA COSTA (in) comes off the bench to replace GILSON BENCHIMOL (out) (Cabo Verde)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Substitution",
+        "text": "HELIO VARELA (in) comes off the bench to replace GARRY RODRIGUES (out) (Cabo Verde)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "JAMIRO MONTEIRO (Cabo Verde) attempts an effort on goal.",
+        "minute": 59,
+        "minuteStr": "59'"
+      },
+      {
+        "type": "Foul",
+        "text": "DEROY DUARTE (Cabo Verde) commits a foul.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "HELIO VARELA (Cabo Verde) attempts an effort on goal.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Goal!",
+        "text": "HELIO VARELA (Cabo Verde) scores!!",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "JAMIRO MONTEIRO (Cabo Verde) attempts an effort on goal.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Corner",
+        "text": "Maxi ARAUJO (Uruguay) takes a corner kick.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Offside",
+        "text": "Maxi ARAUJO (Uruguay) is ruled offside.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nicolas DE LA CRUZ (in) comes off the bench to replace Manuel UGARTE (out) (Uruguay)",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Darwin NUNEZ (in) comes off the bench to replace Federico VINAS (out) (Uruguay)",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Substitution",
+        "text": "LAROS DUARTE (in) comes off the bench to replace KEVIN PINA (out) (Cabo Verde)",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Corner",
+        "text": "JAMIRO MONTEIRO (Cabo Verde) takes a corner kick.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "PICO LOPES (Cabo Verde) attempts an effort on goal.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Corner",
+        "text": "SIDNY LOPES CABRAL (Cabo Verde) takes a corner kick.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nicolas DE LA CRUZ (Uruguay) attempts an effort on goal.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Substitution",
+        "text": "YANNICK SEMEDO (in) comes off the bench to replace JAMIRO MONTEIRO (out) (Cabo Verde)",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Brian RODRIGUEZ (in) comes off the bench to replace Maxi ARAUJO (out) (Uruguay)",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Corner",
+        "text": "Brian RODRIGUEZ (Uruguay) takes a corner kick.",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Brian RODRIGUEZ (Uruguay) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Corner",
+        "text": "Brian RODRIGUEZ (Uruguay) takes a corner kick.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Rodrigo BENTANCUR (Uruguay) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Corner",
+        "text": "Brian RODRIGUEZ (Uruguay) takes a corner kick.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Corner",
+        "text": "Nicolas DE LA CRUZ (Uruguay) takes a corner kick.",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Corner",
+        "text": "Brian RODRIGUEZ (Uruguay) takes a corner kick.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "YANNICK SEMEDO (Cabo Verde) commits a foul.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Federico VALVERDE (Uruguay) attempts an effort on goal.",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "SIDNY LOPES CABRAL (Cabo Verde) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "RYAN MENDES (Cabo Verde) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Agustin CANOBBIO (Uruguay) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Yellow card",
+        "text": "DINEY BORGES (Cabo Verde) is booked by the referee.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Foul",
+        "text": "Agustin CANOBBIO (Uruguay) commits a foul.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "LAROS DUARTE (Cabo Verde) attempts an effort on goal.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Uruguay pulls off a save.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Corner",
+        "text": "SIDNY LOPES CABRAL (Cabo Verde) takes a corner kick.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "RYAN MENDES (Cabo Verde) attempts an effort on goal.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Foul",
+        "text": "Rodrigo BENTANCUR (Uruguay) commits a foul.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "LAROS DUARTE (Cabo Verde) attempts an effort on goal.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Uruguay pulls off a save.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Foul",
+        "text": "Sebastian CACERES (Uruguay) commits a foul.",
+        "minute": 99,
+        "minuteStr": "90'+9"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 99,
+        "minuteStr": "90'+9"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 106,
+        "minuteStr": "90'+16"
+      }
+    ]
+  },
+  "47": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "48": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
   "49": {
     "homeScore": 3,
     "awayScore": 1,
@@ -19013,6 +20911,257 @@
       }
     ]
   },
+  "51": {
+    "homeScore": 1,
+    "awayScore": 0,
+    "minute": "18'",
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Kylian MBAPPE",
+        "minute": 14
+      }
+    ],
+    "stats": {
+      "possession": [
+        48,
+        44
+      ],
+      "shots": [
+        5,
+        0
+      ],
+      "shotsOnTarget": [
+        1,
+        0
+      ],
+      "corners": [
+        1,
+        0
+      ],
+      "fouls": [
+        1,
+        1
+      ],
+      "yellowCards": [
+        0,
+        1
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "France won the coin toss and chose the side",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Manu KONE (France) attempts an effort on goal.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Foul",
+        "text": "Manu KONE (France) commits a foul.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "AMIR ALAMMARI (Iraq) is booked by the referee.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Corner",
+        "text": "Ousmane DEMBELE (France) takes a corner kick.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Michael OLISE (France) attempts an effort on goal.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kylian MBAPPE (France) attempts an effort on goal.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Michael OLISE (France) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Michael OLISE.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kylian MBAPPE (France) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Kylian MBAPPE (France) scores!!",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Iraq pulls off a save.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Foul",
+        "text": "Adrien RABIOT (France) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      }
+    ]
+  },
+  "52": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "53": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "54": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
   "55": {
     "homeScore": 3,
     "awayScore": 0,
@@ -20098,6 +22247,658 @@
       }
     ]
   },
+  "57": {
+    "homeScore": 2,
+    "awayScore": 0,
+    "minute": "FT",
+    "second": 0,
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Lionel MESSI",
+        "minute": 38
+      },
+      {
+        "team": "home",
+        "player": "Lionel MESSI",
+        "minute": 95
+      }
+    ],
+    "stats": {
+      "possession": [
+        50,
+        43
+      ],
+      "shots": [
+        12,
+        6
+      ],
+      "shotsOnTarget": [
+        4,
+        1
+      ],
+      "corners": [
+        1,
+        3
+      ],
+      "fouls": [
+        13,
+        13
+      ],
+      "yellowCards": [
+        2,
+        2
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Argentina won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Offside",
+        "text": "Thiago ALMADA (Argentina) is ruled offside.",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "Foul",
+        "text": "Stefan POSCH (Austria) commits a foul.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "VAR",
+        "text": "Penalty given",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Penalty Awarded",
+        "text": "",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Foul",
+        "text": "Romano SCHMID (Austria) commits a foul.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Foul",
+        "text": "Lisandro MARTINEZ (Argentina) commits a foul.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Foul",
+        "text": "Alexis MAC ALLISTER (Argentina) commits a foul.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Foul",
+        "text": "Romano SCHMID (Austria) commits a foul.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Foul",
+        "text": "Paul WANNER (Austria) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Austria pulls off a save.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Foul",
+        "text": "Lautaro MARTINEZ (Argentina) commits a foul.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Paul WANNER (Austria) attempts an effort on goal.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marcel SABITZER (Austria) attempts an effort on goal.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Corner",
+        "text": "Marcel SABITZER (Austria) takes a corner kick.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Corner",
+        "text": "Marcel SABITZER (Austria) takes a corner kick.",
+        "minute": 29,
+        "minuteStr": "29'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Foul",
+        "text": "Facundo MEDINA (Argentina) commits a foul.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Foul",
+        "text": "Nahuel MOLINA (Argentina) commits a foul.",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Facundo MEDINA.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Lionel MESSI (Argentina) scores!!",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Stefan POSCH (Austria) is booked by the referee.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Foul",
+        "text": "Kevin DANSO (Austria) commits a foul.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Foul",
+        "text": "Alexis MAC ALLISTER (Argentina) commits a foul.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Foul",
+        "text": "Enzo FERNANDEZ (Argentina) commits a foul.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Foul",
+        "text": "Lautaro MARTINEZ (Argentina) commits a foul.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 53,
+        "minuteStr": "45'+8"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marcel SABITZER (Austria) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Foul",
+        "text": "Xaver SCHLAGER (Austria) commits a foul.",
+        "minute": 48,
+        "minuteStr": "48'"
+      },
+      {
+        "type": "Offside",
+        "text": "Lionel MESSI (Argentina) is ruled offside.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Foul",
+        "text": "Xaver SCHLAGER (Austria) commits a foul.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Foul",
+        "text": "Enzo FERNANDEZ (Argentina) commits a foul.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cristian ROMERO (Argentina) commits a foul.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marcel SABITZER (Austria) attempts an effort on goal.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Argentina pulls off a save.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Foul",
+        "text": "Paul WANNER (Austria) commits a foul.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nicolas OTAMENDI (in) comes off the bench to replace Cristian ROMERO (out) (Argentina)",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enzo FERNANDEZ (Argentina) attempts an effort on goal.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Julian ALVAREZ (in) comes off the bench to replace Thiago ALMADA (out) (Argentina)",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nico GONZALEZ (in) comes off the bench to replace Lautaro MARTINEZ (out) (Argentina)",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Michael GREGORITSCH (Austria) attempts an effort on goal.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Marco FRIEDL (in) comes off the bench to replace David ALABA (out) (Austria)",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Marko ARNAUTOVIC (in) comes off the bench to replace Paul WANNER (out) (Austria)",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Alexander PRASS (in) comes off the bench to replace Stefan POSCH (out) (Austria)",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Corner",
+        "text": "Lionel MESSI (Argentina) takes a corner kick.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nico GONZALEZ (Argentina) attempts an effort on goal.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Foul",
+        "text": "Xaver SCHLAGER (Austria) commits a foul.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Konrad LAIMER (Austria) is booked by the referee.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Facundo MEDINA (Argentina) is booked by the referee.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Patrick WIMMER (in) comes off the bench to replace Romano SCHMID (out) (Austria)",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Leandro PAREDES (in) comes off the bench to replace Rodrigo DE PAUL (out) (Argentina)",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nicolas TAGLIAFICO (in) comes off the bench to replace Facundo MEDINA (out) (Argentina)",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Corner",
+        "text": "Marcel SABITZER (Austria) takes a corner kick.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Carney CHUKWUEMEKA (in) comes off the bench to replace Michael GREGORITSCH (out) (Austria)",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nico GONZALEZ (Argentina) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Enzo FERNANDEZ (Argentina) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Foul",
+        "text": "Patrick WIMMER (Austria) commits a foul.",
+        "minute": 88,
+        "minuteStr": "88'"
+      },
+      {
+        "type": "Foul",
+        "text": "Nicolas OTAMENDI (Argentina) commits a foul.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "Patrick WIMMER (Austria) commits a foul.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Leandro PAREDES (Argentina) is booked by the referee.",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Foul",
+        "text": "Nicolas OTAMENDI (Argentina) commits a foul.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Patrick WIMMER (Austria) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Julian ALVAREZ (Argentina) attempts an effort on goal.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Austria pulls off a save.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Austria pulls off a save.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Goal!",
+        "text": "Lionel MESSI (Argentina) scores!!",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Foul",
+        "text": "Patrick WIMMER (Austria) commits a foul.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Lionel MESSI (Argentina) attempts an effort on goal.",
+        "minute": 98,
+        "minuteStr": "90'+8"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 98,
+        "minuteStr": "90'+8"
+      }
+    ]
+  },
+  "58": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "59": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "60": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
   "61": {
     "homeScore": 1,
     "awayScore": 1,
@@ -21171,6 +23972,166 @@
         "minuteStr": "90'+17"
       }
     ]
+  },
+  "63": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "64": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "65": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "66": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
   },
   "67": {
     "homeScore": 4,
@@ -22382,5 +25343,1509 @@
         "minuteStr": "90'+21"
       }
     ]
+  },
+  "69": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "70": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "71": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "72": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "second": 0,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_1": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "2A",
+    "away": "2B",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_2": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1C",
+    "away": "2F",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_3": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "GER",
+    "away": "3ABCDF",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_4": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1F",
+    "away": "2C",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_5": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "2E",
+    "away": "2I",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_6": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1I",
+    "away": "3CDFGH",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_7": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "MEX",
+    "away": "3CEFHI",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_8": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1L",
+    "away": "3EHIJK",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_9": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1G",
+    "away": "3AEHIJ",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_10": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "USA",
+    "away": "3BEFIJ",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_11": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1H",
+    "away": "2J",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_12": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "2K",
+    "away": "2L",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_13": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1B",
+    "away": "3EFGIJ",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_14": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "2D",
+    "away": "2G",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_15": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1J",
+    "away": "2H",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r32_16": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "1K",
+    "away": "3DEIJL",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_1": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W73",
+    "away": "W75",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_2": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W74",
+    "away": "W77",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_3": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W76",
+    "away": "W78",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_4": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W79",
+    "away": "W80",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_5": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W83",
+    "away": "W84",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_6": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W81",
+    "away": "W82",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_7": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W86",
+    "away": "W88",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "r16_8": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W85",
+    "away": "W87",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "qf_1": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W89",
+    "away": "W90",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "qf_2": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W93",
+    "away": "W94",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "qf_3": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W91",
+    "away": "W92",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "qf_4": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W95",
+    "away": "W96",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "sf_1": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W97",
+    "away": "W98",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "sf_2": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W99",
+    "away": "W100",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "bronze": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "RU101",
+    "away": "RU102",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
+  },
+  "final": {
+    "homeScore": null,
+    "awayScore": null,
+    "minute": null,
+    "isCompleted": false,
+    "isDetailedScraped": false,
+    "winner": null,
+    "home": "W101",
+    "away": "W102",
+    "events": [],
+    "stats": {
+      "possession": [
+        50,
+        50
+      ],
+      "shots": [
+        10,
+        10
+      ],
+      "shotsOnTarget": [
+        5,
+        5
+      ],
+      "corners": [
+        5,
+        5
+      ],
+      "fouls": [
+        10,
+        10
+      ],
+      "yellowCards": [
+        0,
+        0
+      ],
+      "redCards": [
+        0,
+        0
+      ]
+    },
+    "timeline": []
   }
 }

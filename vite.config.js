@@ -2,6 +2,44 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { scrapeFifa } from './scripts/fifaScraper.js'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const CACHE_FILE = path.join(__dirname, 'src/data/highlights-cache.json');
+
+// Ensure parent directories exist
+function ensureDirectoryExistence(filePath) {
+  const dirname = path.dirname(filePath);
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
+}
+
+// Load cache
+let highlightsCache = {};
+try {
+  if (fs.existsSync(CACHE_FILE)) {
+    highlightsCache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+  }
+} catch (err) {
+  console.warn('[Cache] Failed to load highlights cache in vite:', err.message);
+}
+
+// Save cache
+function saveCache() {
+  try {
+    ensureDirectoryExistence(CACHE_FILE);
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(highlightsCache, null, 2), 'utf8');
+  } catch (err) {
+    console.error('[Cache] Failed to save highlights cache in vite:', err.message);
+  }
+}
 
 export default defineConfig({
   plugins: [
@@ -25,6 +63,8 @@ export default defineConfig({
               const urlObj = new URL(req.url, 'http://localhost');
               const home = urlObj.searchParams.get('home');
               const away = urlObj.searchParams.get('away');
+              const homeCode = urlObj.searchParams.get('homeCode');
+              const awayCode = urlObj.searchParams.get('awayCode');
               if (!home || !away) {
                 res.statusCode = 400;
                 res.setHeader('Content-Type', 'application/json');
@@ -32,6 +72,31 @@ export default defineConfig({
                 return;
               }
               
+              const normHome = home.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+              const normAway = away.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+              const fallbackKey = `${normHome}-${normAway}`;
+              const HARDCODED_HIGHLIGHTS = {
+                'canada-bosnia  herzegovina': 'https://www.youtube.com/watch?v=w-_rY5morQY',
+                'bosnia  herzegovina-canada': 'https://www.youtube.com/watch?v=w-_rY5morQY'
+              };
+              if (HARDCODED_HIGHLIGHTS[fallbackKey]) {
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({
+                  videoId: HARDCODED_HIGHLIGHTS[fallbackKey].split('v=')[1],
+                  url: HARDCODED_HIGHLIGHTS[fallbackKey],
+                  title: `Highlights | ${home} vs ${away} | FIFA World Cup 2026™`,
+                  channel: 'FIFA (Direct)'
+                }));
+                return;
+              }
+
+              const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
+              if (homeCode && awayCode && highlightsCache[cacheKey]) {
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(highlightsCache[cacheKey]));
+                return;
+              }
+
               const query = `FIFA ${home} v ${away} World Cup highlights`;
               const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
               const controller = new AbortController();
@@ -87,9 +152,56 @@ export default defineConfig({
                       'game play', 'fifa 25', 'ea sports fc', 'fc 24', 'fc 25', 'fifa 19', 'fifa 20', 'fifa 21',
                       'alt cast', 'alt-cast', 'alternative cast', 'preview', 'prediction',
                       'fake', 'concept', 'fan-made', 'fan made', 'parody', 'mockup', 'mock',
-                      'short', 'shorts'
+                      'short', 'shorts', 'u20', 'u-20', 'u17', 'u-17', 'u23', 'u-23', 'women', 'womens', 'wnt',
+                      'train', 'training', 'press conference', 'press-conference', 'press', 'interview', 'interviews',
+                      'arrival', 'arrivals', 'tunnel', 'vlog', 'reaction', 'fan react', 'fans react', 'behind the scenes', 'bts'
                     ];
+
+                    const isAllowedChannel = (channelName, channelUrl) => {
+                      const channelLower = (channelName || '').toLowerCase();
+                      const channelUrlLower = (channelUrl || '').toLowerCase();
+                      
+                      if (channelLower === 'fifa' || 
+                          channelLower === 'fifatv' || 
+                          channelUrlLower === '/@fifa' || 
+                          channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
+                          channelUrlLower.includes('fifatv') || 
+                          channelUrlLower === '/c/fifa') {
+                        return true;
+                      }
+                      
+                      const whitelisted = [
+                        'fifa', 'fifatv', 'fox soccer', 'fox sports', 'bbc sport', 'itv sport', 
+                        'ndtv', 'moneycontrol', 'sportytv', 'bpc media', 'optus sport', 
+                        'sbs sport', 'supersport', 'bein sports', 'telemundo deportes', 
+                        'tsn', 'sky sports', 'espn', 'toffee'
+                      ];
+                      
+                      return whitelisted.some(ch => channelLower.includes(ch));
+                    };
+
+                    const isFIFAVideo = (v) => {
+                      const channelLower = (v.channel || '').toLowerCase();
+                      const channelUrlLower = (v.channelUrl || '').toLowerCase();
+                      return channelLower === 'fifa' || 
+                        channelLower === 'fifatv' || 
+                        channelUrlLower === '/@fifa' || 
+                        channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
+                        channelUrlLower.includes('fifatv') || 
+                        channelUrlLower === '/c/fifa';
+                    };
                     
+                    const TEAM_ALIASES = {
+                      'united states': ['usa', 'united states', 'us'],
+                      'south korea': ['korea republic', 'south korea', 'korea'],
+                      'czechia': ['czechia', 'czech republic'],
+                      'turkey': ['turkiye', 'turkey'],
+                      'ivory coast': ["cote d'ivoire", 'cote divoire', 'ivory coast'],
+                      'dr congo': ['dr congo', 'congo dr', 'democratic republic of congo'],
+                      'cape verde': ['cabo verde', 'cape verde'],
+                      'bosnia  herzegovina': ['bosnia and herzegovina', 'bosnia & herzegovina', 'bosnia']
+                    };
+
                     // Helper to normalize team names
                     const normalizeTeamName = (name) => {
                       return name
@@ -117,16 +229,12 @@ export default defineConfig({
                         return false;
                       }
                       
-                      // 3. MUST be the official FIFA channel (strict channel name and url check)
-                      const isOfficialFIFA = channelLower === 'fifa' && (
-                        channelUrlLower === '/@fifa' || 
-                        channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw')
-                      );
-                      if (!isOfficialFIFA) {
+                      // 3. Allowed channel check
+                      if (!isAllowedChannel(v.channel, v.channelUrl)) {
                         return false;
                       }
                       
-                      // 4. Exclude if duration is missing, under 60 seconds, or over 5 minutes (300 seconds)
+                      // 4. Exclude if duration is missing, under 60 seconds, or over 10 minutes (600 seconds)
                       if (!v.duration) {
                         return false;
                       }
@@ -135,7 +243,7 @@ export default defineConfig({
                         return false; // just seconds
                       }
                       if (parts.length === 3) {
-                        return false; // hours, definitely over 5 minutes
+                        return false; // hours, definitely over 10 minutes
                       }
                       if (parts.length === 2) {
                         const minutes = parseInt(parts[0], 10);
@@ -144,24 +252,22 @@ export default defineConfig({
                           return false;
                         }
                         const totalSeconds = minutes * 60 + seconds;
-                        if (totalSeconds < 60 || totalSeconds > 300) {
+                        if (totalSeconds < 60 || totalSeconds > 600) {
                           return false;
                         }
                       }
                       
-                      // 5. Match Verification: Title must contain BOTH normalized home team and away team name
+                      // 5. Match Verification: Title must contain BOTH normalized home team and away team name (or their codes)
                       const normTitle = titleLower.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
                       const normHome = normalizeTeamName(home);
                       const normAway = normalizeTeamName(away);
                       
-                      const checkTeam = (normName) => {
-                        if (normName === 'usa') {
-                          return normTitle.includes('usa') || normTitle.includes('united states');
+                      const checkTeam = (normName, code) => {
+                        const aliases = TEAM_ALIASES[normName] || [normName];
+                        if (code) {
+                          aliases.push(code.toLowerCase());
                         }
-                        if (normName === 'uae') {
-                          return normTitle.includes('uae') || normTitle.includes('united arab emirates');
-                        }
-                        if (normTitle.includes(normName)) {
+                        if (aliases.some(alias => normTitle.includes(alias))) {
                           return true;
                         }
                         const words = normName.split(' ').filter(w => w.length > 3);
@@ -171,7 +277,7 @@ export default defineConfig({
                         return false;
                       };
 
-                      if (!checkTeam(normHome) || !checkTeam(normAway)) {
+                      if (!checkTeam(normHome, homeCode) || !checkTeam(normAway, awayCode)) {
                         return false;
                       }
                       
@@ -179,9 +285,26 @@ export default defineConfig({
                     });
                     
                     if (realVideos.length > 0) {
+                      // Sort to prioritize official FIFA channel
+                      realVideos.sort((a, b) => {
+                        const aFIFA = isFIFAVideo(a);
+                        const bFIFA = isFIFAVideo(b);
+                        if (aFIFA && !bFIFA) return -1;
+                        if (!aFIFA && bFIFA) return 1;
+                        return 0;
+                      });
                       const best = realVideos[0];
                       foundVideoId = best.videoId;
                       foundUrl = `https://www.youtube.com/watch?v=${best.videoId}`;
+                      if (homeCode && awayCode) {
+                        highlightsCache[cacheKey] = {
+                          videoId: foundVideoId,
+                          url: foundUrl,
+                          title: best.title,
+                          channel: best.channel
+                        };
+                        saveCache();
+                      }
                     }
                   }
                 } catch (err) {
@@ -210,7 +333,10 @@ export default defineConfig({
   ],
   server: {
     watch: {
-      ignored: ['**/public/live-matches.json']
+      ignored: [
+        '**/public/live-matches.json',
+        '**/public/*.tmp'
+      ]
     }
   }
 })

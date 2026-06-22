@@ -194,9 +194,13 @@ export async function syncWithEspn() {
       delete match.awayAbbr;
     }
     
-    // Write out the output JSON files
+    // Write out the output JSON atomically (temp file then rename) to avoid
+    // triggering Vite HMR from a partial/in-progress write
     const outputString = JSON.stringify(liveData, null, 2);
-    fs.writeFileSync(filePath, outputString, 'utf8');
+    const tempPath = filePath + '.tmp';
+    fs.writeFileSync(tempPath, outputString, 'utf8');
+    fs.renameSync(tempPath, filePath);
+    // Write to dist (Vite build output folder) if it exists so changes are reflected immediately
     if (fs.existsSync(path.dirname(distPath))) {
       fs.writeFileSync(distPath, outputString, 'utf8');
     }

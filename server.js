@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { syncWithEspn } from './scripts/espnSync.js';
+import { syncRatings } from './scripts/scrapeFotmobRatings.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,6 +24,29 @@ app.get('/live-matches.json', (req, res) => {
       res.sendFile(distPath);
     } else {
       res.json({});
+    }
+  }
+});
+
+// Serve the fotmob player ratings file dynamically
+app.get('/fotmobPlayerRatings.json', (req, res) => {
+  const ratingsPath = path.join(__dirname, 'public', 'fotmobPlayerRatings.json');
+  if (fs.existsSync(ratingsPath)) {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.sendFile(ratingsPath);
+  } else {
+    const distPath = path.join(__dirname, 'dist', 'fotmobPlayerRatings.json');
+    if (fs.existsSync(distPath)) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.sendFile(distPath);
+    } else {
+      const srcPath = path.join(__dirname, 'src', 'data', 'fotmobPlayerRatings.json');
+      if (fs.existsSync(srcPath)) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.sendFile(srcPath);
+      } else {
+        res.json([]);
+      }
     }
   }
 });
@@ -102,6 +126,38 @@ const HARDCODED_HIGHLIGHTS = {
   'bosnia  herzegovina-canada': 'https://www.youtube.com/watch?v=w-_rY5morQY'
 };
 
+const CACHE_FILE = path.join(__dirname, 'src/data/highlights-cache.json');
+
+// Ensure parent directories exist
+function ensureDirectoryExistence(filePath) {
+  const dirname = path.dirname(filePath);
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
+}
+
+// Load cache
+let highlightsCache = {};
+try {
+  if (fs.existsSync(CACHE_FILE)) {
+    highlightsCache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+  }
+} catch (err) {
+  console.warn('[Cache] Failed to load highlights cache:', err.message);
+}
+
+// Save cache
+function saveCache() {
+  try {
+    ensureDirectoryExistence(CACHE_FILE);
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(highlightsCache, null, 2), 'utf8');
+  } catch (err) {
+    console.error('[Cache] Failed to save highlights cache:', err.message);
+  }
+}
+
 // Helper to normalize team names for verification
 function normalizeTeamName(name) {
   return name
@@ -115,7 +171,7 @@ function normalizeTeamName(name) {
 // Endpoint to search and fetch direct YouTube highlights link
 app.get('/api/match-highlights', async (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  const { home, away } = req.query;
+  const { home, away, homeCode, awayCode } = req.query;
   if (!home || !away) {
     return res.status(400).json({ error: 'home and away parameters are required' });
   }
@@ -130,6 +186,11 @@ app.get('/api/match-highlights', async (req, res) => {
       title: `Highlights | ${home} vs ${away} | FIFA World Cup 2026™`,
       channel: 'FIFA (Direct)'
     });
+  }
+
+  const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
+  if (homeCode && awayCode && highlightsCache[cacheKey]) {
+    return res.json(highlightsCache[cacheKey]);
   }
 
   const cleanHome = home.replace(/&/g, 'and');
@@ -190,8 +251,44 @@ app.get('/api/match-highlights', async (req, res) => {
             'game play', 'fifa 25', 'ea sports fc', 'fc 24', 'fc 25', 'fifa 19', 'fifa 20', 'fifa 21',
             'alt cast', 'alt-cast', 'alternative cast', 'preview', 'prediction',
             'fake', 'concept', 'fan-made', 'fan made', 'parody', 'mockup', 'mock',
-            'short', 'shorts', 'u20', 'u-20', 'u17', 'u-17', 'u23', 'u-23', 'women', 'womens', 'wnt'
+            'short', 'shorts', 'u20', 'u-20', 'u17', 'u-17', 'u23', 'u-23', 'women', 'womens', 'wnt',
+            'train', 'training', 'press conference', 'press-conference', 'press', 'interview', 'interviews',
+            'arrival', 'arrivals', 'tunnel', 'vlog', 'reaction', 'fan react', 'fans react', 'behind the scenes', 'bts'
           ];
+
+          const isAllowedChannel = (channelName, channelUrl) => {
+            const channelLower = (channelName || '').toLowerCase();
+            const channelUrlLower = (channelUrl || '').toLowerCase();
+            
+            if (channelLower === 'fifa' || 
+                channelLower === 'fifatv' || 
+                channelUrlLower === '/@fifa' || 
+                channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
+                channelUrlLower.includes('fifatv') || 
+                channelUrlLower === '/c/fifa') {
+              return true;
+            }
+            
+            const whitelisted = [
+              'fifa', 'fifatv', 'fox soccer', 'fox sports', 'bbc sport', 'itv sport', 
+              'ndtv', 'moneycontrol', 'sportytv', 'bpc media', 'optus sport', 
+              'sbs sport', 'supersport', 'bein sports', 'telemundo deportes', 
+              'tsn', 'sky sports', 'espn', 'toffee'
+            ];
+            
+            return whitelisted.some(ch => channelLower.includes(ch));
+          };
+
+          const isFIFAVideo = (v) => {
+            const channelLower = (v.channel || '').toLowerCase();
+            const channelUrlLower = (v.channelUrl || '').toLowerCase();
+            return channelLower === 'fifa' || 
+              channelLower === 'fifatv' || 
+              channelUrlLower === '/@fifa' || 
+              channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
+              channelUrlLower.includes('fifatv') || 
+              channelUrlLower === '/c/fifa';
+          };
           
           const realVideos = videos.filter(v => {
             const titleLower = v.title.toLowerCase();
@@ -210,12 +307,8 @@ app.get('/api/match-highlights', async (req, res) => {
               return false;
             }
             
-            // 3. MUST be the official FIFA channel (strict channel name and url check)
-            const isOfficialFIFA = channelLower === 'fifa' && (
-              channelUrlLower === '/@fifa' || 
-              channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw')
-            );
-            if (!isOfficialFIFA) {
+            // 3. Allowed channel check
+            if (!isAllowedChannel(v.channel, v.channelUrl)) {
               return false;
             }
             
@@ -242,13 +335,16 @@ app.get('/api/match-highlights', async (req, res) => {
               }
             }
             
-            // 5. Match Verification: Title must contain BOTH normalized home team and away team name
+            // 5. Match Verification: Title must contain BOTH normalized home team and away team name (or their codes)
             const normTitle = titleLower.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             const normHome = normalizeTeamName(home);
             const normAway = normalizeTeamName(away);
             
-            const checkTeam = (normName) => {
+            const checkTeam = (normName, code) => {
               const aliases = TEAM_ALIASES[normName] || [normName];
+              if (code) {
+                aliases.push(code.toLowerCase());
+              }
               if (aliases.some(alias => normTitle.includes(alias))) {
                 return true;
               }
@@ -259,7 +355,7 @@ app.get('/api/match-highlights', async (req, res) => {
               return false;
             };
 
-            if (!checkTeam(normHome) || !checkTeam(normAway)) {
+            if (!checkTeam(normHome, homeCode) || !checkTeam(normAway, awayCode)) {
               return false;
             }
             
@@ -267,8 +363,21 @@ app.get('/api/match-highlights', async (req, res) => {
           });
           
           if (realVideos.length > 0) {
+            // Sort to prioritize official FIFA channel
+            realVideos.sort((a, b) => {
+              const aFIFA = isFIFAVideo(a);
+              const bFIFA = isFIFAVideo(b);
+              if (aFIFA && !bFIFA) return -1;
+              if (!aFIFA && bFIFA) return 1;
+              return 0;
+            });
             const best = realVideos[0];
-            return res.json({ videoId: best.videoId, url: `https://www.youtube.com/watch?v=${best.videoId}`, title: best.title, channel: best.channel });
+            const result = { videoId: best.videoId, url: `https://www.youtube.com/watch?v=${best.videoId}`, title: best.title, channel: best.channel };
+            if (homeCode && awayCode) {
+              highlightsCache[cacheKey] = result;
+              saveCache();
+            }
+            return res.json(result);
           }
         }
       } catch (err) {
@@ -305,6 +414,11 @@ async function runScrape() {
     lastScrapeStatus.success = result.success;
     lastScrapeStatus.count = result.count || 0;
     lastScrapeStatus.error = result.error || null;
+    
+    // Also sync player ratings
+    console.log('[Server Scraper] Starting ratings sync...');
+    const ratingsResult = await syncRatings();
+    console.log('[Server Scraper] Ratings sync completed:', ratingsResult);
   } catch (err) {
     console.error('[Server Scraper] Scraping cycle failed:', err);
     lastScrapeStatus.success = false;

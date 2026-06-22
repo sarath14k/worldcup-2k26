@@ -149,3 +149,29 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Pitch Black Theme Overrides */
+html.pitch-black,
+html.pitch-black body,
+.pitch-black {
+  --color-brand-darkBg: #000000 !important;
+  --color-brand-cardBg: rgba(0, 0, 0, 0.9) !important;
+  background-color: #000000 !important;
+  background-image: none !important;
+}
+
+.pitch-black .glass-panel {
+  background: rgba(8, 8, 8, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8) !important;
+}
+
+.pitch-black header {
+  background: rgba(0, 0, 0, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.pitch-black footer {
+  background: rgba(0, 0, 0, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
