@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the absolute directory of the project
-PROJECT_DIR="/home/sarath/projects/entemarket/worldcup-roadmap"
+PROJECT_DIR="/home/sarath/projects/worldcup-roadmap"
 cd "$PROJECT_DIR" || exit
 
 # 1. Check if the Vite dev server is running on port 5173
