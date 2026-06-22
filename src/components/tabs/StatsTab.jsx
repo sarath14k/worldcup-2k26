@@ -1,5 +1,6 @@
 import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, GoldenBootTrophyIcon, PlaymakerIcon } from '../../utils/matchHelpers';
+import { ScrollingText } from '../ScrollingText';
 
 export const StatsTab = ({ playerStats }) => {
   return (
@@ -65,7 +66,7 @@ export const StatsTab = ({ playerStats }) => {
                         <span className="text-base shrink-0 select-none" title={teamInfo.name}>
                           {teamInfo.flag}
                         </span>
-                        <span className="truncate text-slate-100 ml-1">{player.name}</span>
+                        <ScrollingText text={player.name} className="text-slate-100 ml-1" />
                       </div>
                     );
                   })()}
@@ -126,7 +127,7 @@ export const StatsTab = ({ playerStats }) => {
                         <span className="text-base shrink-0 select-none" title={teamInfo.name}>
                           {teamInfo.flag}
                         </span>
-                        <span className="truncate text-slate-100 ml-1">{player.name}</span>
+                        <ScrollingText text={player.name} className="text-slate-100 ml-1" />
                       </div>
                     );
                   })()}
@@ -187,7 +188,7 @@ export const StatsTab = ({ playerStats }) => {
                         <span className="text-base shrink-0 select-none" title={teamInfo.name}>
                           {teamInfo.flag}
                         </span>
-                        <span className="truncate text-slate-100 ml-1">{player.name}</span>
+                        <ScrollingText text={player.name} className="text-slate-100 ml-1" />
                       </div>
                     );
                   })()}

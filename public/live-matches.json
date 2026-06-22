@@ -20914,7 +20914,7 @@
   "51": {
     "homeScore": 1,
     "awayScore": 0,
-    "minute": "18'",
+    "minute": "Interrupted",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": true,
@@ -20927,12 +20927,12 @@
     ],
     "stats": {
       "possession": [
-        48,
-        44
+        58.1,
+        41.9
       ],
       "shots": [
-        5,
-        0
+        7,
+        2
       ],
       "shotsOnTarget": [
         1,
@@ -20940,11 +20940,11 @@
       ],
       "corners": [
         1,
-        0
+        1
       ],
       "fouls": [
-        1,
-        1
+        5,
+        2
       ],
       "yellowCards": [
         0,
@@ -21039,6 +21039,90 @@
         "text": "Adrien RABIOT (France) commits a foul.",
         "minute": 18,
         "minuteStr": "18'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Substitution",
+        "text": "ALI ALHAMADI (in) comes off the bench to replace AYMEN HUSSEIN (out) (Iraq)",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "ALI ALHAMADI (Iraq) attempts an effort on goal.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "ALI ALHAMADI (Iraq) attempts an effort on goal.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Corner",
+        "text": "AMIR ALAMMARI (Iraq) takes a corner kick.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kylian MBAPPE (France) attempts an effort on goal.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Kylian MBAPPE (France) attempts an effort on goal.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Foul",
+        "text": "ZIDANE IQBAL (Iraq) commits a foul.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Foul",
+        "text": "Lucas DIGNE (France) commits a foul.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Foul",
+        "text": "Adrien RABIOT (France) commits a foul.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Foul",
+        "text": "Manu KONE (France) commits a foul.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused due to weather conditions",
+        "minute": 45,
+        "minuteStr": "HT"
       }
     ]
   },

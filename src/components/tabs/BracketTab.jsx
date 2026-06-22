@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ListFilter, Check, Star } from 'lucide-react';
 import { GROUPS, TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
+import { ScrollingText } from '../ScrollingText';
 
 export const BracketTab = ({
   bracket,
@@ -64,9 +65,9 @@ export const BracketTab = ({
                           : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                     }`}
                   >
-                    <div className="flex items-center gap-2 overflow-hidden truncate">
-                      <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                      <span className="truncate">{homeTeam ? homeTeam.name : 'TBD SF 1 Winner'}</span>
+                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                      <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
+                      <ScrollingText text={homeTeam ? homeTeam.name : 'TBD SF 1 Winner'} className="text-slate-250" />
                     </div>
                     {isHomeWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
                   </div>
@@ -83,9 +84,9 @@ export const BracketTab = ({
                           : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                     }`}
                   >
-                    <div className="flex items-center gap-2 overflow-hidden truncate">
-                      <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                      <span className="truncate">{awayTeam ? awayTeam.name : 'TBD SF 2 Winner'}</span>
+                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                      <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
+                      <ScrollingText text={awayTeam ? awayTeam.name : 'TBD SF 2 Winner'} className="text-slate-250" />
                     </div>
                     {isAwayWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
                   </div>
@@ -150,9 +151,9 @@ export const BracketTab = ({
                           : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                     }`}
                   >
-                    <div className="flex items-center gap-2 overflow-hidden truncate">
-                      <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                      <span className="truncate">{homeTeam ? homeTeam.name : 'TBD (Group Stage)'}</span>
+                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                      <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
+                      <ScrollingText text={homeTeam ? homeTeam.name : 'TBD (Group Stage)'} className="text-slate-350" />
                     </div>
                     {isHomeWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
                   </div>
@@ -169,9 +170,9 @@ export const BracketTab = ({
                           : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                     }`}
                   >
-                    <div className="flex items-center gap-2 overflow-hidden truncate">
-                      <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                      <span className="truncate">{awayTeam ? awayTeam.name : 'TBD (Group Stage)'}</span>
+                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                      <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
+                      <ScrollingText text={awayTeam ? awayTeam.name : 'TBD (Group Stage)'} className="text-slate-350" />
                     </div>
                     {isAwayWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
                   </div>
@@ -236,9 +237,9 @@ export const BracketTab = ({
                         : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2 overflow-hidden truncate">
-                    <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                    <span className="truncate">{homeTeam ? homeTeam.name : 'TBD (Group Stage)'}</span>
+                  <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                    <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
+                    <ScrollingText text={homeTeam ? homeTeam.name : 'TBD (Group Stage)'} className="text-slate-300" />
                   </div>
                   {isHomeWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
                 </div>
@@ -257,9 +258,9 @@ export const BracketTab = ({
                         : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2 overflow-hidden truncate">
-                    <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                    <span className="truncate">{awayTeam ? awayTeam.name : 'TBD (Group Stage)'}</span>
+                  <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                    <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
+                    <ScrollingText text={awayTeam ? awayTeam.name : 'TBD (Group Stage)'} className="text-slate-300" />
                   </div>
                   {isAwayWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
                 </div>
@@ -346,11 +347,13 @@ export const BracketTab = ({
                                 {index + 1}
                               </div>
                             </td>
-                            <td className="py-1.5 text-slate-200 flex items-center gap-1.5 truncate">
+                            <td className="py-1.5 text-slate-200 flex items-center gap-1.5 min-w-0">
                               <span className="text-base shrink-0">{t.flag}</span>
-                              <span className="truncate max-w-[70px] font-bold" title={t.name}>{t.name}</span>
-                              {isQualifying && <span className="text-[7px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1 rounded-sm leading-none py-0.5 font-extrabold">R32</span>}
-                              {isBestThird && <span className="text-[7px] bg-brand-royal/15 border border-brand-royal/30 text-brand-royal px-1 rounded-sm leading-none py-0.5 font-extrabold">R32 *</span>}
+                              <div className="max-w-[70px] font-bold overflow-hidden">
+                                <ScrollingText text={t.name} className="text-[10px]" />
+                              </div>
+                              {isQualifying && <span className="text-[7px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1 rounded-sm leading-none py-0.5 font-extrabold shrink-0">R32</span>}
+                              {isBestThird && <span className="text-[7px] bg-brand-royal/15 border border-brand-royal/30 text-brand-royal px-1 rounded-sm leading-none py-0.5 font-extrabold shrink-0">R32 *</span>}
                             </td>
                             <td className="py-1.5 text-center font-extrabold text-[10px] text-brand-neon">{t.points}</td>
                           </tr>
@@ -441,9 +444,9 @@ export const BracketTab = ({
                             : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                       }`}
                     >
-                      <div className="flex items-center gap-2 overflow-hidden truncate">
-                        <span className="text-lg">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                        <span className="truncate">{homeTeam ? homeTeam.name : 'TBD SF 1 Winner'}</span>
+                      <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                        <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
+                        <ScrollingText text={homeTeam ? homeTeam.name : 'TBD SF 1 Winner'} className="text-slate-200" />
                       </div>
                       {isHomeWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
                     </div>
@@ -462,9 +465,9 @@ export const BracketTab = ({
                             : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
                       }`}
                     >
-                      <div className="flex items-center gap-2 overflow-hidden truncate">
-                        <span className="text-lg">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                        <span className="truncate">{awayTeam ? awayTeam.name : 'TBD SF 2 Winner'}</span>
+                      <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
+                        <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
+                        <ScrollingText text={awayTeam ? awayTeam.name : 'TBD SF 2 Winner'} className="text-slate-200" />
                       </div>
                       {isAwayWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
                     </div>

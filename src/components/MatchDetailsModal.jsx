@@ -1,59 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect } from 'react';
 import { TEAMS, VENUES } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
-
-const ScrollingName = ({ name }) => {
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
-  const [scrollDist, setScrollDist] = useState(0);
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (containerRef.current && textRef.current) {
-        const containerWidth = containerRef.current.clientWidth;
-        const textWidth = textRef.current.scrollWidth;
-        if (textWidth > containerWidth) {
-          setScrollDist(textWidth - containerWidth);
-        } else {
-          setScrollDist(0);
-        }
-      }
-    };
-
-    checkOverflow();
-    const timer = setTimeout(checkOverflow, 200);
-    window.addEventListener('resize', checkOverflow);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', checkOverflow);
-    };
-  }, [name]);
-
-  const duration = Math.max(3, scrollDist * 0.05); // speed: 20px per second, min 3s
-
-  return (
-    <div 
-      ref={containerRef} 
-      className="overflow-hidden relative w-full pr-1.5 select-none"
-    >
-      <span
-        ref={textRef}
-        className="inline-block whitespace-nowrap text-slate-350"
-        style={
-          scrollDist > 0
-            ? {
-                animation: `marquee-scroll ${duration}s linear infinite alternate`,
-                paddingRight: '15px',
-                '--scroll-dist': `-${scrollDist + 10}px`,
-              }
-            : {}
-        }
-      >
-        {name}
-      </span>
-    </div>
-  );
-};
+import { ScrollingText } from './ScrollingText';
 
 export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, onClose }) => {
   useEffect(() => {
@@ -121,7 +69,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
           {/* Home Team */}
           <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
             <span className="text-4xl select-none">{home.flag}</span>
-            <span className="text-xs font-black text-slate-100 truncate text-center w-full">{home.name}</span>
+            <ScrollingText text={home.name} className="text-xs font-black text-slate-100 text-center w-full justify-center" />
           </div>
 
           {/* Score digits */}
@@ -156,7 +104,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
           {/* Away Team */}
           <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0">
             <span className="text-4xl select-none">{away.flag}</span>
-            <span className="text-xs font-black text-slate-100 truncate text-center w-full">{away.name}</span>
+            <ScrollingText text={away.name} className="text-xs font-black text-slate-100 text-center w-full justify-center" />
           </div>
         </div>
 
@@ -381,7 +329,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                 ) : (
                   homePlayers.map((p, idx) => (
                     <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
-                      <ScrollingName name={p.name} />
+                      <ScrollingText text={p.name} className="text-slate-350" />
                       <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
                         p.rating >= 7.5 
                           ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
@@ -406,7 +354,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                 ) : (
                   awayPlayers.map((p, idx) => (
                     <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
-                      <ScrollingName name={p.name} />
+                      <ScrollingText text={p.name} className="text-slate-350" />
                       <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
                         p.rating >= 7.5 
                           ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 

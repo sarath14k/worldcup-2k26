@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import { GROUPS, TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime } from '../../utils/matchHelpers';
+import { ScrollingText } from '../ScrollingText';
 
 export const GroupsTab = ({ 
   groupMatches, 
@@ -112,11 +113,13 @@ export const GroupsTab = ({
                           {index + 1}
                         </div>
                       </td>
-                      <td className="py-2 px-1 font-bold flex items-center gap-1 sm:gap-2 text-slate-200">
-                        <span className="text-lg">{t.flag}</span>
-                        <span className="truncate max-w-[85px] sm:max-w-none">{t.name}</span>
-                        {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold">R32</span>}
-                        {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold">R32 *</span>}
+                      <td className="py-2 px-1 font-bold flex items-center gap-1 sm:gap-2 text-slate-200 min-w-0">
+                        <span className="text-lg shrink-0">{t.flag}</span>
+                        <div className="max-w-[85px] sm:max-w-[150px] overflow-hidden flex-1">
+                          <ScrollingText text={t.name} className="text-xs" />
+                        </div>
+                        {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold shrink-0">R32</span>}
+                        {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold shrink-0">R32 *</span>}
                       </td>
                       <td className="py-2 px-1 text-center text-slate-400">{t.played}</td>
                       <td className="py-2 px-1 text-center text-slate-400">{t.won}</td>
@@ -187,9 +190,9 @@ export const GroupsTab = ({
                   
                   <div className="flex items-center gap-2 justify-between">
                     {/* Home Row */}
-                    <div className={`flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 truncate ${match.isCompleted ? 'opacity-85' : ''}`}>
-                      <span>{home.flag}</span>
-                      <span className="truncate">{home.name}</span>
+                    <div className={`flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 min-w-0 ${match.isCompleted ? 'opacity-85' : ''}`}>
+                      <span className="shrink-0">{home.flag}</span>
+                      <ScrollingText text={home.name} className="text-xs text-slate-200" />
                     </div>
                     
                     {/* Score display */}
@@ -219,9 +222,9 @@ export const GroupsTab = ({
                     </div>
 
                     {/* Away Row */}
-                    <div className="flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 justify-end truncate">
-                      <span className="truncate">{away.name}</span>
-                      <span>{away.flag}</span>
+                    <div className="flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 justify-end min-w-0">
+                      <ScrollingText text={away.name} className="text-xs text-slate-200 text-right justify-end" />
+                      <span className="shrink-0">{away.flag}</span>
                     </div>
                   </div>
                 </div>

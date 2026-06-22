@@ -3,6 +3,7 @@ import { Award } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, isMobile } from '../../utils/matchHelpers';
 import { LiveMatchesList } from '../LiveMatchesBanner';
+import { ScrollingText } from '../ScrollingText';
 
 export const FixturesTab = ({ 
   hasLiveMatches, 
@@ -99,9 +100,9 @@ export const FixturesTab = ({
                     
                     <div className="flex items-center justify-between gap-3 py-1">
                       {/* Home Team */}
-                      <div className={`flex items-center gap-2 font-bold flex-1 truncate ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
+                      <div className={`flex items-center gap-2 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
                         <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
-                        <span className="truncate">{home.name}</span>
+                        <ScrollingText text={home.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`} />
                       </div>
 
                       {/* Live score / VS */}
@@ -127,8 +128,8 @@ export const FixturesTab = ({
                       )}
 
                       {/* Away Team */}
-                      <div className={`flex items-center gap-2 font-bold flex-1 justify-end truncate ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
-                        <span className="truncate text-right">{away.name}</span>
+                      <div className={`flex items-center gap-2 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
+                        <ScrollingText text={away.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} text-right justify-end`} />
                         <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
                       </div>
                     </div>
@@ -226,9 +227,9 @@ export const FixturesTab = ({
 
                     <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-200">
                       {/* Home */}
-                      <div className="flex items-center gap-2 flex-1 truncate">
-                        <span>{home.flag}</span>
-                        <span className="truncate">{home.name}</span>
+                      <div className="flex items-center gap-2 flex-1 min-w-0">
+                        <span className="shrink-0">{home.flag}</span>
+                        <ScrollingText text={home.name} className="text-xs text-slate-200" />
                       </div>
 
                       {/* Scores */}
@@ -237,9 +238,9 @@ export const FixturesTab = ({
                       </div>
 
                       {/* Away */}
-                      <div className="flex items-center gap-2 flex-1 justify-end truncate">
-                        <span className="truncate text-right">{away.name}</span>
-                        <span>{away.flag}</span>
+                      <div className="flex items-center gap-2 flex-1 justify-end min-w-0">
+                        <ScrollingText text={away.name} className="text-xs text-slate-200 text-right justify-end" />
+                        <span className="shrink-0">{away.flag}</span>
                       </div>
                     </div>
 
