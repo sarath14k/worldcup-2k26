@@ -597,6 +597,11 @@ function App() {
   }, [groupMatches, bracket, liveMatches]);
 
   useEffect(() => {
+    // Disable polling when predicting (on groups or bracket tabs)
+    if (activeTab === 'groups' || activeTab === 'bracket') {
+      return;
+    }
+
     const fetchLiveScores = async () => {
       try {
         const response = await fetch(`/live-matches.json?t=${Date.now()}`);
@@ -612,10 +617,10 @@ function App() {
     // Initial fetch
     fetchLiveScores();
 
-    // Poll endpoint second-by-second (1000ms)
-    const timer = setInterval(fetchLiveScores, 1000);
+    // Poll endpoint every 15 seconds (15000ms)
+    const timer = setInterval(fetchLiveScores, 15000);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeTab]);
 
   const formatLiveMatchTime = useCallback((matchId) => {
     const m = liveMatches[matchId];
