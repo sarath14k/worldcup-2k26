@@ -748,7 +748,7 @@ function App() {
       )}
 
       {/* --- HEADER --- */}
-      <header className="relative z-10 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0">
+      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="bg-brand-gold/20 p-2 rounded-xl border border-brand-gold/40 glow-gold animate-float">
