@@ -175,3 +175,13 @@ html.pitch-black body,
   background: rgba(0, 0, 0, 0.95) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
+
+/* Marquee Scroll Animation */
+@keyframes marquee-scroll {
+  0%, 15% {
+    transform: translate3d(0, 0, 0);
+  }
+  85%, 100% {
+    transform: translate3d(var(--scroll-dist), 0, 0);
+  }
+}

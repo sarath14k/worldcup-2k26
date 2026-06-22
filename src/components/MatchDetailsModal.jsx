@@ -1,6 +1,59 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { TEAMS } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch } from '../utils/matchHelpers';
+
+const ScrollingName = ({ name }) => {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const [scrollDist, setScrollDist] = useState(0);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (containerRef.current && textRef.current) {
+        const containerWidth = containerRef.current.clientWidth;
+        const textWidth = textRef.current.scrollWidth;
+        if (textWidth > containerWidth) {
+          setScrollDist(textWidth - containerWidth);
+        } else {
+          setScrollDist(0);
+        }
+      }
+    };
+
+    checkOverflow();
+    const timer = setTimeout(checkOverflow, 200);
+    window.addEventListener('resize', checkOverflow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkOverflow);
+    };
+  }, [name]);
+
+  const duration = Math.max(3, scrollDist * 0.05); // speed: 20px per second, min 3s
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="overflow-hidden relative w-full pr-1.5 select-none"
+    >
+      <span
+        ref={textRef}
+        className="inline-block whitespace-nowrap text-slate-350"
+        style={
+          scrollDist > 0
+            ? {
+                animation: `marquee-scroll ${duration}s linear infinite alternate`,
+                paddingRight: '15px',
+                '--scroll-dist': `-${scrollDist + 10}px`,
+              }
+            : {}
+        }
+      >
+        {name}
+      </span>
+    </div>
+  );
+};
 
 export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, onClose }) => {
   useEffect(() => {
@@ -328,7 +381,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                 ) : (
                   homePlayers.map((p, idx) => (
                     <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
-                      <span className="text-slate-300 truncate pr-2">{p.name}</span>
+                      <ScrollingName name={p.name} />
                       <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
                         p.rating >= 7.5 
                           ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
@@ -353,7 +406,7 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
                 ) : (
                   awayPlayers.map((p, idx) => (
                     <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
-                      <span className="text-slate-300 truncate pr-2">{p.name}</span>
+                      <ScrollingName name={p.name} />
                       <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
                         p.rating >= 7.5 
                           ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
