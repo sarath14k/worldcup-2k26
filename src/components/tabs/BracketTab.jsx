@@ -314,7 +314,7 @@ export const BracketTab = ({
             {GROUPS.map(g => {
               const groupStandings = standings[g] || [];
               return (
-                <div key={g} className="p-3.5 rounded-xl bg-slate-950/40 border border-slate-900/60 hover:border-slate-850 transition-all flex flex-col gap-2">
+                <div key={g} className="p-3.5 rounded-xl bg-slate-950/40 border border-slate-900/60 hover:border-slate-800 transition-all flex flex-col gap-2">
                   <div className="flex justify-between items-center border-b border-slate-900/60 pb-1.5">
                     <span className="text-[10px] font-extrabold text-slate-350 tracking-widest">GROUP {g}</span>
                     <span className="text-[8px] text-slate-550 font-mono font-black">RANKING</span>

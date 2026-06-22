@@ -777,7 +777,7 @@ function App() {
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer select-none ${
                 theme === 'pitch-black'
                   ? 'bg-zinc-900 border-zinc-800 text-brand-neon hover:bg-zinc-850'
-                  : 'bg-slate-900/60 border-slate-800/60 text-slate-300 hover:bg-slate-850/80 hover:text-white'
+                  : 'bg-slate-900/60 border-slate-800/60 text-slate-300 hover:bg-slate-800/85 hover:text-white'
               }`}
               title={theme === 'pitch-black' ? 'Switch to Dark Stadium Theme' : 'Switch to Pitch Black Theme'}
             >

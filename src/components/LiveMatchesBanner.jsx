@@ -11,17 +11,13 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
             key={live.id} 
             onClick={() => setSelectedMatch(live.originalMatch)}
             title="Click to view live stats & timeline commentary"
-            className="p-4 sm:p-5 rounded-2xl bg-slate-950/80 border border-slate-850 hover:border-brand-neon/60 hover:bg-slate-900/30 cursor-pointer select-none transition-all duration-300 shadow-glass group w-full"
+            className="p-4 sm:p-5 rounded-2xl bg-slate-950/80 border border-slate-900/80 hover:border-brand-neon/60 hover:bg-slate-900/30 cursor-pointer select-none transition-all duration-300 shadow-glass group w-full"
           >
             {/* Mobile Layout (Stacked Vertically) */}
             <div className="flex sm:hidden flex-col gap-3">
               {/* Header: Live status */}
               <div className="flex justify-between items-center border-b border-slate-900/40 pb-2">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-neon"></span>
-                  </span>
                   <span className="text-[10px] font-black text-brand-neon tracking-wider uppercase animate-pulse">
                     LIVE {live.minute}'
                   </span>
@@ -61,10 +57,6 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
             <div className="hidden sm:flex items-center justify-between gap-4 w-full">
               {/* Live Indicator & Status */}
               <div className="flex items-center gap-2.5 shrink-0">
-                <span className="flex h-3 w-3 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-neon"></span>
-                </span>
                 <span className="text-xs bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-3 py-1 rounded-xl font-black tracking-widest uppercase animate-pulse">
                   LIVE {live.minute}'
                 </span>

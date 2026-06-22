@@ -47,7 +47,7 @@ export const GroupsTab = ({
                     className={`w-7.5 h-7.5 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer ${
                       isActive
                         ? 'border-brand-neon bg-brand-neon/15 text-brand-neon shadow-neon ring-1 ring-brand-neon/20'
-                        : 'border-slate-850 bg-slate-950/45 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                        : 'border-slate-900/60 bg-slate-950/45 text-slate-400 hover:text-slate-200 hover:border-slate-700'
                     }`}
                   >
                     {g}
