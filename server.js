@@ -210,22 +210,12 @@ app.get('/api/match-highlights', async (req, res) => {
               return false;
             }
             
-            // 3. MUST be the official FIFA channel or a trusted official broadcaster
-            const channelClean = channelLower.trim();
-            const isOfficialFIFA = channelClean === 'fifa' && (
+            // 3. MUST be the official FIFA channel (strict channel name and url check)
+            const isOfficialFIFA = channelLower === 'fifa' && (
               channelUrlLower === '/@fifa' || 
               channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw')
             );
-            
-            const TRUSTED_BROADCASTERS = [
-              'fox sports', 'fox soccer', 'telemundo deportes', 
-              'telemundo deportes and telemundo', 'optus sport', 
-              'supersport', 'bein sports', 'sky sports', 'bbc sport', 
-              'itv sport', 'sony sports network', 'sportsnet', 'tsn'
-            ];
-            const isTrustedBroadcaster = TRUSTED_BROADCASTERS.includes(channelClean);
-            
-            if (!isOfficialFIFA && !isTrustedBroadcaster) {
+            if (!isOfficialFIFA) {
               return false;
             }
             
