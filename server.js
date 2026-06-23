@@ -166,7 +166,22 @@ function ensureDirectoryExistence(filePath) {
 let highlightsCache = {};
 try {
   if (fs.existsSync(CACHE_FILE)) {
-    highlightsCache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+    const rawCache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
+    // Filter to keep only FIFA channel highlights
+    highlightsCache = {};
+    for (const [key, val] of Object.entries(rawCache)) {
+      const channelLower = (val.channel || '').toLowerCase();
+      const isFIFA = channelLower === 'fifa' || 
+                     channelLower === 'fifatv' || 
+                     channelLower === 'fifa (direct)' || 
+                     channelLower.includes('fifa');
+      if (isFIFA) {
+        highlightsCache[key] = val;
+      }
+    }
+    // Save filtered version immediately to clean file on disk
+    ensureDirectoryExistence(CACHE_FILE);
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(highlightsCache, null, 2), 'utf8');
   }
 } catch (err) {
   console.warn('[Cache] Failed to load highlights cache:', err.message);
@@ -214,7 +229,15 @@ app.get('/api/match-highlights', async (req, res) => {
 
   const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
   if (homeCode && awayCode && highlightsCache[cacheKey]) {
-    return res.json(highlightsCache[cacheKey]);
+    const cached = highlightsCache[cacheKey];
+    const channelLower = (cached.channel || '').toLowerCase();
+    const isFIFA = channelLower === 'fifa' || 
+                   channelLower === 'fifatv' || 
+                   channelLower === 'fifa (direct)' || 
+                   channelLower.includes('fifa');
+    if (isFIFA) {
+      return res.json(cached);
+    }
   }
 
   const cleanHome = home.replace(/&/g, 'and');
@@ -284,34 +307,16 @@ app.get('/api/match-highlights', async (req, res) => {
             const channelLower = (channelName || '').toLowerCase();
             const channelUrlLower = (channelUrl || '').toLowerCase();
             
-            if (channelLower === 'fifa' || 
-                channelLower === 'fifatv' || 
-                channelUrlLower === '/@fifa' || 
-                channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
-                channelUrlLower.includes('fifatv') || 
-                channelUrlLower === '/c/fifa') {
-              return true;
-            }
-            
-            const whitelisted = [
-              'fifa', 'fifatv', 'fox soccer', 'fox sports', 'bbc sport', 'itv sport', 
-              'ndtv', 'moneycontrol', 'sportytv', 'bpc media', 'optus sport', 
-              'sbs sport', 'supersport', 'bein sports', 'telemundo deportes', 
-              'tsn', 'sky sports', 'espn', 'toffee'
-            ];
-            
-            return whitelisted.some(ch => channelLower.includes(ch));
-          };
-
-          const isFIFAVideo = (v) => {
-            const channelLower = (v.channel || '').toLowerCase();
-            const channelUrlLower = (v.channelUrl || '').toLowerCase();
             return channelLower === 'fifa' || 
               channelLower === 'fifatv' || 
               channelUrlLower === '/@fifa' || 
               channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
               channelUrlLower.includes('fifatv') || 
               channelUrlLower === '/c/fifa';
+          };
+
+          const isFIFAVideo = (v) => {
+            return isAllowedChannel(v.channel, v.channelUrl);
           };
           
           const realVideos = videos.filter(v => {
