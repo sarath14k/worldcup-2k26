@@ -215,7 +215,7 @@ export const FixturesTab = ({
                   <div 
                     key={`feed-${match.id}`} 
                     onClick={() => setSelectedMatch(match)}
-                    className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2 card-shimmer"
+                    className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2 card-shimmer shrink-0"
                   >
                     <div className="flex justify-between items-center text-[10px] font-bold">
                       <div className="flex items-center gap-2">
