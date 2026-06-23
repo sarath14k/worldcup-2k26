@@ -23,7 +23,7 @@ const knockoutMapping = {
 };
 
 // Fetch match details (stats, scorers, timeline) from ESPN match summary API
-async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr) {
+async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId, awayTeamId) {
   const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=${eventId}`;
   console.log(`[ESPN Sync] Fetching match details for event ${eventId} (${homeTeamAbbr} vs ${awayTeamAbbr})`);
   
@@ -83,7 +83,9 @@ async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr) {
         });
         
         if (ke.scoringPlay || typeText.toLowerCase().includes('goal')) {
-          const isHome = ke.team?.abbreviation === homeTeamAbbr;
+          const isHome = homeTeamId 
+            ? String(ke.team?.id) === String(homeTeamId) 
+            : ke.team?.abbreviation === homeTeamAbbr;
           let player = '';
           if (ke.participants && ke.participants.length > 0) {
             player = ke.participants[0].athlete?.displayName || '';
@@ -161,7 +163,7 @@ export async function syncWithEspn() {
       });
       
       if (espnEvent) {
-        await processEvent(espnEvent, appMatch.id, existingLiveData, liveData);
+        await processEvent(espnEvent, appMatch.id, existingLiveData, liveData, appMatch.home, appMatch.away);
       }
     }
     
@@ -170,7 +172,7 @@ export async function syncWithEspn() {
       const idx = knockoutMapping[appId];
       const espnEvent = knockoutEvents[idx];
       if (espnEvent) {
-        processEventSync(espnEvent, appId, existingLiveData, liveData);
+        processEventSync(espnEvent, appId, existingLiveData, liveData, null, null);
       }
     });
     
@@ -178,12 +180,19 @@ export async function syncWithEspn() {
     for (const appId of Object.keys(liveData)) {
       const match = liveData[appId];
       if (match.needsDetailFetch) {
-        const details = await fetchMatchDetails(match.eventId, match.homeAbbr, match.awayAbbr);
+        const details = await fetchMatchDetails(
+          match.eventId, 
+          match.homeAbbr, 
+          match.awayAbbr, 
+          match.homeTeamId, 
+          match.awayTeamId
+        );
         if (details) {
           match.stats = details.stats;
           match.events = details.events;
           match.timeline = details.timeline;
           match.isDetailedScraped = true;
+          match.isScorersFixed = true;
         }
       }
       // ALWAYS delete internal fields
@@ -192,6 +201,8 @@ export async function syncWithEspn() {
       delete match.eventId;
       delete match.homeAbbr;
       delete match.awayAbbr;
+      delete match.homeTeamId;
+      delete match.awayTeamId;
     }
     
     // Write out the output JSON atomically (temp file then rename) to avoid
@@ -215,7 +226,7 @@ export async function syncWithEspn() {
 }
 
 // Helpers to process events
-async function processEvent(espnEvent, appId, existingLiveData, liveData) {
+async function processEvent(espnEvent, appId, existingLiveData, liveData, appHome, appAway) {
   const comp = espnEvent.competitions?.[0] || {};
   const status = comp.status || {};
   const state = status.type?.state || 'pre';
@@ -229,11 +240,19 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData) {
   const homeComp = competitors.find(c => c.homeAway === 'home') || competitors[0];
   const awayComp = competitors.find(c => c.homeAway === 'away') || competitors[1];
   
-  const homeAbbr = homeComp?.team?.abbreviation;
-  const awayAbbr = awayComp?.team?.abbreviation;
+  let homeAbbr = homeComp?.team?.abbreviation;
+  let awayAbbr = awayComp?.team?.abbreviation;
+  let homeTeamId = homeComp?.team?.id;
+  let awayTeamId = awayComp?.team?.id;
   
-  const homeScore = parseInt(homeComp?.score || '0', 10);
-  const awayScore = parseInt(awayComp?.score || '0', 10);
+  let homeScore = parseInt(homeComp?.score || '0', 10);
+  let awayScore = parseInt(awayComp?.score || '0', 10);
+  
+  if (appHome && appAway && homeAbbr === appAway && awayAbbr === appHome) {
+    [homeAbbr, awayAbbr] = [awayAbbr, homeAbbr];
+    [homeScore, awayScore] = [awayScore, homeScore];
+    [homeTeamId, awayTeamId] = [awayTeamId, homeTeamId];
+  }
   
   const isCompleted = state === 'post';
   const isLive = state === 'in';
@@ -241,7 +260,7 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData) {
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
-  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive;
+  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed;
   
   liveData[appId] = {
     homeScore,
@@ -250,6 +269,7 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData) {
     second: 0,
     isCompleted,
     isDetailedScraped: cached?.isDetailedScraped || false,
+    isScorersFixed: cached?.isScorersFixed || false,
     events: cached?.events || [],
     stats: cached?.stats || {
       possession: [50, 50],
@@ -265,12 +285,14 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData) {
     eventId: espnEvent.id,
     homeAbbr,
     awayAbbr,
+    homeTeamId,
+    awayTeamId,
     isLive,
     needsDetailFetch
   };
 }
 
-function processEventSync(espnEvent, appId, existingLiveData, liveData) {
+function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome, appAway) {
   const comp = espnEvent.competitions?.[0] || {};
   const status = comp.status || {};
   const state = status.type?.state || 'pre';
@@ -283,11 +305,19 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData) {
   const homeComp = competitors.find(c => c.homeAway === 'home') || competitors[0];
   const awayComp = competitors.find(c => c.homeAway === 'away') || competitors[1];
   
-  const homeAbbr = homeComp?.team?.abbreviation;
-  const awayAbbr = awayComp?.team?.abbreviation;
+  let homeAbbr = homeComp?.team?.abbreviation;
+  let awayAbbr = awayComp?.team?.abbreviation;
+  let homeTeamId = homeComp?.team?.id;
+  let awayTeamId = awayComp?.team?.id;
   
-  const homeScore = parseInt(homeComp?.score || '0', 10);
-  const awayScore = parseInt(awayComp?.score || '0', 10);
+  let homeScore = parseInt(homeComp?.score || '0', 10);
+  let awayScore = parseInt(awayComp?.score || '0', 10);
+  
+  if (appHome && appAway && homeAbbr === appAway && awayAbbr === appHome) {
+    [homeAbbr, awayAbbr] = [awayAbbr, homeAbbr];
+    [homeScore, awayScore] = [awayScore, homeScore];
+    [homeTeamId, awayTeamId] = [awayTeamId, homeTeamId];
+  }
   
   const isCompleted = state === 'post';
   const isLive = state === 'in';
@@ -295,7 +325,7 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData) {
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
-  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive;
+  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed;
   
   liveData[appId] = {
     homeScore,
@@ -304,6 +334,7 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData) {
     second: 0,
     isCompleted,
     isDetailedScraped: cached?.isDetailedScraped || false,
+    isScorersFixed: cached?.isScorersFixed || false,
     events: cached?.events || [],
     stats: cached?.stats || {
       possession: [50, 50],
@@ -318,6 +349,8 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData) {
     eventId: espnEvent.id,
     homeAbbr,
     awayAbbr,
+    homeTeamId,
+    awayTeamId,
     isLive,
     needsDetailFetch
   };

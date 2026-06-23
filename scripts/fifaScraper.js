@@ -486,6 +486,7 @@ export async function scrapeFifa() {
           timeline: cached.timeline || []
         };
         pm.isDetailedScraped = true;
+        pm.fromCache = true;
       } else {
         console.log(`Cache MISS for App ID: ${appId || 'unknown'} (${pm.homeTeam?.abbr} vs ${pm.awayTeam?.abbr}). Scraping details...`);
         const details = await scrapeMatchDetails(page, pm.href);
@@ -555,7 +556,7 @@ export async function scrapeFifa() {
           let timeline = [];
           if (parsedMatch.detailedData) {
             timeline = parsedMatch.detailedData.timeline || [];
-            if (isReversed) {
+            if (isReversed && !parsedMatch.fromCache) {
               events = parsedMatch.detailedData.scorers.map(e => ({
                 ...e,
                 team: e.team === 'home' ? 'away' : 'home'
@@ -686,7 +687,7 @@ export async function scrapeFifa() {
         let timeline = [];
         if (parsedMatch.detailedData) {
           timeline = parsedMatch.detailedData.timeline || [];
-          if (isReversed) {
+          if (isReversed && !parsedMatch.fromCache) {
             events = parsedMatch.detailedData.scorers.map(e => ({
               ...e,
               team: e.team === 'home' ? 'away' : 'home'
