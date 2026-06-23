@@ -771,7 +771,6 @@ function App() {
               <h1 className="text-lg md:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent">
                 WORLDCUP 2K26
               </h1>
-              <p className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">Interactive Roadmap & Bracket</p>
             </div>
           </div>
 
