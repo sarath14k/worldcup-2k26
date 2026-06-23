@@ -4,6 +4,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { syncWithEspn } from './scripts/espnSync.js';
 import { syncRatings } from './scripts/scrapeFotmobRatings.js';
+import { scrapeLiveRatings } from './scripts/scrapeLiveRatings.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -46,6 +47,29 @@ app.get('/fotmobPlayerRatings.json', (req, res) => {
         res.sendFile(srcPath);
       } else {
         res.json([]);
+      }
+    }
+  }
+});
+
+// Serve the live player ratings file dynamically
+app.get('/live-player-ratings.json', (req, res) => {
+  const ratingsPath = path.join(__dirname, 'public', 'live-player-ratings.json');
+  if (fs.existsSync(ratingsPath)) {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.sendFile(ratingsPath);
+  } else {
+    const distPath = path.join(__dirname, 'dist', 'live-player-ratings.json');
+    if (fs.existsSync(distPath)) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.sendFile(distPath);
+    } else {
+      const srcPath = path.join(__dirname, 'src', 'data', 'livePlayerRatings.json');
+      if (fs.existsSync(srcPath)) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.sendFile(srcPath);
+      } else {
+        res.json({});
       }
     }
   }
@@ -441,6 +465,24 @@ async function runRatingsSync() {
   }
 }
 
+let isLiveRatingsRunning = false;
+async function runLiveRatingsSync() {
+  if (isLiveRatingsRunning) {
+    console.log('[Server Scraper] Live ratings sync is already running. Skipping.');
+    return;
+  }
+  isLiveRatingsRunning = true;
+  console.log('[Server Scraper] Starting live ratings sync...');
+  try {
+    const liveRatingsResult = await scrapeLiveRatings();
+    console.log('[Server Scraper] Live ratings sync completed:', liveRatingsResult);
+  } catch (err) {
+    console.error('[Server Scraper] Live ratings sync failed:', err);
+  } finally {
+    isLiveRatingsRunning = false;
+  }
+}
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`=================================================`);
@@ -451,10 +493,14 @@ app.listen(PORT, () => {
   // Run once immediately on startup
   runScrape();
   runRatingsSync();
+  runLiveRatingsSync();
   
   // Run ESPN sync every 60 seconds
   setInterval(runScrape, 60000);
 
   // Run ratings sync every 5 minutes (300000 ms)
   setInterval(runRatingsSync, 300000);
+
+  // Run live ratings sync every 5 minutes (300000 ms)
+  setInterval(runLiveRatingsSync, 300000);
 });

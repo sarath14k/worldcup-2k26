@@ -335,6 +335,7 @@ export default defineConfig({
     watch: {
       ignored: [
         '**/public/live-matches.json',
+        '**/public/live-player-ratings.json',
         '**/public/*.tmp'
       ]
     }

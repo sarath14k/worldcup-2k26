@@ -57,6 +57,7 @@ function App() {
   const [highlightsMap, setHighlightsMap] = useState({});
   const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
+  const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
   // --- Live Data Polling Effect ---
   useEffect(() => {
@@ -98,6 +99,18 @@ function App() {
           }
         })
         .catch(err => console.warn('[Ratings Polling] Ignored failure during ratings fetch:', err));
+
+      fetch('/live-player-ratings.json')
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          if (data && typeof data === 'object') {
+            setLivePlayerRatings(data);
+          }
+        })
+        .catch(err => console.warn('[Live Ratings Polling] Ignored failure during live ratings fetch:', err));
     };
 
     fetchRatings();
@@ -944,12 +957,12 @@ function App() {
         </div>
       </footer>
 
-      {/* Match Details Modal */}
       {selectedMatch && (
         <MatchDetailsModal 
           selectedMatch={selectedMatch}
           liveMatches={liveMatches}
           fotmobRatings={fotmobRatings}
+          livePlayerRatings={livePlayerRatings}
           onClose={() => setSelectedMatch(null)}
         />
       )}

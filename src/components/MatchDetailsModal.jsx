@@ -3,7 +3,7 @@ import { TEAMS, VENUES } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
 import { ScrollingText } from './ScrollingText';
 
-export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, onClose }) => {
+export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, livePlayerRatings, onClose }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -20,8 +20,25 @@ export const MatchDetailsModal = ({ selectedMatch, liveMatches, fotmobRatings, o
   const live = liveMatches[selectedMatch.id];
   const details = getMatchDetails(selectedMatch, live);
 
-  const homePlayers = (fotmobRatings || []).filter(p => p.team === selectedMatch.home).sort((a, b) => b.rating - a.rating);
-  const awayPlayers = (fotmobRatings || []).filter(p => p.team === selectedMatch.away).sort((a, b) => b.rating - a.rating);
+  const matchKey = `${selectedMatch.home}-${selectedMatch.away}`;
+  const reverseMatchKey = `${selectedMatch.away}-${selectedMatch.home}`;
+  const liveMatchRatings = livePlayerRatings?.[matchKey] || livePlayerRatings?.[reverseMatchKey];
+
+  let homePlayers = [];
+  let awayPlayers = [];
+
+  if (liveMatchRatings) {
+    // Match-specific ratings exist (from live/completed game scraping)
+    const homeTeamRatings = liveMatchRatings[selectedMatch.home] || {};
+    const awayTeamRatings = liveMatchRatings[selectedMatch.away] || {};
+    
+    homePlayers = Object.entries(homeTeamRatings).map(([name, rating]) => ({ name, rating })).sort((a, b) => b.rating - a.rating);
+    awayPlayers = Object.entries(awayTeamRatings).map(([name, rating]) => ({ name, rating })).sort((a, b) => b.rating - a.rating);
+  } else {
+    // Fall back to tournament average ratings
+    homePlayers = (fotmobRatings || []).filter(p => p.team === selectedMatch.home).sort((a, b) => b.rating - a.rating);
+    awayPlayers = (fotmobRatings || []).filter(p => p.team === selectedMatch.away).sort((a, b) => b.rating - a.rating);
+  }
 
   const isCompleted = selectedMatch.isCompleted || (live && live.minute === 'FT');
   const isLive = isLiveMatch(live);
