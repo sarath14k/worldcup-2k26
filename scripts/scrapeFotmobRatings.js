@@ -1,4 +1,3 @@
-import puppeteer from 'puppeteer-core';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -58,74 +57,29 @@ const FOTMOB_TEAM_MAP = {
 };
 
 export async function syncRatings() {
-  console.log('[Ratings Sync] Launching browser...');
-  const browser = await puppeteer.launch({
-    executablePath: '/usr/bin/google-chrome',
-    headless: 'new',
-    args: [
-      '--disable-gpu',
-      '--disable-dev-shm-usage',
-      '--disable-setuid-sandbox',
-      '--no-sandbox',
-      '--disable-blink-features=AutomationControlled'
-    ]
-  });
-
+  console.log('[Ratings Sync] Fetching player ratings from FotMob API...');
+  
   try {
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-    
-    console.log('[Ratings Sync] Navigating to FotMob player ratings page...');
-    await page.goto('https://www.fotmob.com/leagues/77/stats/season/24254/players/rating/world-cup-players', {
-      waitUntil: 'domcontentloaded',
-      timeout: 30000
+    const response = await fetch('https://www.fotmob.com/api/data/leagueseasondeepstats?id=77&season=24254&type=players&stat=rating&slug=world-cup-players', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
     });
-
-    console.log('[Ratings Sync] Waiting for player rows selector...');
-    await page.waitForSelector('[class*="LeagueSeasonStatsTableRowCSS"]', { timeout: 20000 });
-
-    console.log('[Ratings Sync] Waiting 3 seconds for data to load completely...');
-    await new Promise(resolve => setTimeout(resolve, 3000));
-
-    console.log('[Ratings Sync] Extracting player rows...');
-    const rawPlayers = await page.evaluate(() => {
-      const rows = Array.from(document.querySelectorAll('[class*="LeagueSeasonStatsTableRowCSS"]'));
-      return rows.map(row => {
-        const rankEl = row.querySelector('[class*="Rank"]');
-        const nameEl = row.querySelector('[class*="TeamOrPlayerName"]');
-        const playerImg = row.querySelector('img[class*="PlayerImage"]');
-        const teamImg = row.querySelector('img[class*="TeamIcon"]');
-        const ratingEl = row.querySelector('[class*="StatValue"]');
-        
-        const rank = rankEl ? rankEl.textContent.trim() : '';
-        const name = nameEl ? nameEl.textContent.trim() : '';
-        const playerImgSrc = playerImg ? playerImg.getAttribute('src') : '';
-        const teamImgSrc = teamImg ? teamImg.getAttribute('src') : '';
-        const rating = ratingEl ? ratingEl.textContent.trim() : '';
-        
-        const playerIdMatch = playerImgSrc.match(/playerimages\/(\d+)\.png/);
-        const teamIdMatch = teamImgSrc.match(/teamlogo\/(\d+)/);
-        
-        return {
-          rank: rank ? parseInt(rank, 10) : null,
-          name,
-          playerId: playerIdMatch ? playerIdMatch[1] : null,
-          teamId: teamIdMatch ? teamIdMatch[1] : null,
-          rating: rating ? parseFloat(rating) : null,
-          playerImgSrc,
-          teamImgSrc
-        };
-      });
-    });
-
-    console.log(`[Ratings Sync] Scraped ${rawPlayers.length} player records from DOM.`);
     
-    // Map and filter players
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status} fetching deepstats`);
+    }
+    
+    const data = await response.json();
+    const statsData = data.statsData || [];
+    
+    console.log(`[Ratings Sync] Received ${statsData.length} player records from API.`);
+    
     const cleanedRatings = [];
-    rawPlayers.forEach(p => {
-      if (!p.name || !p.rating || !p.teamId) return;
+    statsData.forEach(p => {
+      if (!p.name || !p.statValue?.value || !p.teamId) return;
       
-      const teamAbbr = FOTMOB_TEAM_MAP[p.teamId];
+      const teamAbbr = FOTMOB_TEAM_MAP[String(p.teamId)];
       if (!teamAbbr) {
         // Skip players from non-tournament teams
         return;
@@ -135,21 +89,27 @@ export async function syncRatings() {
         rank: p.rank,
         name: p.name,
         team: teamAbbr,
-        rating: p.rating,
-        playerId: p.playerId
+        rating: p.statValue.value,
+        playerId: String(p.id)
       });
     });
-
+    
     console.log(`[Ratings Sync] Cleaned and mapped ${cleanedRatings.length} tournament players.`);
+    
+    // Sort by rank ascending / rating descending
+    cleanedRatings.sort((a, b) => a.rank - b.rank || b.rating - a.rating);
+    
+    // Update ranks to be sequential starting at 1
+    cleanedRatings.forEach((p, index) => {
+      p.rank = index + 1;
+    });
 
-    // Define target paths
     const srcPath = path.join(__dirname, '../src/data/fotmobPlayerRatings.json');
     const publicPath = path.join(__dirname, '../public/fotmobPlayerRatings.json');
     const distPath = path.join(__dirname, '../dist/fotmobPlayerRatings.json');
 
     const outputString = JSON.stringify(cleanedRatings, null, 2);
 
-    // Save to all target paths
     fs.writeFileSync(srcPath, outputString, 'utf8');
     fs.writeFileSync(publicPath, outputString, 'utf8');
     if (fs.existsSync(path.dirname(distPath))) {
@@ -158,12 +118,10 @@ export async function syncRatings() {
 
     console.log(`[Ratings Sync] Successfully saved player ratings data.`);
     return { success: true, count: cleanedRatings.length };
-
+    
   } catch (err) {
     console.error('[Ratings Sync] Error during execution:', err);
     return { success: false, error: err.message };
-  } finally {
-    await browser.close();
   }
 }
 
