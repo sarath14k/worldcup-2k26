@@ -87,14 +87,14 @@ export const VENUES = [
   { name: "AT&T Stadium", city: "Dallas", capacity: 80000, country: "USA", flag: "🇺🇸", desc: "Mega-stadium hosting a semi-final and multiple knockouts." },
   { name: "Hard Rock Stadium", city: "Miami", capacity: 64767, country: "USA", flag: "🇺🇸", desc: "Host of the bronze medal match." },
   { name: "Gillette Stadium", city: "Boston", capacity: 65878, country: "USA", flag: "🇺🇸", desc: "Historic sporting arena in New England." },
-  { name: "Lincoln Financial Field", city: "Philadelphia", capacity: 67594, country: "USA", flag: "🇺🇸", desc: "A vibrant home for soccer matches on the East Coast." },
+  { name: "Lincoln Financial Field", city: "Philadelphia", capacity: 67594, country: "USA", flag: "🇺🇸", desc: "A vibrant home for football matches on the East Coast." },
   { name: "Arrowhead Stadium", city: "Kansas City", capacity: 76416, country: "USA", flag: "🇺🇸", desc: "Loudest stadium in the world hosting key quarterfinal." },
   { name: "NRG Stadium", city: "Houston", capacity: 72220, country: "USA", flag: "🇺🇸", desc: "State-of-the-art retractable roof venue." },
   { name: "Levi's Stadium", city: "San Francisco Bay Area", capacity: 68500, country: "USA", flag: "🇺🇸", desc: "Silicon Valley's premier sports complex." },
   { name: "Lumen Field", city: "Seattle", capacity: 69000, country: "USA", flag: "🇺🇸", desc: "Incredible acoustic design and electric atmosphere." },
   // Canada
   { name: "BC Place", city: "Vancouver", capacity: 54500, country: "Canada", flag: "🇨🇦", desc: "Canada's west coast crown jewel." },
-  { name: "BMO Field", city: "Toronto", capacity: 45736, country: "Canada", flag: "🇨🇦", desc: "Canada's national soccer stadium." },
+  { name: "BMO Field", city: "Toronto", capacity: 45736, country: "Canada", flag: "🇨🇦", desc: "Canada's national football stadium." },
   // Mexico
   { name: "Estadio Azteca", city: "Mexico City", capacity: 87523, country: "Mexico", flag: "🇲🇽", desc: "Historic arena hosting the opening match on June 11, 2026." },
   { name: "Estadio BBVA", city: "Monterrey", capacity: 53500, country: "Mexico", flag: "🇲🇽", desc: "Known as 'El Gigante de Acero' for its beautiful structure." },

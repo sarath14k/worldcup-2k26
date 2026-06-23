@@ -951,7 +951,7 @@ function App() {
           <div className="flex items-center gap-1.5">
             <span>Made with</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-            <span>by Sarath for soccer fans worldwide</span>
+            <span>by Sarath for football fans worldwide</span>
           </div>
           <p>© 2026 FIFA World Cup Bracket Predictor. All rights reserved.</p>
         </div>
