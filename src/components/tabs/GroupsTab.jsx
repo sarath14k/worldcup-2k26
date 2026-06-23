@@ -67,7 +67,7 @@ export const GroupsTab = ({
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-350">
+              <span className="font-extrabold tracking-wide text-white text-base sm:text-lg">
                 Group {expandedGroup}
               </span>
               <button 
@@ -93,7 +93,7 @@ export const GroupsTab = ({
                   <th className="py-2.5 px-2 font-extrabold text-center w-10">L</th>
                   <th className="py-2.5 px-2 font-extrabold text-center w-12">GD</th>
                   <th className="py-2.5 px-2 font-extrabold text-center w-14 text-brand-neon">PTS</th>
-                  <th className="py-2.5 px-2 font-extrabold text-center hidden md:table-cell w-32">FORM</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-24 sm:w-32">FORM</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/40">
@@ -133,13 +133,13 @@ export const GroupsTab = ({
                         {t.gd > 0 ? `+${t.gd}` : t.gd}
                       </td>
                       <td className="py-3 px-2 text-center font-mono font-black text-sm text-brand-neon bg-brand-neon/5">{t.points}</td>
-                      <td className="py-3 px-2 text-center hidden md:table-cell">
-                        <div className="flex items-center justify-center gap-1 select-none">
+                      <td className="py-3 px-2 text-center">
+                        <div className="flex items-center justify-center gap-0.5 sm:gap-1 select-none">
                           {(t.form || []).map((res, i) => (
                             <span
                               key={i}
                               title={res === 'W' ? 'Won' : res === 'D' ? 'Draw' : 'Lost'}
-                              className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-black shrink-0 transition-all ${
+                              className={`w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-sm sm:rounded-md flex items-center justify-center text-[7px] sm:text-[9px] font-black shrink-0 transition-all ${
                                 res === 'W'
                                   ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
                                   : res === 'L'

@@ -48,6 +48,27 @@ export const simulateScore = (homeCode, awayCode) => {
   };
 };
 
+// Generate deterministic historical form based on rating
+const generateHistoricalForm = (code) => {
+  const rating = TEAM_RATINGS[code] || 75;
+  const results = [];
+  const charsSum = code.charCodeAt(0) + code.charCodeAt(1) + code.charCodeAt(2);
+  for (let i = 0; i < 7; i++) {
+    const val = (charsSum * (i + 1)) % 100;
+    // Higher rating = higher probability of W
+    const winProb = Math.max(15, Math.min(80, rating - 12));
+    const drawProb = 15;
+    if (val < winProb) {
+      results.push('W');
+    } else if (val < winProb + drawProb) {
+      results.push('D');
+    } else {
+      results.push('L');
+    }
+  }
+  return results;
+};
+
 // Calculate standings for all groups
 export const calculateStandings = (teams, groupMatches) => {
   // Reset stats
@@ -58,7 +79,7 @@ export const calculateStandings = (teams, groupMatches) => {
       code,
       played: 0, won: 0, drawn: 0, lost: 0,
       gf: 0, ga: 0, gd: 0, points: 0,
-      form: []
+      form: generateHistoricalForm(code)
     };
   });
 
@@ -110,7 +131,7 @@ export const calculateStandings = (teams, groupMatches) => {
   const groupsData = {};
   Object.keys(standings).forEach(code => {
     const t = standings[code];
-    t.form = t.form.slice(-5);
+    t.form = t.form.slice(-10);
     if (!groupsData[t.group]) {
       groupsData[t.group] = [];
     }
