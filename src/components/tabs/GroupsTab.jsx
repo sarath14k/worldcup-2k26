@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GROUPS, TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
@@ -62,85 +62,89 @@ export const GroupsTab = ({
             <div className="flex items-center gap-3">
               <button 
                 onClick={handlePrevGroup}
-                className="p-1 px-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 text-xs font-bold transition-all flex items-center gap-1 select-none cursor-pointer"
+                className="p-1.5 rounded-lg bg-slate-900/85 border border-slate-800 text-slate-400 hover:text-brand-neon hover:border-brand-neon/50 hover:shadow-[0_0_8px_rgba(0,255,135,0.15)] transition-all flex items-center justify-center select-none cursor-pointer"
                 title="Previous Group"
               >
-                ← Prev
+                <ChevronLeft className="w-4 h-4" />
               </button>
-              <span>Group {expandedGroup} Standings</span>
+              <span className="font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-350">
+                Group {expandedGroup}
+              </span>
               <button 
                 onClick={handleNextGroup}
-                className="p-1 px-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 text-xs font-bold transition-all flex items-center gap-1 select-none cursor-pointer"
+                className="p-1.5 rounded-lg bg-slate-900/85 border border-slate-800 text-slate-400 hover:text-brand-neon hover:border-brand-neon/50 hover:shadow-[0_0_8px_rgba(0,255,135,0.15)] transition-all flex items-center justify-center select-none cursor-pointer"
                 title="Next Group"
               >
-                Next →
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
             <span className="text-xs font-semibold text-slate-400">Tie-breakers: Points, GD, GF</span>
           </h2>
           
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs font-medium">
+            <table className="w-full text-left text-xs font-medium border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400">
-                  <th className="py-2 px-1 font-bold">POS</th>
-                  <th className="py-2 px-1 font-bold">TEAM</th>
-                  <th className="py-2 px-1 font-bold text-center">P</th>
-                  <th className="py-2 px-1 font-bold text-center">W</th>
-                  <th className="py-2 px-1 font-bold text-center">D</th>
-                  <th className="py-2 px-1 font-bold text-center">L</th>
-                  <th className="py-2 px-1 font-bold text-center">GD</th>
-                  <th className="py-2 px-1 font-bold text-center text-brand-neon">PTS</th>
-                  <th className="py-2 px-1 font-bold text-center hidden md:table-cell">FORM</th>
+                <tr className="border-b border-slate-800 text-[10px] uppercase tracking-wider text-slate-400 bg-slate-950/30">
+                  <th className="py-2.5 px-2 font-extrabold text-center w-12">POS</th>
+                  <th className="py-2.5 px-2 font-extrabold text-left">TEAM</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-10">P</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-10">W</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-10">D</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-10">L</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-12">GD</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center w-14 text-brand-neon">PTS</th>
+                  <th className="py-2.5 px-2 font-extrabold text-center hidden md:table-cell w-32">FORM</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/50">
+              <tbody className="divide-y divide-slate-800/40">
                 {(standings[expandedGroup] || []).map((t, index) => {
                   const isQualifying = index < 2;
                   const isBestThird = index === 2 && advancedTeams.thirds.some(th => th.code === t.code);
                   return (
-                    <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
-                      <td className="py-2 px-1">
-                        <div className={`flex items-center justify-center w-6 h-6 rounded-lg font-black text-[10px] border ${
+                    <tr key={t.code} className="hover:bg-slate-900/15 transition-colors duration-150 group">
+                      <td className="py-3 px-2 text-center">
+                        <div className={`flex items-center justify-center w-6 h-6 mx-auto rounded-lg font-black text-[10px] border transition-all duration-300 ${
                           index === 0 
-                            ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
+                            ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold shadow-[0_0_8px_rgba(251,191,36,0.1)]' 
                             : index === 1 
-                              ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
+                              ? 'bg-slate-400/10 border-slate-400/30 text-slate-350 shadow-[0_0_8px_rgba(148,163,184,0.1)]' 
                               : index === 2 
-                                ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
-                                : 'bg-slate-900/50 border-slate-800 text-slate-500'
+                                ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal shadow-[0_0_8px_rgba(59,130,246,0.1)]' 
+                                : 'bg-slate-950 border-slate-800 text-slate-500'
                         }`}>
                           {index + 1}
                         </div>
                       </td>
-                      <td className="py-2 px-1 font-bold flex items-center gap-1 sm:gap-2 text-slate-200 min-w-0">
-                        <span className="text-lg shrink-0">{t.flag}</span>
-                        <div className="max-w-[85px] sm:max-w-[150px] overflow-hidden flex-1">
-                          <ScrollingText text={t.name} className="text-xs" />
+                      <td className="py-3 px-2 font-semibold text-slate-200">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className="text-xl shrink-0 filter drop-shadow-sm">{t.flag}</span>
+                          <div className="max-w-[100px] sm:max-w-[160px] overflow-hidden flex-1">
+                            <ScrollingText text={t.name} className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors" />
+                          </div>
+                          {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-1 rounded leading-none py-0.5 font-extrabold shrink-0 uppercase tracking-wide">R32</span>}
+                          {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-1 rounded leading-none py-0.5 font-extrabold shrink-0 uppercase tracking-wide">R32 *</span>}
                         </div>
-                        {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold shrink-0">R32</span>}
-                        {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-0.5 sm:px-1 rounded leading-none py-0.5 font-extrabold shrink-0">R32 *</span>}
                       </td>
-                      <td className="py-2 px-1 text-center text-slate-400">{t.played}</td>
-                      <td className="py-2 px-1 text-center text-slate-400">{t.won}</td>
-                      <td className="py-2 px-1 text-center text-slate-400">{t.drawn}</td>
-                      <td className="py-2 px-1 text-center text-slate-400">{t.lost}</td>
-                      <td className={`py-2 px-1 text-center font-semibold ${t.gd > 0 ? 'text-brand-neon' : t.gd < 0 ? 'text-rose-500' : 'text-slate-400'}`}>
+                      <td className="py-3 px-2 text-center text-slate-400 font-mono font-medium">{t.played}</td>
+                      <td className="py-3 px-2 text-center text-slate-400 font-mono font-medium">{t.won}</td>
+                      <td className="py-3 px-2 text-center text-slate-400 font-mono font-medium">{t.drawn}</td>
+                      <td className="py-3 px-2 text-center text-slate-400 font-mono font-medium">{t.lost}</td>
+                      <td className={`py-3 px-2 text-center font-mono font-semibold ${t.gd > 0 ? 'text-brand-neon' : t.gd < 0 ? 'text-rose-500' : 'text-slate-400'}`}>
                         {t.gd > 0 ? `+${t.gd}` : t.gd}
                       </td>
-                      <td className="py-2 px-1 text-center font-bold text-sm text-brand-neon">{t.points}</td>
-                      <td className="py-2 px-1 text-center hidden md:table-cell">
+                      <td className="py-3 px-2 text-center font-mono font-black text-sm text-brand-neon bg-brand-neon/5">{t.points}</td>
+                      <td className="py-3 px-2 text-center hidden md:table-cell">
                         <div className="flex items-center justify-center gap-1 select-none">
                           {(t.form || []).map((res, i) => (
                             <span
                               key={i}
                               title={res === 'W' ? 'Won' : res === 'D' ? 'Draw' : 'Lost'}
-                              className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black text-white shrink-0 ${
+                              className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-black shrink-0 transition-all ${
                                 res === 'W'
-                                  ? 'bg-emerald-600 border border-emerald-500/30'
+                                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
                                   : res === 'L'
-                                    ? 'bg-rose-600 border border-rose-500/30'
-                                    : 'bg-slate-600 border border-slate-500/30'
+                                    ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
+                                    : 'bg-slate-500/10 text-slate-400 border border-slate-500/30'
                               }`}
                             >
                               {res}
