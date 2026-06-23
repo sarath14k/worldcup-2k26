@@ -414,17 +414,30 @@ async function runScrape() {
     lastScrapeStatus.success = result.success;
     lastScrapeStatus.count = result.count || 0;
     lastScrapeStatus.error = result.error || null;
-    
-    // Also sync player ratings
-    console.log('[Server Scraper] Starting ratings sync...');
-    const ratingsResult = await syncRatings();
-    console.log('[Server Scraper] Ratings sync completed:', ratingsResult);
   } catch (err) {
     console.error('[Server Scraper] Scraping cycle failed:', err);
     lastScrapeStatus.success = false;
     lastScrapeStatus.error = err.message;
   } finally {
     isRunning = false;
+  }
+}
+
+let isRatingsRunning = false;
+async function runRatingsSync() {
+  if (isRatingsRunning) {
+    console.log('[Server Scraper] Ratings sync is already running. Skipping.');
+    return;
+  }
+  isRatingsRunning = true;
+  console.log('[Server Scraper] Starting ratings sync...');
+  try {
+    const ratingsResult = await syncRatings();
+    console.log('[Server Scraper] Ratings sync completed:', ratingsResult);
+  } catch (err) {
+    console.error('[Server Scraper] Ratings sync failed:', err);
+  } finally {
+    isRatingsRunning = false;
   }
 }
 
@@ -437,7 +450,11 @@ app.listen(PORT, () => {
   
   // Run once immediately on startup
   runScrape();
+  runRatingsSync();
   
-  // Run every 60 seconds
+  // Run ESPN sync every 60 seconds
   setInterval(runScrape, 60000);
+
+  // Run ratings sync every 5 minutes (300000 ms)
+  setInterval(runRatingsSync, 300000);
 });
