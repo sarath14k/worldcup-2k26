@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const ConfettiShower = () => {
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
+  const [particles] = useState(() => {
     const colors = ['#00FF87', '#4F46E5', '#3B82F6', '#FBBF24', '#EF4444', '#EC4899'];
     const shapes = ['circle', 'square', 'triangle'];
     
-    const newParticles = Array.from({ length: 45 }).map((_, i) => {
+    return Array.from({ length: 45 }).map((_, i) => {
       const left = Math.random() * 100; // left position in %
       const delay = Math.random() * 1.5; // animation delay in s
       const size = Math.random() * 8 + 4; // size in px
@@ -17,9 +15,7 @@ export const ConfettiShower = () => {
       
       return { id: i, left, delay, size, duration, color, shape };
     });
-    
-    setParticles(newParticles);
-  }, []);
+  });
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[99999] overflow-hidden">

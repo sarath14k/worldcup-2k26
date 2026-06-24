@@ -157,6 +157,25 @@ function App() {
             }
           }
 
+          // Find the corresponding appMatch
+          const allAppMatches = [];
+          if (groupMatches) allAppMatches.push(...groupMatches);
+          if (bracket) {
+            Object.values(bracket).forEach(roundMatches => {
+              if (Array.isArray(roundMatches)) {
+                allAppMatches.push(...roundMatches);
+              }
+            });
+          }
+          const appMatch = allAppMatches.find(m => String(m.id) === matchId);
+          
+          const isGroup = appMatch?.type === 'group';
+          const matchLabel = isGroup
+            ? `Group ${appMatch.group} • Match ${((appMatch.id - 1) % 6) + 1}`
+            : appMatch 
+              ? `${appMatch.round || 'Knockout'} • Match ${appMatch.id}`
+              : `Match ${matchId}`;
+
           // Trigger Alert state
           setGoalAlert({
             matchId,
@@ -169,7 +188,8 @@ function App() {
             scoringTeamName: scoringTeamInfo.name,
             scoringTeamFlag: scoringTeamInfo.flag,
             player: scorerName,
-            minute: goalMinute
+            minute: goalMinute,
+            matchLabel
           });
 
           // Trigger card glow flash
@@ -202,7 +222,7 @@ function App() {
       };
     }
     prevScoresRef.current = scoresToSave;
-  }, [liveMatches]);
+  }, [liveMatches, groupMatches, bracket]);
 
   // Highlights polling states
   const [highlightsMap, setHighlightsMap] = useState({});
@@ -923,43 +943,78 @@ function App() {
       {/* Confetti Shower for Goal Alerts */}
       {goalAlert && <ConfettiShower />}
 
-      {/* Goal Alert Toast Banner */}
+      {/* Goal Alert Centered Modal */}
       {goalAlert && (
-        <div 
-          onClick={() => setGoalAlert(null)}
-          className="fixed top-6 left-1/2 -translate-x-1/2 z-[99999] w-[92%] max-w-sm bg-slate-950/95 border-2 border-brand-neon rounded-2xl p-4 shadow-[0_0_30px_rgba(0,255,135,0.4)] backdrop-blur-md cursor-pointer animate-goalAlert"
-        >
-          <div className="flex items-center justify-between pb-2 border-b border-slate-900/60 mb-2">
-            <span className="text-[10px] font-black tracking-widest text-brand-neon flex items-center gap-1.5 uppercase animate-pulse">
-              ⚽ GOAL ALERT!
-            </span>
-            <span className="text-[9px] text-slate-500 font-bold uppercase tracking-widest">
-              Match {goalAlert.matchId}
-            </span>
-          </div>
+        <>
+          {/* Dimmed, blurred backdrop overlay */}
+          <div 
+            onClick={() => setGoalAlert(null)}
+            className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-[3px] pointer-events-none animate-goalAlertBackdrop"
+          />
           
-          <div className="flex items-center justify-between gap-3 py-1.5">
-            <div className="flex items-center gap-2 font-black text-slate-100 text-xs flex-1 min-w-0">
-              <span className="text-xl shrink-0">{goalAlert.homeFlag}</span>
-              <span className="truncate">{goalAlert.homeName}</span>
+          {/* Centered Modal Card */}
+          <div 
+            onClick={() => setGoalAlert(null)}
+            className="fixed top-1/2 left-1/2 z-[99999] w-[90%] max-w-md bg-slate-950/95 border-2 border-brand-neon rounded-3xl p-6 shadow-[0_0_50px_rgba(0,255,135,0.4)] backdrop-blur-md cursor-pointer animate-goalAlertCenter select-none"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-slate-900/60 mb-4">
+              <span className="text-xs font-black tracking-[0.2em] text-brand-neon flex items-center gap-1.5 uppercase animate-pulse">
+                ⚽ GOAL ALERT!
+              </span>
+              <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-widest font-mono">
+                {goalAlert.matchLabel}
+              </span>
             </div>
             
-            <div className="px-3 py-0.5 bg-slate-900 border border-brand-neon/30 text-brand-neon rounded-lg font-mono font-black text-xs shadow-[0_0_10px_rgba(0,255,135,0.1)] shrink-0 min-w-[50px] text-center">
-              {goalAlert.homeScore} : {goalAlert.awayScore}
+            {/* Flags & Scoreboard Block */}
+            <div className="flex items-center justify-center gap-6 py-4">
+              {/* Home Team */}
+              <div className="flex flex-col items-center gap-2 text-center w-1/3 min-w-0">
+                <span className="text-5xl drop-shadow-[0_0_15px_rgba(0,255,135,0.2)] animate-bounce leading-none" style={{ animationDuration: '2s' }}>
+                  {goalAlert.homeFlag}
+                </span>
+                <span className="font-black text-slate-100 text-sm truncate w-full mt-1">
+                  {goalAlert.homeName}
+                </span>
+              </div>
+              
+              {/* Score Box */}
+              <div className="flex flex-col items-center justify-center bg-slate-900/90 border border-brand-neon/30 rounded-2xl px-5 py-3 shadow-[inset_0_0_15px_rgba(0,255,135,0.05),0_0_20px_rgba(0,0,0,0.4)] min-w-[110px] shrink-0">
+                <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1 font-mono">SCORE</div>
+                <div className="text-3xl font-mono font-black text-brand-neon tracking-wide">
+                  {goalAlert.homeScore} : {goalAlert.awayScore}
+                </div>
+              </div>
+              
+              {/* Away Team */}
+              <div className="flex flex-col items-center gap-2 text-center w-1/3 min-w-0">
+                <span className="text-5xl drop-shadow-[0_0_15px_rgba(0,255,135,0.2)] animate-bounce leading-none" style={{ animationDuration: '2s', animationDelay: '0.2s' }}>
+                  {goalAlert.awayFlag}
+                </span>
+                <span className="font-black text-slate-100 text-sm truncate w-full mt-1">
+                  {goalAlert.awayName}
+                </span>
+              </div>
             </div>
             
-            <div className="flex items-center gap-2 font-black text-slate-100 text-xs justify-end flex-1 min-w-0 text-right">
-              <span className="truncate">{goalAlert.awayName}</span>
-              <span className="text-xl shrink-0">{goalAlert.awayFlag}</span>
+            {/* Scorer Info */}
+            {goalAlert.player && (
+              <div className="relative mt-4 overflow-hidden rounded-xl border border-brand-neon/30 bg-gradient-to-r from-brand-neon/5 via-brand-neon/15 to-brand-neon/5 py-3 px-4 shadow-[0_4px_20px_rgba(0,255,135,0.05)]">
+                <div className="text-center font-black text-brand-neon text-sm tracking-wide flex items-center justify-center gap-2">
+                  <span className="animate-pulse">⚽</span>
+                  <span className="truncate">{goalAlert.player}</span>
+                  <span className="text-xs text-slate-300">({goalAlert.minute}')</span>
+                </div>
+              </div>
+            )}
+            
+            {/* Click to dismiss helper text */}
+            <div className="text-center text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-4 animate-pulse">
+              Click anywhere to dismiss
             </div>
           </div>
-          
-          {goalAlert.player && (
-            <div className="text-[9px] text-brand-neon font-black mt-2 text-center uppercase tracking-wider bg-brand-neon/10 py-1 rounded-lg border border-brand-neon/20">
-              ⚽ {goalAlert.player} ({goalAlert.minute}')
-            </div>
-          )}
-        </div>
+        </>
       )}
       {/* Background glow effects for visual wow-factor */}
       {theme !== 'pitch-black' && (
