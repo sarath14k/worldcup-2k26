@@ -418,35 +418,64 @@ export const MatchDetailsModal = ({
 
                   let icon = '🔔';
                   const typeLower = event.type.toLowerCase();
-                  if (typeLower.includes('foul')) icon = '⚡';
-                  else if (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score')) icon = '⚽';
-                  else if (typeLower.includes('attempt') || typeLower.includes('shot')) icon = '🎯';
+                  const isAttempt = typeLower.includes('attempt') || typeLower.includes('shot');
+                  const isGoal = (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score')) && !isAttempt;
+                  const isYellowCard = typeLower.includes('yellow');
+                  const isRedCard = typeLower.includes('red');
+                  const isSub = typeLower.includes('sub');
+
+                  if (isAttempt) icon = '🎯';
+                  else if (typeLower.includes('foul')) icon = '⚡';
+                  else if (isGoal) icon = '⚽';
                   else if (typeLower.includes('corner')) icon = '🚩';
                   else if (typeLower.includes('offside')) icon = '👁️';
-                  else if (typeLower.includes('kick off') || typeLower.includes('start') || typeLower.includes('toss')) icon = '🎬';
-                  else if (typeLower.includes('yellow')) icon = '🟨';
-                  else if (typeLower.includes('red')) icon = '🟥';
-                  else if (typeLower.includes('sub')) icon = '🔄';
+                  else if (typeLower.includes('kick off') || typeLower.includes('start') || typeLower.includes('toss') || typeLower.includes('whistle') || typeLower.includes('half') || typeLower.includes('end')) icon = '🎬';
+                  else if (isYellowCard) icon = '🟨';
+                  else if (isRedCard) icon = '🟥';
+                  else if (isSub) icon = '🔄';
 
-                  const isGoal = typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score');
                   return (
                     <div 
                       key={`timeline-${idx}`} 
                       className={`flex items-start gap-3 bg-slate-950/40 border rounded-xl p-2.5 hover:bg-slate-900/40 transition-all duration-300 relative animate-fadeIn ${
                         isGoal 
-                          ? 'border-brand-neon/40 shadow-neon/10 bg-brand-neon/5' 
-                          : 'border-slate-800/50 hover:border-slate-700/50'
+                          ? 'border-brand-neon/40 shadow-[0_0_15px_rgba(0,255,135,0.1)] bg-brand-neon/5' 
+                          : isRedCard 
+                            ? 'border-red-500/45 shadow-[0_0_15px_rgba(239,68,68,0.1)] bg-red-500/5' 
+                            : isYellowCard 
+                              ? 'border-yellow-500/45 shadow-[0_0_15px_rgba(234,179,8,0.1)] bg-yellow-500/5'
+                              : isSub 
+                                ? 'border-indigo-500/45 shadow-[0_0_15px_rgba(99,102,241,0.1)] bg-indigo-500/5'
+                                : 'border-slate-800/50 hover:border-slate-700/50'
                       }`}
                     >
                       <div className={`flex items-center justify-center w-6 h-6 rounded-lg bg-slate-900 border text-[11px] shrink-0 ${
-                        isGoal ? 'border-brand-neon/60 text-brand-neon shadow-neon' : 'border-slate-800'
+                        isGoal 
+                          ? 'border-brand-neon/60 text-brand-neon shadow-neon' 
+                          : isRedCard 
+                            ? 'border-red-500/60 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]' 
+                            : isYellowCard 
+                              ? 'border-yellow-500/60 text-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.3)]'
+                              : isSub 
+                                ? 'border-indigo-500/60 text-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.3)]'
+                                : 'border-slate-800'
                       }`}>
                         {icon}
                       </div>
 
                       <div className="flex-1 flex flex-col gap-0.5">
                         <div className="flex items-center justify-between">
-                          <span className={`text-[9px] font-black uppercase tracking-wider ${isGoal ? 'text-brand-neon font-black' : 'text-slate-400'}`}>
+                          <span className={`text-[9px] font-black uppercase tracking-wider ${
+                            isGoal 
+                              ? 'text-brand-neon' 
+                              : isRedCard 
+                                ? 'text-red-400' 
+                                : isYellowCard 
+                                  ? 'text-yellow-400'
+                                  : isSub 
+                                    ? 'text-indigo-400' 
+                                    : 'text-slate-400'
+                          }`}>
                             {event.type}
                           </span>
                           <span className={`text-[10px] font-bold font-mono ${isGoal ? 'text-brand-neon animate-pulse font-black' : 'text-brand-neon'}`}>
