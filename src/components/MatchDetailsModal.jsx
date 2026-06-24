@@ -249,18 +249,18 @@ export const MatchDetailsModal = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header - Non-scrollable & Always Visible */}
-        <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-900/98 z-10 relative">
+        <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-800/80 shrink-0 bg-slate-900/98 z-10 relative">
           <div className="pr-12 text-left">
-            <div className="text-[10px] sm:text-xs font-extrabold text-brand-neon uppercase tracking-widest mb-0.5">
+            <div className="text-[10px] sm:text-xs font-extrabold text-brand-neon uppercase tracking-widest mb-0.5 truncate">
               {selectedMatch.type === 'group' ? `Group ${selectedMatch.group}` : selectedMatch.round || 'Knockout'} • Match {selectedMatch.id}
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-400 font-bold font-mono truncate max-w-[240px] sm:max-w-md">
+            <div className="text-[10px] sm:text-[11px] text-slate-400 font-bold font-mono truncate">
               {getMatchVenue(selectedMatch, VENUES)} • {formatDisplayDate(selectedMatch.date)}
             </div>
           </div>
           
           <button 
-            className="p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none shrink-0"
+            className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-6 p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none z-20 shrink-0"
             onClick={onClose}
             aria-label="Close modal"
           >
