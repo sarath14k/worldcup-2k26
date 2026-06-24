@@ -254,8 +254,11 @@ export const MatchDetailsModal = ({
             <div className="text-[10px] sm:text-xs font-extrabold text-brand-neon uppercase tracking-widest mb-0.5 truncate">
               {selectedMatch.type === 'group' ? `Group ${selectedMatch.group}` : selectedMatch.round || 'Knockout'} • Match {selectedMatch.id}
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-400 font-bold font-mono truncate">
-              {getMatchVenue(selectedMatch, VENUES)} • {formatDisplayDate(selectedMatch.date)}
+            <div className="w-full">
+              <ScrollingText 
+                text={`${getMatchVenue(selectedMatch, VENUES)} • ${formatDisplayDate(selectedMatch.date)}`} 
+                className="text-[10px] sm:text-[11px] text-slate-400 font-bold font-mono" 
+              />
             </div>
           </div>
           
