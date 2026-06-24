@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
+import { FIFA_RANKINGS } from '../data/worldcupData';
 
 
 // Custom authentic icons for World Cup and Player Stats
@@ -392,4 +393,39 @@ export const isLiveMatch = (live) => {
   if (!live) return false;
   const m = live.minute;
   return m !== null && m !== undefined && m !== '' && m !== 'FT' && !live.isCompleted;
+};
+
+export const FifaRankBadge = ({ teamCode }) => {
+  const rank = FIFA_RANKINGS[teamCode];
+  if (!rank) return null;
+
+  let badgeStyle;
+  let icon = null;
+
+  if (rank <= 5) {
+    badgeStyle = "bg-gradient-to-r from-amber-500/10 via-yellow-500/15 to-amber-500/10 border-yellow-500/45 text-yellow-400 shadow-[0_0_10px_rgba(251,191,36,0.15)] hover:shadow-[0_0_12px_rgba(251,191,36,0.3)] hover:border-yellow-400/60";
+    icon = (
+      <svg className="w-2 h-2 fill-yellow-400 shrink-0 mr-0.5 animate-pulse" viewBox="0 0 24 24">
+        <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z"/>
+      </svg>
+    );
+  } else if (rank <= 15) {
+    badgeStyle = "bg-gradient-to-r from-emerald-500/10 via-brand-neon/15 to-emerald-500/10 border-brand-neon/30 text-brand-neon shadow-[0_0_10px_rgba(0,255,135,0.12)] hover:shadow-[0_0_12px_rgba(0,255,135,0.25)] hover:border-brand-neon/50";
+    icon = <span className="w-1 h-1 rounded-full bg-brand-neon shrink-0 mr-0.5 animate-pulse" />;
+  } else if (rank <= 30) {
+    badgeStyle = "bg-gradient-to-r from-blue-500/10 via-brand-royal/15 to-blue-500/10 border-brand-royal/25 text-blue-300 hover:border-brand-royal/45 shadow-[0_0_8px_rgba(59,130,246,0.06)] hover:shadow-[0_0_10px_rgba(59,130,246,0.15)]";
+    icon = <span className="w-1 h-1 rounded-full bg-brand-royal shrink-0 mr-0.5" />;
+  } else {
+    badgeStyle = "bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-300";
+  }
+
+  return (
+    <span 
+      className={`inline-flex items-center text-[8px] font-mono font-black px-1.5 py-0.5 rounded-full border shrink-0 select-none transition-all duration-300 hover:scale-105 ${badgeStyle}`} 
+      title={`FIFA Rank: ${rank}`}
+    >
+      {icon}
+      <span>#{rank}</span>
+    </span>
+  );
 };

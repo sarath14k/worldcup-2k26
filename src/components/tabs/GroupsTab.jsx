@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
-import { GROUPS, TEAMS, FIFA_RANKINGS } from '../../data/worldcupData';
-import { formatDisplayDate, formatLiveMatchTime } from '../../utils/matchHelpers';
+import { GROUPS, TEAMS } from '../../data/worldcupData';
+import { formatDisplayDate, formatLiveMatchTime, FifaRankBadge } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
 
 export const GroupsTab = ({ 
@@ -137,8 +137,9 @@ export const GroupsTab = ({
                       <td className="py-3 px-2 font-semibold text-slate-200">
                         <div className="flex items-center gap-2 min-w-0">
                           <span className="text-xl shrink-0 filter drop-shadow-sm">{t.flag}</span>
-                          <div className="max-w-[100px] sm:max-w-[160px] overflow-hidden flex-1">
+                          <div className="max-w-[100px] sm:max-w-[160px] overflow-hidden flex-1 flex items-center gap-1.5 min-w-0">
                             <ScrollingText text={t.name} className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors" />
+                            <FifaRankBadge teamCode={t.code} />
                           </div>
                         </div>
                       </td>
@@ -227,11 +228,7 @@ export const GroupsTab = ({
                     <div className={`flex items-center gap-1.5 font-bold text-xs text-slate-200 flex-1 min-w-0 ${match.isCompleted ? 'opacity-85' : ''}`}>
                       <span className="shrink-0">{home.flag}</span>
                       <ScrollingText text={home.name} className="text-xs text-slate-200" />
-                      {match.home && FIFA_RANKINGS[match.home] && (
-                        <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.home]}`}>
-                          #{FIFA_RANKINGS[match.home]}
-                        </span>
-                      )}
+                      <FifaRankBadge teamCode={match.home} />
                     </div>
                     
                     {/* Score display */}
@@ -262,11 +259,7 @@ export const GroupsTab = ({
 
                     {/* Away Row */}
                     <div className="flex items-center gap-1.5 font-bold text-xs text-slate-200 flex-1 justify-end min-w-0">
-                      {match.away && FIFA_RANKINGS[match.away] && (
-                        <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.away]}`}>
-                          #{FIFA_RANKINGS[match.away]}
-                        </span>
-                      )}
+                      <FifaRankBadge teamCode={match.away} />
                       <ScrollingText text={away.name} className="text-xs text-slate-200 text-right justify-end" />
                       <span className="shrink-0">{away.flag}</span>
                     </div>

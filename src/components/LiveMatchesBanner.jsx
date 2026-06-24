@@ -1,5 +1,6 @@
-import { TEAMS, FIFA_RANKINGS } from '../data/worldcupData';
+import { TEAMS } from '../data/worldcupData';
 import { ScrollingText } from './ScrollingText';
+import { FifaRankBadge } from '../utils/matchHelpers';
 
 export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => {
   return (
@@ -36,11 +37,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
                     <span className="text-2xl shrink-0 drop-shadow-sm">{homeTeam.flag}</span>
                     <div className="max-w-[200px] overflow-hidden flex-1 flex items-center gap-2">
                       <ScrollingText text={homeTeam.name} className="uppercase tracking-wide text-slate-100" />
-                      {live.home && FIFA_RANKINGS[live.home] && (
-                        <span className="text-[10px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[live.home]}`}>
-                          #{FIFA_RANKINGS[live.home]}
-                        </span>
-                      )}
+                      <FifaRankBadge teamCode={live.home} />
                     </div>
                   </div>
                   <div className="text-brand-neon font-black font-mono text-sm bg-slate-900/80 border border-brand-neon/20 px-3 py-1 rounded-xl min-w-[38px] text-center shadow-neon">
@@ -54,11 +51,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
                     <span className="text-2xl shrink-0 drop-shadow-sm">{awayTeam.flag}</span>
                     <div className="max-w-[200px] overflow-hidden flex-1 flex items-center gap-2">
                       <ScrollingText text={awayTeam.name} className="uppercase tracking-wide text-slate-100" />
-                      {live.away && FIFA_RANKINGS[live.away] && (
-                        <span className="text-[10px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[live.away]}`}>
-                          #{FIFA_RANKINGS[live.away]}
-                        </span>
-                      )}
+                      <FifaRankBadge teamCode={live.away} />
                     </div>
                   </div>
                   <div className="text-brand-neon font-black font-mono text-sm bg-slate-900/80 border border-brand-neon/20 px-3 py-1 rounded-xl min-w-[38px] text-center shadow-neon">
@@ -81,11 +74,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
               <div className="flex items-center justify-between gap-4 md:gap-8 flex-1">
                 {/* Home Team */}
                 <div className="flex items-center gap-3 font-extrabold text-slate-100 sm:text-base md:text-lg justify-end flex-1 min-w-0">
-                  {live.home && FIFA_RANKINGS[live.home] && (
-                    <span className="text-xs text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[live.home]}`}>
-                      #{FIFA_RANKINGS[live.home]}
-                    </span>
-                  )}
+                  <FifaRankBadge teamCode={live.home} />
                   <ScrollingText text={homeTeam.name} className="uppercase tracking-wide text-slate-100 text-right justify-end" />
                   <span className="text-2xl sm:text-3xl shrink-0 drop-shadow">{homeTeam.flag}</span>
                 </div>
@@ -99,11 +88,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
                 <div className="flex items-center gap-3 font-extrabold text-slate-100 sm:text-base md:text-lg flex-1 min-w-0">
                   <span className="text-2xl sm:text-3xl shrink-0 drop-shadow">{awayTeam.flag}</span>
                   <ScrollingText text={awayTeam.name} className="uppercase tracking-wide text-slate-100" />
-                  {live.away && FIFA_RANKINGS[live.away] && (
-                    <span className="text-xs text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[live.away]}`}>
-                      #{FIFA_RANKINGS[live.away]}
-                    </span>
-                  )}
+                  <FifaRankBadge teamCode={live.away} />
                 </div>
               </div>
 

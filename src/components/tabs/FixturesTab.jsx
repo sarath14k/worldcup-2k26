@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Award } from 'lucide-react';
-import { TEAMS, FIFA_RANKINGS } from '../../data/worldcupData';
-import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, isMobile } from '../../utils/matchHelpers';
+import { TEAMS } from '../../data/worldcupData';
+import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, isMobile, FifaRankBadge } from '../../utils/matchHelpers';
 import { LiveMatchesList } from '../LiveMatchesBanner';
 import { ScrollingText } from '../ScrollingText';
 
@@ -127,11 +127,7 @@ export const FixturesTab = ({
                       <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
                         <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
                         <ScrollingText text={home.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`} />
-                        {match.home && FIFA_RANKINGS[match.home] && (
-                          <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.home]}`}>
-                            #{FIFA_RANKINGS[match.home]}
-                          </span>
-                        )}
+                        <FifaRankBadge teamCode={match.home} />
                       </div>
 
                       {/* Live score / VS */}
@@ -158,11 +154,7 @@ export const FixturesTab = ({
 
                       {/* Away Team */}
                       <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
-                        {match.away && FIFA_RANKINGS[match.away] && (
-                          <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.away]}`}>
-                            #{FIFA_RANKINGS[match.away]}
-                          </span>
-                        )}
+                        <FifaRankBadge teamCode={match.away} />
                         <ScrollingText text={away.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} text-right justify-end`} />
                         <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
                       </div>
@@ -264,11 +256,7 @@ export const FixturesTab = ({
                       <div className="flex items-center gap-1.5 flex-1 min-w-0">
                         <span className="shrink-0">{home.flag}</span>
                         <ScrollingText text={home.name} className="text-xs text-slate-200" />
-                        {match.home && FIFA_RANKINGS[match.home] && (
-                          <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.home]}`}>
-                            #{FIFA_RANKINGS[match.home]}
-                          </span>
-                        )}
+                        <FifaRankBadge teamCode={match.home} />
                       </div>
 
                       {/* Scores */}
@@ -278,11 +266,7 @@ export const FixturesTab = ({
 
                       {/* Away */}
                       <div className="flex items-center gap-1.5 flex-1 justify-end min-w-0">
-                        {match.away && FIFA_RANKINGS[match.away] && (
-                          <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.away]}`}>
-                            #{FIFA_RANKINGS[match.away]}
-                          </span>
-                        )}
+                        <FifaRankBadge teamCode={match.away} />
                         <ScrollingText text={away.name} className="text-xs text-slate-200 text-right justify-end" />
                         <span className="shrink-0">{away.flag}</span>
                       </div>
