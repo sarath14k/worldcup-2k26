@@ -177,8 +177,12 @@ export async function syncWithEspn() {
     });
     
     // Fetch details asynchronously for active/completed matches that need detail updates
+    let liveCount = 0;
     for (const appId of Object.keys(liveData)) {
       const match = liveData[appId];
+      if (match.isLive) {
+        liveCount++;
+      }
       if (match.needsDetailFetch) {
         const details = await fetchMatchDetails(
           match.eventId, 
@@ -219,8 +223,8 @@ export async function syncWithEspn() {
       fs.writeFileSync(distPath, outputString, 'utf8');
     }
     
-    console.log(`[ESPN Sync] Sync complete. Saved ${Object.keys(liveData).length} active/completed matches.`);
-    return { success: true, count: Object.keys(liveData).length };
+    console.log(`[ESPN Sync] Sync complete. Saved ${Object.keys(liveData).length} active/completed matches. Live matches currently: ${liveCount}`);
+    return { success: true, count: Object.keys(liveData).length, liveCount };
     
   } catch (error) {
     console.error('[ESPN Sync] Sync failed:', error);

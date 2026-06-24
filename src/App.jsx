@@ -331,7 +331,7 @@ function App() {
     };
 
     fetchRatings();
-    const timer = setInterval(fetchRatings, 30000); // refresh ratings every 30s
+    const timer = setInterval(fetchRatings, 300000); // refresh ratings every 5 minutes (300000ms)
     return () => clearInterval(timer);
   }, []);
 

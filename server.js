@@ -464,6 +464,7 @@ app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
+let scrapeTimeout = null;
 async function runScrape() {
   if (isRunning) {
     console.log('[Server Scraper] Scraper is already running. Skipping.');
@@ -472,18 +473,31 @@ async function runScrape() {
   isRunning = true;
   console.log('[Server Scraper] Starting scraping cycle...');
   lastScrapeStatus.lastRun = new Date().toISOString();
+  let liveMatchesActive = false;
   try {
     const result = await syncWithEspn();
     console.log('[Server Scraper] Scraping cycle completed successfully:', result);
     lastScrapeStatus.success = result.success;
     lastScrapeStatus.count = result.count || 0;
     lastScrapeStatus.error = result.error || null;
+
+    if (result.success && result.liveCount > 0) {
+      liveMatchesActive = true;
+    }
   } catch (err) {
     console.error('[Server Scraper] Scraping cycle failed:', err);
     lastScrapeStatus.success = false;
     lastScrapeStatus.error = err.message;
   } finally {
     isRunning = false;
+
+    if (scrapeTimeout) {
+      clearTimeout(scrapeTimeout);
+    }
+    // Dynamic scheduling: 30 seconds if live matches are running, otherwise 10 minutes (600000ms)
+    const delay = liveMatchesActive ? 30000 : 600000;
+    console.log(`[Server Scraper] Next scraping cycle scheduled in ${delay / 1000}s`);
+    scrapeTimeout = setTimeout(runScrape, delay);
   }
 }
 
@@ -535,8 +549,7 @@ app.listen(PORT, () => {
   runRatingsSync();
   runLiveRatingsSync();
   
-  // Run ESPN sync every 60 seconds
-  setInterval(runScrape, 60000);
+
 
   // Run ratings sync every 5 minutes (300000 ms)
   setInterval(runRatingsSync, 300000);
