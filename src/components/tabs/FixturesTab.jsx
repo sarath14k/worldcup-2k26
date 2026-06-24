@@ -56,14 +56,6 @@ export const FixturesTab = ({
               </p>
             </div>
           </div>
-
-          <div className="flex sm:flex-col items-start sm:items-end justify-between sm:justify-center border-t border-slate-900 sm:border-0 pt-3 sm:pt-0">
-            <span className="text-[9px] text-slate-500 font-extrabold uppercase tracking-widest">Connection</span>
-            <span className="text-[10px] text-slate-350 font-bold flex items-center gap-1 font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              AUTO-POLL ONLINE (15s)
-            </span>
-          </div>
         </div>
 
         {hasLiveMatches && activeLiveMatchesList.length > 0 && (
