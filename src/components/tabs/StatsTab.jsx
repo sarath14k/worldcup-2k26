@@ -20,28 +20,28 @@ export const StatsTab = ({ playerStats }) => {
       </div>
 
       {/* Sub Tab Switcher */}
-      <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full sm:w-fit whitespace-nowrap self-center select-none">
+      <div className="flex flex-col sm:flex-row gap-1.5 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full sm:w-fit self-center select-none">
         <button
           onClick={() => setActiveSubTab('scorers')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer select-none ${
+          className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer select-none w-full sm:w-auto ${
             activeSubTab === 'scorers'
               ? 'bg-brand-neon text-slate-950 shadow-neon font-black'
-              : 'text-slate-400 hover:text-slate-205'
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/30'
           }`}
         >
           <GoldenBootTrophyIcon className={`w-4 h-4 ${activeSubTab === 'scorers' ? 'text-slate-950' : 'text-brand-gold'}`} />
-          Golden Boot (Goals)
+          <span>Golden Boot (Goals)</span>
         </button>
         <button
           onClick={() => setActiveSubTab('assists')}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer select-none ${
+          className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer select-none w-full sm:w-auto ${
             activeSubTab === 'assists'
               ? 'bg-brand-neon text-slate-950 shadow-neon font-black'
-              : 'text-slate-400 hover:text-slate-205'
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/30'
           }`}
         >
           <PlaymakerIcon className={`w-4 h-4 ${activeSubTab === 'assists' ? 'text-slate-950' : 'text-brand-neon'}`} />
-          Playmakers (Assists)
+          <span>Playmakers (Assists)</span>
         </button>
       </div>
 
