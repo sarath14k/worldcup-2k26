@@ -850,7 +850,7 @@ function App() {
             </div>
             <div className="min-w-0">
               <h1 className="text-sm sm:text-lg md:text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent whitespace-nowrap uppercase">
-                WORLDCUP 2K26
+                WORLD CUP 2026
               </h1>
             </div>
           </div>
@@ -1021,7 +1021,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-1.5">
             <WorldCupTrophyIcon className="w-4 h-4 text-brand-neon" />
-            <span>WORLDCUP 2K26 Interactive Roadmap</span>
+            <span>WORLD CUP 2026 Interactive Roadmap</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span>Made with</span>
