@@ -2327,7 +2327,7 @@
   "11": {
     "homeScore": 0,
     "awayScore": 0,
-    "minute": "30'",
+    "minute": "31'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
@@ -2518,7 +2518,7 @@
   "12": {
     "homeScore": 1,
     "awayScore": 0,
-    "minute": "29'",
+    "minute": "31'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
