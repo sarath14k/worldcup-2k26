@@ -22,7 +22,7 @@ import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
 
 function App() {
   // --- State ---
-  const [activeTab, setActiveTab] = useState('fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
+  const [activeTab, setActiveTab] = useState(() => localStorage.getItem('worldcup2026_activeTab') || 'fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
   const [theme, setTheme] = useState(() => localStorage.getItem('worldcup2026_theme') || 'dark');
   const [accent, setAccent] = useState(() => localStorage.getItem('worldcup2026_accent') || 'neon');
 
@@ -327,6 +327,11 @@ function App() {
     }
     localStorage.setItem('worldcup2026_theme', theme);
   }, [theme]);
+
+  // --- Active Tab synchronization effect ---
+  useEffect(() => {
+    localStorage.setItem('worldcup2026_activeTab', activeTab);
+  }, [activeTab]);
 
   // --- Calculate Standings & Populate R32 ---
   const standings = useMemo(() => {
