@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
-import { GROUPS, TEAMS } from '../../data/worldcupData';
+import { GROUPS, TEAMS, FIFA_RANKINGS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
 
@@ -224,9 +224,14 @@ export const GroupsTab = ({
                   
                   <div className="flex items-center gap-2 justify-between">
                     {/* Home Row */}
-                    <div className={`flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 min-w-0 ${match.isCompleted ? 'opacity-85' : ''}`}>
+                    <div className={`flex items-center gap-1.5 font-bold text-xs text-slate-200 flex-1 min-w-0 ${match.isCompleted ? 'opacity-85' : ''}`}>
                       <span className="shrink-0">{home.flag}</span>
                       <ScrollingText text={home.name} className="text-xs text-slate-200" />
+                      {match.home && FIFA_RANKINGS[match.home] && (
+                        <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.home]}`}>
+                          #{FIFA_RANKINGS[match.home]}
+                        </span>
+                      )}
                     </div>
                     
                     {/* Score display */}
@@ -256,7 +261,12 @@ export const GroupsTab = ({
                     </div>
 
                     {/* Away Row */}
-                    <div className="flex items-center gap-2 font-bold text-xs text-slate-200 flex-1 justify-end min-w-0">
+                    <div className="flex items-center gap-1.5 font-bold text-xs text-slate-200 flex-1 justify-end min-w-0">
+                      {match.away && FIFA_RANKINGS[match.away] && (
+                        <span className="text-[9px] text-slate-500 font-mono font-medium shrink-0" title={`FIFA Rank: ${FIFA_RANKINGS[match.away]}`}>
+                          #{FIFA_RANKINGS[match.away]}
+                        </span>
+                      )}
                       <ScrollingText text={away.name} className="text-xs text-slate-200 text-right justify-end" />
                       <span className="shrink-0">{away.flag}</span>
                     </div>

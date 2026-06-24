@@ -240,3 +240,12 @@ export const KNOCKOUT_MATCHES = {
     { id: 'final', nextId: null, position: null, slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'World Cup Final', date: 'July 20, 05:30 AM IST' }
   ]
 };
+
+export const FIFA_RANKINGS = {
+  ARG: 1, FRA: 2, ENG: 3, BEL: 4, BRA: 5, POR: 6, NED: 7, ESP: 8, CRO: 10,
+  USA: 11, COL: 12, MAR: 13, URU: 14, MEX: 15, GER: 16, SEN: 17, JPN: 18,
+  SUI: 19, IRN: 20, KOR: 22, AUS: 24, AUT: 25, SWE: 26, TUR: 35, ECU: 31,
+  CZE: 36, PAR: 56, CIV: 38, TUN: 41, ALG: 43, RSA: 59, IRQ: 58, CPV: 65,
+  GHA: 64, BIH: 74, UZB: 62, JOR: 71, KSA: 53, COD: 61, HAI: 85, CUW: 86,
+  PAN: 43, SCO: 39, NZL: 104, QAT: 34, CAN: 40, EGY: 36, NOR: 47
+};
