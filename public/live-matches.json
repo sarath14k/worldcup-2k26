@@ -2327,7 +2327,7 @@
   "11": {
     "homeScore": 0,
     "awayScore": 0,
-    "minute": "40'",
+    "minute": "41'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
@@ -2566,13 +2566,25 @@
         "text": "Alistair JOHNSTON (Canada) attempts an effort on goal.",
         "minute": 40,
         "minuteStr": "40'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ali AHMED (Canada) attempts an effort on goal.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Switzerland pulls off a save.",
+        "minute": 41,
+        "minuteStr": "41'"
       }
     ]
   },
   "12": {
     "homeScore": 2,
     "awayScore": 0,
-    "minute": "39'",
+    "minute": "41'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
@@ -2820,8 +2832,8 @@
       {
         "type": "Foul",
         "text": "Ermedin DEMIROVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 39,
-        "minuteStr": "39'"
+        "minute": 40,
+        "minuteStr": "40'"
       },
       {
         "type": "Foul",

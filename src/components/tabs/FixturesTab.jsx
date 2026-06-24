@@ -22,53 +22,16 @@ export const FixturesTab = ({
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
-      {/* Live Tracker Banner & Auto-Refresh Toggle */}
-      <div className="p-5 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-slate-900 flex flex-col gap-4 relative overflow-hidden shadow-glass group/live animate-fadeIn">
-        {/* Glow accent */}
-        <div className="absolute -top-20 -left-20 w-40 h-40 bg-brand-neon/5 rounded-full blur-3xl pointer-events-none group-hover/live:bg-brand-neon/10 transition-colors duration-500" />
-        <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-brand-purple/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10 w-full">
-          <div className="flex items-center gap-3.5 min-w-0">
-            {/* Pulsating Signal Radar Icon */}
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-full bg-slate-900 border border-slate-800/80 shrink-0">
-              <span className={`absolute inline-flex h-7 w-7 rounded-full opacity-75 animate-ping ${hasLiveMatches ? 'bg-brand-neon/20' : 'bg-amber-500/10'}`}></span>
-              <span className={`absolute inline-flex h-4 w-4 rounded-full opacity-40 animate-pulse ${hasLiveMatches ? 'bg-brand-neon/30' : 'bg-amber-500/20'}`}></span>
-              <span className={`relative w-2.5 h-2.5 rounded-full ${hasLiveMatches ? 'bg-brand-neon shadow-neon' : 'bg-amber-500'}`}></span>
-            </div>
-            
-            <div className="min-w-0">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-sm font-black text-slate-100 uppercase tracking-widest">
-                  {hasLiveMatches ? 'Live Scores Feed' : 'Live Match Monitor'}
-                </h2>
-                <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md border ${
-                  hasLiveMatches 
-                    ? 'bg-brand-neon/10 border-brand-neon/40 text-brand-neon animate-pulse' 
-                    : 'bg-slate-900 border-slate-800 text-slate-400'
-                }`}>
-                  {hasLiveMatches ? 'STATUS: ACTIVE' : 'STATUS: STANDBY'}
-                </span>
-              </div>
-              <p className="text-[10px] sm:text-xs text-slate-400 mt-1 leading-relaxed">
-                {hasLiveMatches 
-                  ? 'Real-time FIFA World Cup match statistics and events are streaming.' 
-                  : 'No matches are currently active. Auto-polling server for live kickoff feeds...'}
-              </p>
-            </div>
-          </div>
+      {/* Active Live Matches (Rendered directly only when active) */}
+      {hasLiveMatches && activeLiveMatchesList.length > 0 && (
+        <div className="mb-2 animate-fadeIn w-full">
+          <LiveMatchesList 
+            activeLiveMatchesList={activeLiveMatchesList} 
+            setSelectedMatch={setSelectedMatch} 
+            activeGoalFlashMatchIds={activeGoalFlashMatchIds}
+          />
         </div>
-
-        {hasLiveMatches && activeLiveMatchesList.length > 0 && (
-          <div className="border-t border-slate-900/60 pt-4 relative z-10 w-full">
-            <LiveMatchesList 
-              activeLiveMatchesList={activeLiveMatchesList} 
-              setSelectedMatch={setSelectedMatch} 
-              activeGoalFlashMatchIds={activeGoalFlashMatchIds}
-            />
-          </div>
-        )}
-      </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {/* Left side: Upcoming Fixtures */}
