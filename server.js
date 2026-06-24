@@ -170,11 +170,10 @@ try {
     // Filter to keep only FIFA channel highlights
     highlightsCache = {};
     for (const [key, val] of Object.entries(rawCache)) {
-      const channelLower = (val.channel || '').toLowerCase();
+      const channelLower = (val.channel || '').toLowerCase().trim();
       const isFIFA = channelLower === 'fifa' || 
                      channelLower === 'fifatv' || 
-                     channelLower === 'fifa (direct)' || 
-                     channelLower.includes('fifa');
+                     channelLower === 'fifa (direct)';
       if (isFIFA) {
         highlightsCache[key] = val;
       }
@@ -300,19 +299,24 @@ app.get('/api/match-highlights', async (req, res) => {
             'fake', 'concept', 'fan-made', 'fan made', 'parody', 'mockup', 'mock',
             'short', 'shorts', 'u20', 'u-20', 'u17', 'u-17', 'u23', 'u-23', 'women', 'womens', 'wnt',
             'train', 'training', 'press conference', 'press-conference', 'press', 'interview', 'interviews',
-            'arrival', 'arrivals', 'tunnel', 'vlog', 'reaction', 'fan react', 'fans react', 'behind the scenes', 'bts'
+            'arrival', 'arrivals', 'tunnel', 'vlog', 'reaction', 'fan react', 'fans react', 'behind the scenes', 'bts',
+            'futsal', 'beach soccer', 'beach', 'virtual', 'esport', 'interactive', 'esports',
+            'world cup 2022', 'world cup 2018', 'world cup 2014', 'world cup 2010', 'world cup 2006', 'world cup 2002', 'world cup 1998'
           ];
 
           const isAllowedChannel = (channelName, channelUrl) => {
-            const channelLower = (channelName || '').toLowerCase();
-            const channelUrlLower = (channelUrl || '').toLowerCase();
+            const channelLower = (channelName || '').toLowerCase().trim();
+            const channelUrlLower = (channelUrl || '').toLowerCase().trim();
             
-            return channelLower === 'fifa' || 
-              channelLower === 'fifatv' || 
-              channelUrlLower === '/@fifa' || 
-              channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw') || 
-              channelUrlLower.includes('fifatv') || 
-              channelUrlLower === '/c/fifa';
+            const isFIFA = channelLower === 'fifa' || 
+                           channelLower === 'fifatv' || 
+                           channelLower === 'fifa (direct)';
+            const isFIFAUrl = channelUrlLower === '/@fifa' || 
+                              channelUrlLower === '/@fifatv' || 
+                              channelUrlLower === '/c/fifa' || 
+                              channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw');
+                              
+            return isFIFA && isFIFAUrl;
           };
 
           const isFIFAVideo = (v) => {
@@ -333,6 +337,12 @@ app.get('/api/match-highlights', async (req, res) => {
             const titleWords = titleLower.split(/[^a-z0-9]/);
             const channelWords = channelLower.split(/[^a-z0-9]/);
             if (titleWords.includes('ai') || channelWords.includes('ai')) {
+              return false;
+            }
+            
+            // 2b. Exclude other years to avoid historical matches
+            const yearMatch = titleLower.match(/\b(19\d\d|20[0-2][0-5]|202[7-9])\b/);
+            if (yearMatch) {
               return false;
             }
             

@@ -6144,8 +6144,7 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "29": {
     "homeScore": null,
@@ -13230,44 +13229,651 @@
     ]
   },
   "64": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 0,
+    "awayScore": 1,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "away",
+        "player": "Daniel MUNOZ",
+        "minute": 76
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        32,
+        58
       ],
       "shots": [
-        10,
-        10
+        7,
+        20
       ],
       "shotsOnTarget": [
-        5,
-        5
+        1,
+        9
       ],
       "corners": [
-        5,
+        4,
         5
       ],
       "fouls": [
-        10,
-        10
+        16,
+        12
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        2
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Congo DR won the coin toss and chose the side",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Edo KAYEMBE (Congo DR) attempts an effort on goal.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Offside",
+        "text": "Luis DIAZ (Colombia) is ruled offside.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jhon ARIAS (Colombia) attempts an effort on goal.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Daniel MUNOZ (Colombia) attempts an effort on goal.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cedric BAKAMBU (Congo DR) commits a foul.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Offside",
+        "text": "Daniel MUNOZ (Colombia) is ruled offside.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "James RODRIGUEZ (Colombia) attempts an effort on goal.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Corner",
+        "text": "James RODRIGUEZ (Colombia) takes a corner kick.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jhon LUCUMI (Colombia) attempts an effort on goal.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Offside",
+        "text": "Luis DIAZ (Colombia) is ruled offside.",
+        "minute": 13,
+        "minuteStr": "13'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Johan MOJICA (Colombia) attempts an effort on goal.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luis DIAZ (Colombia) attempts an effort on goal.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Corner",
+        "text": "Jhon ARIAS (Colombia) takes a corner kick.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gustavo PUERTA (Colombia) attempts an effort on goal.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gustavo PUERTA (Colombia) attempts an effort on goal.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Foul",
+        "text": "Daniel MUNOZ (Colombia) commits a foul.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Foul",
+        "text": "Steve KAPUADI (Congo DR) commits a foul.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luis DIAZ (Colombia) attempts an effort on goal.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Foul",
+        "text": "Daniel MUNOZ (Colombia) commits a foul.",
+        "minute": 25,
+        "minuteStr": "25'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 25,
+        "minuteStr": "25'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Foul",
+        "text": "Samuel MOUTOUSSAMY (Congo DR) commits a foul.",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luis DIAZ (Colombia) attempts an effort on goal.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Foul",
+        "text": "Gustavo PUERTA (Colombia) commits a foul.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Corner",
+        "text": "Arthur MASUAKU (Congo DR) takes a corner kick.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Foul",
+        "text": "Edo KAYEMBE (Congo DR) commits a foul.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Davinson SANCHEZ (Colombia) attempts an effort on goal.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Foul",
+        "text": "Davinson SANCHEZ (Colombia) commits a foul.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luis SUAREZ (Colombia) attempts an effort on goal.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Foul",
+        "text": "Axel TUANZEBE (Congo DR) commits a foul.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Corner",
+        "text": "Arthur MASUAKU (Congo DR) takes a corner kick.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Cedric BAKAMBU (Congo DR) attempts an effort on goal.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luis DIAZ (Colombia) attempts an effort on goal.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gustavo PUERTA (Colombia) attempts an effort on goal.",
+        "minute": 48,
+        "minuteStr": "45'+3"
+      },
+      {
+        "type": "Foul",
+        "text": "Yoane WISSA (Congo DR) commits a foul.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Noah SADIKI (in) comes off the bench to replace Ngalayel MUKAU (out) (Congo DR)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Corner",
+        "text": "James RODRIGUEZ (Colombia) takes a corner kick.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luis DIAZ (Colombia) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jhon ARIAS (Colombia) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Foul",
+        "text": "Luis SUAREZ (Colombia) commits a foul.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Samuel MOUTOUSSAMY (Congo DR) attempts an effort on goal.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Axel TUANZEBE (Congo DR) commits a foul.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Foul",
+        "text": "Luis DIAZ (Colombia) commits a foul.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Jhon LUCUMI (Colombia) is booked by the referee.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Simon BANZA (in) comes off the bench to replace Cedric BAKAMBU (out) (Congo DR)",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Juan QUINTERO (in) comes off the bench to replace James RODRIGUEZ (out) (Colombia)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Jhon CORDOBA (in) comes off the bench to replace Luis SUAREZ (out) (Colombia)",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Foul",
+        "text": "Edo KAYEMBE (Congo DR) commits a foul.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Foul",
+        "text": "Steve KAPUADI (Congo DR) commits a foul.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Offside",
+        "text": "Luis DIAZ (Colombia) is ruled offside.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Foul",
+        "text": "Samuel MOUTOUSSAMY (Congo DR) commits a foul.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Corner",
+        "text": "Juan QUINTERO (Colombia) takes a corner kick.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Foul",
+        "text": "Edo KAYEMBE (Congo DR) commits a foul.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Foul",
+        "text": "Samuel MOUTOUSSAMY (Congo DR) commits a foul.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Joris KAYEMBE (in) comes off the bench to replace Arthur MASUAKU (out) (Congo DR)",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Charles PICKEL (in) comes off the bench to replace Edo KAYEMBE (out) (Congo DR)",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Yoane WISSA (Congo DR) attempts an effort on goal.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Offside",
+        "text": "Luis DIAZ (Colombia) is ruled offside.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Juan QUINTERO.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Daniel MUNOZ (Colombia) attempts an effort on goal.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Daniel MUNOZ (Colombia) scores!!",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Richard RIOS (in) comes off the bench to replace Jhon ARIAS (out) (Colombia)",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Foul",
+        "text": "Luis DIAZ (Colombia) commits a foul.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Offside",
+        "text": "Luis DIAZ (Colombia) is ruled offside.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nathanael MBUKU (in) comes off the bench to replace Samuel MOUTOUSSAMY (out) (Congo DR)",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Foul",
+        "text": "Simon BANZA (Congo DR) commits a foul.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Offside",
+        "text": "Jhon CORDOBA (Colombia) is ruled offside.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Foul",
+        "text": "Charles PICKEL (Congo DR) commits a foul.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gustavo PUERTA (Colombia) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Corner",
+        "text": "Juan QUINTERO (Colombia) takes a corner kick.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Gustavo PUERTA (Colombia) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jhon CORDOBA (Colombia) commits a foul.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Congo DR pulls off a save.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Foul",
+        "text": "Luis DIAZ (Colombia) commits a foul.",
+        "minute": 88,
+        "minuteStr": "88'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Joris KAYEMBE (Congo DR) attempts an effort on goal.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "Richard RIOS (Colombia) commits a foul.",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nathanael MBUKU (Congo DR) attempts an effort on goal.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Colombia pulls off a save.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Corner",
+        "text": "Nathanael MBUKU (Congo DR) takes a corner kick.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Charles PICKEL (Congo DR) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Corner",
+        "text": "Nathanael MBUKU (Congo DR) takes a corner kick.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Colombia pulls off a save.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Charles PICKEL (Congo DR) is booked by the referee.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Jefferson LERMA (Colombia) is booked by the referee.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Foul",
+        "text": "Nathanael MBUKU (Congo DR) commits a foul.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Juan QUINTERO (Colombia) attempts an effort on goal.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 100,
+        "minuteStr": "90'+10"
+      }
+    ]
   },
   "65": {
     "homeScore": null,
@@ -13909,31 +14515,31 @@
   "69": {
     "homeScore": 0,
     "awayScore": 0,
-    "minute": "71'",
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
+    "isCompleted": true,
+    "isDetailedScraped": true,
     "events": [],
     "stats": {
       "possession": [
-        60,
-        28
+        72,
+        20
       ],
       "shots": [
-        14,
-        1
+        19,
+        2
       ],
       "shotsOnTarget": [
-        2,
+        3,
         0
       ],
       "corners": [
-        4,
+        9,
         2
       ],
       "fouls": [
-        9,
-        18
+        14,
+        24
       ],
       "yellowCards": [
         1,
@@ -14322,48 +14928,739 @@
         "text": "Match paused for a hydration break",
         "minute": 70,
         "minuteStr": "70'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Morgan ROGERS (in) comes off the bench to replace Jude BELLINGHAM (out) (England)",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Eberechi EZE (in) comes off the bench to replace Elliot ANDERSON (out) (England)",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Foul",
+        "text": "Kwasi SIBO (Ghana) commits a foul.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Foul",
+        "text": "Harry KANE (England) commits a foul.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Foul",
+        "text": "Gideon MENSAH (Ghana) commits a foul.",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Prince ADU (Ghana) attempts an effort on goal.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Offside",
+        "text": "Antoine SEMENYO (Ghana) is ruled offside.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Offside",
+        "text": "Bukayo SAKA (England) is ruled offside.",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Foul",
+        "text": "Gideon MENSAH (Ghana) commits a foul.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marc GUEHI (England) commits a foul.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Marcus RASHFORD (in) comes off the bench to replace Noni MADUEKE (out) (England)",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Foul",
+        "text": "Caleb YIRENKYI (Ghana) commits a foul.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marcus RASHFORD (England) commits a foul.",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Bukayo SAKA (England) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ghana pulls off a save.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nico OREILLY (England) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Harry KANE (England) attempts an effort on goal.",
+        "minute": 86,
+        "minuteStr": "86'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Kojo Peprah OPPONG (in) comes off the bench to replace Marvin SENAYA (out) (Ghana)",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marcus RASHFORD (England) commits a foul.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "Antoine SEMENYO (Ghana) commits a foul.",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Nico OREILLY (England) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marc GUEHI (England) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "Substitution",
+        "text": "Baba RAHMAN (in) comes off the bench to replace Prince ADU (out) (Ghana)",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Foul",
+        "text": "Morgan ROGERS (England) commits a foul.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 100,
+        "minuteStr": "90'+10"
       }
     ]
   },
   "70": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 1,
+    "awayScore": 0,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Ante BUDIMIR",
+        "minute": 54
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        52,
+        37
       ],
       "shots": [
-        10,
-        10
+        6,
+        8
       ],
       "shotsOnTarget": [
-        5,
-        5
+        2,
+        1
       ],
       "corners": [
-        5,
-        5
+        2,
+        7
       ],
       "fouls": [
-        10,
-        10
+        12,
+        19
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        1
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Croatia won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luka MODRIC (Croatia) attempts an effort on goal.",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "Foul",
+        "text": "Josko GVARDIOL (Croatia) commits a foul.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Amir MURILLO (Panama) attempts an effort on goal.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jiovany RAMOS (Panama) commits a foul.",
+        "minute": 5,
+        "minuteStr": "5'"
+      },
+      {
+        "type": "Foul",
+        "text": "Carlos HARVEY (Panama) commits a foul.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Foul",
+        "text": "Mateo KOVACIC (Croatia) commits a foul.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Foul",
+        "text": "Luka MODRIC (Croatia) commits a foul.",
+        "minute": 13,
+        "minuteStr": "13'"
+      },
+      {
+        "type": "Foul",
+        "text": "Josko GVARDIOL (Croatia) commits a foul.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Croatia pulls off a save.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cristian MARTINEZ (Panama) commits a foul.",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Foul",
+        "text": "Edgar Yoel BARCENAS (Panama) commits a foul.",
+        "minute": 29,
+        "minuteStr": "29'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cristian MARTINEZ (Panama) commits a foul.",
+        "minute": 34,
+        "minuteStr": "34'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose CORDOBA (Panama) commits a foul.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose Luis RODRIGUEZ (Panama) commits a foul.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Foul",
+        "text": "Amir MURILLO (Panama) commits a foul.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Foul",
+        "text": "Josip SUTALO (Croatia) commits a foul.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cristian MARTINEZ (Panama) commits a foul.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Martin BATURINA (Croatia) attempts an effort on goal.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Panama pulls off a save.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Corner",
+        "text": "Marco PASALIC (Croatia) takes a corner kick.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Ante BUDIMIR (in) comes off the bench to replace Petar MUSA (out) (Croatia)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Andrej KRAMARIC (in) comes off the bench to replace Josko GVARDIOL (out) (Croatia)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose FAJARDO (Panama) commits a foul.",
+        "minute": 46,
+        "minuteStr": "46'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose Luis RODRIGUEZ (Panama) commits a foul.",
+        "minute": 49,
+        "minuteStr": "49'"
+      },
+      {
+        "type": "Offside",
+        "text": "Andrej KRAMARIC (Croatia) is ruled offside.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Corner",
+        "text": "Cristian MARTINEZ (Panama) takes a corner kick.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose CORDOBA (Panama) commits a foul.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by Josip STANISIC.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Ante BUDIMIR (Croatia) attempts an effort on goal.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Goal!",
+        "text": "Ante BUDIMIR (Croatia) scores!!",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Foul",
+        "text": "Josip SUTALO (Croatia) commits a foul.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Corner",
+        "text": "Jose Luis RODRIGUEZ (Panama) takes a corner kick.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marco PASALIC (Croatia) attempts an effort on goal.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Panama pulls off a save.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marco PASALIC (Croatia) attempts an effort on goal.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cesar BLACKMAN (Panama) commits a foul.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jose FAJARDO (Panama) attempts an effort on goal.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose CORDOBA (Panama) commits a foul.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Edgar Yoel BARCENAS (Panama) is booked by the referee.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Corner",
+        "text": "Cristian MARTINEZ (Panama) takes a corner kick.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Offside",
+        "text": "Marco PASALIC (Croatia) is ruled offside.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose CORDOBA (Panama) commits a foul.",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Amir MURILLO (Panama) attempts an effort on goal.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Croatia pulls off a save.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Corner",
+        "text": "Cristian MARTINEZ (Panama) takes a corner kick.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Carlos HARVEY (Panama) attempts an effort on goal.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Corner",
+        "text": "Edgar Yoel BARCENAS (Panama) takes a corner kick.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Petar SUCIC (in) comes off the bench to replace Mateo KOVACIC (out) (Croatia)",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Luka SUCIC (in) comes off the bench to replace Marco PASALIC (out) (Croatia)",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Foul",
+        "text": "Petar SUCIC (Croatia) commits a foul.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Offside",
+        "text": "Cristian MARTINEZ (Panama) is ruled offside.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Cecilio WATERMAN (in) comes off the bench to replace Jiovany RAMOS (out) (Panama)",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jose Luis RODRIGUEZ (Panama) attempts an effort on goal.",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Corner",
+        "text": "Jose Luis RODRIGUEZ (Panama) takes a corner kick.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Carlos HARVEY (Panama) attempts an effort on goal.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jose FAJARDO (Panama) commits a foul.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Mario PASALIC (in) comes off the bench to replace Luka MODRIC (out) (Croatia)",
+        "minute": 81,
+        "minuteStr": "81'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Luka SUCIC (Croatia) attempts an effort on goal.",
+        "minute": 82,
+        "minuteStr": "82'"
+      },
+      {
+        "type": "Corner",
+        "text": "Martin BATURINA (Croatia) takes a corner kick.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marin PONGRACIC (Croatia) commits a foul.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Azarias LONDONO (in) comes off the bench to replace Jose FAJARDO (out) (Panama)",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Cecilio WATERMAN (Panama) attempts an effort on goal.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Foul",
+        "text": "Mario PASALIC (Croatia) commits a foul.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "Cecilio WATERMAN (Panama) commits a foul.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ante BUDIMIR (Croatia) commits a foul.",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Eric DAVIS (in) comes off the bench to replace Cesar BLACKMAN (out) (Panama)",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Tomas RODRIGUEZ (in) comes off the bench to replace Edgar Yoel BARCENAS (out) (Panama)",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Corner",
+        "text": "Eric DAVIS (Panama) takes a corner kick.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Foul",
+        "text": "Ante BUDIMIR (Croatia) commits a foul.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Petar SUCIC (Croatia) is booked by the referee.",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Amir MURILLO (Panama) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Foul",
+        "text": "Andres ANDRADE (Panama) commits a foul.",
+        "minute": 94,
+        "minuteStr": "90'+4"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 100,
+        "minuteStr": "90'+10"
+      }
+    ]
   },
   "71": {
     "homeScore": null,
