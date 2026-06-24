@@ -9,6 +9,12 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
         const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
         const awayTeam = TEAMS[live.away] || { flag: '🏳️', name: live.away || 'TBD' };
         const isFlashing = activeGoalFlashMatchIds.includes(String(live.id));
+        const match = live.originalMatch;
+        const isGroup = match?.type === 'group';
+        const matchLabel = isGroup 
+          ? `Group ${match.group} • Match ${((match.id - 1) % 6) + 1}`
+          : `${match?.round || live.round || 'Knockout'} • Match ${match?.id || live.id}`;
+
         return (
           <div 
             key={live.id} 
@@ -33,7 +39,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
                   )}
                 </div>
                 <span className="text-[9px] text-slate-500 font-extrabold uppercase tracking-widest font-mono">
-                  Match {live.id}
+                  {matchLabel}
                 </span>
               </div>
 
@@ -72,13 +78,18 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
             {/* Desktop Layout (Side-by-Side Horizontal) */}
             <div className="hidden sm:flex items-center justify-between gap-4 w-full">
               {/* Live Indicator & Status */}
-              <div className="flex items-center gap-2.5 shrink-0">
-                <span className="text-xs bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-3 py-1 rounded-xl font-black tracking-widest uppercase animate-pulse">
-                  LIVE {live.minute}'
+              <div className="flex flex-col items-start gap-1 shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-3 py-1 rounded-xl font-black tracking-widest uppercase animate-pulse">
+                    LIVE {live.minute}'
+                  </span>
+                  {isFlashing && (
+                    <span className="bg-brand-neon text-slate-950 text-[9px] px-1.5 py-0.5 rounded-lg font-black animate-bounce shadow-[0_0_8px_rgba(0,255,135,0.4)] ml-2">⚽ GOAL!</span>
+                  )}
+                </div>
+                <span className="text-[10px] text-slate-500 font-extrabold uppercase tracking-widest font-mono mt-0.5">
+                  {matchLabel}
                 </span>
-                {isFlashing && (
-                  <span className="bg-brand-neon text-slate-950 text-[9px] px-1.5 py-0.5 rounded-lg font-black animate-bounce shadow-[0_0_8px_rgba(0,255,135,0.4)] ml-2">⚽ GOAL!</span>
-                )}
               </div>
 
               {/* Teams & Score Row */}
