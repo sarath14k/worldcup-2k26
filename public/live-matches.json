@@ -961,8 +961,7 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "5": {
     "homeScore": null,
@@ -2323,8 +2322,7 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "11": {
     "homeScore": null,
@@ -3459,8 +3457,7 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "17": {
     "homeScore": null,
@@ -4964,8 +4961,7 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "23": {
     "homeScore": null,
@@ -5861,28 +5857,28 @@
     "events": [],
     "stats": {
       "possession": [
-        74.6,
-        25.4
+        25.4,
+        74.6
       ],
       "shots": [
-        27,
-        10
+        10,
+        27
       ],
       "shotsOnTarget": [
-        15,
-        3
+        3,
+        15
       ],
       "corners": [
-        9,
-        0
+        0,
+        9
       ],
       "fouls": [
-        7,
-        10
+        10,
+        7
       ],
       "yellowCards": [
-        1,
-        5
+        5,
+        1
       ],
       "redCards": [
         0,
@@ -6148,7 +6144,8 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "isScorersFixed": true
   },
   "29": {
     "homeScore": null,
@@ -7366,8 +7363,7 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "35": {
     "homeScore": null,
@@ -8570,8 +8566,7 @@
         "minute": 101,
         "minuteStr": "90'+11'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "41": {
     "homeScore": null,
@@ -9708,8 +9703,7 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "47": {
     "homeScore": null,
@@ -10840,8 +10834,7 @@
         "minute": 101,
         "minuteStr": "90'+11'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "53": {
     "homeScore": null,
@@ -12031,8 +12024,7 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ],
-    "isScorersFixed": true
+    ]
   },
   "59": {
     "homeScore": null,
@@ -12607,44 +12599,635 @@
     ]
   },
   "63": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 5,
+    "awayScore": 0,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "CRISTIANO RONALDO",
+        "minute": 6
+      },
+      {
+        "team": "home",
+        "player": "NUNO MENDES",
+        "minute": 17
+      },
+      {
+        "team": "home",
+        "player": "CRISTIANO RONALDO",
+        "minute": 39
+      },
+      {
+        "team": "home",
+        "player": "Abduvohid NEMATOV (OG)",
+        "minute": 60
+      },
+      {
+        "team": "home",
+        "player": "RAFAEL LEAO",
+        "minute": 87
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        53,
+        37
       ],
       "shots": [
-        10,
-        10
+        17,
+        7
       ],
       "shotsOnTarget": [
-        5,
-        5
+        9,
+        2
       ],
       "corners": [
-        5,
-        5
+        3,
+        2
       ],
       "fouls": [
-        10,
-        10
+        14,
+        15
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        1
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Uzbekistan won the coin toss and chose to kick off",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "BRUNO FERNANDES (Portugal) attempts an effort on goal.",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "Corner",
+        "text": "JOAO CANCELO (Portugal) takes a corner kick.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 4,
+        "minuteStr": "4'"
+      },
+      {
+        "type": "Foul",
+        "text": "Eldor SHOMURODOV (Uzbekistan) commits a foul.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by JOAO CANCELO.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Goal!",
+        "text": "CRISTIANO RONALDO (Portugal) scores!!",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Foul",
+        "text": "Behruzjon KARIMOV (Uzbekistan) commits a foul.",
+        "minute": 10,
+        "minuteStr": "10'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "JOAO CANCELO (Portugal) attempts an effort on goal.",
+        "minute": 11,
+        "minuteStr": "11'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Odiljon XAMROBEKOV (Uzbekistan) is booked by the referee.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "NUNO MENDES (Portugal) attempts an effort on goal.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Goal!",
+        "text": "NUNO MENDES (Portugal) scores!!",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Sherzod NASRULLAEV (Uzbekistan) attempts an effort on goal.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Portugal pulls off a save.",
+        "minute": 19,
+        "minuteStr": "19'"
+      },
+      {
+        "type": "Foul",
+        "text": "Behruzjon KARIMOV (Uzbekistan) commits a foul.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "VITINHA (Portugal) attempts an effort on goal.",
+        "minute": 21,
+        "minuteStr": "21'"
+      },
+      {
+        "type": "Foul",
+        "text": "Abdulla ABDULLAEV (Uzbekistan) commits a foul.",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "Foul",
+        "text": "JOAO CANCELO (Portugal) commits a foul.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Foul",
+        "text": "NUNO MENDES (Portugal) commits a foul.",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Foul",
+        "text": "VITINHA (Portugal) commits a foul.",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Foul",
+        "text": "Abbosbek FAYZULLAEV (Uzbekistan) commits a foul.",
+        "minute": 29,
+        "minuteStr": "29'"
+      },
+      {
+        "type": "VAR",
+        "text": "Goal disallowed",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Foul",
+        "text": "PEDRO NETO (Portugal) commits a foul.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Foul",
+        "text": "JOAO FELIX (Portugal) commits a foul.",
+        "minute": 34,
+        "minuteStr": "34'"
+      },
+      {
+        "type": "Foul",
+        "text": "Otabek SHUKUROV (Uzbekistan) commits a foul.",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "Assist",
+        "text": "Assisted by BRUNO FERNANDES.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Goal!",
+        "text": "CRISTIANO RONALDO (Portugal) scores!!",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "JOAO FELIX (Portugal) attempts an effort on goal.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Foul",
+        "text": "JOAO CANCELO (Portugal) commits a foul.",
+        "minute": 42,
+        "minuteStr": "42'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Otabek SHUKUROV (Uzbekistan) attempts an effort on goal.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Foul",
+        "text": "RUBEN DIAS (Portugal) commits a foul.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Odiljon XAMROBEKOV (Uzbekistan) attempts an effort on goal.",
+        "minute": 47,
+        "minuteStr": "45'+2"
+      },
+      {
+        "type": "Foul",
+        "text": "NUNO MENDES (Portugal) commits a foul.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 52,
+        "minuteStr": "45'+7"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Khojiakbar ALIJONOV (in) comes off the bench to replace Sherzod NASRULLAEV (out) (Uzbekistan)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins Akmal MOZGOVOY (in) comes off the bench to replace Odiljon XAMROBEKOV (out) (Uzbekistan)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins NELSON SEMEDO (in) comes off the bench to replace JOAO CANCELO (out) (Portugal)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Substitution",
+        "text": "Before the second half begins FRANCISCO CONCEICAO (in) comes off the bench to replace PEDRO NETO (out) (Portugal)",
+        "minute": 45,
+        "minuteStr": "HT"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "JOAO FELIX (Portugal) attempts an effort on goal.",
+        "minute": 47,
+        "minuteStr": "47'"
+      },
+      {
+        "type": "Foul",
+        "text": "VITINHA (Portugal) commits a foul.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Abbosbek FAYZULLAEV (Uzbekistan) attempts an effort on goal.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Foul",
+        "text": "Behruzjon KARIMOV (Uzbekistan) commits a foul.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Otabek SHUKUROV (Uzbekistan) attempts an effort on goal.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Corner",
+        "text": "Azizjon GANIEV (Uzbekistan) takes a corner kick.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Foul",
+        "text": "Abdulla ABDULLAEV (Uzbekistan) commits a foul.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Uzbekistan pulls off a save.",
+        "minute": 58,
+        "minuteStr": "58'"
+      },
+      {
+        "type": "Corner",
+        "text": "BRUNO FERNANDES (Portugal) takes a corner kick.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "JOAO FELIX (Portugal) attempts an effort on goal.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Own goal",
+        "text": "Abduvohid NEMATOV (Uzbekistan) scores an own goal.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Corner",
+        "text": "Abbosbek FAYZULLAEV (Uzbekistan) takes a corner kick.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Azizjon GANIEV (Uzbekistan) attempts an effort on goal.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Foul",
+        "text": "BRUNO FERNANDES (Portugal) commits a foul.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Substitution",
+        "text": "FRANCISCO TRINCAO (in) comes off the bench to replace JOAO FELIX (out) (Portugal)",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Foul",
+        "text": "Behruzjon KARIMOV (Uzbekistan) commits a foul.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "RENATO VEIGA (Portugal) is booked by the referee.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Offside",
+        "text": "Eldor SHOMURODOV (Uzbekistan) is ruled offside.",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Igor SERGEEV (in) comes off the bench to replace Abbosbek FAYZULLAEV (out) (Uzbekistan)",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "CRISTIANO RONALDO (Portugal) attempts an effort on goal.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Uzbekistan pulls off a save.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Foul",
+        "text": "Eldor SHOMURODOV (Uzbekistan) commits a foul.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "Foul",
+        "text": "Rustam ASHURMATOV (Uzbekistan) commits a foul.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "BERNARDO SILVA (in) comes off the bench to replace JOAO NEVES (out) (Portugal)",
+        "minute": 76,
+        "minuteStr": "76'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Eldor SHOMURODOV (Uzbekistan) attempts an effort on goal.",
+        "minute": 78,
+        "minuteStr": "78'"
+      },
+      {
+        "type": "Foul",
+        "text": "Khojiakbar ALIJONOV (Uzbekistan) commits a foul.",
+        "minute": 79,
+        "minuteStr": "79'"
+      },
+      {
+        "type": "Foul",
+        "text": "NUNO MENDES (Portugal) commits a foul.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Substitution",
+        "text": "RAFAEL LEAO (in) comes off the bench to replace VITINHA (out) (Portugal)",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Corner",
+        "text": "FRANCISCO TRINCAO (Portugal) takes a corner kick.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "BRUNO FERNANDES (Portugal) attempts an effort on goal.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Uzbekistan pulls off a save.",
+        "minute": 84,
+        "minuteStr": "84'"
+      },
+      {
+        "type": "Offside",
+        "text": "CRISTIANO RONALDO (Portugal) is ruled offside.",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Foul",
+        "text": "Behruzjon KARIMOV (Uzbekistan) commits a foul.",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "RAFAEL LEAO (Portugal) attempts an effort on goal.",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Goal!",
+        "text": "RAFAEL LEAO (Portugal) scores!!",
+        "minute": 87,
+        "minuteStr": "87'"
+      },
+      {
+        "type": "Foul",
+        "text": "RAFAEL LEAO (Portugal) commits a foul.",
+        "minute": 91,
+        "minuteStr": "90'+1"
+      },
+      {
+        "type": "Substitution",
+        "text": "Ruslanbek JIYANOV (in) comes off the bench to replace Behruzjon KARIMOV (out) (Uzbekistan)",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Substitution",
+        "text": "Sherzod ESANOV (in) comes off the bench to replace Otabek SHUKUROV (out) (Uzbekistan)",
+        "minute": 92,
+        "minuteStr": "90'+2"
+      },
+      {
+        "type": "Foul",
+        "text": "Azizjon GANIEV (Uzbekistan) commits a foul.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "FRANCISCO TRINCAO (Portugal) attempts an effort on goal.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Offside",
+        "text": "Igor SERGEEV (Uzbekistan) is ruled offside.",
+        "minute": 93,
+        "minuteStr": "90'+3"
+      },
+      {
+        "type": "Foul",
+        "text": "CRISTIANO RONALDO (Portugal) commits a foul.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "Offside",
+        "text": "CRISTIANO RONALDO (Portugal) is ruled offside.",
+        "minute": 95,
+        "minuteStr": "90'+5"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the second period to an end.",
+        "minute": 96,
+        "minuteStr": "90'+6"
+      },
+      {
+        "type": "Match end",
+        "text": "The final whistle sounds.",
+        "minute": 97,
+        "minuteStr": "90'+7"
+      }
+    ]
   },
   "64": {
     "homeScore": null,
@@ -13324,44 +13907,423 @@
     ]
   },
   "69": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 0,
+    "awayScore": 0,
+    "minute": "71'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
     "events": [],
     "stats": {
       "possession": [
-        50,
-        50
+        60,
+        28
       ],
       "shots": [
-        10,
-        10
+        14,
+        1
       ],
       "shotsOnTarget": [
-        5,
-        5
+        2,
+        0
       ],
       "corners": [
-        5,
-        5
+        4,
+        2
       ],
       "fouls": [
-        10,
-        10
+        9,
+        18
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        1
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Coin Toss",
+        "text": "Ghana won the coin toss and chose the side",
+        "minute": 0,
+        "minuteStr": "0'"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the first period.",
+        "minute": 1,
+        "minuteStr": "1'"
+      },
+      {
+        "type": "Offside",
+        "text": "Inaki WILLIAMS (Ghana) is ruled offside.",
+        "minute": 5,
+        "minuteStr": "5'"
+      },
+      {
+        "type": "Foul",
+        "text": "Kwasi SIBO (Ghana) commits a foul.",
+        "minute": 6,
+        "minuteStr": "6'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jude BELLINGHAM (England) commits a foul.",
+        "minute": 8,
+        "minuteStr": "8'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marvin SENAYA (Ghana) commits a foul.",
+        "minute": 12,
+        "minuteStr": "12'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Declan RICE (England) attempts an effort on goal.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jonas ADJETEY (Ghana) commits a foul.",
+        "minute": 14,
+        "minuteStr": "14'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Elliot ANDERSON (England) attempts an effort on goal.",
+        "minute": 15,
+        "minuteStr": "15'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Declan RICE (England) attempts an effort on goal.",
+        "minute": 16,
+        "minuteStr": "16'"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 17,
+        "minuteStr": "17'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ezri KONSA (England) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Foul",
+        "text": "Inaki WILLIAMS (Ghana) commits a foul.",
+        "minute": 18,
+        "minuteStr": "18'"
+      },
+      {
+        "type": "Foul",
+        "text": "Antoine SEMENYO (Ghana) commits a foul.",
+        "minute": 20,
+        "minuteStr": "20'"
+      },
+      {
+        "type": "Foul",
+        "text": "Caleb YIRENKYI (Ghana) commits a foul.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Foul",
+        "text": "Antoine SEMENYO (Ghana) commits a foul.",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Resume",
+        "text": "Match resumed after interruption",
+        "minute": 29,
+        "minuteStr": "29'"
+      },
+      {
+        "type": "Foul",
+        "text": "Anthony GORDON (England) commits a foul.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Foul",
+        "text": "Ezri KONSA (England) commits a foul.",
+        "minute": 31,
+        "minuteStr": "31'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jerome OPOKU (Ghana) commits a foul.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Jude BELLINGHAM (England) attempts an effort on goal.",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Foul",
+        "text": "Elliot ANDERSON (England) commits a foul.",
+        "minute": 34,
+        "minuteStr": "34'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Declan RICE (England) attempts an effort on goal.",
+        "minute": 37,
+        "minuteStr": "37'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marc GUEHI (England) commits a foul.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Foul",
+        "text": "Elliot ANDERSON (England) commits a foul.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Offside",
+        "text": "Jude BELLINGHAM (England) is ruled offside.",
+        "minute": 40,
+        "minuteStr": "40'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Declan RICE (England) is booked by the referee.",
+        "minute": 41,
+        "minuteStr": "41'"
+      },
+      {
+        "type": "Corner",
+        "text": "Jordan AYEW (Ghana) takes a corner kick.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 46,
+        "minuteStr": "45'+1"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Harry KANE (England) attempts an effort on goal.",
+        "minute": 48,
+        "minuteStr": "45'+3"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 49,
+        "minuteStr": "45'+4"
+      },
+      {
+        "type": "Foul",
+        "text": "Jude BELLINGHAM (England) commits a foul.",
+        "minute": 51,
+        "minuteStr": "45'+6"
+      },
+      {
+        "type": "End Time",
+        "text": "The referee brings the first period to an end.",
+        "minute": 52,
+        "minuteStr": "45'+7"
+      },
+      {
+        "type": "Start Time",
+        "text": "The referee signals the start of the second period.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Foul",
+        "text": "Marvin SENAYA (Ghana) commits a foul.",
+        "minute": 47,
+        "minuteStr": "47'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Marvin SENAYA (Ghana) attempts an effort on goal.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jordan AYEW (Ghana) commits a foul.",
+        "minute": 51,
+        "minuteStr": "51'"
+      },
+      {
+        "type": "Foul",
+        "text": "Kwasi SIBO (Ghana) commits a foul.",
+        "minute": 52,
+        "minuteStr": "52'"
+      },
+      {
+        "type": "Corner",
+        "text": "Jordan AYEW (Ghana) takes a corner kick.",
+        "minute": 53,
+        "minuteStr": "53'"
+      },
+      {
+        "type": "Foul",
+        "text": "Caleb YIRENKYI (Ghana) commits a foul.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jordan AYEW (Ghana) commits a foul.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Foul",
+        "text": "Kwasi SIBO (Ghana) commits a foul.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Noni MADUEKE (England) attempts an effort on goal.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Anthony GORDON (England) attempts an effort on goal.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jordan AYEW (Ghana) commits a foul.",
+        "minute": 57,
+        "minuteStr": "57'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Inaki WILLIAMS (Ghana) is booked by the referee.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Elliot ANDERSON (England) attempts an effort on goal.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Corner",
+        "text": "Declan RICE (England) takes a corner kick.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Elliot ANDERSON (England) attempts an effort on goal.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Foul",
+        "text": "Thomas PARTEY (Ghana) commits a foul.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Elliot ANDERSON (England) attempts an effort on goal.",
+        "minute": 63,
+        "minuteStr": "63'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Noni MADUEKE (England) attempts an effort on goal.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Foul",
+        "text": "Jordan AYEW (Ghana) commits a foul.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Bukayo SAKA (in) comes off the bench to replace Anthony GORDON (out) (England)",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Nico OREILLY (in) comes off the bench to replace Djed SPENCE (out) (England)",
+        "minute": 65,
+        "minuteStr": "65'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Abdul FATAWU (in) comes off the bench to replace Inaki WILLIAMS (out) (Ghana)",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Prince ADU (in) comes off the bench to replace Jordan AYEW (out) (Ghana)",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Foul",
+        "text": "Prince ADU (Ghana) commits a foul.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Harry KANE (England) attempts an effort on goal.",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Ghana pulls off a save.",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Attempt at Goal",
+        "text": "Bukayo SAKA (England) attempts an effort on goal.",
+        "minute": 70,
+        "minuteStr": "70'"
+      },
+      {
+        "type": "Delay",
+        "text": "Match paused for a hydration break",
+        "minute": 70,
+        "minuteStr": "70'"
+      }
+    ]
   },
   "70": {
     "homeScore": null,

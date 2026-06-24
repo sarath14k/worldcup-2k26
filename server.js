@@ -508,4 +508,21 @@ app.listen(PORT, () => {
 
   // Run live ratings sync every 5 minutes (300000 ms)
   setInterval(runLiveRatingsSync, 300000);
+
+  // Render Keep-Alive Bot to prevent service spin-down
+  const selfUrl = process.env.RENDER_EXTERNAL_URL;
+  if (selfUrl) {
+    console.log(`[Keep-Alive Bot] Registered for external URL: ${selfUrl}`);
+    const pingSelf = async () => {
+      try {
+        console.log(`[Keep-Alive Bot] Pinging self at ${selfUrl}/scraper-status...`);
+        const res = await fetch(`${selfUrl}/scraper-status`);
+        console.log(`[Keep-Alive Bot] Ping response status: ${res.status}`);
+      } catch (err) {
+        console.error(`[Keep-Alive Bot] Ping failed:`, err.message);
+      }
+    };
+    // Ping every 10 minutes (600000 ms)
+    setInterval(pingSelf, 600000);
+  }
 });

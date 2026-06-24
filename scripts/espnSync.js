@@ -195,6 +195,9 @@ export async function syncWithEspn() {
           match.isScorersFixed = true;
         }
       }
+      match.home = match.homeAbbr;
+      match.away = match.awayAbbr;
+
       // ALWAYS delete internal fields
       delete match.isLive;
       delete match.needsDetailFetch;

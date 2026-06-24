@@ -50,8 +50,70 @@ function App() {
   
   // Scraper / Live polling states
   const [isLoaded, setIsLoaded] = useState(false);
-  const [liveMatches, setLiveMatches] = useState({});
+  const [rawLiveMatches, setRawLiveMatches] = useState({});
   const [selectedMatch, setSelectedMatch] = useState(null);
+
+  // Compute aligned liveMatches from rawLiveMatches to ensure home/away teams are oriented correctly
+  const liveMatches = useMemo(() => {
+    if (!rawLiveMatches || Object.keys(rawLiveMatches).length === 0) return rawLiveMatches || {};
+
+    const aligned = {};
+    const allAppMatches = [];
+    if (groupMatches) allAppMatches.push(...groupMatches);
+    if (bracket) {
+      Object.values(bracket).forEach(roundMatches => {
+        if (Array.isArray(roundMatches)) {
+          allAppMatches.push(...roundMatches);
+        }
+      });
+    }
+
+    for (const [matchId, match] of Object.entries(rawLiveMatches)) {
+      const appMatch = allAppMatches.find(m => String(m.id) === matchId);
+      if (appMatch && appMatch.home && appMatch.away && match.home && match.away &&
+          match.home === appMatch.away && match.away === appMatch.home) {
+        
+        const alignedMatch = {
+          ...match,
+          homeScore: match.awayScore,
+          awayScore: match.homeScore,
+          home: match.away,
+          away: match.home
+        };
+
+        if (match.stats) {
+          alignedMatch.stats = {};
+          Object.keys(match.stats).forEach(k => {
+            const val = match.stats[k];
+            if (Array.isArray(val) && val.length === 2) {
+              alignedMatch.stats[k] = [val[1], val[0]];
+            } else {
+              alignedMatch.stats[k] = val;
+            }
+          });
+        }
+
+        if (match.events) {
+          alignedMatch.events = match.events.map(ev => ({
+            ...ev,
+            team: ev.team === 'home' ? 'away' : 'home'
+          }));
+        }
+
+        if (match.winner === 'home') {
+          alignedMatch.winner = 'away';
+        } else if (match.winner === 'away') {
+          alignedMatch.winner = 'home';
+        }
+
+        aligned[matchId] = alignedMatch;
+      } else {
+        aligned[matchId] = match;
+      }
+    }
+
+    return aligned;
+  }, [rawLiveMatches, groupMatches, bracket]);
 
   // Highlights polling states
   const [highlightsMap, setHighlightsMap] = useState({});
@@ -72,7 +134,7 @@ function App() {
         })
         .then(data => {
           if (data && typeof data === 'object') {
-            setLiveMatches(data);
+            setRawLiveMatches(data);
           }
         })
         .catch(err => console.warn('[Live Polling] Ignored failure during live updates fetch:', err));

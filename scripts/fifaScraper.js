@@ -586,6 +586,8 @@ export async function scrapeFifa() {
             second: 0,
             isCompleted: parsedMatch.status === 'FT',
             isDetailedScraped: parsedMatch.isDetailedScraped || false,
+            home: appMatch.home,
+            away: appMatch.away,
             events,
             stats,
             timeline
