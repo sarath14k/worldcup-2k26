@@ -90,11 +90,23 @@ export default defineConfig({
                 return;
               }
 
+              let cachedShortFallback = null;
               const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
               if (homeCode && awayCode && highlightsCache[cacheKey]) {
-                res.setHeader('Content-Type', 'application/json');
-                res.end(JSON.stringify(highlightsCache[cacheKey]));
-                return;
+                const cached = highlightsCache[cacheKey];
+                const channelLower = (cached.channel || '').toLowerCase().trim();
+                const isFIFA = channelLower === 'fifa' || 
+                               channelLower === 'fifatv' || 
+                               channelLower === 'fifa (direct)';
+                if (isFIFA) {
+                  const cachedSec = durationToSeconds(cached.duration);
+                  if (cachedSec >= 115) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify(cached));
+                    return;
+                  }
+                  cachedShortFallback = cached;
+                }
               }
 
               const query = `FIFA ${home} v ${away} World Cup highlights`;
@@ -172,6 +184,15 @@ export default defineConfig({
                                         channelUrlLower.includes('ucpctrcxblq78gzrtutlwebw');
                                         
                       return isFIFA && isFIFAUrl;
+                    };
+
+                    const durationToSeconds = (dur) => {
+                      if (!dur) return 0;
+                      const parts = dur.split(':');
+                      if (parts.length === 1) return parseInt(parts[0], 10) || 0;
+                      if (parts.length === 2) return (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+                      if (parts.length === 3) return (parseInt(parts[0], 10) || 0) * 3600 + (parseInt(parts[1], 10) || 0) * 60 + (parseInt(parts[2], 10) || 0);
+                      return 0;
                     };
 
                     const isFIFAVideo = (v) => {
@@ -278,12 +299,14 @@ export default defineConfig({
                     });
                     
                     if (realVideos.length > 0) {
-                      // Sort to prioritize official FIFA channel
+                      // Sort to prioritize long videos (>= 115s)
                       realVideos.sort((a, b) => {
-                        const aFIFA = isFIFAVideo(a);
-                        const bFIFA = isFIFAVideo(b);
-                        if (aFIFA && !bFIFA) return -1;
-                        if (!aFIFA && bFIFA) return 1;
+                        const aSec = durationToSeconds(a.duration);
+                        const bSec = durationToSeconds(b.duration);
+                        const aLong = aSec >= 115;
+                        const bLong = bSec >= 115;
+                        if (aLong && !bLong) return -1;
+                        if (!aLong && bLong) return 1;
                         return 0;
                       });
                       const best = realVideos[0];
@@ -294,7 +317,8 @@ export default defineConfig({
                           videoId: foundVideoId,
                           url: foundUrl,
                           title: best.title,
-                          channel: best.channel
+                          channel: best.channel,
+                          duration: best.duration
                         };
                         saveCache();
                       }
@@ -308,6 +332,8 @@ export default defineConfig({
               res.setHeader('Content-Type', 'application/json');
               if (foundUrl) {
                 res.end(JSON.stringify({ videoId: foundVideoId, url: foundUrl }));
+              } else if (cachedShortFallback) {
+                res.end(JSON.stringify(cachedShortFallback));
               } else {
                 res.statusCode = 404;
                 res.end(JSON.stringify({ error: 'No video highlights found' }));

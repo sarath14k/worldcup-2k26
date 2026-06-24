@@ -206,6 +206,16 @@ function normalizeTeamName(name) {
     .trim();
 }
 
+// Helper to convert duration (e.g. "2:11" or "1:01") to seconds
+function durationToSeconds(dur) {
+  if (!dur) return 0;
+  const parts = dur.split(':');
+  if (parts.length === 1) return parseInt(parts[0], 10) || 0;
+  if (parts.length === 2) return (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+  if (parts.length === 3) return (parseInt(parts[0], 10) || 0) * 3600 + (parseInt(parts[1], 10) || 0) * 60 + (parseInt(parts[2], 10) || 0);
+  return 0;
+}
+
 // Endpoint to search and fetch direct YouTube highlights link
 app.get('/api/match-highlights', async (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -226,16 +236,20 @@ app.get('/api/match-highlights', async (req, res) => {
     });
   }
 
+  let cachedShortFallback = null;
   const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
   if (homeCode && awayCode && highlightsCache[cacheKey]) {
     const cached = highlightsCache[cacheKey];
-    const channelLower = (cached.channel || '').toLowerCase();
+    const channelLower = (cached.channel || '').toLowerCase().trim();
     const isFIFA = channelLower === 'fifa' || 
                    channelLower === 'fifatv' || 
-                   channelLower === 'fifa (direct)' || 
-                   channelLower.includes('fifa');
+                   channelLower === 'fifa (direct)';
     if (isFIFA) {
-      return res.json(cached);
+      const cachedSec = durationToSeconds(cached.duration);
+      if (cachedSec >= 115) {
+        return res.json(cached);
+      }
+      cachedShortFallback = cached;
     }
   }
 
@@ -402,16 +416,24 @@ app.get('/api/match-highlights', async (req, res) => {
           });
           
           if (realVideos.length > 0) {
-            // Sort to prioritize official FIFA channel
+            // Sort to prioritize long videos (>= 115s)
             realVideos.sort((a, b) => {
-              const aFIFA = isFIFAVideo(a);
-              const bFIFA = isFIFAVideo(b);
-              if (aFIFA && !bFIFA) return -1;
-              if (!aFIFA && bFIFA) return 1;
+              const aSec = durationToSeconds(a.duration);
+              const bSec = durationToSeconds(b.duration);
+              const aLong = aSec >= 115;
+              const bLong = bSec >= 115;
+              if (aLong && !bLong) return -1;
+              if (!aLong && bLong) return 1;
               return 0;
             });
             const best = realVideos[0];
-            const result = { videoId: best.videoId, url: `https://www.youtube.com/watch?v=${best.videoId}`, title: best.title, channel: best.channel };
+            const result = { 
+              videoId: best.videoId, 
+              url: `https://www.youtube.com/watch?v=${best.videoId}`, 
+              title: best.title, 
+              channel: best.channel,
+              duration: best.duration
+            };
             if (homeCode && awayCode) {
               highlightsCache[cacheKey] = result;
               saveCache();
@@ -424,6 +446,9 @@ app.get('/api/match-highlights', async (req, res) => {
       }
     }
 
+    if (cachedShortFallback) {
+      return res.json(cachedShortFallback);
+    }
     res.status(404).json({ error: 'No video highlights found' });
   } catch (err) {
     console.error('[Highlights API] Error:', err.message);
