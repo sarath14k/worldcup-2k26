@@ -843,19 +843,19 @@ function App() {
 
       {/* --- HEADER --- */}
       <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="bg-brand-gold/20 p-2 rounded-xl border border-brand-gold/40 glow-gold animate-float">
-              <WorldCupTrophyIcon className="w-6 h-6 text-brand-gold" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
+            <div className="bg-brand-gold/20 p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-brand-gold/40 glow-gold animate-float shrink-0">
+              <WorldCupTrophyIcon className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-brand-gold" />
             </div>
-            <div>
-              <h1 className="text-lg md:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent">
+            <div className="min-w-0">
+              <h1 className="text-sm sm:text-lg md:text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent whitespace-nowrap uppercase">
                 WORLDCUP 2K26
               </h1>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <div className="hidden lg:flex items-center gap-2 bg-slate-900/60 px-3.5 py-1.5 rounded-full border border-slate-800/60 text-xs font-semibold">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
@@ -865,7 +865,7 @@ function App() {
             </div>
 
             {/* Color Accent Picker */}
-            <div className="flex items-center gap-1.5 bg-slate-900/60 px-2.5 py-1.5 rounded-full border border-slate-800/60 select-none">
+            <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-900/60 p-1 sm:px-2.5 sm:py-1.5 rounded-full border border-slate-800/60 select-none">
               {[
                 { id: 'neon', color: '#00FF87', label: 'Green' },
                 { id: 'royal', color: '#3B82F6', label: 'Blue' },
@@ -878,7 +878,7 @@ function App() {
                     localStorage.setItem('worldcup2026_accent', opt.id);
                     setAccent(opt.id);
                   }}
-                  className={`w-3.5 h-3.5 rounded-full border transition-all cursor-pointer shrink-0 ${
+                  className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border transition-all cursor-pointer shrink-0 ${
                     accent === opt.id 
                       ? 'scale-125 ring-2 ring-white/50 border-white shadow-lg' 
                       : 'border-transparent hover:scale-110'
@@ -892,21 +892,21 @@ function App() {
             {/* Theme Selector Toggle */}
             <button
               onClick={() => setTheme(prev => prev === 'dark' ? 'pitch-black' : 'dark')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer select-none ${
+              className={`flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer select-none shrink-0 ${
                 theme === 'pitch-black'
                   ? 'bg-zinc-900 border-zinc-800 text-brand-neon hover:bg-zinc-850'
-                  : 'bg-slate-900/60 border-slate-800/60 text-slate-300 hover:bg-slate-800/85 hover:text-white'
+                  : 'bg-slate-900/60 border-slate-800/60 text-slate-350 hover:bg-slate-800/85 hover:text-white'
               }`}
               title={theme === 'pitch-black' ? 'Switch to Dark Stadium Theme' : 'Switch to Pitch Black Theme'}
             >
               {theme === 'pitch-black' ? (
                 <>
-                  <Zap className="w-3.5 h-3.5 text-brand-neon fill-brand-neon animate-pulse" />
+                  <Zap className="w-3.5 h-3.5 text-brand-neon fill-brand-neon animate-pulse shrink-0" />
                   <span className="hidden sm:inline font-black uppercase tracking-wider text-[10px]">Pitch Black</span>
                 </>
               ) : (
                 <>
-                  <Moon className="w-3.5 h-3.5 text-slate-400" />
+                  <Moon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                   <span className="hidden sm:inline font-bold text-[10px]">Dark Stadium</span>
                 </>
               )}
