@@ -122,6 +122,51 @@ function App() {
     return aligned;
   }, [rawLiveMatches, groupMatches, bracket]);
 
+  // --- Memoized calculations for matches, ticker, stats ---
+  const activeLiveMatchesList = useMemo(() => {
+    const list = [];
+    Object.entries(liveMatches).forEach(([idStr, live]) => {
+      const matchId = Number(idStr);
+      if (live && !live.isCompleted && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined && live.minute !== '') {
+        let match = groupMatches.find(m => m.id === matchId);
+        let roundName = 'Group Stage';
+        if (match) {
+          roundName = `Group ${match.group}`;
+        } else {
+          Object.keys(bracket).forEach(roundKey => {
+            const found = bracket[roundKey].find(m => m.id === matchId);
+            if (found) {
+              match = found;
+              if (roundKey === 'r32') roundName = 'Round of 32';
+              else if (roundKey === 'r16') roundName = 'Round of 16';
+              else if (roundKey === 'qf') roundName = 'Quarter-Final';
+              else if (roundKey === 'sf') roundName = 'Semi-Final';
+              else if (roundKey === 'final') roundName = 'Grand Final';
+            }
+          });
+        }
+        
+        if (match) {
+          list.push({
+            id: matchId,
+            home: match.home,
+            away: match.away,
+            round: roundName,
+            homeScore: live.homeScore !== null ? live.homeScore : 0,
+            awayScore: live.awayScore !== null ? live.awayScore : 0,
+            minute: live.minute,
+            originalMatch: match
+          });
+        }
+      }
+    });
+    return list;
+  }, [liveMatches, groupMatches, bracket]);
+
+  const hasLiveMatches = useMemo(() => {
+    return activeLiveMatchesList.length > 0;
+  }, [activeLiveMatchesList]);
+
   // --- Live Goal Detection Effect ---
   useEffect(() => {
     if (!liveMatches || Object.keys(liveMatches).length === 0) {
@@ -251,10 +296,11 @@ function App() {
 
     fetchLiveScores();
 
-    // Poll endpoint every 15 seconds (15000ms)
-    const timer = setInterval(fetchLiveScores, 15000);
+    // Poll endpoint every 5 seconds if live matches are active, otherwise every 15 seconds
+    const intervalDuration = hasLiveMatches ? 5000 : 15000;
+    const timer = setInterval(fetchLiveScores, intervalDuration);
     return () => clearInterval(timer);
-  }, [activeTab]);
+  }, [activeTab, hasLiveMatches]);
 
   // --- Ratings Polling Effect ---
   useEffect(() => {
@@ -609,50 +655,7 @@ function App() {
     });
   };
 
-  // --- Memoized calculations for matches, ticker, stats ---
-  const activeLiveMatchesList = useMemo(() => {
-    const list = [];
-    Object.entries(liveMatches).forEach(([idStr, live]) => {
-      const matchId = Number(idStr);
-      if (live && !live.isCompleted && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined && live.minute !== '') {
-        let match = groupMatches.find(m => m.id === matchId);
-        let roundName = 'Group Stage';
-        if (match) {
-          roundName = `Group ${match.group}`;
-        } else {
-          Object.keys(bracket).forEach(roundKey => {
-            const found = bracket[roundKey].find(m => m.id === matchId);
-            if (found) {
-              match = found;
-              if (roundKey === 'r32') roundName = 'Round of 32';
-              else if (roundKey === 'r16') roundName = 'Round of 16';
-              else if (roundKey === 'qf') roundName = 'Quarter-Final';
-              else if (roundKey === 'sf') roundName = 'Semi-Final';
-              else if (roundKey === 'final') roundName = 'Grand Final';
-            }
-          });
-        }
-        
-        if (match) {
-          list.push({
-            id: matchId,
-            home: match.home,
-            away: match.away,
-            round: roundName,
-            homeScore: live.homeScore !== null ? live.homeScore : 0,
-            awayScore: live.awayScore !== null ? live.awayScore : 0,
-            minute: live.minute,
-            originalMatch: match
-          });
-        }
-      }
-    });
-    return list;
-  }, [liveMatches, groupMatches, bracket]);
 
-  const hasLiveMatches = useMemo(() => {
-    return activeLiveMatchesList.length > 0;
-  }, [activeLiveMatchesList]);
 
   const sortedMatches = useMemo(() => {
     return [...groupMatches].sort((a, b) => {
@@ -949,69 +952,72 @@ function App() {
           {/* Dimmed, blurred backdrop overlay */}
           <div 
             onClick={() => setGoalAlert(null)}
-            className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-[3px] pointer-events-none animate-goalAlertBackdrop"
+            className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-[3px] pointer-events-auto cursor-pointer animate-goalAlertBackdrop"
           />
           
-          {/* Centered Modal Card */}
-          <div 
-            onClick={() => setGoalAlert(null)}
-            className="fixed top-1/2 left-1/2 z-[99999] w-[90%] max-w-md bg-slate-950/95 border-2 border-brand-neon rounded-3xl p-6 shadow-[0_0_50px_rgba(0,255,135,0.4)] backdrop-blur-md cursor-pointer animate-goalAlertCenter select-none"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-slate-900/60 mb-4">
-              <span className="text-xs font-black tracking-[0.2em] text-brand-neon flex items-center gap-1.5 uppercase animate-pulse">
-                ⚽ GOAL ALERT!
-              </span>
-              <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-widest font-mono">
-                {goalAlert.matchLabel}
-              </span>
-            </div>
-            
-            {/* Flags & Scoreboard Block */}
-            <div className="flex items-center justify-center gap-6 py-4">
-              {/* Home Team */}
-              <div className="flex flex-col items-center gap-2 text-center w-1/3 min-w-0">
-                <span className="text-5xl drop-shadow-[0_0_15px_rgba(0,255,135,0.2)] animate-bounce leading-none" style={{ animationDuration: '2s' }}>
-                  {goalAlert.homeFlag}
+          {/* Centered Modal Card Container */}
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 pointer-events-none select-none">
+            {/* Centered Modal Card */}
+            <div 
+              onClick={() => setGoalAlert(null)}
+              className="w-full max-w-sm bg-slate-950/95 border-2 border-brand-neon rounded-3xl p-6 shadow-[0_0_50px_rgba(0,255,135,0.4)] backdrop-blur-md cursor-pointer pointer-events-auto animate-goalAlertCenter"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between pb-3 border-b border-slate-900/60 mb-4">
+                <span className="text-xs font-black tracking-[0.2em] text-brand-neon flex items-center gap-1.5 uppercase animate-pulse">
+                  ⚽ GOAL ALERT!
                 </span>
-                <span className="font-black text-slate-100 text-sm truncate w-full mt-1">
-                  {goalAlert.homeName}
+                <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-widest font-mono">
+                  {goalAlert.matchLabel}
                 </span>
               </div>
               
-              {/* Score Box */}
-              <div className="flex flex-col items-center justify-center bg-slate-900/90 border border-brand-neon/30 rounded-2xl px-5 py-3 shadow-[inset_0_0_15px_rgba(0,255,135,0.05),0_0_20px_rgba(0,0,0,0.4)] min-w-[110px] shrink-0">
-                <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1 font-mono">SCORE</div>
-                <div className="text-3xl font-mono font-black text-brand-neon tracking-wide">
-                  {goalAlert.homeScore} : {goalAlert.awayScore}
+              {/* Flags & Scoreboard Block */}
+              <div className="flex items-center justify-center gap-6 py-4">
+                {/* Home Team */}
+                <div className="flex flex-col items-center gap-2 text-center w-1/3 min-w-0">
+                  <span className="text-5xl drop-shadow-[0_0_15px_rgba(0,255,135,0.2)] animate-bounce leading-none" style={{ animationDuration: '2s' }}>
+                    {goalAlert.homeFlag}
+                  </span>
+                  <span className="font-black text-slate-100 text-sm truncate w-full mt-1">
+                    {goalAlert.homeName}
+                  </span>
+                </div>
+                
+                {/* Score Box */}
+                <div className="flex flex-col items-center justify-center bg-slate-900/90 border border-brand-neon/30 rounded-2xl px-5 py-3 shadow-[inset_0_0_15px_rgba(0,255,135,0.05),0_0_20px_rgba(0,0,0,0.4)] min-w-[110px] shrink-0">
+                  <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1 font-mono">SCORE</div>
+                  <div className="text-3xl font-mono font-black text-brand-neon tracking-wide">
+                    {goalAlert.homeScore} : {goalAlert.awayScore}
+                  </div>
+                </div>
+                
+                {/* Away Team */}
+                <div className="flex flex-col items-center gap-2 text-center w-1/3 min-w-0">
+                  <span className="text-5xl drop-shadow-[0_0_15px_rgba(0,255,135,0.2)] animate-bounce leading-none" style={{ animationDuration: '2s', animationDelay: '0.2s' }}>
+                    {goalAlert.awayFlag}
+                  </span>
+                  <span className="font-black text-slate-100 text-sm truncate w-full mt-1">
+                    {goalAlert.awayName}
+                  </span>
                 </div>
               </div>
               
-              {/* Away Team */}
-              <div className="flex flex-col items-center gap-2 text-center w-1/3 min-w-0">
-                <span className="text-5xl drop-shadow-[0_0_15px_rgba(0,255,135,0.2)] animate-bounce leading-none" style={{ animationDuration: '2s', animationDelay: '0.2s' }}>
-                  {goalAlert.awayFlag}
-                </span>
-                <span className="font-black text-slate-100 text-sm truncate w-full mt-1">
-                  {goalAlert.awayName}
-                </span>
-              </div>
-            </div>
-            
-            {/* Scorer Info */}
-            {goalAlert.player && (
-              <div className="relative mt-4 overflow-hidden rounded-xl border border-brand-neon/30 bg-gradient-to-r from-brand-neon/5 via-brand-neon/15 to-brand-neon/5 py-3 px-4 shadow-[0_4px_20px_rgba(0,255,135,0.05)]">
-                <div className="text-center font-black text-brand-neon text-sm tracking-wide flex items-center justify-center gap-2">
-                  <span className="animate-pulse">⚽</span>
-                  <span className="truncate">{goalAlert.player}</span>
-                  <span className="text-xs text-slate-300">({goalAlert.minute}')</span>
+              {/* Scorer Info */}
+              {goalAlert.player && (
+                <div className="relative mt-4 overflow-hidden rounded-xl border border-brand-neon/30 bg-gradient-to-r from-brand-neon/5 via-brand-neon/15 to-brand-neon/5 py-3 px-4 shadow-[0_4px_20px_rgba(0,255,135,0.05)]">
+                  <div className="text-center font-black text-brand-neon text-sm tracking-wide flex items-center justify-center gap-2">
+                    <span className="animate-pulse">⚽</span>
+                    <span className="truncate">{goalAlert.player}</span>
+                    <span className="text-xs text-slate-300">({goalAlert.minute}')</span>
+                  </div>
                 </div>
+              )}
+              
+              {/* Click to dismiss helper text */}
+              <div className="text-center text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-4 animate-pulse">
+                Click anywhere to dismiss
               </div>
-            )}
-            
-            {/* Click to dismiss helper text */}
-            <div className="text-center text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-4 animate-pulse">
-              Click anywhere to dismiss
             </div>
           </div>
         </>
