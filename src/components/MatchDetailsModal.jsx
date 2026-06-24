@@ -249,7 +249,7 @@ export const MatchDetailsModal = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header - Non-scrollable & Always Visible */}
-        <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-900/98 z-10">
+        <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-900/98 z-10 relative">
           <div className="pr-12 text-left">
             <div className="text-[10px] sm:text-xs font-extrabold text-brand-neon uppercase tracking-widest mb-0.5">
               {selectedMatch.type === 'group' ? `Group ${selectedMatch.group}` : selectedMatch.round || 'Knockout'} • Match {selectedMatch.id}
@@ -260,7 +260,7 @@ export const MatchDetailsModal = ({
           </div>
           
           <button 
-            className="p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none"
+            className="p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none shrink-0"
             onClick={onClose}
             aria-label="Close modal"
           >
@@ -271,7 +271,7 @@ export const MatchDetailsModal = ({
         </div>
 
         {/* Tab Selector Bar */}
-        <div className="flex border-b border-slate-800/80 shrink-0 bg-slate-900/98 select-none">
+        <div className="flex border-b border-slate-800/80 shrink-0 bg-slate-900/98 select-none relative z-10">
           <button 
             onClick={() => setActiveModalTab('match')}
             className={`flex-1 py-3 text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all border-b-2 cursor-pointer ${
