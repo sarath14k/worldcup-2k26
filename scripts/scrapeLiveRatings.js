@@ -58,11 +58,15 @@ const FOTMOB_TEAM_MAP = {
 
 // Helper to fetch html page and parse __NEXT_DATA__
 async function fetchNextData(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
   const response = await fetch(url, {
+    signal: controller.signal,
     headers: {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     }
   });
+  clearTimeout(timeout);
   if (!response.ok) {
     throw new Error(`HTTP ${response.status} fetching ${url}`);
   }

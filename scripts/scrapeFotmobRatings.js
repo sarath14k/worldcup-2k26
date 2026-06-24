@@ -60,11 +60,15 @@ export async function syncRatings() {
   console.log('[Ratings Sync] Fetching player ratings from FotMob API...');
   
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
     const response = await fetch('https://www.fotmob.com/api/data/leagueseasondeepstats?id=77&season=24254&type=players&stat=rating&slug=world-cup-players', {
+      signal: controller.signal,
       headers: {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
       }
     });
+    clearTimeout(timeout);
     
     if (!response.ok) {
       throw new Error(`HTTP error ${response.status} fetching deepstats`);

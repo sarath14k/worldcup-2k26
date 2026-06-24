@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import helmet from 'helmet';
+import compression from 'compression';
 import { syncWithEspn } from './scripts/espnSync.js';
 import { syncRatings } from './scripts/scrapeFotmobRatings.js';
 import { scrapeLiveRatings } from './scripts/scrapeLiveRatings.js';
@@ -11,6 +13,13 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Security & compression middleware
+app.use(helmet({
+  contentSecurityPolicy: false, // Disable CSP to avoid breaking inline scripts/styles
+  crossOriginEmbedderPolicy: false
+}));
+app.use(compression());
 
 // Serve the live matches file dynamically from public folder (updated by scraper)
 app.get('/live-matches.json', (req, res) => {
@@ -93,7 +102,10 @@ app.get('/scraper-status', (req, res) => {
 
 // POST endpoint to sync matches from a trusted local scraper
 app.post('/api/sync-matches', express.json({ limit: '10mb' }), (req, res) => {
-  const syncToken = process.env.SYNC_TOKEN || 'default_secret_sync_token_2k26';
+  const syncToken = process.env.SYNC_TOKEN;
+  if (!syncToken) {
+    return res.status(503).json({ error: 'Sync endpoint is not configured. Set SYNC_TOKEN env var.' });
+  }
 
   const clientToken = req.headers['x-sync-token'];
   if (!clientToken || clientToken !== syncToken) {
