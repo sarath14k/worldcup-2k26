@@ -140,8 +140,6 @@ export const GroupsTab = ({
                           <div className="max-w-[100px] sm:max-w-[160px] overflow-hidden flex-1">
                             <ScrollingText text={t.name} className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors" />
                           </div>
-                          {isQualifying && <span className="text-[7px] sm:text-[8px] bg-brand-neon/10 border border-brand-neon/40 text-brand-neon px-1 rounded leading-none py-0.5 font-extrabold shrink-0 uppercase tracking-wide">R32</span>}
-                          {isBestThird && <span className="text-[7px] sm:text-[8px] bg-brand-royal/10 border border-brand-royal/40 text-brand-royal px-1 rounded leading-none py-0.5 font-extrabold shrink-0 uppercase tracking-wide">R32 *</span>}
                         </div>
                       </td>
                       <td className="py-3 px-2 text-center text-slate-400 font-mono font-medium">{t.played}</td>
