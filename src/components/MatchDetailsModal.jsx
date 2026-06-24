@@ -418,13 +418,15 @@ export const MatchDetailsModal = ({
 
                   let icon = '🔔';
                   const typeLower = event.type.toLowerCase();
+                  const isPrevention = typeLower.includes('prevent') || typeLower.includes('save');
                   const isAttempt = typeLower.includes('attempt') || typeLower.includes('shot');
-                  const isGoal = (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score')) && !isAttempt;
+                  const isGoal = (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score')) && !isAttempt && !isPrevention;
                   const isYellowCard = typeLower.includes('yellow');
                   const isRedCard = typeLower.includes('red');
                   const isSub = typeLower.includes('sub');
 
                   if (isAttempt) icon = '🎯';
+                  else if (isPrevention) icon = '🧤';
                   else if (typeLower.includes('foul')) icon = '⚡';
                   else if (isGoal) icon = '⚽';
                   else if (typeLower.includes('corner')) icon = '🚩';
@@ -446,7 +448,9 @@ export const MatchDetailsModal = ({
                               ? 'border-yellow-500/45 shadow-[0_0_15px_rgba(234,179,8,0.1)] bg-yellow-500/5'
                               : isSub 
                                 ? 'border-indigo-500/45 shadow-[0_0_15px_rgba(99,102,241,0.1)] bg-indigo-500/5'
-                                : 'border-slate-800/50 hover:border-slate-700/50'
+                                : isPrevention
+                                  ? 'border-sky-500/30 shadow-[0_0_15px_rgba(14,165,233,0.05)] bg-sky-500/5'
+                                  : 'border-slate-800/50 hover:border-slate-700/50'
                       }`}
                     >
                       <div className={`flex items-center justify-center w-6 h-6 rounded-lg bg-slate-900 border text-[11px] shrink-0 ${
@@ -458,7 +462,9 @@ export const MatchDetailsModal = ({
                               ? 'border-yellow-500/60 text-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.3)]'
                               : isSub 
                                 ? 'border-indigo-500/60 text-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.3)]'
-                                : 'border-slate-800'
+                                : isPrevention
+                                  ? 'border-sky-500/60 text-sky-400 shadow-[0_0_10px_rgba(14,165,233,0.2)]'
+                                  : 'border-slate-800'
                       }`}>
                         {icon}
                       </div>
@@ -474,7 +480,9 @@ export const MatchDetailsModal = ({
                                   ? 'text-yellow-400'
                                   : isSub 
                                     ? 'text-indigo-400' 
-                                    : 'text-slate-400'
+                                    : isPrevention
+                                      ? 'text-sky-400'
+                                      : 'text-slate-400'
                           }`}>
                             {event.type}
                           </span>
