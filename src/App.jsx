@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect, useMemo } from 'react';
-import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap } from 'lucide-react';
+import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap, Star } from 'lucide-react';
 import { TEAMS, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
 import { calculateStandings, getAdvancedTeams, populateRoundOf32 } from './data/simulation';
 import { 
@@ -17,6 +17,7 @@ import { FixturesTab } from './components/tabs/FixturesTab';
 import { GroupsTab } from './components/tabs/GroupsTab';
 import { BracketTab } from './components/tabs/BracketTab';
 import { StatsTab } from './components/tabs/StatsTab';
+import { PlayerRatingsTab } from './components/tabs/PlayerRatingsTab';
 import { VenuesTab } from './components/tabs/VenuesTab';
 import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
 
@@ -922,6 +923,7 @@ function App() {
             { id: 'groups', label: 'Group Standings', icon: Users },
             { id: 'bracket', label: 'Roadmap Simulation', icon: TrendingUp },
             { id: 'stats', label: 'Player Stats', icon: Award },
+            { id: 'ratings', label: 'Player Ratings', icon: Star },
             { id: 'venues', label: 'Stadium Venues', icon: MapPin },
           ].map(tab => {
             const Icon = tab.icon;
@@ -995,6 +997,12 @@ function App() {
         {activeTab === 'stats' && (
           <StatsTab 
             playerStats={playerStats}
+          />
+        )}
+
+        {activeTab === 'ratings' && (
+          <PlayerRatingsTab 
+            fotmobRatings={fotmobRatings}
           />
         )}
 
