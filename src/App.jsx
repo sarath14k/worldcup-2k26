@@ -726,7 +726,7 @@ function App() {
         scoreBonus += playerAssists * 0.6;
 
         // Team result bonus
-        let resultBonus = 0;
+        let resultBonus;
         if (homeScore === awayScore) {
           resultBonus = 0.1;
         } else {
@@ -1030,6 +1030,9 @@ function App() {
           liveMatches={liveMatches}
           fotmobRatings={fotmobRatings}
           livePlayerRatings={livePlayerRatings}
+          groupMatches={groupMatches}
+          standings={standings}
+          bracket={bracket}
           onClose={() => setSelectedMatch(null)}
         />
       )}
