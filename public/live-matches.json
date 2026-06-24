@@ -2356,15 +2356,15 @@
     "events": [],
     "stats": {
       "possession": [
-        42,
-        50
+        40,
+        53
       ],
       "shots": [
-        1,
+        2,
         3
       ],
       "shotsOnTarget": [
-        1,
+        2,
         2
       ],
       "corners": [
@@ -2372,12 +2372,12 @@
         1
       ],
       "fouls": [
-        3,
+        4,
         8
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        1
       ],
       "redCards": [
         0,
@@ -2532,6 +2532,12 @@
       {
         "type": "Foul",
         "text": "Mathieu CHOINIERE (Canada) commits a foul.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Cyle LARIN (Canada) is booked by the referee.",
         "minute": 32,
         "minuteStr": "32'"
       },
@@ -2542,10 +2548,16 @@
         "minuteStr": "32'"
       },
       {
-        "type": "Yellow card",
-        "text": "Cyle LARIN (Canada) is booked by the referee.",
-        "minute": 32,
-        "minuteStr": "32'"
+        "type": "Attempt at Goal",
+        "text": "Cyle LARIN (Canada) attempts an effort on goal.",
+        "minute": 33,
+        "minuteStr": "33'"
+      },
+      {
+        "type": "Goal Prevention",
+        "text": "The goalkeeper of Switzerland pulls off a save.",
+        "minute": 33,
+        "minuteStr": "33'"
       }
     ]
   },
