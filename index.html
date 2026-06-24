@@ -10,15 +10,7 @@
     <meta name="author" content="Antigravity Team" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#10b981" />
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-          for (let registration of registrations) {
-            registration.unregister();
-          }
-        }).catch(err => console.log('SW unregistration failed:', err));
-      }
-    </script>
+
   </head>
   <body class="bg-brand-darkBg text-slate-100 transition-colors duration-300">
     <div id="root"></div>

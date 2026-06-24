@@ -1526,5 +1526,208 @@
       "Nadir Benbouali": 7.5,
       "Anis Hadj Moussa": 6.7
     }
+  },
+  "POR-UZB": {
+    "POR": {
+      "Diogo Costa": 8.2,
+      "João Cancelo": 7.8,
+      "Rúben Dias": 7.7,
+      "Renato Veiga": 7.4,
+      "Nuno Mendes": 8.8,
+      "João Neves": 7.3,
+      "Vitinha": 7.2,
+      "Pedro Neto": 6.8,
+      "Bruno Fernandes": 8.2,
+      "Joao Félix": 7.2,
+      "Cristiano Ronaldo": 9.1,
+      "Nélson Semedo": 6.6,
+      "Francisco Conceição": 7.3,
+      "Trincão": 6.3,
+      "Bernardo Silva": 6.4
+    },
+    "UZB": {
+      "Abduvohid Nematov": 4.5,
+      "Abdukodir Khusanov": 5.5,
+      "Abdulla Abdullaev": 4.6,
+      "Rustamjon Ashurmatov": 5,
+      "Behruzjon Karimov": 6.7,
+      "Sherzod Nasrulloev": 6.1,
+      "Azizjon Ganiev": 6.7,
+      "Odildzhon Khamrobekov": 5.7,
+      "Otabek Shukurov": 6.2,
+      "Abbosbek Fayzullayev": 6.7,
+      "Eldor Shomurodov": 7.2,
+      "Khoziakbar Alidzhanov": 6.4,
+      "Akmal Mozgovoy": 5.9,
+      "Igor Sergeev": 6.2
+    }
+  },
+  "ENG-GHA": {
+    "ENG": {
+      "Jordan Pickford": 7.1,
+      "Reece James": 7.5,
+      "Ezri Konsa": 7.3,
+      "Marc Guéhi": 8,
+      "Djed Spence": 7,
+      "Elliot Anderson": 7.3,
+      "Declan Rice": 8.1,
+      "Noni Madueke": 6.5,
+      "Jude Bellingham": 6,
+      "Anthony Gordon": 7,
+      "Harry Kane": 6.3,
+      "Nico O'Reilly": 6.7,
+      "Bukayo Saka": 6.3,
+      "Eberechi Eze": 6.5,
+      "Morgan Rogers": 6.2
+    },
+    "GHA": {
+      "Benjamin Asare": 7.7,
+      "Marvin Senaya": 7.5,
+      "Jonas Adjetey": 6.3,
+      "Jerome Opoku": 7.3,
+      "Gideon Mensah": 7.7,
+      "Caleb Yirenkyi": 6,
+      "Thomas Partey": 7.4,
+      "Kwasi Sibo": 6.4,
+      "Iñaki Williams": 5.8,
+      "Jordan Ayew": 6.2,
+      "Antoine Semenyo": 5.7,
+      "Abdul Fatawu": 6.6,
+      "Prince Adu": 6
+    }
+  },
+  "PAN-CRO": {
+    "PAN": {
+      "Orlando Mosquera": 6.5,
+      "Jiovany Ramos": 6.4,
+      "José Córdoba": 6.8,
+      "Andrés Andrade": 6.9,
+      "Amir Murillo": 6.9,
+      "César Blackman": 6.7,
+      "Cristian Martínez": 6.5,
+      "Carlos Harvey": 6.1,
+      "Yoel Bárcenas": 7.2,
+      "José Luis Rodriguez": 6,
+      "José Fajardo": 6.4,
+      "Cecilio Waterman": 6.2
+    },
+    "CRO": {
+      "Dominik Livakovic": 7.7,
+      "Josip Stanisic": 8.1,
+      "Josip Sutalo": 7.4,
+      "Marin Pongracic": 7.1,
+      "Josko Gvardiol": 6.9,
+      "Luka Modric": 7.6,
+      "Mateo Kovacic": 6.6,
+      "Marco Pasalic": 7.2,
+      "Martin Baturina": 7.4,
+      "Ivan Perisic": 7,
+      "Petar Musa": 6.3,
+      "Andrej Kramaric": 6.6,
+      "Ante Budimir": 7.6,
+      "Luka Sucic": 5.9,
+      "Petar Sucic": 6
+    }
+  },
+  "COL-COD": {
+    "COL": {
+      "Camilo Vargas": 7.8,
+      "Daniel Muñoz": 8.2,
+      "Davinson Sánchez": 7.9,
+      "Jhon Lucumí": 7.4,
+      "Johan Mojica": 7.9,
+      "Gustavo Puerta": 7.6,
+      "Jefferson Lerma": 7.5,
+      "Jhon Arias": 7.5,
+      "James Rodríguez": 7.6,
+      "Luis Suárez": 6.2,
+      "Luis Díaz": 7.2,
+      "Juan Quintero": 7.3,
+      "Jhon Córdoba": 6.2,
+      "Richard Ríos": 5.9
+    },
+    "COD": {
+      "Lionel Mpasi-Nzau": 7.5,
+      "Chancel Mbemba": 6.1,
+      "Axel Tuanzebe": 6.2,
+      "Steve Kapuadi": 6.5,
+      "Aaron Wan-Bissaka": 6.7,
+      "Arthur Masuaku": 7,
+      "Ngal Ayel Mukau": 6.6,
+      "Samuel Moutoussamy": 6.2,
+      "Edo Kayembe": 5.4,
+      "Cédric Bakambu": 5.8,
+      "Yoane Wissa": 6.3,
+      "Noah Sadiki": 6.1,
+      "Simon Banza": 6.3,
+      "Joris Kayembe Ditu": 6.8,
+      "Charles Pickel": 6.1
+    }
+  },
+  "BIH-QAT": {
+    "BIH": {
+      "Nikola Vasilj": 5.9,
+      "Arjan Malic": 6.4,
+      "Nikola Katic": 6.8,
+      "Stjepan Radeljic": 6.5,
+      "Sead Kolasinac": 6.6,
+      "Esmir Bajraktarevic": 6.6,
+      "Ivan Sunjic": 7.1,
+      "Ivan Basic": 8,
+      "Kerim Alajbegovic": 8.3,
+      "Ermedin Demirovic": 6.4,
+      "Edin Dzeko": 6.9,
+      "Amar Memic": 6.3,
+      "Benjamin Tahirovic": 6.6,
+      "Dennis Hadzikadunic": 6.2,
+      "Ermin Mahmic": 6.1
+    },
+    "QAT": {
+      "Mahmud Abunada": 4.8,
+      "Pedro Miguel": 6.8,
+      "Boualem Khoukhi": 6.2,
+      "Issa Laye": 6.3,
+      "Sultan Al Brake": 6.3,
+      "Jassem Gaber": 5.8,
+      "Ahmed Fathi": 6.2,
+      "Karim Boudiaf": 6.7,
+      "Edmílson Junior": 7.6,
+      "Akram Afif": 6.6,
+      "Hassan Al Haidos": 7.7,
+      "Abdulaziz Hatem": 6.2,
+      "Ahmed Al Ganehi": 6.3,
+      "Mohammed Muntari": 6.2
+    }
+  },
+  "SUI-CAN": {
+    "SUI": {
+      "Gregor Kobel": 7.2,
+      "Luca Jaquez": 6.9,
+      "Nico Elvedi": 6.9,
+      "Manuel Akanji": 7.3,
+      "Ricardo Rodríguez": 7.4,
+      "Granit Xhaka": 6.8,
+      "Remo Freuler": 6.4,
+      "Djibril Sow": 6.8,
+      "Johan Manzambi": 8.3,
+      "Rubén Vargas": 7.3,
+      "Breel Embolo": 7.9
+    },
+    "CAN": {
+      "Maxime Crépeau": 5.8,
+      "Alistair Johnston": 6,
+      "Luc De Fougerolles": 6.4,
+      "Derek Cornelius": 5.2,
+      "Richie Laryea": 6.3,
+      "Tajon Buchanan": 6.7,
+      "Nathan Saliba": 7.2,
+      "Mathieu Choinière": 7,
+      "Ali Ahmed": 6.3,
+      "Cyle Larin": 6.2,
+      "Jonathan David": 6.1,
+      "Stephen Eustaquio": 6.1,
+      "Liam Millar": 6.2,
+      "Tani Oluwaseyi": 5.9
+    }
   }
 }
