@@ -465,6 +465,7 @@ app.use((req, res) => {
 });
 
 let scrapeTimeout = null;
+let currentlyLiveMatches = false;
 async function runScrape() {
   if (isRunning) {
     console.log('[Server Scraper] Scraper is already running. Skipping.');
@@ -484,6 +485,7 @@ async function runScrape() {
     if (result.success && result.liveCount > 0) {
       liveMatchesActive = true;
     }
+    currentlyLiveMatches = liveMatchesActive;
   } catch (err) {
     console.error('[Server Scraper] Scraping cycle failed:', err);
     lastScrapeStatus.success = false;
@@ -502,6 +504,7 @@ async function runScrape() {
 }
 
 let isRatingsRunning = false;
+let ratingsTimeout = null;
 async function runRatingsSync() {
   if (isRatingsRunning) {
     console.log('[Server Scraper] Ratings sync is already running. Skipping.');
@@ -516,10 +519,15 @@ async function runRatingsSync() {
     console.error('[Server Scraper] Ratings sync failed:', err);
   } finally {
     isRatingsRunning = false;
+    if (ratingsTimeout) clearTimeout(ratingsTimeout);
+    const delay = currentlyLiveMatches ? 300000 : 1800000; // 5min live, 30min standby
+    console.log(`[Server Scraper] Next ratings sync scheduled in ${delay / 1000}s`);
+    ratingsTimeout = setTimeout(runRatingsSync, delay);
   }
 }
 
 let isLiveRatingsRunning = false;
+let liveRatingsTimeout = null;
 async function runLiveRatingsSync() {
   if (isLiveRatingsRunning) {
     console.log('[Server Scraper] Live ratings sync is already running. Skipping.');
@@ -534,6 +542,10 @@ async function runLiveRatingsSync() {
     console.error('[Server Scraper] Live ratings sync failed:', err);
   } finally {
     isLiveRatingsRunning = false;
+    if (liveRatingsTimeout) clearTimeout(liveRatingsTimeout);
+    const delay = currentlyLiveMatches ? 300000 : 1800000; // 5min live, 30min standby
+    console.log(`[Server Scraper] Next live ratings sync scheduled in ${delay / 1000}s`);
+    liveRatingsTimeout = setTimeout(runLiveRatingsSync, delay);
   }
 }
 
@@ -550,12 +562,6 @@ app.listen(PORT, () => {
   runLiveRatingsSync();
   
 
-
-  // Run ratings sync every 5 minutes (300000 ms)
-  setInterval(runRatingsSync, 300000);
-
-  // Run live ratings sync every 5 minutes (300000 ms)
-  setInterval(runLiveRatingsSync, 300000);
 
   // Render Keep-Alive Bot to prevent service spin-down
   const selfUrl = process.env.RENDER_EXTERNAL_URL;
