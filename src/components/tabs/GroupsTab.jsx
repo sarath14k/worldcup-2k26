@@ -13,8 +13,10 @@ export const GroupsTab = ({
   setSelectedMatch 
 }) => {
   const [expandedGroup, setExpandedGroup] = useState('A');
+  const [selectedTeamCode, setSelectedTeamCode] = useState(null);
 
   const handlePrevGroup = () => {
+    setSelectedTeamCode(null);
     const currentIndex = GROUPS.indexOf(expandedGroup);
     if (currentIndex === -1) return;
     const prevIndex = (currentIndex - 1 + GROUPS.length) % GROUPS.length;
@@ -22,6 +24,7 @@ export const GroupsTab = ({
   };
 
   const handleNextGroup = () => {
+    setSelectedTeamCode(null);
     const currentIndex = GROUPS.indexOf(expandedGroup);
     if (currentIndex === -1) return;
     const nextIndex = (currentIndex + 1) % GROUPS.length;
@@ -44,7 +47,10 @@ export const GroupsTab = ({
                 return (
                   <button
                     key={g}
-                    onClick={() => setExpandedGroup(g)}
+                    onClick={() => {
+                      setExpandedGroup(g);
+                      setSelectedTeamCode(null);
+                    }}
                     className={`w-7.5 h-7.5 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer ${
                       isActive
                         ? 'border-brand-neon bg-brand-neon/15 text-brand-neon shadow-neon ring-1 ring-brand-neon/20'
@@ -59,23 +65,23 @@ export const GroupsTab = ({
           </div>
 
           <h2 className="text-lg font-bold text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button 
                 onClick={handlePrevGroup}
-                className="p-1.5 rounded-lg bg-slate-900/85 border border-slate-800 text-slate-400 hover:text-brand-neon hover:border-brand-neon/50 hover:shadow-[0_0_8px_rgba(0,255,135,0.15)] transition-all flex items-center justify-center select-none cursor-pointer"
+                className="p-1 text-slate-400 hover:text-brand-neon hover:scale-110 active:scale-95 transition-all flex items-center justify-center select-none cursor-pointer bg-transparent border-0"
                 title="Previous Group"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-5 h-5" />
               </button>
-              <span className="font-extrabold tracking-wide text-white text-base sm:text-lg">
+              <span className="font-extrabold tracking-wide text-white text-base sm:text-lg px-1">
                 Group {expandedGroup}
               </span>
               <button 
                 onClick={handleNextGroup}
-                className="p-1.5 rounded-lg bg-slate-900/85 border border-slate-800 text-slate-400 hover:text-brand-neon hover:border-brand-neon/50 hover:shadow-[0_0_8px_rgba(0,255,135,0.15)] transition-all flex items-center justify-center select-none cursor-pointer"
+                className="p-1 text-slate-400 hover:text-brand-neon hover:scale-110 active:scale-95 transition-all flex items-center justify-center select-none cursor-pointer bg-transparent border-0"
                 title="Next Group"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
             <span className="text-xs font-semibold text-slate-400">Tie-breakers: Points, GD, GF</span>
@@ -100,9 +106,24 @@ export const GroupsTab = ({
                 {(standings[expandedGroup] || []).map((t, index) => {
                   const isQualifying = index < 2;
                   const isBestThird = index === 2 && advancedTeams.thirds.some(th => th.code === t.code);
+                  const isSelected = selectedTeamCode === t.code;
                   return (
-                    <tr key={t.code} className="hover:bg-slate-900/15 transition-colors duration-150 group">
-                      <td className="py-3 px-2 text-center">
+                    <tr 
+                      key={t.code} 
+                      onClick={() => setSelectedTeamCode(isSelected ? null : t.code)}
+                      className={`hover:bg-slate-900/20 cursor-pointer transition-colors duration-150 group select-none ${
+                        isSelected ? 'bg-brand-neon/5' : ''
+                      }`}
+                    >
+                      <td className="py-3 px-2 text-center relative">
+                        {/* Qualification Accent Indicator Bar */}
+                        <div className={`absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r-md transition-all duration-350 ${
+                          isQualifying 
+                            ? 'bg-brand-neon shadow-[0_0_8px_rgba(0,255,135,0.4)]' 
+                            : isBestThird 
+                              ? 'bg-brand-royal shadow-[0_0_8px_rgba(59,130,246,0.4)]' 
+                              : 'bg-transparent'
+                        }`} />
                         <div className={`flex items-center justify-center w-6 h-6 mx-auto rounded-lg font-black text-[10px] border transition-all duration-300 ${
                           index === 0 
                             ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold shadow-[0_0_8px_rgba(251,191,36,0.1)]' 
@@ -166,13 +187,26 @@ export const GroupsTab = ({
       <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
         {/* Match list for selected group */}
         <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
-          <h3 className="text-base font-bold text-slate-200 mb-4 flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-brand-neon" />
-            Group {expandedGroup} Match Schedule
+          <h3 className="text-base font-bold text-slate-200 mb-4 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-brand-neon" />
+              <span>Group {expandedGroup} Match Schedule</span>
+            </div>
+            {selectedTeamCode && (
+              <button 
+                onClick={() => setSelectedTeamCode(null)}
+                className="text-[9px] font-extrabold uppercase bg-brand-neon/10 hover:bg-brand-neon/20 border border-brand-neon/30 text-brand-neon px-2 py-0.5 rounded transition-all cursor-pointer select-none active:scale-95 shrink-0"
+              >
+                Clear ({selectedTeamCode})
+              </button>
+            )}
           </h3>
 
           <div className="flex flex-col gap-3.5">
-            {groupMatches.filter(m => m.group === expandedGroup).map(match => {
+            {groupMatches
+              .filter(m => m.group === expandedGroup)
+              .filter(m => !selectedTeamCode || m.home === selectedTeamCode || m.away === selectedTeamCode)
+              .map(match => {
               const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
               const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
               const live = liveMatches[match.id];
