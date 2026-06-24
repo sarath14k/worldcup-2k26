@@ -39,9 +39,9 @@ export const GroupsTab = ({
         <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
           
           {/* Small A B C D ... Tabs to filter */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none border-b border-slate-900/60 z-10 relative">
-            <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest shrink-0 mr-2">Filter Group:</span>
-            <div className="flex gap-1.5">
+          <div className="flex flex-col gap-2 pb-3 border-b border-slate-900/60 z-10 relative">
+            <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">Filter Group</span>
+            <div className="grid grid-cols-6 sm:grid-cols-12 gap-1.5">
               {GROUPS.map(g => {
                 const isActive = expandedGroup === g;
                 return (
@@ -51,7 +51,7 @@ export const GroupsTab = ({
                       setExpandedGroup(g);
                       setSelectedTeamCode(null);
                     }}
-                    className={`w-7.5 h-7.5 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer ${
+                    className={`h-8 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer ${
                       isActive
                         ? 'border-brand-neon bg-brand-neon/15 text-brand-neon shadow-neon ring-1 ring-brand-neon/20'
                         : 'border-slate-900/60 bg-slate-950/45 text-slate-400 hover:text-slate-200 hover:border-slate-700'
@@ -64,7 +64,7 @@ export const GroupsTab = ({
             </div>
           </div>
 
-          <h2 className="text-lg font-bold text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <h2 className="text-lg font-bold text-white flex items-center justify-between">
             <div className="flex items-center gap-2">
               <button 
                 onClick={handlePrevGroup}
@@ -84,7 +84,6 @@ export const GroupsTab = ({
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
-            <span className="text-xs font-semibold text-slate-400">Tie-breakers: Points, GD, GF</span>
           </h2>
           
           <div className="overflow-x-auto">
