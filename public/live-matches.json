@@ -6,6 +6,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "MEX",
+    "away": "RSA",
     "events": [
       {
         "team": "home",
@@ -292,6 +294,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "KOR",
+    "away": "CZE",
     "events": [
       {
         "team": "away",
@@ -523,6 +527,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "MEX",
+    "away": "KOR",
     "events": [
       {
         "team": "home",
@@ -744,6 +750,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "RSA",
+    "away": "CZE",
     "events": [
       {
         "team": "away",
@@ -970,6 +978,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "MEX",
+    "away": "CZE",
     "events": [],
     "stats": {
       "possession": [
@@ -1010,6 +1020,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "RSA",
+    "away": "KOR",
     "events": [],
     "stats": {
       "possession": [
@@ -1050,6 +1062,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "CAN",
+    "away": "BIH",
     "events": [
       {
         "team": "away",
@@ -1372,6 +1386,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "QAT",
+    "away": "SUI",
     "events": [
       {
         "team": "away",
@@ -1658,6 +1674,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "CAN",
+    "away": "QAT",
     "events": [
       {
         "team": "home",
@@ -2042,6 +2060,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "BIH",
+    "away": "SUI",
     "events": [
       {
         "team": "away",
@@ -2327,10 +2347,12 @@
   "11": {
     "homeScore": 0,
     "awayScore": 0,
-    "minute": "31'",
+    "minute": "33'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "CAN",
+    "away": "SUI",
     "events": [],
     "stats": {
       "possession": [
@@ -2510,18 +2532,32 @@
       {
         "type": "Foul",
         "text": "Mathieu CHOINIERE (Canada) commits a foul.",
-        "minute": 30,
-        "minuteStr": "30'"
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Granit XHAKA (Switzerland) is booked by the referee.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Yellow card",
+        "text": "Cyle LARIN (Canada) is booked by the referee.",
+        "minute": 32,
+        "minuteStr": "32'"
       }
     ]
   },
   "12": {
     "homeScore": 1,
     "awayScore": 0,
-    "minute": "31'",
+    "minute": "33'",
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "BIH",
+    "away": "QAT",
     "events": [
       {
         "team": "home",
@@ -2737,6 +2773,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "BRA",
+    "away": "MAR",
     "events": [
       {
         "team": "away",
@@ -3005,6 +3043,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "HAI",
+    "away": "SCO",
     "events": [
       {
         "team": "away",
@@ -3250,6 +3290,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "BRA",
+    "away": "HAI",
     "events": [
       {
         "team": "home",
@@ -3529,6 +3571,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "MAR",
+    "away": "SCO",
     "events": [
       {
         "team": "home",
@@ -3792,6 +3836,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "BRA",
+    "away": "SCO",
     "events": [],
     "stats": {
       "possession": [
@@ -3832,6 +3878,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "MAR",
+    "away": "HAI",
     "events": [],
     "stats": {
       "possession": [
@@ -3872,6 +3920,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "USA",
+    "away": "PAR",
     "events": [
       {
         "team": "home",
@@ -4269,6 +4319,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "AUS",
+    "away": "TUR",
     "events": [
       {
         "team": "home",
@@ -4507,6 +4559,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "USA",
+    "away": "AUS",
     "events": [
       {
         "team": "home",
@@ -4865,6 +4919,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "PAR",
+    "away": "TUR",
     "events": [
       {
         "team": "home",
@@ -5296,6 +5352,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "USA",
+    "away": "TUR",
     "events": [],
     "stats": {
       "possession": [
@@ -5336,6 +5394,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "PAR",
+    "away": "AUS",
     "events": [],
     "stats": {
       "possession": [
@@ -5376,6 +5436,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "GER",
+    "away": "CUW",
     "events": [
       {
         "team": "home",
@@ -5626,6 +5688,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "CIV",
+    "away": "ECU",
     "events": [
       {
         "team": "home",
@@ -5877,6 +5941,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "GER",
+    "away": "CIV",
     "events": [
       {
         "team": "away",
@@ -6180,6 +6246,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "CUW",
+    "away": "ECU",
     "events": [],
     "stats": {
       "possession": [
@@ -6479,6 +6547,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "GER",
+    "away": "ECU",
     "events": [],
     "stats": {
       "possession": [
@@ -6519,6 +6589,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "CUW",
+    "away": "CIV",
     "events": [],
     "stats": {
       "possession": [
@@ -6559,6 +6631,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "NED",
+    "away": "JPN",
     "events": [
       {
         "team": "home",
@@ -6867,6 +6941,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "SWE",
+    "away": "TUN",
     "events": [
       {
         "team": "home",
@@ -7173,6 +7249,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "NED",
+    "away": "SWE",
     "events": [
       {
         "team": "home",
@@ -7455,6 +7533,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "JPN",
+    "away": "TUN",
     "events": [
       {
         "team": "home",
@@ -7697,6 +7777,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "NED",
+    "away": "TUN",
     "events": [],
     "stats": {
       "possession": [
@@ -7737,6 +7819,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "JPN",
+    "away": "SWE",
     "events": [],
     "stats": {
       "possession": [
@@ -7777,6 +7861,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "BEL",
+    "away": "EGY",
     "events": [
       {
         "team": "away",
@@ -8009,6 +8095,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "IRN",
+    "away": "NZL",
     "events": [
       {
         "team": "away",
@@ -8323,6 +8411,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "BEL",
+    "away": "IRN",
     "events": [],
     "stats": {
       "possession": [
@@ -8574,6 +8664,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "EGY",
+    "away": "NZL",
     "events": [
       {
         "team": "away",
@@ -8900,6 +8992,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "BEL",
+    "away": "NZL",
     "events": [],
     "stats": {
       "possession": [
@@ -8940,6 +9034,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "EGY",
+    "away": "IRN",
     "events": [],
     "stats": {
       "possession": [
@@ -8980,6 +9076,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ESP",
+    "away": "CPV",
     "events": [],
     "stats": {
       "possession": [
@@ -9207,6 +9305,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "KSA",
+    "away": "URU",
     "events": [
       {
         "team": "home",
@@ -9433,6 +9533,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ESP",
+    "away": "KSA",
     "events": [
       {
         "team": "home",
@@ -9723,6 +9825,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "CPV",
+    "away": "URU",
     "events": [
       {
         "team": "home",
@@ -10037,6 +10141,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "ESP",
+    "away": "URU",
     "events": [],
     "stats": {
       "possession": [
@@ -10077,6 +10183,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "CPV",
+    "away": "KSA",
     "events": [],
     "stats": {
       "possession": [
@@ -10117,6 +10225,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "FRA",
+    "away": "SEN",
     "events": [
       {
         "team": "home",
@@ -10377,6 +10487,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "IRQ",
+    "away": "NOR",
     "events": [
       {
         "team": "away",
@@ -10684,6 +10796,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "FRA",
+    "away": "IRQ",
     "events": [
       {
         "team": "home",
@@ -10891,6 +11005,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "SEN",
+    "away": "NOR",
     "events": [
       {
         "team": "away",
@@ -11168,6 +11284,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "FRA",
+    "away": "NOR",
     "events": [],
     "stats": {
       "possession": [
@@ -11208,6 +11326,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "SEN",
+    "away": "IRQ",
     "events": [],
     "stats": {
       "possession": [
@@ -11248,6 +11368,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ARG",
+    "away": "ALG",
     "events": [
       {
         "team": "home",
@@ -11491,6 +11613,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "AUT",
+    "away": "JOR",
     "events": [
       {
         "team": "home",
@@ -11811,6 +11935,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ARG",
+    "away": "AUT",
     "events": [
       {
         "team": "home",
@@ -12139,6 +12265,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ALG",
+    "away": "JOR",
     "events": [
       {
         "team": "away",
@@ -12358,6 +12486,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "ARG",
+    "away": "JOR",
     "events": [],
     "stats": {
       "possession": [
@@ -12398,6 +12528,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "ALG",
+    "away": "AUT",
     "events": [],
     "stats": {
       "possession": [
@@ -12438,6 +12570,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "POR",
+    "away": "COD",
     "events": [
       {
         "team": "home",
@@ -12652,6 +12786,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "UZB",
+    "away": "COL",
     "events": [
       {
         "team": "away",
@@ -12930,6 +13066,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "POR",
+    "away": "UZB",
     "events": [
       {
         "team": "home",
@@ -13561,6 +13699,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "COD",
+    "away": "COL",
     "events": [
       {
         "team": "away",
@@ -14208,6 +14348,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "POR",
+    "away": "COL",
     "events": [],
     "stats": {
       "possession": [
@@ -14248,6 +14390,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "COD",
+    "away": "UZB",
     "events": [],
     "stats": {
       "possession": [
@@ -14288,6 +14432,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ENG",
+    "away": "CRO",
     "events": [
       {
         "team": "home",
@@ -14552,6 +14698,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "GHA",
+    "away": "PAN",
     "events": [
       {
         "team": "home",
@@ -14845,6 +14993,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "ENG",
+    "away": "GHA",
     "events": [],
     "stats": {
       "possession": [
@@ -15456,6 +15606,8 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "home": "CRO",
+    "away": "PAN",
     "events": [
       {
         "team": "home",
@@ -15995,6 +16147,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "ENG",
+    "away": "PAN",
     "events": [],
     "stats": {
       "possession": [
@@ -16035,6 +16189,8 @@
     "second": 0,
     "isCompleted": false,
     "isDetailedScraped": false,
+    "home": "CRO",
+    "away": "GHA",
     "events": [],
     "stats": {
       "possession": [

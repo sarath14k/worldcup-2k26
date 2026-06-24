@@ -33,28 +33,28 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
               <div className="flex flex-col gap-2.5 py-0.5">
                 {/* Home Team */}
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-3 font-extrabold text-slate-100 text-sm min-w-0 flex-1">
+                  <div className="flex items-center gap-2 font-extrabold text-slate-100 text-sm min-w-0 flex-1">
                     <span className="text-2xl shrink-0 drop-shadow-sm">{homeTeam.flag}</span>
-                    <div className="max-w-[200px] overflow-hidden flex-1 flex items-center gap-2">
+                    <div className="max-w-[130px] sm:max-w-[170px] overflow-hidden min-w-0 flex-1">
                       <ScrollingText text={homeTeam.name} className="uppercase tracking-wide text-slate-100" />
-                      <FifaRankBadge teamCode={live.home} />
                     </div>
+                    <FifaRankBadge teamCode={live.home} />
                   </div>
-                  <div className="text-brand-neon font-black font-mono text-sm bg-slate-900/80 border border-brand-neon/20 px-3 py-1 rounded-xl min-w-[38px] text-center shadow-neon">
+                  <div className="text-brand-neon font-black font-mono text-sm bg-slate-900/80 border border-brand-neon/20 px-3 py-1 rounded-xl min-w-[38px] text-center shadow-neon shrink-0 ml-2">
                     {live.homeScore}
                   </div>
                 </div>
 
                 {/* Away Team */}
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-3 font-extrabold text-slate-100 text-sm min-w-0 flex-1">
+                  <div className="flex items-center gap-2 font-extrabold text-slate-100 text-sm min-w-0 flex-1">
                     <span className="text-2xl shrink-0 drop-shadow-sm">{awayTeam.flag}</span>
-                    <div className="max-w-[200px] overflow-hidden flex-1 flex items-center gap-2">
+                    <div className="max-w-[130px] sm:max-w-[170px] overflow-hidden min-w-0 flex-1">
                       <ScrollingText text={awayTeam.name} className="uppercase tracking-wide text-slate-100" />
-                      <FifaRankBadge teamCode={live.away} />
                     </div>
+                    <FifaRankBadge teamCode={live.away} />
                   </div>
-                  <div className="text-brand-neon font-black font-mono text-sm bg-slate-900/80 border border-brand-neon/20 px-3 py-1 rounded-xl min-w-[38px] text-center shadow-neon">
+                  <div className="text-brand-neon font-black font-mono text-sm bg-slate-900/80 border border-brand-neon/20 px-3 py-1 rounded-xl min-w-[38px] text-center shadow-neon shrink-0 ml-2">
                     {live.awayScore}
                   </div>
                 </div>
@@ -73,9 +73,11 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
               {/* Teams & Score Row */}
               <div className="flex items-center justify-between gap-4 md:gap-8 flex-1">
                 {/* Home Team */}
-                <div className="flex items-center gap-3 font-extrabold text-slate-100 sm:text-base md:text-lg justify-end flex-1 min-w-0">
+                <div className="flex items-center gap-2 font-extrabold text-slate-100 sm:text-base md:text-lg justify-end flex-1 min-w-0">
                   <FifaRankBadge teamCode={live.home} />
-                  <ScrollingText text={homeTeam.name} className="uppercase tracking-wide text-slate-100 text-right justify-end" />
+                  <div className="max-w-[140px] md:max-w-[200px] overflow-hidden shrink-0">
+                    <ScrollingText text={homeTeam.name} className="uppercase tracking-wide text-slate-100 text-right justify-end" />
+                  </div>
                   <span className="text-2xl sm:text-3xl shrink-0 drop-shadow">{homeTeam.flag}</span>
                 </div>
 
@@ -85,9 +87,11 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
                 </div>
 
                 {/* Away Team */}
-                <div className="flex items-center gap-3 font-extrabold text-slate-100 sm:text-base md:text-lg flex-1 min-w-0">
+                <div className="flex items-center gap-2 font-extrabold text-slate-100 sm:text-base md:text-lg flex-1 min-w-0">
                   <span className="text-2xl sm:text-3xl shrink-0 drop-shadow">{awayTeam.flag}</span>
-                  <ScrollingText text={awayTeam.name} className="uppercase tracking-wide text-slate-100" />
+                  <div className="max-w-[140px] md:max-w-[200px] overflow-hidden shrink-0">
+                    <ScrollingText text={awayTeam.name} className="uppercase tracking-wide text-slate-100" />
+                  </div>
                   <FifaRankBadge teamCode={live.away} />
                 </div>
               </div>
