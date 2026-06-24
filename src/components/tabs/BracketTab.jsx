@@ -1,17 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
-import { ListFilter, Check, Star } from 'lucide-react';
-import { GROUPS, TEAMS } from '../../data/worldcupData';
+import { Check, Star } from 'lucide-react';
+import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
 
 export const BracketTab = ({
   bracket,
-  standings,
-  advancedTeams,
   tournamentChampion,
   handleKnockoutWinner
 }) => {
-  const [showGroupSelectors, setShowGroupSelectors] = useState(false);
   const [hoveredTeam, setHoveredTeam] = useState(null);
   const [activeRoundTab, setActiveRoundTab] = useState('r32');
   const [lines, setLines] = useState([]);
@@ -50,7 +47,7 @@ export const BracketTab = ({
             const fromRect = fromEl.getBoundingClientRect();
             const toRect = toEl.getBoundingClientRect();
 
-            let x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+            let x1, y1, x2, y2;
             if (side === 'left') {
               x1 = fromRect.right - containerRect.left;
               y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
@@ -370,100 +367,6 @@ export const BracketTab = ({
 
   return (
     <div className="flex flex-col gap-6 animate-fadeIn">
-      {/* Legend & Instructions */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 gap-4">
-        <div>
-          <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-            <WorldCupTrophyIcon className="w-4 h-4 text-brand-gold" />
-            Tournament Bracket Roadmap
-          </h2>
-          <p className="text-xs text-slate-400">View the qualified teams and progress of the knockout rounds in real time. Hover over any country to highlight their tournament path.</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-            <span className="w-3.5 h-3.5 rounded bg-brand-neon/20 border border-brand-neon/60 inline-block"></span>
-            <span>Qualified / Advanced Team</span>
-          </div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-            <span className="w-3.5 h-3.5 rounded bg-brand-cardBg border border-slate-800 inline-block"></span>
-            <span>TBD / Not Qualified</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Collapsible Group Stage Qualifiers Section */}
-      <div className="p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80">
-        <div className="flex justify-between items-center cursor-pointer select-none" onClick={() => setShowGroupSelectors(!showGroupSelectors)}>
-          <div>
-            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-              <ListFilter className="w-4 h-4 text-brand-neon animate-pulse" />
-              Group Stage Standings & R32 Qualifiers (48 Teams)
-            </h2>
-            <p className="text-xs text-slate-450 mt-1">Directly select group ranks (1st, 2nd, 3rd, 4th) to seed and qualify teams from 48 to 32 in the bracket below.</p>
-          </div>
-          <button className="text-slate-400 hover:text-white transition-all text-[10px] font-bold flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">
-            {showGroupSelectors ? 'Hide Group Standings' : 'Show Group Standings'}
-          </button>
-        </div>
-
-        {showGroupSelectors && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5 animate-fadeIn">
-            {GROUPS.map(g => {
-              const groupStandings = standings[g] || [];
-              return (
-                <div key={g} className="p-3.5 rounded-xl bg-slate-950/40 border border-slate-900/60 hover:border-slate-800 transition-all flex flex-col gap-2">
-                  <div className="flex justify-between items-center border-b border-slate-900/60 pb-1.5">
-                    <span className="text-[10px] font-extrabold text-slate-350 tracking-widest">GROUP {g}</span>
-                    <span className="text-[8px] text-slate-550 font-mono font-black">RANKING</span>
-                  </div>
-                  <table className="w-full text-left text-[10px] font-semibold">
-                    <thead>
-                      <tr className="text-slate-500 font-bold border-b border-slate-900/40">
-                        <th className="py-1 w-12 text-[9px]">POS</th>
-                        <th className="py-1 text-[9px]">TEAM</th>
-                        <th className="py-1 text-center text-[9px] text-brand-neon">PTS</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-900/30">
-                      {groupStandings.map((t, index) => {
-                        const isQualifying = index < 2;
-                        const isBestThird = index === 2 && advancedTeams.thirds.some(th => th.code === t.code);
-                        return (
-                          <tr key={t.code} className="hover:bg-slate-900/10 transition-all">
-                            <td className="py-1.5">
-                              <div className={`flex items-center justify-center w-5 h-5 rounded font-black text-[9px] border ${
-                                index === 0 
-                                  ? 'bg-brand-gold/10 border-brand-gold/30 text-brand-gold' 
-                                  : index === 1 
-                                    ? 'bg-slate-400/10 border-slate-400/30 text-slate-350' 
-                                    : index === 2 
-                                      ? 'bg-brand-royal/10 border-brand-royal/30 text-brand-royal' 
-                                      : 'bg-slate-900/50 border-slate-800 text-slate-500'
-                              }`}>
-                                {index + 1}
-                              </div>
-                            </td>
-                            <td className="py-1.5 text-slate-200 flex items-center gap-1.5 min-w-0">
-                              <span className="text-base shrink-0">{t.flag}</span>
-                              <div className="max-w-[70px] font-bold overflow-hidden">
-                                <ScrollingText text={t.name} className="text-[10px]" />
-                              </div>
-                              {isQualifying && <span className="text-[7px] bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-1 rounded-sm leading-none py-0.5 font-extrabold shrink-0">R32</span>}
-                              {isBestThird && <span className="text-[7px] bg-brand-royal/15 border border-brand-royal/30 text-brand-royal px-1 rounded-sm leading-none py-0.5 font-extrabold shrink-0">R32 *</span>}
-                            </td>
-                            <td className="py-1.5 text-center font-extrabold text-[10px] text-brand-neon">{t.points}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-
       {/* Mobile-optimized Vertical/Pill Bracket view */}
       <div className="block md:hidden">
         {/* Pills Selector */}

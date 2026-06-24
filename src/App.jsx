@@ -920,7 +920,7 @@ function App() {
           {[
             { id: 'fixtures', label: 'Upcoming & Results', icon: Calendar },
             { id: 'groups', label: 'Group Standings', icon: Users },
-            { id: 'bracket', label: 'Roadmap Tree', icon: TrendingUp },
+            { id: 'bracket', label: 'Roadmap Simulation', icon: TrendingUp },
             { id: 'stats', label: 'Player Stats', icon: Award },
             { id: 'venues', label: 'Stadium Venues', icon: MapPin },
           ].map(tab => {

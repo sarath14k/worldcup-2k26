@@ -40,7 +40,6 @@ export const GroupsTab = ({
           
           {/* Small A B C D ... Tabs to filter */}
           <div className="flex flex-col gap-2 pb-3 border-b border-slate-900/60 z-10 relative">
-            <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest">Filter Group</span>
             <div className="grid grid-cols-6 sm:grid-cols-12 gap-1.5">
               {GROUPS.map(g => {
                 const isActive = expandedGroup === g;
