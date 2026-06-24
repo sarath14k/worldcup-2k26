@@ -215,7 +215,7 @@ export const GroupsTab = ({
                   className="p-3 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/30 cursor-pointer transition-all flex flex-col gap-2 card-shimmer"
                 >
                   <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
-                    <span>MATCH {match.id}</span>
+                    <span>GROUP {match.group} • MATCH {((match.id - 1) % 6) + 1}</span>
                     {match.isCompleted ? (
                       <span className="text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wider font-extrabold font-mono">FT</span>
                     ) : (

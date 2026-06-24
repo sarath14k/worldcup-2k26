@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap, Star } from 'lucide-react';
 import { TEAMS, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
 import { calculateStandings, getAdvancedTeams, populateRoundOf32 } from './data/simulation';
@@ -13,6 +13,7 @@ import {
 } from './utils/matchHelpers';
 import { MatchDetailsModal } from './components/MatchDetailsModal';
 import { LiveMatchesBanner } from './components/LiveMatchesBanner';
+import { ConfettiShower } from './components/ConfettiShower';
 import { FixturesTab } from './components/tabs/FixturesTab';
 import { GroupsTab } from './components/tabs/GroupsTab';
 import { BracketTab } from './components/tabs/BracketTab';
@@ -53,6 +54,11 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [rawLiveMatches, setRawLiveMatches] = useState({});
   const [selectedMatch, setSelectedMatch] = useState(null);
+
+  // Goal tracking states
+  const prevScoresRef = useRef({});
+  const [goalAlert, setGoalAlert] = useState(null);
+  const [activeGoalFlashMatchIds, setActiveGoalFlashMatchIds] = useState([]);
 
   // Compute aligned liveMatches from rawLiveMatches to ensure home/away teams are oriented correctly
   const liveMatches = useMemo(() => {
@@ -115,6 +121,88 @@ function App() {
 
     return aligned;
   }, [rawLiveMatches, groupMatches, bracket]);
+
+  // --- Live Goal Detection Effect ---
+  useEffect(() => {
+    if (!liveMatches || Object.keys(liveMatches).length === 0) {
+      return;
+    }
+
+    const currentMatches = { ...liveMatches };
+    const prevMatches = prevScoresRef.current;
+    const hasPreviousData = Object.keys(prevMatches).length > 0;
+
+    for (const [matchId, match] of Object.entries(currentMatches)) {
+      const prev = prevMatches[matchId];
+      if (prev && hasPreviousData) {
+        const homeDiff = (match.homeScore ?? 0) - (prev.homeScore ?? 0);
+        const awayDiff = (match.awayScore ?? 0) - (prev.awayScore ?? 0);
+
+        if (homeDiff > 0 || awayDiff > 0) {
+          const isHome = homeDiff > 0;
+          const homeTeamInfo = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
+          const awayTeamInfo = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
+          const scoringTeamInfo = isHome ? homeTeamInfo : awayTeamInfo;
+
+          let scorerName = null;
+          let goalMinute = match.minute || '90';
+          
+          if (match.events && Array.isArray(match.events)) {
+            const teamSide = isHome ? 'home' : 'away';
+            const teamGoals = match.events.filter(e => e.team === teamSide);
+            if (teamGoals.length > 0) {
+              const lastGoal = teamGoals[teamGoals.length - 1];
+              scorerName = lastGoal.player;
+              goalMinute = lastGoal.minute;
+            }
+          }
+
+          // Trigger Alert state
+          setGoalAlert({
+            matchId,
+            homeName: homeTeamInfo.name,
+            homeFlag: homeTeamInfo.flag,
+            awayName: awayTeamInfo.name,
+            awayFlag: awayTeamInfo.flag,
+            homeScore: match.homeScore,
+            awayScore: match.awayScore,
+            scoringTeamName: scoringTeamInfo.name,
+            scoringTeamFlag: scoringTeamInfo.flag,
+            player: scorerName,
+            minute: goalMinute
+          });
+
+          // Trigger card glow flash
+          setActiveGoalFlashMatchIds(prevIds => [...prevIds, matchId]);
+          
+          // Clear flash after 8s
+          setTimeout(() => {
+            setActiveGoalFlashMatchIds(prevIds => prevIds.filter(id => id !== matchId));
+          }, 8000);
+
+          // Clear alert toast after 6s
+          setTimeout(() => {
+            setGoalAlert(current => {
+              if (current && current.matchId === matchId) {
+                return null;
+              }
+              return current;
+            });
+          }, 6000);
+        }
+      }
+    }
+
+    // Save current scores to Ref for next comparison
+    const scoresToSave = {};
+    for (const [id, m] of Object.entries(currentMatches)) {
+      scoresToSave[id] = {
+        homeScore: m.homeScore ?? 0,
+        awayScore: m.awayScore ?? 0
+      };
+    }
+    prevScoresRef.current = scoresToSave;
+  }, [liveMatches]);
 
   // Highlights polling states
   const [highlightsMap, setHighlightsMap] = useState({});
@@ -832,6 +920,47 @@ function App() {
 
   return (
     <div className={`min-h-screen ${theme === 'pitch-black' ? 'bg-black' : 'bg-brand-darkBg'} text-slate-100 font-sans antialiased transition-colors duration-300 dot-grid-bg`}>
+      {/* Confetti Shower for Goal Alerts */}
+      {goalAlert && <ConfettiShower />}
+
+      {/* Goal Alert Toast Banner */}
+      {goalAlert && (
+        <div 
+          onClick={() => setGoalAlert(null)}
+          className="fixed top-6 left-1/2 -translate-x-1/2 z-[99999] w-[92%] max-w-sm bg-slate-950/95 border-2 border-brand-neon rounded-2xl p-4 shadow-[0_0_30px_rgba(0,255,135,0.4)] backdrop-blur-md cursor-pointer animate-goalAlert"
+        >
+          <div className="flex items-center justify-between pb-2 border-b border-slate-900/60 mb-2">
+            <span className="text-[10px] font-black tracking-widest text-brand-neon flex items-center gap-1.5 uppercase animate-pulse">
+              ⚽ GOAL ALERT!
+            </span>
+            <span className="text-[9px] text-slate-500 font-bold uppercase tracking-widest">
+              Match {goalAlert.matchId}
+            </span>
+          </div>
+          
+          <div className="flex items-center justify-between gap-3 py-1.5">
+            <div className="flex items-center gap-2 font-black text-slate-100 text-xs flex-1 min-w-0">
+              <span className="text-xl shrink-0">{goalAlert.homeFlag}</span>
+              <span className="truncate">{goalAlert.homeName}</span>
+            </div>
+            
+            <div className="px-3 py-0.5 bg-slate-900 border border-brand-neon/30 text-brand-neon rounded-lg font-mono font-black text-xs shadow-[0_0_10px_rgba(0,255,135,0.1)] shrink-0 min-w-[50px] text-center">
+              {goalAlert.homeScore} : {goalAlert.awayScore}
+            </div>
+            
+            <div className="flex items-center gap-2 font-black text-slate-100 text-xs justify-end flex-1 min-w-0 text-right">
+              <span className="truncate">{goalAlert.awayName}</span>
+              <span className="text-xl shrink-0">{goalAlert.awayFlag}</span>
+            </div>
+          </div>
+          
+          {goalAlert.player && (
+            <div className="text-[9px] text-brand-neon font-black mt-2 text-center uppercase tracking-wider bg-brand-neon/10 py-1 rounded-lg border border-brand-neon/20">
+              ⚽ {goalAlert.player} ({goalAlert.minute}')
+            </div>
+          )}
+        </div>
+      )}
       {/* Background glow effects for visual wow-factor */}
       {theme !== 'pitch-black' && (
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -955,6 +1084,7 @@ function App() {
             hasLiveMatches={hasLiveMatches}
             activeLiveMatchesList={activeLiveMatchesList}
             setSelectedMatch={setSelectedMatch}
+            activeGoalFlashMatchIds={activeGoalFlashMatchIds}
           />
         )}
         
@@ -970,6 +1100,7 @@ function App() {
             loadingHighlightsMap={loadingHighlightsMap}
             isLiveMatch={isLiveMatch}
             setSelectedMatch={setSelectedMatch}
+            activeGoalFlashMatchIds={activeGoalFlashMatchIds}
           />
         )}
 

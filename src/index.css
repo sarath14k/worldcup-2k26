@@ -322,3 +322,68 @@ html.pitch-black body,
   stroke-dasharray: 8, 4;
   animation: connector-flow 1.2s linear infinite;
 }
+
+/* Goal Alert Slide Down Animation */
+@keyframes goalAlertSlideDown {
+  0% {
+    transform: translate(-50%, -120%) scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-50%, 0) scale(1.05);
+    opacity: 1;
+  }
+  13% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+  88% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -120%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-goalAlert {
+  animation: goalAlertSlideDown 6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Floating Confetti Particle Animation */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti-particle {
+  position: fixed;
+  top: -20px;
+  animation: confettiFall 4s linear forwards;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* Neon Flashing Border for Goal Cards */
+@keyframes goalFlashNeon {
+  0%, 100% {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+  }
+  50% {
+    border-color: rgba(0, 255, 135, 1);
+    box-shadow: 0 0 25px rgba(0, 255, 135, 0.65), inset 0 0 10px rgba(0, 255, 135, 0.15);
+  }
+}
+
+.animate-goalFlash {
+  animation: goalFlashNeon 1.5s ease-in-out infinite !important;
+}
+

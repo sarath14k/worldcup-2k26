@@ -252,7 +252,9 @@ export const MatchDetailsModal = ({
         <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-800/80 shrink-0 bg-slate-900/98 z-10 relative">
           <div className="pr-12 text-left">
             <div className="text-[10px] sm:text-xs font-extrabold text-brand-neon uppercase tracking-widest mb-0.5 truncate">
-              {selectedMatch.type === 'group' ? `Group ${selectedMatch.group}` : selectedMatch.round || 'Knockout'} • Match {selectedMatch.id}
+              {selectedMatch.type === 'group' 
+                ? `Group ${selectedMatch.group} • Match ${((selectedMatch.id - 1) % 6) + 1}` 
+                : `${selectedMatch.round || 'Knockout'} • Match ${selectedMatch.id}`}
             </div>
             <div className="w-full">
               <ScrollingText 

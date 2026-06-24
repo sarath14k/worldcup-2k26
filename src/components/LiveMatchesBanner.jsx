@@ -2,18 +2,23 @@ import { TEAMS } from '../data/worldcupData';
 import { ScrollingText } from './ScrollingText';
 import { FifaRankBadge } from '../utils/matchHelpers';
 
-export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => {
+export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
   return (
     <div className="flex flex-col gap-3.5 mt-4 w-full">
       {activeLiveMatchesList.map(live => {
         const homeTeam = TEAMS[live.home] || { flag: '🏳️', name: live.home || 'TBD' };
         const awayTeam = TEAMS[live.away] || { flag: '🏳️', name: live.away || 'TBD' };
+        const isFlashing = activeGoalFlashMatchIds.includes(String(live.id));
         return (
           <div 
             key={live.id} 
             onClick={() => setSelectedMatch(live.originalMatch)}
             title="Click to view live stats & timeline commentary"
-            className="p-4 sm:p-5 rounded-2xl bg-slate-950/80 border border-slate-900/80 hover:border-brand-neon/60 hover:bg-slate-900/30 cursor-pointer select-none transition-all duration-300 shadow-glass group w-full"
+            className={`p-4 sm:p-5 rounded-2xl bg-slate-950/80 border shadow-glass group w-full transition-all duration-300 ${
+              isFlashing 
+                ? 'animate-goalFlash' 
+                : 'border-slate-900/80 hover:border-brand-neon/60 hover:bg-slate-900/30 cursor-pointer select-none'
+            }`}
           >
             {/* Mobile Layout (Stacked Vertically) */}
             <div className="flex sm:hidden flex-col gap-3">
@@ -23,6 +28,9 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
                   <span className="text-[10px] font-black text-brand-neon tracking-wider uppercase animate-pulse">
                     LIVE {live.minute}'
                   </span>
+                  {isFlashing && (
+                    <span className="bg-brand-neon text-slate-950 text-[8px] px-1 py-0.5 rounded font-black animate-bounce shadow-[0_0_8px_rgba(0,255,135,0.4)]">⚽ GOAL!</span>
+                  )}
                 </div>
                 <span className="text-[9px] text-slate-500 font-extrabold uppercase tracking-widest font-mono">
                   Match {live.id}
@@ -68,6 +76,9 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
                 <span className="text-xs bg-brand-neon/15 border border-brand-neon/30 text-brand-neon px-3 py-1 rounded-xl font-black tracking-widest uppercase animate-pulse">
                   LIVE {live.minute}'
                 </span>
+                {isFlashing && (
+                  <span className="bg-brand-neon text-slate-950 text-[9px] px-1.5 py-0.5 rounded-lg font-black animate-bounce shadow-[0_0_8px_rgba(0,255,135,0.4)] ml-2">⚽ GOAL!</span>
+                )}
               </div>
 
               {/* Teams & Score Row */}
@@ -109,7 +120,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch }) => 
   );
 };
 
-export const LiveMatchesBanner = ({ hasLiveMatches, activeLiveMatchesList, setSelectedMatch }) => {
+export const LiveMatchesBanner = ({ hasLiveMatches, activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
   if (!hasLiveMatches || activeLiveMatchesList.length === 0) return null;
 
   return (
@@ -147,6 +158,7 @@ export const LiveMatchesBanner = ({ hasLiveMatches, activeLiveMatchesList, setSe
         <LiveMatchesList 
           activeLiveMatchesList={activeLiveMatchesList} 
           setSelectedMatch={setSelectedMatch} 
+          activeGoalFlashMatchIds={activeGoalFlashMatchIds}
         />
       </div>
     </div>

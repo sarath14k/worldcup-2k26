@@ -14,7 +14,8 @@ export const FixturesTab = ({
   highlightsMap, 
   loadingHighlightsMap, 
   isLiveMatch, 
-  setSelectedMatch 
+  setSelectedMatch,
+  activeGoalFlashMatchIds = []
 }) => {
   const [showAllUpcoming, setShowAllUpcoming] = useState(false);
   const [showAllDone, setShowAllDone] = useState(false);
@@ -63,6 +64,7 @@ export const FixturesTab = ({
             <LiveMatchesList 
               activeLiveMatchesList={activeLiveMatchesList} 
               setSelectedMatch={setSelectedMatch} 
+              activeGoalFlashMatchIds={activeGoalFlashMatchIds}
             />
           </div>
         )}
@@ -99,25 +101,30 @@ export const FixturesTab = ({
                 const live = liveMatches[match.id];
                 const isMatchLive = isLiveMatch(live);
                 const isLiveOrDone = isMatchLive || match.isCompleted || (live && (live.minute === 'FT' || live.isCompleted));
+                const isFlashing = activeGoalFlashMatchIds.includes(String(match.id));
                 return (
                   <div 
                     key={`today-${match.id}`} 
                     onClick={() => setSelectedMatch(match)}
                     className={`p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 card-shimmer ${
-                      isMatchLive 
-                        ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20' 
-                        : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
+                      isFlashing
+                        ? 'animate-goalFlash'
+                        : isMatchLive 
+                          ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20' 
+                          : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
                     }`}
                   >
                     <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
                       <span className="text-brand-neon uppercase font-extrabold flex items-center gap-1">
-                        Group {match.group} • Match {match.id}
-                        {isMatchLive && (
+                        Group {match.group} • Match {((match.id - 1) % 6) + 1}
+                        {isFlashing ? (
+                          <span className="bg-brand-neon text-slate-950 text-[8px] px-1 py-0.5 rounded font-black animate-bounce ml-1.5 shadow-[0_0_8px_rgba(0,255,135,0.4)]">⚽ GOAL!</span>
+                        ) : isMatchLive ? (
                           <span className="flex h-1.5 w-1.5 relative">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-neon"></span>
                           </span>
-                        )}
+                        ) : null}
                       </span>
                       <span className="text-slate-400 font-mono">{formatDisplayDate(match.date)}</span>
                     </div>
@@ -246,7 +253,7 @@ export const FixturesTab = ({
                     <div className="flex justify-between items-center text-[10px] font-bold">
                       <div className="flex items-center gap-2">
                         <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-[9px]">FT</span>
-                        <span className="text-slate-500 font-mono">Match {match.id} ({match.group})</span>
+                        <span className="text-slate-500 font-mono">Group {match.group} • Match {((match.id - 1) % 6) + 1}</span>
                       </div>
                       <span className="text-[9px] text-slate-500 font-mono">{formatDisplayDate(match.date)}</span>
                     </div>
