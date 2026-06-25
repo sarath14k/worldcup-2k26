@@ -252,7 +252,36 @@ export async function syncWithEspn() {
     }
     
     console.log(`[ESPN Sync] Sync complete. Saved ${Object.keys(liveData).length} active/completed matches. Live matches currently: ${liveCount}`);
-    return { success: true, count: Object.keys(liveData).length, liveCount };
+
+    // Compute scheduling metadata from all events
+    let nextMatchTime = null;
+    let lastMatchEndTime = null;
+    const now = Date.now();
+
+    for (const event of events) {
+      const comp = event.competitions?.[0] || {};
+      const state = comp.status?.type?.state || 'pre';
+      const matchDate = new Date(event.date);
+      
+      if (state === 'pre' && matchDate.getTime() > now) {
+        if (!nextMatchTime || matchDate.getTime() < new Date(nextMatchTime).getTime()) {
+          nextMatchTime = matchDate.toISOString();
+        }
+      }
+      
+      if (state === 'post') {
+        const endDate = comp.status?.type?.detail ? new Date(event.date) : null;
+        if (endDate) {
+          // Estimate end time: match start + 120 min (accounts for halftime + stoppage)
+          const estimatedEnd = new Date(endDate.getTime() + 120 * 60 * 1000);
+          if (!lastMatchEndTime || estimatedEnd.getTime() > new Date(lastMatchEndTime).getTime()) {
+            lastMatchEndTime = estimatedEnd.toISOString();
+          }
+        }
+      }
+    }
+
+    return { success: true, count: Object.keys(liveData).length, liveCount, nextMatchTime, lastMatchEndTime };
     
   } catch (error) {
     console.error('[ESPN Sync] Sync failed:', error);

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap, Star } from 'lucide-react';
+import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap, Star, Activity } from 'lucide-react';
 import { TEAMS, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
 import { calculateStandings, getAdvancedTeams, populateRoundOf32 } from './data/simulation';
 import { 
@@ -20,6 +20,7 @@ import { BracketTab } from './components/tabs/BracketTab';
 import { StatsTab } from './components/tabs/StatsTab';
 import { PlayerRatingsTab } from './components/tabs/PlayerRatingsTab';
 import { VenuesTab } from './components/tabs/VenuesTab';
+import SystemTab from './components/tabs/SystemTab';
 import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
 
 function App() {
@@ -1123,6 +1124,7 @@ function App() {
             { id: 'stats', label: 'Player Stats', icon: Award },
             { id: 'ratings', label: 'Player Ratings', icon: Star },
             { id: 'venues', label: 'Stadium Venues', icon: MapPin },
+            { id: 'system', label: 'System', icon: Activity },
           ].map(tab => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -1213,6 +1215,10 @@ function App() {
             liveMatches={liveMatches}
             isLiveMatch={isLiveMatch}
           />
+        )}
+
+        {activeTab === 'system' && (
+          <SystemTab />
         )}
       </main>
 
