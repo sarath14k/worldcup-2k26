@@ -233,6 +233,10 @@ export function findBestHighlight(html, home, away, homeCode, awayCode) {
  * Full highlights search: checks hardcoded, cache, then YouTube.
  * Returns { result, statusCode } where result is the JSON response body.
  */
+/**
+ * Full highlights search: checks hardcoded, cache, FIFA.com API, then YouTube.
+ * Returns { result, statusCode } where result is the JSON response body.
+ */
 export async function searchHighlights({ home, away, homeCode, awayCode }) {
   if (!home || !away) {
     return { statusCode: 400, result: { error: 'home and away parameters are required' } };
@@ -246,7 +250,7 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
     return {
       statusCode: 200,
       result: {
-        videoId: HARDCODED_HIGHLIGHTS[fallbackKey].split('v=')[1],
+        videoId: HARDCODED_HIGHLIGHTS[fallbackKey].includes('watch?v=') ? HARDCODED_HIGHLIGHTS[fallbackKey].split('v=')[1] : HARDCODED_HIGHLIGHTS[fallbackKey].split('/').pop(),
         url: HARDCODED_HIGHLIGHTS[fallbackKey],
         title: `Highlights | ${home} vs ${away} | FIFA World Cup 2026™`,
         channel: 'FIFA (Direct)'
@@ -259,16 +263,85 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
   const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
   if (homeCode && awayCode && highlightsCache[cacheKey]) {
     const cached = highlightsCache[cacheKey];
-    if (isFIFAChannel(cached.channel)) {
-      const cachedSec = durationToSeconds(cached.duration);
-      if (cachedSec >= 115) {
-        return { statusCode: 200, result: cached };
-      }
-      cachedShortFallback = cached;
+    const cachedSec = durationToSeconds(cached.duration);
+    if (cachedSec >= 115 || cached.url.includes('fifa.com')) {
+      return { statusCode: 200, result: cached };
     }
+    cachedShortFallback = cached;
   }
 
-  // 3. Search YouTube
+  // 3. Search official FIFA.com search API
+  try {
+    const cleanHome = home.replace(/&/g, 'and');
+    const cleanAway = away.replace(/&/g, 'and');
+    // Query FIFA Search API for the match highlights
+    const searchString = `${cleanHome} vs ${cleanAway} highlights`;
+    const searchUrl = `https://cxm-api.fifa.com/fifacxmsearch/api/results?locale=en&searchString=${encodeURIComponent(searchString)}&clientType=fifaplus&type=search&context=default&size=20&sort=relevance&dateFrom=1900-01-01`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    const response = await fetch(searchUrl, {
+      signal: controller.signal,
+      headers: {
+        "X-Functions-Key": "2kD9zRYRT7xN6kSGs6EoHcvSyKOyK0B4YaKTf1Ygeaw8PM6bgfR6SQ==",
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0"
+      }
+    });
+    clearTimeout(timeoutId);
+
+    if (response.ok) {
+      const data = await response.json();
+      const hits = data.hits?.hits || [];
+      // Filter for video results
+      const videoHits = hits.filter(h => h._source?.recordType === 'video');
+      
+      // Look for a highlight matching both teams
+      for (const hit of videoHits) {
+        const titleLower = (hit._source.title || '').toLowerCase();
+        
+        const checkTeam = (normName, code) => {
+          const aliases = TEAM_ALIASES[normName] || [normName];
+          if (code) aliases.push(code.toLowerCase());
+          if (aliases.some(alias => titleLower.includes(alias))) return true;
+          const words = normName.split(' ').filter(w => w.length > 3);
+          return words.length > 0 && words.every(word => titleLower.includes(word));
+        };
+
+        if (checkTeam(normHome, homeCode) && checkTeam(normAway, awayCode)) {
+          let videoId = hit._source.id;
+          let relativeUrl = '';
+          try {
+            const addInfo = JSON.parse(hit._source.additionalInformation || '{}');
+            relativeUrl = addInfo.RelativeUrl || `/en/watch/${videoId}`;
+            if (addInfo.VideoEntryId) videoId = addInfo.VideoEntryId;
+          } catch (e) {
+            relativeUrl = `/en/watch/${videoId}`;
+          }
+
+          const found = {
+            videoId,
+            url: `https://www.fifa.com${relativeUrl}`,
+            title: hit._source.title,
+            channel: 'FIFA.com (Direct)',
+            duration: hit._source.additionalInformation ? 
+              (JSON.parse(hit._source.additionalInformation).VideoDuration ? 
+                `${Math.floor(JSON.parse(hit._source.additionalInformation).VideoDuration / 60)}:${Math.floor(JSON.parse(hit._source.additionalInformation).VideoDuration % 60).toString().padStart(2, '0')}` : '2:00') : '2:00'
+          };
+
+          if (homeCode && awayCode) {
+            highlightsCache[cacheKey] = found;
+            saveCache();
+          }
+          return { statusCode: 200, result: found };
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[Highlights] FIFA Search API failed, trying YouTube fallback:', err.message);
+  }
+
+  // 4. Fallback to YouTube
   try {
     const cleanHome = home.replace(/&/g, 'and');
     const cleanAway = away.replace(/&/g, 'and');
@@ -306,10 +379,11 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
 
     return { statusCode: 404, result: { error: 'No video highlights found' } };
   } catch (err) {
-    console.error('[Highlights] Error:', err.message);
+    console.error('[Highlights] YouTube fallback error:', err.message);
     if (cachedShortFallback) {
       return { statusCode: 200, result: cachedShortFallback };
     }
     return { statusCode: 500, result: { error: err.message } };
   }
 }
+
