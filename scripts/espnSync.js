@@ -182,22 +182,39 @@ export async function syncWithEspn() {
       }
     });
     
-    // Fetch details asynchronously for active/completed matches that need detail updates
+    // Fetch details in parallel batches for active/completed matches that need detail updates
     let liveCount = 0;
+    const BATCH_SIZE = 5;
+    const detailEntries = [];
     for (const appId of Object.keys(liveData)) {
       const match = liveData[appId];
       if (match.isLive) {
         liveCount++;
       }
       if (match.needsDetailFetch) {
-        const details = await fetchMatchDetails(
-          match.eventId, 
-          match.homeAbbr, 
-          match.awayAbbr, 
-          match.homeTeamId, 
-          match.awayTeamId
-        );
-        if (details) {
+        detailEntries.push(appId);
+      }
+    }
+
+    // Process detail fetches in batches of BATCH_SIZE
+    for (let i = 0; i < detailEntries.length; i += BATCH_SIZE) {
+      const batch = detailEntries.slice(i, i + BATCH_SIZE);
+      const results = await Promise.allSettled(
+        batch.map(appId => {
+          const match = liveData[appId];
+          return fetchMatchDetails(
+            match.eventId,
+            match.homeAbbr,
+            match.awayAbbr,
+            match.homeTeamId,
+            match.awayTeamId
+          ).then(details => ({ appId, details }));
+        })
+      );
+      for (const result of results) {
+        if (result.status === 'fulfilled' && result.value.details) {
+          const { appId, details } = result.value;
+          const match = liveData[appId];
           match.stats = details.stats;
           match.events = details.events;
           match.timeline = details.timeline;
@@ -205,6 +222,11 @@ export async function syncWithEspn() {
           match.isScorersFixed = true;
         }
       }
+    }
+
+    // Clean up internal fields from all matches
+    for (const appId of Object.keys(liveData)) {
+      const match = liveData[appId];
       match.home = match.homeAbbr;
       match.away = match.awayAbbr;
 
