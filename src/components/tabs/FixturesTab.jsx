@@ -19,6 +19,7 @@ export const FixturesTab = ({
 }) => {
   const [showAllUpcoming, setShowAllUpcoming] = useState(false);
   const [showAllDone, setShowAllDone] = useState(false);
+  const [activeVideoUrl, setActiveVideoUrl] = useState(null);
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
@@ -256,18 +257,18 @@ export const FixturesTab = ({
                       }
                       if (url) {
                         return (
-                          <a
-                            href={url}
-                            target={isMobile ? undefined : "_blank"}
-                            rel={isMobile ? undefined : "noopener noreferrer"}
-                            onClick={(e) => e.stopPropagation()}
-                            className="mt-1 py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]"
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveVideoUrl(url);
+                            }}
+                            className="mt-1 w-full py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] cursor-pointer select-none"
                           >
                             <svg className="w-2.5 h-2.5 fill-white shrink-0" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z" />
                             </svg>
                             <span>Watch Highlights</span>
-                          </a>
+                          </button>
                         );
                       }
                       return null;
@@ -287,6 +288,45 @@ export const FixturesTab = ({
           </div>
         </div>
       </div>
+      
+      {/* Video Overlay Modal */}
+      {activeVideoUrl && (
+        <div 
+          onClick={() => setActiveVideoUrl(null)}
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn"
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-4xl aspect-video bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col"
+          >
+            {/* Header bar */}
+            <div className="flex items-center justify-between px-6 py-4 bg-slate-900/98 border-b border-slate-800/80 shrink-0">
+              <span className="text-xs font-black tracking-widest text-brand-neon uppercase">
+                🎥 FIFA WORLD CUP 2026™ HIGHLIGHTS
+              </span>
+              <button 
+                onClick={() => setActiveVideoUrl(null)}
+                className="p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none"
+                aria-label="Close player"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            {/* Iframe body */}
+            <div className="flex-1 w-full h-full bg-black">
+              <iframe
+                src={activeVideoUrl}
+                title="FIFA Highlights"
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
