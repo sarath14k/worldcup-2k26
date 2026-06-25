@@ -171,10 +171,28 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
         }
       }
     }
-    
-    return { statusCode: 404, result: { error: 'No video highlights found' } };
+    // If no direct matching video found on the API, fallback to the official highlights page
+    const fallbackUrl = 'https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/highlights';
+    return {
+      statusCode: 200,
+      result: {
+        videoId: 'highlights-page',
+        url: fallbackUrl,
+        title: `All Match Highlights | FIFA World Cup 2026™`,
+        channel: 'FIFA.com'
+      }
+    };
   } catch (err) {
-    console.error('[Highlights] FIFA Search API failed:', err.message);
-    return { statusCode: 500, result: { error: err.message } };
+    console.error('[Highlights] FIFA Search API failed, using main page fallback:', err.message);
+    const fallbackUrl = 'https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/highlights';
+    return {
+      statusCode: 200,
+      result: {
+        videoId: 'highlights-page',
+        url: fallbackUrl,
+        title: `All Match Highlights | FIFA World Cup 2026™`,
+        channel: 'FIFA.com'
+      }
+    };
   }
 }
