@@ -205,11 +205,9 @@ export default function SystemTab() {
     }
   }, []);
 
-  // Auto-refresh every 5 seconds
+  // Fetch analytics once on mount
   useEffect(() => {
     fetchAnalytics();
-    const interval = setInterval(fetchAnalytics, 5000);
-    return () => clearInterval(interval);
   }, [fetchAnalytics]);
 
   // Tick every second to update relative timestamps
@@ -331,7 +329,7 @@ export default function SystemTab() {
 
       {/* Footer */}
       <div className="mt-4 text-center text-[10px] text-slate-600">
-        Auto-refreshing every 5s • Last fetch: {formatRelativeTime(lastFetch)}
+        Last fetch: {formatRelativeTime(lastFetch)}
         {error && <span className="text-amber-500 ml-2">⚠ {error}</span>}
       </div>
     </div>
