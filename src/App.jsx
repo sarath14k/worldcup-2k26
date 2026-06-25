@@ -819,8 +819,37 @@ function App() {
         goalsCount[cleanPlayerName] = (goalsCount[cleanPlayerName] || 0) + 1;
         scorersPerPlayer[cleanPlayerName] = (scorersPerPlayer[cleanPlayerName] || 0) + 1;
 
-        // Determine assist player
-        const assistPlayerName = getAssistPlayer(m.id, cleanPlayerName, teamCode, s.minute);
+        // Determine assist player from scraped match events/timeline text if available
+        let assistPlayerName = null;
+        if (s.assist) {
+          assistPlayerName = s.assist;
+        } else {
+          // Look in timeline for a matching goal text to extract "Assisted by [Name]"
+          const matchTimeline = details.timeline || [];
+          const goalEvent = matchTimeline.find(t => 
+            (t.type?.toLowerCase().includes('goal') || t.text?.toLowerCase().includes('goal')) && 
+            t.minute === s.minute && 
+            t.text?.toLowerCase().includes(cleanPlayerName.toLowerCase())
+          );
+          if (goalEvent && goalEvent.text) {
+            const assistMatch = goalEvent.text.match(/Assisted by ([^.]+)/i);
+            if (assistMatch) {
+              const parsedName = assistMatch[1].replace(/\s*with\s+a\s+.*/i, '').replace(/\s*following\s+a\s+.*/i, '').trim();
+              // Validate that the parsed player name is indeed on this team
+              const teamPlayers = TEAM_PLAYERS[teamCode] || [];
+              const matchedPlayer = teamPlayers.find(p => p.toLowerCase() === parsedName.toLowerCase() || p.toLowerCase().includes(parsedName.toLowerCase()));
+              if (matchedPlayer) {
+                assistPlayerName = matchedPlayer;
+              }
+            }
+          }
+        }
+
+        // Fallback to getAssistPlayer simulation if no real assist was found
+        if (!assistPlayerName) {
+          assistPlayerName = getAssistPlayer(m.id, cleanPlayerName, teamCode, s.minute);
+        }
+
         if (assistPlayerName) {
           playerTeams[assistPlayerName] = teamCode;
           assistsCount[assistPlayerName] = (assistsCount[assistPlayerName] || 0) + 1;
