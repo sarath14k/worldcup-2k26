@@ -170,6 +170,15 @@ function App() {
 
   // --- Live Goal Detection Effect ---
   const goalTimersRef = useRef([]);
+
+  // Cleanup all timers on unmount
+  useEffect(() => {
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      goalTimersRef.current.forEach(t => clearTimeout(t));
+    };
+  }, []);
+
   useEffect(() => {
     if (!liveMatches || Object.keys(liveMatches).length === 0) {
       return;
@@ -245,6 +254,7 @@ function App() {
           // Clear flash after 8s (tracked for cleanup)
           const flashTimer = setTimeout(() => {
             setActiveGoalFlashMatchIds(prevIds => prevIds.filter(id => id !== matchId));
+            goalTimersRef.current = goalTimersRef.current.filter(t => t !== flashTimer);
           }, 8000);
           goalTimersRef.current.push(flashTimer);
 
@@ -256,6 +266,7 @@ function App() {
               }
               return current;
             });
+            goalTimersRef.current = goalTimersRef.current.filter(t => t !== alertTimer);
           }, 6000);
           goalTimersRef.current.push(alertTimer);
         }
@@ -271,11 +282,6 @@ function App() {
       };
     }
     prevScoresRef.current = scoresToSave;
-
-    return () => {
-      goalTimersRef.current.forEach(t => clearTimeout(t));
-      goalTimersRef.current = [];
-    };
   }, [liveMatches, groupMatches, bracket]);
 
   // Highlights polling states

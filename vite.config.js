@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { scrapeFifa } from './scripts/fifaScraper.js'
-import { searchHighlights } from './scripts/highlightsScraper.js'
+import { searchHighlights, handleHighlightsRoute } from './scripts/highlightsScraper.js'
 
 export default defineConfig({
   plugins: [
@@ -22,22 +22,7 @@ export default defineConfig({
               res.end(JSON.stringify({ success: false, error: err.message }));
             }
           } else if (req.url.startsWith('/api/match-highlights')) {
-            try {
-              const urlObj = new URL(req.url, 'http://localhost');
-              const home = urlObj.searchParams.get('home');
-              const away = urlObj.searchParams.get('away');
-              const homeCode = urlObj.searchParams.get('homeCode');
-              const awayCode = urlObj.searchParams.get('awayCode');
-
-              const { statusCode, result } = await searchHighlights({ home, away, homeCode, awayCode });
-              res.statusCode = statusCode;
-              res.setHeader('Content-Type', 'application/json');
-              res.end(JSON.stringify(result));
-            } catch (err) {
-              res.statusCode = 500;
-              res.setHeader('Content-Type', 'application/json');
-              res.end(JSON.stringify({ success: false, error: err.message }));
-            }
+            await handleHighlightsRoute(req, res);
           } else {
             next();
           }

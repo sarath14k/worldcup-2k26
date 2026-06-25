@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { generateGroupMatches } from '../src/data/worldcupData.js';
+import { fetchWithRetry } from './fetchWithRetry.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,13 +29,7 @@ async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId
   console.log(`[ESPN Sync] Fetching match details for event ${eventId} (${homeTeamAbbr} vs ${awayTeamAbbr})`);
   
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
-    const res = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeout);
-    if (!res.ok) {
-      throw new Error(`HTTP error ${res.status}`);
-    }
+    const res = await fetchWithRetry(url, { timeout: 15000 });
     const data = await res.json();
     
     const boxscore = data.boxscore || {};
@@ -127,13 +122,7 @@ export async function syncWithEspn() {
   try {
     // 1. Fetch 104 matches of the tournament
     const url = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260720&limit=120';
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
-    const res = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeout);
-    if (!res.ok) {
-      throw new Error(`HTTP error fetching scoreboard: ${res.status}`);
-    }
+    const res = await fetchWithRetry(url, { timeout: 15000 });
     const data = await res.json();
     const events = data.events || [];
     console.log(`[ESPN Sync] Fetched ${events.length} events from ESPN API.`);

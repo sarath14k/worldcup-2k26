@@ -317,3 +317,38 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
   };
   return { statusCode: 200, result: fallback };
 }
+
+/**
+ * Shared HTTP request handler for highlights API endpoint.
+ * Works with both native Node.js HTTP req/res (Vite middleware) and Express.js.
+ */
+export async function handleHighlightsRoute(req, res) {
+  let query = {};
+  if (req.query) {
+    query = req.query;
+  } else if (req.url) {
+    try {
+      const urlObj = new URL(req.url, 'http://localhost');
+      query = {
+        home: urlObj.searchParams.get('home'),
+        away: urlObj.searchParams.get('away'),
+        homeCode: urlObj.searchParams.get('homeCode'),
+        awayCode: urlObj.searchParams.get('awayCode')
+      };
+    } catch (e) {
+      // Fallback if URL parsing fails
+    }
+  }
+  
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Content-Type', 'application/json');
+  
+  try {
+    const { statusCode, result } = await searchHighlights(query);
+    res.statusCode = statusCode;
+    res.end(JSON.stringify(result));
+  } catch (err) {
+    res.statusCode = 500;
+    res.end(JSON.stringify({ success: false, error: err.message }));
+  }
+}

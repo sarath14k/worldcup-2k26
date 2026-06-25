@@ -211,16 +211,10 @@ app.get('/api/scraper-analytics', (req, res) => {
   res.json(scraperAnalytics);
 });
 
-import { searchHighlights } from './scripts/highlightsScraper.js';
+import { searchHighlights, handleHighlightsRoute } from './scripts/highlightsScraper.js';
 
 // Endpoint to search and fetch direct YouTube highlights link
-app.get('/api/match-highlights', async (req, res) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  const { home, away, homeCode, awayCode } = req.query;
-  
-  const { statusCode, result } = await searchHighlights({ home, away, homeCode, awayCode });
-  res.status(statusCode).json(result);
-});
+app.get('/api/match-highlights', handleHighlightsRoute);
 
 // Serve Vite static build assets
 app.use(express.static(path.join(__dirname, 'dist')));

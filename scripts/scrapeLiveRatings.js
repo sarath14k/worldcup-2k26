@@ -6,21 +6,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import { FOTMOB_TEAM_MAP } from './fotmobTeamMap.js';
+import { fetchWithRetry } from './fetchWithRetry.js';
 
 // Helper to fetch html page and parse __NEXT_DATA__
 async function fetchNextData(url) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15000);
-  const response = await fetch(url, {
-    signal: controller.signal,
+  const response = await fetchWithRetry(url, {
+    timeout: 15000,
     headers: {
       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     }
   });
-  clearTimeout(timeout);
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} fetching ${url}`);
-  }
   const html = await response.text();
   const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">([\s\S]*?)<\/script>/);
   if (!match) {
