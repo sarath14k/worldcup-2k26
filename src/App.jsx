@@ -835,12 +835,10 @@ function App() {
             const assistMatch = goalEvent.text.match(/Assisted by ([^.]+)/i);
             if (assistMatch) {
               const parsedName = assistMatch[1].replace(/\s*with\s+a\s+.*/i, '').replace(/\s*following\s+a\s+.*/i, '').trim();
-              // Validate that the parsed player name is indeed on this team
+              // Validate and use matched player name if present in team players for consistency, otherwise use parsed name directly
               const teamPlayers = TEAM_PLAYERS[teamCode] || [];
               const matchedPlayer = teamPlayers.find(p => p.toLowerCase() === parsedName.toLowerCase() || p.toLowerCase().includes(parsedName.toLowerCase()));
-              if (matchedPlayer) {
-                assistPlayerName = matchedPlayer;
-              }
+              assistPlayerName = matchedPlayer || parsedName;
             }
           }
         }
