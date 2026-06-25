@@ -1,1 +1,380 @@
-{}
+{
+  "mex_vs_rsa": {
+    "videoId": "7wv3jFr0T2wczSuQbhgrSW",
+    "url": "https://www.fifa.com/en/watch/7wv3jFr0T2wczSuQbhgrSW",
+    "title": "Mexico v South Africa",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "kor_vs_cze": {
+    "videoId": "1iidGe97khg8lmdSRopdh4",
+    "url": "https://www.fifa.com/en/watch/1iidGe97khg8lmdSRopdh4",
+    "title": "Korea Republic v Czechia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "mex_vs_kor": {
+    "videoId": "1br3h034wJRKkPbXeXwL4V",
+    "url": "https://www.fifa.com/en/watch/1br3h034wJRKkPbXeXwL4V",
+    "title": "Watch nowWatch nowGamified Highlights: Mexico v Korea Republic",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "rsa_vs_cze": {
+    "videoId": "8zfEoeCcUxu8wn5usWw5U",
+    "url": "https://www.fifa.com/en/watch/8zfEoeCcUxu8wn5usWw5U",
+    "title": "Czechia v South Africa",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "mex_vs_cze": {
+    "videoId": "2GE7VJlgfD52khnWAjGpF2",
+    "url": "https://www.fifa.com/en/watch/2GE7VJlgfD52khnWAjGpF2",
+    "title": "Czechia v Mexico",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "rsa_vs_kor": {
+    "videoId": "4rg8eRpXuMQG67utITccQd",
+    "url": "https://www.fifa.com/en/watch/4rg8eRpXuMQG67utITccQd",
+    "title": "South Africa v Korea Republic",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "can_vs_bih": {
+    "videoId": "5ekSKA6XJZqv9Fag9pI7sH",
+    "url": "https://www.fifa.com/en/watch/5ekSKA6XJZqv9Fag9pI7sH",
+    "title": "Canada v Bosnia and Herzegovina",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "qat_vs_sui": {
+    "videoId": "NdoxOQqn5cnkmfioABvsL",
+    "url": "https://www.fifa.com/en/watch/NdoxOQqn5cnkmfioABvsL",
+    "title": "Qatar v Switzerland",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "can_vs_qat": {
+    "videoId": "2aUGsEuBEIsCLXNrzkbo4m",
+    "url": "https://www.fifa.com/en/watch/2aUGsEuBEIsCLXNrzkbo4m",
+    "title": "Jonathan David: Canada 6-0 QatarJonathan David: Canada 6-0 Qatar",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bih_vs_sui": {
+    "videoId": "4xMCS0fOjrGIgHyv1ks6Tz",
+    "url": "https://www.fifa.com/en/watch/4xMCS0fOjrGIgHyv1ks6Tz",
+    "title": "Switzerland v Bosnia and Herzegovina",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "can_vs_sui": {
+    "videoId": "1KiU2uFEKhMDYVNebmF5Zg",
+    "url": "https://www.fifa.com/en/watch/1KiU2uFEKhMDYVNebmF5Zg",
+    "title": "Switzerland v Canada",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bih_vs_qat": {
+    "videoId": "5CVV8X8QSnZDr6uKOh31ff",
+    "url": "https://www.fifa.com/en/watch/5CVV8X8QSnZDr6uKOh31ff",
+    "title": "Bosnia and Herzegovina v Qatar",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bra_vs_mar": {
+    "videoId": "1e8ayUzYWGZDbZUEU42bgQ",
+    "url": "https://www.fifa.com/en/watch/1e8ayUzYWGZDbZUEU42bgQ",
+    "title": "Brazil v Morocco",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "hai_vs_sco": {
+    "videoId": "1amePIIN9Rt7kvMwQGMPke",
+    "url": "https://www.fifa.com/en/watch/1amePIIN9Rt7kvMwQGMPke",
+    "title": "Haiti v Scotland",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bra_vs_hai": {
+    "videoId": "64QCBarvMkbfpnGQI2v18E",
+    "url": "https://www.fifa.com/en/watch/64QCBarvMkbfpnGQI2v18E",
+    "title": "Watch nowWatch nowGamified Highlights: Brazil v Haiti",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "mar_vs_sco": {
+    "videoId": "4ZCe0z0TzHUL0mf8AWuId2",
+    "url": "https://www.fifa.com/en/watch/4ZCe0z0TzHUL0mf8AWuId2",
+    "title": "Watch nowWatch nowGamified Highlights: Scotland v Morocco",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bra_vs_sco": {
+    "videoId": "xuXoaffqDTNw6l4ejzMrz",
+    "url": "https://www.fifa.com/en/watch/xuXoaffqDTNw6l4ejzMrz",
+    "title": "Scotland v Brazil",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "mar_vs_hai": {
+    "videoId": "4lDtvGJGbp8eEdlUUUZo3I",
+    "url": "https://www.fifa.com/en/watch/4lDtvGJGbp8eEdlUUUZo3I",
+    "title": "Morocco v Haiti",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "usa_vs_par": {
+    "videoId": "6jzgitUqP6YyXpwwuY6VRc",
+    "url": "https://www.fifa.com/en/watch/6jzgitUqP6YyXpwwuY6VRc",
+    "title": "USA v Paraguay",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "aus_vs_tur": {
+    "videoId": "6qvmyR3k0BcpuPrSmer7Mf",
+    "url": "https://www.fifa.com/en/watch/6qvmyR3k0BcpuPrSmer7Mf",
+    "title": "Australia v Türkiye",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "usa_vs_aus": {
+    "videoId": "6CkuxBDejyoYLNtAGNalxk",
+    "url": "https://www.fifa.com/en/watch/6CkuxBDejyoYLNtAGNalxk",
+    "title": "Watch nowWatch nowGamified Highlights: USA v Australia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "par_vs_tur": {
+    "videoId": "23DYk7MSGSvl0bqZF7KZOM",
+    "url": "https://www.fifa.com/en/watch/23DYk7MSGSvl0bqZF7KZOM",
+    "title": "Watch nowWatch nowGamified Highlights: Türkiye v Paraguay",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "ger_vs_cuw": {
+    "videoId": "3MSlsbd2rcnTGlcG4jhpdR",
+    "url": "https://www.fifa.com/en/watch/3MSlsbd2rcnTGlcG4jhpdR",
+    "title": "Germany v Curaçao",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "civ_vs_ecu": {
+    "videoId": "4P79SuyJHO3ZGVuRYxjots",
+    "url": "https://www.fifa.com/en/watch/4P79SuyJHO3ZGVuRYxjots",
+    "title": "Côte d'Ivoire v Ecuador",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "ger_vs_civ": {
+    "videoId": "556R5bvqlTMlKaUoMlM0A3",
+    "url": "https://www.fifa.com/en/watch/556R5bvqlTMlKaUoMlM0A3",
+    "title": "Watch nowWatch nowGamified Highlights: Germany v Côte d'Ivoire",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "cuw_vs_ecu": {
+    "videoId": "6lI7ddpjskKW6dYr7nB7I4",
+    "url": "https://www.fifa.com/en/watch/6lI7ddpjskKW6dYr7nB7I4",
+    "title": "Ecuador v Curaçao",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "ned_vs_jpn": {
+    "videoId": "hfEd1R54PslEMX4Rqb0EP",
+    "url": "https://www.fifa.com/en/watch/hfEd1R54PslEMX4Rqb0EP",
+    "title": "Netherlands v Japan",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "swe_vs_tun": {
+    "videoId": "1xJ82g9ocfLQaweWUFgFMw",
+    "url": "https://www.fifa.com/en/watch/1xJ82g9ocfLQaweWUFgFMw",
+    "title": "Sweden v Tunisia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "ned_vs_swe": {
+    "videoId": "5KGT1wf9bPdKzj1XuPMj9g",
+    "url": "https://www.fifa.com/en/watch/5KGT1wf9bPdKzj1XuPMj9g",
+    "title": "Watch nowWatch nowGamified Highlights: Netherlands v Sweden",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "jpn_vs_tun": {
+    "videoId": "1nNMGQHe2Ar9v5mv1Q6drf",
+    "url": "https://www.fifa.com/en/watch/1nNMGQHe2Ar9v5mv1Q6drf",
+    "title": "Tunisia v Japan",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bel_vs_egy": {
+    "videoId": "2XSqobMgEwKFuhEozWztJl",
+    "url": "https://www.fifa.com/en/watch/2XSqobMgEwKFuhEozWztJl",
+    "title": "Belgium v Egypt",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "irn_vs_nzl": {
+    "videoId": "5c6T3T7Y1XfKrT3aXzJRqL",
+    "url": "https://www.fifa.com/en/watch/5c6T3T7Y1XfKrT3aXzJRqL",
+    "title": "IR Iran v New Zealand",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "bel_vs_irn": {
+    "videoId": "2eqX8tJNDvSqLjtLDPgDkT",
+    "url": "https://www.fifa.com/en/watch/2eqX8tJNDvSqLjtLDPgDkT",
+    "title": "Belgium v IR Iran",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "egy_vs_nzl": {
+    "videoId": "30AjAOgeWPeCcjnTx6hdH0",
+    "url": "https://www.fifa.com/en/watch/30AjAOgeWPeCcjnTx6hdH0",
+    "title": "New Zealand v Egypt",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "esp_vs_cpv": {
+    "videoId": "jLS5YXPMr0XAd5lMHtbiJ",
+    "url": "https://www.fifa.com/en/watch/jLS5YXPMr0XAd5lMHtbiJ",
+    "title": "Spain v Cabo Verde",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "ksa_vs_uru": {
+    "videoId": "2OO54UvFW7GK8vnsarneGk",
+    "url": "https://www.fifa.com/en/watch/2OO54UvFW7GK8vnsarneGk",
+    "title": "Saudi Arabia v Uruguay",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "esp_vs_ksa": {
+    "videoId": "4ZigaLfUmzRMpzV7ETANXM",
+    "url": "https://www.fifa.com/en/watch/4ZigaLfUmzRMpzV7ETANXM",
+    "title": "Spain v Saudi Arabia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "cpv_vs_uru": {
+    "videoId": "4KLTlmsKLMMlM9IsPFWzj9",
+    "url": "https://www.fifa.com/en/watch/4KLTlmsKLMMlM9IsPFWzj9",
+    "title": "Uruguay v Cabo Verde",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "fra_vs_sen": {
+    "videoId": "3EKjirmmC6D2Ss29rPdDph",
+    "url": "https://www.fifa.com/en/watch/3EKjirmmC6D2Ss29rPdDph",
+    "title": "France v Senegal",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "irq_vs_nor": {
+    "videoId": "SsQRwgoouokLgVYDKitmB",
+    "url": "https://www.fifa.com/en/watch/SsQRwgoouokLgVYDKitmB",
+    "title": "Iraq v Norway",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "fra_vs_irq": {
+    "videoId": "5baxscpTWAh30KnlPk6NPK",
+    "url": "https://www.fifa.com/en/watch/5baxscpTWAh30KnlPk6NPK",
+    "title": "France v Iraq",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "sen_vs_nor": {
+    "videoId": "2z83J5vynam1wsTQNemf5u",
+    "url": "https://www.fifa.com/en/watch/2z83J5vynam1wsTQNemf5u",
+    "title": "Norway v Senegal",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "arg_vs_alg": {
+    "videoId": "7w5eTQ8xbmnSNHypyuYhdG",
+    "url": "https://www.fifa.com/en/watch/7w5eTQ8xbmnSNHypyuYhdG",
+    "title": "Lionel Messi: Argentina 3-0 AlgeriaLionel Messi: Argentina 3-0 Algeria",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "aut_vs_jor": {
+    "videoId": "77P4VoHiQj3RG3yEQVhGpH",
+    "url": "https://www.fifa.com/en/watch/77P4VoHiQj3RG3yEQVhGpH",
+    "title": "Austria v Jordan",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "arg_vs_aut": {
+    "videoId": "6N4dkwqyP1sUURyCXExX5s",
+    "url": "https://www.fifa.com/en/watch/6N4dkwqyP1sUURyCXExX5s",
+    "title": "Argentina v Austria",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "alg_vs_jor": {
+    "videoId": "6MH3nU83TBWaW2rJyDG7UM",
+    "url": "https://www.fifa.com/en/watch/6MH3nU83TBWaW2rJyDG7UM",
+    "title": "Jordan v Algeria",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "por_vs_cod": {
+    "videoId": "3phBNopGuBvaow9DPBc2D",
+    "url": "https://www.fifa.com/en/watch/3phBNopGuBvaow9DPBc2D",
+    "title": "Portugal v Congo DR",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "uzb_vs_col": {
+    "videoId": "6Tr0HFdKBRPzlKF5p6kFLD",
+    "url": "https://www.fifa.com/en/watch/6Tr0HFdKBRPzlKF5p6kFLD",
+    "title": "Uzbekistan v Colombia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "por_vs_uzb": {
+    "videoId": "4se3Lqdtrvu86pMuaqlUpn",
+    "url": "https://www.fifa.com/en/watch/4se3Lqdtrvu86pMuaqlUpn",
+    "title": "Portugal v Uzbekistan",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "cod_vs_col": {
+    "videoId": "26nrhBN70NStG6P9xmqto7",
+    "url": "https://www.fifa.com/en/watch/26nrhBN70NStG6P9xmqto7",
+    "title": "Colombia v Congo DR",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "eng_vs_cro": {
+    "videoId": "69ls3TcVt6PIJPxhiREehA",
+    "url": "https://www.fifa.com/en/watch/69ls3TcVt6PIJPxhiREehA",
+    "title": "England v Croatia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "gha_vs_pan": {
+    "videoId": "5yGWUJLlTqyvKydpUvLJnU",
+    "url": "https://www.fifa.com/en/watch/5yGWUJLlTqyvKydpUvLJnU",
+    "title": "Ghana v Panama",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "eng_vs_gha": {
+    "videoId": "YMV6IJCxemtC0s8HtqPn3",
+    "url": "https://www.fifa.com/en/watch/YMV6IJCxemtC0s8HtqPn3",
+    "title": "England v Ghana",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  },
+  "cro_vs_pan": {
+    "videoId": "5ewcE9E2gBUvXwyGfkEz1n",
+    "url": "https://www.fifa.com/en/watch/5ewcE9E2gBUvXwyGfkEz1n",
+    "title": "Panama v Croatia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:00"
+  }
+}

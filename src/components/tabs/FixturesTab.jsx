@@ -256,23 +256,18 @@ export const FixturesTab = ({
                         );
                       }
                       if (url) {
-                        const isFifaSite = url.includes('fifa.com');
                         return (
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              if (isFifaSite) {
-                                window.open(url, '_blank', 'noopener,noreferrer');
-                              } else {
-                                setActiveVideoUrl(url);
-                              }
+                              window.open(url, '_blank', 'noopener,noreferrer');
                             }}
                             className="mt-1 w-full py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] cursor-pointer select-none"
                           >
                             <svg className="w-2.5 h-2.5 fill-white shrink-0" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z" />
                             </svg>
-                            <span>Watch Highlights {isFifaSite ? '↗' : ''}</span>
+                            <span>Watch Highlights ↗</span>
                           </button>
                         );
                       }
