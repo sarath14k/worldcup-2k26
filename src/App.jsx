@@ -168,6 +168,7 @@ function App() {
   }, [activeLiveMatchesList]);
 
   // --- Live Goal Detection Effect ---
+  const goalTimersRef = useRef([]);
   useEffect(() => {
     if (!liveMatches || Object.keys(liveMatches).length === 0) {
       return;
@@ -240,13 +241,14 @@ function App() {
           // Trigger card glow flash
           setActiveGoalFlashMatchIds(prevIds => [...prevIds, matchId]);
           
-          // Clear flash after 8s
-          setTimeout(() => {
+          // Clear flash after 8s (tracked for cleanup)
+          const flashTimer = setTimeout(() => {
             setActiveGoalFlashMatchIds(prevIds => prevIds.filter(id => id !== matchId));
           }, 8000);
+          goalTimersRef.current.push(flashTimer);
 
-          // Clear alert toast after 6s
-          setTimeout(() => {
+          // Clear alert toast after 6s (tracked for cleanup)
+          const alertTimer = setTimeout(() => {
             setGoalAlert(current => {
               if (current && current.matchId === matchId) {
                 return null;
@@ -254,6 +256,7 @@ function App() {
               return current;
             });
           }, 6000);
+          goalTimersRef.current.push(alertTimer);
         }
       }
     }
@@ -267,6 +270,11 @@ function App() {
       };
     }
     prevScoresRef.current = scoresToSave;
+
+    return () => {
+      goalTimersRef.current.forEach(t => clearTimeout(t));
+      goalTimersRef.current = [];
+    };
   }, [liveMatches, groupMatches, bracket]);
 
   // Highlights polling states
