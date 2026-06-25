@@ -99,7 +99,41 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
       
       for (const hit of videoHits) {
         const titleLower = (hit._source.title || '').toLowerCase();
-        
+        const tags = (hit._source.semanticTags || []).map(t => t.toLowerCase());
+
+        // STRICT FILTERING: Reject any youth, futsal, womens, interactive, or historical years
+        const isExcluded = 
+          titleLower.includes('women') || 
+          titleLower.includes('futsal') || 
+          titleLower.includes('u-17') || 
+          titleLower.includes('u-20') || 
+          titleLower.includes('u-23') || 
+          titleLower.includes('under-17') || 
+          titleLower.includes('under-20') || 
+          titleLower.includes('under-23') || 
+          titleLower.includes('interactive') || 
+          titleLower.includes('esports') ||
+          // Reject other years (e.g. 1982, 2022, etc.)
+          (/\b(19\d\d|20[0-2][0-5]|202[7-9])\b/.test(titleLower)) ||
+          // Reject tags
+          tags.some(tag => 
+            tag.includes('women') || 
+            tag.includes('futsal') || 
+            tag.includes('u-17') || 
+            tag.includes('u-20') || 
+            tag.includes('u-23') || 
+            tag.includes('under-') || 
+            tag.includes('interactive') ||
+            // Must not be a past world cup
+            (tag.includes('world cup') && !tag.includes('2026'))
+          );
+
+        if (isExcluded) continue;
+
+        // Must match either 2026 or World Cup 2026 in title or tags
+        const has2026 = titleLower.includes('2026') || tags.some(tag => tag.includes('2026'));
+        if (!has2026) continue;
+
         const checkTeam = (normName, code) => {
           const aliases = TEAM_ALIASES[normName] || [normName];
           if (code) aliases.push(code.toLowerCase());
