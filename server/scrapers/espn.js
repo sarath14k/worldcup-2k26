@@ -55,6 +55,7 @@ async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId
     
     const events = [];
     const timeline = [];
+    const seenTimelineKeys = new Set();
     
     if (data.keyEvents) {
       data.keyEvents.forEach(ke => {
@@ -73,12 +74,16 @@ async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId
           }
         }
         
-        timeline.push({
-          type: typeText,
-          text: textVal,
-          minute: minute,
-          minuteStr: displayClock
-        });
+        const key = `${minute}|${typeText}|${textVal}`;
+        if (!seenTimelineKeys.has(key)) {
+          seenTimelineKeys.add(key);
+          timeline.push({
+            type: typeText,
+            text: textVal,
+            minute: minute,
+            minuteStr: displayClock
+          });
+        }
         
         if (ke.scoringPlay || typeText.toLowerCase().includes('goal')) {
           const isHome = homeTeamId 
@@ -99,6 +104,46 @@ async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId
         }
       });
     }
+    
+    // Parse commentary for granular events (shots, fouls, corners, offsides, etc.)
+    if (data.commentary) {
+      data.commentary.forEach(c => {
+        const timeObj = c.time;
+        const play = c.play;
+        if (!timeObj || !timeObj.displayValue || !play || !play.type) return;
+        
+        const displayClock = timeObj.displayValue;
+        if (!displayClock) return;
+        
+        const typeText = play.type?.text || '';
+        if (!typeText) return;
+        
+        const textVal = c.text || '';
+        let minute = 0;
+        if (displayClock) {
+          const clean = displayClock.replace(/[^0-9+-]/g, '');
+          if (clean.includes('+')) {
+            const parts = clean.split('+');
+            minute = (parseInt(parts[0]) || 0) + (parseInt(parts[1]) || 0);
+          } else {
+            minute = parseInt(clean) || 0;
+          }
+        }
+        
+        const key = `${minute}|${typeText}|${textVal}`;
+        if (!seenTimelineKeys.has(key)) {
+          seenTimelineKeys.add(key);
+          timeline.push({
+            type: typeText,
+            text: textVal,
+            minute: minute,
+            minuteStr: displayClock
+          });
+        }
+      });
+    }
+    
+    timeline.sort((a, b) => a.minute - b.minute);
     
     return { stats, events, timeline };
   } catch (error) {

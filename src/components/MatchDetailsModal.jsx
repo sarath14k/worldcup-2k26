@@ -446,7 +446,7 @@ export const MatchDetailsModal = ({
 
                   if (isAttempt) icon = '🎯';
                   else if (isPrevention) icon = '🧤';
-                  else if (typeLower.includes('foul')) icon = '⚡';
+                  else if (typeLower.includes('foul') || typeLower.includes('handball')) icon = '⚡';
                   else if (isGoal) icon = '⚽';
                   else if (typeLower.includes('corner')) icon = '🚩';
                   else if (typeLower.includes('offside')) icon = '👁️';
