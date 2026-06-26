@@ -405,7 +405,7 @@ export const MatchDetailsModal = ({
                         const pid = playerIdLookup[s.player];
                         return (
                           <div key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1.5 cursor-pointer min-w-0" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
-                            <PlayerAvatar name={s.player} size="xs" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                            <PlayerAvatar name={s.player} size="xl" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                             <ScrollingText text={s.player} className="text-slate-300" />
                             <span className="text-brand-neon shrink-0">({s.minute}')</span>
                           </div>
@@ -420,7 +420,7 @@ export const MatchDetailsModal = ({
                           <div key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1.5 cursor-pointer min-w-0" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
                             <span className="text-brand-neon shrink-0">({s.minute}')</span>
                             <ScrollingText text={s.player} className="text-slate-300 text-right" />
-                            <PlayerAvatar name={s.player} size="xs" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                            <PlayerAvatar name={s.player} size="xl" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           </div>
                         );
                       })}
@@ -461,7 +461,7 @@ export const MatchDetailsModal = ({
                              {posLabel}
                            </span>
                          )}
-                         <PlayerAvatar name={p.name} size="sm" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                         <PlayerAvatar name={p.name} size="xl" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                          <div className="flex items-center gap-0.5 min-w-0 flex-1">
                            <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px]" />
                          </div>
@@ -502,7 +502,7 @@ export const MatchDetailsModal = ({
                             {posLabel}
                           </span>
                         )}
-                        <PlayerAvatar name={p.name} size="sm" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                        <PlayerAvatar name={p.name} size="xl" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                         <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
                           p.rating >= 7.5 
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
