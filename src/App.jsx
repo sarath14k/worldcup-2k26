@@ -1300,16 +1300,6 @@ function App() {
 
       {/* --- CONTENT CONTAINER --- */}
       <main className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 py-4 sm:py-6">
-        {/* Global Live Tracker Banner */}
-        {activeTab !== 'fixtures' && (
-          <LiveMatchesBanner 
-            hasLiveMatches={hasLiveMatches}
-            activeLiveMatchesList={activeLiveMatchesList}
-            setSelectedMatch={setSelectedMatch}
-            activeGoalFlashMatchIds={activeGoalFlashMatchIds}
-          />
-        )}
-        
         {/* --- TABS --- */}
         <div>
           {activeTab === 'fixtures' && (
@@ -1401,6 +1391,16 @@ function App() {
             <SystemTab />
           )}
         </div>
+
+        {/* Global Live Tracker Banner (at bottom for non-fixtures tabs) */}
+        {activeTab !== 'fixtures' && (
+          <LiveMatchesBanner 
+            hasLiveMatches={hasLiveMatches}
+            activeLiveMatchesList={activeLiveMatchesList}
+            setSelectedMatch={setSelectedMatch}
+            activeGoalFlashMatchIds={activeGoalFlashMatchIds}
+          />
+        )}
       </main>
 
       {/* --- BACK TO TOP --- */}
