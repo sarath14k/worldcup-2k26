@@ -434,6 +434,93 @@ export const MatchDetailsModal = ({
           </div>
         )}
 
+        {/* Player Performance Ratings Section */}
+        {((homePlayers && homePlayers.length > 0) || (awayPlayers && awayPlayers.length > 0)) && (
+          <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3">
+            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>⭐</span> Player Performance Ratings
+            </h4>
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-bold font-mono">
+              {/* Home Player Ratings */}
+              <div className="flex flex-col gap-1.5">
+                <div className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center gap-1">
+                  <span>{home.flag}</span>
+                  <span className="truncate">{home.name}</span>
+                </div>
+                {homePlayers.length === 0 ? (
+                  <div className="text-[10px] text-slate-500 italic py-1">No ratings available</div>
+                ) : (
+                  homePlayers.map((p, idx) => {
+                    const posCode = getPlayerPosition(p.name, selectedMatch.home, p);
+                    const posLabel = getPositionLabel(posCode);
+                    const posCat = getPositionCategory(posCode);
+                    return (
+                      <div key={`home-p-${idx}`} className="flex items-center gap-0.5 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1 pl-1.5 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
+                        <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                        <div className="flex items-center gap-0.5 min-w-0 flex-1">
+                          {posLabel && (
+                            <span className={`text-[4px] font-mono font-black px-0.5 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                              {posLabel}
+                            </span>
+                          )}
+                          <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px]" />
+                        </div>
+                        <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
+                          p.rating >= 7.5 
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                            : p.rating >= 6.0 
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
+                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                        }`}>
+                          {p.rating != null ? Number(p.rating).toFixed(2) : '-'}
+                        </span>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+              {/* Away Player Ratings */}
+              <div className="flex flex-col gap-1.5">
+                <div className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center justify-end gap-1">
+                  <span className="truncate">{away.name}</span>
+                  <span>{away.flag}</span>
+                </div>
+                {awayPlayers.length === 0 ? (
+                  <div className="text-[10px] text-slate-500 italic py-1 text-right">No ratings available</div>
+                ) : (
+                  awayPlayers.map((p, idx) => {
+                    const posCode = getPlayerPosition(p.name, selectedMatch.away, p);
+                    const posLabel = getPositionLabel(posCode);
+                    const posCat = getPositionCategory(posCode);
+                    return (
+                      <div key={`away-p-${idx}`} className="flex items-center gap-0.5 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1 pr-1.5 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
+                        <div className="flex items-center gap-0.5 min-w-0 flex-1">
+                          <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px] text-right" />
+                          {posLabel && (
+                            <span className={`text-[4px] font-mono font-black px-0.5 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                              {posLabel}
+                            </span>
+                          )}
+                        </div>
+                        <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                        <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
+                          p.rating >= 7.5 
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                            : p.rating >= 6.0 
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
+                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                        }`}>
+                          {p.rating != null ? Number(p.rating).toFixed(2) : '-'}
+                        </span>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Match Timeline */}
         {hasStarted && details.timeline && details.timeline.length > 0 && (
           <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3">
@@ -628,92 +715,6 @@ export const MatchDetailsModal = ({
           </div>
         )}
 
-        {/* Player Performance Ratings Section */}
-        {((homePlayers && homePlayers.length > 0) || (awayPlayers && awayPlayers.length > 0)) && (
-          <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <span>⭐</span> Player Performance Ratings
-            </h4>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-bold font-mono">
-              {/* Home Player Ratings */}
-              <div className="flex flex-col gap-1.5">
-                <div className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center gap-1">
-                  <span>{home.flag}</span>
-                  <span className="truncate">{home.name}</span>
-                </div>
-                {homePlayers.length === 0 ? (
-                  <div className="text-[10px] text-slate-500 italic py-1">No ratings available</div>
-                ) : (
-                  homePlayers.map((p, idx) => {
-                    const posCode = getPlayerPosition(p.name, selectedMatch.home, p);
-                    const posLabel = getPositionLabel(posCode);
-                    const posCat = getPositionCategory(posCode);
-                    return (
-                      <div key={`home-p-${idx}`} className="flex items-center gap-0.5 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1 pl-1.5 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
-                        <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
-                        <div className="flex items-center gap-0.5 min-w-0 flex-1">
-                          {posLabel && (
-                            <span className={`text-[4px] font-mono font-black px-0.5 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
-                              {posLabel}
-                            </span>
-                          )}
-                          <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px]" />
-                        </div>
-                        <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
-                          p.rating >= 7.5 
-                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
-                            : p.rating >= 6.0 
-                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
-                        }`}>
-                          {p.rating != null ? Number(p.rating).toFixed(2) : '-'}
-                        </span>
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-              {/* Away Player Ratings */}
-              <div className="flex flex-col gap-1.5">
-                <div className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider mb-0.5 flex items-center justify-end gap-1">
-                  <span className="truncate">{away.name}</span>
-                  <span>{away.flag}</span>
-                </div>
-                {awayPlayers.length === 0 ? (
-                  <div className="text-[10px] text-slate-500 italic py-1 text-right">No ratings available</div>
-                ) : (
-                  awayPlayers.map((p, idx) => {
-                    const posCode = getPlayerPosition(p.name, selectedMatch.away, p);
-                    const posLabel = getPositionLabel(posCode);
-                    const posCat = getPositionCategory(posCode);
-                    return (
-                      <div key={`away-p-${idx}`} className="flex items-center gap-0.5 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1 pr-1.5 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
-                        <div className="flex items-center gap-0.5 min-w-0 flex-1">
-                          <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px] text-right" />
-                          {posLabel && (
-                            <span className={`text-[4px] font-mono font-black px-0.5 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
-                              {posLabel}
-                            </span>
-                          )}
-                        </div>
-                        <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
-                        <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
-                          p.rating >= 7.5 
-                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
-                            : p.rating >= 6.0 
-                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
-                        }`}>
-                          {p.rating != null ? Number(p.rating).toFixed(2) : '-'}
-                        </span>
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-            </div>
-          </div>
-        )}
           </>
         ) : (
           <div className="flex flex-col gap-5 sm:gap-6 animate-fadeIn select-none">
