@@ -6116,5 +6116,12 @@
     "team": "TUN",
     "rating": 1.9,
     "playerId": "1718458"
+  },
+  {
+    "name": "Kaan Ayhan",
+    "playerId": 441164,
+    "team": "TUR",
+    "position": "CB",
+    "rating": 6.5
   }
 ]
