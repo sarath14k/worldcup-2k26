@@ -334,7 +334,7 @@ function App() {
   const [highlightsMap, setHighlightsMap] = useState({});
   const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
 
-  // Bulk-load all cached highlights in one request
+  // Bulk-load all cached highlights + fallback for uncached matches
   useEffect(() => {
     fetch('/api/all-highlights')
       .then(res => res.json())
@@ -342,23 +342,40 @@ function App() {
         const mapping = {};
         Object.entries(cache).forEach(([key, entry]) => {
           if (entry.url) {
-            // Build cache key from team codes (e.g. "bel_vs_egy")
             mapping[key] = entry.url;
           }
         });
-        // Map cache keys to match IDs
         const allMatches = [...groupMatches];
         Object.values(bracket).forEach(round => {
           if (Array.isArray(round)) allMatches.push(...round);
         });
         const idMapping = {};
+        const missing = [];
         allMatches.forEach(m => {
           if (m.home && m.away) {
             const key = `${m.home.toLowerCase()}_vs_${m.away.toLowerCase()}`;
-            if (mapping[key]) idMapping[m.id] = mapping[key];
+            if (mapping[key]) {
+              idMapping[m.id] = mapping[key];
+            } else {
+              missing.push(m);
+            }
           }
         });
         setHighlightsMap(idMapping);
+
+        // Fallback: fetch uncached matches individually via the old match-highlights API
+        missing.forEach(m => {
+          const homeName = TEAMS[m.home]?.name || m.home;
+          const awayName = TEAMS[m.away]?.name || m.away;
+          fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`)
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+              if (data && data.url) {
+                setHighlightsMap(prev => ({ ...prev, [m.id]: data.url }));
+              }
+            })
+            .catch(() => {});
+        });
       })
       .catch(err => console.warn('[Highlights] Bulk load failed:', err));
   }, [groupMatches, bracket]);
