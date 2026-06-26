@@ -1,5 +1,5 @@
 # ---- Stage 1: Build ----
-FROM node:22-slim AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -12,10 +12,10 @@ COPY . .
 RUN npm run build
 
 # ---- Stage 2: Production ----
-FROM node:22-slim
+FROM node:22-alpine
 
 # Create non-root user for security
-RUN groupadd -r appuser && useradd -r -g appuser -m appuser
+RUN addgroup -S appuser && adduser -S -G appuser appuser
 
 WORKDIR /app
 
