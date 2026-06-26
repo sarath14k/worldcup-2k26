@@ -1108,21 +1108,22 @@ function App() {
       {/* Background glow effects for visual wow-factor */}
       {theme !== 'pitch-black' && (
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <div className="absolute -top-40 right-10 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute top-1/3 -left-40 w-96 h-96 bg-brand-neon/10 rounded-full blur-3xl opacity-40"></div>
-          <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-brand-royal/10 rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute -top-40 right-10 w-48 md:w-96 h-48 md:h-96 bg-brand-purple/20 rounded-full blur-3xl opacity-60 animate-glowDrift1"></div>
+          <div className="absolute top-1/3 -left-40 w-48 md:w-96 h-48 md:h-96 bg-brand-neon/10 rounded-full blur-3xl opacity-50 animate-glowDrift2"></div>
+          <div className="absolute bottom-10 right-1/4 w-40 md:w-80 h-40 md:h-80 bg-brand-royal/10 rounded-full blur-3xl opacity-40 animate-glowDrift3"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 md:w-80 h-48 md:h-80 bg-brand-gold/5 rounded-full blur-3xl opacity-40 animate-glowDrift1" style={{ animationDelay: '-5s' }}></div>
         </div>
       )}
 
       {/* --- HEADER --- */}
-      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-brand-neon/30 before:to-transparent">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
           <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
             <div className="bg-brand-gold/20 p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-brand-gold/40 glow-gold animate-float shrink-0">
               <WorldCupTrophyIcon className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-brand-gold" />
             </div>
             <div className="min-w-0">
-              <h1 className="text-sm sm:text-lg md:text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent whitespace-nowrap uppercase">
+              <h1 className="text-[15px] sm:text-lg md:text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent whitespace-nowrap uppercase">
                 WORLD CUP 2026
               </h1>
             </div>
@@ -1153,7 +1154,7 @@ function App() {
                   }}
                   className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border transition-all cursor-pointer shrink-0 ${
                     accent === opt.id 
-                      ? 'scale-125 ring-2 ring-white/50 border-white shadow-lg' 
+                      ? 'scale-125 ring-2 ring-current border-current shadow-lg' 
                       : 'border-transparent hover:scale-110'
                   }`}
                   style={{ backgroundColor: opt.color }}
@@ -1167,8 +1168,8 @@ function App() {
               onClick={() => setTheme(prev => prev === 'dark' ? 'pitch-black' : 'dark')}
               className={`flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer select-none shrink-0 ${
                 theme === 'pitch-black'
-                  ? 'bg-zinc-900 border-zinc-800 text-brand-neon hover:bg-zinc-850'
-                  : 'bg-slate-900/60 border-slate-800/60 text-slate-350 hover:bg-slate-800/85 hover:text-white'
+                  ? 'bg-zinc-900 border-zinc-700 text-brand-neon hover:bg-zinc-800'
+                  : 'bg-slate-900/60 border-slate-800/60 text-slate-400 hover:bg-slate-800 hover:text-white'
               }`}
               title={theme === 'pitch-black' ? 'Switch to Dark Stadium Theme' : 'Switch to Pitch Black Theme'}
             >

@@ -76,76 +76,78 @@ export const VenuesTab = ({ groupMatches, bracket, liveMatches, isLiveMatch }) =
                 <p className="text-xs text-slate-400 leading-relaxed">{venue.desc}</p>
               </div>
 
-              {isExpanded && (
-                <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-col gap-3 animate-fadeIn">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold">Scheduled Matches</span>
-                    <span className="text-[9px] bg-slate-900 border border-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono font-bold">
-                      {matchesAtVenue.length} Matches
-                    </span>
-                  </div>
-                  
-                  <div className="flex flex-col gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
-                    {matchesAtVenue.map((m, idx) => {
-                      const homeTeamObj = TEAMS[m.home];
-                      const awayTeamObj = TEAMS[m.away];
-                      const homeFlag = homeTeamObj ? homeTeamObj.flag : '🏳️';
-                      const awayFlag = awayTeamObj ? awayTeamObj.flag : '🏳️';
-                      const homeName = m.home || 'TBD';
-                      const awayName = m.away || 'TBD';
-                      
-                      const live = liveMatches[m.id];
-                      const isLive = isLiveMatch(live);
-                      const hasScore = m.isCompleted || (live && (live.minute === 'FT' || live.isCompleted || live.homeScore !== null));
-                      const homeScore = m.isCompleted ? m.homeScore : (live ? live.homeScore : null);
-                      const awayScore = m.isCompleted ? m.awayScore : (live ? live.awayScore : null);
+              <div className={`expand-grid ${isExpanded ? 'open' : ''}`}>
+                <div>
+                  <div className={`${isExpanded ? 'mt-4 pt-4 border-t border-slate-800/80' : ''} flex flex-col gap-3`}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-wider text-slate-400 font-extrabold">Scheduled Matches</span>
+                      <span className="text-[9px] bg-slate-900 border border-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono font-bold">
+                        {matchesAtVenue.length} Matches
+                      </span>
+                    </div>
+                    
+                    <div className="flex flex-col gap-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+                      {matchesAtVenue.map((m, idx) => {
+                        const homeTeamObj = TEAMS[m.home];
+                        const awayTeamObj = TEAMS[m.away];
+                        const homeFlag = homeTeamObj ? homeTeamObj.flag : '🏳️';
+                        const awayFlag = awayTeamObj ? awayTeamObj.flag : '🏳️';
+                        const homeName = m.home || 'TBD';
+                        const awayName = m.away || 'TBD';
+                        
+                        const live = liveMatches[m.id];
+                        const isLive = isLiveMatch(live);
+                        const hasScore = m.isCompleted || (live && (live.minute === 'FT' || live.isCompleted || live.homeScore !== null));
+                        const homeScore = m.isCompleted ? m.homeScore : (live ? live.homeScore : null);
+                        const awayScore = m.isCompleted ? m.awayScore : (live ? live.awayScore : null);
 
-                      return (
-                        <div key={idx} className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-900/60 flex flex-col gap-1.5 text-[11px]">
-                          <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
-                            <span className="text-brand-purple">{m.round}</span>
-                            <span>{formatDisplayDate(m.date)}</span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-1.5 font-bold text-slate-200">
-                              <span>{homeFlag}</span>
-                              <span>{homeName}</span>
+                        return (
+                          <div key={idx} className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-900/60 flex flex-col gap-1.5 text-[11px]">
+                            <div className="flex justify-between items-center text-[9px] text-slate-500 font-bold">
+                              <span className="text-brand-purple">{m.round}</span>
+                              <span>{formatDisplayDate(m.date)}</span>
                             </div>
-                            {hasScore ? (
-                              <div className="flex items-center gap-1 font-mono font-black text-brand-neon">
-                                <span>{homeScore}</span>
-                                <span className="text-slate-600">:</span>
-                                <span>{awayScore}</span>
-                                {isLive && <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse ml-1" />}
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-1.5 font-bold text-slate-200">
+                                <span>{homeFlag}</span>
+                                <span>{homeName}</span>
                               </div>
-                            ) : (
-                              <span className="text-[9px] font-extrabold text-slate-600 font-mono">VS</span>
-                            )}
-                            <div className="flex items-center gap-1.5 font-bold text-slate-200">
-                              <span>{awayName}</span>
-                              <span>{awayFlag}</span>
+                              {hasScore ? (
+                                <div className="flex items-center gap-1 font-mono font-black text-brand-neon">
+                                  <span>{homeScore}</span>
+                                  <span className="text-slate-600">:</span>
+                                  <span>{awayScore}</span>
+                                  {isLive && <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse ml-1" />}
+                                </div>
+                              ) : (
+                                <span className="text-[9px] font-extrabold text-slate-600 font-mono">VS</span>
+                              )}
+                              <div className="flex items-center gap-1.5 font-bold text-slate-200">
+                                <span>{awayName}</span>
+                                <span>{awayFlag}</span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                    {matchesAtVenue.length === 0 && (
-                      <span className="text-[10px] text-slate-500 text-center py-4">No matches scheduled.</span>
-                    )}
+                        );
+                      })}
+                      {matchesAtVenue.length === 0 && (
+                        <span className="text-[10px] text-slate-500 text-center py-4">No matches scheduled.</span>
+                      )}
+                    </div>
+                    
+                    <a 
+                      href={mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 text-xs font-bold text-slate-350 hover:text-white transition-all w-full mt-1"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-brand-neon" />
+                      <span>Get Directions (Google Maps)</span>
+                    </a>
                   </div>
-                  
-                  <a 
-                    href={mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-900 hover:border-slate-800 text-xs font-bold text-slate-350 hover:text-white transition-all w-full mt-1"
-                  >
-                    <MapPin className="w-3.5 h-3.5 text-brand-neon" />
-                    <span>Get Directions (Google Maps)</span>
-                  </a>
                 </div>
-              )}
+              </div>
               
               <div className="border-t border-slate-800/60 mt-4 pt-3 flex justify-between items-center text-[10px] text-slate-500 font-bold">
                 <span>{isExpanded ? 'CLICK TO COLLAPSE' : 'CLICK TO VIEW MATCHES'}</span>

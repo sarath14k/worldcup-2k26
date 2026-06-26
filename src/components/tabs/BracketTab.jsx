@@ -424,7 +424,7 @@ export const BracketTab = ({
                 className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-center transition-all cursor-pointer ${
                   activeRoundTab === rk 
                     ? 'bg-brand-neon text-slate-950 shadow-neon font-black' 
-                    : 'text-slate-400 hover:text-slate-205'
+                    : 'text-slate-400 hover:text-slate-300'
                 }`}
               >
                 {label}
@@ -456,8 +456,9 @@ export const BracketTab = ({
                   stroke={isHovered ? 'var(--color-brand-neon)' : 'rgba(255, 255, 255, 0.18)'}
                   strokeWidth={isHovered ? 3 : 2}
                   strokeLinecap="round"
-                  className={isHovered ? 'active-connector-path transition-all duration-300' : 'transition-all duration-300'}
+                  className={isHovered ? 'active-connector-path' : ''}
                   style={{
+                    transition: 'stroke 0.3s, stroke-width 0.3s, filter 0.3s',
                     filter: isHovered ? 'drop-shadow(0 0 6px var(--color-brand-neon))' : 'none'
                   }}
                 />
@@ -553,7 +554,7 @@ export const BracketTab = ({
 
             {/* Champion Reveal Box */}
             {tournamentChampion ? (
-              <div className="mt-5 text-center animate-bounce">
+              <div className="mt-5 text-center animate-fadeIn">
                 <p className="text-[10px] text-brand-neon font-bold tracking-widest">WORLD CUP CHAMPION</p>
                 <p className="text-lg font-extrabold text-white flex items-center gap-1.5 justify-center mt-1 holo-shine">
                   <span>{tournamentChampion.flag}</span>
