@@ -421,22 +421,8 @@ export const MatchDetailsModal = ({
             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <span>⏱️</span> Match Timeline
             </h4>
-            <div className="flex flex-col gap-2 max-h-56 overflow-y-auto pr-1 select-none scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
-              {details.timeline
-                .filter(event => {
-                  const typeLower = event.type.toLowerCase();
-                  return typeLower.includes('goal') || 
-                         typeLower.includes('card') || 
-                         typeLower.includes('sub') || 
-                         typeLower.includes('start') || 
-                         typeLower.includes('end') || 
-                         typeLower.includes('half') || 
-                         typeLower.includes('whistle') || 
-                         typeLower.includes('toss') || 
-                         typeLower.includes('kick off');
-                })
-                .slice()
-                .reverse()
+            <div className="flex flex-col gap-2 max-h-[360px] overflow-y-auto pr-1 select-none scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+              {details.timeline.slice().reverse()
                 .map((event, idx) => {
                   const normalize = (name) => name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
                   const normText = normalize(event.text);
