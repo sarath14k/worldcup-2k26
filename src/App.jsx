@@ -540,6 +540,8 @@ function App() {
     root.classList.remove('light', 'dark', 'pitch-black');
     if (theme === 'pitch-black') {
       root.classList.add('dark', 'pitch-black');
+    } else if (theme === 'light') {
+      root.classList.add('light');
     } else {
       root.classList.add('dark');
     }
@@ -1032,7 +1034,10 @@ function App() {
   }, [feedMatches]);
 
   return (
-    <div className={`min-h-screen ${theme === 'pitch-black' ? 'bg-black' : 'bg-brand-darkBg'} text-slate-100 font-sans antialiased transition-colors duration-300 dot-grid-bg`}>
+        <div className={`min-h-screen ${
+          theme === 'pitch-black' ? 'bg-black' : 
+          theme === 'light' ? 'bg-brand-darkBg' : 'bg-brand-darkBg'
+        } text-slate-100 font-sans antialiased transition-colors duration-300 dot-grid-bg`}>
       {/* Confetti Shower for Goal Alerts */}
       {goalAlert && <ConfettiShower />}
 
@@ -1113,7 +1118,7 @@ function App() {
         </>
       )}
       {/* Background glow effects for visual wow-factor */}
-      {theme !== 'pitch-black' && (
+        {theme !== 'pitch-black' && theme !== 'light' && (
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <div className="absolute -top-40 right-10 w-48 md:w-96 h-48 md:h-96 bg-brand-purple/20 rounded-full blur-3xl opacity-60 animate-glowDrift1"></div>
           <div className="absolute top-1/3 -left-40 w-48 md:w-96 h-48 md:h-96 bg-brand-neon/10 rounded-full blur-3xl opacity-50 animate-glowDrift2"></div>
@@ -1204,23 +1209,32 @@ function App() {
 
             {/* Theme Selector Toggle */}
             <button
-              onClick={() => setTheme(prev => prev === 'dark' ? 'pitch-black' : 'dark')}
+              onClick={() => setTheme(prev => prev === 'dark' ? 'pitch-black' : prev === 'pitch-black' ? 'light' : 'dark')}
               className={`flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded-full border text-xs font-bold transition-all cursor-pointer select-none shrink-0 ${
                 theme === 'pitch-black'
                   ? 'bg-zinc-900 border-zinc-700 text-brand-neon hover:bg-zinc-800'
-                  : 'bg-slate-900/60 border-slate-800/60 text-slate-400 hover:bg-slate-800 hover:text-white'
+                  : theme === 'light'
+                    ? 'bg-white/80 border-slate-300/60 text-slate-700 hover:bg-white hover:border-slate-400'
+                    : 'bg-slate-900/60 border-slate-800/60 text-slate-400 hover:bg-slate-800 hover:text-white'
               }`}
-              title={theme === 'pitch-black' ? 'Switch to Dark Stadium Theme' : 'Switch to Pitch Black Theme'}
+              title={theme === 'pitch-black' ? 'Light mode' : theme === 'light' ? 'Dark mode' : 'Pitch Black mode'}
             >
               {theme === 'pitch-black' ? (
                 <>
                   <Zap className="w-3.5 h-3.5 text-brand-neon fill-brand-neon animate-pulse shrink-0" />
                   <span className="hidden sm:inline font-black uppercase tracking-wider text-[10px]">Pitch Black</span>
                 </>
+              ) : theme === 'light' ? (
+                <>
+                  <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                  </svg>
+                  <span className="hidden sm:inline font-bold text-[10px]">Light</span>
+                </>
               ) : (
                 <>
                   <Moon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                  <span className="hidden sm:inline font-bold text-[10px]">Dark Stadium</span>
+                  <span className="hidden sm:inline font-bold text-[10px]">Dark</span>
                 </>
               )}
             </button>
