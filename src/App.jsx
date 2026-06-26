@@ -407,11 +407,9 @@ function App() {
 
     fetchLiveScores();
 
-    // Poll endpoint every 20 seconds if live matches are active, otherwise every 10 minutes (600000ms)
-    const intervalDuration = hasLiveMatches ? 20000 : 600000;
-    const timer = setInterval(fetchLiveScores, intervalDuration);
+    const timer = setInterval(fetchLiveScores, 30000);
     return () => clearInterval(timer);
-  }, [activeTab, hasLiveMatches]);
+  }, [activeTab]);
 
   // --- Ratings Polling Effect ---
   useEffect(() => {
