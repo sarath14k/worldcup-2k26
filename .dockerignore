@@ -17,4 +17,4 @@ screenshots
 scratch
 daemon.log
 dev-server.log
-src/data/highlights-cache.json
+# src/data/highlights-cache.json

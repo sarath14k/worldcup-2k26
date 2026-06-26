@@ -15,6 +15,7 @@ import { MatchDetailsModal } from './components/MatchDetailsModal';
 import { LiveMatchesBanner } from './components/LiveMatchesBanner';
 import { ConfettiShower } from './components/ConfettiShower';
 import { NextMatchCountdown } from './components/NextMatchCountdown';
+import { PlayerAvatar } from './components/PlayerAvatar';
 import { FixturesTab } from './components/tabs/FixturesTab';
 import { GroupsTab } from './components/tabs/GroupsTab';
 import { BracketTab } from './components/tabs/BracketTab';
@@ -1113,10 +1114,13 @@ function App() {
               {/* Scorer Info */}
               {goalAlert.player && (
                 <div className="relative mt-4 overflow-hidden rounded-xl border border-brand-neon/30 bg-gradient-to-r from-brand-neon/5 via-brand-neon/15 to-brand-neon/5 py-3 px-4 shadow-[0_4px_20px_rgba(0,255,135,0.05)]">
-                  <div className="text-center font-black text-brand-neon text-sm tracking-wide flex items-center justify-center gap-2">
-                    <span className="animate-pulse">⚽</span>
-                    <span className="truncate">{goalAlert.player}</span>
-                    <span className="text-xs text-slate-300">({goalAlert.minute}')</span>
+                  <div className="flex items-center justify-center gap-3">
+                    <PlayerAvatar name={goalAlert.player} size="xl" />
+                    <div className="text-center font-black text-brand-neon text-sm tracking-wide flex items-center gap-2">
+                      <span className="animate-pulse">⚽</span>
+                      <span className="truncate">{goalAlert.player}</span>
+                      <span className="text-xs text-slate-300">({goalAlert.minute}')</span>
+                    </div>
                   </div>
                 </div>
               )}
