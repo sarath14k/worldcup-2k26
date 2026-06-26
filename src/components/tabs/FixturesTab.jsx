@@ -116,7 +116,7 @@ export const FixturesTab = ({
             )}
 
             <div className="flex flex-col gap-3.5 relative z-10 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
-              {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 3)).map(match => {
+              {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 3)).map((match, idx) => {
                 const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                 const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                 const live = liveMatches[match.id];
@@ -127,13 +127,14 @@ export const FixturesTab = ({
                   <div
                     key={`today-${match.id}`}
                     onClick={() => setSelectedMatch(match)}
-                    className={`p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 card-shimmer ${
+                    className={`animate-stagger p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 card-shimmer ${
                       isFlashing
                         ? 'animate-goalFlash'
                         : isMatchLive
                           ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20'
                           : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
                     }`}
+                    style={{ animationDelay: `${idx * 60}ms` }}
                   >
                     <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
                       <span className="text-brand-neon uppercase font-extrabold flex items-center gap-1">
@@ -265,14 +266,15 @@ export const FixturesTab = ({
             )}
 
             <div className="flex flex-col gap-3 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
-              {(showAllDone ? filteredFeed : filteredFeed.slice(0, 3)).map(match => {
+              {(showAllDone ? filteredFeed : filteredFeed.slice(0, 3)).map((match, idx) => {
                 const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                 const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                 return (
                   <div
                     key={`feed-${match.id}`}
                     onClick={() => setSelectedMatch(match)}
-                    className="p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2 card-shimmer shrink-0"
+                    className="animate-stagger p-3 rounded-xl border transition-all bg-slate-950/70 border-slate-900/80 hover:border-slate-800 hover:bg-slate-900/50 cursor-pointer flex flex-col gap-2 card-shimmer shrink-0"
+                    style={{ animationDelay: `${idx * 60}ms` }}
                   >
                     <div className="flex justify-between items-center text-[10px] font-bold">
                       <div className="flex items-center gap-2">

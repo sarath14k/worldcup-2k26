@@ -132,9 +132,10 @@ export const GroupsTab = ({
                     <tr 
                       key={t.code} 
                       onClick={() => setSelectedTeamCode(isSelected ? null : t.code)}
-                      className={`hover:bg-slate-900/20 cursor-pointer transition-colors duration-150 group select-none ${
+                      className={`animate-stagger hover:bg-slate-900/20 cursor-pointer transition-colors duration-150 group select-none ${
                         isSelected ? 'bg-brand-neon/5' : ''
                       }`}
+                      style={{ animationDelay: `${index * 50}ms` }}
                     >
                       <td className="py-3 px-2 text-center relative">
                         {/* Qualification Accent Indicator Bar */}

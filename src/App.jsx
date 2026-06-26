@@ -29,6 +29,9 @@ function App() {
   const [activeTab, setActiveTab] = useState(() => localStorage.getItem('worldcup2026_activeTab') || 'fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
   const [theme, setTheme] = useState(() => localStorage.getItem('worldcup2026_theme') || 'dark');
   const [accent, setAccent] = useState(() => localStorage.getItem('worldcup2026_accent') || 'neon');
+  const [tabTransition, setTabTransition] = useState('idle');
+  const [pendingTab, setPendingTab] = useState(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const accents = {
@@ -42,6 +45,25 @@ function App() {
     document.documentElement.style.setProperty('--shadow-neon', `0 0 15px ${choice.shadow}`);
   }, [accent]);
 
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 600);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleTabSwitch = (tabId) => {
+    if (tabId === activeTab || tabTransition !== 'idle') return;
+    setPendingTab(tabId);
+    setTabTransition('exiting');
+    setTimeout(() => {
+      setActiveTab(tabId);
+      setTabTransition('entering');
+      setTimeout(() => {
+        setTabTransition('idle');
+        setPendingTab(null);
+      }, 300);
+    }, 200);
+  };
 
   // Group Stage State
   const [groupMatches, setGroupMatches] = useState([]);
@@ -313,6 +335,7 @@ function App() {
     if (activeTab === 'bracket') return;
 
     const fetchLiveScores = () => {
+      if (document.hidden) return;
       fetch('/live-matches.json')
         .then(res => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -337,6 +360,7 @@ function App() {
   // --- Ratings Polling Effect ---
   useEffect(() => {
     const fetchRatings = () => {
+      if (document.hidden) return;
       fetch('/fotmobPlayerRatings.json')
         .then(res => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -1182,7 +1206,7 @@ function App() {
               <button
                 key={tab.id}
                 id={`tab-${tab.id}`}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabSwitch(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 select-none cursor-pointer ${
                   isActive 
                     ? 'bg-brand-neon text-slate-950 shadow-neon font-black' 
@@ -1220,96 +1244,112 @@ function App() {
           />
         )}
         
-        {/* --- TABS --- */}
-        {activeTab === 'fixtures' && (
-          <FixturesTab 
-            hasLiveMatches={hasLiveMatches}
-            activeLiveMatchesList={activeLiveMatchesList}
-            upcomingFixtures={upcomingFixtures}
-            feedMatches={feedMatches}
-            liveMatches={liveMatches}
-            highlightsMap={highlightsMap}
-            loadingHighlightsMap={loadingHighlightsMap}
-            isLiveMatch={isLiveMatch}
-            setSelectedMatch={setSelectedMatch}
-            activeGoalFlashMatchIds={activeGoalFlashMatchIds}
-            nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}
-          />
-        )}
+        {/* --- TABS WITH PAGE TRANSITIONS --- */}
+        <div className={`transition-all duration-200 ${
+          tabTransition === 'exiting' ? 'opacity-0 translate-y-1 scale-[0.99] pointer-events-none' : ''
+        } ${tabTransition === 'entering' ? 'animate-fadeIn' : ''}`}>
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'fixtures' : pendingTab === 'fixtures') && (
+            <FixturesTab 
+              hasLiveMatches={hasLiveMatches}
+              activeLiveMatchesList={activeLiveMatchesList}
+              upcomingFixtures={upcomingFixtures}
+              feedMatches={feedMatches}
+              liveMatches={liveMatches}
+              highlightsMap={highlightsMap}
+              loadingHighlightsMap={loadingHighlightsMap}
+              isLiveMatch={isLiveMatch}
+              setSelectedMatch={setSelectedMatch}
+              activeGoalFlashMatchIds={activeGoalFlashMatchIds}
+              nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}
+            />
+          )}
 
-        {activeTab === 'groups' && (
-          <GroupsTab 
-            groupMatches={groupMatches}
-            standings={standings}
-            advancedTeams={advancedTeams}
-            liveMatches={liveMatches}
-            isLiveMatch={isLiveMatch}
-            setSelectedMatch={setSelectedMatch}
-          />
-        )}
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'groups' : pendingTab === 'groups') && (
+            <GroupsTab 
+              groupMatches={groupMatches}
+              standings={standings}
+              advancedTeams={advancedTeams}
+              liveMatches={liveMatches}
+              isLiveMatch={isLiveMatch}
+              setSelectedMatch={setSelectedMatch}
+            />
+          )}
 
-        {activeTab === 'bracket' && (
-          <BracketTab 
-            bracket={bracket}
-            standings={standings}
-            advancedTeams={advancedTeams}
-            tournamentChampion={tournamentChampion}
-            handleKnockoutWinner={handleKnockoutWinner}
-            onRestoreBracket={(winners) => {
-              setBracket(prev => {
-                const next = JSON.parse(JSON.stringify(prev));
-                const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
-                rounds.forEach(rk => {
-                  next[rk] = next[rk].map(m => {
-                    const winner = winners[m.id];
-                    if (winner && m.home && m.away && (winner === m.home || winner === m.away)) {
-                      const updated = { ...m, winner };
-                      // Cascade winner to next round
-                      if (m.nextId) {
-                        const nextRound = m.nextId.split('_')[0];
-                        const nextMatch = next[nextRound]?.find(nm => nm.id === m.nextId);
-                        if (nextMatch) {
-                          const isHome = m.position === 'top' || m.position === 'home';
-                          if (isHome) nextMatch.home = winner;
-                          else nextMatch.away = winner;
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'bracket' : pendingTab === 'bracket') && (
+            <BracketTab 
+              bracket={bracket}
+              standings={standings}
+              advancedTeams={advancedTeams}
+              tournamentChampion={tournamentChampion}
+              handleKnockoutWinner={handleKnockoutWinner}
+              onRestoreBracket={(winners) => {
+                setBracket(prev => {
+                  const next = JSON.parse(JSON.stringify(prev));
+                  const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
+                  rounds.forEach(rk => {
+                    next[rk] = next[rk].map(m => {
+                      const winner = winners[m.id];
+                      if (winner && m.home && m.away && (winner === m.home || winner === m.away)) {
+                        const updated = { ...m, winner };
+                        if (m.nextId) {
+                          const nextRound = m.nextId.split('_')[0];
+                          const nextMatch = next[nextRound]?.find(nm => nm.id === m.nextId);
+                          if (nextMatch) {
+                            const isHome = m.position === 'top' || m.position === 'home';
+                            if (isHome) nextMatch.home = winner;
+                            else nextMatch.away = winner;
+                          }
                         }
+                        return updated;
                       }
-                      return updated;
-                    }
-                    return m;
+                      return m;
+                    });
                   });
+                  return next;
                 });
-                return next;
-              });
-            }}
-          />
-        )}
+              }}
+            />
+          )}
 
-        {activeTab === 'stats' && (
-          <StatsTab 
-            playerStats={playerStats}
-          />
-        )}
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'stats' : pendingTab === 'stats') && (
+            <StatsTab 
+              playerStats={playerStats}
+            />
+          )}
 
-        {activeTab === 'ratings' && (
-          <PlayerRatingsTab 
-            fotmobRatings={fotmobRatings}
-          />
-        )}
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'ratings' : pendingTab === 'ratings') && (
+            <PlayerRatingsTab 
+              fotmobRatings={fotmobRatings}
+            />
+          )}
 
-        {activeTab === 'venues' && (
-          <VenuesTab 
-            groupMatches={groupMatches}
-            bracket={bracket}
-            liveMatches={liveMatches}
-            isLiveMatch={isLiveMatch}
-          />
-        )}
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'venues' : pendingTab === 'venues') && (
+            <VenuesTab 
+              groupMatches={groupMatches}
+              bracket={bracket}
+              liveMatches={liveMatches}
+              isLiveMatch={isLiveMatch}
+            />
+          )}
 
-        {activeTab === 'system' && (
-          <SystemTab />
-        )}
+          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'system' : pendingTab === 'system') && (
+            <SystemTab />
+          )}
+        </div>
       </main>
+
+      {/* --- BACK TO TOP --- */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-brand-neon text-slate-950 shadow-neon hover:scale-110 transition-all cursor-pointer animate-backToTop border-0"
+          aria-label="Back to top"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
 
       {/* --- FOOTER --- */}
       <footer className="relative z-10 border-t border-slate-900 bg-slate-950/50 py-8 mt-12 text-center text-xs text-slate-500 font-bold">

@@ -6427,10 +6427,10 @@
   },
   "23": {
     "homeScore": 2,
-    "awayScore": 2,
-    "minute": "90'+7'",
+    "awayScore": 3,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
+    "isCompleted": true,
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -6453,20 +6453,25 @@
         "team": "home",
         "player": "Sebastian Berhalter",
         "minute": 49
+      },
+      {
+        "team": "away",
+        "player": "Kaan Ayhan",
+        "minute": 98
       }
     ],
     "stats": {
       "possession": [
-        52.5,
-        47.5
+        52.6,
+        47.4
       ],
       "shots": [
         18,
-        7
+        9
       ],
       "shotsOnTarget": [
         7,
-        2
+        3
       ],
       "corners": [
         9,
@@ -6713,6 +6718,12 @@
         "text": "",
         "minute": 92,
         "minuteStr": "90'+2'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Türkiye 3, USA 2. Kaan Ayhan (Türkiye) right footed shot from very close range.",
+        "minute": 98,
+        "minuteStr": "90'+8'"
       }
     ],
     "home": "USA",

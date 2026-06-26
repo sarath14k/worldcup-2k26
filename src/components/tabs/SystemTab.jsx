@@ -213,10 +213,9 @@ export default function SystemTab() {
 
   // Update relative timestamps on minute boundaries instead of every second
   useEffect(() => {
-    const id = setInterval(() => forceUpdate(t => t + 1), 60000);
-    // Force an immediate update on mount
-    forceUpdate(t => t + 1);
-    return () => clearInterval(id);
+    const id = setInterval(() => {
+      if (!document.hidden) forceUpdate(t => t + 1);
+    }, 60000);
   }, []);
 
   if (error && !analytics) {

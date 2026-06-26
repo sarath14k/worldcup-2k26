@@ -39,7 +39,8 @@ export async function syncRatings() {
         name: p.name,
         team: teamAbbr,
         rating: p.statValue.value,
-        playerId: String(p.id)
+        playerId: String(p.id),
+        position: p.position
       });
     });
     

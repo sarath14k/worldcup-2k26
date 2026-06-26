@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { TEAMS, VENUES } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
 import { ScrollingText } from './ScrollingText';
+import { getPositionLabel, getPositionCategory, getCategoryColor } from '../utils/positions';
 
 const HISTORICAL_DB = [
   { teams: ['USA', 'MEX'], matches: [
@@ -194,11 +195,38 @@ export const MatchDetailsModal = ({
   bracket = {}, 
   onClose 
 }) => {
+  const [closing, setClosing] = useState(false);
+
+  const handleClose = () => {
+    if (closing) return;
+    setClosing(true);
+    setTimeout(() => onClose(), 200);
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) handleClose();
+  };
+
+  const positionLookup = useMemo(() => {
+    const map = {};
+    (fotmobRatings || []).forEach(p => {
+      if (p.name && p.team && p.position) {
+        map[`${p.name}|${p.team}`] = p.position;
+      }
+    });
+    return map;
+  }, [fotmobRatings]);
+
+  const getPlayerPosition = (name, team, playerObj) => {
+    if (playerObj && playerObj.position) return playerObj.position;
+    return positionLookup[`${name}|${team}`];
+  };
+
   const [activeModalTab, setActiveModalTab] = useState('match');
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -240,12 +268,17 @@ export const MatchDetailsModal = ({
   const awayScore = live ? live.awayScore : (selectedMatch.awayScore ?? 0);
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300"
-      onClick={onClose}
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 ${
+        closing ? 'animate-backdropExit' : 'animate-modalEnter'
+      }`}
+      style={{ background: 'rgba(2, 6, 23, 0.85)' }}
+      onClick={handleBackdropClick}
     >
-      <div 
-        className="w-full max-w-xl max-h-[90dvh] bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl relative flex flex-col overflow-hidden"
+      <div
+        className={`w-full max-w-xl max-h-[90dvh] bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl relative flex flex-col overflow-hidden ${
+          closing ? 'animate-modalExit' : ''
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header - Non-scrollable & Always Visible */}
@@ -266,7 +299,7 @@ export const MatchDetailsModal = ({
           
           <button 
             className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-6 p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none z-20 shrink-0"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Close modal"
           >
             <svg className="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -606,20 +639,32 @@ export const MatchDetailsModal = ({
                 {homePlayers.length === 0 ? (
                   <div className="text-[10px] text-slate-500 italic py-1">No ratings available</div>
                 ) : (
-                  homePlayers.map((p, idx) => (
-                    <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
-                      <ScrollingText text={p.name} className="text-slate-350" />
-                      <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
-                        p.rating >= 7.5 
-                          ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
-                          : p.rating >= 6.0 
-                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                            : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
-                      }`}>
-                        {p.rating.toFixed(2)}
-                      </span>
-                    </div>
-                  ))
+                  homePlayers.map((p, idx) => {
+                    const posCode = getPlayerPosition(p.name, selectedMatch.home, p);
+                    const posLabel = getPositionLabel(posCode);
+                    const posCat = getPositionCategory(posCode);
+                    return (
+                      <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          {posLabel && (
+                            <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                              {posLabel}
+                            </span>
+                          )}
+                          <ScrollingText text={p.name} className="text-slate-350" />
+                        </div>
+                        <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
+                          p.rating >= 7.5 
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                            : p.rating >= 6.0 
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
+                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                        }`}>
+                          {p.rating.toFixed(2)}
+                        </span>
+                      </div>
+                    );
+                  })
                 )}
               </div>
               {/* Away Player Ratings */}
@@ -631,20 +676,32 @@ export const MatchDetailsModal = ({
                 {awayPlayers.length === 0 ? (
                   <div className="text-[10px] text-slate-500 italic py-1 text-right">No ratings available</div>
                 ) : (
-                  awayPlayers.map((p, idx) => (
-                    <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
-                      <ScrollingText text={p.name} className="text-slate-350" />
-                      <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
-                        p.rating >= 7.5 
-                          ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
-                          : p.rating >= 6.0 
-                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
-                            : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
-                      }`}>
-                        {p.rating.toFixed(2)}
-                      </span>
-                    </div>
-                  ))
+                  awayPlayers.map((p, idx) => {
+                    const posCode = getPlayerPosition(p.name, selectedMatch.away, p);
+                    const posLabel = getPositionLabel(posCode);
+                    const posCat = getPositionCategory(posCode);
+                    return (
+                      <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          {posLabel && (
+                            <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                              {posLabel}
+                            </span>
+                          )}
+                          <ScrollingText text={p.name} className="text-slate-350" />
+                        </div>
+                        <span className={`px-1.5 py-0.5 rounded text-[9px] shrink-0 font-black ${
+                          p.rating >= 7.5 
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                            : p.rating >= 6.0 
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
+                              : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                        }`}>
+                          {p.rating.toFixed(2)}
+                        </span>
+                      </div>
+                    );
+                  })
                 )}
               </div>
             </div>
