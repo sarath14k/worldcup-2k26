@@ -333,6 +333,13 @@ function App() {
   // Highlights polling states
   const [highlightsMap, setHighlightsMap] = useState({});
   const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
+  const [highlightsRetry, setHighlightsRetry] = useState(0);
+
+  // Periodically retry failed highlight fetches
+  useEffect(() => {
+    const timer = setInterval(() => setHighlightsRetry(k => k + 1), 60000);
+    return () => clearInterval(timer);
+  }, []);
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
@@ -1033,7 +1040,7 @@ function App() {
         });
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [feedMatches]);
+  }, [feedMatches, highlightsRetry]);
 
   return (
         <div className={`min-h-screen ${
