@@ -55,9 +55,6 @@ export const FixturesTab = ({
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
-      {/* Next Match Countdown */}
-      {nextMatchCountdown}
-
       {/* Team Filter */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
@@ -88,6 +85,9 @@ export const FixturesTab = ({
           />
         </div>
       )}
+
+      {/* Next Match Countdown */}
+      {nextMatchCountdown}
 
       {/* Upcoming Fixtures */}
       <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
