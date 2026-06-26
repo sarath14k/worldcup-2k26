@@ -29,8 +29,6 @@ function App() {
   const [activeTab, setActiveTab] = useState(() => localStorage.getItem('worldcup2026_activeTab') || 'fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
   const [theme, setTheme] = useState(() => localStorage.getItem('worldcup2026_theme') || 'dark');
   const [accent, setAccent] = useState(() => localStorage.getItem('worldcup2026_accent') || 'neon');
-  const [tabTransition, setTabTransition] = useState('idle');
-  const [pendingTab, setPendingTab] = useState(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -52,17 +50,9 @@ function App() {
   }, []);
 
   const handleTabSwitch = (tabId) => {
-    if (tabId === activeTab || tabTransition !== 'idle') return;
-    setPendingTab(tabId);
-    setTabTransition('exiting');
-    setTimeout(() => {
-      setActiveTab(tabId);
-      setTabTransition('entering');
-      setTimeout(() => {
-        setTabTransition('idle');
-        setPendingTab(null);
-      }, 300);
-    }, 200);
+    if (tabId === activeTab) return;
+    setActiveTab(tabId);
+    localStorage.setItem('worldcup2026_activeTab', tabId);
   };
 
   // Group Stage State
@@ -1245,11 +1235,9 @@ function App() {
           />
         )}
         
-        {/* --- TABS WITH PAGE TRANSITIONS --- */}
-        <div className={`transition-all duration-200 ${
-          tabTransition === 'exiting' ? 'opacity-0 translate-y-1 scale-[0.99] pointer-events-none' : ''
-        } ${tabTransition === 'entering' ? 'animate-fadeIn' : ''}`}>
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'fixtures' : pendingTab === 'fixtures') && (
+        {/* --- TABS --- */}
+        <div>
+          {activeTab === 'fixtures' && (
             <FixturesTab 
               hasLiveMatches={hasLiveMatches}
               activeLiveMatchesList={activeLiveMatchesList}
@@ -1265,7 +1253,7 @@ function App() {
             />
           )}
 
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'groups' : pendingTab === 'groups') && (
+          {activeTab === 'groups' && (
             <GroupsTab 
               groupMatches={groupMatches}
               standings={standings}
@@ -1276,7 +1264,7 @@ function App() {
             />
           )}
 
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'bracket' : pendingTab === 'bracket') && (
+          {activeTab === 'bracket' && (
             <BracketTab 
               bracket={bracket}
               standings={standings}
@@ -1312,20 +1300,20 @@ function App() {
             />
           )}
 
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'stats' : pendingTab === 'stats') && (
+          {activeTab === 'stats' && (
             <StatsTab 
               playerStats={playerStats}
               fotmobRatings={fotmobRatings}
             />
           )}
 
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'ratings' : pendingTab === 'ratings') && (
+          {activeTab === 'ratings' && (
             <PlayerRatingsTab 
               fotmobRatings={fotmobRatings}
             />
           )}
 
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'venues' : pendingTab === 'venues') && (
+          {activeTab === 'venues' && (
             <VenuesTab 
               groupMatches={groupMatches}
               bracket={bracket}
@@ -1334,7 +1322,7 @@ function App() {
             />
           )}
 
-          {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'system' : pendingTab === 'system') && (
+          {activeTab === 'system' && (
             <SystemTab />
           )}
         </div>
