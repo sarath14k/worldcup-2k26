@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { TEAMS } from '../data/worldcupData';
+import { parseMatchKickoff } from '../utils/matchHelpers';
 
 export const NextMatchCountdown = ({ upcomingFixtures }) => {
   const [timeLeft, setTimeLeft] = useState('');
   const nextMatch = upcomingFixtures?.[0];
 
   useEffect(() => {
-    if (!nextMatch?.date) return;
-    const kickoff = new Date(nextMatch.date).getTime();
+    const kickoff = parseMatchKickoff(nextMatch);
+    if (!kickoff) return;
 
     const tick = () => {
-      const diff = kickoff - Date.now();
+      const diff = kickoff.getTime() - Date.now();
       if (diff <= 0) { setTimeLeft('KICKING OFF!'); return; }
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
@@ -22,7 +23,7 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [nextMatch?.date]);
+  }, [nextMatch]);
 
   if (!nextMatch) return null;
 
