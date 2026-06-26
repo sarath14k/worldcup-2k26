@@ -4,7 +4,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import { scraperAnalytics } from './analytics.js';
 import { handleHighlightsRoute } from './scrapers/highlights.js';
-import { triggerEspnScrape } from './scheduler.js';
+import { triggerEspnScrape, triggerRatingsScrape, triggerLiveRatingsScrape } from './scheduler.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -76,15 +76,23 @@ export function registerRoutes(app) {
     res.json(scraperAnalytics);
   });
 
-  // Manual trigger for ESPN scrape
-  app.post('/api/trigger-scrape', (req, res) => {
+  // Manual trigger for scrapers
+  app.post('/api/trigger-scrape/:type', (req, res) => {
     const token = req.headers['x-sync-token'];
     const expected = process.env.SYNC_TOKEN;
     if (expected && token !== expected) {
       return res.status(403).json({ error: 'Invalid token' });
     }
-    triggerEspnScrape();
-    res.json({ success: true, message: 'ESPN scrape triggered' });
+    const { type } = req.params;
+    const triggers = {
+      espn: triggerEspnScrape,
+      ratings: triggerRatingsScrape,
+      'live-ratings': triggerLiveRatingsScrape,
+    };
+    const trigger = triggers[type];
+    if (!trigger) return res.status(400).json({ error: `Unknown scraper type: ${type}` });
+    trigger();
+    res.json({ success: true, message: `${type} scrape triggered` });
   });
 
   // Match highlights API

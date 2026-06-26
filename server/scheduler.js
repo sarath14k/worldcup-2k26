@@ -192,3 +192,11 @@ export function startSchedulers() {
 export function triggerEspnScrape() {
   runScrape();
 }
+
+export function triggerRatingsScrape() {
+  runRatingsSync();
+}
+
+export function triggerLiveRatingsScrape() {
+  runLiveRatingsSync();
+}

@@ -45,14 +45,25 @@ const MODE_CONFIG = {
   idle: { emoji: '⚪', label: 'Idle', color: 'text-slate-400', bg: 'bg-slate-500/20', border: 'border-slate-500/40', glow: 'shadow-slate-500/10' }
 };
 
-function ScraperCard({ data, scraperKey }) {
+function ScraperCard({ data, scraperKey, onSync }) {
   const mode = MODE_CONFIG[data.mode] || MODE_CONFIG.idle;
   const successRate = data.totalRuns > 0 ? Math.round((data.successCount / data.totalRuns) * 100) : 0;
+  const [syncing, setSyncing] = useState(false);
+
+  const handleSync = async () => {
+    if (syncing || data.isRunning) return;
+    setSyncing(true);
+    try {
+      await onSync(scraperKey);
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   return (
     <div className={`relative rounded-2xl border ${mode.border} ${mode.bg} backdrop-blur-sm p-5 transition-all duration-500 shadow-lg ${mode.glow}`}>
       {/* Running indicator */}
-      {data.isRunning && (
+      {(data.isRunning || syncing) && (
         <div className="absolute top-3 right-3">
           <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50" />
         </div>
@@ -63,8 +74,22 @@ function ScraperCard({ data, scraperKey }) {
         <div className={`w-10 h-10 rounded-xl ${mode.bg} border ${mode.border} flex items-center justify-center text-lg`}>
           {mode.emoji}
         </div>
-        <div>
-          <h3 className="text-white font-bold text-sm">{data.name}</h3>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <h3 className="text-white font-bold text-sm">{data.name}</h3>
+            <button
+              onClick={handleSync}
+              disabled={syncing || data.isRunning}
+              className={`p-1 rounded-lg transition-all cursor-pointer border-0 shrink-0 ${
+                syncing || data.isRunning
+                  ? 'text-slate-600 cursor-not-allowed'
+                  : 'text-slate-500 hover:text-brand-neon hover:bg-slate-800/50'
+              }`}
+              title={`Sync ${data.name}`}
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
+            </button>
+          </div>
           <span className={`text-xs font-semibold ${mode.color} uppercase tracking-wider`}>{mode.label}</span>
         </div>
       </div>
@@ -192,6 +217,18 @@ export default function SystemTab() {
   const [lastFetch, setLastFetch] = useState(null);
   const [, forceUpdate] = useState(0);
 
+  const triggerSync = useCallback(async (type) => {
+    const apiType = type === 'liveRatings' ? 'live-ratings' : type;
+    try {
+      const res = await fetch(`/api/trigger-scrape/${apiType}`, { method: 'POST' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await new Promise(r => setTimeout(r, 500));
+      await fetchAnalytics();
+    } catch (err) {
+      console.error('Sync failed:', err);
+    }
+  }, [fetchAnalytics]);
+
   const fetchAnalytics = useCallback(async () => {
     try {
       const res = await fetch('/api/scraper-analytics');
@@ -277,9 +314,9 @@ export default function SystemTab() {
 
       {/* Scraper cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <ScraperCard data={analytics.espn} scraperKey="espn" />
-        <ScraperCard data={analytics.ratings} scraperKey="ratings" />
-        <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" />
+        <ScraperCard data={analytics.espn} scraperKey="espn" onSync={triggerSync} />
+        <ScraperCard data={analytics.ratings} scraperKey="ratings" onSync={triggerSync} />
+        <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" onSync={triggerSync} />
       </div>
 
       {/* Scheduling explanation */}
