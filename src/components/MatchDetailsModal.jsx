@@ -219,6 +219,14 @@ export const MatchDetailsModal = ({
     return map;
   }, [fotmobRatings]);
 
+  const playerIdLookup = useMemo(() => {
+    const map = {};
+    (fotmobRatings || []).forEach(p => {
+      if (p.playerId) map[p.name] = p.playerId;
+    });
+    return map;
+  }, [fotmobRatings]);
+
   const getPlayerPosition = (name, team, playerObj) => {
     if (playerObj && playerObj.position) return playerObj.position;
     return positionLookup[`${name}|${team}`];
@@ -393,23 +401,29 @@ export const MatchDetailsModal = ({
                   <div className="grid grid-cols-2 gap-4 text-[11px] font-bold font-mono">
                     {/* Home Scorers */}
                     <div className="flex flex-col gap-1.5 text-left">
-                      {details.scorers.filter(s => s.team === 'home').map((s, idx) => (
-                        <div key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1.5">
-                          <PlayerAvatar name={s.player} size="xs" />
-                          <span className="truncate">{s.player}</span>
-                          <span className="text-brand-neon shrink-0">({s.minute}')</span>
-                        </div>
-                      ))}
+                      {details.scorers.filter(s => s.team === 'home').map((s, idx) => {
+                        const pid = playerIdLookup[s.player];
+                        return (
+                          <div key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1.5 cursor-pointer" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
+                            <PlayerAvatar name={s.player} size="xs" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                            <span className="truncate">{s.player}</span>
+                            <span className="text-brand-neon shrink-0">({s.minute}')</span>
+                          </div>
+                        );
+                      })}
                     </div>
                     {/* Away Scorers */}
                     <div className="flex flex-col gap-1.5 text-right">
-                      {details.scorers.filter(s => s.team === 'away').map((s, idx) => (
-                        <div key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1.5">
-                          <span className="text-brand-neon shrink-0">({s.minute}')</span>
-                          <span className="truncate">{s.player}</span>
-                          <PlayerAvatar name={s.player} size="xs" />
-                        </div>
-                      ))}
+                      {details.scorers.filter(s => s.team === 'away').map((s, idx) => {
+                        const pid = playerIdLookup[s.player];
+                        return (
+                          <div key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1.5 cursor-pointer" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
+                            <span className="text-brand-neon shrink-0">({s.minute}')</span>
+                            <span className="truncate">{s.player}</span>
+                            <PlayerAvatar name={s.player} size="xs" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
             ) : (
