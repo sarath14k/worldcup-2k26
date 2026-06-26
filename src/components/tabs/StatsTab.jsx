@@ -5,6 +5,7 @@ import { ScrollingText } from '../ScrollingText';
 import { PlayerAvatar } from '../PlayerAvatar';
 import { PlayerDetailModal } from '../PlayerDetailModal';
 import { getPositionLabel, getPositionCategory, getCategoryColor } from '../../utils/positions';
+import playerDetails from '../../data/fotmobPlayerDetails.json';
 
 export const StatsTab = ({ playerStats, fotmobRatings }) => {
   const [activeSubTab, setActiveSubTab] = useState('scorers');
@@ -13,12 +14,16 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
   const playerIdLookup = useMemo(() => {
     const map = {};
     (fotmobRatings || []).forEach(p => { if (p.playerId) map[p.name] = p.playerId; });
+    Object.entries(playerDetails).forEach(([id, p]) => { if (p.name && !map[p.name]) map[p.name] = id; });
     return map;
   }, [fotmobRatings]);
 
   const positionLookup = useMemo(() => {
     const map = {};
     (fotmobRatings || []).forEach(p => {
+      if (p.name && p.position) map[p.name] = p.position;
+    });
+    Object.values(playerDetails).forEach(p => {
       if (p.name && p.position) map[p.name] = p.position;
     });
     return map;
