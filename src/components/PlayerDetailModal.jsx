@@ -29,10 +29,14 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
   useEffect(() => {
     if (!playerId) return;
     setLoading(true);
-    fetch(`/api/player-detail/${playerId}`)
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    fetch(`/api/player-detail/${playerId}`, { signal: controller.signal })
       .then(r => r.ok ? r.json() : null)
       .then(d => { setData(d); setLoading(false); })
-      .catch(() => setLoading(false));
+      .catch(() => setLoading(false))
+      .finally(() => clearTimeout(timeout));
+    return () => { clearTimeout(timeout); controller.abort(); };
   }, [playerId]);
 
   const imageUrl = FOTMOB_IMG(playerId);

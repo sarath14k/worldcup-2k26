@@ -1,8 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { scrapeFifa } from './server/scrapers/fifa.js'
 import { handleHighlightsRoute } from './server/scrapers/highlights.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   base: '/',
@@ -24,6 +29,24 @@ export default defineConfig({
             }
           } else if (req.url.startsWith('/api/match-highlights')) {
             await handleHighlightsRoute(req, res);
+          } else if (req.url.startsWith('/api/player-detail/')) {
+            const playerId = req.url.split('/').pop();
+            const detailsPath = path.join(__dirname, 'src/data/fotmobPlayerDetails.json');
+            try {
+              const details = JSON.parse(fs.readFileSync(detailsPath, 'utf8'));
+              const player = details[playerId];
+              if (player) {
+                res.setHeader('Content-Type', 'application/json');
+                res.setHeader('Cache-Control', 'public, max-age=3600');
+                res.end(JSON.stringify(player));
+              } else {
+                res.statusCode = 404;
+                res.end(JSON.stringify({ error: 'Player not found' }));
+              }
+            } catch (err) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ error: err.message }));
+            }
           } else {
             next();
           }
