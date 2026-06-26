@@ -66,10 +66,11 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
   const normHome = normalizeTeamName(home);
   const normAway = normalizeTeamName(away);
 
-  // Check cache: if data exists, assume it's valid for completed matches
+  // Check cache: skip stale entries with missing videoId
   const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
-  if (homeCode && awayCode && highlightsCache[cacheKey]) {
-    return { statusCode: 200, result: highlightsCache[cacheKey] };
+  const cached = homeCode && awayCode && highlightsCache[cacheKey];
+  if (cached && cached.videoId) {
+    return { statusCode: 200, result: cached };
   }
 
   // If NOT in cache, proceed to fetch and then save

@@ -135,7 +135,7 @@
   "aus_vs_tur": {
     "videoId": "6qvmyR3k0BcpuPrSmer7Mf",
     "url": "https://www.fifa.com/en/watch/6qvmyR3k0BcpuPrSmer7Mf",
-    "title": "Australia v Türkiye",
+    "title": "Australia v T\u00fcrkiye",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
@@ -149,16 +149,9 @@
   "par_vs_tur": {
     "videoId": "6gtrw3fGvuONahHQd4yE67",
     "url": "https://www.fifa.com/en/watch/6gtrw3fGvuONahHQd4yE67",
-    "title": "Türkiye v Paraguay",
+    "title": "T\u00fcrkiye v Paraguay",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
-  },
-  "usa_vs_tur": {
-    "videoId": null,
-    "url": null,
-    "title": "United States v Turkey",
-    "channel": null,
-    "duration": null
   },
   "par_vs_aus": {
     "videoId": "4NNX3soy5dReiHMd5HxRXA",
@@ -170,28 +163,28 @@
   "ger_vs_cuw": {
     "videoId": "3MSlsbd2rcnTGlcG4jhpdR",
     "url": "https://www.fifa.com/en/watch/3MSlsbd2rcnTGlcG4jhpdR",
-    "title": "Germany v Curaçao",
+    "title": "Germany v Cura\u00e7ao",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
   "civ_vs_ecu": {
     "videoId": "4P79SuyJHO3ZGVuRYxjots",
     "url": "https://www.fifa.com/en/watch/4P79SuyJHO3ZGVuRYxjots",
-    "title": "Côte d'Ivoire v Ecuador",
+    "title": "C\u00f4te d'Ivoire v Ecuador",
     "channel": "FIFA.com (Direct)",
     "duration": "2:00"
   },
   "ger_vs_civ": {
     "videoId": "2ofHeol8LZn44A3ThxLwdE",
     "url": "https://www.fifa.com/en/watch/2ofHeol8LZn44A3ThxLwdE",
-    "title": "Germany v Côte d'Ivoire",
+    "title": "Germany v C\u00f4te d'Ivoire",
     "channel": "FIFA.com (Direct)",
     "duration": "2:13"
   },
   "cuw_vs_ecu": {
     "videoId": "6lI7ddpjskKW6dYr7nB7I4",
     "url": "https://www.fifa.com/en/watch/6lI7ddpjskKW6dYr7nB7I4",
-    "title": "Ecuador v Curaçao",
+    "title": "Ecuador v Cura\u00e7ao",
     "channel": "FIFA.com (Direct)",
     "duration": "2:00"
   },
@@ -205,7 +198,7 @@
   "cuw_vs_civ": {
     "videoId": "450gMxJHBSeV5QctbBsC9o",
     "url": "https://www.fifa.com/en/watch/450gMxJHBSeV5QctbBsC9o",
-    "title": "Curaçao v Côte d'Ivoire",
+    "title": "Cura\u00e7ao v C\u00f4te d'Ivoire",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
