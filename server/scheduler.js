@@ -27,10 +27,13 @@ function computeScrapeDelay({ liveCount, nextMatchTime, lastMatchEndTime }) {
 
   if (nextMatchTime) {
     const timeToMatch = new Date(nextMatchTime).getTime() - now;
-    if (timeToMatch > 0 && timeToMatch <= 10 * 60 * 1000) {
+    if (timeToMatch > 0 && timeToMatch <= 2 * 60 * 1000) {
       return { delay: 30000, mode: 'pre-match', reason: `Next match in ${Math.floor(timeToMatch / 60000)}min` };
     }
-    if (timeToMatch > 10 * 60 * 1000 && timeToMatch <= 120 * 60 * 1000) {
+    if (timeToMatch > 2 * 60 * 1000 && timeToMatch <= 20 * 60 * 1000) {
+      return { delay: 120000, mode: 'pre-match', reason: `Next match in ${Math.floor(timeToMatch / 60000)}min` };
+    }
+    if (timeToMatch > 20 * 60 * 1000 && timeToMatch <= 120 * 60 * 1000) {
       return { delay: 120000, mode: 'standby', reason: `Next match in ${Math.floor(timeToMatch / 60000)}min` };
     }
   }
