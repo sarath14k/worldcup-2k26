@@ -30,7 +30,7 @@ export const PlayerAvatar = ({ name, size = 'md', className = '', playerId, onPl
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
 
-  const imageUrl = playerImages.byName[name];
+  const imageUrl = playerImages.byName[name] || (playerId ? `https://images.fotmob.com/image_resources/playerimages/${playerId}.png` : null);
   const initials = getInitials(name);
   const colorClass = FALLBACK_COLORS[getColorIndex(name)];
   const showImage = imageUrl && !errored;
