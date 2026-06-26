@@ -7,6 +7,8 @@ import compression from 'compression';
 import { syncWithEspn } from './scripts/espnSync.js';
 import { syncRatings } from './scripts/scrapeFotmobRatings.js';
 import { scrapeLiveRatings } from './scripts/scrapeLiveRatings.js';
+import { searchHighlights, handleHighlightsRoute } from './scripts/highlightsScraper.js';
+import { TEAMS } from './src/data/worldcupData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -211,8 +213,6 @@ app.get('/api/scraper-analytics', (req, res) => {
   res.json(scraperAnalytics);
 });
 
-import { searchHighlights, handleHighlightsRoute } from './scripts/highlightsScraper.js';
-
 // Endpoint to search and fetch direct YouTube highlights link
 app.get('/api/match-highlights', handleHighlightsRoute);
 
@@ -303,6 +303,44 @@ async function runScrape() {
     currentlyLiveMatches = scheduleData.liveCount > 0;
     recordRun('espn', { success: result.success, duration, error: result.error });
     console.log(`[ESPN Scraper] Completed in ${duration}ms. ${result.count} matches, ${result.liveCount} live.`);
+
+    // Auto-fetch highlights for newly completed matches
+    try {
+      const livePath = path.join(__dirname, 'public', 'live-matches.json');
+      const cachePath = path.join(__dirname, 'src/data/highlights-cache.json');
+      
+      if (fs.existsSync(livePath)) {
+        const liveData = JSON.parse(fs.readFileSync(livePath, 'utf8'));
+        const cacheData = fs.existsSync(cachePath) ? JSON.parse(fs.readFileSync(cachePath, 'utf8')) : {};
+
+        for (const [matchId, match] of Object.entries(liveData)) {
+          if (!match.isCompleted) continue;
+          const homeCode = (match.home || '').toLowerCase();
+          const awayCode = (match.away || '').toLowerCase();
+          const cacheKey = `${homeCode}_vs_${awayCode}`;
+          if (cacheData[cacheKey]) continue;
+
+          const homeTeam = Object.values(TEAMS).find(t => t.code === match.home);
+          const awayTeam = Object.values(TEAMS).find(t => t.code === match.away);
+          if (!homeTeam || !awayTeam) continue;
+
+          console.log(`[Highlights Auto] Fetching for ${homeTeam.name} vs ${awayTeam.name}`);
+          const res = await searchHighlights({
+            home: homeTeam.name,
+            away: awayTeam.name,
+            homeCode: match.home,
+            awayCode: match.away
+          });
+          if (res.result) {
+            console.log(`[Highlights Auto] ✅ ${res.result.title}`);
+          } else {
+            console.log(`[Highlights Auto] ❌ No FIFA highlight available`);
+          }
+        }
+      }
+    } catch (hlErr) {
+      console.error('[Highlights Auto] Error:', hlErr.message);
+    }
   } catch (err) {
     const duration = Date.now() - startTime;
     if (err.name === 'AbortError') analytics.timeoutCount++;

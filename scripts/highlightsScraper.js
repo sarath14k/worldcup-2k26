@@ -115,17 +115,21 @@ export function findBestHighlight(html, home, away, homeCode, awayCode) {
       // Exclude based on title/channel keywords
       if (EXCLUDE_KEYWORDS.some(kw => titleLower.includes(kw) || channelLower.includes(kw))) return false;
 
-      // Duration filter (60s - 900s)
+      // Duration filter
       if (!v.duration) return false;
       const parts = v.duration.split(':');
-      if (parts.length === 1 || parts.length === 3) return false;
-      if (parts.length === 2) {
-        const minutes = parseInt(parts[0], 10);
-        const seconds = parseInt(parts[1], 10);
-        if (isNaN(minutes) || isNaN(seconds)) return false;
-        const totalSeconds = minutes * 60 + seconds;
-        if (totalSeconds < 60 || totalSeconds > 900) return false;
-      }
+      if (parts.length > 3) return false;
+      let totalSeconds = 0;
+      if (parts.length === 1) totalSeconds = parseInt(parts[0], 10) || 0;
+      else if (parts.length === 2) totalSeconds = (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+      else if (parts.length === 3) totalSeconds = (parseInt(parts[0], 10) || 0) * 3600 + (parseInt(parts[1], 10) || 0) * 60 + (parseInt(parts[2], 10) || 0);
+      if (totalSeconds <= 0) return false;
+
+      // Accept FIFA channel clips >= 5s, other channels >= 60s
+      const isFIFAChannel = channelLower === 'fifa';
+      if (isFIFAChannel && totalSeconds < 5) return false;
+      if (!isFIFAChannel && (totalSeconds < 60 || totalSeconds > 900)) return false;
+      if (isFIFAChannel && totalSeconds > 1800) return false;
 
       // Match verification: title must contain both team names
       const normTitle = titleLower.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -134,8 +138,18 @@ export function findBestHighlight(html, home, away, homeCode, awayCode) {
 
       const checkTeam = (normName, code) => {
         const aliases = TEAM_ALIASES[normName] || [normName];
-        if (code) aliases.push(code.toLowerCase());
-        if (aliases.some(alias => normTitle.includes(alias))) return true;
+        if (code) {
+          const codeLower = code.toLowerCase();
+          if (!aliases.includes(codeLower)) aliases.push(codeLower);
+        }
+        if (aliases.some(alias => {
+          // Short aliases (2-3 chars like "us", "usa") must match as whole words
+          if (alias.length <= 3) {
+            const regex = new RegExp(`\\b${alias}\\b`, 'i');
+            return regex.test(normTitle);
+          }
+          return normTitle.includes(alias);
+        })) return true;
         const words = normName.split(' ').filter(w => w.length > 3);
         return words.length > 0 && words.every(word => normTitle.includes(word));
       };
@@ -147,8 +161,23 @@ export function findBestHighlight(html, home, away, homeCode, awayCode) {
 
     if (realVideos.length === 0) return null;
 
-    // Sort: prefer longer videos
-    realVideos.sort((a, b) => durationToSeconds(b.duration) - durationToSeconds(a.duration));
+    // Sort: FIFA "Highlights" videos first, then by duration
+    realVideos.sort((a, b) => {
+      const aTitle = a.title.toLowerCase();
+      const bTitle = b.title.toLowerCase();
+      const aFIFA = (a.channel || '').toLowerCase() === 'fifa';
+      const bFIFA = (b.channel || '').toLowerCase() === 'fifa';
+      const aHasHighlight = aTitle.includes('highlight');
+      const bHasHighlight = bTitle.includes('highlight');
+      // Prefer FIFA channel with "Highlights" in title
+      if (aFIFA && aHasHighlight && !(bFIFA && bHasHighlight)) return -1;
+      if (bFIFA && bHasHighlight && !(aFIFA && aHasHighlight)) return 1;
+      // Then prefer any "Highlights" video
+      if (aHasHighlight && !bHasHighlight) return -1;
+      if (bHasHighlight && !aHasHighlight) return 1;
+      // Then longer videos
+      return durationToSeconds(b.duration) - durationToSeconds(a.duration);
+    });
 
     const best = realVideos[0];
     return {
@@ -252,8 +281,17 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
 
         const checkTeam = (normName, code) => {
           const aliases = TEAM_ALIASES[normName] || [normName];
-          if (code) aliases.push(code.toLowerCase());
-          if (aliases.some(alias => titleLower.includes(alias))) return true;
+          if (code) {
+            const c = code.toLowerCase();
+            if (!aliases.includes(c)) aliases.push(c);
+          }
+          for (const alias of aliases) {
+            if (alias.length <= 3) {
+              if (new RegExp(`\\b${alias}\\b`, 'i').test(titleLower)) return true;
+            } else {
+              if (titleLower.includes(alias)) return true;
+            }
+          }
           const words = normName.split(' ').filter(w => w.length > 3);
           return words.length > 0 && words.every(word => titleLower.includes(word));
         };
@@ -288,10 +326,10 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
     console.warn('[Highlights] FIFA Search API failed, trying YouTube:', err.message);
   }
 
-    // 2. Fallback to YouTube (restrict to official FIFA channel ONLY)
+    // 2. Fallback: YouTube - FIFA channel ONLY, with "Highlights" in title
     try {
-      const query = `${home} vs ${away} FIFA World Cup highlights`;
-      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=EgIQAQ%253D%253D`; // Add &sp=EgIQAQ%253D%253D for video-only
+      const query = `${home} vs ${away} FIFA World Cup 2026`;
+      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
       
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 3000);
@@ -308,44 +346,67 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
         const dataMatch = html.match(/ytInitialData\s*=\s*({.+?});/);
         if (dataMatch) {
           const data = JSON.parse(dataMatch[1]);
-          // Navigate to find videoRenderer
           const contents = data.contents?.twoColumnSearchResultsRenderer?.primaryContents?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents;
           if (contents) {
             for (const item of contents) {
               const vr = item.videoRenderer;
-              if (vr) {
-                // RESTRICT TO OFFICIAL FIFA CHANNEL: 
-                // FIFA's channel ID is UCPctRCXblq78gZrtutLwebw
-                const channelId = vr.ownerEndpoint?.browseEndpoint?.browseId;
-                if (channelId === 'UCPctRCXblq78gZrtutLwebw') {
-                  const found = {
-                    videoId: vr.videoId,
-                    url: `https://www.youtube.com/embed/${vr.videoId}`,
-                    title: vr.title?.runs?.[0]?.text,
-                    channel: 'FIFA (Official)',
-                    duration: vr.lengthText?.simpleText || '2:00'
-                  };
-                  saveToCache(found);
-                  return { statusCode: 200, result: found };
+              if (!vr) continue;
+
+              const title = vr.title?.runs?.[0]?.text;
+              const channelOwner = vr.ownerText?.runs?.[0]?.text || '';
+              const browseId = vr.ownerEndpoint?.browseEndpoint?.browseId;
+              const chanUrl = vr.ownerText?.runs?.[0]?.navigationEndpoint?.browseEndpoint?.canonicalBaseUrl || '';
+              const dur = vr.lengthText?.simpleText || '';
+
+              // Must be official FIFA channel
+              const isFIFA = browseId === 'UCPctRCXblq78gZrtutLwebw' || chanUrl === '/@fifa' || channelOwner.toLowerCase() === 'fifa';
+              if (!isFIFA) continue;
+
+              // Must have "Highlights" in title
+              if (!title || !title.toLowerCase().includes('highlights')) continue;
+
+              // Team name check with word boundaries for short codes
+              const normTitle = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+              const normHome = normalizeTeamName(home);
+              const normAway = normalizeTeamName(away);
+
+              const teamInTitle = (normName, code) => {
+                const aliases = TEAM_ALIASES[normName] || [normName];
+                if (code) {
+                  const c = code.toLowerCase();
+                  if (!aliases.includes(c)) aliases.push(c);
                 }
+                for (const alias of aliases) {
+                  if (alias.length <= 3) {
+                    if (new RegExp(`\\b${alias}\\b`, 'i').test(normTitle)) return true;
+                  } else {
+                    if (normTitle.includes(alias)) return true;
+                  }
+                }
+                const words = normName.split(' ').filter(w => w.length > 3);
+                return words.length > 0 && words.every(w => normTitle.includes(w));
+              };
+
+              if (teamInTitle(normHome, homeCode) && teamInTitle(normAway, awayCode)) {
+                const found = {
+                  videoId: vr.videoId,
+                  url: `https://www.youtube.com/embed/${vr.videoId}`,
+                  title,
+                  channel: 'FIFA (Official)',
+                  duration: dur || '2:00'
+                };
+                saveToCache(found);
+                return { statusCode: 200, result: found };
               }
             }
           }
         }
       }
     } catch (err) {
-      console.error('[Highlights] YouTube official fallback error:', err.message);
+      console.error('[Highlights] YouTube FIFA channel search error:', err.message);
     }
 
-  // 3. Ultimate Fallback to a matching match highlights query on YouTube embed
-  const fallbackVideoId = "3UWnTaKiCgw"; // fallback video placeholder
-  const fallback = {
-    videoId: fallbackVideoId,
-    url: `https://www.youtube.com/embed/${fallbackVideoId}`,
-    title: `${home} vs ${away} Highlights`,
-    channel: 'YouTube'
-  };
-  return { statusCode: 200, result: fallback };
+  return { statusCode: 200, result: null };
 }
 
 /**
