@@ -333,13 +333,36 @@ function App() {
   // Highlights polling states
   const [highlightsMap, setHighlightsMap] = useState({});
   const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
-  const [highlightsRetry, setHighlightsRetry] = useState(0);
 
-  // Periodically retry failed highlight fetches
+  // Bulk-load all cached highlights in one request
   useEffect(() => {
-    const timer = setInterval(() => setHighlightsRetry(k => k + 1), 60000);
-    return () => clearInterval(timer);
-  }, []);
+    fetch('/api/all-highlights')
+      .then(res => res.json())
+      .then(cache => {
+        const mapping = {};
+        Object.entries(cache).forEach(([key, entry]) => {
+          if (entry.url) {
+            // Build cache key from team codes (e.g. "bel_vs_egy")
+            mapping[key] = entry.url;
+          }
+        });
+        // Map cache keys to match IDs
+        const allMatches = [...groupMatches];
+        Object.values(bracket).forEach(round => {
+          if (Array.isArray(round)) allMatches.push(...round);
+        });
+        const idMapping = {};
+        allMatches.forEach(m => {
+          if (m.home && m.away) {
+            const key = `${m.home.toLowerCase()}_vs_${m.away.toLowerCase()}`;
+            if (mapping[key]) idMapping[m.id] = mapping[key];
+          }
+        });
+        setHighlightsMap(idMapping);
+      })
+      .catch(err => console.warn('[Highlights] Bulk load failed:', err));
+  }, [groupMatches, bracket]);
+
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
@@ -1004,43 +1027,6 @@ function App() {
     }
     return null;
   }, [bracket]);
-
-  // Fetch YouTube highlights for all completed matches
-  useEffect(() => {
-    const pending = feedMatches.filter(
-      m => !highlightsMap[m.id] && !loadingHighlightsMap[m.id]
-    );
-    if (pending.length === 0) return;
-
-    setLoadingHighlightsMap(prev => {
-      const next = { ...prev };
-      pending.forEach(m => { next[m.id] = true; });
-      return next;
-    });
-
-    pending.forEach(match => {
-      const homeName = TEAMS[match.home]?.name || match.home;
-      const awayName = TEAMS[match.away]?.name || match.away;
-      const homeCode = match.home;
-      const awayCode = match.away;
-
-      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(homeCode)}&awayCode=${encodeURIComponent(awayCode)}`)
-        .then(res => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        })
-        .then(data => {
-          if (data.url) {
-            setHighlightsMap(prev => ({ ...prev, [match.id]: data.url }));
-          }
-        })
-        .catch(err => console.warn(`[Highlights Fetch] Failed for match ${match.id}:`, err))
-        .finally(() => {
-          setLoadingHighlightsMap(prev => ({ ...prev, [match.id]: false }));
-        });
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [feedMatches, highlightsRetry]);
 
   return (
         <div className={`min-h-screen ${

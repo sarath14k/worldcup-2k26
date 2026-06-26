@@ -164,6 +164,18 @@ export function registerRoutes(app) {
   // Match highlights API
   app.get('/api/match-highlights', handleHighlightsRoute);
 
+  // Bulk highlights cache endpoint
+  app.get('/api/all-highlights', (req, res) => {
+    const cachePath = path.join(__dirname, '../src/data/highlights-cache.json');
+    try {
+      const data = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // Player detail API (from Fotmob data)
   app.get('/api/player-detail/:id', (req, res) => {
     const detailsPath = path.join(__dirname, '../src/data/fotmobPlayerDetails.json');

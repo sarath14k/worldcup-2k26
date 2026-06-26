@@ -29,6 +29,17 @@ export default defineConfig({
             }
           } else if (req.url.startsWith('/api/match-highlights')) {
             await handleHighlightsRoute(req, res);
+          } else if (req.url === '/api/all-highlights') {
+            const cachePath = path.join(__dirname, 'src/data/highlights-cache.json');
+            try {
+              const data = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+              res.setHeader('Content-Type', 'application/json');
+              res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+              res.end(JSON.stringify(data));
+            } catch (err) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ error: err.message }));
+            }
           } else if (req.url.startsWith('/api/player-detail/')) {
             const playerId = req.url.split('/').pop();
             const detailsPath = path.join(__dirname, 'src/data/fotmobPlayerDetails.json');
