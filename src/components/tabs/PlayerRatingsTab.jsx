@@ -164,7 +164,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                   </div>
 
                   <div className="col-span-7 sm:col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => setDetailPlayer({ id: player.playerId, name: player.name })}>
-                    <PlayerAvatar name={player.name} size="xs" playerId={player.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                    <PlayerAvatar name={player.name} size="md" playerId={player.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                     <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono tracking-wider shrink-0 select-none">
                       {player.team}
                     </span>
