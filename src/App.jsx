@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap, Star, Activity } from 'lucide-react';
 import { TEAMS, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
 import { calculateStandings, getAdvancedTeams, populateRoundOf32 } from './data/simulation';
@@ -385,6 +385,19 @@ function App() {
 
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
+
+  const handleFetchHighlight = useCallback(async (match) => {
+    if (!match.home || !match.away) return;
+    const homeName = TEAMS[match.home]?.name || match.home;
+    const awayName = TEAMS[match.away]?.name || match.away;
+    try {
+      const res = await fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(match.home)}&awayCode=${encodeURIComponent(match.away)}`);
+      const data = await res.json();
+      if (data && data.url) {
+        setHighlightsMap(prev => ({ ...prev, [match.id]: data.url }));
+      }
+    } catch {}
+  }, []);
 
   // --- Live Data Polling Effect ---
   useEffect(() => {
@@ -1319,6 +1332,7 @@ function App() {
               setSelectedMatch={setSelectedMatch}
               activeGoalFlashMatchIds={activeGoalFlashMatchIds}
               nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}
+              onFetchHighlight={handleFetchHighlight}
             />
           )}
 

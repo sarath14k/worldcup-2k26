@@ -25,10 +25,12 @@ export const FixturesTab = ({
   isLiveMatch,
   setSelectedMatch,
   activeGoalFlashMatchIds = [],
-  nextMatchCountdown
+  nextMatchCountdown,
+  onFetchHighlight
 }) => {
   const [showAllUpcoming, setShowAllUpcoming] = useState(false);
   const [showAllDone, setShowAllDone] = useState(false);
+  const [highlightFetching, setHighlightFetching] = useState({});
   const [teamFilter, setTeamFilter] = useState('');
 
   const filteredUpcoming = useMemo(() => {
@@ -325,7 +327,32 @@ export const FixturesTab = ({
                           </button>
                         );
                       }
-                      return null;
+                      const isChecking = highlightFetching[match.id];
+                      if (isChecking) {
+                        return (
+                          <div className="mt-1 w-full py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/40 text-[10px] font-black text-slate-400 flex items-center justify-center gap-1.5">
+                            <span className="w-3 h-3 border-2 border-slate-500 border-t-transparent rounded-full animate-spin" />
+                            <span>Checking...</span>
+                          </div>
+                        );
+                      }
+                      return (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setHighlightFetching(prev => ({ ...prev, [match.id]: true }));
+                            onFetchHighlight(match).finally(() => {
+                              setHighlightFetching(prev => ({ ...prev, [match.id]: false }));
+                            });
+                          }}
+                          className="mt-1 w-full py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700/40 hover:border-amber-500/40 text-[10px] font-black text-slate-400 hover:text-amber-300 flex items-center justify-center gap-1.5 transition-all cursor-pointer select-none"
+                        >
+                          <svg className="w-2.5 h-2.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                          </svg>
+                          <span>Check Highlights</span>
+                        </button>
+                      );
                     })()}
                   </div>
                 );
