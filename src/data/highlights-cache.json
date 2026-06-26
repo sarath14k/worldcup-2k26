@@ -432,5 +432,33 @@
     "title": "Türkiye v USA",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
+  },
+  "sen_vs_irq": {
+    "videoId": "maf9mo9s3FMRyykghM66d",
+    "url": "https://www.fifa.com/en/watch/maf9mo9s3FMRyykghM66d",
+    "title": "Senegal v Iraq",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14"
+  },
+  "fra_vs_nor": {
+    "videoId": "THUuOCgcktTdRUWJbCDNL",
+    "url": "https://www.fifa.com/en/watch/THUuOCgcktTdRUWJbCDNL",
+    "title": "Norway v France",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14"
+  },
+  "nor_vs_fra": {
+    "videoId": "THUuOCgcktTdRUWJbCDNL",
+    "url": "https://www.fifa.com/en/watch/THUuOCgcktTdRUWJbCDNL",
+    "title": "Norway v France",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14"
+  },
+  "irq_vs_sen": {
+    "videoId": "maf9mo9s3FMRyykghM66d",
+    "url": "https://www.fifa.com/en/watch/maf9mo9s3FMRyykghM66d",
+    "title": "Senegal v Iraq",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14"
   }
 }
