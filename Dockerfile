@@ -10,8 +10,8 @@ RUN npm ci
 # Copy source (includes .git for commit SHA)
 COPY . .
 
-# Save commit SHA for deploy tracking
-RUN apk add --no-cache git && git rev-parse HEAD > public/commit.txt
+# Save commit SHA for deploy tracking (fallback: RENDER_GIT_COMMIT at runtime)
+RUN echo "deployed-$(date +%s)" > public/commit.txt
 
 # Build the frontend
 RUN npm run build
