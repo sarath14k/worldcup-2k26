@@ -1314,6 +1314,7 @@ function App() {
           {(tabTransition === 'idle' || tabTransition === 'exiting' ? activeTab === 'stats' : pendingTab === 'stats') && (
             <StatsTab 
               playerStats={playerStats}
+              fotmobRatings={fotmobRatings}
             />
           )}
 

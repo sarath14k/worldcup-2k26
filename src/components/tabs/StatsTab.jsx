@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, GoldenBootTrophyIcon, PlaymakerIcon } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
+import { getPositionLabel, getPositionCategory, getCategoryColor } from '../../utils/positions';
 
-export const StatsTab = ({ playerStats }) => {
+export const StatsTab = ({ playerStats, fotmobRatings }) => {
   const [activeSubTab, setActiveSubTab] = useState('scorers'); // 'scorers' | 'assists'
+
+  const positionLookup = useMemo(() => {
+    const map = {};
+    (fotmobRatings || []).forEach(p => {
+      if (p.name && p.position) map[p.name] = p.position;
+    });
+    return map;
+  }, [fotmobRatings]);
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
@@ -97,6 +106,16 @@ export const StatsTab = ({ playerStats }) => {
                             {teamInfo.flag}
                           </span>
                           <ScrollingText text={player.name} className="text-slate-100 ml-1" />
+                          {(() => {
+                            const posCode = positionLookup[player.name];
+                            const posLabel = getPositionLabel(posCode);
+                            const posCat = getPositionCategory(posCode);
+                            return posLabel ? (
+                              <span className={`text-[7px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                                {posLabel}
+                              </span>
+                            ) : null;
+                          })()}
                         </div>
                       );
                     })()}
@@ -158,6 +177,16 @@ export const StatsTab = ({ playerStats }) => {
                             {teamInfo.flag}
                           </span>
                           <ScrollingText text={player.name} className="text-slate-100 ml-1" />
+                          {(() => {
+                            const posCode = positionLookup[player.name];
+                            const posLabel = getPositionLabel(posCode);
+                            const posCat = getPositionCategory(posCode);
+                            return posLabel ? (
+                              <span className={`text-[7px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                                {posLabel}
+                              </span>
+                            ) : null;
+                          })()}
                         </div>
                       );
                     })()}
