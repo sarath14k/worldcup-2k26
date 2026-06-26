@@ -217,18 +217,6 @@ export default function SystemTab() {
   const [lastFetch, setLastFetch] = useState(null);
   const [, forceUpdate] = useState(0);
 
-  const triggerSync = useCallback(async (type) => {
-    const apiType = type === 'liveRatings' ? 'live-ratings' : type;
-    try {
-      const res = await fetch(`/api/trigger-scrape/${apiType}`, { method: 'POST' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      await new Promise(r => setTimeout(r, 500));
-      await fetchAnalytics();
-    } catch (err) {
-      console.error('Sync failed:', err);
-    }
-  }, [fetchAnalytics]);
-
   const fetchAnalytics = useCallback(async () => {
     try {
       const res = await fetch('/api/scraper-analytics');
@@ -241,6 +229,18 @@ export default function SystemTab() {
       setError(err.message);
     }
   }, []);
+
+  const triggerSync = useCallback(async (type) => {
+    const apiType = type === 'liveRatings' ? 'live-ratings' : type;
+    try {
+      const res = await fetch(`/api/trigger-scrape/${apiType}`, { method: 'POST' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await new Promise(r => setTimeout(r, 500));
+      await fetchAnalytics();
+    } catch (err) {
+      console.error('Sync failed:', err);
+    }
+  }, [fetchAnalytics]);
 
   // Fetch analytics once on mount
   useEffect(() => {
