@@ -53,9 +53,9 @@ export async function syncRatings() {
       p.rank = index + 1;
     });
 
-    const srcPath = path.join(__dirname, '../src/data/fotmobPlayerRatings.json');
-    const publicPath = path.join(__dirname, '../public/fotmobPlayerRatings.json');
-    const distPath = path.join(__dirname, '../dist/fotmobPlayerRatings.json');
+    const srcPath = path.join(__dirname, '../../src/data/fotmobPlayerRatings.json');
+    const publicPath = path.join(__dirname, '../../public/fotmobPlayerRatings.json');
+    const distPath = path.join(__dirname, '../../dist/fotmobPlayerRatings.json');
 
     const outputString = JSON.stringify(cleanedRatings, null, 2);
 

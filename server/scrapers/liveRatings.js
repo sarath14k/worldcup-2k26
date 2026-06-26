@@ -104,9 +104,9 @@ export async function scrapeLiveRatings() {
     }
     
     // Save to files
-    const srcPath = path.join(__dirname, '../src/data/livePlayerRatings.json');
-    const publicPath = path.join(__dirname, '../public/live-player-ratings.json');
-    const distPath = path.join(__dirname, '../dist/live-player-ratings.json');
+    const srcPath = path.join(__dirname, '../../src/data/livePlayerRatings.json');
+    const publicPath = path.join(__dirname, '../../public/live-player-ratings.json');
+    const distPath = path.join(__dirname, '../../dist/live-player-ratings.json');
     
     const outputString = JSON.stringify(liveRatingsData, null, 2);
     

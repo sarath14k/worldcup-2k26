@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { generateGroupMatches } from '../src/data/worldcupData.js';
+import { generateGroupMatches } from '../../src/data/worldcupData.js';
 import { fetchWithRetry } from './fetchWithRetry.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const filePath = path.join(__dirname, '../public/live-matches.json');
-const distPath = path.join(__dirname, '../dist/live-matches.json');
+const filePath = path.join(__dirname, '../../public/live-matches.json');
+const distPath = path.join(__dirname, '../../dist/live-matches.json');
 
 const knockoutMapping = {
   // Round of 32

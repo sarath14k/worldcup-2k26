@@ -28,7 +28,7 @@ COPY --from=builder /app/dist ./dist
 
 # Copy only the server files needed at runtime
 COPY server.js ./
-COPY scripts/ ./scripts/
+COPY server/ ./server/
 COPY public/ ./public/
 COPY index.html ./
 COPY src/data/ ./src/data/

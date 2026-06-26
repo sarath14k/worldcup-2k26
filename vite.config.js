@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { scrapeFifa } from './scripts/fifaScraper.js'
-import { handleHighlightsRoute } from './scripts/highlightsScraper.js'
+import { scrapeFifa } from './server/scrapers/fifa.js'
+import { handleHighlightsRoute } from './server/scrapers/highlights.js'
 
 export default defineConfig({
   plugins: [

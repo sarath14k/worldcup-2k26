@@ -27,7 +27,7 @@ export function normalizeTeamName(name) {
 }
 
 // --- Cache management ---
-const CACHE_FILE = path.join(__dirname, '../src/data/highlights-cache.json');
+const CACHE_FILE = path.join(__dirname, '../../src/data/highlights-cache.json');
 
 function ensureDirectoryExistence(filePath) {
   const dirname = path.dirname(filePath);

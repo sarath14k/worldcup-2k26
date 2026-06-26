@@ -16,7 +16,7 @@ fi
 # 2. Check if the Live daemon is running
 if ! pgrep -f "fetch-live-api.cjs" > /dev/null; then
   echo "Live score daemon is not running. Starting daemon..."
-  node scripts/fetch-live-api.cjs > daemon.log 2>&1 &
+  node scripts/archive/fetch-live-api.cjs > daemon.log 2>&1 &
 else
   echo "Live score daemon is already running."
 fi

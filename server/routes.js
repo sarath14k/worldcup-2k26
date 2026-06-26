@@ -1,0 +1,80 @@
+import path from 'path';
+import fs from 'fs';
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { scraperAnalytics } from './analytics.js';
+import { handleHighlightsRoute } from './scrapers/highlights.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function serveJsonFile(req, res, filename, srcFallback) {
+  const paths = [
+    path.join(__dirname, '../public', filename),
+    path.join(__dirname, '../dist', filename),
+  ];
+  if (srcFallback) paths.push(path.join(__dirname, '../src', 'data', srcFallback));
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      return res.sendFile(p);
+    }
+  }
+  res.json(filename === 'live-matches.json' ? {} : []);
+}
+
+export function registerRoutes(app) {
+  // Static data files
+  app.get('/live-matches.json', (req, res) => serveJsonFile(req, res, 'live-matches.json'));
+  app.get('/fotmobPlayerRatings.json', (req, res) => serveJsonFile(req, res, 'fotmobPlayerRatings.json', 'fotmobPlayerRatings.json'));
+  app.get('/live-player-ratings.json', (req, res) => serveJsonFile(req, res, 'live-player-ratings.json', 'livePlayerRatings.json'));
+
+  // Scraper status (legacy)
+  app.get('/scraper-status', (req, res) => {
+    res.json({
+      isRunning: scraperAnalytics.espn.isRunning,
+      lastRun: scraperAnalytics.espn.lastRun,
+      success: scraperAnalytics.espn.lastSuccess,
+      error: scraperAnalytics.espn.lastError,
+      count: scraperAnalytics.espn.matchCount
+    });
+  });
+
+  // Sync endpoint (local client pushes data)
+  app.post('/api/sync-live', express.json({ limit: '5mb' }), (req, res) => {
+    const matchesData = req.body;
+    if (!matchesData || typeof matchesData !== 'object') {
+      return res.status(400).json({ error: 'Invalid data format. Expected JSON object.' });
+    }
+
+    const syncToken = req.headers['x-sync-token'];
+    const expectedToken = process.env.SYNC_TOKEN;
+    if (expectedToken && syncToken !== expectedToken) {
+      return res.status(403).json({ error: 'Invalid sync token' });
+    }
+
+    try {
+      const livePath = path.join(__dirname, '../public', 'live-matches.json');
+      const distPath = path.join(__dirname, '../dist', 'live-matches.json');
+      fs.writeFileSync(livePath, JSON.stringify(matchesData, null, 2), 'utf8');
+      if (fs.existsSync(path.dirname(distPath))) {
+        fs.writeFileSync(distPath, JSON.stringify(matchesData, null, 2), 'utf8');
+      }
+      console.log(`[Sync API] Successfully synchronized ${Object.keys(matchesData).length} matches from local client.`);
+      res.json({ success: true, count: Object.keys(matchesData).length });
+    } catch (err) {
+      console.error('[Sync API] Error writing sync data:', err);
+      res.status(500).json({ error: 'Failed to write data: ' + err.message });
+    }
+  });
+
+  // Analytics API
+  app.get('/api/scraper-analytics', (req, res) => {
+    scraperAnalytics.server.uptime = Math.floor((Date.now() - new Date(scraperAnalytics.server.startedAt).getTime()) / 1000);
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.json(scraperAnalytics);
+  });
+
+  // Match highlights API
+  app.get('/api/match-highlights', handleHighlightsRoute);
+}

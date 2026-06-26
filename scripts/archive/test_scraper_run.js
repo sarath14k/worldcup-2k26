@@ -1,4 +1,4 @@
-import { scrapeFifa } from './fifaScraper.js';
+import { scrapeFifa } from '../server/scrapers/fifa.js';
 
 async function run() {
   console.log('Running test scrape...');

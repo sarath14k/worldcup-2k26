@@ -3,11 +3,11 @@ import path from 'path';
 import puppeteer from 'puppeteer-core';
 import * as cheerio from 'cheerio';
 import { fileURLToPath } from 'url';
-import { generateGroupMatches } from '../src/data/worldcupData.js';
+import { generateGroupMatches } from '../../src/data/worldcupData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const filePath = path.join(__dirname, '../public/live-matches.json');
+const filePath = path.join(__dirname, '../../public/live-matches.json');
 
 // Helper to scrape details of a single match using Puppeteer page
 async function scrapeMatchDetails(page, href) {
