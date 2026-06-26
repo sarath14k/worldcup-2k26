@@ -358,7 +358,11 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData, appHom
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
-  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed || (isCompleted && (!cached?.timeline || cached.timeline.length === 0));
+  const hasGranularTimeline = cached?.timeline?.some(t => {
+    const lower = t.type?.toLowerCase() || '';
+    return lower.includes('shot') || lower.includes('foul') || lower.includes('corner');
+  });
+  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed || (isCompleted && (!cached?.timeline || cached.timeline.length === 0 || !hasGranularTimeline));
   
   liveData[appId] = {
     homeScore,
@@ -423,7 +427,11 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome,
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
-  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed || (isCompleted && (!cached?.timeline || cached.timeline.length === 0));
+  const hasGranularTimeline = cached?.timeline?.some(t => {
+    const lower = t.type?.toLowerCase() || '';
+    return lower.includes('shot') || lower.includes('foul') || lower.includes('corner');
+  });
+  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed || (isCompleted && (!cached?.timeline || cached.timeline.length === 0 || !hasGranularTimeline));
   
   liveData[appId] = {
     homeScore,
