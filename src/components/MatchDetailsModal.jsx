@@ -277,7 +277,7 @@ export const MatchDetailsModal = ({
       onClick={handleBackdropClick}
     >
       <div
-        className={`w-full max-w-xl max-h-[90dvh] bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl relative flex flex-col overflow-hidden ${
+        className={`w-full max-w-full sm:max-w-xl max-h-[90dvh] bg-slate-900/95 border border-slate-800 rounded-3xl shadow-2xl relative flex flex-col overflow-hidden ${
           closing ? 'animate-modalExit' : ''
         }`}
         onClick={(e) => e.stopPropagation()}
