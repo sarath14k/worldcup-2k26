@@ -60,6 +60,18 @@ export const VenuesTab = ({ groupMatches, bracket, liveMatches, isLiveMatch }) =
               }`}
             >
               <div>
+                {venue.image && (
+                  <div className="relative w-full h-40 sm:h-48 -mx-4 -mt-4 sm:-mx-5 sm:-mt-5 mb-3 overflow-hidden rounded-t-2xl">
+                    <img
+                      src={venue.image}
+                      alt={venue.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-cardBg via-transparent to-transparent" />
+                  </div>
+                )}
                 <div className="flex justify-between items-start mb-3">
                   <span className="text-xs font-bold text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                     {venue.flag} {venue.country}

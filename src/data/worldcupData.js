@@ -81,24 +81,24 @@ export const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L
 
 export const VENUES = [
   // USA
-  { name: "MetLife Stadium", city: "New York/New Jersey", capacity: 82500, country: "USA", flag: "🇺🇸", desc: "Host of the World Cup Final on July 19, 2026." },
-  { name: "SoFi Stadium", city: "Los Angeles", capacity: 70240, country: "USA", flag: "🇺🇸", desc: "Stunning modern stadium hosting USA's opening match." },
-  { name: "Mercedes-Benz Stadium", city: "Atlanta", capacity: 71000, country: "USA", flag: "🇺🇸", desc: "Retractable roof stadium hosting a semi-final." },
-  { name: "AT&T Stadium", city: "Dallas", capacity: 80000, country: "USA", flag: "🇺🇸", desc: "Mega-stadium hosting a semi-final and multiple knockouts." },
-  { name: "Hard Rock Stadium", city: "Miami", capacity: 64767, country: "USA", flag: "🇺🇸", desc: "Host of the bronze medal match." },
-  { name: "Gillette Stadium", city: "Boston", capacity: 65878, country: "USA", flag: "🇺🇸", desc: "Historic sporting arena in New England." },
-  { name: "Lincoln Financial Field", city: "Philadelphia", capacity: 67594, country: "USA", flag: "🇺🇸", desc: "A vibrant home for football matches on the East Coast." },
-  { name: "Arrowhead Stadium", city: "Kansas City", capacity: 76416, country: "USA", flag: "🇺🇸", desc: "Loudest stadium in the world hosting key quarterfinal." },
-  { name: "NRG Stadium", city: "Houston", capacity: 72220, country: "USA", flag: "🇺🇸", desc: "State-of-the-art retractable roof venue." },
-  { name: "Levi's Stadium", city: "San Francisco Bay Area", capacity: 68500, country: "USA", flag: "🇺🇸", desc: "Silicon Valley's premier sports complex." },
-  { name: "Lumen Field", city: "Seattle", capacity: 69000, country: "USA", flag: "🇺🇸", desc: "Incredible acoustic design and electric atmosphere." },
+  { name: "MetLife Stadium", city: "New York/New Jersey", capacity: 82500, country: "USA", flag: "🇺🇸", desc: "Host of the World Cup Final on July 19, 2026.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Metlife_stadium_%28Aerial_view%29.jpg/800px-Metlife_stadium_%28Aerial_view%29.jpg" },
+  { name: "SoFi Stadium", city: "Los Angeles", capacity: 70240, country: "USA", flag: "🇺🇸", desc: "Stunning modern stadium hosting USA's opening match.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/SoFi_Stadium_2023.jpg/800px-SoFi_Stadium_2023.jpg" },
+  { name: "Mercedes-Benz Stadium", city: "Atlanta", capacity: 71000, country: "USA", flag: "🇺🇸", desc: "Retractable roof stadium hosting a semi-final.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg/800px-Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg" },
+  { name: "AT&T Stadium", city: "Dallas", capacity: 80000, country: "USA", flag: "🇺🇸", desc: "Mega-stadium hosting a semi-final and multiple knockouts.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg/800px-Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg" },
+  { name: "Hard Rock Stadium", city: "Miami", capacity: 64767, country: "USA", flag: "🇺🇸", desc: "Host of the bronze medal match.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Hard_Rock_Stadium_for_Super_Bowl_LIV_%2849606710103%29.jpg/800px-Hard_Rock_Stadium_for_Super_Bowl_LIV_%2849606710103%29.jpg" },
+  { name: "Gillette Stadium", city: "Boston", capacity: 65878, country: "USA", flag: "🇺🇸", desc: "Historic sporting arena in New England.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Gillette_Stadium_%28Top_View%29.jpg/800px-Gillette_Stadium_%28Top_View%29.jpg" },
+  { name: "Lincoln Financial Field", city: "Philadelphia", capacity: 67594, country: "USA", flag: "🇺🇸", desc: "A vibrant home for football matches on the East Coast.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg/800px-Lincoln_Financial_Field_%28Aerial_view%29.jpg" },
+  { name: "Arrowhead Stadium", city: "Kansas City", capacity: 76416, country: "USA", flag: "🇺🇸", desc: "Loudest stadium in the world hosting key quarterfinal.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg/800px-Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg" },
+  { name: "NRG Stadium", city: "Houston", capacity: 72220, country: "USA", flag: "🇺🇸", desc: "State-of-the-art retractable roof venue.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Nrg_stadium.jpg/800px-Nrg_stadium.jpg" },
+  { name: "Levi's Stadium", city: "San Francisco Bay Area", capacity: 68500, country: "USA", flag: "🇺🇸", desc: "Silicon Valley's premier sports complex.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg/800px-Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg" },
+  { name: "Lumen Field", city: "Seattle", capacity: 69000, country: "USA", flag: "🇺🇸", desc: "Incredible acoustic design and electric atmosphere.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/2026_FIFA_World_Cup_-_Belgium_v._Egypt_in_Seattle_-_04.jpg/800px-2026_FIFA_World_Cup_-_Belgium_v._Egypt_in_Seattle_-_04.jpg" },
   // Canada
-  { name: "BC Place", city: "Vancouver", capacity: 54500, country: "Canada", flag: "🇨🇦", desc: "Canada's west coast crown jewel." },
-  { name: "BMO Field", city: "Toronto", capacity: 45736, country: "Canada", flag: "🇨🇦", desc: "Canada's national football stadium." },
+  { name: "BC Place", city: "Vancouver", capacity: 54500, country: "Canada", flag: "🇨🇦", desc: "Canada's west coast crown jewel.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/BC_Place_2015_Women%27s_FIFA_World_Cup.jpg/800px-BC_Place_2015_Women%27s_FIFA_World_Cup.jpg" },
+  { name: "BMO Field", city: "Toronto", capacity: 45736, country: "Canada", flag: "🇨🇦", desc: "Canada's national football stadium.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Toronto_BMO_Field_in_2024.jpg/800px-Toronto_BMO_Field_in_2024.jpg" },
   // Mexico
-  { name: "Estadio Azteca", city: "Mexico City", capacity: 87523, country: "Mexico", flag: "🇲🇽", desc: "Historic arena hosting the opening match on June 11, 2026." },
-  { name: "Estadio BBVA", city: "Monterrey", capacity: 53500, country: "Mexico", flag: "🇲🇽", desc: "Known as 'El Gigante de Acero' for its beautiful structure." },
-  { name: "Estadio Akron", city: "Guadalajara", capacity: 48070, country: "Mexico", flag: "🇲🇽", desc: "Futuristic stadium shaped like a volcano." },
+  { name: "Estadio Azteca", city: "Mexico City", capacity: 87523, country: "Mexico", flag: "🇲🇽", desc: "Historic arena hosting the opening match on June 11, 2026.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg/800px-Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg" },
+  { name: "Estadio BBVA", city: "Monterrey", capacity: 53500, country: "Mexico", flag: "🇲🇽", desc: "Known as 'El Gigante de Acero' for its beautiful structure.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Mexico_Guadalupe_Monterrey_Estadio_BBVA_Bancomer_fifa_world_cup_2026_6.JPG/800px-Mexico_Guadalupe_Monterrey_Estadio_BBVA_Bancomer_fifa_world_cup_2026_6.JPG" },
+  { name: "Estadio Akron", city: "Guadalajara", capacity: 48070, country: "Mexico", flag: "🇲🇽", desc: "Futuristic stadium shaped like a volcano.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Estadio_Akron_02-07-2022_cabecera_sur_lado_derecho_%283%29.jpg/800px-Estadio_Akron_02-07-2022_cabecera_sur_lado_derecho_%283%29.jpg" },
 ];
 
 export const generateGroupMatches = () => {
