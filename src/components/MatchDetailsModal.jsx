@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { TEAMS, VENUES } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
 import { ScrollingText } from './ScrollingText';
+import { PlayerAvatar } from './PlayerAvatar';
 import { getPositionLabel, getPositionCategory, getCategoryColor } from '../utils/positions';
 
 const HISTORICAL_DB = [
@@ -387,26 +388,28 @@ export const MatchDetailsModal = ({
               <span>⚽</span> Goal Scorers
             </h4>
             {details.scorers && details.scorers.length > 0 ? (
-              <div className="grid grid-cols-2 gap-4 text-[11px] font-bold font-mono">
-                {/* Home Scorers */}
-                <div className="flex flex-col gap-1 text-left">
-                  {details.scorers.filter(s => s.team === 'home').map((s, idx) => (
-                    <span key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1">
-                      <span>{s.player}</span>
-                      <span className="text-brand-neon">({s.minute}')</span>
-                    </span>
-                  ))}
-                </div>
-                {/* Away Scorers */}
-                <div className="flex flex-col gap-1 text-right">
-                  {details.scorers.filter(s => s.team === 'away').map((s, idx) => (
-                    <span key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1">
-                      <span>{s.player}</span>
-                      <span className="text-brand-neon">({s.minute}')</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
+                  <div className="grid grid-cols-2 gap-4 text-[11px] font-bold font-mono">
+                    {/* Home Scorers */}
+                    <div className="flex flex-col gap-1.5 text-left">
+                      {details.scorers.filter(s => s.team === 'home').map((s, idx) => (
+                        <div key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1.5">
+                          <PlayerAvatar name={s.player} size="xs" />
+                          <span className="truncate">{s.player}</span>
+                          <span className="text-brand-neon shrink-0">({s.minute}')</span>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Away Scorers */}
+                    <div className="flex flex-col gap-1.5 text-right">
+                      {details.scorers.filter(s => s.team === 'away').map((s, idx) => (
+                        <div key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1.5">
+                          <span className="text-brand-neon shrink-0">({s.minute}')</span>
+                          <span className="truncate">{s.player}</span>
+                          <PlayerAvatar name={s.player} size="xs" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
             ) : (
               <div className="text-center text-[10px] text-slate-500 font-bold italic py-1">
                 No goals scored in this match.
@@ -632,6 +635,7 @@ export const MatchDetailsModal = ({
                     return (
                       <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
                         <div className="flex items-center gap-1.5 min-w-0">
+                          <PlayerAvatar name={p.name} size="xs" />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
@@ -669,6 +673,7 @@ export const MatchDetailsModal = ({
                     return (
                       <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
                         <div className="flex items-center gap-1.5 min-w-0">
+                          <PlayerAvatar name={p.name} size="xs" />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}

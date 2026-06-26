@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Search, X, Star, Filter } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { ScrollingText } from '../ScrollingText';
+import { PlayerAvatar } from '../PlayerAvatar';
 import { getPositionLabel, getPositionCategory, getCategoryColor, POSITION_CATEGORIES } from '../../utils/positions';
 
 export const PlayerRatingsTab = ({ fotmobRatings }) => {
@@ -116,6 +117,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                   <div className="w-5.5 h-5.5 rounded-lg bg-slate-800/50" />
                 </div>
                 <div className="col-span-7 sm:col-span-7 flex items-center gap-1.5">
+                  <div className="w-5 h-5 rounded-full bg-slate-800/50" />
                   <div className="w-8 h-4 rounded bg-slate-800/50" />
                   <div className="w-5 h-5 rounded-full bg-slate-800/50" />
                   <div className="w-24 h-3 rounded bg-slate-800/50" />
@@ -160,6 +162,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                   </div>
 
                   <div className="col-span-7 sm:col-span-7 flex items-center gap-1.5 min-w-0">
+                    <PlayerAvatar name={player.name} size="xs" />
                     <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono tracking-wider shrink-0 select-none">
                       {player.team}
                     </span>

@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, GoldenBootTrophyIcon, PlaymakerIcon } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
+import { PlayerAvatar } from '../PlayerAvatar';
 import { getPositionLabel, getPositionCategory, getCategoryColor } from '../../utils/positions';
 
 export const StatsTab = ({ playerStats, fotmobRatings }) => {
@@ -99,6 +100,7 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                       const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                       return (
                         <div className="col-span-7 flex items-center gap-1.5 min-w-0">
+                          <PlayerAvatar name={player.name} size="xs" />
                           <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
                             {player.team}
                           </span>
@@ -170,6 +172,7 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                       const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                       return (
                         <div className="col-span-7 flex items-center gap-1.5 min-w-0">
+                          <PlayerAvatar name={player.name} size="xs" />
                           <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
                             {player.team}
                           </span>
