@@ -31,6 +31,7 @@ export const FixturesTab = ({
   const [showAllUpcoming, setShowAllUpcoming] = useState(false);
   const [showAllDone, setShowAllDone] = useState(false);
   const [highlightFetching, setHighlightFetching] = useState({});
+  const [checkedNoHighlight, setCheckedNoHighlight] = useState({});
   const [teamFilter, setTeamFilter] = useState('');
 
   const filteredUpcoming = useMemo(() => {
@@ -336,12 +337,19 @@ export const FixturesTab = ({
                           </div>
                         );
                       }
+                      if (checkedNoHighlight[match.id]) {
+                        return null;
+                      }
                       return (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setHighlightFetching(prev => ({ ...prev, [match.id]: true }));
-                            onFetchHighlight(match).finally(() => {
+                            onFetchHighlight(match).then(found => {
+                              if (!found) {
+                                setCheckedNoHighlight(prev => ({ ...prev, [match.id]: true }));
+                              }
+                            }).finally(() => {
                               setHighlightFetching(prev => ({ ...prev, [match.id]: false }));
                             });
                           }}

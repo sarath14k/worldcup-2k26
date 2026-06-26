@@ -387,7 +387,7 @@ function App() {
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
   const handleFetchHighlight = useCallback(async (match) => {
-    if (!match.home || !match.away) return;
+    if (!match.home || !match.away) return false;
     const homeName = TEAMS[match.home]?.name || match.home;
     const awayName = TEAMS[match.away]?.name || match.away;
     try {
@@ -395,8 +395,12 @@ function App() {
       const data = await res.json();
       if (data && data.url) {
         setHighlightsMap(prev => ({ ...prev, [match.id]: data.url }));
+        return true;
       }
-    } catch {}
+      return false;
+    } catch {
+      return false;
+    }
   }, []);
 
   // --- Live Data Polling Effect ---
