@@ -320,8 +320,8 @@ async function runScrape() {
           const cacheKey = `${homeCode}_vs_${awayCode}`;
           if (cacheData[cacheKey]) continue;
 
-          const homeTeam = Object.values(TEAMS).find(t => t.code === match.home);
-          const awayTeam = Object.values(TEAMS).find(t => t.code === match.away);
+          const homeTeam = TEAMS[match.home];
+          const awayTeam = TEAMS[match.away];
           if (!homeTeam || !awayTeam) continue;
 
           console.log(`[Highlights Auto] Fetching for ${homeTeam.name} vs ${awayTeam.name}`);
