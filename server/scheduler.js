@@ -188,3 +188,7 @@ export function startSchedulers() {
   runRatingsSync();
   runLiveRatingsSync();
 }
+
+export function triggerEspnScrape() {
+  runScrape();
+}

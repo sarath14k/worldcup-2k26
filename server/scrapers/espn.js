@@ -313,7 +313,7 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData, appHom
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
-  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed;
+  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed || (isCompleted && (!cached?.timeline || cached.timeline.length === 0));
   
   liveData[appId] = {
     homeScore,
@@ -378,7 +378,7 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome,
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
-  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed;
+  const needsDetailFetch = !cached || !cached.isDetailedScraped || isLive || !cached.isScorersFixed || (isCompleted && (!cached?.timeline || cached.timeline.length === 0));
   
   liveData[appId] = {
     homeScore,
