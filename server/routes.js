@@ -76,6 +76,37 @@ export function registerRoutes(app) {
     res.json(scraperAnalytics);
   });
 
+  // Deploy status — checks both server and latest GitHub commit
+  app.get('/api/deploy-status', async (req, res) => {
+    const commitFile = path.join(__dirname, '../public/commit.txt');
+    let deployedCommit = '';
+    try {
+      deployedCommit = fs.readFileSync(commitFile, 'utf8').trim();
+    } catch {
+      deployedCommit = process.env.RENDER_GIT_COMMIT || '';
+    }
+    let latestCommit = null;
+    try {
+      const gh = await fetch('https://api.github.com/repos/sarath14k/worldcup-2k26/branches/main');
+      if (gh.ok) {
+        const body = await gh.json();
+        latestCommit = {
+          sha: body.commit?.sha || '',
+          message: body.commit?.commit?.message || '',
+          date: body.commit?.commit?.committer?.date || ''
+        };
+      }
+    } catch {}
+    const ahead = latestCommit && deployedCommit ? latestCommit.sha.slice(0, 7) !== deployedCommit.slice(0, 7) : false;
+    res.json({
+      deployedCommit,
+      latestCommit,
+      ahead,
+      deployId: process.env.RENDER_DEPLOY_ID || null,
+      serverTime: new Date().toISOString()
+    });
+  });
+
   // Manual trigger for scrapers
   app.post('/api/trigger-scrape/:type', (req, res) => {
     const token = req.headers['x-sync-token'];

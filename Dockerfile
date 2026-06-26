@@ -7,8 +7,13 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
-# Copy source and build the frontend
+# Copy source (includes .git for commit SHA)
 COPY . .
+
+# Save commit SHA for deploy tracking
+RUN apk add --no-cache git && git rev-parse HEAD > public/commit.txt
+
+# Build the frontend
 RUN npm run build
 
 # ---- Stage 2: Production ----
@@ -25,6 +30,9 @@ RUN npm ci --omit=dev && npm cache clean --force
 
 # Copy built assets from builder stage
 COPY --from=builder /app/dist ./dist
+
+# Copy commit SHA file (also stored in built assets for server access)
+COPY --from=builder /app/public/commit.txt ./public/commit.txt
 
 # Copy only the server files needed at runtime
 COPY server.js ./
