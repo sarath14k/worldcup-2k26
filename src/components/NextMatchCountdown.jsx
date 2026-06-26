@@ -1,31 +1,58 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { TEAMS } from '../data/worldcupData';
-import { parseMatchKickoff } from '../utils/matchHelpers';
+
+function parseDateStr(dateStr) {
+  if (!dateStr || typeof dateStr !== 'string') return null;
+  try {
+    const s = dateStr.replace(' IST', '');
+    const [dayPart, timePart] = s.split(', ');
+    if (!dayPart || !timePart) return null;
+    const [monthStr, dayStr] = dayPart.split(' ');
+    const [hhmm, ampm] = timePart.split(' ');
+    if (!hhmm || !ampm) return null;
+    const [hourStr, minStr] = hhmm.split(':');
+    let h = parseInt(hourStr, 10);
+    if (isNaN(h)) return null;
+    const m = parseInt(minStr, 10);
+    if (isNaN(m)) return null;
+    if (ampm === 'PM' && h < 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    const months = { June: '06', July: '07' };
+    const mon = months[monthStr];
+    if (!mon) return null;
+    const iso = `2026-${mon}-${dayStr.padStart(2, '0')}T${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:00+05:30`;
+    const d = new Date(iso);
+    return isNaN(d.getTime()) ? null : d;
+  } catch {
+    return null;
+  }
+}
+
+function formatDiff(ms) {
+  if (ms <= 0) return 'KICKING OFF!';
+  const d = Math.floor(ms / 86400000);
+  const h = Math.floor((ms % 86400000) / 3600000);
+  const m = Math.floor((ms % 3600000) / 60000);
+  const s = Math.floor((ms % 60000) / 1000);
+  return d > 0 ? `${d}d ${h}h ${m}m ${s}s` : `${h}h ${m}m ${s}s`;
+}
 
 export const NextMatchCountdown = ({ upcomingFixtures }) => {
-  const [timeLeft, setTimeLeft] = useState('');
   const nextMatch = upcomingFixtures?.[0];
+  const kickoffRef = useRef(null);
+  const [display, setDisplay] = useState('');
 
   useEffect(() => {
-    const kickoff = parseMatchKickoff(nextMatch);
-    if (!kickoff) return;
-
-    const tick = () => {
-      const diff = kickoff.getTime() - Date.now();
-      if (diff <= 0) { setTimeLeft('KICKING OFF!'); return; }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      setTimeLeft(d > 0 ? `${d}d ${h}h ${m}m ${s}s` : `${h}h ${m}m ${s}s`);
-    };
-
+    const kickoff = parseDateStr(nextMatch?.date);
+    kickoffRef.current = kickoff;
+    if (!kickoff) { setDisplay(''); return; }
+    const tick = () => setDisplay(formatDiff(kickoff.getTime() - Date.now()));
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [nextMatch]);
+  }, [nextMatch?.date, nextMatch?.id]);
 
-  if (!nextMatch) return null;
+  if (!nextMatch || !display) return null;
 
   const home = TEAMS[nextMatch.home] || { flag: '🏳️', name: 'TBD' };
   const away = TEAMS[nextMatch.away] || { flag: '🏳️', name: 'TBD' };
@@ -44,8 +71,8 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
         <div className="flex items-center gap-3 shrink-0">
           <div className="text-right">
             <div className="text-[9px] font-black uppercase tracking-widest text-slate-500">Next Match</div>
-            <div className={`font-mono font-black text-lg tracking-wider ${timeLeft === 'KICKING OFF!' ? 'text-brand-neon animate-pulse' : 'text-brand-neon'}`}>
-              {timeLeft}
+            <div className={`font-mono font-black text-lg tracking-wider ${display === 'KICKING OFF!' ? 'text-brand-neon animate-pulse' : 'text-brand-neon'}`}>
+              {display}
             </div>
           </div>
         </div>
