@@ -336,6 +336,12 @@ function App() {
 
   // Bulk-load all cached highlights + fallback for uncached matches
   useEffect(() => {
+    const allMatches = [...groupMatches];
+    Object.values(bracket).forEach(round => {
+      if (Array.isArray(round)) allMatches.push(...round);
+    });
+    if (allMatches.length === 0) return;
+
     fetch('/api/all-highlights')
       .then(res => res.json())
       .then(cache => {
@@ -344,10 +350,6 @@ function App() {
           if (entry.url) {
             mapping[key] = entry.url;
           }
-        });
-        const allMatches = [...groupMatches];
-        Object.values(bracket).forEach(round => {
-          if (Array.isArray(round)) allMatches.push(...round);
         });
         const idMapping = {};
         const missing = [];
