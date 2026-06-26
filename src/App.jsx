@@ -23,7 +23,6 @@ import { PlayerRatingsTab } from './components/tabs/PlayerRatingsTab';
 import { VenuesTab } from './components/tabs/VenuesTab';
 import SystemTab from './components/tabs/SystemTab';
 import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
-import highlightsCacheRaw from './data/highlights-cache.json';
 
 function App() {
   // --- State ---
@@ -335,15 +334,7 @@ function App() {
   const [highlightsMap, setHighlightsMap] = useState({});
   const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
 
-  // Build highlights map from direct import + periodic refresh
-  const mappingCache = useMemo(() => {
-    const m = {};
-    Object.entries(highlightsCacheRaw).forEach(([key, entry]) => {
-      if (entry.url) m[key] = entry.url;
-    });
-    return m;
-  }, []);
-
+  // Bulk-load all cached highlights + fallback for uncached matches
   useEffect(() => {
     const allMatches = [...groupMatches];
     Object.values(bracket).forEach(round => {
@@ -351,34 +342,45 @@ function App() {
     });
     if (allMatches.length === 0) return;
 
-    const idMapping = {};
-    const missing = [];
-    allMatches.forEach(m => {
-      if (m.home && m.away) {
-        const key = `${m.home.toLowerCase()}_vs_${m.away.toLowerCase()}`;
-        if (mappingCache[key]) {
-          idMapping[m.id] = mappingCache[key];
-        } else {
-          missing.push(m);
-        }
-      }
-    });
-    setHighlightsMap(idMapping);
-
-    // Fallback: fetch uncached matches individually to populate cache
-    missing.forEach(m => {
-      const homeName = TEAMS[m.home]?.name || m.home;
-      const awayName = TEAMS[m.away]?.name || m.away;
-      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`)
-        .then(res => res.ok ? res.json() : null)
-        .then(data => {
-          if (data && data.url) {
-            setHighlightsMap(prev => ({ ...prev, [m.id]: data.url }));
+    fetch('/api/all-highlights')
+      .then(res => res.json())
+      .then(cache => {
+        const mapping = {};
+        Object.entries(cache).forEach(([key, entry]) => {
+          if (entry.url) {
+            mapping[key] = entry.url;
           }
-        })
-        .catch(() => {});
-    });
-  }, [groupMatches, bracket, mappingCache]);
+        });
+        const idMapping = {};
+        const missing = [];
+        allMatches.forEach(m => {
+          if (m.home && m.away) {
+            const key = `${m.home.toLowerCase()}_vs_${m.away.toLowerCase()}`;
+            if (mapping[key]) {
+              idMapping[m.id] = mapping[key];
+            } else {
+              missing.push(m);
+            }
+          }
+        });
+        setHighlightsMap(idMapping);
+
+        // Fallback: fetch uncached matches individually via the old match-highlights API
+        missing.forEach(m => {
+          const homeName = TEAMS[m.home]?.name || m.home;
+          const awayName = TEAMS[m.away]?.name || m.away;
+          fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`)
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+              if (data && data.url) {
+                setHighlightsMap(prev => ({ ...prev, [m.id]: data.url }));
+              }
+            })
+            .catch(() => {});
+        });
+      })
+      .catch(err => console.warn('[Highlights] Bulk load failed:', err));
+  }, [groupMatches, bracket]);
 
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
