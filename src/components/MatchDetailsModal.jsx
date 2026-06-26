@@ -626,17 +626,21 @@ export const MatchDetailsModal = ({
 
                   let icon = '🔔';
                   const typeLower = event.type.toLowerCase();
-                  const isPrevention = typeLower.includes('prevent') || typeLower.includes('save');
+                  const textLower = event.text.toLowerCase();
+                  const isPrevention = typeLower.includes('prevent') || typeLower.includes('save') || textLower.includes('saved') || textLower.includes('blocked');
                   const isAttempt = typeLower.includes('attempt') || typeLower.includes('shot');
-                  const isGoal = (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score')) && !isAttempt && !isPrevention;
+                  const isGoal = (typeLower.includes('goal') || typeLower.includes('scorer') || typeLower.includes('score') || typeLower.includes('netted')) && !isAttempt && !isPrevention;
+                  const isMiss = typeLower.includes('miss') || textLower.includes('miss') || textLower.includes('wide') || textLower.includes('high') || textLower.includes('post') || textLower.includes('crossbar') || textLower.includes('off target');
                   const isYellowCard = typeLower.includes('yellow');
                   const isRedCard = typeLower.includes('red');
                   const isSub = typeLower.includes('sub');
 
-                  if (isAttempt) icon = '🎯';
+                  if (isGoal) icon = '⚽';
+                  else if (isAttempt && isPrevention) icon = '🧤';
+                  else if (isAttempt && isMiss) icon = '😩';
+                  else if (isAttempt) icon = '🎯';
                   else if (isPrevention) icon = '🧤';
                   else if (typeLower.includes('foul') || typeLower.includes('handball')) icon = '⚡';
-                  else if (isGoal) icon = '⚽';
                   else if (typeLower.includes('corner')) icon = '🚩';
                   else if (typeLower.includes('offside')) icon = '👁️';
                   else if (typeLower.includes('kick off') || typeLower.includes('start') || typeLower.includes('toss') || typeLower.includes('whistle') || typeLower.includes('half') || typeLower.includes('end')) icon = '🎬';
