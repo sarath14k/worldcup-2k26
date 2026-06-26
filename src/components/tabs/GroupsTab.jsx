@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GROUPS, TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime, FifaRankBadge } from '../../utils/matchHelpers';
@@ -14,6 +14,18 @@ export const GroupsTab = ({
 }) => {
   const [expandedGroup, setExpandedGroup] = useState('A');
   const [selectedTeamCode, setSelectedTeamCode] = useState(null);
+
+  const groupsPlayed = useMemo(() => {
+    const map = {};
+    GROUPS.forEach(g => { map[g] = { played: 0, total: 6 }; });
+    (groupMatches || []).forEach(m => {
+      if (m.group && m.isCompleted) {
+        map[m.group] = map[m.group] || { played: 0, total: 6 };
+        map[m.group].played++;
+      }
+    });
+    return map;
+  }, [groupMatches]);
 
   const handlePrevGroup = () => {
     setSelectedTeamCode(null);
@@ -43,6 +55,8 @@ export const GroupsTab = ({
             <div className="grid grid-cols-6 sm:grid-cols-12 gap-1.5">
               {GROUPS.map(g => {
                 const isActive = expandedGroup === g;
+                const prog = groupsPlayed[g] || { played: 0, total: 6 };
+                const isDone = prog.played >= prog.total;
                 return (
                   <button
                     key={g}
@@ -50,13 +64,22 @@ export const GroupsTab = ({
                       setExpandedGroup(g);
                       setSelectedTeamCode(null);
                     }}
-                    className={`h-8 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer ${
+                    className={`h-8 rounded-lg font-black text-xs transition-all flex items-center justify-center border select-none cursor-pointer relative ${
                       isActive
                         ? 'border-brand-neon bg-brand-neon/15 text-brand-neon shadow-neon ring-1 ring-brand-neon/20'
                         : 'border-slate-900/60 bg-slate-950/45 text-slate-400 hover:text-slate-200 hover:border-slate-700'
                     }`}
                   >
                     {g}
+                    <span className={`absolute -top-1 -right-1 text-[7px] font-mono font-black px-1 py-0.5 rounded-full leading-none ${
+                      isDone
+                        ? 'bg-brand-neon text-slate-950'
+                        : prog.played > 0
+                          ? 'bg-brand-gold/20 text-brand-gold border border-brand-gold/30'
+                          : 'bg-slate-800 text-slate-600'
+                    }`}>
+                      {isDone ? '✓' : prog.played || ''}
+                    </span>
                   </button>
                 );
               })}

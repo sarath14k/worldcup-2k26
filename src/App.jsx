@@ -14,6 +14,7 @@ import {
 import { MatchDetailsModal } from './components/MatchDetailsModal';
 import { LiveMatchesBanner } from './components/LiveMatchesBanner';
 import { ConfettiShower } from './components/ConfettiShower';
+import { NextMatchCountdown } from './components/NextMatchCountdown';
 import { FixturesTab } from './components/tabs/FixturesTab';
 import { GroupsTab } from './components/tabs/GroupsTab';
 import { BracketTab } from './components/tabs/BracketTab';
@@ -230,6 +231,23 @@ function App() {
             : appMatch 
               ? `${appMatch.round || 'Knockout'} • Match ${appMatch.id}`
               : `Match ${matchId}`;
+
+          // Play goal alert sound
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.frequency.setValueAtTime(880, ctx.currentTime);
+            osc.frequency.setValueAtTime(1100, ctx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.2, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.4);
+          } catch {
+            // Audio not available
+          }
 
           // Trigger Alert state
           setGoalAlert({
@@ -1150,7 +1168,7 @@ function App() {
       <nav className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 pt-4 sm:pt-6">
         <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full overflow-x-auto scrollbar-none sm:w-fit whitespace-nowrap">
           {[
-            { id: 'fixtures', label: 'Upcoming & Results', icon: Calendar },
+            { id: 'fixtures', label: 'Upcoming & Results', icon: Calendar, live: activeLiveMatchesList.length },
             { id: 'groups', label: 'Group Standings', icon: Users },
             { id: 'bracket', label: 'Roadmap Simulation', icon: TrendingUp },
             { id: 'stats', label: 'Player Stats', icon: Award },
@@ -1173,6 +1191,17 @@ function App() {
               >
                 <Icon className="w-4 h-4" />
                 <span>{tab.label}</span>
+                {tab.id === 'fixtures' && tab.live > 0 && (
+                  <span className="flex items-center gap-1 ml-0.5">
+                    <span className="flex h-1.5 w-1.5 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500" />
+                    </span>
+                    <span className={`text-[10px] font-mono font-black ${isActive ? 'text-red-800' : 'text-red-400'}`}>
+                      {tab.live}
+                    </span>
+                  </span>
+                )}
               </button>
             );
           })}
@@ -1204,6 +1233,7 @@ function App() {
             isLiveMatch={isLiveMatch}
             setSelectedMatch={setSelectedMatch}
             activeGoalFlashMatchIds={activeGoalFlashMatchIds}
+            nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}
           />
         )}
 
@@ -1225,6 +1255,33 @@ function App() {
             advancedTeams={advancedTeams}
             tournamentChampion={tournamentChampion}
             handleKnockoutWinner={handleKnockoutWinner}
+            onRestoreBracket={(winners) => {
+              setBracket(prev => {
+                const next = JSON.parse(JSON.stringify(prev));
+                const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
+                rounds.forEach(rk => {
+                  next[rk] = next[rk].map(m => {
+                    const winner = winners[m.id];
+                    if (winner && m.home && m.away && (winner === m.home || winner === m.away)) {
+                      const updated = { ...m, winner };
+                      // Cascade winner to next round
+                      if (m.nextId) {
+                        const nextRound = m.nextId.split('_')[0];
+                        const nextMatch = next[nextRound]?.find(nm => nm.id === m.nextId);
+                        if (nextMatch) {
+                          const isHome = m.position === 'top' || m.position === 'home';
+                          if (isHome) nextMatch.home = winner;
+                          else nextMatch.away = winner;
+                        }
+                      }
+                      return updated;
+                    }
+                    return m;
+                  });
+                });
+                return next;
+              });
+            }}
           />
         )}
 

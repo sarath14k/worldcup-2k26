@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, Share2 } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
@@ -7,12 +7,46 @@ import { ScrollingText } from '../ScrollingText';
 export const BracketTab = ({
   bracket,
   tournamentChampion,
-  handleKnockoutWinner
+  handleKnockoutWinner,
+  onRestoreBracket
 }) => {
   const [hoveredTeam, setHoveredTeam] = useState(null);
   const [activeRoundTab, setActiveRoundTab] = useState('r32');
   const [lines, setLines] = useState([]);
+  const [shareCopied, setShareCopied] = useState(false);
   const containerRef = useRef(null);
+
+  // Restore bracket from URL hash on mount
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.startsWith('#bracket=')) {
+      try {
+        const data = JSON.parse(atob(hash.slice(9)));
+        if (data && onRestoreBracket) {
+          onRestoreBracket(data);
+        }
+      } catch (e) {
+        console.warn('[Bracket] Failed to restore from URL:', e);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleShare = () => {
+    const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
+    const winners = {};
+    rounds.forEach(rk => {
+      (bracket[rk] || []).forEach(m => {
+        if (m.winner) winners[m.id] = m.winner;
+      });
+    });
+    const encoded = btoa(JSON.stringify(winners));
+    const url = `${window.location.origin}${window.location.pathname}#bracket=${encoded}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setShareCopied(true);
+      setTimeout(() => setShareCopied(false), 2000);
+    }).catch(() => {});
+  };
 
   useEffect(() => {
     const updateLines = () => {
@@ -367,6 +401,16 @@ export const BracketTab = ({
 
   return (
     <div className="flex flex-col gap-6 animate-fadeIn">
+      {/* Share Button */}
+      <div className="flex justify-end">
+        <button
+          onClick={handleShare}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-brand-neon transition-all cursor-pointer select-none active:scale-95"
+        >
+          <Share2 className="w-3.5 h-3.5" />
+          <span>{shareCopied ? 'Copied!' : 'Share Predictions'}</span>
+        </button>
+      </div>
       {/* Mobile-optimized Vertical/Pill Bracket view */}
       <div className="block md:hidden">
         {/* Pills Selector */}
