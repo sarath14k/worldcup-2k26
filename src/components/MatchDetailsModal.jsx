@@ -637,7 +637,7 @@ export const MatchDetailsModal = ({
                   const isRedCard = typeLower.includes('red');
                   const isSub = typeLower.includes('sub');
 
-                  if (isGoal) icon = '⚽';
+                  if (isGoal) icon = '🥅';
                   else if (isAttempt && isSave) icon = '🧤';
                   else if (isAttempt && isBlock) icon = '🛡️';
                   else if (isAttempt && isMiss) icon = '😭';
