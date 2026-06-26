@@ -89,31 +89,29 @@ export const FixturesTab = ({
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-        {/* Left side: Upcoming Fixtures */}
-        <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
-          <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
-            <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Upcoming Fixtures */}
+      <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900/60 to-slate-950/80 border border-brand-purple/20 backdrop-blur-md relative overflow-hidden shadow-glass">
+        <div className="absolute -top-24 -left-24 w-48 h-48 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="flex items-center justify-between mb-4 relative z-10">
-              <div className="flex items-center gap-2">
-                <span className="flex h-2.5 w-2.5 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
-                </span>
-                <h3 className="text-sm font-black uppercase tracking-wider text-slate-100 flex items-center gap-1.5">
-                  Upcoming Fixtures
-                  {teamFilter && <span className="text-[10px] font-mono font-black bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-1.5 py-0.5 rounded">filtered</span>}
-                </h3>
-              </div>
-            </div>
+        <div className="flex items-center justify-between mb-4 relative z-10">
+          <div className="flex items-center gap-2">
+            <span className="flex h-2.5 w-2.5 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
+            </span>
+            <h3 className="text-sm font-black uppercase tracking-wider text-slate-100 flex items-center gap-1.5">
+              Upcoming Fixtures
+              {teamFilter && <span className="text-[10px] font-mono font-black bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-1.5 py-0.5 rounded">filtered</span>}
+            </h3>
+          </div>
+        </div>
 
-            {filteredUpcoming.length === 0 && teamFilter && (
-              <div className="text-center py-8 text-slate-500 text-xs font-bold">
-                No upcoming matches match "{teamFilter}"
-              </div>
-            )}
+        {filteredUpcoming.length === 0 && teamFilter && (
+          <div className="text-center py-8 text-slate-500 text-xs font-bold">
+            No upcoming matches match "{teamFilter}"
+          </div>
+        )}
 
             <div className="flex flex-col gap-3.5 relative z-10 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
               {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 3)).map((match, idx) => {
@@ -247,11 +245,9 @@ export const FixturesTab = ({
               </button>
             )}
           </div>
-        </div>
 
-        {/* Right side: Done Matches feed */}
-        <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
-          <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
+        {/* Done Matches */}
+        <div className="p-3.5 sm:p-5 rounded-2xl bg-brand-cardBg backdrop-blur-md border border-slate-800/80 flex flex-col gap-4">
             <div>
               <h2 className="text-sm font-extrabold text-slate-200 flex items-center gap-2 uppercase tracking-wider">
                 <Award className="w-4 h-4 text-brand-neon" />
@@ -344,8 +340,6 @@ export const FixturesTab = ({
               </button>
             )}
           </div>
-        </div>
       </div>
-    </div>
   );
 };
