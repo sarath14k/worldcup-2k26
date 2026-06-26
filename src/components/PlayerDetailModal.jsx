@@ -5,7 +5,9 @@ const FOTMOB_IMG = (id) => `https://images.fotmob.com/image_resources/playerimag
 
 function formatDate(dateStr) {
   if (!dateStr) return '';
-  const d = new Date(dateStr);
+  const dateValue = typeof dateStr === 'object' ? dateStr.utcTime : dateStr;
+  if (!dateValue) return '';
+  const d = new Date(dateValue);
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 

@@ -521,6 +521,89 @@ export const MatchDetailsModal = ({
           </div>
         )}
 
+        {/* Match Statistics */}
+        {hasStarted ? (
+          <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3.5">
+            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              Match Statistics
+            </h4>
+            
+            <div className="flex flex-col gap-4">
+              {[
+                { label: 'Possession', key: 'possession', suffix: '%' },
+                { label: 'Shots', key: 'shots' },
+                { label: 'Shots on Target', key: 'shotsOnTarget' },
+                { label: 'Corners', key: 'corners' },
+                { label: 'Fouls', key: 'fouls' },
+                { label: 'Yellow Cards', key: 'yellowCards' },
+                { label: 'Red Cards', key: 'redCards' }
+              ].map(stat => {
+                if (stat.key === 'possession') {
+                  const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(details.stats.possession, selectedMatch.id);
+                  return (
+                    <div key={stat.key} className="flex flex-col gap-1.5">
+                      <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-400 font-sans uppercase tracking-wider">
+                        <span>{home.name || 'Home'}</span>
+                        <span className="text-slate-500 font-black text-[9px]">POSSESSION</span>
+                        <span>{away.name || 'Away'}</span>
+                      </div>
+                      <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
+                        <div className="possession-flow-home h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
+                          {homePoss}%
+                        </div>
+                        <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
+                          {contestPoss}%
+                        </div>
+                        <div className="possession-flow-away h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
+                          {awayPoss}%
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
+                const valHome = details.stats[stat.key]?.[0] ?? 0;
+                const valAway = details.stats[stat.key]?.[1] ?? 0;
+                
+                let pctHome = 0;
+                let pctAway = 0;
+                if (valHome > 0 || valAway > 0) {
+                  const total = valHome + valAway;
+                  pctHome = Math.round((valHome / total) * 100);
+                  pctAway = 100 - pctHome;
+                }
+
+                return (
+                  <div key={stat.key} className="flex flex-col gap-1.5">
+                    <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-300 font-mono">
+                      <span>{valHome}{stat.suffix || ''}</span>
+                      <span className="text-slate-400 font-sans uppercase tracking-wider text-[8px] font-black">{stat.label}</span>
+                      <span>{valAway}{stat.suffix || ''}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden flex relative gap-0.5">
+                      <div 
+                        className="bg-gradient-to-r from-red-600 to-red-500 h-full transition-all duration-500 rounded-r-sm" 
+                        style={{ width: `${pctHome}%` }}
+                      />
+                      <div 
+                        className="bg-gradient-to-l from-brand-purple to-indigo-500 h-full transition-all duration-500 rounded-l-sm ml-auto" 
+                        style={{ width: `${pctAway}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="border-t border-slate-800/80 pt-4 text-center flex flex-col gap-2">
+            <div className="text-xs font-bold text-slate-400">Match Preview</div>
+            <p className="text-[10px] text-slate-500 leading-relaxed px-4">
+              This match has not started yet. Real-time stats and goal scorers will activate automatically when the match kicks off.
+            </p>
+          </div>
+        )}
+
         {/* Match Timeline */}
         {hasStarted && details.timeline && details.timeline.length > 0 && (
           <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3">
@@ -628,90 +711,6 @@ export const MatchDetailsModal = ({
                   );
                 })}
             </div>
-          </div>
-        )}
-
-        {/* Match Statistics */}
-        {hasStarted ? (
-          <div className="border-t border-slate-800/80 pt-4 flex flex-col gap-3.5">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Match Statistics
-            </h4>
-            
-            <div className="flex flex-col gap-4">
-              {[
-                { label: 'Possession', key: 'possession', suffix: '%' },
-                { label: 'Shots', key: 'shots' },
-                { label: 'Shots on Target', key: 'shotsOnTarget' },
-                { label: 'Corners', key: 'corners' },
-                { label: 'Fouls', key: 'fouls' },
-                { label: 'Yellow Cards', key: 'yellowCards' },
-                { label: 'Red Cards', key: 'redCards' }
-              ].map(stat => {
-                if (stat.key === 'possession') {
-                  const [homePoss, awayPoss, contestPoss] = getPossessionWithContest(details.stats.possession, selectedMatch.id);
-                  return (
-                    <div key={stat.key} className="flex flex-col gap-1.5">
-                      <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-400 font-sans uppercase tracking-wider">
-                        <span>{home.name || 'Home'}</span>
-                        <span className="text-slate-500 font-black text-[9px]">POSSESSION</span>
-                        <span>{away.name || 'Away'}</span>
-                      </div>
-                      <div className="h-4 w-full bg-slate-950 rounded-full overflow-hidden flex text-[9px] font-mono font-black text-center relative">
-                        <div className="possession-flow-home h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${homePoss}%` }}>
-                          {homePoss}%
-                        </div>
-                        <div className="bg-slate-700 h-full transition-all duration-500 flex items-center justify-center text-slate-200 font-extrabold whitespace-nowrap" style={{ width: `${contestPoss}%` }}>
-                          {contestPoss}%
-                        </div>
-                        <div className="possession-flow-away h-full transition-all duration-500 flex items-center justify-center text-white font-extrabold whitespace-nowrap" style={{ width: `${awayPoss}%` }}>
-                          {awayPoss}%
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-
-                const valHome = details.stats[stat.key]?.[0] ?? 0;
-                const valAway = details.stats[stat.key]?.[1] ?? 0;
-                
-                let pctHome = 0;
-                let pctAway = 0;
-                if (valHome > 0 || valAway > 0) {
-                  const total = valHome + valAway;
-                  pctHome = Math.round((valHome / total) * 100);
-                  pctAway = 100 - pctHome;
-                }
-
-                return (
-                  <div key={stat.key} className="flex flex-col gap-1.5">
-                    <div className="flex justify-between items-center text-[10px] font-extrabold text-slate-300 font-mono">
-                      <span>{valHome}{stat.suffix || ''}</span>
-                      <span className="text-slate-400 font-sans uppercase tracking-wider text-[8px] font-black">{stat.label}</span>
-                      <span>{valAway}{stat.suffix || ''}</span>
-                    </div>
-                    {/* Premium Double-sided progress bar with a gap and rounded corners */}
-                    <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden flex relative gap-0.5">
-                      <div 
-                        className="bg-gradient-to-r from-red-600 to-red-500 h-full transition-all duration-500 rounded-r-sm" 
-                        style={{ width: `${pctHome}%` }}
-                      />
-                      <div 
-                        className="bg-gradient-to-l from-brand-purple to-indigo-500 h-full transition-all duration-500 rounded-l-sm ml-auto" 
-                        style={{ width: `${pctAway}%` }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          <div className="border-t border-slate-800/80 pt-4 text-center flex flex-col gap-2">
-            <div className="text-xs font-bold text-slate-400">Match Preview</div>
-            <p className="text-[10px] text-slate-500 leading-relaxed px-4">
-              This match has not started yet. Real-time stats and goal scorers will activate automatically when the match kicks off.
-            </p>
           </div>
         )}
 
