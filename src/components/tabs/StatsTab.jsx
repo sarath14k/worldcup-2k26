@@ -21,12 +21,15 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
   const positionLookup = useMemo(() => {
     const map = {};
     (fotmobRatings || []).forEach(p => {
-      if (p.name && p.position) map[p.name] = p.position;
+      if (p.name && p.position) {
+        const code = normalizePosition(p.position);
+        if (code != null) map[p.name] = code;
+      }
     });
     Object.values(playerDetails).forEach(p => {
       if (p.name && p.position) {
         const code = normalizePosition(p.position);
-        if (code != null) map[p.name] = code;
+        if (code != null && !map[p.name]) map[p.name] = code;
       }
     });
     return map;
