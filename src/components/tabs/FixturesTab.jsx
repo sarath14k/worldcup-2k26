@@ -107,9 +107,6 @@ export const FixturesTab = ({
                   {teamFilter && <span className="text-[10px] font-mono font-black bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-1.5 py-0.5 rounded">filtered</span>}
                 </h3>
               </div>
-              <span className="text-[9px] bg-brand-neon/10 border border-brand-neon/20 text-brand-neon px-2.5 py-1 rounded-full font-bold font-mono">
-                LIVE STATUS
-              </span>
             </div>
 
             {filteredUpcoming.length === 0 && teamFilter && (
