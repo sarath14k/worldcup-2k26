@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Activity, CheckCircle, XCircle, Timer, Server, Wifi, WifiOff, RefreshCw, Zap, AlertTriangle, Cloud, CloudOff, GitBranch } from 'lucide-react';
+import { Activity, CheckCircle, XCircle, Timer, Server, Wifi, WifiOff, RefreshCw, Zap, AlertTriangle, Cloud, CloudOff } from 'lucide-react';
 
 function formatRelativeTime(isoString) {
   if (!isoString) return 'Never';
@@ -336,28 +336,48 @@ export default function SystemTab() {
         <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" onSync={triggerSync} />
       </div>
 
-      {/* Scheduling explanation */}
-      <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
-        <div className="flex items-center gap-2 mb-3">
-          <Zap className="w-4 h-4 text-amber-400" />
-          <h3 className="text-white font-bold text-sm">Smart Scheduling Engine</h3>
+      {/* Scheduler intervals table */}
+        <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <Zap className="w-4 h-4 text-amber-400" />
+            <h3 className="text-white font-bold text-sm">Scheduler Intervals</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-[11px]">
+              <thead>
+                <tr className="border-b border-slate-700/30">
+                  <th className="text-left text-slate-500 font-bold uppercase tracking-wider py-2 pr-4">Scraper</th>
+                  <th className="text-left text-slate-500 font-bold uppercase tracking-wider py-2 pr-4">Mode</th>
+                  <th className="text-left text-slate-500 font-bold uppercase tracking-wider py-2 pr-4">Condition</th>
+                  <th className="text-right text-slate-500 font-bold uppercase tracking-wider py-2">Interval</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['ESPN sync', '🟢 Live', '1+ match in progress', '30s'],
+                  ['', '🟢 Post-match', 'Ended < 30min ago', '30s'],
+                  ['', '🟡 Pre-match', '≤ 2min to kickoff', '30s'],
+                  ['', '🟡 Pre-match', '2min–20min to kickoff', '2min'],
+                  ['', '🔵 Standby', '20min–2h to kickoff', '1h'],
+                  ['', '⚪ Idle', '> 2h to kickoff', '1h'],
+                  ['Ratings sync (global)', '🟢 Live', '1+ match in progress', '30min'],
+                  ['', '⚪ Standby / Idle', 'Otherwise', '3h'],
+                  ['Live ratings sync (match)', '🟢 Live', '1+ match in progress', '2min'],
+                  ['', '⚪ Standby / Idle', 'Otherwise', '3h'],
+                  ['Client polling', '🔄 Always', 'Any tab except bracket', '30s'],
+                  ['Keep-alive bot', '🔄 Always', 'Render only', '10min'],
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-slate-800/30 hover:bg-slate-800/20">
+                    <td className="py-2 pr-4 text-slate-200 font-semibold whitespace-nowrap">{row[0]}</td>
+                    <td className="py-2 pr-4 whitespace-nowrap">{row[1]}</td>
+                    <td className="py-2 pr-4 text-slate-400">{row[2]}</td>
+                    <td className="py-2 text-right text-slate-200 font-mono font-bold whitespace-nowrap">{row[3]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-[11px]">
-          {[
-            { condition: 'Live matches', interval: '30s', mode: 'live', emoji: '🟢' },
-            { condition: 'Pre-match (< 10 min)', interval: '30s', mode: 'pre-match', emoji: '🟡' },
-            { condition: 'Match ended (< 30 min)', interval: '30s', mode: 'live', emoji: '🟢' },
-            { condition: 'Upcoming (10–60 min)', interval: '5 min', mode: 'standby', emoji: '🔵' },
-            { condition: 'No matches soon', interval: '1 hour', mode: 'idle', emoji: '⚪' },
-          ].map((row, i) => (
-            <div key={i} className="flex items-center gap-2 bg-slate-900/30 rounded-lg px-3 py-2">
-              <span>{row.emoji}</span>
-              <span className="text-slate-400">{row.condition}</span>
-              <span className="ml-auto text-slate-200 font-mono font-bold">{row.interval}</span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Deploy Status */}
       <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
