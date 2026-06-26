@@ -55,7 +55,9 @@ function extractPlayerInfo(data) {
       ? '€' + (infoMap['Market value'] / 1000000).toFixed(1) + 'm'
       : '€' + (infoMap['Market value'] / 1000).toFixed(0) + 'k')
     : null;
-  pi.contractEnd = infoMap['Contract end'] || null;
+  pi.contractEnd = infoMap['Contract end']
+    ? (typeof infoMap['Contract end'] === 'object' ? (infoMap['Contract end'].utcTime || null) : infoMap['Contract end'])
+    : null;
   pi.recentMatches = (data.recentMatches || []).slice(0, 10).map(m => ({
     matchDate: m.matchDate,
     opponentTeamName: m.opponentTeamName,
@@ -65,7 +67,7 @@ function extractPlayerInfo(data) {
     minutesPlayed: m.minutesPlayed,
     goals: m.goals,
     assists: m.assists,
-    rating: m.ratingProps?.rating || null,
+    rating: m.ratingProps?.rating != null ? Number(m.ratingProps.rating) : null,
     playerOfTheMatch: m.playerOfTheMatch || false,
   }));
   pi.seasonStats = {};

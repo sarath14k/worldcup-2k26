@@ -129,7 +129,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
                   <InfoRow label="Height" value={data.height} />
                   <InfoRow label="Preferred Foot" value={data.foot} />
                   <InfoRow label="Market Value" value={data.marketValue} />
-                  <InfoRow label="Contract Until" value={data.contractEnd ? data.contractEnd.slice(0, 4) : null} />
+                  <InfoRow label="Contract Until" value={data.contractEnd?.slice?.(0, 4) || null} />
                 </div>
               </div>
 
@@ -154,7 +154,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
                           <span className={`text-[10px] font-black font-mono shrink-0 ${
                             m.rating >= 8 ? 'text-brand-neon' : m.rating >= 7 ? 'text-emerald-400' : m.rating >= 6 ? 'text-amber-400' : 'text-red-400'
                           }`}>
-                            {m.rating.toFixed(1)}
+                            {Number(m.rating).toFixed(1)}
                           </span>
                         )}
                         {m.playerOfTheMatch && <span className="text-[10px] shrink-0">⭐</span>}
