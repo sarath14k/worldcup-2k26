@@ -364,7 +364,9 @@ export default function SystemTab() {
                   ['', '⚪ Standby / Idle', 'Otherwise', '3h'],
                   ['Live ratings sync (match)', '🟢 Live', '1+ match in progress', '2min'],
                   ['', '⚪ Standby / Idle', 'Otherwise', '3h'],
-                  ['Client polling', '🔄 Always', 'Any tab except bracket', '30s'],
+                  ['Client polling (Fixtures tab)', '🔄 Always', 'Live scores, goal flashes', '30s'],
+                  ['Client polling (Groups tab)', '🔄 Always', 'Standings refresh', '2min'],
+                  ['Client polling (other tabs)', '⏹️ Off', 'Stats, Ratings, Venues, System', '—'],
                   ['Keep-alive bot', '🔄 Always', 'Render only', '10min'],
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-slate-800/30 hover:bg-slate-800/20">

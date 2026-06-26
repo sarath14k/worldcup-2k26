@@ -430,8 +430,14 @@ function App() {
 
   // --- Live Data Polling Effect ---
   useEffect(() => {
-    // Only poll when not on the 'bracket' tab (Roadmap Tree) to prevent losing user updates
     if (activeTab === 'bracket') return;
+
+    const pollingIntervals = {
+      fixtures: 30000,
+      groups: 120000,
+    };
+    const interval = pollingIntervals[activeTab];
+    if (!interval) return;
 
     const fetchLiveScores = () => {
       if (document.hidden) return;
@@ -450,7 +456,7 @@ function App() {
 
     fetchLiveScores();
 
-    const timer = setInterval(fetchLiveScores, 30000);
+    const timer = setInterval(fetchLiveScores, interval);
     return () => clearInterval(timer);
   }, [activeTab]);
 
