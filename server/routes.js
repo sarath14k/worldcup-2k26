@@ -95,6 +95,40 @@ export function registerRoutes(app) {
     res.json({ success: true, message: `${type} scrape triggered` });
   });
 
+  // Force re-fetch timeline for matches with old data (no granular commentary events)
+  app.post('/api/migrate-timeline', (req, res) => {
+    const token = req.headers['x-sync-token'];
+    const expected = process.env.SYNC_TOKEN;
+    if (expected && token !== expected) {
+      return res.status(403).json({ error: 'Invalid token' });
+    }
+    const livePath = path.join(__dirname, '../public', 'live-matches.json');
+    const distPath = path.join(__dirname, '../dist', 'live-matches.json');
+    let count = 0;
+    for (const p of [livePath, distPath]) {
+      if (!fs.existsSync(p)) continue;
+      try {
+        const data = JSON.parse(fs.readFileSync(p, 'utf8'));
+        for (const [mid, m] of Object.entries(data)) {
+          const hasGranular = m.timeline?.some(t => {
+            const lower = (t.type || '').toLowerCase();
+            return lower.includes('shot') || lower.includes('foul') || lower.includes('corner');
+          });
+          if (!hasGranular && m.isDetailedScraped) {
+            m.isDetailedScraped = false;
+            m.isScorersFixed = false;
+            count++;
+          }
+        }
+        fs.writeFileSync(p, JSON.stringify(data, null, 2), 'utf8');
+      } catch (err) {
+        console.error(`[Migrate] Error processing ${p}:`, err.message);
+      }
+    }
+    triggerEspnScrape();
+    res.json({ success: true, message: `Cleared ${count} stale entries, scrape triggered` });
+  });
+
   // Match highlights API
   app.get('/api/match-highlights', handleHighlightsRoute);
 }
