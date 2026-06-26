@@ -649,17 +649,17 @@ export const MatchDetailsModal = ({
                     const posLabel = getPositionLabel(posCode);
                     const posCat = getPositionCategory(posCode);
                     return (
-                      <div key={`home-p-${idx}`} className="flex items-center gap-1 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 pl-2 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
+                      <div key={`home-p-${idx}`} className="flex items-center gap-0.5 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1 pl-1.5 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
                         <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
-                        <div className="flex items-center gap-1 min-w-0 flex-1">
+                        <div className="flex items-center gap-0.5 min-w-0 flex-1">
                           {posLabel && (
-                            <span className={`text-[5px] sm:text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                            <span className={`text-[4px] font-mono font-black px-0.5 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
                             </span>
                           )}
                           <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px]" />
                         </div>
-                        <span className={`px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
+                        <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
                           p.rating >= 7.5 
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
                             : p.rating >= 6.0 
@@ -687,17 +687,17 @@ export const MatchDetailsModal = ({
                     const posLabel = getPositionLabel(posCode);
                     const posCat = getPositionCategory(posCode);
                     return (
-                      <div key={`away-p-${idx}`} className="flex items-center gap-1 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 pr-2 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
-                        <div className="flex items-center gap-1 min-w-0 flex-1">
+                      <div key={`away-p-${idx}`} className="flex items-center gap-0.5 bg-slate-950/30 border border-slate-900/50 rounded-lg p-1 pr-1.5 cursor-pointer hover:border-slate-700/60 transition-colors" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
+                        <div className="flex items-center gap-0.5 min-w-0 flex-1">
                           <ScrollingText text={p.name} className="text-slate-350 text-[9px] sm:text-[11px] text-right" />
                           {posLabel && (
-                            <span className={`text-[5px] sm:text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
+                            <span className={`text-[4px] font-mono font-black px-0.5 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
                             </span>
                           )}
                         </div>
                         <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
-                        <span className={`px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
+                        <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] shrink-0 font-black leading-none ${
                           p.rating >= 7.5 
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
                             : p.rating >= 6.0 
