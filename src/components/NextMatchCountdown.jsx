@@ -74,6 +74,9 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
 
   if (!nextMatch || !display) return null;
 
+  // Stop showing the banner once kickoff has passed
+  if (display === 'KICKING OFF!') return null;
+
   const home = TEAMS[nextMatch.home] || { flag: '🏳️', name: 'TBD' };
   const away = TEAMS[nextMatch.away] || { flag: '🏳️', name: 'TBD' };
 

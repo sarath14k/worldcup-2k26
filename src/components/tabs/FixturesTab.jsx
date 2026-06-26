@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Award, Search, X } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
-import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaRankBadge } from '../../utils/matchHelpers';
+import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaRankBadge, parseMatchKickoff } from '../../utils/matchHelpers';
 import { LiveMatchesList } from '../LiveMatchesBanner';
 import { ScrollingText } from '../ScrollingText';
 
@@ -123,6 +123,10 @@ export const FixturesTab = ({
                 const isMatchLive = isLiveMatch(live);
                 const isLiveOrDone = isMatchLive || match.isCompleted || (live && (live.minute === 'FT' || live.isCompleted));
                 const isFlashing = activeGoalFlashMatchIds.includes(String(match.id));
+                const isPastKickoff = !isLiveOrDone && (() => {
+                  const k = parseMatchKickoff(match);
+                  return k && k.getTime() <= Date.now();
+                })();
                 return (
                   <div
                     key={`today-${match.id}`}
@@ -146,6 +150,8 @@ export const FixturesTab = ({
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-neon"></span>
                           </span>
+                        ) : isPastKickoff ? (
+                          <span className="text-[9px] text-amber-400 font-black ml-1">🔴 Started</span>
                         ) : null}
                       </span>
                       <span className="text-slate-400 font-mono">{formatDisplayDate(match.date)}</span>
