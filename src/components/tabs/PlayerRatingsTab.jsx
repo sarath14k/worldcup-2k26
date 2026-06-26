@@ -171,7 +171,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                     <span className="text-base shrink-0 select-none" title={teamInfo.name}>
                       {teamInfo.flag}
                     </span>
-                    <div className="flex items-center min-w-0 max-w-[100px] sm:max-w-[200px]">
+                    <div className="flex items-center min-w-0 flex-1">
                       <ScrollingText text={player.name} className="text-slate-100 font-bold" />
                     </div>
                     {posLabel && (
