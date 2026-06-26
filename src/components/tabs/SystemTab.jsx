@@ -355,7 +355,7 @@ export default function SystemTab() {
               <tbody>
                 {[
                   ['ESPN sync', '🟢 Live', '1+ match in progress', '30s'],
-                  ['', '🟢 Post-match', 'Ended < 30min ago', '30s'],
+                  ['', '🟢 Post-match', 'Ended < 30min ago', '2min'],
                   ['', '🟡 Pre-match', '≤ 2min to kickoff', '30s'],
                   ['', '🟡 Pre-match', '2min–20min to kickoff', '2min'],
                   ['', '🔵 Standby', '20min–2h to kickoff', '1h'],
