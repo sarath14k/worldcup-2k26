@@ -260,14 +260,14 @@ export const FixturesTab = ({
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              window.open(url, '_blank', 'noopener,noreferrer');
+                              setActiveVideoUrl(url);
                             }}
                             className="mt-1 w-full py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] cursor-pointer select-none"
                           >
                             <svg className="w-2.5 h-2.5 fill-white shrink-0" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z" />
                             </svg>
-                            <span>Watch Highlights ↗</span>
+                            <span>Watch Highlights</span>
                           </button>
                         );
                       }
@@ -315,14 +315,44 @@ export const FixturesTab = ({
               </button>
             </div>
             {/* Iframe body */}
-            <div className="flex-1 w-full h-full bg-black">
-              <iframe
-                src={activeVideoUrl}
-                title="FIFA Highlights"
-                className="w-full h-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+            <div className="flex-1 w-full h-full bg-black flex items-center justify-center relative">
+              {activeVideoUrl.includes('youtube.com') || activeVideoUrl.includes('youtu.be') ? (
+                <iframe
+                  src={activeVideoUrl}
+                  title="FIFA Highlights"
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <div className="flex flex-col items-center gap-4 p-8 text-center">
+                  <div className="w-20 h-20 rounded-full bg-red-600/20 border border-red-500/30 flex items-center justify-center">
+                    <svg className="w-10 h-10 fill-red-500 ml-1.5" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <p className="text-sm text-slate-300 font-medium">
+                    Open on FIFA.com to watch
+                  </p>
+                  <p className="text-[11px] text-slate-500 max-w-sm">
+                    FIFA doesn't allow embedding videos on other sites.
+                  </p>
+                  <div className="flex gap-3 mt-2">
+                    <button
+                      onClick={() => { window.open(activeVideoUrl, '_blank', 'noopener,noreferrer'); setActiveVideoUrl(null); }}
+                      className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all cursor-pointer select-none"
+                    >
+                      Open on FIFA.com ↗
+                    </button>
+                    <button
+                      onClick={() => setActiveVideoUrl(null)}
+                      className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-all cursor-pointer select-none"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
