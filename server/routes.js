@@ -29,6 +29,7 @@ export function registerRoutes(app) {
   app.get('/live-matches.json', (req, res) => serveJsonFile(req, res, 'live-matches.json'));
   app.get('/fotmobPlayerRatings.json', (req, res) => serveJsonFile(req, res, 'fotmobPlayerRatings.json', 'fotmobPlayerRatings.json'));
   app.get('/live-player-ratings.json', (req, res) => serveJsonFile(req, res, 'live-player-ratings.json', 'livePlayerRatings.json'));
+  app.get('/fotmobPlayerDetails.json', (req, res) => serveJsonFile(req, res, 'fotmobPlayerDetails.json', 'fotmobPlayerDetails.json'));
 
   // Scraper status (legacy)
   app.get('/scraper-status', (req, res) => {
@@ -162,4 +163,15 @@ export function registerRoutes(app) {
 
   // Match highlights API
   app.get('/api/match-highlights', handleHighlightsRoute);
+
+  // Player detail API (from Fotmob data)
+  app.get('/api/player-detail/:id', (req, res) => {
+    const detailsPath = path.join(__dirname, '../src/data/fotmobPlayerDetails.json');
+    if (!fs.existsSync(detailsPath)) return res.status(404).json({ error: 'No player data' });
+    const details = JSON.parse(fs.readFileSync(detailsPath, 'utf8'));
+    const player = details[req.params.id];
+    if (!player) return res.status(404).json({ error: 'Player not found' });
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.json(player);
+  });
 }

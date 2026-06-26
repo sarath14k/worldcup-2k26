@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import playerImages from '../data/playerImages.json';
+import { PlayerDetailModal } from './PlayerDetailModal';
 
 const FALLBACK_COLORS = [
   'from-emerald-500 to-teal-600',
@@ -26,7 +27,7 @@ function getColorIndex(name) {
   return Math.abs(hash) % FALLBACK_COLORS.length;
 }
 
-export const PlayerAvatar = ({ name, size = 'md', className = '' }) => {
+export const PlayerAvatar = ({ name, size = 'md', className = '', playerId }) => {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -75,29 +76,8 @@ export const PlayerAvatar = ({ name, size = 'md', className = '' }) => {
         )}
       </div>
 
-      {showModal && showImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-modalEnter"
-          style={{ background: 'rgba(2, 6, 23, 0.9)' }}
-          onClick={() => setShowModal(false)}
-        >
-          <div className="relative max-w-[90vw] max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={imageUrl}
-              alt={name}
-              className="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-slate-700/50"
-            />
-            <button
-              className="absolute -top-3 -right-3 p-1.5 bg-slate-800 text-white rounded-full border border-slate-600 hover:bg-slate-700 transition-colors cursor-pointer shadow-lg"
-              onClick={() => setShowModal(false)}
-              aria-label="Close"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
+      {showModal && playerId && (
+        <PlayerDetailModal playerId={playerId} name={name} onClose={() => setShowModal(false)} />
       )}
     </>
   );

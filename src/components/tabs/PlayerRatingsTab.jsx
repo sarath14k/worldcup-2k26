@@ -162,7 +162,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                   </div>
 
                   <div className="col-span-7 sm:col-span-7 flex items-center gap-1.5 min-w-0">
-                    <PlayerAvatar name={player.name} size="xs" />
+                    <PlayerAvatar name={player.name} size="xs" playerId={player.playerId} />
                     <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono tracking-wider shrink-0 select-none">
                       {player.team}
                     </span>

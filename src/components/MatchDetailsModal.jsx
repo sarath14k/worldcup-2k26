@@ -635,7 +635,7 @@ export const MatchDetailsModal = ({
                     return (
                       <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={p.name} size="xs" />
+                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
@@ -673,7 +673,7 @@ export const MatchDetailsModal = ({
                     return (
                       <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={p.name} size="xs" />
+                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
