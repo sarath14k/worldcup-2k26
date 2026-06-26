@@ -21,7 +21,7 @@ function computeScrapeDelay({ liveCount, nextMatchTime, lastMatchEndTime }) {
   if (lastMatchEndTime) {
     const endedAgo = now - new Date(lastMatchEndTime).getTime();
     if (endedAgo >= 0 && endedAgo < 30 * 60 * 1000) {
-      return { delay: 30000, mode: 'live', reason: `Match ended ${Math.floor(endedAgo / 60000)}min ago` };
+      return { delay: 120000, mode: 'live', reason: `Match ended ${Math.floor(endedAgo / 60000)}min ago` };
     }
   }
 
