@@ -649,9 +649,9 @@ export const MatchDetailsModal = ({
                     const posLabel = getPositionLabel(posCode);
                     const posCat = getPositionCategory(posCode);
                     return (
-                      <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2 cursor-pointer" onClick={() => setDetailPlayer({ id: p.playerId, name: p.name })}>
+                      <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2 cursor-pointer" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
@@ -666,7 +666,7 @@ export const MatchDetailsModal = ({
                               ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
                               : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
                         }`}>
-                          {p.rating.toFixed(2)}
+                          {p.rating != null ? Number(p.rating).toFixed(2) : '-'}
                         </span>
                       </div>
                     );
@@ -687,9 +687,9 @@ export const MatchDetailsModal = ({
                     const posLabel = getPositionLabel(posCode);
                     const posCat = getPositionCategory(posCode);
                     return (
-                      <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2 cursor-pointer" onClick={() => setDetailPlayer({ id: p.playerId, name: p.name })}>
+                      <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2 cursor-pointer" onClick={() => { const pid = p.playerId || playerIdLookup[p.name]; if (pid) setDetailPlayer({ id: pid, name: p.name }); }}>
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId || playerIdLookup[p.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
@@ -704,7 +704,7 @@ export const MatchDetailsModal = ({
                               ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' 
                               : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
                         }`}>
-                          {p.rating.toFixed(2)}
+                          {p.rating != null ? Number(p.rating).toFixed(2) : '-'}
                         </span>
                       </div>
                     );
