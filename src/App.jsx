@@ -403,6 +403,31 @@ function App() {
     }
   }, []);
 
+  // Auto-fetch highlights for newly completed matches
+  const autoFetchedRef = useRef({});
+  useEffect(() => {
+    if (!liveMatches || Object.keys(liveMatches).length === 0) return;
+    for (const [, m] of Object.entries(liveMatches)) {
+      if (!m.isCompleted && m.minute !== 'FT') continue;
+      const key = `${m.home}_vs_${m.away}`;
+      if (autoFetchedRef.current[key]) continue;
+      if (!m.home || !m.away) continue;
+      const matchId = [...(groupMatches || []), ...Object.values(bracket || {}).flat()].find(match => match.home === m.home && match.away === m.away)?.id;
+      if (!matchId || highlightsMap[matchId]) continue;
+      autoFetchedRef.current[key] = true;
+      const homeName = TEAMS[m.home]?.name || m.home;
+      const awayName = TEAMS[m.away]?.name || m.away;
+      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && data.url && matchId) {
+            setHighlightsMap(prev => ({ ...prev, [matchId]: data.url }));
+          }
+        })
+        .catch(() => {});
+    }
+  }, [liveMatches, groupMatches, bracket, highlightsMap]);
+
   // --- Live Data Polling Effect ---
   useEffect(() => {
     // Only poll when not on the 'bracket' tab (Roadmap Tree) to prevent losing user updates
