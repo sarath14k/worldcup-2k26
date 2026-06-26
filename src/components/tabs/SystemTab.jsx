@@ -336,33 +336,6 @@ export default function SystemTab() {
         <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" onSync={triggerSync} />
       </div>
 
-      {/* Deploy Status */}
-      <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-4 mb-6">
-        <div className="flex items-center gap-2 mb-2">
-          {deployStatus && latestCommit && deployStatus.deployedCommit !== latestCommit ? (
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-lg shadow-amber-400/50" />
-          ) : (
-            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50" />
-          )}
-          <h3 className="text-white font-bold text-xs uppercase tracking-wider">Deploy Status</h3>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
-          {[
-            { label: 'Deployed', value: deployStatus?.deployedCommit ? deployStatus.deployedCommit.slice(0, 8) : '—', mono: true },
-            { label: 'Latest', value: latestCommit ? latestCommit.slice(0, 8) : '—', mono: true },
-            { label: 'Deploy ID', value: deployStatus?.deployId !== 'unknown' ? deployStatus?.deployId?.slice(0, 12) || '—' : '—', mono: true },
-            { label: 'Status', value: deployStatus && latestCommit && deployStatus.deployedCommit !== latestCommit ? 'Deploying... 🔄' : 'Up to date ✓', mono: false }
-          ].map((row, i) => (
-            <div key={i} className="bg-slate-900/30 rounded-lg px-2.5 py-1.5">
-              <div className="text-slate-500 mb-0.5">{row.label}</div>
-              <div className={`${row.mono ? 'font-mono' : ''} ${row.value.includes('Deploying') ? 'text-amber-400 font-bold' : 'text-slate-200'}`}>
-                {row.value}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Scheduling explanation */}
       <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
         <div className="flex items-center gap-2 mb-3">
