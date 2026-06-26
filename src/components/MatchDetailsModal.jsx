@@ -404,9 +404,9 @@ export const MatchDetailsModal = ({
                       {details.scorers.filter(s => s.team === 'home').map((s, idx) => {
                         const pid = playerIdLookup[s.player];
                         return (
-                          <div key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1.5 cursor-pointer" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
+                          <div key={`h-scorer-${idx}`} className="text-slate-300 flex items-center gap-1.5 cursor-pointer min-w-0" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
                             <PlayerAvatar name={s.player} size="xs" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
-                            <span className="truncate">{s.player}</span>
+                            <ScrollingText text={s.player} className="text-slate-300" />
                             <span className="text-brand-neon shrink-0">({s.minute}')</span>
                           </div>
                         );
@@ -417,9 +417,9 @@ export const MatchDetailsModal = ({
                       {details.scorers.filter(s => s.team === 'away').map((s, idx) => {
                         const pid = playerIdLookup[s.player];
                         return (
-                          <div key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1.5 cursor-pointer" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
+                          <div key={`a-scorer-${idx}`} className="text-slate-300 flex items-center justify-end gap-1.5 cursor-pointer min-w-0" onClick={() => pid && setDetailPlayer({ id: pid, name: s.player })}>
                             <span className="text-brand-neon shrink-0">({s.minute}')</span>
-                            <span className="truncate">{s.player}</span>
+                            <ScrollingText text={s.player} className="text-slate-300 text-right" />
                             <PlayerAvatar name={s.player} size="xs" playerId={pid} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           </div>
                         );
