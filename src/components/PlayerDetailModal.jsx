@@ -145,7 +145,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
                       <div key={i} className="flex items-center gap-2 bg-slate-800/20 rounded-lg px-3 py-2 border border-slate-800/30">
                         <span className="text-[10px] text-slate-500 font-mono w-12 shrink-0">{formatDate(m.matchDate)}</span>
                         <span className="text-[11px] font-bold text-slate-300 truncate min-w-0 flex-1">
-                          {m.isHomeTeam ? '' : '@ '}{m.opponentTeamName}
+                          {m.opponentTeamName}
                         </span>
                         <span className="text-[11px] font-mono font-bold text-slate-200 shrink-0">
                           {m.homeScore}-{m.awayScore}
