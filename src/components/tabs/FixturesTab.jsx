@@ -19,7 +19,6 @@ export const FixturesTab = ({
 }) => {
   const [showAllUpcoming, setShowAllUpcoming] = useState(false);
   const [showAllDone, setShowAllDone] = useState(false);
-  const [activeVideoUrl, setActiveVideoUrl] = useState(null);
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
@@ -260,14 +259,14 @@ export const FixturesTab = ({
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              setActiveVideoUrl(url);
+                              window.open(url, '_blank', 'noopener,noreferrer');
                             }}
                             className="mt-1 w-full py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] cursor-pointer select-none"
                           >
                             <svg className="w-2.5 h-2.5 fill-white shrink-0" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z" />
                             </svg>
-                            <span>Watch Highlights</span>
+                            <span>Watch Highlights ↗</span>
                           </button>
                         );
                       }
@@ -289,74 +288,7 @@ export const FixturesTab = ({
         </div>
       </div>
       
-      {/* Video Overlay Modal */}
-      {activeVideoUrl && (
-        <div 
-          onClick={() => setActiveVideoUrl(null)}
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn"
-        >
-          <div 
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl aspect-video bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col"
-          >
-            {/* Header bar */}
-            <div className="flex items-center justify-between px-6 py-4 bg-slate-900/98 border-b border-slate-800/80 shrink-0">
-              <span className="text-xs font-black tracking-widest text-brand-neon uppercase">
-                🎥 FIFA WORLD CUP 2026™ HIGHLIGHTS
-              </span>
-              <button 
-                onClick={() => setActiveVideoUrl(null)}
-                className="p-1.5 text-slate-400 hover:text-white transition-colors bg-slate-950/40 hover:bg-slate-950/80 rounded-full border border-slate-800/40 cursor-pointer select-none"
-                aria-label="Close player"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            {/* Iframe body */}
-            <div className="flex-1 w-full h-full bg-black flex items-center justify-center relative">
-              {activeVideoUrl.includes('youtube.com') || activeVideoUrl.includes('youtu.be') ? (
-                <iframe
-                  src={activeVideoUrl}
-                  title="FIFA Highlights"
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <div className="flex flex-col items-center gap-4 p-8 text-center">
-                  <div className="w-20 h-20 rounded-full bg-red-600/20 border border-red-500/30 flex items-center justify-center">
-                    <svg className="w-10 h-10 fill-red-500 ml-1.5" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-slate-300 font-medium">
-                    Open on FIFA.com to watch
-                  </p>
-                  <p className="text-[11px] text-slate-500 max-w-sm">
-                    FIFA doesn't allow embedding videos on other sites.
-                  </p>
-                  <div className="flex gap-3 mt-2">
-                    <button
-                      onClick={() => { window.open(activeVideoUrl, '_blank', 'noopener,noreferrer'); setActiveVideoUrl(null); }}
-                      className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all cursor-pointer select-none"
-                    >
-                      Open on FIFA.com ↗
-                    </button>
-                    <button
-                      onClick={() => setActiveVideoUrl(null)}
-                      className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-all cursor-pointer select-none"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 };
