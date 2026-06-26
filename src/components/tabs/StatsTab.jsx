@@ -107,8 +107,8 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                     {(() => {
                       const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                       return (
-                        <div className="col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => { const pid = playerIdLookup[player.name]; if (pid) setDetailPlayer({ id: pid, name: player.name }); }}>
-                          <PlayerAvatar name={player.name} size="xl" playerId={playerIdLookup[player.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                        <div className="col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => { const pid = player.playerId || playerIdLookup[player.name]; if (pid) setDetailPlayer({ id: pid, name: player.name }); }}>
+                          <PlayerAvatar name={player.name} size="xl" playerId={player.playerId || playerIdLookup[player.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
                             {player.team}
                           </span>
@@ -179,8 +179,8 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                     {(() => {
                       const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                       return (
-                        <div className="col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => { const pid = playerIdLookup[player.name]; if (pid) setDetailPlayer({ id: pid, name: player.name }); }}>
-                          <PlayerAvatar name={player.name} size="xl" playerId={playerIdLookup[player.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
+                        <div className="col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => { const pid = player.playerId || playerIdLookup[player.name]; if (pid) setDetailPlayer({ id: pid, name: player.name }); }}>
+                          <PlayerAvatar name={player.name} size="xl" playerId={player.playerId || playerIdLookup[player.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
                             {player.team}
                           </span>

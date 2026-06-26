@@ -973,13 +973,15 @@ function App() {
       });
     });
 
+    const ratingsById = {};
+    (fotmobRatings || []).forEach(p => { if (p.playerId) ratingsById[p.name] = p.playerId; });
+
     const topScorers = Object.entries(goalsCount)
-      .map(([name, goals]) => ({ name, goals, team: playerTeams[name] }))
+      .map(([name, goals]) => ({ name, goals, team: playerTeams[name], playerId: ratingsById[name] }))
       .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name))
       .slice(0, 10);
-
     const topAssists = Object.entries(assistsCount)
-      .map(([name, assists]) => ({ name, assists, team: playerTeams[name] }))
+      .map(([name, assists]) => ({ name, assists, team: playerTeams[name], playerId: ratingsById[name] }))
       .sort((a, b) => b.assists - a.assists || a.name.localeCompare(b.name))
       .slice(0, 10);
 
