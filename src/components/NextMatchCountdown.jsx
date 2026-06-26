@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { TEAMS } from '../data/worldcupData';
 import { FifaRankBadge } from '../utils/matchHelpers';
 
@@ -35,25 +35,41 @@ function formatDiff(ms) {
   const h = Math.floor((ms % 86400000) / 3600000);
   const m = Math.floor((ms % 3600000) / 60000);
   const s = Math.floor((ms % 60000) / 1000);
-  return d > 0 ? `${d}d ${h}h ${m}m ${s}s` : `${h}h ${m}m ${s}s`;
+  if (ms < 60000) return `${s}s`;
+  if (d > 0) return `${d}d ${h}h ${m}m`;
+  if (h > 0) return `${h}h ${m}m`;
+  return `${m}m`;
 }
 
 export const NextMatchCountdown = ({ upcomingFixtures }) => {
   const nextMatch = upcomingFixtures?.[0];
-  const kickoffRef = useRef(null);
   const [display, setDisplay] = useState('');
 
   useEffect(() => {
     const kickoff = parseDateStr(nextMatch?.date);
-    kickoffRef.current = kickoff;
     if (!kickoff) { setDisplay(''); return; }
+
     const tick = () => {
       if (document.hidden) return;
       setDisplay(formatDiff(kickoff.getTime() - Date.now()));
     };
+
     tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
+    const diff = kickoff.getTime() - Date.now();
+
+    if (diff < 60000) {
+      const id = setInterval(tick, 1000);
+      return () => clearInterval(id);
+    }
+
+    // More than a minute away: use 60s tick, switch to 1s in the last minute
+    const timers = [setInterval(tick, 60000)];
+    const msToLastMin = diff - 60000;
+    timers.push(setTimeout(() => {
+      clearInterval(timers[0]);
+      timers[0] = setInterval(tick, 1000);
+    }, msToLastMin));
+    return () => timers.forEach(t => { try { clearInterval(t); clearTimeout(t); } catch {} });
   }, [nextMatch?.date, nextMatch?.id]);
 
   if (!nextMatch || !display) return null;
