@@ -38,7 +38,7 @@ function computeScrapeDelay({ liveCount, nextMatchTime, lastMatchEndTime }) {
     }
   }
 
-  return { delay: 600000, mode: 'idle', reason: 'No upcoming matches' };
+  return { delay: 3600000, mode: 'idle', reason: 'No upcoming matches' };
 }
 
 let scrapeTimeout = null;
