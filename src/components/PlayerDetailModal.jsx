@@ -97,7 +97,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
           {/* Shirt number badge */}
           {data?.shirt && (
             <div className="absolute top-3 left-3 bg-slate-950/80 border border-slate-700/50 rounded-lg px-2.5 py-1">
-              <span className="text-[11px] font-black text-white">#{data.shirt}</span>
+              <span className="text-[11px] font-black text-white">{data.shirt}</span>
             </div>
           )}
         </div>
