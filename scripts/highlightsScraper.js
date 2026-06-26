@@ -175,11 +175,19 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
   const normHome = normalizeTeamName(home);
   const normAway = normalizeTeamName(away);
 
-  // Check cache
+  // Check cache: if data exists, assume it's valid for completed matches
   const cacheKey = `${homeCode || ''}_vs_${awayCode || ''}`.toLowerCase();
   if (homeCode && awayCode && highlightsCache[cacheKey]) {
     return { statusCode: 200, result: highlightsCache[cacheKey] };
   }
+
+  // If NOT in cache, proceed to fetch and then save
+  const saveToCache = (data) => {
+    if (homeCode && awayCode) {
+      highlightsCache[cacheKey] = data;
+      saveCache();
+    }
+  };
 
   // Helper to test embed URL availability
   async function isEmbedAvailable(url) {
@@ -272,10 +280,7 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
                 `${Math.floor(JSON.parse(hit._source.additionalInformation).VideoDuration / 60)}:${Math.floor(JSON.parse(hit._source.additionalInformation).VideoDuration % 60).toString().padStart(2, '0')}` : '2:00') : '2:00'
           };
 
-          if (homeCode && awayCode) {
-            highlightsCache[cacheKey] = found;
-            saveCache();
-          }
+          saveToCache(found);
           return { statusCode: 200, result: found };
         }
       }
@@ -306,10 +311,7 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
       const found = findBestHighlight(html, home, away, homeCode, awayCode);
 
       if (found) {
-        if (homeCode && awayCode) {
-          highlightsCache[cacheKey] = found;
-          saveCache();
-        }
+        saveToCache(found);
         return { statusCode: 200, result: found };
       }
     }
