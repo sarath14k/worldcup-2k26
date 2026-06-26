@@ -612,21 +612,22 @@ export const MatchDetailsModal = ({
             </h4>
             <div className="flex flex-col gap-2 max-h-[360px] overflow-y-auto pr-1 select-none scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
               {details.timeline.slice().reverse()
+                .filter(event => event.text?.trim() || event.type?.trim())
                 .map((event, idx) => {
-                  const normalize = (name) => name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+                  const normalize = (name) => name?.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '') || '';
                   const normText = normalize(event.text);
                   const normHomeName = normalize(home.name);
                   const normAwayName = normalize(away.name);
                   
                   const isHome = normText.includes(normHomeName) || 
-                                 event.text.toLowerCase().includes(selectedMatch.home.toLowerCase());
+                                 (event.text?.toLowerCase() || '').includes(selectedMatch.home.toLowerCase());
                   const isAway = normText.includes(normAwayName) || 
-                                 event.text.toLowerCase().includes(selectedMatch.away.toLowerCase());
+                                 (event.text?.toLowerCase() || '').includes(selectedMatch.away.toLowerCase());
                   const eventFlag = isHome ? home.flag : (isAway ? away.flag : null);
 
                   let icon = '🔔';
                   const typeLower = event.type.toLowerCase();
-                  const textLower = event.text.toLowerCase();
+                  const textLower = (event.text || '').toLowerCase();
                   const isSave = typeLower.includes('save') || textLower.includes('saved');
                   const isBlock = typeLower.includes('prevent') || textLower.includes('blocked');
                   const isAttempt = typeLower.includes('attempt') || typeLower.includes('shot');
@@ -706,9 +707,11 @@ export const MatchDetailsModal = ({
                             {event.minuteStr}
                           </span>
                         </div>
-                        <p className={`text-[10px] leading-relaxed pr-6 ${isGoal ? 'text-white font-extrabold' : 'text-slate-350 font-semibold'}`}>
-                          {event.text}
-                        </p>
+                        {event.text && (
+                          <p className={`text-[10px] leading-relaxed pr-6 ${isGoal ? 'text-white font-extrabold' : 'text-slate-350 font-semibold'}`}>
+                            {event.text}
+                          </p>
+                        )}
                         {eventFlag && (
                           <div className="absolute right-2.5 bottom-2.5">
                             <span className="text-xs">{eventFlag}</span>
