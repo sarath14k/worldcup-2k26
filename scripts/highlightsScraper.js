@@ -218,192 +218,65 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
     }
   };
 
-  // Helper to test embed URL availability
-  async function isEmbedAvailable(url) {
+    // 1. FIFA page API (primary source for tournament highlights)
     try {
-      const headResp = await fetch(url, { method: 'HEAD' });
-      return headResp.ok;
-    } catch (_) {
-      return false;
-    }
-  }
-
-    // 1. Search official FIFA.com search API (primary)
-    try {
-      // Improved search query: use more generic terms that FIFA's search engine handles better
-      const searchString = `${home} ${away} highlights`;
-      const searchUrl = `https://cxm-api.fifa.com/fifacxmsearch/api/results?locale=en&searchString=${encodeURIComponent(searchString)}&clientType=fifaplus&type=search&context=default&size=20&sort=relevance&dateFrom=1900-01-01`;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
-    const response = await fetch(searchUrl, {
-      signal: controller.signal,
-      headers: {
-        "X-Functions-Key": "2kD9zRYRT7xN6kSGs6EoHcvSyKOyK0B4YaKTf1Ygeaw8PM6bgfR6SQ==",
-        "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0"
-      }
-    });
-    clearTimeout(timeoutId);
-
-    if (response.ok) {
-      const data = await response.json();
-      const hits = data.hits?.hits || [];
-      const videoHits = hits.filter(h => h._source?.recordType === 'video');
-      
-      for (const hit of videoHits) {
-        const titleLower = (hit._source.title || '').toLowerCase();
-        const tags = (hit._source.semanticTags || []).map(t => t.toLowerCase());
-
-        // STRICT FILTERING: Reject youth, futsal, womens, interactive
-        const isExcluded = 
-          titleLower.includes('women') || 
-          titleLower.includes('futsal') || 
-          titleLower.includes('u-17') || 
-          titleLower.includes('u-20') || 
-          titleLower.includes('u-23') || 
-          titleLower.includes('under-17') || 
-          titleLower.includes('under-20') || 
-          titleLower.includes('under-23') || 
-          titleLower.includes('interactive') || 
-          titleLower.includes('esports') ||
-          tags.some(tag => 
-            tag.includes('women') || 
-            tag.includes('futsal') || 
-            tag.includes('u-17') || 
-            tag.includes('u-20') || 
-            tag.includes('u-23') || 
-            tag.includes('under-') || 
-            tag.includes('interactive')
-          );
-
-        if (isExcluded) continue;
-
-        const checkTeam = (normName, code) => {
-          const aliases = TEAM_ALIASES[normName] || [normName];
-          if (code) {
-            const c = code.toLowerCase();
-            if (!aliases.includes(c)) aliases.push(c);
-          }
-          for (const alias of aliases) {
-            if (alias.length <= 3) {
-              if (new RegExp(`\\b${alias}\\b`, 'i').test(titleLower)) return true;
-            } else {
-              if (titleLower.includes(alias)) return true;
-            }
-          }
-          const words = normName.split(' ').filter(w => w.length > 3);
-          return words.length > 0 && words.every(word => titleLower.includes(word));
-        };
-
-        if (checkTeam(normHome, homeCode) && checkTeam(normAway, awayCode)) {
-          let videoId = hit._source.id;
-          let relativeUrl = '';
-          try {
-            const addInfo = JSON.parse(hit._source.additionalInformation || '{}');
-            relativeUrl = addInfo.RelativeUrl || `/en/watch/${videoId}`;
-            if (addInfo.VideoEntryId) videoId = addInfo.VideoEntryId;
-          } catch (e) {
-            relativeUrl = `/en/watch/${videoId}`;
-          }
-
-          const found = {
-            videoId,
-            url: `https://www.fifa.com${relativeUrl}`,
-            title: hit._source.title,
-            channel: 'FIFA.com (Direct)',
-            duration: hit._source.additionalInformation ? 
-              (JSON.parse(hit._source.additionalInformation).VideoDuration ? 
-                `${Math.floor(JSON.parse(hit._source.additionalInformation).VideoDuration / 60)}:${Math.floor(JSON.parse(hit._source.additionalInformation).VideoDuration % 60).toString().padStart(2, '0')}` : '2:00') : '2:00'
-          };
-
-          saveToCache(found);
-          return { statusCode: 200, result: found };
-        }
-      }
-    }
-  } catch (err) {
-    console.warn('[Highlights] FIFA Search API failed, trying YouTube:', err.message);
-  }
-
-    // 2. Fallback: YouTube - FIFA channel ONLY, with "Highlights" in title
-    try {
-      const query = `${home} vs ${away} FIFA World Cup 2026`;
-      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-      
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3000);
-      const response = await fetch(searchUrl, {
-        signal: controller.signal,
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        }
-      });
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const html = await response.text();
-        const dataMatch = html.match(/ytInitialData\s*=\s*({.+?});/);
-        if (dataMatch) {
-          const data = JSON.parse(dataMatch[1]);
-          const contents = data.contents?.twoColumnSearchResultsRenderer?.primaryContents?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents;
-          if (contents) {
-            for (const item of contents) {
-              const vr = item.videoRenderer;
-              if (!vr) continue;
-
-              const title = vr.title?.runs?.[0]?.text;
-              const channelOwner = vr.ownerText?.runs?.[0]?.text || '';
-              const browseId = vr.ownerEndpoint?.browseEndpoint?.browseId;
-              const chanUrl = vr.ownerText?.runs?.[0]?.navigationEndpoint?.browseEndpoint?.canonicalBaseUrl || '';
-              const dur = vr.lengthText?.simpleText || '';
-
-              // Must be official FIFA channel
-              const isFIFA = browseId === 'UCPctRCXblq78gZrtutLwebw' || chanUrl === '/@fifa' || channelOwner.toLowerCase() === 'fifa';
-              if (!isFIFA) continue;
-
-              // Must have "Highlights" in title
-              if (!title || !title.toLowerCase().includes('highlights')) continue;
-
-              // Team name check with word boundaries for short codes
-              const normTitle = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-              const normHome = normalizeTeamName(home);
-              const normAway = normalizeTeamName(away);
-
-              const teamInTitle = (normName, code) => {
-                const aliases = TEAM_ALIASES[normName] || [normName];
-                if (code) {
-                  const c = code.toLowerCase();
-                  if (!aliases.includes(c)) aliases.push(c);
-                }
-                for (const alias of aliases) {
-                  if (alias.length <= 3) {
-                    if (new RegExp(`\\b${alias}\\b`, 'i').test(normTitle)) return true;
-                  } else {
-                    if (normTitle.includes(alias)) return true;
-                  }
-                }
-                const words = normName.split(' ').filter(w => w.length > 3);
-                return words.length > 0 && words.every(w => normTitle.includes(w));
-              };
-
-              if (teamInTitle(normHome, homeCode) && teamInTitle(normAway, awayCode)) {
-                const found = {
-                  videoId: vr.videoId,
-                  url: `https://www.youtube.com/embed/${vr.videoId}`,
-                  title,
-                  channel: 'FIFA (Official)',
-                  duration: dur || '2:00'
-                };
-                saveToCache(found);
-                return { statusCode: 200, result: found };
+      const pageUrl = 'https://cxm-api.fifa.com/fifaplusweb/api/pages/en/tournaments/mens/worldcup/canadamexicousa2026/highlights/all-matches';
+      const pageResp = await fetch(pageUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+      if (pageResp.ok) {
+        const pageData = await pageResp.json();
+        const sections = pageData.sections || [];
+        for (const section of sections) {
+          if (section.entryType !== 'sectionPromoCarousel' || !section.entryEndpoint) continue;
+          const carResp = await fetch(`https://cxm-api.fifa.com/fifaplusweb/api/${section.entryEndpoint}`, {
+            headers: { 'User-Agent': 'Mozilla/5.0' }
+          });
+          if (!carResp.ok) continue;
+          const carData = await carResp.json();
+          for (const item of carData.items || []) {
+            const wdd = item.watchDataDto;
+            if (wdd?.type !== 'video') continue;
+            const matchPart = (item.title || '').split(' | ')[0];
+            if (!matchPart.includes(' v ')) continue;
+            const [itemHome, itemAway] = matchPart.split(' v ', 2);
+            const checkMatch = (normName, code, itemName) => {
+              const normItem = normalizeTeamName(itemName);
+              const aliases = TEAM_ALIASES[normName] || [normName];
+              if (code) {
+                const c = code.toLowerCase();
+                if (!aliases.includes(c)) aliases.push(c);
               }
+              for (const alias of aliases) {
+                if (alias.length <= 3) {
+                  if (new RegExp(`\\b${alias}\\b`, 'i').test(normItem)) return true;
+                } else {
+                  if (normItem.includes(alias)) return true;
+                }
+              }
+              return false;
+            };
+            // Check both normal and swapped home/away order
+            const matchNormal = checkMatch(normHome, homeCode, itemHome) && checkMatch(normAway, awayCode, itemAway);
+            const matchSwapped = checkMatch(normHome, homeCode, itemAway) && checkMatch(normAway, awayCode, itemHome);
+            if (matchNormal || matchSwapped) {
+              const vid = wdd.videoEntryId;
+              const dur = wdd.videoDuration || 0;
+              const mins = Math.floor(dur / 60);
+              const secs = Math.floor(dur % 60);
+              const found = {
+                videoId: vid,
+                url: `https://www.fifa.com/en/watch/${vid}`,
+                title: matchPart,
+                channel: 'FIFA.com (Direct)',
+                duration: `${mins}:${secs.toString().padStart(2, '0')}`
+              };
+              saveToCache(found);
+              return { statusCode: 200, result: found };
             }
           }
         }
       }
     } catch (err) {
-      console.error('[Highlights] YouTube FIFA channel search error:', err.message);
+      console.warn('[Highlights] Page API failed:', err.message);
     }
 
   return { statusCode: 200, result: null };
