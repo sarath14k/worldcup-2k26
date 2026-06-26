@@ -148,7 +148,7 @@ async function runRatingsSync() {
   } finally {
     analytics.isRunning = false;
     if (ratingsTimeout) clearTimeout(ratingsTimeout);
-    const delay = currentlyLiveMatches ? 300000 : 1800000;
+    const delay = currentlyLiveMatches ? 60000 : 3600000;
     analytics.mode = currentlyLiveMatches ? 'live' : 'standby';
     analytics.currentInterval = delay;
     analytics.nextScheduledRun = new Date(Date.now() + delay).toISOString();
@@ -177,7 +177,7 @@ async function runLiveRatingsSync() {
   } finally {
     analytics.isRunning = false;
     if (liveRatingsTimeout) clearTimeout(liveRatingsTimeout);
-    const delay = currentlyLiveMatches ? 300000 : 1800000;
+    const delay = currentlyLiveMatches ? 60000 : 3600000;
     analytics.mode = currentlyLiveMatches ? 'live' : 'standby';
     analytics.currentInterval = delay;
     analytics.nextScheduledRun = new Date(Date.now() + delay).toISOString();
