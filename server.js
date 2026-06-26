@@ -23,68 +23,24 @@ app.use(helmet({
 }));
 app.use(compression());
 
-// Serve the live matches file dynamically from public folder (updated by scraper)
-app.get('/live-matches.json', (req, res) => {
-  const livePath = path.join(__dirname, 'public', 'live-matches.json');
-  if (fs.existsSync(livePath)) {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.sendFile(livePath);
-  } else {
-    const distPath = path.join(__dirname, 'dist', 'live-matches.json');
-    if (fs.existsSync(distPath)) {
+function serveJsonFile(req, res, filename, srcFallback) {
+  const paths = [
+    path.join(__dirname, 'public', filename),
+    path.join(__dirname, 'dist', filename),
+  ];
+  if (srcFallback) paths.push(path.join(__dirname, 'src', 'data', srcFallback));
+  for (const p of paths) {
+    if (fs.existsSync(p)) {
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.sendFile(distPath);
-    } else {
-      res.json({});
+      return res.sendFile(p);
     }
   }
-});
+  res.json(filename === 'live-matches.json' ? {} : []);
+}
 
-// Serve the fotmob player ratings file dynamically
-app.get('/fotmobPlayerRatings.json', (req, res) => {
-  const ratingsPath = path.join(__dirname, 'public', 'fotmobPlayerRatings.json');
-  if (fs.existsSync(ratingsPath)) {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.sendFile(ratingsPath);
-  } else {
-    const distPath = path.join(__dirname, 'dist', 'fotmobPlayerRatings.json');
-    if (fs.existsSync(distPath)) {
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.sendFile(distPath);
-    } else {
-      const srcPath = path.join(__dirname, 'src', 'data', 'fotmobPlayerRatings.json');
-      if (fs.existsSync(srcPath)) {
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        res.sendFile(srcPath);
-      } else {
-        res.json([]);
-      }
-    }
-  }
-});
-
-// Serve the live player ratings file dynamically
-app.get('/live-player-ratings.json', (req, res) => {
-  const ratingsPath = path.join(__dirname, 'public', 'live-player-ratings.json');
-  if (fs.existsSync(ratingsPath)) {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.sendFile(ratingsPath);
-  } else {
-    const distPath = path.join(__dirname, 'dist', 'live-player-ratings.json');
-    if (fs.existsSync(distPath)) {
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.sendFile(distPath);
-    } else {
-      const srcPath = path.join(__dirname, 'src', 'data', 'livePlayerRatings.json');
-      if (fs.existsSync(srcPath)) {
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        res.sendFile(srcPath);
-      } else {
-        res.json({});
-      }
-    }
-  }
-});
+app.get('/live-matches.json', (req, res) => serveJsonFile(req, res, 'live-matches.json'));
+app.get('/fotmobPlayerRatings.json', (req, res) => serveJsonFile(req, res, 'fotmobPlayerRatings.json', 'fotmobPlayerRatings.json'));
+app.get('/live-player-ratings.json', (req, res) => serveJsonFile(req, res, 'live-player-ratings.json', 'livePlayerRatings.json'));
 
 // ==============================
 // SCRAPER ANALYTICS TRACKING
@@ -313,7 +269,7 @@ async function runScrape() {
         const liveData = JSON.parse(fs.readFileSync(livePath, 'utf8'));
         const cacheData = fs.existsSync(cachePath) ? JSON.parse(fs.readFileSync(cachePath, 'utf8')) : {};
 
-        for (const [matchId, match] of Object.entries(liveData)) {
+        for (const [, match] of Object.entries(liveData)) {
           if (!match.isCompleted) continue;
           const homeCode = (match.home || '').toLowerCase();
           const awayCode = (match.away || '').toLowerCase();
@@ -369,7 +325,7 @@ async function runRatingsSync() {
   const startTime = Date.now();
   
   try {
-    const result = await syncRatings();
+    await syncRatings();
     const duration = Date.now() - startTime;
     recordRun('ratings', { success: true, duration });
     console.log(`[Ratings Scraper] Completed in ${duration}ms.`);
@@ -399,7 +355,7 @@ async function runLiveRatingsSync() {
   const startTime = Date.now();
   
   try {
-    const result = await scrapeLiveRatings();
+    await scrapeLiveRatings();
     const duration = Date.now() - startTime;
     recordRun('liveRatings', { success: true, duration });
     console.log(`[Live Ratings Scraper] Completed in ${duration}ms.`);

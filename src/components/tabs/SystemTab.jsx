@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Activity, Clock, CheckCircle, XCircle, Timer, Server, Wifi, WifiOff, RefreshCw, Zap, AlertTriangle } from 'lucide-react';
+import { Activity, CheckCircle, XCircle, Timer, Server, Wifi, WifiOff, RefreshCw, Zap, AlertTriangle } from 'lucide-react';
 
 function formatRelativeTime(isoString) {
   if (!isoString) return 'Never';
@@ -190,7 +190,7 @@ export default function SystemTab() {
   const [analytics, setAnalytics] = useState(null);
   const [error, setError] = useState(null);
   const [lastFetch, setLastFetch] = useState(null);
-  const [tick, setTick] = useState(0);
+  const [, forceUpdate] = useState(0);
 
   const fetchAnalytics = useCallback(async () => {
     try {
@@ -207,12 +207,13 @@ export default function SystemTab() {
 
   // Fetch analytics once on mount
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchAnalytics();
   }, [fetchAnalytics]);
 
   // Tick every second to update relative timestamps
   useEffect(() => {
-    const ticker = setInterval(() => setTick(t => t + 1), 1000);
+    const ticker = setInterval(() => forceUpdate(t => t + 1), 1000);
     return () => clearInterval(ticker);
   }, []);
 

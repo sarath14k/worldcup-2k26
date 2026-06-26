@@ -174,7 +174,6 @@ function App() {
   // Cleanup all timers on unmount
   useEffect(() => {
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       goalTimersRef.current.forEach(t => clearTimeout(t));
     };
   }, []);

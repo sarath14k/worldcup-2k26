@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Award } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
-import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, isMobile, FifaRankBadge } from '../../utils/matchHelpers';
+import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaRankBadge } from '../../utils/matchHelpers';
 import { LiveMatchesList } from '../LiveMatchesBanner';
 import { ScrollingText } from '../ScrollingText';
 
