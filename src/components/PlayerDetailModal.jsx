@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 const FOTMOB_IMG = (id) => `https://images.fotmob.com/image_resources/playerimages/${id}.png`;
 
@@ -41,7 +42,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
 
   const imageUrl = FOTMOB_IMG(playerId);
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 animate-modalEnter"
       style={{ background: 'rgba(2, 6, 23, 0.85)' }}
@@ -173,6 +174,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
