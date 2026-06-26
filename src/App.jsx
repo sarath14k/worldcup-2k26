@@ -31,13 +31,30 @@ function App() {
   const [accent, setAccent] = useState(() => localStorage.getItem('worldcup2026_accent') || 'neon');
   const [showBackToTop, setShowBackToTop] = useState(false);
 
+  const ACCENTS = {
+    neon: { main: '#00FF87', shadow: 'rgba(0, 255, 135, 0.4)', label: 'Neon' },
+    royal: { main: '#3B82F6', shadow: 'rgba(59, 130, 246, 0.4)', label: 'Royal' },
+    gold: { main: '#FBBF24', shadow: 'rgba(251, 191, 36, 0.4)', label: 'Gold' },
+    purple: { main: '#A855F7', shadow: 'rgba(168, 85, 247, 0.4)', label: 'Purple' },
+    ruby: { main: '#EF4444', shadow: 'rgba(239, 68, 68, 0.4)', label: 'Ruby' },
+    rose: { main: '#F43F5E', shadow: 'rgba(244, 63, 94, 0.4)', label: 'Rose' },
+    coral: { main: '#FF6B6B', shadow: 'rgba(255, 107, 107, 0.4)', label: 'Coral' },
+    orange: { main: '#FB923C', shadow: 'rgba(251, 146, 60, 0.4)', label: 'Orange' },
+    amber: { main: '#F59E0B', shadow: 'rgba(245, 158, 11, 0.4)', label: 'Amber' },
+    lime: { main: '#84CC16', shadow: 'rgba(132, 204, 22, 0.4)', label: 'Lime' },
+    teal: { main: '#14B8A6', shadow: 'rgba(20, 184, 166, 0.4)', label: 'Teal' },
+    cyan: { main: '#06B6D4', shadow: 'rgba(6, 182, 212, 0.4)', label: 'Cyan' },
+    sky: { main: '#0EA5E9', shadow: 'rgba(14, 165, 233, 0.4)', label: 'Sky' },
+    indigo: { main: '#6366F1', shadow: 'rgba(99, 102, 241, 0.4)', label: 'Indigo' },
+    violet: { main: '#7C3AED', shadow: 'rgba(124, 58, 237, 0.4)', label: 'Violet' },
+    pink: { main: '#EC4899', shadow: 'rgba(236, 72, 153, 0.4)', label: 'Pink' },
+    emerald: { main: '#10B981', shadow: 'rgba(16, 185, 129, 0.4)', label: 'Emerald' },
+    ice: { main: '#67E8F9', shadow: 'rgba(103, 232, 249, 0.4)', label: 'Ice' }
+  };
+  const [showAccentPicker, setShowAccentPicker] = useState(false);
+
   useEffect(() => {
-    const accents = {
-      neon: { main: '#00FF87', shadow: 'rgba(0, 255, 135, 0.4)' },
-      royal: { main: '#3B82F6', shadow: 'rgba(59, 130, 246, 0.4)' },
-      gold: { main: '#FBBF24', shadow: 'rgba(251, 191, 36, 0.4)' },
-      purple: { main: '#8B5CF6', shadow: 'rgba(139, 92, 246, 0.4)' }
-    };
+    const accents = ACCENTS;
     const choice = accents[accent] || accents.neon;
     document.documentElement.style.setProperty('--color-brand-neon', choice.main);
     document.documentElement.style.setProperty('--shadow-neon', `0 0 15px ${choice.shadow}`);
@@ -1128,29 +1145,61 @@ function App() {
               <span className="text-slate-300">World Cup Live in USA, CAN & MEX</span>
             </div>
 
-            {/* Color Accent Picker */}
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-900/60 p-1 sm:px-2.5 sm:py-1.5 rounded-full border border-slate-800/60 select-none">
-              {[
-                { id: 'neon', color: '#00FF87', label: 'Green' },
-                { id: 'royal', color: '#3B82F6', label: 'Blue' },
-                { id: 'gold', color: '#FBBF24', label: 'Gold' },
-                { id: 'purple', color: '#8B5CF6', label: 'Purple' }
-              ].map(opt => (
-                <button
-                  key={opt.id}
-                  onClick={() => {
-                    localStorage.setItem('worldcup2026_accent', opt.id);
-                    setAccent(opt.id);
-                  }}
-                  className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border transition-all cursor-pointer shrink-0 ${
-                    accent === opt.id 
-                      ? 'scale-125 ring-2 ring-current border-current shadow-lg' 
-                      : 'border-transparent hover:scale-110'
-                  }`}
-                  style={{ backgroundColor: opt.color }}
-                  title={`Use ${opt.label} Accent`}
-                />
-              ))}
+            {/* Color Accent Picker — single dot opens popup */}
+            <div className="relative">
+              <button
+                onClick={() => setShowAccentPicker(true)}
+                className="w-7 h-7 rounded-full border-2 border-slate-700/80 transition-all cursor-pointer hover:scale-110 hover:border-slate-500 shrink-0 shadow-lg"
+                style={{ backgroundColor: ACCENTS[accent]?.main || '#00FF87' }}
+                title="Change accent color"
+              />
+              {showAccentPicker && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={() => setShowAccentPicker(false)}>
+                  <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+                  <div
+                    className="relative bg-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 max-w-md w-full shadow-2xl animate-fadeIn"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-white font-bold text-sm">Accent Color</h3>
+                      <button
+                        onClick={() => setShowAccentPicker(false)}
+                        className="text-slate-500 hover:text-white transition-colors text-lg leading-none cursor-pointer border-0 bg-transparent"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-6 gap-2.5">
+                      {Object.entries(ACCENTS).map(([id, opt]) => (
+                        <button
+                          key={id}
+                          onClick={() => {
+                            localStorage.setItem('worldcup2026_accent', id);
+                            setAccent(id);
+                            setShowAccentPicker(false);
+                          }}
+                          className={`w-full aspect-square rounded-xl border-2 transition-all cursor-pointer relative ${
+                            accent === id
+                              ? 'border-white scale-110 shadow-lg z-10'
+                              : 'border-transparent hover:scale-110 hover:z-10'
+                          }`}
+                          style={{ backgroundColor: opt.main }}
+                          title={opt.label}
+                        >
+                          {accent === id && (
+                            <span className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-black/60 drop-shadow-sm">
+                              ✓
+                            </span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                    <p className="text-[10px] text-slate-600 text-center mt-4">
+                      Selected: <span className="text-slate-300 font-semibold">{ACCENTS[accent]?.label}</span>
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Theme Selector Toggle */}
