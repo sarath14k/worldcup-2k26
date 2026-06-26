@@ -11,7 +11,7 @@ function formatDate(dateStr) {
 
 const StatBadge = ({ label, value }) => (
   <div className="flex flex-col items-center bg-slate-800/50 rounded-xl px-3 py-2 border border-slate-700/30 min-w-[60px]">
-    <span className="text-lg font-black text-white">{value ?? '-'}</span>
+    <span className="text-lg font-black text-white">{typeof value === 'number' ? Math.round(value * 100) / 100 : value ?? '-'}</span>
     <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wide">{label}</span>
   </div>
 );

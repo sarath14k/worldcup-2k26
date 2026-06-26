@@ -72,7 +72,9 @@ function extractPlayerInfo(data) {
   }));
   pi.seasonStats = {};
   for (const stat of (data.mainLeague?.stats || [])) {
-    pi.seasonStats[stat.title] = stat.value;
+    let val = stat.value;
+    if (stat.title === 'Rating' && typeof val === 'number') val = Math.round(val * 100) / 100;
+    pi.seasonStats[stat.title] = val;
   }
   return pi;
 }
