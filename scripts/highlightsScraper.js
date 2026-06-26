@@ -199,12 +199,11 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
     }
   }
 
-  // 1. Search official FIFA.com search API (primary)
-  try {
-    const cleanHome = home.replace(/&/g, 'and');
-    const cleanAway = away.replace(/&/g, 'and');
-    const searchString = `${cleanHome} vs ${cleanAway} highlights`;
-    const searchUrl = `https://cxm-api.fifa.com/fifacxmsearch/api/results?locale=en&searchString=${encodeURIComponent(searchString)}&clientType=fifaplus&type=search&context=default&size=20&sort=relevance&dateFrom=1900-01-01`;
+    // 1. Search official FIFA.com search API (primary)
+    try {
+      // Improved search query: use more generic terms that FIFA's search engine handles better
+      const searchString = `${home} ${away} highlights`;
+      const searchUrl = `https://cxm-api.fifa.com/fifacxmsearch/api/results?locale=en&searchString=${encodeURIComponent(searchString)}&clientType=fifaplus&type=search&context=default&size=20&sort=relevance&dateFrom=1900-01-01`;
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 3000);
@@ -289,35 +288,54 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
     console.warn('[Highlights] FIFA Search API failed, trying YouTube:', err.message);
   }
 
-  // 2. Fallback to YouTube (always embeddable in iframe)
-  try {
-    const cleanHome = home.replace(/&/g, 'and');
-    const cleanAway = away.replace(/&/g, 'and');
-    const query = `${cleanHome} vs ${cleanAway} match highlights`;
-    const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-    
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
-    const response = await fetch(searchUrl, {
-      signal: controller.signal,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-      }
-    });
-    clearTimeout(timeoutId);
+    // 2. Fallback to YouTube (restrict to official FIFA channel ONLY)
+    try {
+      const query = `${home} vs ${away} FIFA World Cup highlights`;
+      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=EgIQAQ%253D%253D`; // Add &sp=EgIQAQ%253D%253D for video-only
+      
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000);
+      const response = await fetch(searchUrl, {
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+      });
+      clearTimeout(timeoutId);
 
-    if (response.ok) {
-      const html = await response.text();
-      const found = findBestHighlight(html, home, away, homeCode, awayCode);
-
-      if (found) {
-        saveToCache(found);
-        return { statusCode: 200, result: found };
+      if (response.ok) {
+        const html = await response.text();
+        const dataMatch = html.match(/ytInitialData\s*=\s*({.+?});/);
+        if (dataMatch) {
+          const data = JSON.parse(dataMatch[1]);
+          // Navigate to find videoRenderer
+          const contents = data.contents?.twoColumnSearchResultsRenderer?.primaryContents?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents;
+          if (contents) {
+            for (const item of contents) {
+              const vr = item.videoRenderer;
+              if (vr) {
+                // RESTRICT TO OFFICIAL FIFA CHANNEL: 
+                // FIFA's channel ID is UCPctRCXblq78gZrtutLwebw
+                const channelId = vr.ownerEndpoint?.browseEndpoint?.browseId;
+                if (channelId === 'UCPctRCXblq78gZrtutLwebw') {
+                  const found = {
+                    videoId: vr.videoId,
+                    url: `https://www.youtube.com/embed/${vr.videoId}`,
+                    title: vr.title?.runs?.[0]?.text,
+                    channel: 'FIFA (Official)',
+                    duration: vr.lengthText?.simpleText || '2:00'
+                  };
+                  saveToCache(found);
+                  return { statusCode: 200, result: found };
+                }
+              }
+            }
+          }
+        }
       }
+    } catch (err) {
+      console.error('[Highlights] YouTube official fallback error:', err.message);
     }
-  } catch (err) {
-    console.error('[Highlights] YouTube search fallback error:', err.message);
-  }
 
   // 3. Ultimate Fallback to a matching match highlights query on YouTube embed
   const fallbackVideoId = "3UWnTaKiCgw"; // fallback video placeholder
