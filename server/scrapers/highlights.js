@@ -98,7 +98,7 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
           for (const item of carData.items || []) {
             const wdd = item.watchDataDto;
             if (wdd?.type !== 'video') continue;
-            const matchPart = (item.title || '').split(' | ')[0];
+            const matchPart = (item.title || '').split(/\s*\|\s*/)[0];
             if (!matchPart.includes(' v ')) continue;
             const [itemHome, itemAway] = matchPart.split(' v ', 2);
             const checkMatch = (normName, code, itemName) => {

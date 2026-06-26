@@ -135,7 +135,7 @@
   "aus_vs_tur": {
     "videoId": "6qvmyR3k0BcpuPrSmer7Mf",
     "url": "https://www.fifa.com/en/watch/6qvmyR3k0BcpuPrSmer7Mf",
-    "title": "Australia v T\u00fcrkiye",
+    "title": "Australia v Türkiye",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
@@ -149,7 +149,7 @@
   "par_vs_tur": {
     "videoId": "6gtrw3fGvuONahHQd4yE67",
     "url": "https://www.fifa.com/en/watch/6gtrw3fGvuONahHQd4yE67",
-    "title": "T\u00fcrkiye v Paraguay",
+    "title": "Türkiye v Paraguay",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
@@ -163,28 +163,28 @@
   "ger_vs_cuw": {
     "videoId": "3MSlsbd2rcnTGlcG4jhpdR",
     "url": "https://www.fifa.com/en/watch/3MSlsbd2rcnTGlcG4jhpdR",
-    "title": "Germany v Cura\u00e7ao",
+    "title": "Germany v Curaçao",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
   "civ_vs_ecu": {
     "videoId": "4P79SuyJHO3ZGVuRYxjots",
     "url": "https://www.fifa.com/en/watch/4P79SuyJHO3ZGVuRYxjots",
-    "title": "C\u00f4te d'Ivoire v Ecuador",
+    "title": "Côte d'Ivoire v Ecuador",
     "channel": "FIFA.com (Direct)",
     "duration": "2:00"
   },
   "ger_vs_civ": {
     "videoId": "2ofHeol8LZn44A3ThxLwdE",
     "url": "https://www.fifa.com/en/watch/2ofHeol8LZn44A3ThxLwdE",
-    "title": "Germany v C\u00f4te d'Ivoire",
+    "title": "Germany v Côte d'Ivoire",
     "channel": "FIFA.com (Direct)",
     "duration": "2:13"
   },
   "cuw_vs_ecu": {
     "videoId": "6lI7ddpjskKW6dYr7nB7I4",
     "url": "https://www.fifa.com/en/watch/6lI7ddpjskKW6dYr7nB7I4",
-    "title": "Ecuador v Cura\u00e7ao",
+    "title": "Ecuador v Curaçao",
     "channel": "FIFA.com (Direct)",
     "duration": "2:00"
   },
@@ -198,7 +198,7 @@
   "cuw_vs_civ": {
     "videoId": "450gMxJHBSeV5QctbBsC9o",
     "url": "https://www.fifa.com/en/watch/450gMxJHBSeV5QctbBsC9o",
-    "title": "Cura\u00e7ao v C\u00f4te d'Ivoire",
+    "title": "Curaçao v Côte d'Ivoire",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   },
@@ -423,6 +423,13 @@
     "videoId": "lLPqiMKeKkrKkEqOj9dxU",
     "url": "https://www.fifa.com/en/watch/lLPqiMKeKkrKkEqOj9dxU",
     "title": "Scotland v Morocco",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14"
+  },
+  "tur_vs_usa": {
+    "videoId": "qE2AtDA3GeQvnPPOcQCmi",
+    "url": "https://www.fifa.com/en/watch/qE2AtDA3GeQvnPPOcQCmi",
+    "title": "Türkiye v USA",
     "channel": "FIFA.com (Direct)",
     "duration": "2:14"
   }
