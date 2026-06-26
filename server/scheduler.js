@@ -34,7 +34,7 @@ function computeScrapeDelay({ liveCount, nextMatchTime, lastMatchEndTime }) {
       return { delay: 120000, mode: 'pre-match', reason: `Next match in ${Math.floor(timeToMatch / 60000)}min` };
     }
     if (timeToMatch > 20 * 60 * 1000 && timeToMatch <= 120 * 60 * 1000) {
-      return { delay: 120000, mode: 'standby', reason: `Next match in ${Math.floor(timeToMatch / 60000)}min` };
+      return { delay: 3600000, mode: 'standby', reason: `Next match in ${Math.floor(timeToMatch / 60000)}min` };
     }
   }
 
