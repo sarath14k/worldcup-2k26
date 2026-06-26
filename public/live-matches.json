@@ -6,6 +6,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -283,7 +284,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "MEX",
+    "away": "RSA"
   },
   "2": {
     "homeScore": 2,
@@ -292,6 +295,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -514,7 +518,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "KOR",
+    "away": "CZE"
   },
   "3": {
     "homeScore": 1,
@@ -523,6 +529,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -735,7 +742,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "MEX",
+    "away": "KOR"
   },
   "4": {
     "homeScore": 1,
@@ -744,6 +753,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -961,7 +971,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "RSA",
+    "away": "CZE"
   },
   "5": {
     "homeScore": 3,
@@ -970,27 +982,28 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
-        "player": "Mateo CHAVEZ",
+        "player": "Mateo Chávez",
         "minute": 55
       },
       {
         "team": "home",
-        "player": "Julian QUINONES",
+        "player": "Julián Quiñones",
         "minute": 61
       },
       {
         "team": "home",
-        "player": "Alvaro FIDALGO",
+        "player": "Álvaro Fidalgo",
         "minute": 94
       }
     ],
     "stats": {
       "possession": [
-        46,
-        44
+        48.1,
+        51.9
       ],
       "shots": [
         11,
@@ -1019,498 +1032,236 @@
     },
     "timeline": [
       {
-        "type": "Coin Toss",
-        "text": "Mexico won the coin toss and chose to kick off",
+        "type": "Kickoff",
+        "text": "",
         "minute": 0,
-        "minuteStr": "0'"
+        "minuteStr": ""
       },
       {
-        "type": "Start Time",
-        "text": "The referee signals the start of the first period.",
-        "minute": 1,
-        "minuteStr": "1'"
-      },
-      {
-        "type": "Foul",
-        "text": "Guillermo MARTINEZ (Mexico) commits a foul.",
-        "minute": 1,
-        "minuteStr": "1'"
-      },
-      {
-        "type": "Foul",
-        "text": "Mateo CHAVEZ (Mexico) commits a foul.",
-        "minute": 4,
-        "minuteStr": "4'"
-      },
-      {
-        "type": "Foul",
-        "text": "Vladimir COUFAL (Czechia) commits a foul.",
-        "minute": 5,
-        "minuteStr": "5'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Vladimir COUFAL (Czechia) attempts an effort on goal.",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Denis VISINSKY (Czechia) attempts an effort on goal.",
-        "minute": 8,
-        "minuteStr": "8'"
-      },
-      {
-        "type": "Foul",
-        "text": "Edson ALVAREZ (Mexico) commits a foul.",
-        "minute": 10,
-        "minuteStr": "10'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Michal SADILEK (Czechia) attempts an effort on goal.",
-        "minute": 12,
-        "minuteStr": "12'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Denis VISINSKY (Czechia) attempts an effort on goal.",
-        "minute": 15,
-        "minuteStr": "15'"
-      },
-      {
-        "type": "Foul",
-        "text": "Luis ROMO (Mexico) commits a foul.",
-        "minute": 16,
-        "minuteStr": "16'"
-      },
-      {
-        "type": "Foul",
-        "text": "Adam HLOZEK (Czechia) commits a foul.",
-        "minute": 17,
-        "minuteStr": "17'"
-      },
-      {
-        "type": "Foul",
-        "text": "Robin HRANAC (Czechia) commits a foul.",
-        "minute": 21,
-        "minuteStr": "21'"
-      },
-      {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 22,
         "minuteStr": "22'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "Start Delay",
+        "text": "",
+        "minute": 22,
+        "minuteStr": "22'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
         "minute": 26,
         "minuteStr": "26'"
       },
       {
-        "type": "Foul",
-        "text": "Guillermo MARTINEZ (Mexico) commits a foul.",
+        "type": "End Delay",
+        "text": "",
         "minute": 26,
         "minuteStr": "26'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Denis VISINSKY (Czechia) attempts an effort on goal.",
-        "minute": 27,
-        "minuteStr": "27'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lukas CERV (Czechia) commits a foul.",
-        "minute": 36,
-        "minuteStr": "36'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Israel REYES (Mexico) attempts an effort on goal.",
-        "minute": 37,
-        "minuteStr": "37'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Gilberto MORA (Mexico) attempts an effort on goal.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Jorge SANCHEZ (Mexico) attempts an effort on goal.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Czechia pulls off a save.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Roberto ALVARADO (Mexico) attempts an effort on goal.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Foul",
-        "text": "Cesar MONTES (Mexico) commits a foul.",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Foul",
-        "text": "Guillermo MARTINEZ (Mexico) commits a foul.",
-        "minute": 43,
-        "minuteStr": "43'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "David DOUDERA (Czechia) attempts an effort on goal.",
-        "minute": 44,
-        "minuteStr": "44'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Julian QUINONES (Mexico) attempts an effort on goal.",
-        "minute": 48,
-        "minuteStr": "45'+3"
-      },
-      {
-        "type": "Foul",
-        "text": "Tomas HOLES (Czechia) commits a foul.",
-        "minute": 48,
-        "minuteStr": "45'+3"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the first period to an end.",
-        "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "Start Time",
-        "text": "The referee signals the start of the second period.",
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Michal Sadílek (Czechia).",
         "minute": 45,
         "minuteStr": "45'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Lukas CERV (Czechia) attempts an effort on goal.",
+        "type": "Start Delay",
+        "text": "",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 46,
+        "minuteStr": "45'+1'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 46,
+        "minuteStr": "45'+1'"
+      },
+      {
+        "type": "Halftime",
+        "text": "",
+        "minute": 49,
+        "minuteStr": "45'+4'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Tomás Holes (Czechia).",
         "minute": 46,
         "minuteStr": "46'"
       },
       {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Mexico pulls off a save.",
+        "type": "Start Delay",
+        "text": "",
         "minute": 46,
         "minuteStr": "46'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Julian QUINONES (Mexico) attempts an effort on goal.",
-        "minute": 50,
-        "minuteStr": "50'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 47,
+        "minuteStr": "47'"
       },
       {
-        "type": "Offside",
-        "text": "Pavel SULC (Czechia) is ruled offside.",
-        "minute": 51,
-        "minuteStr": "51'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 47,
+        "minuteStr": "47'"
       },
       {
-        "type": "Foul",
-        "text": "Edson ALVAREZ (Mexico) commits a foul.",
-        "minute": 52,
-        "minuteStr": "52'"
-      },
-      {
-        "type": "Foul",
-        "text": "Edson ALVAREZ (Mexico) commits a foul.",
-        "minute": 53,
-        "minuteStr": "53'"
-      },
-      {
-        "type": "Corner",
-        "text": "Michal SADILEK (Czechia) takes a corner kick.",
-        "minute": 54,
-        "minuteStr": "54'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Lukas CERV (Czechia) attempts an effort on goal.",
-        "minute": 54,
-        "minuteStr": "54'"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by Luis ROMO.",
-        "minute": 55,
-        "minuteStr": "55'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Mateo CHAVEZ (Mexico) attempts an effort on goal.",
-        "minute": 55,
-        "minuteStr": "55'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Mateo CHAVEZ (Mexico) scores!!",
+        "type": "Goal",
+        "text": "Goal! Czechia 0, Mexico 1. Mateo Chávez (Mexico) left footed shot from the centre of the box to the bottom left corner. Assisted by Luis Romo.",
         "minute": 55,
         "minuteStr": "55'"
       },
       {
         "type": "Substitution",
-        "text": "Lukas PROVOD (in) comes off the bench to replace Denis VISINSKY (out) (Czechia)",
+        "text": "Substitution, Czechia. Lukás Provod replaces Denis Visinsky.",
         "minute": 56,
         "minuteStr": "56'"
       },
       {
-        "type": "Foul",
-        "text": "Lukas PROVOD (Czechia) commits a foul.",
-        "minute": 57,
-        "minuteStr": "57'"
-      },
-      {
-        "type": "Foul",
-        "text": "Julian QUINONES (Mexico) commits a foul.",
-        "minute": 58,
-        "minuteStr": "58'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Michal SADILEK (Czechia) attempts an effort on goal.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by Jorge SANCHEZ.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Julian QUINONES (Mexico) attempts an effort on goal.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Julian QUINONES (Mexico) scores!!",
+        "type": "Goal",
+        "text": "Goal! Czechia 0, Mexico 2. Julián Quiñones (Mexico) right footed shot from very close range to the centre of the goal. Assisted by Jorge Sánchez following a fast break.",
         "minute": 61,
         "minuteStr": "61'"
       },
       {
         "type": "Substitution",
-        "text": "Santiago GIMENEZ (in) comes off the bench to replace Guillermo MARTINEZ (out) (Mexico)",
+        "text": "Substitution, Mexico. Santiago Giménez replaces Guillermo Martínez.",
         "minute": 63,
         "minuteStr": "63'"
       },
       {
         "type": "Substitution",
-        "text": "Obed VARGAS (in) comes off the bench to replace Luis ROMO (out) (Mexico)",
+        "text": "Substitution, Mexico. Obed Vargas replaces Luis Romo.",
         "minute": 63,
         "minuteStr": "63'"
       },
       {
-        "type": "Yellow card",
-        "text": "Edson ALVAREZ (Mexico) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Edson Álvarez (Mexico) is shown the yellow card for a bad foul.",
         "minute": 64,
         "minuteStr": "64'"
       },
       {
         "type": "Substitution",
-        "text": "Tomas SOUCEK (in) comes off the bench to replace Tomas HOLES (out) (Czechia)",
+        "text": "Substitution, Czechia. Patrik Schick replaces Adam Hlozek.",
         "minute": 64,
         "minuteStr": "64'"
       },
       {
         "type": "Substitution",
-        "text": "Patrik SCHICK (in) comes off the bench to replace Adam HLOZEK (out) (Czechia)",
+        "text": "Substitution, Czechia. Tomás Soucek replaces Tomás Holes.",
         "minute": 64,
         "minuteStr": "64'"
       },
       {
-        "type": "Corner",
-        "text": "Vladimir COUFAL (Czechia) takes a corner kick.",
-        "minute": 66,
-        "minuteStr": "66'"
-      },
-      {
-        "type": "Corner",
-        "text": "Michal SADILEK (Czechia) takes a corner kick.",
-        "minute": 67,
-        "minuteStr": "67'"
-      },
-      {
-        "type": "Corner",
-        "text": "Vladimir COUFAL (Czechia) takes a corner kick.",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 68,
         "minuteStr": "68'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "David DOUDERA (Czechia) attempts an effort on goal.",
+        "type": "Start Delay",
+        "text": "",
         "minute": 68,
         "minuteStr": "68'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
-        "minute": 68,
-        "minuteStr": "68'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 71,
+        "minuteStr": "71'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "End Delay",
+        "text": "",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
         "type": "Substitution",
-        "text": "Alvaro FIDALGO (in) comes off the bench to replace Gilberto MORA (out) (Mexico)",
+        "text": "Substitution, Mexico. Álvaro Fidalgo replaces Gilberto Mora.",
         "minute": 72,
         "minuteStr": "72'"
       },
       {
-        "type": "Foul",
-        "text": "Robin HRANAC (Czechia) commits a foul.",
-        "minute": 74,
-        "minuteStr": "74'"
-      },
-      {
-        "type": "Corner",
-        "text": "Michal SADILEK (Czechia) takes a corner kick.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Foul",
-        "text": "Tomas SOUCEK (Czechia) commits a foul.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Julian QUINONES (Mexico) attempts an effort on goal.",
-        "minute": 77,
-        "minuteStr": "77'"
-      },
-      {
         "type": "Substitution",
-        "text": "Guillermo OCHOA (in) comes off the bench to replace Raul RANGEL (out) (Mexico)",
+        "text": "Substitution, Mexico. Guillermo Ochoa replaces Raúl Rangel.",
         "minute": 78,
         "minuteStr": "78'"
       },
       {
         "type": "Substitution",
-        "text": "Jesus GALLARDO (in) comes off the bench to replace Mateo CHAVEZ (out) (Mexico)",
+        "text": "Substitution, Mexico. Jesús Gallardo replaces Mateo Chávez.",
         "minute": 78,
         "minuteStr": "78'"
       },
       {
-        "type": "Corner",
-        "text": "Roberto ALVARADO (Mexico) takes a corner kick.",
-        "minute": 79,
-        "minuteStr": "79'"
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Tomás Soucek (Czechia).",
+        "minute": 84,
+        "minuteStr": "84'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "David DOUDERA (Czechia) attempts an effort on goal.",
-        "minute": 81,
-        "minuteStr": "81'"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 84,
+        "minuteStr": "84'"
       },
       {
-        "type": "Foul",
-        "text": "Patrik SCHICK (Czechia) commits a foul.",
-        "minute": 81,
-        "minuteStr": "81'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 86,
+        "minuteStr": "86'"
       },
       {
-        "type": "Foul",
-        "text": "Jorge SANCHEZ (Mexico) commits a foul.",
-        "minute": 82,
-        "minuteStr": "82'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 86,
+        "minuteStr": "86'"
       },
       {
         "type": "Substitution",
-        "text": "Tomas CHORY (in) comes off the bench to replace Lukas CERV (out) (Czechia)",
+        "text": "Substitution, Czechia. Tomás Chory replaces Lukás Cerv.",
         "minute": 87,
         "minuteStr": "87'"
       },
       {
         "type": "Substitution",
-        "text": "Alexandr SOJKA (in) comes off the bench to replace Tomas SOUCEK (out) (Czechia)",
+        "text": "Substitution, Czechia. Alexandr Sojka replaces Tomás Soucek because of an injury.",
         "minute": 87,
         "minuteStr": "87'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Pavel SULC (Czechia) attempts an effort on goal.",
-        "minute": 92,
-        "minuteStr": "90'+2"
-      },
-      {
-        "type": "Foul",
-        "text": "Obed VARGAS (Mexico) commits a foul.",
-        "minute": 92,
-        "minuteStr": "90'+2"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "David DOUDERA (Czechia) attempts an effort on goal.",
-        "minute": 93,
-        "minuteStr": "90'+3"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Santiago GIMENEZ (Mexico) attempts an effort on goal.",
+        "type": "Goal",
+        "text": "Goal! Czechia 0, Mexico 3. Álvaro Fidalgo (Mexico) right footed shot from the centre of the box to the top left corner. Assisted by Roberto Alvarado.",
         "minute": 94,
-        "minuteStr": "90'+4"
+        "minuteStr": "90'+4'"
       },
       {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Czechia pulls off a save.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by Roberto ALVARADO.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Alvaro FIDALGO (Mexico) attempts an effort on goal.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Goal!",
-        "text": "Alvaro FIDALGO (Mexico) scores!!",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the second period to an end.",
+        "type": "End Regular Time",
+        "text": "",
         "minute": 97,
-        "minuteStr": "90'+7"
-      },
-      {
-        "type": "Match end",
-        "text": "The final whistle sounds.",
-        "minute": 98,
-        "minuteStr": "90'+8"
+        "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "MEX",
+    "away": "CZE"
   },
   "6": {
     "homeScore": 1,
@@ -1519,17 +1270,18 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
-        "player": "Thapelo MASEKO",
+        "player": "Thapelo Maseko",
         "minute": 63
       }
     ],
     "stats": {
       "possession": [
-        30,
-        60
+        31.6,
+        68.4
       ],
       "shots": [
         13,
@@ -1558,456 +1310,146 @@
     },
     "timeline": [
       {
-        "type": "Coin Toss",
-        "text": "Korea Republic won the coin toss and chose to kick off",
+        "type": "Kickoff",
+        "text": "",
         "minute": 0,
-        "minuteStr": "0'"
+        "minuteStr": ""
       },
       {
-        "type": "Start Time",
-        "text": "The referee signals the start of the first period.",
-        "minute": 1,
-        "minuteStr": "1'"
-      },
-      {
-        "type": "Corner",
-        "text": "LEE Kangin (Korea Republic) takes a corner kick.",
-        "minute": 2,
-        "minuteStr": "2'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "KIM Minjae (Korea Republic) attempts an effort on goal.",
-        "minute": 2,
-        "minuteStr": "2'"
-      },
-      {
-        "type": "Foul",
-        "text": "LEE Taeseok (Korea Republic) commits a foul.",
-        "minute": 3,
-        "minuteStr": "3'"
-      },
-      {
-        "type": "Corner",
-        "text": "Oswin APPOLLIS (South Africa) takes a corner kick.",
-        "minute": 6,
-        "minuteStr": "6'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Relebohile MOFOKENG (South Africa) attempts an effort on goal.",
-        "minute": 6,
-        "minuteStr": "6'"
-      },
-      {
-        "type": "Corner",
-        "text": "Oswin APPOLLIS (South Africa) takes a corner kick.",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "OH Hyeongyu (Korea Republic) attempts an effort on goal.",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "LEE Kangin (Korea Republic) attempts an effort on goal.",
-        "minute": 8,
-        "minuteStr": "8'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Evidence MAKGOPA (South Africa) attempts an effort on goal.",
-        "minute": 14,
-        "minuteStr": "14'"
-      },
-      {
-        "type": "Foul",
-        "text": "LEE Taeseok (Korea Republic) commits a foul.",
-        "minute": 15,
-        "minuteStr": "15'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Thapelo MASEKO (South Africa) attempts an effort on goal.",
-        "minute": 19,
-        "minuteStr": "19'"
-      },
-      {
-        "type": "Corner",
-        "text": "Relebohile MOFOKENG (South Africa) takes a corner kick.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Oswin APPOLLIS (South Africa) attempts an effort on goal.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Korea Republic pulls off a save.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Offside",
-        "text": "Evidence MAKGOPA (South Africa) is ruled offside.",
-        "minute": 22,
-        "minuteStr": "22'"
-      },
-      {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 23,
         "minuteStr": "23'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "Start Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
         "minute": 26,
         "minuteStr": "26'"
       },
       {
-        "type": "Corner",
-        "text": "LEE Kangin (Korea Republic) takes a corner kick.",
-        "minute": 27,
-        "minuteStr": "27'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 26,
+        "minuteStr": "26'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Thalente MBATHA (South Africa) attempts an effort on goal.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Korea Republic pulls off a save.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Evidence MAKGOPA (South Africa) attempts an effort on goal.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Korea Republic pulls off a save.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Foul",
-        "text": "Thalente MBATHA (South Africa) commits a foul.",
-        "minute": 34,
-        "minuteStr": "34'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "HWANG Heechan (Korea Republic) attempts an effort on goal.",
-        "minute": 34,
-        "minuteStr": "34'"
-      },
-      {
-        "type": "Foul",
-        "text": "Sphephelo SITHOLE (South Africa) commits a foul.",
-        "minute": 36,
-        "minuteStr": "36'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Thapelo MASEKO (South Africa) attempts an effort on goal.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Foul",
-        "text": "HWANG Heechan (Korea Republic) commits a foul.",
-        "minute": 40,
-        "minuteStr": "40'"
-      },
-      {
-        "type": "Foul",
-        "text": "LEE Gihyuk (Korea Republic) commits a foul.",
-        "minute": 41,
-        "minuteStr": "41'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Relebohile MOFOKENG (South Africa) attempts an effort on goal.",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Thapelo MASEKO (South Africa) attempts an effort on goal.",
-        "minute": 43,
-        "minuteStr": "43'"
-      },
-      {
-        "type": "Offside",
-        "text": "Aubrey MODIBA (South Africa) is ruled offside.",
-        "minute": 44,
-        "minuteStr": "44'"
-      },
-      {
-        "type": "Offside",
-        "text": "Evidence MAKGOPA (South Africa) is ruled offside.",
-        "minute": 47,
-        "minuteStr": "45'+2"
-      },
-      {
-        "type": "Corner",
-        "text": "Thapelo MASEKO (South Africa) takes a corner kick.",
-        "minute": 49,
-        "minuteStr": "45'+4"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Aubrey MODIBA (South Africa) attempts an effort on goal.",
+        "type": "Halftime",
+        "text": "",
         "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the first period to an end.",
-        "minute": 50,
-        "minuteStr": "45'+5"
+        "minuteStr": "45'+5'"
       },
       {
         "type": "Substitution",
-        "text": "Before the second half begins SON Heungmin (in) comes off the bench to replace HWANG Heechan (out) (Korea Republic)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Substitution",
-        "text": "Before the second half begins KIM Jingyu (in) comes off the bench to replace PAIK Seungho (out) (Korea Republic)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Substitution",
-        "text": "Before the second half begins CASTROP Jens (in) comes off the bench to replace LEE Taeseok (out) (Korea Republic)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Start Time",
-        "text": "The referee signals the start of the second period.",
+        "text": "Substitution, Korea Republic. Son Heung-Min replaces Hwang Hee-Chan.",
         "minute": 45,
         "minuteStr": "45'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Thapelo MASEKO (South Africa) attempts an effort on goal.",
-        "minute": 51,
-        "minuteStr": "51'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Thalente MBATHA (South Africa) attempts an effort on goal.",
-        "minute": 51,
-        "minuteStr": "51'"
-      },
-      {
-        "type": "Foul",
-        "text": "Oswin APPOLLIS (South Africa) commits a foul.",
-        "minute": 54,
-        "minuteStr": "54'"
-      },
-      {
-        "type": "Foul",
-        "text": "Evidence MAKGOPA (South Africa) commits a foul.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "OH Hyeongyu (Korea Republic) attempts an effort on goal.",
-        "minute": 60,
-        "minuteStr": "60'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of South Africa pulls off a save.",
-        "minute": 60,
-        "minuteStr": "60'"
+        "type": "Substitution",
+        "text": "Substitution, Korea Republic. Kim Jin-Gyu replaces Paik Seung-Ho.",
+        "minute": 45,
+        "minuteStr": "45'"
       },
       {
         "type": "Substitution",
-        "text": "Tshepang MOREMI (in) comes off the bench to replace Oswin APPOLLIS (out) (South Africa)",
+        "text": "Substitution, Korea Republic. Jens Castrop replaces Lee Tae-Seok.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, South Africa. Tshepang Moremi replaces Oswin Appollis.",
         "minute": 62,
         "minuteStr": "62'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Tshepang MOREMI.",
+        "type": "Goal",
+        "text": "Goal! South Africa 1, Korea Republic 0. Thapelo Maseko (South Africa) left footed shot from the centre of the box to the bottom right corner. Assisted by Tshepang Moremi following a fast break.",
         "minute": 63,
         "minuteStr": "63'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Thapelo MASEKO (South Africa) attempts an effort on goal.",
-        "minute": 63,
-        "minuteStr": "63'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Thapelo MASEKO (South Africa) scores!!",
-        "minute": 63,
-        "minuteStr": "63'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Korea Republic pulls off a save.",
-        "minute": 63,
-        "minuteStr": "63'"
-      },
-      {
-        "type": "Foul",
-        "text": "CASTROP Jens (Korea Republic) commits a foul.",
+        "type": "Substitution",
+        "text": "Substitution, Korea Republic. Park Jin-Seob replaces Kim Min-Jae.",
         "minute": 65,
         "minuteStr": "65'"
       },
       {
-        "type": "Substitution",
-        "text": "PARK Jinseob (in) comes off the bench to replace KIM Minjae (out) (Korea Republic)",
-        "minute": 65,
-        "minuteStr": "65'"
-      },
-      {
-        "type": "Foul",
-        "text": "CASTROP Jens (Korea Republic) commits a foul.",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 69,
         "minuteStr": "69'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "",
         "minute": 69,
         "minuteStr": "69'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
-        "minute": 72,
-        "minuteStr": "72'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 71,
+        "minuteStr": "71'"
       },
       {
-        "type": "Yellow card",
-        "text": "Aubrey MODIBA (South Africa) is booked by the referee.",
-        "minute": 72,
-        "minuteStr": "72'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Aubrey Modiba (South Africa) is shown the yellow card for a bad foul.",
+        "minute": 73,
+        "minuteStr": "73'"
       },
       {
         "type": "Substitution",
-        "text": "CHO Guesung (in) comes off the bench to replace OH Hyeongyu (out) (Korea Republic)",
+        "text": "Substitution, Korea Republic. Cho Gue-Sung replaces Oh Hyeon-Gyu.",
         "minute": 74,
         "minuteStr": "74'"
       },
       {
         "type": "Substitution",
-        "text": "Iqraam RAYNERS (in) comes off the bench to replace Thapelo MASEKO (out) (South Africa)",
+        "text": "Substitution, South Africa. Iqraam Rayners replaces Thapelo Maseko.",
         "minute": 75,
         "minuteStr": "75'"
       },
       {
-        "type": "Corner",
-        "text": "LEE Kangin (Korea Republic) takes a corner kick.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Foul",
-        "text": "Khuliso MUDAU (South Africa) commits a foul.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Foul",
-        "text": "LEE Hanbeom (Korea Republic) commits a foul.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Yellow card",
-        "text": "CHO Guesung (Korea Republic) is booked by the referee.",
-        "minute": 78,
-        "minuteStr": "78'"
+        "type": "Yellow Card",
+        "text": "Cho Gue-Sung (Korea Republic) is shown the yellow card for a bad foul.",
+        "minute": 79,
+        "minuteStr": "79'"
       },
       {
         "type": "Substitution",
-        "text": "Jayden ADAMS (in) comes off the bench to replace Relebohile MOFOKENG (out) (South Africa)",
+        "text": "Substitution, South Africa. Jayden Adams replaces Relebohile Mofokeng.",
         "minute": 80,
         "minuteStr": "80'"
       },
       {
-        "type": "Foul",
-        "text": "Tshepang MOREMI (South Africa) commits a foul.",
-        "minute": 83,
-        "minuteStr": "83'"
-      },
-      {
-        "type": "Corner",
-        "text": "LEE Kangin (Korea Republic) takes a corner kick.",
-        "minute": 85,
-        "minuteStr": "85'"
-      },
-      {
-        "type": "Corner",
-        "text": "SON Heungmin (Korea Republic) takes a corner kick.",
-        "minute": 86,
-        "minuteStr": "86'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "SEOL Youngwoo (Korea Republic) attempts an effort on goal.",
-        "minute": 86,
-        "minuteStr": "86'"
-      },
-      {
-        "type": "Foul",
-        "text": "CASTROP Jens (Korea Republic) commits a foul.",
-        "minute": 87,
-        "minuteStr": "87'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "SON Heungmin (Korea Republic) attempts an effort on goal.",
-        "minute": 88,
-        "minuteStr": "88'"
-      },
-      {
-        "type": "Corner",
-        "text": "LEE Kangin (Korea Republic) takes a corner kick.",
-        "minute": 93,
-        "minuteStr": "90'+3"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "PARK Jinseob (Korea Republic) attempts an effort on goal.",
-        "minute": 93,
-        "minuteStr": "90'+3"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the second period to an end.",
+        "type": "End Regular Time",
+        "text": "",
         "minute": 97,
-        "minuteStr": "90'+7"
-      },
-      {
-        "type": "Match end",
-        "text": "The final whistle sounds.",
-        "minute": 98,
-        "minuteStr": "90'+8"
+        "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "RSA",
+    "away": "KOR"
   },
   "7": {
     "homeScore": 1,
@@ -2016,6 +1458,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -2329,7 +1772,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "CAN",
+    "away": "BIH"
   },
   "8": {
     "homeScore": 1,
@@ -2338,6 +1783,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -2615,7 +2061,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "QAT",
+    "away": "SUI"
   },
   "9": {
     "homeScore": 6,
@@ -2624,6 +2072,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -2999,7 +2448,9 @@
         "minute": 100,
         "minuteStr": "90'+10'"
       }
-    ]
+    ],
+    "home": "CAN",
+    "away": "QAT"
   },
   "10": {
     "homeScore": 1,
@@ -3008,6 +2459,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -3288,7 +2740,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "BIH",
+    "away": "SUI"
   },
   "11": {
     "homeScore": 1,
@@ -3297,34 +2751,35 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
-        "player": "Ruben VARGAS",
+        "player": "Rubén Vargas",
         "minute": 46
       },
       {
         "team": "away",
-        "player": "Johan MANZAMBI",
+        "player": "Johan Manzambi",
         "minute": 57
       },
       {
         "team": "home",
-        "player": "Promise DAVID",
+        "player": "Promise David",
         "minute": 76
       }
     ],
     "stats": {
       "possession": [
-        46,
-        45
+        44.7,
+        55.3
       ],
       "shots": [
-        11,
+        13,
         6
       ],
       "shotsOnTarget": [
-        5,
+        7,
         4
       ],
       "corners": [
@@ -3332,7 +2787,7 @@
         2
       ],
       "fouls": [
-        12,
+        13,
         19
       ],
       "yellowCards": [
@@ -3346,576 +2801,176 @@
     },
     "timeline": [
       {
-        "type": "Coin Toss",
-        "text": "Canada won the coin toss and chose to kick off",
+        "type": "Kickoff",
+        "text": "",
         "minute": 0,
-        "minuteStr": "0'"
+        "minuteStr": ""
       },
       {
-        "type": "Start Time",
-        "text": "The referee signals the start of the first period.",
-        "minute": 1,
-        "minuteStr": "1'"
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 23,
+        "minuteStr": "23'"
       },
       {
-        "type": "Foul",
-        "text": "Djibril SOW (Switzerland) commits a foul.",
-        "minute": 2,
-        "minuteStr": "2'"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
       },
       {
-        "type": "Foul",
-        "text": "Luca JAQUEZ (Switzerland) commits a foul.",
-        "minute": 3,
-        "minuteStr": "3'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 25,
+        "minuteStr": "25'"
       },
       {
-        "type": "Foul",
-        "text": "Richie LARYEA (Canada) commits a foul.",
-        "minute": 4,
-        "minuteStr": "4'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 25,
+        "minuteStr": "25'"
       },
       {
-        "type": "Corner",
-        "text": "Ruben VARGAS (Switzerland) takes a corner kick.",
-        "minute": 5,
-        "minuteStr": "5'"
-      },
-      {
-        "type": "Foul",
-        "text": "Derek CORNELIUS (Canada) commits a foul.",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Foul",
-        "text": "Luc DE FOUGEROLLES (Canada) commits a foul.",
-        "minute": 10,
-        "minuteStr": "10'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Breel EMBOLO (Switzerland) attempts an effort on goal.",
-        "minute": 11,
-        "minuteStr": "11'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Johan MANZAMBI (Switzerland) attempts an effort on goal.",
-        "minute": 11,
-        "minuteStr": "11'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Canada pulls off a save.",
-        "minute": 11,
-        "minuteStr": "11'"
-      },
-      {
-        "type": "Foul",
-        "text": "Luca JAQUEZ (Switzerland) commits a foul.",
-        "minute": 11,
-        "minuteStr": "11'"
-      },
-      {
-        "type": "Offside",
-        "text": "Cyle LARIN (Canada) is ruled offside.",
-        "minute": 12,
-        "minuteStr": "12'"
-      },
-      {
-        "type": "Offside",
-        "text": "Cyle LARIN (Canada) is ruled offside.",
-        "minute": 14,
-        "minuteStr": "14'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ricardo RODRIGUEZ (Switzerland) commits a foul.",
-        "minute": 15,
-        "minuteStr": "15'"
-      },
-      {
-        "type": "Foul",
-        "text": "Luca JAQUEZ (Switzerland) commits a foul.",
-        "minute": 16,
-        "minuteStr": "16'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Breel EMBOLO (Switzerland) attempts an effort on goal.",
-        "minute": 17,
-        "minuteStr": "17'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ruben VARGAS (Switzerland) commits a foul.",
-        "minute": 18,
-        "minuteStr": "18'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ricardo RODRIGUEZ (Switzerland) commits a foul.",
-        "minute": 19,
-        "minuteStr": "19'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Luc DE FOUGEROLLES (Canada) attempts an effort on goal.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Foul",
-        "text": "Breel EMBOLO (Switzerland) commits a foul.",
-        "minute": 21,
-        "minuteStr": "21'"
-      },
-      {
-        "type": "Offside",
-        "text": "Johan MANZAMBI (Switzerland) is ruled offside.",
-        "minute": 22,
-        "minuteStr": "22'"
-      },
-      {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
-        "minute": 22,
-        "minuteStr": "22'"
-      },
-      {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
-        "minute": 26,
-        "minuteStr": "26'"
-      },
-      {
-        "type": "Foul",
-        "text": "Mathieu CHOINIERE (Canada) commits a foul.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Yellow card",
-        "text": "Cyle LARIN (Canada) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Cyle Larin (Canada) is shown the yellow card.",
         "minute": 32,
         "minuteStr": "32'"
       },
       {
-        "type": "Yellow card",
-        "text": "Granit XHAKA (Switzerland) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Granit Xhaka (Switzerland) is shown the yellow card.",
         "minute": 32,
         "minuteStr": "32'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Cyle LARIN (Canada) attempts an effort on goal.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Switzerland pulls off a save.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Offside",
-        "text": "Cyle LARIN (Canada) is ruled offside.",
-        "minute": 34,
-        "minuteStr": "34'"
-      },
-      {
-        "type": "Foul",
-        "text": "Richie LARYEA (Canada) commits a foul.",
-        "minute": 37,
-        "minuteStr": "37'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Granit XHAKA (Switzerland) attempts an effort on goal.",
-        "minute": 38,
-        "minuteStr": "38'"
-      },
-      {
-        "type": "Foul",
-        "text": "Remo FREULER (Switzerland) commits a foul.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Alistair JOHNSTON (Canada) attempts an effort on goal.",
-        "minute": 40,
-        "minuteStr": "40'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ali AHMED (Canada) attempts an effort on goal.",
-        "minute": 41,
-        "minuteStr": "41'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Switzerland pulls off a save.",
-        "minute": 41,
-        "minuteStr": "41'"
-      },
-      {
-        "type": "Corner",
-        "text": "Mathieu CHOINIERE (Canada) takes a corner kick.",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ruben VARGAS (Switzerland) commits a foul.",
-        "minute": 43,
-        "minuteStr": "43'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Jonathan DAVID (Canada) attempts an effort on goal.",
-        "minute": 44,
-        "minuteStr": "44'"
-      },
-      {
-        "type": "Corner",
-        "text": "Ruben VARGAS (Switzerland) takes a corner kick.",
-        "minute": 47,
-        "minuteStr": "45'+2"
-      },
-      {
-        "type": "Foul",
-        "text": "Breel EMBOLO (Switzerland) commits a foul.",
+        "type": "Halftime",
+        "text": "First Half ends, Switzerland 0, Canada 0.",
         "minute": 49,
-        "minuteStr": "45'+4"
+        "minuteStr": "45'+4'"
       },
       {
-        "type": "End Time",
-        "text": "The referee brings the first period to an end.",
-        "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "Start Time",
-        "text": "The referee signals the start of the second period.",
+        "type": "Start 2nd Half",
+        "text": "Second Half begins Switzerland 0, Canada 0.",
         "minute": 45,
         "minuteStr": "45'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Johan MANZAMBI.",
+        "type": "Goal",
+        "text": "Goal! Switzerland 1, Canada 0. Rubén Vargas (Switzerland) right footed shot from the centre of the box to the bottom left corner. Assisted by Johan Manzambi with a cross.",
         "minute": 46,
         "minuteStr": "46'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Ruben VARGAS (Switzerland) attempts an effort on goal.",
-        "minute": 46,
-        "minuteStr": "46'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Ruben VARGAS (Switzerland) scores!!",
-        "minute": 46,
-        "minuteStr": "46'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ruben VARGAS (Switzerland) commits a foul.",
-        "minute": 51,
-        "minuteStr": "51'"
-      },
-      {
-        "type": "Foul",
-        "text": "Johan MANZAMBI (Switzerland) commits a foul.",
-        "minute": 55,
-        "minuteStr": "55'"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by Breel EMBOLO.",
-        "minute": 57,
-        "minuteStr": "57'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Johan MANZAMBI (Switzerland) attempts an effort on goal.",
-        "minute": 57,
-        "minuteStr": "57'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Johan MANZAMBI (Switzerland) scores!!",
-        "minute": 57,
-        "minuteStr": "57'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Canada pulls off a save.",
+        "type": "Goal",
+        "text": "Goal! Switzerland 2, Canada 0. Johan Manzambi (Switzerland) right footed shot from the right side of the box to the centre of the goal. Assisted by Breel Embolo.",
         "minute": 57,
         "minuteStr": "57'"
       },
       {
         "type": "Substitution",
-        "text": "Tani OLUWASEYI (in) comes off the bench to replace Cyle LARIN (out) (Canada)",
+        "text": "Substitution, Canada. Stephen Eustaquio replaces Mathieu Choinière.",
         "minute": 58,
         "minuteStr": "58'"
       },
       {
         "type": "Substitution",
-        "text": "Stephen EUSTAQUIO (in) comes off the bench to replace Mathieu CHOINIERE (out) (Canada)",
+        "text": "Substitution, Canada. Tani Oluwaseyi replaces Cyle Larin.",
         "minute": 58,
         "minuteStr": "58'"
       },
       {
         "type": "Substitution",
-        "text": "Liam MILLAR (in) comes off the bench to replace Ali AHMED (out) (Canada)",
+        "text": "Substitution, Canada. Liam Millar replaces Ali Ahmed.",
         "minute": 58,
         "minuteStr": "58'"
       },
       {
-        "type": "Foul",
-        "text": "Breel EMBOLO (Switzerland) commits a foul.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Liam MILLAR (Canada) attempts an effort on goal.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Corner",
-        "text": "Stephen EUSTAQUIO (Canada) takes a corner kick.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Derek CORNELIUS (Canada) attempts an effort on goal.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Corner",
-        "text": "Stephen EUSTAQUIO (Canada) takes a corner kick.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Foul",
-        "text": "Nathan SALIBA (Canada) commits a foul.",
-        "minute": 63,
-        "minuteStr": "63'"
-      },
-      {
-        "type": "Foul",
-        "text": "Remo FREULER (Switzerland) commits a foul.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Foul",
-        "text": "Luc DE FOUGEROLLES (Canada) commits a foul.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Jonathan DAVID (Canada) attempts an effort on goal.",
-        "minute": 68,
-        "minuteStr": "68'"
-      },
-      {
-        "type": "Corner",
-        "text": "Stephen EUSTAQUIO (Canada) takes a corner kick.",
-        "minute": 69,
-        "minuteStr": "69'"
-      },
-      {
-        "type": "Corner",
-        "text": "Stephen EUSTAQUIO (Canada) takes a corner kick.",
-        "minute": 70,
-        "minuteStr": "70'"
-      },
-      {
-        "type": "Foul",
-        "text": "Alistair JOHNSTON (Canada) commits a foul.",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
-        "type": "Substitution",
-        "text": "Silvan WIDMER (in) comes off the bench to replace Luca JAQUEZ (out) (Switzerland)",
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 74,
+        "minuteStr": "74'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
         "minute": 74,
         "minuteStr": "74'"
       },
       {
         "type": "Substitution",
-        "text": "Michel AEBISCHER (in) comes off the bench to replace Djibril SOW (out) (Switzerland)",
+        "text": "Substitution, Switzerland. Michel Aebischer replaces Djibril Sow.",
         "minute": 74,
         "minuteStr": "74'"
       },
       {
         "type": "Substitution",
-        "text": "Promise DAVID (in) comes off the bench to replace Tajon BUCHANAN (out) (Canada)",
+        "text": "Substitution, Switzerland. Silvan Widmer replaces Luca Jaquez.",
         "minute": 74,
         "minuteStr": "74'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
-        "minute": 75,
-        "minuteStr": "75'"
+        "type": "Substitution",
+        "text": "Substitution, Canada. Promise David replaces Tajon Buchanan.",
+        "minute": 74,
+        "minuteStr": "74'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Nathan SALIBA.",
+        "type": "Goal - Volley",
+        "text": "Goal! Switzerland 2, Canada 1. Promise David (Canada) right footed shot from the centre of the box to the bottom left corner. Assisted by Nathan Saliba.",
         "minute": 76,
         "minuteStr": "76'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Promise DAVID (Canada) attempts an effort on goal.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Promise DAVID (Canada) scores!!",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Corner",
-        "text": "Stephen EUSTAQUIO (Canada) takes a corner kick.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Foul",
-        "text": "Michel AEBISCHER (Switzerland) commits a foul.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Foul",
-        "text": "Alistair JOHNSTON (Canada) commits a foul.",
-        "minute": 79,
-        "minuteStr": "79'"
       },
       {
         "type": "Substitution",
-        "text": "Dan NDOYE (in) comes off the bench to replace Ruben VARGAS (out) (Switzerland)",
+        "text": "Substitution, Switzerland. Dan Ndoye replaces Rubén Vargas.",
         "minute": 80,
         "minuteStr": "80'"
       },
       {
-        "type": "Foul",
-        "text": "Nathan SALIBA (Canada) commits a foul.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Foul",
-        "text": "Luc DE FOUGEROLLES (Canada) commits a foul.",
-        "minute": 82,
-        "minuteStr": "82'"
-      },
-      {
         "type": "Substitution",
-        "text": "Jacob SHAFFELBURG (in) comes off the bench to replace Richie LARYEA (out) (Canada)",
+        "text": "Substitution, Canada. Jacob Shaffelburg replaces Richie Laryea.",
         "minute": 83,
         "minuteStr": "83'"
       },
       {
         "type": "Substitution",
-        "text": "Cedric ITTEN (in) comes off the bench to replace Breel EMBOLO (out) (Switzerland)",
+        "text": "Substitution, Switzerland. Christian Fassnacht replaces Johan Manzambi.",
         "minute": 85,
         "minuteStr": "85'"
       },
       {
         "type": "Substitution",
-        "text": "Christian FASSNACHT (in) comes off the bench to replace Johan MANZAMBI (out) (Switzerland)",
+        "text": "Substitution, Switzerland. Cedric Itten replaces Breel Embolo.",
         "minute": 85,
         "minuteStr": "85'"
       },
       {
-        "type": "Corner",
-        "text": "Stephen EUSTAQUIO (Canada) takes a corner kick.",
+        "type": "Yellow Card",
+        "text": "Liam Millar (Canada) is shown the yellow card for a bad foul.",
         "minute": 87,
         "minuteStr": "87'"
       },
       {
-        "type": "Yellow card",
-        "text": "Liam MILLAR (Canada) is booked by the referee.",
-        "minute": 87,
-        "minuteStr": "87'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ricardo RODRIGUEZ (Switzerland) commits a foul.",
-        "minute": 88,
-        "minuteStr": "88'"
-      },
-      {
-        "type": "Foul",
-        "text": "Cedric ITTEN (Switzerland) commits a foul.",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Foul",
-        "text": "Michel AEBISCHER (Switzerland) commits a foul.",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Derek CORNELIUS (Canada) attempts an effort on goal.",
-        "minute": 91,
-        "minuteStr": "90'+1"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Promise DAVID (Canada) attempts an effort on goal.",
-        "minute": 93,
-        "minuteStr": "90'+3"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Alistair JOHNSTON (Canada) attempts an effort on goal.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Switzerland pulls off a save.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Promise DAVID (Canada) attempts an effort on goal.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Switzerland pulls off a save.",
-        "minute": 96,
-        "minuteStr": "90'+6"
+        "type": "End Regular Time",
+        "text": "Second Half ends, Switzerland 2, Canada 1.",
+        "minute": 97,
+        "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "CAN",
+    "away": "SUI"
   },
   "12": {
     "homeScore": 3,
@@ -3924,32 +2979,33 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
-        "player": "Kerim ALAJBEGOVIC",
+        "player": "Kerim Alajbegovic",
         "minute": 29
       },
       {
         "team": "home",
-        "player": "MAHMOUD ABUNADA (OG)",
+        "player": "Mahmoud Abunada",
         "minute": 34
       },
       {
         "team": "away",
-        "player": "HASSAN ALHAYDOS",
+        "player": "Hassan Al-Haydos",
         "minute": 42
       },
       {
         "team": "home",
-        "player": "Ermin MAHMIC",
+        "player": "Ermin Mahmic",
         "minute": 80
       }
     ],
     "stats": {
       "possession": [
-        48,
-        40
+        54.4,
+        45.6
       ],
       "shots": [
         14,
@@ -3978,546 +3034,284 @@
     },
     "timeline": [
       {
-        "type": "Coin Toss",
-        "text": "Qatar won the coin toss and chose the side",
+        "type": "Kickoff",
+        "text": "First Half begins.",
         "minute": 0,
-        "minuteStr": "0'"
+        "minuteStr": ""
       },
       {
-        "type": "Start Time",
-        "text": "The referee signals the start of the first period.",
-        "minute": 1,
-        "minuteStr": "1'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ermedin DEMIROVIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 2,
-        "minuteStr": "2'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Qatar pulls off a save.",
-        "minute": 2,
-        "minuteStr": "2'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ivan SUNJIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 3,
-        "minuteStr": "3'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Qatar pulls off a save.",
-        "minute": 3,
-        "minuteStr": "3'"
-      },
-      {
-        "type": "Corner",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) takes a corner kick.",
-        "minute": 3,
-        "minuteStr": "3'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ivan SUNJIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 4,
-        "minuteStr": "4'"
-      },
-      {
-        "type": "Corner",
-        "text": "AKRAM AFIF (Qatar) takes a corner kick.",
-        "minute": 8,
-        "minuteStr": "8'"
-      },
-      {
-        "type": "Foul",
-        "text": "Arjan MALIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 10,
-        "minuteStr": "10'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ermedin DEMIROVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 10,
-        "minuteStr": "10'"
-      },
-      {
-        "type": "Offside",
-        "text": "EDMILSON JUNIOR (Qatar) is ruled offside.",
-        "minute": 11,
-        "minuteStr": "11'"
-      },
-      {
-        "type": "Foul",
-        "text": "SULTAN ALBRAKE (Qatar) commits a foul.",
-        "minute": 12,
-        "minuteStr": "12'"
-      },
-      {
-        "type": "Foul",
-        "text": "JASSEM GABER (Qatar) commits a foul.",
-        "minute": 16,
-        "minuteStr": "16'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 17,
-        "minuteStr": "17'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 18,
-        "minuteStr": "18'"
-      },
-      {
-        "type": "Corner",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) takes a corner kick.",
-        "minute": 19,
-        "minuteStr": "19'"
-      },
-      {
-        "type": "Foul",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Offside",
-        "text": "AKRAM AFIF (Qatar) is ruled offside.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Foul",
-        "text": "JASSEM GABER (Qatar) commits a foul.",
-        "minute": 21,
-        "minuteStr": "21'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) attempts an effort on goal.",
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Boualem Khoukhi (Qatar).",
         "minute": 23,
         "minuteStr": "23'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "",
         "minute": 23,
         "minuteStr": "23'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
         "minute": 26,
         "minuteStr": "26'"
       },
       {
-        "type": "Foul",
-        "text": "JASSEM GABER (Qatar) commits a foul.",
-        "minute": 27,
-        "minuteStr": "27'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 26,
+        "minuteStr": "26'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Ivan BASIC.",
+        "type": "Start Delay",
+        "text": "",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 28,
+        "minuteStr": "28'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Bosnia and Herzegovina 1, Qatar 0. Kerim Alajbegovic (Bosnia and Herzegovina) right footed shot from outside the box to the top right corner. Assisted by Ivan Basic.",
         "minute": 29,
         "minuteStr": "29'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 29,
-        "minuteStr": "29'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) scores!!",
-        "minute": 29,
-        "minuteStr": "29'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Corner",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) takes a corner kick.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Nikola KATIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Own goal",
-        "text": "MAHMOUD ABUNADA (Qatar) scores an own goal.",
+        "type": "Own Goal",
+        "text": "Own Goal by Mahmoud Abunada, Qatar. Bosnia and Herzegovina 2, Qatar 0.",
         "minute": 34,
         "minuteStr": "34'"
       },
       {
-        "type": "Foul",
-        "text": "HASSAN ALHAYDOS (Qatar) commits a foul.",
-        "minute": 36,
-        "minuteStr": "36'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Edin DZEKO (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 38,
-        "minuteStr": "38'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ermedin DEMIROVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Foul",
-        "text": "JASSEM GABER (Qatar) commits a foul.",
-        "minute": 40,
-        "minuteStr": "40'"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by EDMILSON JUNIOR.",
+        "type": "Goal",
+        "text": "Goal! Bosnia and Herzegovina 2, Qatar 1. Hassan Al Haydos (Qatar) right footed shot from very close range to the centre of the goal. Assisted by Edmílson Junior.",
         "minute": 42,
         "minuteStr": "42'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "HASSAN ALHAYDOS (Qatar) attempts an effort on goal.",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Goal!",
-        "text": "HASSAN ALHAYDOS (Qatar) scores!!",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Corner",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) takes a corner kick.",
-        "minute": 44,
-        "minuteStr": "44'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "BOUALEM KHOUKHI (Qatar) attempts an effort on goal.",
-        "minute": 45,
-        "minuteStr": "45'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ermedin DEMIROVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 45,
-        "minuteStr": "45'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "PEDRO MIGUEL (Qatar) attempts an effort on goal.",
-        "minute": 48,
-        "minuteStr": "45'+3"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "PEDRO MIGUEL (Qatar) attempts an effort on goal.",
-        "minute": 48,
-        "minuteStr": "45'+3"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the first period to an end.",
+        "type": "Halftime",
+        "text": "First Half ends, Bosnia and Herzegovina 2, Qatar 1.",
         "minute": 51,
-        "minuteStr": "45'+6"
+        "minuteStr": "45'+6'"
       },
       {
         "type": "Substitution",
-        "text": "Before the second half begins Amar MEMIC (in) comes off the bench to replace Arjan MALIC (out) (Bosnia and Herzegovina)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Substitution",
-        "text": "Before the second half begins Benjamin TAHIROVIC (in) comes off the bench to replace Ivan SUNJIC (out) (Bosnia and Herzegovina)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Substitution",
-        "text": "Before the second half begins ABDULAZIZ HATEM (in) comes off the bench to replace JASSEM GABER (out) (Qatar)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Start Time",
-        "text": "The referee signals the start of the second period.",
+        "text": "Substitution, Bosnia and Herzegovina. Benjamin Tahirovic replaces Ivan Sunjic.",
         "minute": 45,
         "minuteStr": "45'"
       },
       {
-        "type": "Foul",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 47,
-        "minuteStr": "47'"
-      },
-      {
-        "type": "Foul",
-        "text": "ABDULAZIZ HATEM (Qatar) commits a foul.",
-        "minute": 52,
-        "minuteStr": "52'"
+        "type": "Substitution",
+        "text": "Substitution, Bosnia and Herzegovina. Amar Memic replaces Arjan Malic.",
+        "minute": 45,
+        "minuteStr": "45'"
       },
       {
         "type": "Substitution",
-        "text": "AHMED ALGANEHI (in) comes off the bench to replace HASSAN ALHAYDOS (out) (Qatar)",
+        "text": "Substitution, Qatar. Abdulaziz Hatem replaces Jassem Gaber.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "Second Half begins Bosnia and Herzegovina 2, Qatar 1.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Hassan Al Haydos (Qatar).",
         "minute": 55,
         "minuteStr": "55'"
       },
       {
-        "type": "Foul",
-        "text": "AHMED ALGANEHI (Qatar) commits a foul.",
+        "type": "Start Delay",
+        "text": "",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 55,
+        "minuteStr": "55'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Qatar. Ahmed Al Ganehi replaces Hassan Al Haydos because of an injury.",
         "minute": 56,
         "minuteStr": "56'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "AKRAM AFIF (Qatar) attempts an effort on goal.",
-        "minute": 57,
-        "minuteStr": "57'"
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Nikola Vasilj (Bosnia and Herzegovina).",
+        "minute": 62,
+        "minuteStr": "62'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "AKRAM AFIF (Qatar) attempts an effort on goal.",
-        "minute": 60,
-        "minuteStr": "60'"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 62,
+        "minuteStr": "62'"
       },
       {
         "type": "Substitution",
-        "text": "Dennis HADZIKADUNIC (in) comes off the bench to replace Nikola KATIC (out) (Bosnia and Herzegovina)",
+        "text": "Substitution, Bosnia and Herzegovina. Dennis Hadzikadunic replaces Nikola Katic.",
         "minute": 63,
         "minuteStr": "63'"
       },
       {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
         "type": "Substitution",
-        "text": "Ermin MAHMIC (in) comes off the bench to replace Edin DZEKO (out) (Bosnia and Herzegovina)",
-        "minute": 63,
-        "minuteStr": "63'"
+        "text": "Substitution, Bosnia and Herzegovina. Ermin Mahmic replaces Edin Dzeko.",
+        "minute": 64,
+        "minuteStr": "64'"
       },
       {
-        "type": "Foul",
-        "text": "SULTAN ALBRAKE (Qatar) commits a foul.",
-        "minute": 65,
-        "minuteStr": "65'"
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 69,
+        "minuteStr": "69'"
       },
       {
-        "type": "Corner",
-        "text": "AKRAM AFIF (Qatar) takes a corner kick.",
-        "minute": 68,
-        "minuteStr": "68'"
-      },
-      {
-        "type": "Corner",
-        "text": "AKRAM AFIF (Qatar) takes a corner kick.",
-        "minute": 68,
-        "minuteStr": "68'"
-      },
-      {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "",
         "minute": 69,
         "minuteStr": "69'"
       },
       {
         "type": "Substitution",
-        "text": "ALMOEZ ALI (in) comes off the bench to replace KARIM BOUDIAF (out) (Qatar)",
+        "text": "Substitution, Qatar. Almoez Ali replaces Karim Boudiaf.",
         "minute": 72,
         "minuteStr": "72'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
         "minute": 72,
         "minuteStr": "72'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Esmir BAJRAKTAREVIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 76,
-        "minuteStr": "76'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 72,
+        "minuteStr": "72'"
       },
       {
-        "type": "Foul",
-        "text": "EDMILSON JUNIOR (Qatar) commits a foul.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Offside",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) is ruled offside.",
-        "minute": 77,
-        "minuteStr": "77'"
-      },
-      {
-        "type": "Yellow card",
-        "text": "AHMED FATHY (Qatar) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Ahmed Fathy (Qatar) is shown the yellow card for a bad foul.",
         "minute": 78,
         "minuteStr": "78'"
       },
       {
         "type": "Substitution",
-        "text": "MOHAMED MANAI (in) comes off the bench to replace AHMED FATHY (out) (Qatar)",
+        "text": "Substitution, Qatar. Ahmed Alaa replaces Edmílson Junior.",
         "minute": 79,
         "minuteStr": "79'"
       },
       {
         "type": "Substitution",
-        "text": "AHMED ALAAELDIN (in) comes off the bench to replace EDMILSON JUNIOR (out) (Qatar)",
+        "text": "Substitution, Qatar. Mohammad Al Manai replaces Ahmed Fathy.",
         "minute": 79,
         "minuteStr": "79'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Esmir BAJRAKTAREVIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Qatar pulls off a save.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Corner",
-        "text": "Kerim ALAJBEGOVIC (Bosnia and Herzegovina) takes a corner kick.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ivan BASIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Stjepan RADELJIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by Dennis HADZIKADUNIC.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ermin MAHMIC (Bosnia and Herzegovina) attempts an effort on goal.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Ermin MAHMIC (Bosnia and Herzegovina) scores!!",
+        "type": "Goal",
+        "text": "Goal! Bosnia and Herzegovina 3, Qatar 1. Ermin Mahmic (Bosnia and Herzegovina) right footed shot from the centre of the box to the centre of the goal. Assisted by Dennis Hadzikadunic following a corner.",
         "minute": 80,
         "minuteStr": "80'"
       },
       {
         "type": "Substitution",
-        "text": "Dzenis BURNIC (in) comes off the bench to replace Kerim ALAJBEGOVIC (out) (Bosnia and Herzegovina)",
+        "text": "Substitution, Bosnia and Herzegovina. Dzenis Burnic replaces Kerim Alajbegovic.",
         "minute": 82,
         "minuteStr": "82'"
       },
       {
-        "type": "Yellow card",
-        "text": "Ermin MAHMIC (Bosnia and Herzegovina) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Ermin Mahmic (Bosnia and Herzegovina) is shown the yellow card for excessive celebration.",
         "minute": 82,
         "minuteStr": "82'"
       },
       {
-        "type": "Foul",
-        "text": "AHMED ALAAELDIN (Qatar) commits a foul.",
-        "minute": 84,
-        "minuteStr": "84'"
-      },
-      {
-        "type": "Foul",
-        "text": "Dennis HADZIKADUNIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 85,
-        "minuteStr": "85'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "AHMED ALGANEHI (Qatar) attempts an effort on goal.",
-        "minute": 86,
-        "minuteStr": "86'"
-      },
-      {
-        "type": "Foul",
-        "text": "MOHAMED MANAI (Qatar) commits a foul.",
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Stjepan Radeljic (Bosnia and Herzegovina).",
         "minute": 88,
         "minuteStr": "88'"
       },
       {
-        "type": "Corner",
-        "text": "AHMED ALGANEHI (Qatar) takes a corner kick.",
-        "minute": 92,
-        "minuteStr": "90'+2"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 88,
+        "minuteStr": "88'"
       },
       {
-        "type": "Offside",
-        "text": "AKRAM AFIF (Qatar) is ruled offside.",
-        "minute": 92,
-        "minuteStr": "90'+2"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 88,
+        "minuteStr": "88'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "PEDRO MIGUEL (Qatar) attempts an effort on goal.",
-        "minute": 94,
-        "minuteStr": "90'+4"
+        "type": "End Delay",
+        "text": "",
+        "minute": 88,
+        "minuteStr": "88'"
       },
       {
-        "type": "Corner",
-        "text": "AHMED ALGANEHI (Qatar) takes a corner kick.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "ALMOEZ ALI (Qatar) attempts an effort on goal.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Bosnia and Herzegovina pulls off a save.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Foul",
-        "text": "MOHAMED MANAI (Qatar) commits a foul.",
-        "minute": 94,
-        "minuteStr": "90'+4"
-      },
-      {
-        "type": "Foul",
-        "text": "Ermedin DEMIROVIC (Bosnia and Herzegovina) commits a foul.",
-        "minute": 96,
-        "minuteStr": "90'+6"
+        "type": "End Regular Time",
+        "text": "Second Half ends, Bosnia and Herzegovina 3, Qatar 1.",
+        "minute": 97,
+        "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "BIH",
+    "away": "QAT"
   },
   "13": {
     "homeScore": 1,
@@ -4526,6 +3320,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -4785,7 +3580,9 @@
         "minute": 102,
         "minuteStr": "90'+12'"
       }
-    ]
+    ],
+    "home": "BRA",
+    "away": "MAR"
   },
   "14": {
     "homeScore": 0,
@@ -4794,6 +3591,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -5030,7 +3828,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "HAI",
+    "away": "SCO"
   },
   "15": {
     "homeScore": 3,
@@ -5039,6 +3839,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -5309,7 +4110,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "BRA",
+    "away": "HAI"
   },
   "16": {
     "homeScore": 1,
@@ -5318,6 +4121,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -5572,7 +4376,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "MAR",
+    "away": "SCO"
   },
   "17": {
     "homeScore": 3,
@@ -5581,42 +4387,43 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
-        "player": "VINICIUS JUNIOR",
+        "player": "Vinícius Júnior",
         "minute": 7
       },
       {
         "team": "home",
-        "player": "VINICIUS JUNIOR",
+        "player": "Vinícius Júnior",
         "minute": 48
       },
       {
         "team": "home",
-        "player": "MATHEUS CUNHA",
+        "player": "Matheus Cunha",
         "minute": 60
       }
     ],
     "stats": {
       "possession": [
-        46,
-        47
+        54,
+        46
       ],
       "shots": [
-        20,
-        12
+        21,
+        14
       ],
       "shotsOnTarget": [
-        8,
-        4
+        9,
+        5
       ],
       "corners": [
-        6,
-        6
+        7,
+        7
       ],
       "fouls": [
-        10,
+        11,
         10
       ],
       "yellowCards": [
@@ -5630,630 +4437,212 @@
     },
     "timeline": [
       {
-        "type": "Coin Toss",
-        "text": "Scotland won the coin toss and chose to kick off",
+        "type": "Kickoff",
+        "text": "",
         "minute": 0,
-        "minuteStr": "0'"
+        "minuteStr": ""
       },
       {
-        "type": "Start Time",
-        "text": "The referee signals the start of the first period.",
-        "minute": 1,
-        "minuteStr": "1'"
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Lewis Ferguson (Scotland).",
+        "minute": 2,
+        "minuteStr": "2'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "CASEMIRO (Brazil) attempts an effort on goal.",
+        "type": "Start Delay",
+        "text": "",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Scotland 0, Brazil 1. Vinícius Júnior (Brazil) right footed shot from the centre of the box to the centre of the goal. Assisted by Rayan.",
         "minute": 7,
         "minuteStr": "7'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by RAYAN.",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Goal!",
-        "text": "VINICIUS JUNIOR (Brazil) scores!!",
-        "minute": 7,
-        "minuteStr": "7'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "BRUNO GUIMARAES (Brazil) attempts an effort on goal.",
-        "minute": 11,
-        "minuteStr": "11'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "MATHEUS CUNHA (Brazil) attempts an effort on goal.",
-        "minute": 12,
-        "minuteStr": "12'"
-      },
-      {
-        "type": "Corner",
-        "text": "BRUNO GUIMARAES (Brazil) takes a corner kick.",
-        "minute": 19,
-        "minuteStr": "19'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Foul",
-        "text": "VINICIUS JUNIOR (Brazil) commits a foul.",
-        "minute": 22,
-        "minuteStr": "22'"
-      },
-      {
-        "type": "VAR",
-        "text": "Goal disallowed",
+        "type": "Start Delay",
+        "text": "",
         "minute": 24,
         "minuteStr": "24'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "End Delay",
+        "text": "",
         "minute": 25,
         "minuteStr": "25'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
-        "minute": 29,
-        "minuteStr": "29'"
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 25,
+        "minuteStr": "25'"
       },
       {
-        "type": "Corner",
-        "text": "Lewis FERGUSON (Scotland) takes a corner kick.",
-        "minute": 29,
-        "minuteStr": "29'"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 25,
+        "minuteStr": "25'"
       },
       {
-        "type": "Corner",
-        "text": "Lewis FERGUSON (Scotland) takes a corner kick.",
-        "minute": 32,
-        "minuteStr": "32'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 28,
+        "minuteStr": "28'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Lewis FERGUSON (Scotland) attempts an effort on goal.",
-        "minute": 33,
-        "minuteStr": "33'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 28,
+        "minuteStr": "28'"
       },
       {
-        "type": "Corner",
-        "text": "Lewis FERGUSON (Scotland) takes a corner kick.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Foul",
-        "text": "Jack HENDRY (Scotland) commits a foul.",
-        "minute": 33,
-        "minuteStr": "33'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lewis FERGUSON (Scotland) commits a foul.",
-        "minute": 35,
-        "minuteStr": "35'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Kenny McLEAN (Scotland) attempts an effort on goal.",
-        "minute": 36,
-        "minuteStr": "36'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "RAYAN (Brazil) attempts an effort on goal.",
-        "minute": 38,
-        "minuteStr": "38'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "MATHEUS CUNHA (Brazil) attempts an effort on goal.",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "MATHEUS CUNHA (Brazil) attempts an effort on goal.",
-        "minute": 45,
-        "minuteStr": "45'"
-      },
-      {
-        "type": "Corner",
-        "text": "BRUNO GUIMARAES (Brazil) takes a corner kick.",
-        "minute": 45,
-        "minuteStr": "45'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ben GANNON-DOAK (Scotland) attempts an effort on goal.",
-        "minute": 47,
-        "minuteStr": "45'+2"
-      },
-      {
-        "type": "Foul",
-        "text": "Nathan PATTERSON (Scotland) commits a foul.",
-        "minute": 47,
-        "minuteStr": "45'+2"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by BRUNO GUIMARAES.",
+        "type": "Goal - Header",
+        "text": "Goal! Scotland 0, Brazil 2. Vinícius Júnior (Brazil) header from very close range to the top left corner. Assisted by Bruno Guimarães with a cross.",
         "minute": 48,
-        "minuteStr": "45'+3"
+        "minuteStr": "45'+3'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 48,
-        "minuteStr": "45'+3"
-      },
-      {
-        "type": "Goal!",
-        "text": "VINICIUS JUNIOR (Brazil) scores!!",
-        "minute": 48,
-        "minuteStr": "45'+3"
-      },
-      {
-        "type": "Foul",
-        "text": "CASEMIRO (Brazil) commits a foul.",
-        "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ben GANNON-DOAK (Scotland) attempts an effort on goal.",
-        "minute": 51,
-        "minuteStr": "45'+6"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "RAYAN (Brazil) attempts an effort on goal.",
-        "minute": 51,
-        "minuteStr": "45'+6"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Scotland pulls off a save.",
-        "minute": 51,
-        "minuteStr": "45'+6"
-      },
-      {
-        "type": "Corner",
-        "text": "LUCAS PAQUETA (Brazil) takes a corner kick.",
+        "type": "Halftime",
+        "text": "",
         "minute": 52,
-        "minuteStr": "45'+7"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "DOUGLAS SANTOS (Brazil) attempts an effort on goal.",
-        "minute": 52,
-        "minuteStr": "45'+7"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the first period to an end.",
-        "minute": 52,
-        "minuteStr": "45'+7"
+        "minuteStr": "45'+7'"
       },
       {
         "type": "Substitution",
-        "text": "Before the second half begins Kieran TIERNEY (in) comes off the bench to replace Andy ROBERTSON (out) (Scotland)",
-        "minute": 45,
-        "minuteStr": "HT"
-      },
-      {
-        "type": "Start Time",
-        "text": "The referee signals the start of the second period.",
+        "text": "Substitution, Scotland. Kieran Tierney replaces Andy Robertson because of an injury.",
         "minute": 45,
         "minuteStr": "45'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Scott McTOMINAY (Scotland) attempts an effort on goal.",
-        "minute": 49,
-        "minuteStr": "49'"
+        "type": "Start 2nd Half",
+        "text": "Second Half begins Scotland 0, Brazil 2.",
+        "minute": 45,
+        "minuteStr": "45'"
       },
       {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Brazil pulls off a save.",
-        "minute": 49,
-        "minuteStr": "49'"
-      },
-      {
-        "type": "Foul",
-        "text": "Kieran TIERNEY (Scotland) commits a foul.",
-        "minute": 50,
-        "minuteStr": "50'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 51,
-        "minuteStr": "51'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Scotland pulls off a save.",
-        "minute": 51,
-        "minuteStr": "51'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 54,
-        "minuteStr": "54'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Scotland pulls off a save.",
-        "minute": 54,
-        "minuteStr": "54'"
-      },
-      {
-        "type": "Foul",
-        "text": "Scott McTOMINAY (Scotland) commits a foul.",
-        "minute": 56,
-        "minuteStr": "56'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ben GANNON-DOAK (Scotland) commits a foul.",
-        "minute": 57,
-        "minuteStr": "57'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "MATHEUS CUNHA (Brazil) attempts an effort on goal.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "LUCAS PAQUETA (Brazil) attempts an effort on goal.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lawrence SHANKLAND (Scotland) commits a foul.",
+        "type": "Goal",
+        "text": "Goal! Scotland 0, Brazil 3. Matheus Cunha (Brazil) right footed shot from the centre of the box to the bottom right corner. Assisted by Bruno Guimarães.",
         "minute": 60,
         "minuteStr": "60'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by BRUNO GUIMARAES.",
-        "minute": 60,
-        "minuteStr": "60'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "MATHEUS CUNHA (Brazil) attempts an effort on goal.",
-        "minute": 60,
-        "minuteStr": "60'"
-      },
-      {
-        "type": "Goal!",
-        "text": "MATHEUS CUNHA (Brazil) scores!!",
-        "minute": 60,
-        "minuteStr": "60'"
-      },
-      {
-        "type": "Yellow card",
-        "text": "DANILO (Brazil) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Danilo (Brazil) is shown the yellow card for a bad foul.",
         "minute": 62,
         "minuteStr": "62'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Lewis FERGUSON (Scotland) attempts an effort on goal.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Brazil pulls off a save.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Corner",
-        "text": "John McGINN (Scotland) takes a corner kick.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Scott McTOMINAY (Scotland) attempts an effort on goal.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Brazil pulls off a save.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Offside",
-        "text": "VINICIUS JUNIOR (Brazil) is ruled offside.",
+        "type": "Substitution",
+        "text": "Substitution, Brazil. Fabinho replaces Casemiro.",
         "minute": 65,
         "minuteStr": "65'"
       },
       {
         "type": "Substitution",
-        "text": "FABINHO (in) comes off the bench to replace CASEMIRO (out) (Brazil)",
+        "text": "Substitution, Brazil. Gabriel Martinelli replaces Lucas Paquetá.",
         "minute": 66,
         "minuteStr": "66'"
       },
       {
-        "type": "Substitution",
-        "text": "GABRIEL MARTINELLI (in) comes off the bench to replace LUCAS PAQUETA (out) (Brazil)",
-        "minute": 66,
-        "minuteStr": "66'"
-      },
-      {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "",
         "minute": 68,
         "minuteStr": "68'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
-        "type": "Foul",
-        "text": "DANILO (Brazil) commits a foul.",
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Lawrence SHANKLAND (Scotland) attempts an effort on goal.",
-        "minute": 72,
-        "minuteStr": "72'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Scott McTOMINAY (Scotland) attempts an effort on goal.",
-        "minute": 72,
-        "minuteStr": "72'"
-      },
-      {
-        "type": "Corner",
-        "text": "Lewis FERGUSON (Scotland) takes a corner kick.",
-        "minute": 75,
-        "minuteStr": "75'"
-      },
-      {
-        "type": "Corner",
-        "text": "Lewis FERGUSON (Scotland) takes a corner kick.",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Lawrence SHANKLAND (Scotland) attempts an effort on goal.",
+        "type": "Substitution",
+        "text": "Substitution, Brazil. Neymar replaces Matheus Cunha.",
         "minute": 76,
         "minuteStr": "76'"
       },
       {
         "type": "Substitution",
-        "text": "NEYMAR JR (in) comes off the bench to replace MATHEUS CUNHA (out) (Brazil)",
-        "minute": 76,
-        "minuteStr": "76'"
-      },
-      {
-        "type": "Foul",
-        "text": "DANILO (Brazil) commits a foul.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Scotland pulls off a save.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Corner",
-        "text": "NEYMAR JR (Brazil) takes a corner kick.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Foul",
-        "text": "RAYAN (Brazil) commits a foul.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Foul",
-        "text": "BRUNO GUIMARAES (Brazil) commits a foul.",
-        "minute": 80,
-        "minuteStr": "80'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 81,
-        "minuteStr": "81'"
-      },
-      {
-        "type": "Substitution",
-        "text": "Anthony RALSTON (in) comes off the bench to replace Nathan PATTERSON (out) (Scotland)",
-        "minute": 81,
-        "minuteStr": "81'"
-      },
-      {
-        "type": "Substitution",
-        "text": "Ryan CHRISTIE (in) comes off the bench to replace Ben GANNON-DOAK (out) (Scotland)",
-        "minute": 81,
-        "minuteStr": "81'"
-      },
-      {
-        "type": "Substitution",
-        "text": "ENDRICK (in) comes off the bench to replace RAYAN (out) (Brazil)",
+        "text": "Substitution, Scotland. Anthony Ralston replaces Nathan Patterson.",
         "minute": 82,
         "minuteStr": "82'"
       },
       {
         "type": "Substitution",
-        "text": "ALEX SANDRO (in) comes off the bench to replace DOUGLAS SANTOS (out) (Brazil)",
+        "text": "Substitution, Brazil. Endrick replaces Rayan.",
         "minute": 82,
         "minuteStr": "82'"
       },
       {
-        "type": "Yellow card",
-        "text": "FABINHO (Brazil) is booked by the referee.",
+        "type": "Substitution",
+        "text": "Substitution, Brazil. Alex Sandro replaces Douglas Santos.",
         "minute": 82,
         "minuteStr": "82'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Kieran TIERNEY (Scotland) attempts an effort on goal.",
-        "minute": 84,
-        "minuteStr": "84'"
+        "type": "Substitution",
+        "text": "Substitution, Scotland. Ryan Christie replaces Ben Gannon-Doak.",
+        "minute": 82,
+        "minuteStr": "82'"
       },
       {
-        "type": "Corner",
-        "text": "NEYMAR JR (Brazil) takes a corner kick.",
-        "minute": 86,
-        "minuteStr": "86'"
+        "type": "Yellow Card",
+        "text": "Fabinho (Brazil) is shown the yellow card for a bad foul.",
+        "minute": 82,
+        "minuteStr": "82'"
       },
       {
-        "type": "Corner",
-        "text": "NEYMAR JR (Brazil) takes a corner kick.",
-        "minute": 86,
-        "minuteStr": "86'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "GABRIEL MAGALHAES (Brazil) attempts an effort on goal.",
-        "minute": 86,
-        "minuteStr": "86'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lewis FERGUSON (Scotland) commits a foul.",
-        "minute": 87,
-        "minuteStr": "87'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Anthony RALSTON (Scotland) attempts an effort on goal.",
+        "type": "Yellow Card",
+        "text": "Ryan Christie (Scotland) is shown the yellow card for a bad foul.",
         "minute": 89,
         "minuteStr": "89'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Brazil pulls off a save.",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Yellow card",
-        "text": "Ryan CHRISTIE (Scotland) is booked by the referee.",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "NEYMAR JR (Brazil) attempts an effort on goal.",
-        "minute": 90,
-        "minuteStr": "90'"
-      },
-      {
-        "type": "Foul",
-        "text": "GABRIEL MARTINELLI (Brazil) commits a foul.",
-        "minute": 91,
-        "minuteStr": "90'+1"
       },
       {
         "type": "Substitution",
-        "text": "Findlay CURTIS (in) comes off the bench to replace John McGINN (out) (Scotland)",
+        "text": "Substitution, Scotland. Findlay Curtis replaces John McGinn.",
         "minute": 91,
-        "minuteStr": "90'+1"
+        "minuteStr": "90'+1'"
       },
       {
         "type": "Substitution",
-        "text": "Che ADAMS (in) comes off the bench to replace Lawrence SHANKLAND (out) (Scotland)",
+        "text": "Substitution, Scotland. Ché Adams replaces Lawrence Shankland.",
         "minute": 91,
-        "minuteStr": "90'+1"
+        "minuteStr": "90'+1'"
       },
       {
-        "type": "Foul",
-        "text": "Anthony RALSTON (Scotland) commits a foul.",
-        "minute": 92,
-        "minuteStr": "90'+2"
-      },
-      {
-        "type": "Foul",
-        "text": "GABRIEL MARTINELLI (Brazil) commits a foul.",
-        "minute": 95,
-        "minuteStr": "90'+5"
-      },
-      {
-        "type": "Corner",
-        "text": "Lewis FERGUSON (Scotland) takes a corner kick.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Scott McTOMINAY (Scotland) attempts an effort on goal.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Brazil pulls off a save.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "VINICIUS JUNIOR (Brazil) attempts an effort on goal.",
-        "minute": 96,
-        "minuteStr": "90'+6"
-      },
-      {
-        "type": "Foul",
-        "text": "ALEX SANDRO (Brazil) commits a foul.",
+        "type": "End Regular Time",
+        "text": "Second Half ends, Scotland 0, Brazil 3.",
         "minute": 97,
-        "minuteStr": "90'+7"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the second period to an end.",
-        "minute": 97,
-        "minuteStr": "90'+7"
+        "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "BRA",
+    "away": "SCO"
   },
   "18": {
     "homeScore": 4,
@@ -6262,15 +4651,16 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
-        "player": "Yassine BOUNOU (OG)",
+        "player": "Yassine Bounou",
         "minute": 10
       },
       {
         "team": "home",
-        "player": "Achraf HAKIMI",
+        "player": "Achraf Hakimi",
         "minute": 39
       },
       {
@@ -6280,28 +4670,28 @@
       },
       {
         "team": "home",
-        "player": "Ismael SAIBARI",
+        "player": "Ismael Saibari",
         "minute": 46
       },
       {
         "team": "home",
-        "player": "Soufiane RAHIMI",
+        "player": "Soufiane Rahimi",
         "minute": 78
       },
       {
         "team": "home",
-        "player": "Gessime YASSINE",
+        "player": "Gessime Yassine",
         "minute": 89
       }
     ],
     "stats": {
       "possession": [
-        56,
-        35
+        69.1,
+        30.9
       ],
       "shots": [
         22,
-        7
+        9
       ],
       "shotsOnTarget": [
         11,
@@ -6326,708 +4716,278 @@
     },
     "timeline": [
       {
-        "type": "Coin Toss",
-        "text": "Morocco won the coin toss and chose to kick off",
+        "type": "Kickoff",
+        "text": "",
         "minute": 0,
-        "minuteStr": "0'"
+        "minuteStr": ""
       },
       {
-        "type": "Start Time",
-        "text": "The referee signals the start of the first period.",
-        "minute": 1,
-        "minuteStr": "1'"
-      },
-      {
-        "type": "Foul",
-        "text": "Sofyan AMRABAT (Morocco) commits a foul.",
-        "minute": 6,
-        "minuteStr": "6'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Jean-Ricner BELLEGARDE (Haiti) attempts an effort on goal.",
-        "minute": 8,
-        "minuteStr": "8'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Lenny JOSEPH (Haiti) attempts an effort on goal.",
+        "type": "Own Goal",
+        "text": "Own Goal by Yassine Bounou, Morocco. Morocco 0, Haiti 1.",
         "minute": 10,
         "minuteStr": "10'"
       },
       {
-        "type": "Own goal",
-        "text": "Yassine BOUNOU (Morocco) scores an own goal.",
-        "minute": 10,
-        "minuteStr": "10'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Morocco pulls off a save.",
-        "minute": 10,
-        "minuteStr": "10'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ayoub EL KAABI (Morocco) attempts an effort on goal.",
-        "minute": 12,
-        "minuteStr": "12'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 12,
-        "minuteStr": "12'"
-      },
-      {
-        "type": "Corner",
-        "text": "Achraf HAKIMI (Morocco) takes a corner kick.",
-        "minute": 13,
-        "minuteStr": "13'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ismael SAIBARI (Morocco) attempts an effort on goal.",
-        "minute": 13,
-        "minuteStr": "13'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ismael SAIBARI (Morocco) attempts an effort on goal.",
-        "minute": 14,
-        "minuteStr": "14'"
-      },
-      {
-        "type": "Corner",
-        "text": "Achraf HAKIMI (Morocco) takes a corner kick.",
-        "minute": 15,
-        "minuteStr": "15'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lenny JOSEPH (Haiti) commits a foul.",
-        "minute": 16,
-        "minuteStr": "16'"
-      },
-      {
-        "type": "Offside",
-        "text": "Ismael SAIBARI (Morocco) is ruled offside.",
-        "minute": 17,
-        "minuteStr": "17'"
-      },
-      {
-        "type": "Foul",
-        "text": "Bilal EL KHANNOUSS (Morocco) commits a foul.",
-        "minute": 17,
-        "minuteStr": "17'"
-      },
-      {
-        "type": "Foul",
-        "text": "Martin EXPERIENCE (Haiti) commits a foul.",
-        "minute": 19,
-        "minuteStr": "19'"
-      },
-      {
-        "type": "Offside",
-        "text": "Ayoub EL KAABI (Morocco) is ruled offside.",
-        "minute": 20,
-        "minuteStr": "20'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ismael SAIBARI (Morocco) attempts an effort on goal.",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 23,
         "minuteStr": "23'"
       },
       {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
+        "type": "Start Delay",
+        "text": "",
         "minute": 23,
         "minuteStr": "23'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
-        "minute": 23,
-        "minuteStr": "23'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 25,
+        "minuteStr": "25'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
-        "minute": 26,
-        "minuteStr": "26'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 25,
+        "minuteStr": "25'"
       },
       {
-        "type": "Foul",
-        "text": "Lenny JOSEPH (Haiti) commits a foul.",
-        "minute": 28,
-        "minuteStr": "28'"
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Anass Salah-Eddine (Morocco).",
+        "minute": 32,
+        "minuteStr": "32'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Ayoub EL KAABI (Morocco) attempts an effort on goal.",
-        "minute": 28,
-        "minuteStr": "28'"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 32,
+        "minuteStr": "32'"
       },
       {
-        "type": "Foul",
-        "text": "Anass SALAH EDDINE (Morocco) commits a foul.",
-        "minute": 29,
-        "minuteStr": "29'"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 33,
+        "minuteStr": "33'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Achraf HAKIMI (Morocco) attempts an effort on goal.",
-        "minute": 30,
-        "minuteStr": "30'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 33,
+        "minuteStr": "33'"
       },
       {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ayoub EL KAABI (Morocco) attempts an effort on goal.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Corner",
-        "text": "Neil EL AYNAOUI (Morocco) takes a corner kick.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Offside",
-        "text": "Ayoub EL KAABI (Morocco) is ruled offside.",
-        "minute": 30,
-        "minuteStr": "30'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Lenny JOSEPH (Haiti) attempts an effort on goal.",
-        "minute": 34,
-        "minuteStr": "34'"
-      },
-      {
-        "type": "Foul",
-        "text": "Jean-Kevin DUVERNE (Haiti) commits a foul.",
-        "minute": 35,
-        "minuteStr": "35'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ismael SAIBARI (Morocco) attempts an effort on goal.",
-        "minute": 36,
-        "minuteStr": "36'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
+        "type": "Goal",
+        "text": "Goal! Morocco 1, Haiti 1. Achraf Hakimi (Morocco) left footed shot from very close range to the centre of the goal.",
         "minute": 39,
         "minuteStr": "39'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Achraf HAKIMI (Morocco) attempts an effort on goal.",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Achraf HAKIMI (Morocco) scores!!",
-        "minute": 39,
-        "minuteStr": "39'"
-      },
-      {
-        "type": "Foul",
-        "text": "Martin EXPERIENCE (Haiti) commits a foul.",
-        "minute": 41,
-        "minuteStr": "41'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lenny JOSEPH (Haiti) commits a foul.",
-        "minute": 42,
-        "minuteStr": "42'"
-      },
-      {
-        "type": "Assist",
-        "text": "Assisted by Jean-Kevin DUVERNE.",
+        "type": "Goal",
+        "text": "Goal! Morocco 1, Haiti 2. Wilson Isidor (Haiti) right footed shot from outside the box to the top left corner. Assisted by Jean-Kévin Duverne.",
         "minute": 43,
         "minuteStr": "43'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Wilson ISIDOR (Haiti) attempts an effort on goal.",
-        "minute": 43,
-        "minuteStr": "43'"
+        "type": "Goal",
+        "text": "Goal! Morocco 2, Haiti 2. Ismael Saibari (Morocco) right footed shot from the centre of the box to the bottom left corner. Assisted by Achraf Hakimi.",
+        "minute": 46,
+        "minuteStr": "45'+1'"
       },
       {
-        "type": "Goal!",
-        "text": "Wilson ISIDOR (Haiti) scores!!",
-        "minute": 43,
-        "minuteStr": "43'"
+        "type": "Halftime",
+        "text": "",
+        "minute": 50,
+        "minuteStr": "45'+5'"
       },
       {
-        "type": "Foul",
-        "text": "Jean-Ricner BELLEGARDE (Haiti) commits a foul.",
+        "type": "Start 2nd Half",
+        "text": "Second Half begins Morocco 2, Haiti 2.",
         "minute": 45,
         "minuteStr": "45'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Achraf HAKIMI.",
-        "minute": 46,
-        "minuteStr": "45'+1"
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Josué Casimir (Haiti).",
+        "minute": 54,
+        "minuteStr": "54'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Ismael SAIBARI (Morocco) attempts an effort on goal.",
-        "minute": 46,
-        "minuteStr": "45'+1"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 54,
+        "minuteStr": "54'"
       },
       {
-        "type": "Goal!",
-        "text": "Ismael SAIBARI (Morocco) scores!!",
-        "minute": 46,
-        "minuteStr": "45'+1"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 55,
+        "minuteStr": "55'"
       },
       {
-        "type": "Foul",
-        "text": "Josue CASIMIR (Haiti) commits a foul.",
-        "minute": 47,
-        "minuteStr": "45'+2"
+        "type": "End Delay",
+        "text": "",
+        "minute": 55,
+        "minuteStr": "55'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Brahim DIAZ (Morocco) attempts an effort on goal.",
-        "minute": 48,
-        "minuteStr": "45'+3"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 57,
+        "minuteStr": "57'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Bilal EL KHANNOUSS (Morocco) attempts an effort on goal.",
-        "minute": 49,
-        "minuteStr": "45'+4"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 49,
-        "minuteStr": "45'+4"
-      },
-      {
-        "type": "Foul",
-        "text": "Ruben PROVIDENCE (Haiti) commits a foul.",
-        "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Neil EL AYNAOUI (Morocco) attempts an effort on goal.",
-        "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 50,
-        "minuteStr": "45'+5"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the first period to an end.",
-        "minute": 51,
-        "minuteStr": "45'+6"
-      },
-      {
-        "type": "Start Time",
-        "text": "The referee signals the start of the second period.",
-        "minute": 45,
-        "minuteStr": "45'"
-      },
-      {
-        "type": "Foul",
-        "text": "Danley JEAN JACQUES (Haiti) commits a foul.",
-        "minute": 47,
-        "minuteStr": "47'"
-      },
-      {
-        "type": "Corner",
-        "text": "Bilal EL KHANNOUSS (Morocco) takes a corner kick.",
-        "minute": 51,
-        "minuteStr": "51'"
-      },
-      {
-        "type": "Foul",
-        "text": "Lenny JOSEPH (Haiti) commits a foul.",
-        "minute": 53,
-        "minuteStr": "53'"
-      },
-      {
-        "type": "Offside",
-        "text": "Ayoub EL KAABI (Morocco) is ruled offside.",
-        "minute": 56,
-        "minuteStr": "56'"
-      },
-      {
-        "type": "Corner",
-        "text": "Achraf HAKIMI (Morocco) takes a corner kick.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Bilal EL KHANNOUSS (Morocco) attempts an effort on goal.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 59,
-        "minuteStr": "59'"
-      },
-      {
-        "type": "Foul",
-        "text": "Achraf HAKIMI (Morocco) commits a foul.",
-        "minute": 61,
-        "minuteStr": "61'"
-      },
-      {
-        "type": "Foul",
-        "text": "Jean-Ricner BELLEGARDE (Haiti) commits a foul.",
-        "minute": 63,
-        "minuteStr": "63'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ayoub EL KAABI (Morocco) commits a foul.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Jean-Ricner BELLEGARDE (Haiti) attempts an effort on goal.",
-        "minute": 64,
-        "minuteStr": "64'"
-      },
-      {
-        "type": "Corner",
-        "text": "Bilal EL KHANNOUSS (Morocco) takes a corner kick.",
-        "minute": 65,
-        "minuteStr": "65'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ismael SAIBARI (Morocco) commits a foul.",
-        "minute": 66,
-        "minuteStr": "66'"
+        "type": "End Delay",
+        "text": "",
+        "minute": 57,
+        "minuteStr": "57'"
       },
       {
         "type": "Substitution",
-        "text": "Duckens NAZON (in) comes off the bench to replace Ruben PROVIDENCE (out) (Haiti)",
+        "text": "Substitution, Haiti. Duckens Nazon replaces Ruben Providence.",
         "minute": 67,
         "minuteStr": "67'"
       },
       {
         "type": "Substitution",
-        "text": "Louicius DEEDSON (in) comes off the bench to replace Wilson ISIDOR (out) (Haiti)",
+        "text": "Substitution, Haiti. Louicius Deedson replaces Wilson Isidor.",
         "minute": 67,
         "minuteStr": "67'"
       },
       {
-        "type": "Foul",
-        "text": "Hannes DELCROIX (Haiti) commits a foul.",
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
         "minute": 68,
         "minuteStr": "68'"
       },
       {
-        "type": "Delay",
-        "text": "Match paused for a hydration break",
+        "type": "Start Delay",
+        "text": "",
         "minute": 68,
         "minuteStr": "68'"
       },
       {
         "type": "Substitution",
-        "text": "Gessime YASSINE (in) comes off the bench to replace Ayoub EL KAABI (out) (Morocco)",
+        "text": "Substitution, Morocco. Soufiane Rahimi replaces Ismael Saibari.",
         "minute": 70,
         "minuteStr": "70'"
       },
       {
         "type": "Substitution",
-        "text": "Soufiane RAHIMI (in) comes off the bench to replace Ismael SAIBARI (out) (Morocco)",
+        "text": "Substitution, Morocco. Azzedine Ounahi replaces Brahim Díaz.",
         "minute": 70,
         "minuteStr": "70'"
       },
       {
         "type": "Substitution",
-        "text": "Azzedine OUNAHI (in) comes off the bench to replace Brahim DIAZ (out) (Morocco)",
+        "text": "Substitution, Morocco. Gessime Yassine replaces Ayoub El Kaabi.",
         "minute": 70,
         "minuteStr": "70'"
       },
       {
-        "type": "Resume",
-        "text": "Match resumed after interruption",
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
-        "type": "Offside",
-        "text": "Redouane HALHAL (Morocco) is ruled offside.",
+        "type": "End Delay",
+        "text": "",
         "minute": 71,
         "minuteStr": "71'"
       },
       {
-        "type": "Foul",
-        "text": "Louicius DEEDSON (Haiti) commits a foul.",
-        "minute": 72,
-        "minuteStr": "72'"
-      },
-      {
-        "type": "Foul",
-        "text": "Gessime YASSINE (Morocco) commits a foul.",
-        "minute": 73,
-        "minuteStr": "73'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ricardo ADE (Haiti) commits a foul.",
-        "minute": 74,
-        "minuteStr": "74'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Achraf HAKIMI (Morocco) attempts an effort on goal.",
-        "minute": 75,
-        "minuteStr": "75'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Achraf HAKIMI (Morocco) attempts an effort on goal.",
-        "minute": 75,
-        "minuteStr": "75'"
-      },
-      {
-        "type": "Corner",
-        "text": "Achraf HAKIMI (Morocco) takes a corner kick.",
-        "minute": 77,
-        "minuteStr": "77'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Soufiane RAHIMI (Morocco) attempts an effort on goal.",
-        "minute": 77,
-        "minuteStr": "77'"
-      },
-      {
-        "type": "Corner",
-        "text": "Achraf HAKIMI (Morocco) takes a corner kick.",
+        "type": "Goal",
+        "text": "Goal! Morocco 3, Haiti 2. Soufiane Rahimi (Morocco) right footed shot from the centre of the box to the top right corner. Assisted by Chadi Riad following a corner.",
         "minute": 78,
         "minuteStr": "78'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Chadi RIAD.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Chadi RIAD (Morocco) attempts an effort on goal.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Soufiane RAHIMI (Morocco) attempts an effort on goal.",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Soufiane RAHIMI (Morocco) scores!!",
-        "minute": 78,
-        "minuteStr": "78'"
-      },
-      {
-        "type": "Yellow card",
-        "text": "Johny PLACIDE (Haiti) is booked by the referee.",
+        "type": "Yellow Card",
+        "text": "Johny Placide (Haiti) is shown the yellow card.",
         "minute": 79,
         "minuteStr": "79'"
       },
       {
-        "type": "Yellow card",
-        "text": "Duckens NAZON (Haiti) is booked by the referee.",
-        "minute": 79,
-        "minuteStr": "79'"
-      },
-      {
-        "type": "Substitution",
-        "text": "Carlens ARCUS (in) comes off the bench to replace Jean-Kevin DUVERNE (out) (Haiti)",
+        "type": "Yellow Card",
+        "text": "Duckens Nazon (Haiti) is shown the yellow card.",
         "minute": 80,
         "minuteStr": "80'"
       },
       {
         "type": "Substitution",
-        "text": "Dominique SIMON (in) comes off the bench to replace Danley JEAN JACQUES (out) (Haiti)",
+        "text": "Substitution, Haiti. Carlens Arcus replaces Jean-Kévin Duverne.",
         "minute": 80,
         "minuteStr": "80'"
       },
       {
         "type": "Substitution",
-        "text": "Samir EL MOURABET (in) comes off the bench to replace Neil EL AYNAOUI (out) (Morocco)",
+        "text": "Substitution, Haiti. Dominique Simon replaces Danley Jean Jacques.",
+        "minute": 80,
+        "minuteStr": "80'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Morocco. Noussair Mazraoui replaces Anass Salah-Eddine.",
         "minute": 83,
         "minuteStr": "83'"
       },
       {
         "type": "Substitution",
-        "text": "Noussair MAZRAOUI (in) comes off the bench to replace Anass SALAH EDDINE (out) (Morocco)",
+        "text": "Substitution, Morocco. Samir El Mourabet replaces Neil El Aynaoui.",
         "minute": 83,
         "minuteStr": "83'"
       },
       {
         "type": "Substitution",
-        "text": "Frantzdy PIERROT (in) comes off the bench to replace Lenny JOSEPH (out) (Haiti)",
+        "text": "Substitution, Haiti. Frantzdy Pierrot replaces Lenny Joseph.",
         "minute": 83,
         "minuteStr": "83'"
       },
       {
-        "type": "Foul",
-        "text": "Jean-Ricner BELLEGARDE (Haiti) commits a foul.",
-        "minute": 84,
-        "minuteStr": "84'"
-      },
-      {
-        "type": "Foul",
-        "text": "Soufiane RAHIMI (Morocco) commits a foul.",
-        "minute": 86,
-        "minuteStr": "86'"
-      },
-      {
-        "type": "Foul",
-        "text": "Ricardo ADE (Haiti) commits a foul.",
-        "minute": 87,
-        "minuteStr": "87'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Achraf HAKIMI (Morocco) attempts an effort on goal.",
-        "minute": 88,
-        "minuteStr": "88'"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Haiti pulls off a save.",
-        "minute": 88,
-        "minuteStr": "88'"
-      },
-      {
-        "type": "Corner",
-        "text": "Gessime YASSINE (Morocco) takes a corner kick.",
-        "minute": 88,
-        "minuteStr": "88'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Azzedine OUNAHI (Morocco) attempts an effort on goal.",
+        "type": "Goal",
+        "text": "Goal! Morocco 4, Haiti 2. Gessime Yassine (Morocco) left footed shot from the centre of the box to the centre of the goal. Assisted by Soufiane Rahimi.",
         "minute": 89,
         "minuteStr": "89'"
       },
       {
-        "type": "Assist",
-        "text": "Assisted by Soufiane RAHIMI.",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Gessime YASSINE (Morocco) attempts an effort on goal.",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Goal!",
-        "text": "Gessime YASSINE (Morocco) scores!!",
-        "minute": 89,
-        "minuteStr": "89'"
-      },
-      {
-        "type": "Foul",
-        "text": "Soufiane RAHIMI (Morocco) commits a foul.",
+        "type": "Yellow Card",
+        "text": "Josué Casimir (Haiti) is shown the yellow card for a bad foul.",
         "minute": 93,
-        "minuteStr": "90'+3"
+        "minuteStr": "90'+3'"
       },
       {
-        "type": "Yellow card",
-        "text": "Josue CASIMIR (Haiti) is booked by the referee.",
-        "minute": 93,
-        "minuteStr": "90'+3"
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Sofyan Amrabat (Morocco).",
+        "minute": 96,
+        "minuteStr": "90'+6'"
       },
       {
-        "type": "Foul",
-        "text": "Redouane HALHAL (Morocco) commits a foul.",
-        "minute": 94,
-        "minuteStr": "90'+4"
+        "type": "Start Delay",
+        "text": "",
+        "minute": 96,
+        "minuteStr": "90'+6'"
       },
       {
-        "type": "Attempt at Goal",
-        "text": "Duckens NAZON (Haiti) attempts an effort on goal.",
-        "minute": 95,
-        "minuteStr": "90'+5"
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 97,
+        "minuteStr": "90'+7'"
       },
       {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Morocco pulls off a save.",
-        "minute": 95,
-        "minuteStr": "90'+5"
+        "type": "End Delay",
+        "text": "",
+        "minute": 97,
+        "minuteStr": "90'+7'"
       },
       {
-        "type": "Corner",
-        "text": "Dominique SIMON (Haiti) takes a corner kick.",
-        "minute": 95,
-        "minuteStr": "90'+5"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Jean-Ricner BELLEGARDE (Haiti) attempts an effort on goal.",
-        "minute": 95,
-        "minuteStr": "90'+5"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ayoub EL KAABI (Morocco) attempts an effort on goal.",
-        "minute": 98,
-        "minuteStr": "90'+8"
-      },
-      {
-        "type": "Attempt at Goal",
-        "text": "Ricardo ADE (Haiti) attempts an effort on goal.",
-        "minute": 98,
-        "minuteStr": "90'+8"
-      },
-      {
-        "type": "Goal Prevention",
-        "text": "The goalkeeper of Morocco pulls off a save.",
-        "minute": 98,
-        "minuteStr": "90'+8"
-      },
-      {
-        "type": "End Time",
-        "text": "The referee brings the second period to an end.",
+        "type": "End Regular Time",
+        "text": "",
         "minute": 99,
-        "minuteStr": "90'+9"
+        "minuteStr": "90'+9'"
       }
-    ]
+    ],
+    "home": "MAR",
+    "away": "HAI"
   },
   "19": {
     "homeScore": 4,
@@ -7036,6 +4996,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -7424,7 +5385,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
+    ],
+    "home": "USA",
+    "away": "PAR"
   },
   "20": {
     "homeScore": 2,
@@ -7433,6 +5396,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -7662,7 +5626,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "AUS",
+    "away": "TUR"
   },
   "21": {
     "homeScore": 2,
@@ -7671,6 +5637,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -8020,7 +5987,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
+    ],
+    "home": "USA",
+    "away": "AUS"
   },
   "22": {
     "homeScore": 1,
@@ -8029,6 +5998,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -8451,87 +6421,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
-  },
-  "23": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "24": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "PAR",
+    "away": "TUR"
   },
   "25": {
     "homeScore": 7,
@@ -8540,6 +6432,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -8781,7 +6674,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "GER",
+    "away": "CUW"
   },
   "26": {
     "homeScore": 1,
@@ -8790,6 +6685,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -9032,7 +6928,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
+    ],
+    "home": "CIV",
+    "away": "ECU"
   },
   "27": {
     "homeScore": 2,
@@ -9041,6 +6939,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -9335,7 +7234,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "GER",
+    "away": "CIV"
   },
   "28": {
     "homeScore": 0,
@@ -9344,6 +7245,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [],
     "stats": {
       "possession": [
@@ -9634,87 +7536,520 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "CUW",
+    "away": "ECU"
   },
   "29": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 1,
+    "awayScore": 2,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "isScorersFixed": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Leroy Sané",
+        "minute": 2
+      },
+      {
+        "team": "away",
+        "player": "Nilson Angulo",
+        "minute": 9
+      },
+      {
+        "team": "away",
+        "player": "Gonzalo Plata",
+        "minute": 77
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        61.1,
+        38.9
       ],
       "shots": [
-        10,
-        10
+        11,
+        7
       ],
       "shotsOnTarget": [
-        5,
-        5
+        3,
+        3
       ],
       "corners": [
-        5,
-        5
+        2,
+        3
       ],
       "fouls": [
         10,
-        10
+        15
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        3
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Kickoff",
+        "text": "First Half begins.",
+        "minute": 0,
+        "minuteStr": ""
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Ecuador 0, Germany 1. Leroy Sané (Germany) left footed shot from the centre of the box to the bottom left corner. Assisted by Florian Wirtz.",
+        "minute": 2,
+        "minuteStr": "2'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Ecuador 1, Germany 1. Nilson Angulo (Ecuador) right footed shot from outside the box to the bottom right corner. Assisted by Pedro Vite.",
+        "minute": 9,
+        "minuteStr": "9'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 30,
+        "minuteStr": "30'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match (Germany).",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 38,
+        "minuteStr": "38'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Piero Hincapié (Ecuador) is shown the yellow card for a bad foul.",
+        "minute": 43,
+        "minuteStr": "43'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Aleksandar Pavlovic (Germany) is shown the yellow card for a bad foul.",
+        "minute": 44,
+        "minuteStr": "44'"
+      },
+      {
+        "type": "Halftime",
+        "text": "First Half ends, Ecuador 1, Germany 1.",
+        "minute": 50,
+        "minuteStr": "45'+5'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Germany. Angelo Stiller replaces Aleksandar Pavlovic.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 47,
+        "minuteStr": "47'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 48,
+        "minuteStr": "48'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Alan Franco (Ecuador) is shown the yellow card.",
+        "minute": 50,
+        "minuteStr": "50'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Germany. Deniz Undav replaces Kai Havertz.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Germany. Malick Thiaw replaces Joshua Kimmich.",
+        "minute": 60,
+        "minuteStr": "60'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Ecuador. Kevin Rodríguez replaces Enner Valencia.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Ecuador. Ángelo Preciado replaces Alan Franco.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Germany. Maximilian Beier replaces Felix Nmecha.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Ecuador. Pervis Estupiñán replaces Piero Hincapié because of an injury.",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Germany. Pascal Groß replaces Florian Wirtz.",
+        "minute": 73,
+        "minuteStr": "73'"
+      },
+      {
+        "type": "Goal - Volley",
+        "text": "Goal! Ecuador 2, Germany 1. Gonzalo Plata (Ecuador) left footed shot from very close range to the top right corner. Assisted by Kevin Rodríguez with a headed pass following a corner.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Ecuador. Félix Torres replaces John Yeboah.",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Ecuador. Jordy Caicedo replaces Nilson Angulo because of an injury.",
+        "minute": 85,
+        "minuteStr": "85'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Gonzalo Plata (Ecuador) is shown the yellow card for a bad foul.",
+        "minute": 89,
+        "minuteStr": "89'"
+      },
+      {
+        "type": "End Regular Time",
+        "text": "Second Half ends, Ecuador 2, Germany 1.",
+        "minute": 98,
+        "minuteStr": "90'+8'"
+      }
+    ],
+    "home": "GER",
+    "away": "ECU"
   },
   "30": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 0,
+    "awayScore": 2,
+    "minute": "FT",
     "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isCompleted": true,
+    "isDetailedScraped": true,
+    "isScorersFixed": true,
+    "events": [
+      {
+        "team": "away",
+        "player": "Nicolas Pépé",
+        "minute": 7
+      },
+      {
+        "team": "away",
+        "player": "Nicolas Pépé",
+        "minute": 64
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        36.7,
+        63.3
       ],
       "shots": [
-        10,
-        10
+        11,
+        7
       ],
       "shotsOnTarget": [
-        5,
-        5
+        2,
+        3
       ],
       "corners": [
-        5,
-        5
+        4,
+        6
       ],
       "fouls": [
-        10,
-        10
+        11,
+        6
       ],
       "yellowCards": [
-        0,
-        0
+        2,
+        1
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Kickoff",
+        "text": "First Half begins.",
+        "minute": 0,
+        "minuteStr": ""
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Curaçao 0, Côte d'Ivoire 1. Nicolas Pépé (Côte d'Ivoire) left footed shot from very close range to the centre of the goal. Assisted by Yan Diomande.",
+        "minute": 7,
+        "minuteStr": "7'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Juriën Gaari (Curaçao).",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Nicolas Pépé (Côte d'Ivoire) is shown the yellow card for a bad foul.",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "Halftime",
+        "text": "First Half ends, Curaçao 0, Côte d'Ivoire 1.",
+        "minute": 50,
+        "minuteStr": "45'+5'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Côte d'Ivoire. Christ Inao Oulaï replaces Amad Diallo.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Curaçao. Jeremy Antonisse replaces Livano Comenencia.",
+        "minute": 61,
+        "minuteStr": "61'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Curaçao 0, Côte d'Ivoire 2. Nicolas Pépé (Côte d'Ivoire) left footed shot from the right side of the box to the top left corner. Assisted by Ibrahim Sangaré.",
+        "minute": 64,
+        "minuteStr": "64'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Côte d'Ivoire. Oumar Diakité replaces Ange-Yoan Bonny.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Côte d'Ivoire. Elye Wahi replaces Nicolas Pépé.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Côte d'Ivoire. Bazoumana Touré replaces Yan Diomande.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Juninho Bacuna (Curaçao) is shown the yellow card for a bad foul.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Curaçao. Gervane Kastaneer replaces Juriën Gaari.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Curaçao. Tyrese Noslin replaces Deveron Fonville.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Côte d'Ivoire. Jean Michaël Seri replaces Franck Kessie.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Gervane Kastaneer (Curaçao) is shown the yellow card for a bad foul.",
+        "minute": 83,
+        "minuteStr": "83'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Curaçao. Shurandy Sambo replaces Joshua Brenet.",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Curaçao. Brandley Kuwas replaces Jürgen Locadia.",
+        "minute": 90,
+        "minuteStr": "90'"
+      },
+      {
+        "type": "End Regular Time",
+        "text": "Second Half ends, Curaçao 0, Côte d'Ivoire 2.",
+        "minute": 97,
+        "minuteStr": "90'+7'"
+      }
+    ],
+    "home": "CUW",
+    "away": "CIV"
   },
   "31": {
     "homeScore": 2,
@@ -9723,6 +8058,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -10022,7 +8358,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "NED",
+    "away": "JPN"
   },
   "32": {
     "homeScore": 5,
@@ -10031,6 +8369,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -10328,7 +8667,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "SWE",
+    "away": "TUN"
   },
   "33": {
     "homeScore": 5,
@@ -10337,6 +8678,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -10610,7 +8952,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "NED",
+    "away": "SWE"
   },
   "34": {
     "homeScore": 4,
@@ -10619,6 +8963,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -10852,36 +9197,60 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "JPN",
+    "away": "TUN"
   },
   "35": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 3,
+    "awayScore": 1,
+    "minute": "84'",
     "second": 0,
     "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isDetailedScraped": true,
+    "isScorersFixed": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Ellyes Skhiri",
+        "minute": 3
+      },
+      {
+        "team": "home",
+        "player": "Brian Brobbey",
+        "minute": 7
+      },
+      {
+        "team": "away",
+        "player": "Hazem Mastouri",
+        "minute": 54
+      },
+      {
+        "team": "home",
+        "player": "Jan Paul van Hecke",
+        "minute": 62
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        70,
+        30
       ],
       "shots": [
-        10,
-        10
+        20,
+        8
       ],
       "shotsOnTarget": [
-        5,
-        5
+        7,
+        4
       ],
       "corners": [
         5,
-        5
+        3
       ],
       "fouls": [
         10,
-        10
+        11
       ],
       "yellowCards": [
         0,
@@ -10892,47 +9261,371 @@
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Kickoff",
+        "text": "First Half begins.",
+        "minute": 0,
+        "minuteStr": ""
+      },
+      {
+        "type": "Own Goal",
+        "text": "Own Goal by Ellyes Skhiri, Tunisia. Tunisia 0, Netherlands 1.",
+        "minute": 3,
+        "minuteStr": "3'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Tunisia 0, Netherlands 2. Brian Brobbey (Netherlands) right footed shot from the centre of the box to the top right corner. Assisted by Virgil van Dijk with a headed pass following a set piece situation.",
+        "minute": 7,
+        "minuteStr": "7'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 23,
+        "minuteStr": "23'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 26,
+        "minuteStr": "26'"
+      },
+      {
+        "type": "Halftime",
+        "text": "",
+        "minute": 49,
+        "minuteStr": "45'+4'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "Second Half begins Tunisia 0, Netherlands 2.",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Goal - Header",
+        "text": "Goal! Tunisia 1, Netherlands 2. Hazem Mastouri (Tunisia) header from the centre of the box to the bottom left corner. Assisted by Hannibal Mejbri with a cross following a corner.",
+        "minute": 54,
+        "minuteStr": "54'"
+      },
+      {
+        "type": "Goal - Header",
+        "text": "Goal! Tunisia 1, Netherlands 3. Jan Paul van Hecke (Netherlands) header from the left side of the six yard box to the top right corner. Assisted by Tijjani Reijnders with a cross following a corner.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Tunisia. Hadj Mahmoud replaces Rani Khedira.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Tunisia. Elias Achouri replaces Anis Ben Slimane.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Tunisia. Mortadha Ben Ouanes replaces Mohamed Amine Ben Hmida.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 69,
+        "minuteStr": "69'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Netherlands. Teun Koopmeiners replaces Frenkie de Jong.",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Netherlands. Justin Kluivert replaces Tijjani Reijnders.",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Netherlands. Crysencio Summerville replaces Donyell Malen.",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 72,
+        "minuteStr": "72'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Tunisia. Firas Chaouat replaces Ismaël Gharbi.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Netherlands. Memphis Depay replaces Brian Brobbey.",
+        "minute": 77,
+        "minuteStr": "77'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Netherlands. Noa Lang replaces Cody Gakpo.",
+        "minute": 84,
+        "minuteStr": "84'"
+      }
+    ],
+    "home": "NED",
+    "away": "TUN"
   },
   "36": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
+    "homeScore": 1,
+    "awayScore": 1,
+    "minute": "83'",
     "second": 0,
     "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
+    "isDetailedScraped": true,
+    "isScorersFixed": true,
+    "events": [
+      {
+        "team": "home",
+        "player": "Daizen Maeda",
+        "minute": 56
+      },
+      {
+        "team": "away",
+        "player": "Anthony Elanga",
+        "minute": 62
+      }
+    ],
     "stats": {
       "possession": [
-        50,
-        50
+        53.8,
+        46.2
       ],
       "shots": [
-        10,
-        10
+        7,
+        8
       ],
       "shotsOnTarget": [
-        5,
-        5
+        3,
+        3
       ],
       "corners": [
-        5,
-        5
+        1,
+        7
       ],
       "fouls": [
-        10,
+        18,
         10
       ],
       "yellowCards": [
-        0,
-        0
+        1,
+        1
       ],
       "redCards": [
         0,
         0
       ]
     },
-    "timeline": []
+    "timeline": [
+      {
+        "type": "Kickoff",
+        "text": "First Half begins.",
+        "minute": 0,
+        "minuteStr": ""
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 24,
+        "minuteStr": "24'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 27,
+        "minuteStr": "27'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Isak Hien (Sweden) is shown the yellow card for a bad foul.",
+        "minute": 32,
+        "minuteStr": "32'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match because of an injury Isak Hien (Sweden).",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 35,
+        "minuteStr": "35'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 36,
+        "minuteStr": "36'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Sweden. Lucas Bergvall replaces Isak Hien because of an injury.",
+        "minute": 37,
+        "minuteStr": "37'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Japan. Shogo Taniguchi replaces Ko Itakura.",
+        "minute": 39,
+        "minuteStr": "39'"
+      },
+      {
+        "type": "Halftime",
+        "text": "",
+        "minute": 50,
+        "minuteStr": "45'+5'"
+      },
+      {
+        "type": "Start 2nd Half",
+        "text": "",
+        "minute": 45,
+        "minuteStr": "45'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Japan 1, Sweden 0. Daizen Maeda (Japan) right footed shot from the centre of the box to the bottom left corner. Assisted by Ritsu Doan with a through ball.",
+        "minute": 56,
+        "minuteStr": "56'"
+      },
+      {
+        "type": "Goal",
+        "text": "Goal! Japan 1, Sweden 1. Anthony Elanga (Sweden) left footed shot from outside the box to the bottom left corner. Assisted by Viktor Gyökeres.",
+        "minute": 62,
+        "minuteStr": "62'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Japan. Koki Ogawa replaces Ayase Ueda.",
+        "minute": 66,
+        "minuteStr": "66'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Japan. Junya Ito replaces Ritsu Doan.",
+        "minute": 67,
+        "minuteStr": "67'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "Delay in match for a drinks break.",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "Start Delay",
+        "text": "",
+        "minute": 68,
+        "minuteStr": "68'"
+      },
+      {
+        "type": "End Delay",
+        "text": "Delay over. They are ready to continue.",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "End Delay",
+        "text": "",
+        "minute": 71,
+        "minuteStr": "71'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Sweden. Daniel Svensson replaces Alexander Bernhardsson.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Sweden. Ken Sema replaces Elliot Stroud.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Japan. Yuto Nagatomo replaces Keito Nakamura.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Substitution",
+        "text": "Substitution, Japan. Tsuyoshi Watanabe replaces Ayumu Seko.",
+        "minute": 75,
+        "minuteStr": "75'"
+      },
+      {
+        "type": "Yellow Card",
+        "text": "Shogo Taniguchi (Japan) is shown the yellow card for a bad foul.",
+        "minute": 77,
+        "minuteStr": "77'"
+      }
+    ],
+    "home": "JPN",
+    "away": "SWE"
   },
   "37": {
     "homeScore": 1,
@@ -10941,6 +9634,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -11164,7 +9858,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "BEL",
+    "away": "EGY"
   },
   "38": {
     "homeScore": 2,
@@ -11173,6 +9869,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -11478,7 +10175,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "IRN",
+    "away": "NZL"
   },
   "39": {
     "homeScore": 0,
@@ -11487,6 +10186,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [],
     "stats": {
       "possession": [
@@ -11729,7 +10429,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "BEL",
+    "away": "IRN"
   },
   "40": {
     "homeScore": 3,
@@ -11738,6 +10440,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -12055,87 +10758,9 @@
         "minute": 101,
         "minuteStr": "90'+11'"
       }
-    ]
-  },
-  "41": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "42": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "EGY",
+    "away": "NZL"
   },
   "43": {
     "homeScore": 0,
@@ -12144,6 +10769,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [],
     "stats": {
       "possession": [
@@ -12362,7 +10988,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "ESP",
+    "away": "CPV"
   },
   "44": {
     "homeScore": 1,
@@ -12371,6 +10999,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -12588,7 +11217,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
+    ],
+    "home": "KSA",
+    "away": "URU"
   },
   "45": {
     "homeScore": 4,
@@ -12597,6 +11228,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -12878,7 +11510,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
+    ],
+    "home": "ESP",
+    "away": "KSA"
   },
   "46": {
     "homeScore": 2,
@@ -12887,6 +11521,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -13192,87 +11827,9 @@
         "minute": 99,
         "minuteStr": "90'+9'"
       }
-    ]
-  },
-  "47": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "48": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "CPV",
+    "away": "URU"
   },
   "49": {
     "homeScore": 3,
@@ -13281,6 +11838,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -13532,7 +12090,9 @@
         "minute": 100,
         "minuteStr": "90'+10'"
       }
-    ]
+    ],
+    "home": "FRA",
+    "away": "SEN"
   },
   "50": {
     "homeScore": 1,
@@ -13541,6 +12101,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -13839,7 +12400,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "IRQ",
+    "away": "NOR"
   },
   "51": {
     "homeScore": 3,
@@ -13848,6 +12411,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -14046,7 +12610,9 @@
         "minute": 93,
         "minuteStr": "90'+3'"
       }
-    ]
+    ],
+    "home": "FRA",
+    "away": "IRQ"
   },
   "52": {
     "homeScore": 2,
@@ -14055,6 +12621,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -14323,87 +12890,9 @@
         "minute": 101,
         "minuteStr": "90'+11'"
       }
-    ]
-  },
-  "53": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "54": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "SEN",
+    "away": "NOR"
   },
   "55": {
     "homeScore": 3,
@@ -14412,6 +12901,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -14646,7 +13136,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "ARG",
+    "away": "ALG"
   },
   "56": {
     "homeScore": 3,
@@ -14655,6 +13147,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -14966,7 +13459,9 @@
         "minute": 104,
         "minuteStr": "90'+14'"
       }
-    ]
+    ],
+    "home": "AUT",
+    "away": "JOR"
   },
   "57": {
     "homeScore": 2,
@@ -14975,6 +13470,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -15300,7 +13796,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
+    ],
+    "home": "ARG",
+    "away": "AUT"
   },
   "58": {
     "homeScore": 2,
@@ -15309,6 +13807,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -15519,87 +14018,9 @@
         "minute": 98,
         "minuteStr": "90'+8'"
       }
-    ]
-  },
-  "59": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "60": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "ALG",
+    "away": "JOR"
   },
   "61": {
     "homeScore": 1,
@@ -15608,6 +14029,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -15813,7 +14235,9 @@
         "minute": 95,
         "minuteStr": "90'+5'"
       }
-    ]
+    ],
+    "home": "POR",
+    "away": "COD"
   },
   "62": {
     "homeScore": 1,
@@ -15822,6 +14246,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -16091,7 +14516,9 @@
         "minute": 101,
         "minuteStr": "90'+11'"
       }
-    ]
+    ],
+    "home": "UZB",
+    "away": "COL"
   },
   "63": {
     "homeScore": 5,
@@ -16100,6 +14527,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -16368,7 +14796,9 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
+    ],
+    "home": "POR",
+    "away": "UZB"
   },
   "64": {
     "homeScore": 0,
@@ -16377,6 +14807,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "away",
@@ -16568,8 +14999,8 @@
       {
         "type": "Substitution",
         "text": "Substitution, Colombia. Richard Ríos replaces Jhon Arias.",
-        "minute": 78,
-        "minuteStr": "78'"
+        "minute": 77,
+        "minuteStr": "77'"
       },
       {
         "type": "Substitution",
@@ -16595,87 +15026,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
-  },
-  "65": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "66": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "COD",
+    "away": "COL"
   },
   "67": {
     "homeScore": 4,
@@ -16684,6 +15037,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -16939,7 +15293,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "ENG",
+    "away": "CRO"
   },
   "68": {
     "homeScore": 1,
@@ -16948,6 +15304,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -17232,7 +15589,9 @@
         "minute": 102,
         "minuteStr": "90'+12'"
       }
-    ]
+    ],
+    "home": "GHA",
+    "away": "PAN"
   },
   "69": {
     "homeScore": 0,
@@ -17241,6 +15600,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [],
     "stats": {
       "possession": [
@@ -17459,7 +15819,9 @@
         "minute": 97,
         "minuteStr": "90'+7'"
       }
-    ]
+    ],
+    "home": "ENG",
+    "away": "GHA"
   },
   "70": {
     "homeScore": 1,
@@ -17468,6 +15830,7 @@
     "second": 0,
     "isCompleted": true,
     "isDetailedScraped": true,
+    "isScorersFixed": true,
     "events": [
       {
         "team": "home",
@@ -17561,7 +15924,7 @@
         "minuteStr": "45'"
       },
       {
-        "type": "Goal - Volley",
+        "type": "Goal",
         "text": "Goal! Panama 0, Croatia 1. Ante Budimir (Croatia) left footed shot from very close range to the bottom left corner. Assisted by Josip Stanisic with a cross.",
         "minute": 54,
         "minuteStr": "54'"
@@ -17650,1430 +16013,8 @@
         "minute": 96,
         "minuteStr": "90'+6'"
       }
-    ]
-  },
-  "71": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "72": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "second": 0,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "RSA",
-    "away": "CAN",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "BRA",
-    "away": "2F",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_3": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "GER",
-    "away": "3ABCDF",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_4": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1F",
-    "away": "MAR",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_5": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2E",
-    "away": "2I",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_6": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1I",
-    "away": "3CDFGH",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_7": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "MEX",
-    "away": "3CEFHI",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_8": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1L",
-    "away": "3EHIJK",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_9": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1G",
-    "away": "3AEHIJ",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_10": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "USA",
-    "away": "3BEFIJ",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_11": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1H",
-    "away": "2J",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_12": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2K",
-    "away": "2L",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_13": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "SUI",
-    "away": "3EFGIJ",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_14": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "2D",
-    "away": "2G",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_15": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "ARG",
-    "away": "2H",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r32_16": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "1K",
-    "away": "3DEIJL",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W73",
-    "away": "W75",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W74",
-    "away": "W77",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_3": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W76",
-    "away": "W78",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_4": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W79",
-    "away": "W80",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_5": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W83",
-    "away": "W84",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_6": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W81",
-    "away": "W82",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_7": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W86",
-    "away": "W88",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "r16_8": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W85",
-    "away": "W87",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W89",
-    "away": "W90",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W93",
-    "away": "W94",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_3": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W91",
-    "away": "W92",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "qf_4": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W95",
-    "away": "W96",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "sf_1": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W97",
-    "away": "W98",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "sf_2": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W99",
-    "away": "W100",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "bronze": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "RU101",
-    "away": "RU102",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
-  },
-  "final": {
-    "homeScore": null,
-    "awayScore": null,
-    "minute": null,
-    "isCompleted": false,
-    "isDetailedScraped": false,
-    "winner": null,
-    "home": "W101",
-    "away": "W102",
-    "events": [],
-    "stats": {
-      "possession": [
-        50,
-        50
-      ],
-      "shots": [
-        10,
-        10
-      ],
-      "shotsOnTarget": [
-        5,
-        5
-      ],
-      "corners": [
-        5,
-        5
-      ],
-      "fouls": [
-        10,
-        10
-      ],
-      "yellowCards": [
-        0,
-        0
-      ],
-      "redCards": [
-        0,
-        0
-      ]
-    },
-    "timeline": []
+    ],
+    "home": "CRO",
+    "away": "PAN"
   }
 }

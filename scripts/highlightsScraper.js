@@ -181,6 +181,16 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
     return { statusCode: 200, result: highlightsCache[cacheKey] };
   }
 
+  // Helper to test embed URL availability
+  async function isEmbedAvailable(url) {
+    try {
+      const headResp = await fetch(url, { method: 'HEAD' });
+      return headResp.ok;
+    } catch (_) {
+      return false;
+    }
+  }
+
   // 1. Search official FIFA.com search API (primary)
   try {
     const cleanHome = home.replace(/&/g, 'and');
