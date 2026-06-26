@@ -46,6 +46,43 @@ export function getPositionCategory(code) {
   return POSITION_MAP[code]?.category || 'N/A';
 }
 
+const POSITION_STR_TO_CODE = {
+  'Keeper': 11,
+  'Goalkeeper': 11,
+  'GK': 11,
+  'Right Back': 32,
+  'RB': 32,
+  'Center Back': 33,
+  'CB': 33,
+  'Left Back': 35,
+  'LB': 35,
+  'defender': 36,
+  'Defensive Midfielder': 64,
+  'DMF': 64,
+  'Central Midfielder': 66,
+  'CMF': 66,
+  'Right Midfielder': 62,
+  'Left Midfielder': 68,
+  'Right Wing-Back': 71,
+  'Left Wing-Back': 79,
+  'Right Winger': 72,
+  'RWF': 72,
+  'Attacking Midfielder': 73,
+  'CAM': 73,
+  'Left Winger': 78,
+  'LWF': 78,
+  'Striker': 95,
+  'CF': 95,
+  'forward': 95,
+  'midfielder': 66,
+};
+
+export function normalizePosition(pos) {
+  if (pos == null) return null;
+  if (POSITION_MAP[pos]) return pos;
+  return POSITION_STR_TO_CODE[pos] || null;
+}
+
 export const POSITION_CATEGORIES = ['GK', 'DEF', 'MID', 'FWD'];
 
 export function getCategoryColor(category) {

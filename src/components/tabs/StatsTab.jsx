@@ -4,7 +4,7 @@ import { WorldCupTrophyIcon, GoldenBootTrophyIcon, PlaymakerIcon } from '../../u
 import { ScrollingText } from '../ScrollingText';
 import { PlayerAvatar } from '../PlayerAvatar';
 import { PlayerDetailModal } from '../PlayerDetailModal';
-import { getPositionLabel, getPositionCategory, getCategoryColor } from '../../utils/positions';
+import { getPositionLabel, getPositionCategory, getCategoryColor, normalizePosition } from '../../utils/positions';
 import playerDetails from '../../data/fotmobPlayerDetails.json';
 
 export const StatsTab = ({ playerStats, fotmobRatings }) => {
@@ -24,7 +24,10 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
       if (p.name && p.position) map[p.name] = p.position;
     });
     Object.values(playerDetails).forEach(p => {
-      if (p.name && p.position) map[p.name] = p.position;
+      if (p.name && p.position) {
+        const code = normalizePosition(p.position);
+        if (code != null) map[p.name] = code;
+      }
     });
     return map;
   }, [fotmobRatings]);
