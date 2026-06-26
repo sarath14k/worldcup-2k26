@@ -3,6 +3,7 @@ import { TEAMS, VENUES } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
 import { ScrollingText } from './ScrollingText';
 import { PlayerAvatar } from './PlayerAvatar';
+import { PlayerDetailModal } from './PlayerDetailModal';
 import { getPositionLabel, getPositionCategory, getCategoryColor } from '../utils/positions';
 
 const HISTORICAL_DB = [
@@ -223,6 +224,7 @@ export const MatchDetailsModal = ({
     return positionLookup[`${name}|${team}`];
   };
 
+  const [detailPlayer, setDetailPlayer] = useState(null);
   const [activeModalTab, setActiveModalTab] = useState('match');
 
   useEffect(() => {
@@ -269,7 +271,7 @@ export const MatchDetailsModal = ({
   const awayScore = live ? live.awayScore : (selectedMatch.awayScore ?? 0);
 
   return (
-    <div
+    <><div
       className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 ${
         closing ? 'animate-backdropExit' : 'animate-modalEnter'
       }`}
@@ -633,9 +635,9 @@ export const MatchDetailsModal = ({
                     const posLabel = getPositionLabel(posCode);
                     const posCat = getPositionCategory(posCode);
                     return (
-                      <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
+                      <div key={`home-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2 cursor-pointer" onClick={() => setDetailPlayer({ id: p.playerId, name: p.name })}>
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} />
+                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
@@ -671,9 +673,9 @@ export const MatchDetailsModal = ({
                     const posLabel = getPositionLabel(posCode);
                     const posCat = getPositionCategory(posCode);
                     return (
-                      <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2">
+                      <div key={`away-p-${idx}`} className="flex items-center justify-between bg-slate-950/30 border border-slate-900/50 rounded-lg p-1.5 px-2 cursor-pointer" onClick={() => setDetailPlayer({ id: p.playerId, name: p.name })}>
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} />
+                          <PlayerAvatar name={p.name} size="xs" playerId={p.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           {posLabel && (
                             <span className={`text-[6px] font-mono font-black px-1 py-0.5 rounded-full border shrink-0 leading-none ${getCategoryColor(posCat)}`}>
                               {posLabel}
@@ -902,5 +904,9 @@ export const MatchDetailsModal = ({
         </div>
       </div>
     </div>
+
+    {detailPlayer && (
+      <PlayerDetailModal playerId={detailPlayer.id} name={detailPlayer.name} onClose={() => setDetailPlayer(null)} />
+    )}</>
   );
 };

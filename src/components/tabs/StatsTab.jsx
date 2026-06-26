@@ -3,10 +3,18 @@ import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, GoldenBootTrophyIcon, PlaymakerIcon } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
 import { PlayerAvatar } from '../PlayerAvatar';
+import { PlayerDetailModal } from '../PlayerDetailModal';
 import { getPositionLabel, getPositionCategory, getCategoryColor } from '../../utils/positions';
 
 export const StatsTab = ({ playerStats, fotmobRatings }) => {
-  const [activeSubTab, setActiveSubTab] = useState('scorers'); // 'scorers' | 'assists'
+  const [activeSubTab, setActiveSubTab] = useState('scorers');
+  const [detailPlayer, setDetailPlayer] = useState(null);
+
+  const playerIdLookup = useMemo(() => {
+    const map = {};
+    (fotmobRatings || []).forEach(p => { if (p.playerId) map[p.name] = p.playerId; });
+    return map;
+  }, [fotmobRatings]);
 
   const positionLookup = useMemo(() => {
     const map = {};
@@ -17,7 +25,7 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
   }, [fotmobRatings]);
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
+    <><div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
       {/* Header info */}
       <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80">
         <h2 className="text-base font-bold text-white flex items-center gap-2">
@@ -99,8 +107,8 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                     {(() => {
                       const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                       return (
-                        <div className="col-span-7 flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={player.name} size="xs" playerId={player.playerId} />
+                        <div className="col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => { const pid = playerIdLookup[player.name]; if (pid) setDetailPlayer({ id: pid, name: player.name }); }}>
+                          <PlayerAvatar name={player.name} size="xs" playerId={playerIdLookup[player.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
                             {player.team}
                           </span>
@@ -171,8 +179,8 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                     {(() => {
                       const teamInfo = TEAMS[player.team] || { name: player.team, flag: '🏳️' };
                       return (
-                        <div className="col-span-7 flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar name={player.name} size="xs" playerId={player.playerId} />
+                        <div className="col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => { const pid = playerIdLookup[player.name]; if (pid) setDetailPlayer({ id: pid, name: player.name }); }}>
+                          <PlayerAvatar name={player.name} size="xs" playerId={playerIdLookup[player.name]} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                           <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono shrink-0">
                             {player.team}
                           </span>
@@ -204,5 +212,9 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
         )}
       </div>
     </div>
+
+    {detailPlayer && (
+      <PlayerDetailModal playerId={detailPlayer.id} name={detailPlayer.name} onClose={() => setDetailPlayer(null)} />
+    )}</>
   );
 };

@@ -3,12 +3,14 @@ import { Search, X, Star, Filter } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { ScrollingText } from '../ScrollingText';
 import { PlayerAvatar } from '../PlayerAvatar';
+import { PlayerDetailModal } from '../PlayerDetailModal';
 import { getPositionLabel, getPositionCategory, getCategoryColor, POSITION_CATEGORIES } from '../../utils/positions';
 
 export const PlayerRatingsTab = ({ fotmobRatings }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [visibleCount, setVisibleCount] = useState(10);
   const [positionFilter, setPositionFilter] = useState('');
+  const [detailPlayer, setDetailPlayer] = useState(null);
 
   const filteredRatings = useMemo(() => {
     const query = searchQuery.toLowerCase().trim();
@@ -39,7 +41,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
   const displayedRatings = filteredRatings.slice(0, visibleCount);
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
+    <><div className="flex flex-col gap-4 sm:gap-6 animate-fadeIn">
       <div className="p-4 rounded-2xl bg-brand-cardBg border border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h2 className="text-base font-bold text-white flex items-center gap-2">
@@ -161,8 +163,8 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                     </div>
                   </div>
 
-                  <div className="col-span-7 sm:col-span-7 flex items-center gap-1.5 min-w-0">
-                    <PlayerAvatar name={player.name} size="xs" playerId={player.playerId} />
+                  <div className="col-span-7 sm:col-span-7 flex items-center gap-1.5 min-w-0 cursor-pointer" onClick={() => setDetailPlayer({ id: player.playerId, name: player.name })}>
+                    <PlayerAvatar name={player.name} size="xs" playerId={player.playerId} onPlayerClick={(id, name) => setDetailPlayer({ id, name })} />
                     <span className="text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800 text-slate-350 font-mono tracking-wider shrink-0 select-none">
                       {player.team}
                     </span>
@@ -214,5 +216,9 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
         )}
       </div>
     </div>
+
+    {detailPlayer && (
+      <PlayerDetailModal playerId={detailPlayer.id} name={detailPlayer.name} onClose={() => setDetailPlayer(null)} />
+    )}</>
   );
 };

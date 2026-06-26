@@ -39,7 +39,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-modalEnter"
+      className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 animate-modalEnter"
       style={{ background: 'rgba(2, 6, 23, 0.85)' }}
       onClick={onClose}
     >

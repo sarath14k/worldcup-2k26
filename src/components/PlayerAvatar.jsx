@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import playerImages from '../data/playerImages.json';
-import { PlayerDetailModal } from './PlayerDetailModal';
 
 const FALLBACK_COLORS = [
   'from-emerald-500 to-teal-600',
@@ -27,15 +26,19 @@ function getColorIndex(name) {
   return Math.abs(hash) % FALLBACK_COLORS.length;
 }
 
-export const PlayerAvatar = ({ name, size = 'md', className = '', playerId }) => {
+export const PlayerAvatar = ({ name, size = 'md', className = '', playerId, onPlayerClick }) => {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   const imageUrl = playerImages.byName[name];
   const initials = getInitials(name);
   const colorClass = FALLBACK_COLORS[getColorIndex(name)];
   const showImage = imageUrl && !errored;
+  const clickable = Boolean(onPlayerClick) && Boolean(playerId);
+
+  const handleClick = () => {
+    if (onPlayerClick && playerId) onPlayerClick(playerId, name);
+  };
 
   const sizeMap = {
     xs: 'w-5 h-5 text-[7px]',
@@ -54,31 +57,27 @@ export const PlayerAvatar = ({ name, size = 'md', className = '', playerId }) =>
   };
 
   return (
-    <>
-      <div className={`relative shrink-0 ${imgSizeMap[size]} ${className}`}>
-        {showImage && (
-          <img
-            src={imageUrl}
-            alt={name}
-            onLoad={() => setLoaded(true)}
-            onError={() => setErrored(true)}
-            onClick={() => setShowModal(true)}
-            className={`${imgSizeMap[size]} rounded-full object-cover border-2 border-slate-700/60 cursor-pointer ${
-              loaded ? 'opacity-100' : 'opacity-0'
-            } transition-opacity duration-300`}
-            loading="lazy"
-          />
-        )}
-        {(!showImage || !loaded) && (
-          <div className={`${sizeMap[size]} rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center font-black text-white border-2 border-white/20 leading-none`}>
-            {initials}
-          </div>
-        )}
-      </div>
-
-      {showModal && playerId && (
-        <PlayerDetailModal playerId={playerId} name={name} onClose={() => setShowModal(false)} />
+    <div
+      className={`relative shrink-0 ${imgSizeMap[size]} ${clickable ? 'cursor-pointer' : ''} ${className}`}
+      onClick={clickable ? handleClick : undefined}
+    >
+      {showImage && (
+        <img
+          src={imageUrl}
+          alt={name}
+          onLoad={() => setLoaded(true)}
+          onError={() => setErrored(true)}
+          className={`${imgSizeMap[size]} rounded-full object-cover border-2 border-slate-700/60 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          } transition-opacity duration-300`}
+          loading="lazy"
+        />
       )}
-    </>
+      {(!showImage || !loaded) && (
+        <div className={`${sizeMap[size]} rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center font-black text-white border-2 border-white/20 leading-none`}>
+          {initials}
+        </div>
+      )}
+    </div>
   );
 };
