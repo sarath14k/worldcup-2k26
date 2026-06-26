@@ -5,6 +5,7 @@ import { scrapeFifa } from './server/scrapers/fifa.js'
 import { handleHighlightsRoute } from './server/scrapers/highlights.js'
 
 export default defineConfig({
+  base: '/worldcup-2k26/',
   plugins: [
     react(),
     tailwindcss(),
