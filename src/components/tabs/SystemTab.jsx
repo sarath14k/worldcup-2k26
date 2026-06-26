@@ -211,10 +211,12 @@ export default function SystemTab() {
     fetchAnalytics();
   }, [fetchAnalytics]);
 
-  // Tick every second to update relative timestamps
+  // Update relative timestamps on minute boundaries instead of every second
   useEffect(() => {
-    const ticker = setInterval(() => forceUpdate(t => t + 1), 1000);
-    return () => clearInterval(ticker);
+    const id = setInterval(() => forceUpdate(t => t + 1), 60000);
+    // Force an immediate update on mount
+    forceUpdate(t => t + 1);
+    return () => clearInterval(id);
   }, []);
 
   if (error && !analytics) {

@@ -47,7 +47,10 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
     const kickoff = parseDateStr(nextMatch?.date);
     kickoffRef.current = kickoff;
     if (!kickoff) { setDisplay(''); return; }
-    const tick = () => setDisplay(formatDiff(kickoff.getTime() - Date.now()));
+    const tick = () => {
+      if (document.hidden) return;
+      setDisplay(formatDiff(kickoff.getTime() - Date.now()));
+    };
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
