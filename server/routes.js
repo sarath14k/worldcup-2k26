@@ -100,7 +100,7 @@ export function registerRoutes(app) {
         };
       }
     } catch {}
-    const ahead = latestCommit && deployedCommit ? latestCommit.sha.slice(0, 7) !== deployedCommit.slice(0, 7) : false;
+    const ahead = latestCommit && deployedCommit ? latestCommit.sha !== deployedCommit : false;
     res.json({
       deployedCommit,
       latestCommit,
