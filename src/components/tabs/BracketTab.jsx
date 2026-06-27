@@ -7,6 +7,7 @@ import { BracketTeamSlot } from '../BracketTeamSlot';
 export const BracketTab = ({
   bracket,
   tournamentChampion,
+  burnedMatches = new Set(),
   handleKnockoutWinner,
   onRestoreBracket
 }) => {
@@ -172,6 +173,7 @@ export const BracketTab = ({
                     teamCode={match.home}
                     isWinner={isHomeWinner}
                     isHovered={isHomeHovered}
+                    locked={burnedMatches.has(match.id)}
                     onClick={() => handleKnockoutWinner('final', idx, match.home)}
                     id="m-slot-final-home"
                     tbdText="TBD SF 1 Winner"
@@ -181,6 +183,7 @@ export const BracketTab = ({
                     teamCode={match.away}
                     isWinner={isAwayWinner}
                     isHovered={isAwayHovered}
+                    locked={burnedMatches.has(match.id)}
                     onClick={() => handleKnockoutWinner('final', idx, match.away)}
                     id="m-slot-final-away"
                     tbdText="TBD SF 2 Winner"
@@ -241,6 +244,7 @@ export const BracketTab = ({
                     teamCode={match.home}
                     isWinner={isHomeWinner}
                     isHovered={false}
+                    locked={burnedMatches.has(match.id)}
                     onClick={() => handleKnockoutWinner(roundKey, idx, match.home)}
                     id={`m-slot-${match.id}-home`}
                     tbdText="TBD (Group Stage)"
@@ -249,6 +253,7 @@ export const BracketTab = ({
                     teamCode={match.away}
                     isWinner={isAwayWinner}
                     isHovered={false}
+                    locked={burnedMatches.has(match.id)}
                     onClick={() => handleKnockoutWinner(roundKey, idx, match.away)}
                     id={`m-slot-${match.id}-away`}
                     tbdText="TBD (Group Stage)"
@@ -307,6 +312,7 @@ export const BracketTab = ({
                     teamCode={match.home}
                     isWinner={isHomeWinner}
                     isHovered={isHomeHovered}
+                    locked={burnedMatches.has(match.id)}
                     onClick={() => handleKnockoutWinner(roundKey, actualIdx, match.home)}
                     onHover={setHoveredTeam}
                     id={`slot-${match.id}-home`}
@@ -316,6 +322,7 @@ export const BracketTab = ({
                     teamCode={match.away}
                     isWinner={isAwayWinner}
                     isHovered={isAwayHovered}
+                    locked={burnedMatches.has(match.id)}
                     onClick={() => handleKnockoutWinner(roundKey, actualIdx, match.away)}
                     onHover={setHoveredTeam}
                     id={`slot-${match.id}-away`}
@@ -455,6 +462,7 @@ export const BracketTab = ({
                       teamCode={match.home}
                       isWinner={isHomeWinner}
                       isHovered={isHomeHovered}
+                      locked={burnedMatches.has(match.id)}
                       onClick={() => handleKnockoutWinner('final', idx, match.home)}
                       onHover={setHoveredTeam}
                       id="slot-final-home"
@@ -465,6 +473,7 @@ export const BracketTab = ({
                       teamCode={match.away}
                       isWinner={isAwayWinner}
                       isHovered={isAwayHovered}
+                      locked={burnedMatches.has(match.id)}
                       onClick={() => handleKnockoutWinner('final', idx, match.away)}
                       onHover={setHoveredTeam}
                       id="slot-final-away"

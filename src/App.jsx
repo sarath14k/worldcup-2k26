@@ -594,9 +594,6 @@ function App() {
       return changed ? nextMatches : prevMatches;
     });
 
-    // Do NOT touch the bracket while the user is actively editing it on the Roadmap tab
-    if (activeTab === 'bracket') return;
-
     setBracket(prevBracket => {
       let changed = false;
       const nextBracket = JSON.parse(JSON.stringify(prevBracket));
@@ -859,7 +856,9 @@ function App() {
     
     setBracket(prevBracket => {
       const newBracket = JSON.parse(JSON.stringify(prevBracket));
-      const currentMatch = newBracket[roundKey][matchIndex];
+      const currentMatch = newBracket[roundKey]?.[matchIndex];
+      if (!currentMatch) return prevBracket;
+      if (currentMatch.isCompleted) return prevBracket;
       
       if (currentMatch.winner === winnerCode) return prevBracket; // No change
       
@@ -1110,6 +1109,16 @@ function App() {
       return TEAMS[finalMatch.winner];
     }
     return null;
+  }, [bracket]);
+
+  const burnedMatches = useMemo(() => {
+    const burned = new Set();
+    Object.values(bracket).forEach(round => {
+      round.forEach(m => {
+        if (m.isCompleted) burned.add(m.id);
+      });
+    });
+    return burned;
   }, [bracket]);
 
   return (
@@ -1420,6 +1429,7 @@ function App() {
                 standings={standings}
                 advancedTeams={advancedTeams}
                 tournamentChampion={tournamentChampion}
+                burnedMatches={burnedMatches}
                 handleKnockoutWinner={handleKnockoutWinner}
                 onRestoreBracket={(winners) => {
                   setBracket(prev => {

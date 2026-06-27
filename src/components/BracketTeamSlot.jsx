@@ -2,13 +2,15 @@ import { Check } from 'lucide-react';
 import { TEAMS } from '../data/worldcupData';
 import { ScrollingText } from './ScrollingText';
 
-export const BracketTeamSlot = ({ teamCode, isWinner, isHovered, onClick, onHover, id, tbdText, isFinal }) => {
+export const BracketTeamSlot = ({ teamCode, isWinner, isHovered, onClick, onHover, id, tbdText, isFinal, locked }) => {
   const team = TEAMS[teamCode];
   const hasTeam = !!teamCode;
 
   let className = 'flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold';
   if (!hasTeam) {
     className += ' text-slate-600 bg-slate-950/20 cursor-not-allowed';
+  } else if (locked) {
+    className += ' bg-slate-800/40 text-slate-400 ring-1 ring-slate-700/40 cursor-default opacity-70';
   } else if (isHovered) {
     className += ' bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10';
   } else if (isWinner) {
@@ -21,15 +23,17 @@ export const BracketTeamSlot = ({ teamCode, isWinner, isHovered, onClick, onHove
     className += ' bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white';
   }
 
+  const isClickable = hasTeam && !locked;
+
   return (
     <div
       id={id}
-      onClick={hasTeam ? onClick : undefined}
-      onKeyDown={hasTeam ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(); } } : undefined}
-      role={hasTeam ? "button" : undefined}
-      tabIndex={hasTeam ? 0 : undefined}
-      onMouseEnter={hasTeam && onHover ? () => onHover(teamCode) : undefined}
-      onMouseLeave={hasTeam && onHover ? () => onHover(null) : undefined}
+      onClick={isClickable ? onClick : undefined}
+      onKeyDown={isClickable ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(); } } : undefined}
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onMouseEnter={isClickable && onHover ? () => onHover(teamCode) : undefined}
+      onMouseLeave={isClickable && onHover ? () => onHover(null) : undefined}
       className={className}
     >
       <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
