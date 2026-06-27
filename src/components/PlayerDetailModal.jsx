@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { getPositionLabel, normalizePosition } from '../utils/positions';
 
 const FOTMOB_IMG = (id) => `https://images.fotmob.com/image_resources/playerimages/${id}.png`;
 
@@ -82,7 +83,7 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
                   <span className="text-[10px] font-bold text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded-full">{data.country}</span>
                 )}
                 {data?.position && (
-                  <span className="text-[10px] font-bold text-brand-neon bg-brand-neon/10 px-2 py-0.5 rounded-full">{data.position}</span>
+                  <span className="text-[10px] font-bold text-brand-neon bg-brand-neon/10 px-2 py-0.5 rounded-full">{getPositionLabel(normalizePosition(data.position))}</span>
                 )}
               </div>
               {data?.teamName && (
