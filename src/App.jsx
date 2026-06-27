@@ -1094,7 +1094,7 @@ function App() {
   }, [groupMatches, bracket, liveMatches, fotmobRatings]);
 
   const tournamentChampion = useMemo(() => {
-    const finalMatch = bracket.final[0];
+    const finalMatch = bracket.final.find(m => m.id === 'final');
     if (finalMatch && finalMatch.winner) {
       return TEAMS[finalMatch.winner];
     }

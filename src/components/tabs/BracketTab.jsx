@@ -441,12 +441,13 @@ export const BracketTab = ({
               const isHomeHovered = hoveredTeam && match.home === hoveredTeam;
               const isAwayHovered = hoveredTeam && match.away === hoveredTeam;
 
+              const isBronze = match.id === 'bronze';
               return (
                 <div key={match.id} className="w-full flex flex-col gap-3">
                   <div className="text-center">
-                    <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">The Grand Final</p>
+                    <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{isBronze ? 'Bronze Final' : 'The Grand Final'}</p>
                     <p className="text-[9px] text-brand-neon font-bold font-mono">{formatDisplayDate(match.date)}</p>
-                    <p className="text-[8px] text-slate-500 font-semibold mt-0.5">New York/New Jersey</p>
+                    <p className="text-[8px] text-slate-500 font-semibold mt-0.5">{isBronze ? 'Miami' : 'New York/New Jersey'}</p>
                   </div>
 
                   <div id={`card-${match.id}`} className="flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">

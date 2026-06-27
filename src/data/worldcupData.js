@@ -182,59 +182,60 @@ export const generateGroupMatches = () => {
 // R32_1 to R32_16
 // Seeding them with default placeholder codes from the new groups.
 export const KNOCKOUT_MATCHES = {
-  // Round of 32
+  // Round of 32 — official FIFA match numbers & dates (ET → IST)
   r32: [
-    { id: 'r32_1', nextId: 'r16_1', position: 'top', slot: 1, home: 'MEX', away: 'SUI', homeScore: null, awayScore: null, winner: null, title: 'Match 49', date: 'June 29, 01:30 AM IST' },
-    { id: 'r32_2', nextId: 'r16_2', position: 'top', slot: 2, home: 'USA', away: 'ECU', homeScore: null, awayScore: null, winner: null, title: 'Match 50', date: 'June 29, 05:30 AM IST' },
-    { id: 'r32_3', nextId: 'r16_1', position: 'bottom', slot: 3, home: 'FRA', away: 'SWE', homeScore: null, awayScore: null, winner: null, title: 'Match 51', date: 'June 29, 09:30 PM IST' },
-    { id: 'r32_4', nextId: 'r16_3', position: 'top', slot: 4, home: 'GER', away: 'BEL', homeScore: null, awayScore: null, winner: null, title: 'Match 52', date: 'June 30, 01:30 AM IST' },
+    { id: 'r32_1', nextId: 'r16_1', position: 'top', slot: 1, home: 'MEX', away: 'SUI', homeScore: null, awayScore: null, winner: null, title: 'Match 73', date: 'June 29, 12:30 AM IST' },
+    { id: 'r32_2', nextId: 'r16_2', position: 'top', slot: 2, home: 'USA', away: 'ECU', homeScore: null, awayScore: null, winner: null, title: 'Match 76', date: 'June 29, 10:30 PM IST' },
+    { id: 'r32_3', nextId: 'r16_1', position: 'bottom', slot: 3, home: 'FRA', away: 'SWE', homeScore: null, awayScore: null, winner: null, title: 'Match 74', date: 'June 30, 02:00 AM IST' },
+    { id: 'r32_4', nextId: 'r16_3', position: 'top', slot: 4, home: 'GER', away: 'BEL', homeScore: null, awayScore: null, winner: null, title: 'Match 75', date: 'June 30, 06:30 AM IST' },
     
-    { id: 'r32_5', nextId: 'r16_2', position: 'bottom', slot: 5, home: 'ARG', away: 'TUR', homeScore: null, awayScore: null, winner: null, title: 'Match 53', date: 'June 30, 05:30 AM IST' },
-    { id: 'r32_6', nextId: 'r16_3', position: 'bottom', slot: 6, home: 'MAR', away: 'CZE', homeScore: null, awayScore: null, winner: null, title: 'Match 54', date: 'June 30, 09:30 PM IST' },
-    { id: 'r32_7', nextId: 'r16_4', position: 'top', slot: 7, home: 'ENG', away: 'CIV', homeScore: null, awayScore: null, winner: null, title: 'Match 55', date: 'July 01, 01:30 AM IST' },
-    { id: 'r32_8', nextId: 'r16_4', position: 'bottom', slot: 8, home: 'CRO', away: 'NOR', homeScore: null, awayScore: null, winner: null, title: 'Match 56', date: 'July 01, 05:30 AM IST' },
+    { id: 'r32_5', nextId: 'r16_2', position: 'bottom', slot: 5, home: 'ARG', away: 'TUR', homeScore: null, awayScore: null, winner: null, title: 'Match 78', date: 'June 30, 10:30 PM IST' },
+    { id: 'r32_6', nextId: 'r16_3', position: 'bottom', slot: 6, home: 'MAR', away: 'CZE', homeScore: null, awayScore: null, winner: null, title: 'Match 77', date: 'July 01, 02:30 AM IST' },
+    { id: 'r32_7', nextId: 'r16_4', position: 'top', slot: 7, home: 'ENG', away: 'CIV', homeScore: null, awayScore: null, winner: null, title: 'Match 79', date: 'July 01, 06:30 AM IST' },
+    { id: 'r32_8', nextId: 'r16_4', position: 'bottom', slot: 8, home: 'CRO', away: 'NOR', homeScore: null, awayScore: null, winner: null, title: 'Match 80', date: 'July 01, 09:30 PM IST' },
     
-    { id: 'r32_9', nextId: 'r16_5', position: 'top', slot: 9, home: 'BRA', away: 'KOR', homeScore: null, awayScore: null, winner: null, title: 'Match 57', date: 'July 01, 09:30 PM IST' },
-    { id: 'r32_10', nextId: 'r16_5', position: 'bottom', slot: 10, home: 'NED', away: 'COL', homeScore: null, awayScore: null, winner: null, title: 'Match 58', date: 'July 02, 01:30 AM IST' },
-    { id: 'r32_11', nextId: 'r16_6', position: 'top', slot: 11, home: 'ESP', away: 'AUT', homeScore: null, awayScore: null, winner: null, title: 'Match 59', date: 'July 02, 05:30 AM IST' },
-    { id: 'r32_12', nextId: 'r16_6', position: 'bottom', slot: 12, home: 'BEL', away: 'URU', homeScore: null, awayScore: null, winner: null, title: 'Match 60', date: 'July 02, 09:30 PM IST' },
+    { id: 'r32_9', nextId: 'r16_5', position: 'top', slot: 9, home: 'BRA', away: 'KOR', homeScore: null, awayScore: null, winner: null, title: 'Match 82', date: 'July 02, 01:30 AM IST' },
+    { id: 'r32_10', nextId: 'r16_5', position: 'bottom', slot: 10, home: 'NED', away: 'COL', homeScore: null, awayScore: null, winner: null, title: 'Match 81', date: 'July 02, 05:30 AM IST' },
+    { id: 'r32_11', nextId: 'r16_6', position: 'top', slot: 11, home: 'ESP', away: 'AUT', homeScore: null, awayScore: null, winner: null, title: 'Match 84', date: 'July 03, 12:30 AM IST' },
+    { id: 'r32_12', nextId: 'r16_6', position: 'bottom', slot: 12, home: 'BEL', away: 'URU', homeScore: null, awayScore: null, winner: null, title: 'Match 83', date: 'July 03, 04:30 AM IST' },
     
-    { id: 'r32_13', nextId: 'r16_7', position: 'top', slot: 13, home: 'CAN', away: 'PAR', homeScore: null, awayScore: null, winner: null, title: 'Match 61', date: 'July 03, 01:30 AM IST' },
-    { id: 'r32_14', nextId: 'r16_7', position: 'bottom', slot: 14, home: 'JPN', away: 'SEN', homeScore: null, awayScore: null, winner: null, title: 'Match 62', date: 'July 03, 05:30 AM IST' },
-    { id: 'r32_15', nextId: 'r16_8', position: 'top', slot: 15, home: 'POR', away: 'AUS', homeScore: null, awayScore: null, winner: null, title: 'Match 63', date: 'July 03, 09:30 PM IST' },
-    { id: 'r32_16', nextId: 'r16_8', position: 'bottom', slot: 16, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 64', date: 'July 04, 01:30 AM IST' },
+    { id: 'r32_13', nextId: 'r16_7', position: 'top', slot: 13, home: 'CAN', away: 'PAR', homeScore: null, awayScore: null, winner: null, title: 'Match 85', date: 'July 03, 08:30 AM IST' },
+    { id: 'r32_14', nextId: 'r16_7', position: 'bottom', slot: 14, home: 'JPN', away: 'SEN', homeScore: null, awayScore: null, winner: null, title: 'Match 88', date: 'July 03, 11:30 PM IST' },
+    { id: 'r32_15', nextId: 'r16_8', position: 'top', slot: 15, home: 'POR', away: 'AUS', homeScore: null, awayScore: null, winner: null, title: 'Match 86', date: 'July 04, 03:30 AM IST' },
+    { id: 'r32_16', nextId: 'r16_8', position: 'bottom', slot: 16, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 87', date: 'July 04, 07:00 AM IST' },
   ],
 
-  // Round of 16
+  // Round of 16 — official FIFA match numbers & dates (ET → IST)
   r16: [
-    { id: 'r16_1', nextId: 'qf_1', position: 'top', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 65', date: 'July 05, 01:30 AM IST' },
-    { id: 'r16_2', nextId: 'qf_1', position: 'bottom', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 66', date: 'July 05, 05:30 AM IST' },
-    { id: 'r16_3', nextId: 'qf_3', position: 'top', slot: 3, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 67', date: 'July 06, 01:30 AM IST' },
-    { id: 'r16_4', nextId: 'qf_3', position: 'bottom', slot: 4, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 68', date: 'July 06, 05:30 AM IST' },
+    { id: 'r16_1', nextId: 'qf_1', position: 'top', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 90', date: 'July 04, 10:30 PM IST' },
+    { id: 'r16_2', nextId: 'qf_1', position: 'bottom', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 89', date: 'July 05, 02:30 AM IST' },
+    { id: 'r16_3', nextId: 'qf_3', position: 'top', slot: 3, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 91', date: 'July 06, 01:30 AM IST' },
+    { id: 'r16_4', nextId: 'qf_3', position: 'bottom', slot: 4, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 92', date: 'July 06, 05:30 AM IST' },
     
-    { id: 'r16_5', nextId: 'qf_2', position: 'top', slot: 5, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 69', date: 'July 07, 01:30 AM IST' },
-    { id: 'r16_6', nextId: 'qf_2', position: 'bottom', slot: 6, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 70', date: 'July 07, 05:30 AM IST' },
-    { id: 'r16_7', nextId: 'qf_4', position: 'top', slot: 7, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 71', date: 'July 08, 01:30 AM IST' },
-    { id: 'r16_8', nextId: 'qf_4', position: 'bottom', slot: 8, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 72', date: 'July 08, 05:30 AM IST' },
+    { id: 'r16_5', nextId: 'qf_2', position: 'top', slot: 5, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 93', date: 'July 07, 12:30 AM IST' },
+    { id: 'r16_6', nextId: 'qf_2', position: 'bottom', slot: 6, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 94', date: 'July 07, 05:30 AM IST' },
+    { id: 'r16_7', nextId: 'qf_4', position: 'top', slot: 7, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 95', date: 'July 07, 09:30 PM IST' },
+    { id: 'r16_8', nextId: 'qf_4', position: 'bottom', slot: 8, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 96', date: 'July 08, 01:30 AM IST' },
   ],
 
-  // Quarter Finals
+  // Quarter Finals — official FIFA match numbers & dates (ET → IST)
   qf: [
-    { id: 'qf_1', nextId: 'sf_1', position: 'top', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Quarter-Final 1', date: 'July 10, 09:30 PM IST' },
-    { id: 'qf_2', nextId: 'sf_1', position: 'bottom', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Quarter-Final 2', date: 'July 11, 01:30 AM IST' },
-    { id: 'qf_3', nextId: 'sf_2', position: 'top', slot: 3, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Quarter-Final 3', date: 'July 11, 05:30 AM IST' },
-    { id: 'qf_4', nextId: 'sf_2', position: 'bottom', slot: 4, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Quarter-Final 4', date: 'July 12, 01:30 AM IST' },
+    { id: 'qf_1', nextId: 'sf_1', position: 'top', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 97', date: 'July 10, 01:30 AM IST' },
+    { id: 'qf_2', nextId: 'sf_1', position: 'bottom', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 98', date: 'July 11, 12:30 AM IST' },
+    { id: 'qf_3', nextId: 'sf_2', position: 'top', slot: 3, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 99', date: 'July 12, 02:30 AM IST' },
+    { id: 'qf_4', nextId: 'sf_2', position: 'bottom', slot: 4, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 100', date: 'July 12, 06:30 AM IST' },
   ],
 
-  // Semi Finals
+  // Semi Finals — official FIFA match numbers & dates (ET → IST)
   sf: [
-    { id: 'sf_1', nextId: 'final', position: 'home', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Semi-Final 1', date: 'July 15, 05:30 AM IST' },
-    { id: 'sf_2', nextId: 'final', position: 'away', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Semi-Final 2', date: 'July 16, 05:30 AM IST' },
+    { id: 'sf_1', nextId: 'final', position: 'home', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 101', date: 'July 15, 12:30 AM IST' },
+    { id: 'sf_2', nextId: 'final', position: 'away', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 102', date: 'July 16, 12:30 AM IST' },
   ],
 
-  // Final
+  // Final & Bronze Final — official FIFA dates (ET → IST)
   final: [
-    { id: 'final', nextId: null, position: null, slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'World Cup Final', date: 'July 20, 05:30 AM IST' }
+    { id: 'bronze', nextId: null, position: null, slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Bronze Final', date: 'July 19, 02:30 AM IST' },
+    { id: 'final', nextId: null, position: null, slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'World Cup Final', date: 'July 20, 12:30 AM IST' },
   ]
 };
 
