@@ -2,6 +2,21 @@ import { TEAMS } from '../data/worldcupData';
 import { ScrollingText } from './ScrollingText';
 import { FifaRankBadge } from '../utils/matchHelpers';
 
+const ROUND_NAMES = {
+  r32: 'Round of 32',
+  r16: 'Round of 16',
+  qf: 'Quarter-final',
+  sf: 'Semi-final',
+  bronze: 'Bronze Final',
+  final: 'Final'
+};
+
+const getRoundName = (match) => {
+  if (!match) return null;
+  const key = String(match.id).split('_')[0];
+  return ROUND_NAMES[key] || null;
+};
+
 export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
   return (
     <div className="flex flex-col gap-3.5 mt-4 w-full">
@@ -13,7 +28,7 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
         const isGroup = match?.type === 'group';
         const matchLabel = isGroup 
           ? `Group ${match.group} • Match ${(match.id && !isNaN(match.id) ? ((match.id - 1) % 6) + 1 : match.id)}`
-          : (match?.title || `${match?.round || live.round || 'Knockout'} • Match ${match?.id || live.id}`);
+          : (getRoundName(match) || match?.title || `${match?.round || live.round || 'Knockout'} • Match ${match?.id || live.id}`);
 
         return (
           <div 

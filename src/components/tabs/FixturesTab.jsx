@@ -5,6 +5,22 @@ import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaR
 import { LiveMatchesList } from '../LiveMatchesBanner';
 import { ScrollingText } from '../ScrollingText';
 
+const ROUND_NAMES = {
+  r32: 'Round of 32',
+  r16: 'Round of 16',
+  qf: 'Quarter-final',
+  sf: 'Semi-final',
+  bronze: 'Bronze Final',
+  final: 'Final'
+};
+
+const getRoundName = (match) => {
+  if (!match || match.stage !== 'knockout') return null;
+  if (match.round) return match.round;
+  const key = String(match.id).split('_')[0];
+  return ROUND_NAMES[key] || null;
+};
+
 export const FixturesTab = ({
   hasLiveMatches,
   activeLiveMatchesList,
@@ -135,7 +151,7 @@ export const FixturesTab = ({
                     <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
                       <span className="text-brand-neon uppercase font-extrabold flex items-center gap-1">
                         {match.stage === 'knockout'
-                          ? (match.title || `Match ${match.id}`)
+                          ? (getRoundName(match) || match.title || `Match ${match.id}`)
                           : `Group ${match.group} • Match ${((match.id - 1) % 6) + 1}`}
                         {isFlashing ? (
                           <span className="bg-brand-neon text-slate-950 text-[8px] px-1 py-0.5 rounded font-black animate-bounce ml-1.5 shadow-[0_0_8px_rgba(0,255,135,0.4)]">⚽ GOAL!</span>
@@ -276,7 +292,7 @@ export const FixturesTab = ({
                       <div className="flex items-center gap-2">
                         <span className="text-slate-500 font-mono">
                           {match.stage === 'knockout'
-                            ? (match.title || `Match ${match.id}`)
+                            ? (getRoundName(match) || match.title || `Match ${match.id}`)
                             : `Group ${match.group} • Match ${((match.id - 1) % 6) + 1}`}
                         </span>
                       </div>
