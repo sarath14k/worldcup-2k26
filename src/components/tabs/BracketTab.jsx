@@ -214,7 +214,7 @@ export const BracketTab = ({
       )}
 
       {/* Reset Predictions button */}
-      {firstIncompleteIdx > 0 && (
+      {ROUND_ORDER.some(rk => isRoundDone(rk)) && (
         <div className="mb-3">
           <button
             onClick={onResetPredictions}
