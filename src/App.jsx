@@ -387,18 +387,23 @@ function App() {
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
   const handleFetchHighlight = useCallback(async (match) => {
-    if (!match.home || !match.away) return false;
+    if (!match.home || !match.away) { console.warn('[Highlight] match missing home/away', match); return false; }
     const homeName = TEAMS[match.home]?.name || match.home;
     const awayName = TEAMS[match.away]?.name || match.away;
     try {
-      const res = await fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(match.home)}&awayCode=${encodeURIComponent(match.away)}`);
+      const url = `/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(match.home)}&awayCode=${encodeURIComponent(match.away)}`;
+      console.log('[Highlight] fetching', match.home, 'vs', match.away, 'id:', match.id);
+      const res = await fetch(url);
       const data = await res.json();
       if (data && data.url) {
+        console.log('[Highlight] found for', match.home, 'vs', match.away, data.url);
         setHighlightsMap(prev => ({ ...prev, [match.id]: data }));
         return true;
       }
+      console.warn('[Highlight] no URL returned for', match.home, 'vs', match.away, JSON.stringify(data));
       return false;
-    } catch {
+    } catch (err) {
+      console.error('[Highlight] fetch error', match.home, 'vs', match.away, err);
       return false;
     }
   }, []);

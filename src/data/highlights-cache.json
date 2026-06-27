@@ -526,5 +526,37 @@
     "channel": "FIFA.com (Direct)",
     "duration": "2:14",
     "thumbnail": "https://digitalhub.fifa.com/transform/65642522-9ae9-4734-898f-3e6b17a3a38a/Senegal-v-Iraq?focuspoint=0.5,0.5"
+  },
+  "bel_vs_nzl": {
+    "videoId": "4ctyVS6mvtXal2AiNXdYdk",
+    "url": "https://www.fifa.com/en/watch/4ctyVS6mvtXal2AiNXdYdk",
+    "title": "New Zealand v Belgium",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/682d4cf0-9dc0-4638-b95f-2237335d96b3/New-Zealand-v-Belgium?focuspoint=0.5,0.5"
+  },
+  "egy_vs_irn": {
+    "videoId": "4h74CcFsYuSUjg53SPcBvi",
+    "url": "https://www.fifa.com/en/watch/4h74CcFsYuSUjg53SPcBvi",
+    "title": "Egypt v IR Iran",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/4b3d05bb-66e4-400a-abac-2a5f4a9e14f7/Egypt-v-IR-Iran?focuspoint=0.5,0.5"
+  },
+  "esp_vs_uru": {
+    "videoId": "2Iw0XHRZ4pZhQeVyekPApR",
+    "url": "https://www.fifa.com/en/watch/2Iw0XHRZ4pZhQeVyekPApR",
+    "title": "Uruguay v Spain",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/fa05cf23-a485-40c9-9f2d-a2dafc323c40/Uruguay-v-Spain?focuspoint=0.5,0.5"
+  },
+  "cpv_vs_ksa": {
+    "videoId": "6cEIYSaBZmtelEG6H679Pu",
+    "url": "https://www.fifa.com/en/watch/6cEIYSaBZmtelEG6H679Pu",
+    "title": "Cabo Verde v Saudi Arabia",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/90f29f1a-8183-480e-9447-53a98644a3cf/Cabo-Verde-v-Saudi-Arabia?focuspoint=0.5,0.5"
   }
 }

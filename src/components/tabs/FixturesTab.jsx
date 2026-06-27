@@ -31,6 +31,7 @@ export const FixturesTab = ({
   const [showAllUpcoming, setShowAllUpcoming] = useState(false);
   const [showAllDone, setShowAllDone] = useState(false);
   const [highlightFetching, setHighlightFetching] = useState({});
+  const [highlightNoResult, setHighlightNoResult] = useState({});
   const [teamFilter, setTeamFilter] = useState('');
 
   const filteredUpcoming = useMemo(() => {
@@ -340,6 +341,7 @@ export const FixturesTab = ({
                         );
                       }
                       const isChecking = highlightFetching[match.id];
+                      const noResult = highlightNoResult[match.id];
                       if (isChecking) {
                         return (
                           <div className="mt-1 w-full py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/40 text-[10px] font-black text-slate-400 flex items-center justify-center gap-1.5">
@@ -348,12 +350,24 @@ export const FixturesTab = ({
                           </div>
                         );
                       }
+                      if (noResult) {
+                        return (
+                          <div className="mt-1 w-full py-1.5 rounded-lg bg-slate-800/40 border border-slate-700/20 text-[10px] font-medium text-slate-500 flex items-center justify-center gap-1.5">
+                            <span>No highlight found</span>
+                          </div>
+                        );
+                      }
                       return (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setHighlightFetching(prev => ({ ...prev, [match.id]: true }));
-                            onFetchHighlight(match).finally(() => {
+                            onFetchHighlight(match).then(found => {
+                              if (!found) {
+                                setHighlightNoResult(prev => ({ ...prev, [match.id]: true }));
+                                setTimeout(() => setHighlightNoResult(prev => ({ ...prev, [match.id]: false })), 4000);
+                              }
+                            }).finally(() => {
                               setHighlightFetching(prev => ({ ...prev, [match.id]: false }));
                             });
                           }}
