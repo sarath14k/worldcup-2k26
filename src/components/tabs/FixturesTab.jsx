@@ -306,9 +306,11 @@ export const FixturesTab = ({
                       </div>
                     </div>
 
-                    {/* Highlights Button with Skeleton */}
+                    {/* Highlights Thumbnail + Button */}
                     {(() => {
-                      const url = highlightsMap[match.id];
+                      const hl = highlightsMap[match.id];
+                      const url = hl?.url;
+                      const thumb = hl?.thumbnail;
                       const isLoading = loadingHighlightsMap[match.id];
                       if (isLoading) return <SkeletonButton />;
                       if (url) {
@@ -318,12 +320,24 @@ export const FixturesTab = ({
                               e.stopPropagation();
                               window.open(url, '_blank', 'noopener,noreferrer');
                             }}
-                            className="mt-1 w-full py-1.5 rounded-lg bg-red-600/90 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500/40 text-[10px] font-black text-white flex items-center justify-center gap-1.5 transition-all shadow-[0_0_10px_rgba(239,68,68,0.05)] hover:shadow-[0_0_15px_rgba(239,68,68,0.2)] cursor-pointer select-none"
+                            className="mt-1 relative overflow-hidden rounded-xl bg-slate-900/70 border border-red-500/20 hover:border-red-500/40 transition-all cursor-pointer group w-full text-left"
                           >
-                            <svg className="w-2.5 h-2.5 fill-white shrink-0" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                            <span>Watch Highlights ↗</span>
+                            {thumb && (
+                              <img
+                                src={thumb}
+                                alt=""
+                                className="w-full h-24 sm:h-28 object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                                loading="lazy"
+                              />
+                            )}
+                            <div className={`absolute inset-0 flex items-center justify-center ${thumb ? 'bg-gradient-to-t from-black/80 via-black/30 to-transparent' : ''}`}>
+                              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-600/90 group-hover:bg-red-500 text-[10px] font-black text-white shadow-lg transition-all">
+                                <svg className="w-3 h-3 fill-white shrink-0" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                                <span>Watch Highlights ↗</span>
+                              </div>
+                            </div>
                           </button>
                         );
                       }

@@ -130,7 +130,8 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
                 url: `https://www.fifa.com/en/watch/${vid}`,
                 title: matchPart,
                 channel: 'FIFA.com (Direct)',
-                duration: `${mins}:${secs.toString().padStart(2, '0')}`
+                duration: `${mins}:${secs.toString().padStart(2, '0')}`,
+                thumbnail: item.image?.src || null
               };
               saveToCache(found);
               return { statusCode: 200, result: found };

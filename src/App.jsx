@@ -349,7 +349,7 @@ function App() {
         const mapping = {};
         Object.entries(cache).forEach(([key, entry]) => {
           if (entry.url) {
-            mapping[key] = entry.url;
+            mapping[key] = entry;
           }
         });
         const idMapping = {};
@@ -374,7 +374,7 @@ function App() {
             .then(res => res.ok ? res.json() : null)
             .then(data => {
               if (data && data.url) {
-                setHighlightsMap(prev => ({ ...prev, [m.id]: data.url }));
+                setHighlightsMap(prev => ({ ...prev, [m.id]: data }));
               }
             })
             .catch(() => {});
@@ -394,7 +394,7 @@ function App() {
       const res = await fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(match.home)}&awayCode=${encodeURIComponent(match.away)}`);
       const data = await res.json();
       if (data && data.url) {
-        setHighlightsMap(prev => ({ ...prev, [match.id]: data.url }));
+        setHighlightsMap(prev => ({ ...prev, [match.id]: data }));
         return true;
       }
       return false;
@@ -421,7 +421,7 @@ function App() {
         .then(res => res.ok ? res.json() : null)
         .then(data => {
           if (data && data.url && matchId) {
-            setHighlightsMap(prev => ({ ...prev, [matchId]: data.url }));
+            setHighlightsMap(prev => ({ ...prev, [matchId]: data }));
           }
         })
         .catch(() => {});
