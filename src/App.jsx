@@ -939,13 +939,6 @@ function App() {
     groupMatches.forEach(m => {
       allMatches.push({ ...m, stage: 'group' });
     });
-    Object.keys(bracket).forEach(roundKey => {
-      bracket[roundKey].forEach(m => {
-        if (m.home && m.away) {
-          allMatches.push({ ...m, stage: 'knockout' });
-        }
-      });
-    });
 
     const activeMatches = allMatches.filter(m => {
       const live = liveMatches[m.id];
