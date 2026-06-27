@@ -1202,18 +1202,20 @@ function App() {
       <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-brand-neon/30 before:to-transparent">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
           <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
-            <div className="bg-brand-gold/20 p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-brand-gold/40 glow-gold animate-float shrink-0">
-              <WorldCupTrophyIcon className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-brand-gold" />
-            </div>
-            <div className="min-w-0 flex flex-col">
-              <h1 className="leading-none">
-                <span className="text-[13px] sm:text-base md:text-lg font-black tracking-[0.3em] bg-gradient-to-r from-brand-neon via-emerald-300 to-brand-neon bg-clip-text text-transparent uppercase block drop-shadow-[0_0_12px_rgba(0,255,135,0.3)]">
-                  WORLD CUP
-                </span>
-                <span className="text-[22px] sm:text-3xl md:text-4xl font-black tracking-[0.15em] bg-gradient-to-r from-yellow-200 via-amber-300 to-yellow-400 bg-clip-text text-transparent uppercase block -mt-0.5 drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]">
-                  2026
-                </span>
-              </h1>
+            <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl bg-white/[0.03] border border-white/[0.06] backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] shrink-0">
+              <div className="bg-gradient-to-br from-brand-neon/30 to-emerald-500/20 p-1.5 sm:p-2 rounded-xl border border-brand-neon/30 shadow-[0_0_15px_rgba(0,255,135,0.15)] shrink-0">
+                <WorldCupTrophyIcon className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-brand-neon drop-shadow-[0_0_8px_rgba(0,255,135,0.5)]" />
+              </div>
+              <div className="min-w-0">
+                <h1 className="leading-tight">
+                  <span className="text-[13px] sm:text-base md:text-lg font-black tracking-[0.25em] bg-gradient-to-r from-white via-slate-100 to-brand-neon/90 bg-clip-text text-transparent uppercase block">
+                    WORLD CUP
+                  </span>
+                  <span className="text-[20px] sm:text-2xl md:text-3xl font-black tracking-[0.1em] text-white/90 uppercase block -mt-0.5">
+                    2026
+                  </span>
+                </h1>
+              </div>
             </div>
           </div>
 
