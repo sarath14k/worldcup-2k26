@@ -126,7 +126,6 @@ export const FixturesTab = ({
 
             <div className="flex flex-col gap-3.5 relative z-10">
               {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 4)).map((match, idx) => {
-                const teamsKnown = match.home != null && match.away != null;
                 const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                 const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                 const live = liveMatches[match.id];
@@ -169,10 +168,16 @@ export const FixturesTab = ({
                     </div>
 
                     <div className="flex items-center justify-between gap-3 py-1">
-                      <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} ${!teamsKnown ? 'opacity-50' : ''}`}>
-                        <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
-                        <ScrollingText text={home.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`} />
-                        {teamsKnown && <FifaRankBadge teamCode={match.home} />}
+                      <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : match.teamsConfirmed ? 'text-xs text-slate-200' : 'text-xs text-slate-500 italic'}`}>
+                        {match.teamsConfirmed ? (
+                          <>
+                            <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
+                            <ScrollingText text={home.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`} />
+                            <FifaRankBadge teamCode={match.home} />
+                          </>
+                        ) : (
+                          <span>TBD</span>
+                        )}
                       </div>
 
                       {isLiveOrDone ? (
@@ -196,10 +201,16 @@ export const FixturesTab = ({
                         </span>
                       )}
 
-                      <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} ${!teamsKnown ? 'opacity-50' : ''}`}>
-                        {teamsKnown && <FifaRankBadge teamCode={match.away} />}
-                        <ScrollingText text={away.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} text-right justify-end`} />
-                        <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
+                      <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : match.teamsConfirmed ? 'text-xs text-slate-200' : 'text-xs text-slate-500 italic justify-end'} justify-end`}>
+                        {match.teamsConfirmed ? (
+                          <>
+                            <FifaRankBadge teamCode={match.away} />
+                            <ScrollingText text={away.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} text-right justify-end`} />
+                            <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
+                          </>
+                        ) : (
+                          <span>TBD</span>
+                        )}
                       </div>
                     </div>
 

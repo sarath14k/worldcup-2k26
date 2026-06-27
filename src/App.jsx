@@ -935,9 +935,27 @@ function App() {
   }, [sortedMatches]);
 
   const upcomingFixtures = useMemo(() => {
+    const ROUND_ORDER = ['r32', 'r16', 'qf', 'sf', 'final'];
+    const isTeamsConfirmed = (match) => {
+      const rk = String(match.id).split('_')[0];
+      if (rk === 'r32') return true;
+      const idx = ROUND_ORDER.indexOf(rk);
+      if (idx < 1) return true;
+      const prevRoundKey = ROUND_ORDER[idx - 1];
+      const sourceMatches = bracket[prevRoundKey]?.filter(sm => sm.nextId === match.id) || [];
+      return sourceMatches.length > 0 && sourceMatches.every(sm => sm.isCompleted);
+    };
+
     const allMatches = [];
     groupMatches.forEach(m => {
-      allMatches.push({ ...m, stage: 'group' });
+      allMatches.push({ ...m, stage: 'group', teamsConfirmed: true });
+    });
+    Object.keys(bracket).forEach(roundKey => {
+      bracket[roundKey].forEach(m => {
+        if (m.home && m.away) {
+          allMatches.push({ ...m, stage: 'knockout', teamsConfirmed: isTeamsConfirmed(m) });
+        }
+      });
     });
 
     const activeMatches = allMatches.filter(m => {
