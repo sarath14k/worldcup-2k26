@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 export const ScrollingText = ({ text, className = "text-slate-100" }) => {
   const containerRef = useRef(null);
   const textRef = useRef(null);
+  const timerRef = useRef(null);
   const [scrollDist, setScrollDist] = useState(0);
 
   useEffect(() => {
@@ -18,11 +19,12 @@ export const ScrollingText = ({ text, className = "text-slate-100" }) => {
       }
     };
 
+    clearTimeout(timerRef.current);
     checkOverflow();
-    const timer = setTimeout(checkOverflow, 200);
+    timerRef.current = setTimeout(checkOverflow, 200);
     window.addEventListener('resize', checkOverflow);
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timerRef.current);
       window.removeEventListener('resize', checkOverflow);
     };
   }, [text]);

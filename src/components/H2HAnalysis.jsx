@@ -131,9 +131,7 @@ export const H2HAnalysis = ({ home, away, standings, groupMatches, bracket, live
   const homeGroup = home.group;
   const awayGroup = away.group;
 
-  const homeStandingInfo = homeGroup && standings[homeGroup]
-    ? standings[homeGroup].find(t => t.code === home.code) : null;
-  const homeRank = homeStandingInfo && homeGroup && standings[homeGroup]
+  const homeRank = homeGroup && standings[homeGroup]
     ? standings[homeGroup].findIndex(t => t.code === home.code) + 1 : null;
 
   const awayStandingInfo = awayGroup && standings[awayGroup]

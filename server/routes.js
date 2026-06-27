@@ -51,6 +51,9 @@ export function registerRoutes(app) {
 
     const syncToken = req.headers['x-sync-token'];
     const expectedToken = process.env.SYNC_TOKEN;
+    if (!expectedToken) {
+      console.warn('[SECURITY] SYNC_TOKEN not configured! API endpoints are unauthenticated.');
+    }
     if (expectedToken && syncToken !== expectedToken) {
       return res.status(403).json({ error: 'Invalid sync token' });
     }

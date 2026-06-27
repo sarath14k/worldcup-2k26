@@ -99,7 +99,7 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                 </div>
                 {playerStats.topScorers.map((player, idx) => (
                   <div 
-                    key={player.name} 
+                    key={`${player.name}-${player.team || ''}`} 
                     className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
                   >
                     <div className="col-span-2 flex justify-start">
@@ -171,7 +171,7 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
                 </div>
                 {playerStats.topAssists.map((player, idx) => (
                   <div 
-                    key={player.name} 
+                    key={`${player.name}-${player.team || ''}`} 
                     className="grid grid-cols-12 items-center bg-slate-950/40 border border-slate-900/60 rounded-xl p-3 text-xs font-bold text-slate-200 hover:border-brand-neon/30 transition-all"
                   >
                     <div className="col-span-2 flex justify-start">

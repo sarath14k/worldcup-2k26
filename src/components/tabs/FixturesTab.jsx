@@ -5,15 +5,6 @@ import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaR
 import { LiveMatchesList } from '../LiveMatchesBanner';
 import { ScrollingText } from '../ScrollingText';
 
-function SkeletonButton() {
-  return (
-    <div className="mt-1 py-1.5 rounded-lg bg-slate-950/80 border border-slate-900/40 animate-pulse flex items-center justify-center gap-1.5">
-      <div className="w-3 h-3 rounded-full bg-slate-800" />
-      <div className="h-2.5 w-28 rounded bg-slate-800" />
-    </div>
-  );
-}
-
 export const FixturesTab = ({
   hasLiveMatches,
   activeLiveMatchesList,
@@ -21,7 +12,6 @@ export const FixturesTab = ({
   feedMatches,
   liveMatches,
   highlightsMap,
-  loadingHighlightsMap,
   isLiveMatch,
   setSelectedMatch,
   activeGoalFlashMatchIds = [],
@@ -310,8 +300,6 @@ export const FixturesTab = ({
                       const hl = highlightsMap[match.id];
                       const url = hl?.url;
                       const thumb = hl?.thumbnail;
-                      const isLoading = loadingHighlightsMap[match.id];
-                      if (isLoading) return <SkeletonButton />;
                       if (url) {
                         return (
                           <img

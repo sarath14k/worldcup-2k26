@@ -25,6 +25,9 @@ export const BracketTeamSlot = ({ teamCode, isWinner, isHovered, onClick, onHove
     <div
       id={id}
       onClick={hasTeam ? onClick : undefined}
+      onKeyDown={hasTeam ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(); } } : undefined}
+      role={hasTeam ? "button" : undefined}
+      tabIndex={hasTeam ? 0 : undefined}
       onMouseEnter={hasTeam && onHover ? () => onHover(teamCode) : undefined}
       onMouseLeave={hasTeam && onHover ? () => onHover(null) : undefined}
       className={className}

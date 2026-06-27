@@ -193,7 +193,7 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
                             ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
                             : 'bg-rose-500/15 text-rose-400 border border-rose-500/30'
                     }`}>
-                      {player.rating.toFixed(2)}
+                      {player.rating != null ? Number(player.rating).toFixed(2) : '-'}
                     </span>
                   </div>
                 </div>

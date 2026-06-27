@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { TEAMS, VENUES } from '../data/worldcupData';
 import { getMatchDetails, getPossessionWithContest, formatDisplayDate, isLiveMatch, getMatchVenue } from '../utils/matchHelpers';
 import { ScrollingText } from './ScrollingText';
@@ -55,13 +55,33 @@ export const MatchDetailsModal = ({
 
   const [detailPlayer, setDetailPlayer] = useState(null);
   const [activeModalTab, setActiveModalTab] = useState('match');
+  const modalRef = useRef(null);
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') handleClose();
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const timer = setTimeout(() => {
+      if (modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable.length) focusable[0].focus();
+      }
+    }, 50);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(timer);
+    };
   }, [onClose]);
 
   if (!selectedMatch) return null;
@@ -101,6 +121,10 @@ export const MatchDetailsModal = ({
 
   return (
     <><div
+      ref={modalRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Match details: ${home?.name || 'TBD'} vs ${away?.name || 'TBD'}`}
       className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 ${
         closing ? 'animate-backdropExit' : 'animate-modalEnter'
       }`}

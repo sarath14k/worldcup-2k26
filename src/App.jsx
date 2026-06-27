@@ -15,7 +15,6 @@ import { MatchDetailsModal } from './components/MatchDetailsModal';
 import { LiveMatchesBanner } from './components/LiveMatchesBanner';
 import { ConfettiShower } from './components/ConfettiShower';
 import { NextMatchCountdown } from './components/NextMatchCountdown';
-import { PlayerAvatar } from './components/PlayerAvatar';
 import { FixturesTab } from './components/tabs/FixturesTab';
 import { GroupsTab } from './components/tabs/GroupsTab';
 import { BracketTab } from './components/tabs/BracketTab';
@@ -24,6 +23,76 @@ import { PlayerRatingsTab } from './components/tabs/PlayerRatingsTab';
 import { VenuesTab } from './components/tabs/VenuesTab';
 import SystemTab from './components/tabs/SystemTab';
 import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
+
+const BASE_RATINGS = {
+  "Lionel Messi": 8.4,
+  "Erling Haaland": 8.3,
+  "Kylian Mbappé": 8.3,
+  "Harry Kane": 8.2,
+  "Luis Díaz": 8.1,
+  "Jude Bellingham": 8.1,
+  "Vinícius Júnior": 8.1,
+  "Kevin De Bruyne": 8.1,
+  "Mohamed Salah": 8.1,
+  "Lamine Yamal": 8.0,
+  "Florian Wirtz": 8.0,
+  "Jamal Musiala": 8.0,
+  "Martin Ødegaard": 8.0,
+  "Cristiano Ronaldo": 7.9,
+  "Bruno Fernandes": 7.9,
+  "Nico Williams": 7.9,
+  "Bukayo Saka": 7.9,
+  "Phil Foden": 7.9,
+  "Darwin Núñez": 7.8,
+  "Federico Valverde": 7.8,
+  "Son Heung-min": 7.8,
+  "Alphonso Davies": 7.8,
+  "Alexander Isak": 7.8,
+  "Cody Gakpo": 7.8,
+  "Memphis Depay": 7.7,
+  "Antoine Griezmann": 7.7,
+  "Luka Modrić": 7.7,
+  "James Rodríguez": 7.7,
+  "Christian Pulisic": 7.6,
+  "Scott McTominay": 7.6,
+  "Victor Gyökeres": 7.6,
+  "Lautaro Martínez": 7.6,
+  "Julián Álvarez": 7.6,
+  "Youssef En-Nesyri": 7.5,
+  "Achraf Hakimi": 7.5,
+  "Hakan Çalhanoğlu": 7.5,
+  "Arda Güler": 7.5,
+  "Romelu Lukaku": 7.5,
+  "Jérémy Doku": 7.5,
+  "Percy Tau": 7.4,
+  "Santiago Giménez": 7.4,
+  "Patrik Schick": 7.4,
+  "Edin Džeko": 7.4,
+  "Kaoru Mitoma": 7.4,
+  "Takefusa Kubo": 7.4,
+  "Sadio Mané": 7.4,
+  "Nicolas Jackson": 7.4,
+  "Marcel Sabitzer": 7.4,
+  "Alexis Mac Allister": 7.4,
+  "Lyle Foster": 7.3,
+  "Lee Kang-in": 7.3,
+  "Hwang Hee-chan": 7.3,
+  "Tomáš Souček": 7.3,
+  "Granit Xhaka": 7.3,
+  "Manuel Akanji": 7.3,
+  "Miguel Almirón": 7.3,
+  "Julio Enciso": 7.3,
+  "Weston McKennie": 7.2,
+  "Folarin Balogun": 7.2,
+  "Kenan Yıldız": 7.2,
+  "Moisés Caicedo": 7.2,
+  "Xavi Simons": 7.2,
+  "Virgil van Dijk": 7.2,
+  "Takumi Minamino": 7.2,
+  "Mateo Kovačić": 7.2,
+  "Mohammed Kudus": 7.2,
+  "Yoane Wissa": 7.2,
+};
 
 function App() {
   // --- State ---
@@ -55,8 +124,7 @@ function App() {
   const [showAccentPicker, setShowAccentPicker] = useState(false);
 
   useEffect(() => {
-    const accents = ACCENTS;
-    const choice = accents[accent] || accents.neon;
+    const choice = ACCENTS[accent] || ACCENTS.neon;
     document.documentElement.style.setProperty('--color-brand-neon', choice.main);
     document.documentElement.style.setProperty('--shadow-neon', `0 0 15px ${choice.shadow}`);
   }, [accent]);
@@ -210,6 +278,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Clear stale timers from previous effect run
+    goalTimersRef.current.forEach(t => clearTimeout(t));
+    goalTimersRef.current = [];
+
     if (!liveMatches || Object.keys(liveMatches).length === 0) {
       return;
     }
@@ -333,7 +405,6 @@ function App() {
 
   // Highlights polling states
   const [highlightsMap, setHighlightsMap] = useState({});
-  const [loadingHighlightsMap, setLoadingHighlightsMap] = useState({});
 
   // Bulk-load all cached highlights + fallback for uncached matches
   useEffect(() => {
@@ -386,24 +457,24 @@ function App() {
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
+  const dbg = typeof window !== 'undefined' && process.env.NODE_ENV !== 'production';
+
   const handleFetchHighlight = useCallback(async (match) => {
-    if (!match.home || !match.away) { console.warn('[Highlight] match missing home/away', match); return false; }
+    if (!match.home || !match.away) return false;
     const homeName = TEAMS[match.home]?.name || match.home;
     const awayName = TEAMS[match.away]?.name || match.away;
     try {
       const url = `/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(match.home)}&awayCode=${encodeURIComponent(match.away)}`;
-      console.log('[Highlight] fetching', match.home, 'vs', match.away, 'id:', match.id);
+      if (dbg) console.log('[Highlight] fetching', match.home, 'vs', match.away, 'id:', match.id);
       const res = await fetch(url);
       const data = await res.json();
       if (data && data.url) {
-        console.log('[Highlight] found for', match.home, 'vs', match.away, data.url);
+        if (dbg) console.log('[Highlight] found for', match.home, 'vs', match.away, data.url);
         setHighlightsMap(prev => ({ ...prev, [match.id]: data }));
         return true;
       }
-      console.warn('[Highlight] no URL returned for', match.home, 'vs', match.away, JSON.stringify(data));
       return false;
     } catch (err) {
-      console.error('[Highlight] fetch error', match.home, 'vs', match.away, err);
       return false;
     }
   }, []);
@@ -876,75 +947,7 @@ function App() {
     const playerTeams = {};
     const playerRatingsTracker = {};
 
-    const baseRatings = {
-      "Lionel Messi": 8.4,
-      "Erling Haaland": 8.3,
-      "Kylian Mbappé": 8.3,
-      "Harry Kane": 8.2,
-      "Luis Díaz": 8.1,
-      "Jude Bellingham": 8.1,
-      "Vinícius Júnior": 8.1,
-      "Kevin De Bruyne": 8.1,
-      "Mohamed Salah": 8.1,
-      "Lamine Yamal": 8.0,
-      "Florian Wirtz": 8.0,
-      "Jamal Musiala": 8.0,
-      "Martin Ødegaard": 8.0,
-      "Cristiano Ronaldo": 7.9,
-      "Bruno Fernandes": 7.9,
-      "Nico Williams": 7.9,
-      "Bukayo Saka": 7.9,
-      "Phil Foden": 7.9,
-      "Darwin Núñez": 7.8,
-      "Federico Valverde": 7.8,
-      "Son Heung-min": 7.8,
-      "Alphonso Davies": 7.8,
-      "Alexander Isak": 7.8,
-      "Cody Gakpo": 7.8,
-      "Memphis Depay": 7.7,
-      "Antoine Griezmann": 7.7,
-      "Luka Modrić": 7.7,
-      "James Rodríguez": 7.7,
-      "Christian Pulisic": 7.6,
-      "Scott McTominay": 7.6,
-      "Victor Gyökeres": 7.6,
-      "Lautaro Martínez": 7.6,
-      "Julián Álvarez": 7.6,
-      "Youssef En-Nesyri": 7.5,
-      "Achraf Hakimi": 7.5,
-      "Hakan Çalhanoğlu": 7.5,
-      "Arda Güler": 7.5,
-      "Romelu Lukaku": 7.5,
-      "Jérémy Doku": 7.5,
-      "Percy Tau": 7.4,
-      "Santiago Giménez": 7.4,
-      "Patrik Schick": 7.4,
-      "Edin Džeko": 7.4,
-      "Kaoru Mitoma": 7.4,
-      "Takefusa Kubo": 7.4,
-      "Sadio Mané": 7.4,
-      "Nicolas Jackson": 7.4,
-      "Marcel Sabitzer": 7.4,
-      "Alexis Mac Allister": 7.4,
-      "Lyle Foster": 7.3,
-      "Lee Kang-in": 7.3,
-      "Hwang Hee-chan": 7.3,
-      "Tomáš Souček": 7.3,
-      "Granit Xhaka": 7.3,
-      "Manuel Akanji": 7.3,
-      "Miguel Almirón": 7.3,
-      "Julio Enciso": 7.3,
-      "Weston McKennie": 7.2,
-      "Folarin Balogun": 7.2,
-      "Kenan Yıldız": 7.2,
-      "Moisés Caicedo": 7.2,
-      "Xavi Simons": 7.2,
-      "Virgil van Dijk": 7.2,
-      "Takumi Minamino": 7.2,
-      "Mateo Kovačić": 7.2,
-      "Mohammed Kudus": 7.2,
-      "Yoane Wissa": 7.2,
-    };
+    const baseRatings = BASE_RATINGS;
 
     const processMatch = (m, live) => {
       const details = getMatchDetails(m, live);
@@ -1368,9 +1371,8 @@ function App() {
                 upcomingFixtures={upcomingFixtures}
                 feedMatches={feedMatches}
                 liveMatches={liveMatches}
-                highlightsMap={highlightsMap}
-                loadingHighlightsMap={loadingHighlightsMap}
-                isLiveMatch={isLiveMatch}
+              highlightsMap={highlightsMap}
+              isLiveMatch={isLiveMatch}
                 setSelectedMatch={setSelectedMatch}
                 activeGoalFlashMatchIds={activeGoalFlashMatchIds}
                 nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}

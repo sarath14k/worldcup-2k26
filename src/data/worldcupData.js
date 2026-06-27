@@ -68,14 +68,11 @@ export const TEAMS = {
   COL: { name: "Colombia", flag: "🇨🇴", group: "K", points: 0, gd: 0, gf: 0, ga: 0, played: 0, won: 0, drawn: 0, lost: 0 },
   
   // Group L
-  ENG: { name: "England", flag: "🏴%E2%80%8D%F0%9F%8F%B4%F0%9F%8F%B7%F0%9F%8F%B5%F0%9F%8F%B7%F0%9F%8F%B7%F0%9F%8F%BF", group: "L", points: 0, gd: 0, gf: 0, ga: 0, played: 0, won: 0, drawn: 0, lost: 0 },
+  ENG: { name: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", group: "L", points: 0, gd: 0, gf: 0, ga: 0, played: 0, won: 0, drawn: 0, lost: 0 },
   CRO: { name: "Croatia", flag: "🇭🇷", group: "L", points: 0, gd: 0, gf: 0, ga: 0, played: 0, won: 0, drawn: 0, lost: 0 },
   GHA: { name: "Ghana", flag: "🇬🇭", group: "L", points: 0, gd: 0, gf: 0, ga: 0, played: 0, won: 0, drawn: 0, lost: 0 },
   PAN: { name: "Panama", flag: "🇵🇦", group: "L", points: 0, gd: 0, gf: 0, ga: 0, played: 0, won: 0, drawn: 0, lost: 0 },
 };
-
-// Clean up England's flag code if standard emoji representation works better:
-TEAMS.ENG.flag = "🏴󠁧󠁢󠁥󠁮󠁧󠁿";
 
 export const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 
@@ -205,7 +202,7 @@ export const KNOCKOUT_MATCHES = {
     { id: 'r32_13', nextId: 'r16_7', position: 'top', slot: 13, home: 'CAN', away: 'PAR', homeScore: null, awayScore: null, winner: null, title: 'Match 61', date: 'July 03, 01:30 AM IST' },
     { id: 'r32_14', nextId: 'r16_7', position: 'bottom', slot: 14, home: 'JPN', away: 'SEN', homeScore: null, awayScore: null, winner: null, title: 'Match 62', date: 'July 03, 05:30 AM IST' },
     { id: 'r32_15', nextId: 'r16_8', position: 'top', slot: 15, home: 'POR', away: 'AUS', homeScore: null, awayScore: null, winner: null, title: 'Match 63', date: 'July 03, 09:30 PM IST' },
-    { id: 'r32_16', nextId: 'r16_8', position: 'bottom', slot: 16, home: 'ITA', away: 'WAL', homeScore: null, awayScore: null, winner: null, title: 'Match 64', date: 'July 04, 01:30 AM IST' },
+    { id: 'r32_16', nextId: 'r16_8', position: 'bottom', slot: 16, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 64', date: 'July 04, 01:30 AM IST' },
   ],
 
   // Round of 16

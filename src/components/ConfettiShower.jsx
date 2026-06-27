@@ -48,7 +48,9 @@ export const ConfettiShower = () => {
             className="animate-confetti-particle"
             style={style}
           >
-            <div className={`w-full h-full ${shapeClass}`} style={{ backgroundColor: style.backgroundColor }} />
+            {p.shape !== 'triangle' && (
+              <div className={`w-full h-full ${shapeClass}`} style={{ backgroundColor: style.backgroundColor }} />
+            )}
           </div>
         );
       })}
