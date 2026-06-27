@@ -126,6 +126,7 @@ export const FixturesTab = ({
 
             <div className="flex flex-col gap-3.5 relative z-10">
               {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 4)).map((match, idx) => {
+                const teamsKnown = match.home != null && match.away != null;
                 const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                 const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                 const live = liveMatches[match.id];
@@ -135,17 +136,19 @@ export const FixturesTab = ({
                 return (
                   <div
                     key={`today-${match.id}`}
-                    onClick={() => setSelectedMatch(match)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedMatch(match); } }}
-                    role="button"
-                    tabIndex={0}
-                    className={`animate-stagger p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 card-shimmer ${
+                    className={`animate-stagger p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 relative overflow-hidden shrink-0 card-shimmer ${
                       isFlashing
                         ? 'animate-goalFlash'
                         : isMatchLive
-                          ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20'
-                          : 'border-slate-900/85 hover:border-slate-800 hover:bg-slate-900/40'
+                          ? 'border-brand-neon bg-gradient-to-br from-brand-neon/5 to-slate-950/80 shadow-[0_0_15px_rgba(0,242,254,0.1)] ring-1 ring-brand-neon/20 cursor-pointer'
+                          : 'border-slate-900/85'
                     }`}
+                    {...(isMatchLive ? {
+                      onClick: () => setSelectedMatch(match),
+                      onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedMatch(match); } },
+                      role: 'button',
+                      tabIndex: 0
+                    } : {})}
                     style={{ animationDelay: `${idx * 60}ms` }}
                   >
                     <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
@@ -166,10 +169,10 @@ export const FixturesTab = ({
                     </div>
 
                     <div className="flex items-center justify-between gap-3 py-1">
-                      <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
+                      <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} ${!teamsKnown ? 'opacity-50' : ''}`}>
                         <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
                         <ScrollingText text={home.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`} />
-                        <FifaRankBadge teamCode={match.home} />
+                        {teamsKnown && <FifaRankBadge teamCode={match.home} />}
                       </div>
 
                       {isLiveOrDone ? (
@@ -193,8 +196,8 @@ export const FixturesTab = ({
                         </span>
                       )}
 
-                      <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`}>
-                        <FifaRankBadge teamCode={match.away} />
+                      <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} ${!teamsKnown ? 'opacity-50' : ''}`}>
+                        {teamsKnown && <FifaRankBadge teamCode={match.away} />}
                         <ScrollingText text={away.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} text-right justify-end`} />
                         <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{away.flag}</span>
                       </div>
