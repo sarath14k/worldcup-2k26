@@ -216,19 +216,11 @@ export default function SystemTab() {
   const [error, setError] = useState(null);
   const [lastFetch, setLastFetch] = useState(null);
   const [deployStatus, setDeployStatus] = useState(null);
-  const [latestCommit, setLatestCommit] = useState(null);
   const [, forceUpdate] = useState(0);
   const fetchDeployStatus = useCallback(async () => {
     try {
-      const [deployRes, githubRes] = await Promise.all([
-        fetch('/api/deploy-status'),
-        fetch('https://api.github.com/repos/sarath14k/worldcup-2k26/branches/main')
-      ]);
+      const deployRes = await fetch('/api/deploy-status');
       if (deployRes.ok) setDeployStatus(await deployRes.json());
-      if (githubRes.ok) {
-        const gh = await githubRes.json();
-        setLatestCommit(gh.commit?.sha || null);
-      }
     } catch {}
   }, []);
 
