@@ -901,7 +901,21 @@ function App() {
     });
   };
 
-
+  const handleResetPredictions = () => {
+    setBracket(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
+      rounds.forEach(rk => {
+        next[rk] = next[rk].map(m => {
+          if (m.isCompleted) return m;
+          const cleared = { ...m, winner: null };
+          if (rk !== 'r32') cleared.home = cleared.away = null;
+          return cleared;
+        });
+      });
+      return next;
+    });
+  };
 
   const sortedMatches = useMemo(() => {
     return [...groupMatches].sort((a, b) => {
@@ -1430,6 +1444,7 @@ function App() {
                 tournamentChampion={tournamentChampion}
                 burnedMatches={burnedMatches}
                 handleKnockoutWinner={handleKnockoutWinner}
+                onResetPredictions={handleResetPredictions}
                 onRestoreBracket={(winners) => {
                   setBracket(prev => {
                     const next = JSON.parse(JSON.stringify(prev));
