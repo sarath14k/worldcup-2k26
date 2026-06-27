@@ -330,9 +330,9 @@ function App() {
           
           const isGroup = appMatch?.type === 'group';
           const matchLabel = isGroup
-            ? `Group ${appMatch.group} • Match ${((appMatch.id - 1) % 6) + 1}`
+            ? `Group ${appMatch.group} • Match ${(appMatch.id && !isNaN(appMatch.id) ? ((appMatch.id - 1) % 6) + 1 : appMatch.id)}`
             : appMatch 
-              ? `${appMatch.round || 'Knockout'} • Match ${appMatch.id}`
+              ? (appMatch.title || `${appMatch.round || 'Knockout'} • Match ${appMatch.id}`)
               : `Match ${matchId}`;
 
           // Play goal alert sound

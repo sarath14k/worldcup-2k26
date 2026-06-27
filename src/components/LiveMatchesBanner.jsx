@@ -12,8 +12,8 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
         const match = live.originalMatch;
         const isGroup = match?.type === 'group';
         const matchLabel = isGroup 
-          ? `Group ${match.group} • Match ${((match.id - 1) % 6) + 1}`
-          : `${match?.round || live.round || 'Knockout'} • Match ${match?.id || live.id}`;
+          ? `Group ${match.group} • Match ${(match.id && !isNaN(match.id) ? ((match.id - 1) % 6) + 1 : match.id)}`
+          : (match?.title || `${match?.round || live.round || 'Knockout'} • Match ${match?.id || live.id}`);
 
         return (
           <div 
