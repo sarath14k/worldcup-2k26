@@ -457,7 +457,7 @@ function App() {
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
   const [livePlayerRatings, setLivePlayerRatings] = useState({});
 
-  const dbg = typeof window !== 'undefined' && process.env.NODE_ENV !== 'production';
+  const dbg = import.meta.env.DEV;
 
   const handleFetchHighlight = useCallback(async (match) => {
     if (!match.home || !match.away) return false;
