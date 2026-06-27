@@ -253,7 +253,7 @@ export default function SystemTab() {
   useEffect(() => {
     fetchAnalytics();
     fetchDeployStatus();
-    const id = setInterval(fetchDeployStatus, 30000);
+    const id = setInterval(fetchDeployStatus, 10000);
     return () => clearInterval(id);
   }, [fetchAnalytics, fetchDeployStatus]);
 
