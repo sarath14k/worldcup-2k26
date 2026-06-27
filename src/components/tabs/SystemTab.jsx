@@ -396,12 +396,12 @@ export default function SystemTab() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
             <div className="bg-slate-900/30 rounded-lg px-3 py-2">
               <span className="text-slate-500">Deployed</span>
-              <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.deployedCommit?.slice(-5)}</div>
+              <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.deployedCommit?.slice(0, 7)}</div>
             </div>
             {deployStatus.latestCommit && (
               <div className="bg-slate-900/30 rounded-lg px-3 py-2">
                 <span className="text-slate-500">Latest</span>
-                <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.sha?.slice(-5)}</div>
+                <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.sha?.slice(0, 7)}</div>
                 <div className="text-slate-400 text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.message?.split('\n')[0]}</div>
               </div>
             )}
