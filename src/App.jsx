@@ -680,7 +680,18 @@ function App() {
         return { ...updatedMatch, homeScore: null, awayScore: null };
       });
       setGroupMatches(parsedMatches);
-      setBracket(JSON.parse(savedBracket));
+      const savedBracketData = JSON.parse(savedBracket);
+      // Override stale title/date from localStorage with fresh KNOCKOUT_MATCHES values
+      Object.keys(KNOCKOUT_MATCHES).forEach(roundKey => {
+        if (savedBracketData[roundKey]) {
+          savedBracketData[roundKey] = savedBracketData[roundKey].map((m, i) => {
+            const fresh = KNOCKOUT_MATCHES[roundKey][i];
+            if (fresh) return { ...m, title: fresh.title, date: fresh.date };
+            return m;
+          });
+        }
+      });
+      setBracket(savedBracketData);
     } else {
       const initialMatches = generateGroupMatches().map(m => {
         const kickoff = parseMatchKickoff(m);
