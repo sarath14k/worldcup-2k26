@@ -9,7 +9,8 @@ export const BracketTab = ({
   tournamentChampion,
   burnedMatches = new Set(),
   handleKnockoutWinner,
-  onRestoreBracket
+  onRestoreBracket,
+  onResetPredictions
 }) => {
   const [hoveredTeam, setHoveredTeam] = useState(null);
   const [activeRoundTab, setActiveRoundTab] = useState('r32');
@@ -17,6 +18,22 @@ export const BracketTab = ({
   const [shareCopied, setShareCopied] = useState(false);
   const [restoreMessage, setRestoreMessage] = useState(null);
   const containerRef = useRef(null);
+
+  const ROUND_ORDER = ['r32', 'r16', 'qf', 'sf', 'final'];
+  const isRoundDone = (rk) => {
+    const matches = bracket[rk] || [];
+    return matches.length > 0 && matches.every(m => m.winner);
+  };
+  const firstIncompleteIdx = ROUND_ORDER.findIndex(rk => !isRoundDone(rk));
+  const unlockedRounds = ROUND_ORDER.map(rk => isRoundDone(rk));
+
+  // Auto-advance to next incomplete round when current round is fully predicted
+  useEffect(() => {
+    const curIdx = ROUND_ORDER.indexOf(activeRoundTab);
+    if (curIdx >= 0 && curIdx < ROUND_ORDER.length - 1 && isRoundDone(activeRoundTab)) {
+      setActiveRoundTab(ROUND_ORDER[curIdx + 1]);
+    }
+  }, [bracket, activeRoundTab]);
 
   // Restore bracket from URL hash on mount
   useEffect(() => {
@@ -359,36 +376,49 @@ export const BracketTab = ({
         </div>
       )}
 
-      {/* Mobile-optimized Vertical/Pill Bracket view */}
-      <div className="block md:hidden">
-        {/* Pills Selector */}
-        <div className="flex items-center justify-between bg-slate-950/60 p-1 rounded-xl border border-slate-900 mb-4 gap-1">
-          {['r32', 'r16', 'qf', 'sf', 'final'].map((rk) => {
-            const label = rk === 'r32' ? 'R32' : rk === 'r16' ? 'R16' : rk === 'qf' ? 'QF' : rk === 'sf' ? 'SF' : 'Final';
-            const roundMatches = bracket[rk] || [];
-            const allDone = roundMatches.length > 0 && roundMatches.every(m => m.winner);
-            return (
-              <button
-                key={rk}
-                onClick={() => setActiveRoundTab(rk)}
-                className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-center transition-all cursor-pointer relative ${
-                  activeRoundTab === rk 
-                    ? 'bg-brand-neon text-slate-950 shadow-neon font-black' 
-                    : 'text-slate-400 hover:text-slate-300'
-                } ${allDone && activeRoundTab !== rk ? 'ring-1 ring-brand-neon/30' : ''}`}
-              >
-                {label}
-                {allDone && (
-                  <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-brand-neon rounded-full flex items-center justify-center text-[7px] text-slate-950 font-black leading-none shadow-neon">
-                    ✓
-                  </span>
-                )}
-              </button>
-            );
-          })}
+      {/* Reset Predictions button */}
+      {firstIncompleteIdx > 0 && (
+        <div className="mb-3">
+          <button
+            onClick={onResetPredictions}
+            className="w-full py-2 px-3 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-slate-800 hover:border-red-500/40 text-xs font-bold text-slate-300 hover:text-red-300 transition-all cursor-pointer select-none active:scale-95 flex items-center justify-center gap-1.5"
+          >
+            Reset Predictions
+          </button>
         </div>
-        {renderMobileRound()}
+      )}
+
+      {/* Pills Selector - All screen sizes */}
+      <div className="flex items-center justify-between bg-slate-950/60 p-1 rounded-xl border border-slate-900 mb-4 gap-1">
+        {ROUND_ORDER.map((rk, idx) => {
+          const label = rk === 'r32' ? 'R32' : rk === 'r16' ? 'R16' : rk === 'qf' ? 'QF' : rk === 'sf' ? 'SF' : 'Final';
+          const allDone = isRoundDone(rk);
+          const isLocked = idx > firstIncompleteIdx && !allDone;
+          const isFirstIncomplete = idx === firstIncompleteIdx;
+          return (
+            <button
+              key={rk}
+              disabled={isLocked}
+              onClick={() => setActiveRoundTab(rk)}
+              className={`relative flex-1 py-2 px-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-center transition-all select-none ${
+                isLocked ? 'text-slate-700 cursor-not-allowed' :
+                activeRoundTab === rk
+                  ? 'bg-brand-neon text-slate-950 shadow-neon font-black cursor-pointer'
+                  : 'text-slate-400 hover:text-slate-300 cursor-pointer'
+              } ${allDone && activeRoundTab !== rk ? 'ring-1 ring-brand-neon/30' : ''} ${isFirstIncomplete && !allDone ? 'ring-1 ring-brand-neon/40 animate-pulse' : ''}`}
+              aria-label={`${label}${allDone ? ' (completed)' : isLocked ? ' (locked)' : ''}`}
+            >
+              {label}
+              {allDone && (
+                <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-brand-neon rounded-full flex items-center justify-center text-[7px] text-slate-950 font-black leading-none shadow-neon">
+                  ✓
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
+      {renderMobileRound()}
 
       {/* Tree Bracket Container (Scrollable horizontally) - Desktop Only */}
       <div className="hidden md:block overflow-x-auto pb-6">

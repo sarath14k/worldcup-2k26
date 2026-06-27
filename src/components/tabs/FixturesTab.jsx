@@ -125,7 +125,7 @@ export const FixturesTab = ({
         )}
 
             <div className="flex flex-col gap-3.5 relative z-10">
-              {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 3)).map((match, idx) => {
+              {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 4)).map((match, idx) => {
                 const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                 const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
                 const live = liveMatches[match.id];
@@ -246,7 +246,7 @@ export const FixturesTab = ({
                 );
               })}
             </div>
-            {filteredUpcoming.length > 3 && (
+            {filteredUpcoming.length > 4 && (
               <button
                 onClick={() => setShowAllUpcoming(!showAllUpcoming)}
                 className="mt-3 w-full py-2 rounded-xl bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-350 hover:text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer select-none"

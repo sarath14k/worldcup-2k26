@@ -948,8 +948,7 @@ function App() {
         if (!dateA) return 1;
         if (!dateB) return -1;
         return dateA.getTime() - dateB.getTime();
-      })
-      .slice(0, 16);
+      });
   }, [groupMatches, bracket, liveMatches]);
 
   const playerStats = useMemo(() => {
