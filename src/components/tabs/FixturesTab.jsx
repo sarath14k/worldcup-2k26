@@ -281,7 +281,6 @@ export const FixturesTab = ({
                   >
                     <div className="flex justify-between items-center text-[10px] font-bold">
                       <div className="flex items-center gap-2">
-                        <span className="bg-slate-800 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-[9px]">FT</span>
                         <span className="text-slate-500 font-mono">Group {match.group} • Match {((match.id - 1) % 6) + 1}</span>
                       </div>
                       <span className="text-[9px] text-slate-500 font-mono">{formatDisplayDate(match.date)}</span>
