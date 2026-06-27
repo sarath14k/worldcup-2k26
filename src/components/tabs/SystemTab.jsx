@@ -328,6 +328,50 @@ export default function SystemTab() {
         <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" onSync={triggerSync} />
       </div>
 
+      {/* Deploy Status */}
+      <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
+        <div className="flex items-center gap-2 mb-3">
+          {deployStatus?.ahead ? (
+            <CloudOff className="w-4 h-4 text-amber-400" />
+          ) : (
+            <Cloud className="w-4 h-4 text-emerald-400" />
+          )}
+          <h3 className="text-white font-bold text-sm">Deploy Status</h3>
+          {deployStatus && (
+            <span className={`ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full ${
+              deployStatus.ahead
+                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+            }`}>
+              {deployStatus.ahead ? 'PENDING' : 'LIVE'}
+            </span>
+          )}
+        </div>
+        {deployStatus ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div className="bg-slate-900/30 rounded-lg px-3 py-2">
+              <span className="text-slate-500">Deployed</span>
+              <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.deployedCommit}</div>
+            </div>
+            {deployStatus.latestCommit && (
+              <div className="bg-slate-900/30 rounded-lg px-3 py-2">
+                <span className="text-slate-500">Latest</span>
+                <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.sha}</div>
+                <div className="text-slate-400 text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.message?.split('\n')[0]}</div>
+              </div>
+            )}
+            {deployStatus.serverTime && (
+              <div className="bg-slate-900/30 rounded-lg px-3 py-2 sm:col-span-2">
+                <span className="text-slate-500">Server time</span>
+                <div className="text-slate-200 font-mono text-[10px] mt-0.5">{new Date(deployStatus.serverTime).toLocaleString()}</div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="text-slate-500 text-xs py-2">Loading deploy status...</div>
+        )}
+      </div>
+
       {/* Scheduler intervals table */}
         <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
           <div className="flex items-center gap-2 mb-3">
@@ -372,50 +416,6 @@ export default function SystemTab() {
             </table>
           </div>
         </div>
-
-      {/* Deploy Status */}
-      <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
-        <div className="flex items-center gap-2 mb-3">
-          {deployStatus?.ahead ? (
-            <CloudOff className="w-4 h-4 text-amber-400" />
-          ) : (
-            <Cloud className="w-4 h-4 text-emerald-400" />
-          )}
-          <h3 className="text-white font-bold text-sm">Deploy Status</h3>
-          {deployStatus && (
-            <span className={`ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full ${
-              deployStatus.ahead
-                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-            }`}>
-              {deployStatus.ahead ? 'PENDING' : 'LIVE'}
-            </span>
-          )}
-        </div>
-        {deployStatus ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
-            <div className="bg-slate-900/30 rounded-lg px-3 py-2">
-              <span className="text-slate-500">Deployed</span>
-              <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.deployedCommit}</div>
-            </div>
-            {deployStatus.latestCommit && (
-              <div className="bg-slate-900/30 rounded-lg px-3 py-2">
-                <span className="text-slate-500">Latest</span>
-                <div className="text-slate-200 font-mono text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.sha}</div>
-                <div className="text-slate-400 text-[10px] mt-0.5 truncate">{deployStatus.latestCommit.message?.split('\n')[0]}</div>
-              </div>
-            )}
-            {deployStatus.serverTime && (
-              <div className="bg-slate-900/30 rounded-lg px-3 py-2 sm:col-span-2">
-                <span className="text-slate-500">Server time</span>
-                <div className="text-slate-200 font-mono text-[10px] mt-0.5">{new Date(deployStatus.serverTime).toLocaleString()}</div>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="text-slate-500 text-xs py-2">Loading deploy status...</div>
-        )}
-      </div>
 
       {/* Recent ESPN runs timeline */}
       <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5">
