@@ -1205,9 +1205,14 @@ function App() {
             <div className="bg-brand-gold/20 p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-brand-gold/40 glow-gold animate-float shrink-0">
               <WorldCupTrophyIcon className="w-4.5 h-4.5 sm:w-6 sm:h-6 text-brand-gold" />
             </div>
-            <div className="min-w-0">
-              <h1 className="text-[15px] sm:text-lg md:text-xl font-black tracking-widest bg-gradient-to-r from-white via-slate-200 to-brand-neon bg-clip-text text-transparent whitespace-nowrap uppercase">
-                WORLD CUP 2026
+            <div className="min-w-0 flex flex-col">
+              <h1 className="leading-none">
+                <span className="text-[13px] sm:text-base md:text-lg font-black tracking-[0.3em] bg-gradient-to-r from-brand-neon via-emerald-300 to-brand-neon bg-clip-text text-transparent uppercase block drop-shadow-[0_0_12px_rgba(0,255,135,0.3)]">
+                  WORLD CUP
+                </span>
+                <span className="text-[22px] sm:text-3xl md:text-4xl font-black tracking-[0.15em] bg-gradient-to-r from-yellow-200 via-amber-300 to-yellow-400 bg-clip-text text-transparent uppercase block -mt-0.5 drop-shadow-[0_0_20px_rgba(251,191,36,0.4)]">
+                  2026
+                </span>
               </h1>
             </div>
           </div>
