@@ -52,7 +52,7 @@ export const scraperAnalytics = {
   },
   server: {
     startedAt: new Date().toISOString(),
-    uptime: 0
+    get uptime() { return Math.floor((Date.now() - new Date(this.startedAt).getTime()) / 1000); }
   }
 };
 

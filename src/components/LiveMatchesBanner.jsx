@@ -19,6 +19,9 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
           <div 
             key={live.id} 
             onClick={() => setSelectedMatch(live.originalMatch)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedMatch(live.originalMatch); } }}
+            role="button"
+            tabIndex={0}
             title="Click to view live stats & timeline commentary"
             className={`p-4 sm:p-5 rounded-2xl bg-slate-950/80 border shadow-glass group w-full transition-all duration-300 ${
               isFlashing 

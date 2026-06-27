@@ -65,6 +65,7 @@ export const FixturesTab = ({
           value={teamFilter}
           onChange={e => setTeamFilter(e.target.value)}
           placeholder="Search by team name or code..."
+          aria-label="Filter matches by team"
           className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs text-slate-200 placeholder-slate-600 font-bold focus:outline-none focus:border-brand-neon/50 focus:ring-1 focus:ring-brand-neon/20 transition-all"
         />
         {teamFilter && (
@@ -123,14 +124,13 @@ export const FixturesTab = ({
                 const isMatchLive = isLiveMatch(live);
                 const isLiveOrDone = isMatchLive || match.isCompleted || (live && (live.minute === 'FT' || live.isCompleted));
                 const isFlashing = activeGoalFlashMatchIds.includes(String(match.id));
-                const isPastKickoff = !isLiveOrDone && (() => {
-                  const k = parseMatchKickoff(match);
-                  return k && k.getTime() <= Date.now();
-                })();
                 return (
                   <div
                     key={`today-${match.id}`}
                     onClick={() => setSelectedMatch(match)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedMatch(match); } }}
+                    role="button"
+                    tabIndex={0}
                     className={`animate-stagger p-3.5 sm:p-4 bg-slate-950/50 rounded-xl border transition-all flex flex-col gap-2 cursor-pointer relative overflow-hidden shrink-0 card-shimmer ${
                       isFlashing
                         ? 'animate-goalFlash'
@@ -150,8 +150,6 @@ export const FixturesTab = ({
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-neon"></span>
                           </span>
-                        ) : isPastKickoff ? (
-                          <span className="text-[9px] text-amber-400 font-black ml-1">🔴 Started</span>
                         ) : null}
                       </span>
                       <span className="text-slate-400 font-mono">{formatDisplayDate(match.date)}</span>

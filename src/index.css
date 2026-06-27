@@ -326,4 +326,9 @@ html.light .skeleton-shimmer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  .animate-goalFlash {
+    animation: none !important;
+    border-color: color-mix(in srgb, var(--color-brand-neon) 30%, transparent);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--color-brand-neon) 10%, transparent);
+  }
 }

@@ -87,8 +87,9 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
             </span>
             <input
               type="text"
-              placeholder="Search..."
               value={searchQuery}
+              placeholder="Search..."
+              aria-label="Search players"
               onChange={handleSearchChange}
               className="w-full pl-8 pr-8 py-2 rounded-xl bg-slate-950/60 border border-slate-800/80 focus:border-brand-neon focus:ring-1 focus:ring-brand-neon/20 outline-none text-xs font-bold text-slate-200 placeholder:text-slate-505 tracking-wide transition-all"
             />

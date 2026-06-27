@@ -345,29 +345,42 @@ export const getMatchDetails = (match, live) => {
   const generatedFallbackScorers = generateRealisticScorers(match.id, match.home, match.away, homeScore, awayScore);
 
   if (live && live.isDetailedScraped) {
+    const useGeneratedScorers = !live.events || live.events.length === 0;
+    const useGeneratedStats = !live.stats;
     return {
       hasStarted: true,
-      scorers: live.events && live.events.length > 0 ? live.events : generatedFallbackScorers,
-      stats: live.stats || generatedFallbackStats,
-      timeline: live.timeline || []
+      scorers: useGeneratedScorers ? generatedFallbackScorers : live.events,
+      stats: useGeneratedStats ? generatedFallbackStats : live.stats,
+      timeline: live.timeline || [],
+      scorersSimulated: useGeneratedScorers,
+      statsSimulated: useGeneratedStats
     };
   }
 
   if (OFFICIAL_MATCH_DETAILS[match.id]) {
+    const od = OFFICIAL_MATCH_DETAILS[match.id];
+    const useGeneratedScorers = !od.scorers || od.scorers.length === 0;
+    const useGeneratedStats = !od.stats;
     return {
       hasStarted: true,
-      scorers: OFFICIAL_MATCH_DETAILS[match.id].scorers || generatedFallbackScorers,
-      stats: OFFICIAL_MATCH_DETAILS[match.id].stats || generatedFallbackStats,
-      timeline: OFFICIAL_MATCH_DETAILS[match.id].timeline || []
+      scorers: useGeneratedScorers ? generatedFallbackScorers : od.scorers,
+      stats: useGeneratedStats ? generatedFallbackStats : od.stats,
+      timeline: od.timeline || [],
+      scorersSimulated: useGeneratedScorers,
+      statsSimulated: useGeneratedStats
     };
   }
 
   if (live) {
+    const useGeneratedScorers = !live.events || live.events.length === 0;
+    const useGeneratedStats = !live.stats;
     return {
       hasStarted: true,
-      scorers: live.events && live.events.length > 0 ? live.events : generatedFallbackScorers,
-      stats: live.stats || generatedFallbackStats,
-      timeline: live.timeline || []
+      scorers: useGeneratedScorers ? generatedFallbackScorers : live.events,
+      stats: useGeneratedStats ? generatedFallbackStats : live.stats,
+      timeline: live.timeline || [],
+      scorersSimulated: useGeneratedScorers,
+      statsSimulated: useGeneratedStats
     };
   }
 
@@ -375,7 +388,9 @@ export const getMatchDetails = (match, live) => {
     hasStarted: true,
     scorers: generatedFallbackScorers,
     stats: generatedFallbackStats,
-    timeline: []
+    timeline: [],
+    scorersSimulated: true,
+    statsSimulated: true
   };
 };
 

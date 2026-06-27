@@ -30,10 +30,7 @@ export function normalizeTeamName(name) {
 const CACHE_FILE = path.join(__dirname, '../../src/data/highlights-cache.json');
 
 function ensureDirectoryExistence(filePath) {
-  const dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) return true;
-  ensureDirectoryExistence(dirname);
-  fs.mkdirSync(dirname);
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
 }
 
 // Load cache

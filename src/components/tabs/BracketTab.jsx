@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Check, Star, Share2 } from 'lucide-react';
+import { Star, Share2 } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
-import { ScrollingText } from '../ScrollingText';
+import { BracketTeamSlot } from '../BracketTeamSlot';
 
 export const BracketTab = ({
   bracket,
@@ -163,47 +163,24 @@ export const BracketTab = ({
                 </div>
 
                 <div className="flex flex-col gap-2 bg-slate-950/80 p-3 rounded-2xl border border-slate-800">
-                  {/* Home */}
-                  <div
-                    id={`m-slot-final-home`}
-                    onClick={() => match.home && handleKnockoutWinner('final', idx, match.home)}
-                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                      !match.home 
-                        ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                        : isHomeHovered
-                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                          : isHomeWinner 
-                            ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                            : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                      <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                      <ScrollingText text={homeTeam ? homeTeam.name : 'TBD SF 1 Winner'} className="text-slate-250" />
-                    </div>
-                    {isHomeWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
-                  </div>
-
-                  {/* Away */}
-                  <div
-                    id={`m-slot-final-away`}
-                    onClick={() => match.away && handleKnockoutWinner('final', idx, match.away)}
-                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                      !match.away 
-                        ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                        : isAwayHovered
-                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                          : isAwayWinner 
-                            ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                            : 'bg-slate-900/50 text-slate-250 cursor-pointer hover:bg-slate-800/80 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                      <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                      <ScrollingText text={awayTeam ? awayTeam.name : 'TBD SF 2 Winner'} className="text-slate-250" />
-                    </div>
-                    {isAwayWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
-                  </div>
+                  <BracketTeamSlot
+                    teamCode={match.home}
+                    isWinner={isHomeWinner}
+                    isHovered={isHomeHovered}
+                    onClick={() => handleKnockoutWinner('final', idx, match.home)}
+                    id="m-slot-final-home"
+                    tbdText="TBD SF 1 Winner"
+                    isFinal
+                  />
+                  <BracketTeamSlot
+                    teamCode={match.away}
+                    isWinner={isAwayWinner}
+                    isHovered={isAwayHovered}
+                    onClick={() => handleKnockoutWinner('final', idx, match.away)}
+                    id="m-slot-final-away"
+                    tbdText="TBD SF 2 Winner"
+                    isFinal
+                  />
                 </div>
               </div>
             );
@@ -255,47 +232,22 @@ export const BracketTab = ({
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  {/* Home Team */}
-                  <div
+                  <BracketTeamSlot
+                    teamCode={match.home}
+                    isWinner={isHomeWinner}
+                    isHovered={false}
+                    onClick={() => handleKnockoutWinner(roundKey, idx, match.home)}
                     id={`m-slot-${match.id}-home`}
-                    onClick={() => match.home && handleKnockoutWinner(roundKey, idx, match.home)}
-                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                      !match.home 
-                        ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                        : isHomeHovered
-                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                          : isHomeWinner 
-                            ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
-                            : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                      <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                      <ScrollingText text={homeTeam ? homeTeam.name : 'TBD (Group Stage)'} className="text-slate-350" />
-                    </div>
-                    {isHomeWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
-                  </div>
-
-                  {/* Away Team */}
-                  <div
+                    tbdText="TBD (Group Stage)"
+                  />
+                  <BracketTeamSlot
+                    teamCode={match.away}
+                    isWinner={isAwayWinner}
+                    isHovered={false}
+                    onClick={() => handleKnockoutWinner(roundKey, idx, match.away)}
                     id={`m-slot-${match.id}-away`}
-                    onClick={() => match.away && handleKnockoutWinner(roundKey, idx, match.away)}
-                    className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                      !match.away 
-                        ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                        : isAwayHovered
-                          ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                          : isAwayWinner 
-                            ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-extrabold cursor-pointer hover:bg-brand-neon/25' 
-                            : 'bg-slate-950/30 text-slate-350 cursor-pointer hover:bg-slate-900/60 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                      <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                      <ScrollingText text={awayTeam ? awayTeam.name : 'TBD (Group Stage)'} className="text-slate-350" />
-                    </div>
-                    {isAwayWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
-                  </div>
+                    tbdText="TBD (Group Stage)"
+                  />
                 </div>
               </div>
             );
@@ -346,52 +298,25 @@ export const BracketTab = ({
               </div>
               
               <div className="flex flex-col gap-1.5">
-                {/* Home Team */}
-                <div
-                  id={`slot-${match.id}-home`}
-                  onMouseEnter={() => match.home && setHoveredTeam(match.home)}
-                  onMouseLeave={() => setHoveredTeam(null)}
-                  onClick={() => match.home && handleKnockoutWinner(roundKey, actualIdx, match.home)}
-                  className={`flex items-center justify-between w-full p-2 rounded-lg text-left transition-all text-xs font-semibold ${
-                    !match.home 
-                      ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                      : isHomeHovered
-                        ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                        : isHomeWinner 
-                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
-                          : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                    <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                    <ScrollingText text={homeTeam ? homeTeam.name : 'TBD (Group Stage)'} className="text-slate-300" />
-                  </div>
-                  {isHomeWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
+                  <BracketTeamSlot
+                    teamCode={match.home}
+                    isWinner={isHomeWinner}
+                    isHovered={isHomeHovered}
+                    onClick={() => handleKnockoutWinner(roundKey, actualIdx, match.home)}
+                    onHover={setHoveredTeam}
+                    id={`slot-${match.id}-home`}
+                    tbdText="TBD (Group Stage)"
+                  />
+                  <BracketTeamSlot
+                    teamCode={match.away}
+                    isWinner={isAwayWinner}
+                    isHovered={isAwayHovered}
+                    onClick={() => handleKnockoutWinner(roundKey, actualIdx, match.away)}
+                    onHover={setHoveredTeam}
+                    id={`slot-${match.id}-away`}
+                    tbdText="TBD (Group Stage)"
+                  />
                 </div>
-
-                {/* Away Team */}
-                <div
-                  id={`slot-${match.id}-away`}
-                  onMouseEnter={() => match.away && setHoveredTeam(match.away)}
-                  onMouseLeave={() => setHoveredTeam(null)}
-                  onClick={() => match.away && handleKnockoutWinner(roundKey, actualIdx, match.away)}
-                  className={`flex items-center justify-between w-full p-2 rounded-lg text-left transition-all text-xs font-semibold ${
-                    !match.away 
-                      ? 'text-slate-600 bg-slate-950/20 cursor-not-allowed' 
-                      : isAwayHovered
-                        ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                        : isAwayWinner 
-                          ? 'bg-brand-neon/15 text-brand-neon ring-1 ring-brand-neon/30 font-bold cursor-pointer hover:bg-brand-neon/25' 
-                          : 'bg-slate-950/30 text-slate-300 cursor-pointer hover:bg-slate-900/60 hover:text-white'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                    <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                    <ScrollingText text={awayTeam ? awayTeam.name : 'TBD (Group Stage)'} className="text-slate-300" />
-                  </div>
-                  {isAwayWinner && <Check className="w-3.5 h-3.5 shrink-0" />}
-                </div>
-              </div>
             </div>
           );
         })}
@@ -502,51 +427,26 @@ export const BracketTab = ({
                   </div>
 
                   <div id={`card-${match.id}`} className="flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
-                    {/* Home */}
-                    <div
-                      id={`slot-final-home`}
-                      onMouseEnter={() => match.home && setHoveredTeam(match.home)}
-                      onMouseLeave={() => setHoveredTeam(null)}
-                      onClick={() => match.home && handleKnockoutWinner('final', idx, match.home)}
-                      className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                        !match.home 
-                          ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                          : isHomeHovered
-                            ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                            : isHomeWinner 
-                              ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                              : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                        <span className="text-lg shrink-0">{homeTeam ? homeTeam.flag : '🏳️'}</span>
-                        <ScrollingText text={homeTeam ? homeTeam.name : 'TBD SF 1 Winner'} className="text-slate-200" />
-                      </div>
-                      {isHomeWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
-                    </div>
-
-                    {/* Away */}
-                    <div
-                      id={`slot-final-away`}
-                      onMouseEnter={() => match.away && setHoveredTeam(match.away)}
-                      onMouseLeave={() => setHoveredTeam(null)}
-                      onClick={() => match.away && handleKnockoutWinner('final', idx, match.away)}
-                      className={`flex items-center justify-between w-full p-2.5 rounded-xl text-left transition-all text-xs font-bold ${
-                        !match.away 
-                          ? 'text-slate-600 bg-slate-900/20 cursor-not-allowed' 
-                          : isAwayHovered
-                            ? 'bg-brand-neon/20 text-white ring-2 ring-brand-neon shadow-neon cursor-pointer scale-[1.02] z-10'
-                            : isAwayWinner 
-                              ? 'bg-brand-gold/20 text-brand-gold ring-1 ring-brand-gold/50 shadow-gold cursor-pointer hover:bg-brand-gold/30' 
-                              : 'bg-slate-900/50 text-slate-200 cursor-pointer hover:bg-slate-800/80 hover:text-white'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
-                        <span className="text-lg shrink-0">{awayTeam ? awayTeam.flag : '🏳️'}</span>
-                        <ScrollingText text={awayTeam ? awayTeam.name : 'TBD SF 2 Winner'} className="text-slate-200" />
-                      </div>
-                      {isAwayWinner && <Check className="w-4 h-4 shrink-0 text-brand-gold" />}
-                    </div>
+                    <BracketTeamSlot
+                      teamCode={match.home}
+                      isWinner={isHomeWinner}
+                      isHovered={isHomeHovered}
+                      onClick={() => handleKnockoutWinner('final', idx, match.home)}
+                      onHover={setHoveredTeam}
+                      id="slot-final-home"
+                      tbdText="TBD SF 1 Winner"
+                      isFinal
+                    />
+                    <BracketTeamSlot
+                      teamCode={match.away}
+                      isWinner={isAwayWinner}
+                      isHovered={isAwayHovered}
+                      onClick={() => handleKnockoutWinner('final', idx, match.away)}
+                      onHover={setHoveredTeam}
+                      id="slot-final-away"
+                      tbdText="TBD SF 2 Winner"
+                      isFinal
+                    />
                   </div>
                 </div>
               );

@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 export const ConfettiShower = () => {
   const [particles] = useState(() => {
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return [];
     const colors = ['#00FF87', '#4F46E5', '#3B82F6', '#FBBF24', '#EF4444', '#EC4899'];
     const shapes = ['circle', 'square', 'triangle'];
     
