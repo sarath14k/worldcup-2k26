@@ -314,30 +314,16 @@ export const FixturesTab = ({
                       if (isLoading) return <SkeletonButton />;
                       if (url) {
                         return (
-                          <button
+                          <img
+                            src={thumb}
+                            alt=""
                             onClick={(e) => {
                               e.stopPropagation();
                               window.open(url, '_blank', 'noopener,noreferrer');
                             }}
-                            className="mt-1 relative overflow-hidden rounded-xl bg-slate-900/70 border border-red-500/20 hover:border-red-500/40 transition-all cursor-pointer group w-full text-left"
-                          >
-                            {thumb && (
-                              <img
-                                src={thumb}
-                                alt=""
-                                className="w-full h-24 sm:h-28 object-cover opacity-60 group-hover:opacity-80 transition-opacity"
-                                loading="lazy"
-                              />
-                            )}
-                            <div className={`absolute inset-0 flex items-center justify-center ${thumb ? 'bg-gradient-to-t from-black/80 via-black/30 to-transparent' : ''}`}>
-                              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-600/90 group-hover:bg-red-500 text-[10px] font-black text-white shadow-lg transition-all">
-                                <svg className="w-3 h-3 fill-white shrink-0" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                                <span>Watch Highlights ↗</span>
-                              </div>
-                            </div>
-                          </button>
+                            className="mt-1 w-full h-24 sm:h-28 object-cover rounded-xl cursor-pointer opacity-75 hover:opacity-100 transition-opacity border border-red-500/20 hover:border-red-500/40"
+                            loading="lazy"
+                          />
                         );
                       }
                       const isChecking = highlightFetching[match.id];
