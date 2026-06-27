@@ -30,7 +30,8 @@ function parseDateStr(dateStr) {
 }
 
 function formatDiff(ms) {
-  if (ms <= 0) return 'KICKING OFF!';
+  if (ms <= 0 && ms > -30000) return 'KICKING OFF!';
+  if (ms <= -30000) return '';
   const d = Math.floor(ms / 86400000);
   const h = Math.floor((ms % 86400000) / 3600000);
   const m = Math.floor((ms % 3600000) / 60000);
@@ -56,6 +57,8 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
 
     tick();
     const diff = kickoff.getTime() - Date.now();
+
+    if (diff < -60000) return;
 
     if (diff < 60000) {
       const id = setInterval(tick, 1000);
