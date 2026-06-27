@@ -168,8 +168,8 @@ export const FixturesTab = ({
                     </div>
 
                     <div className="flex items-center justify-between gap-3 py-1">
-                      <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : match.teamsConfirmed ? 'text-xs text-slate-200' : 'text-xs text-slate-500 italic'}`}>
-                        {match.teamsConfirmed ? (
+                      <div className={`flex items-center gap-1.5 font-bold flex-1 min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : match.teamsConfirmed && match.home ? 'text-xs text-slate-200' : 'text-xs text-slate-500 italic'}`}>
+                        {match.teamsConfirmed && match.home ? (
                           <>
                             <span className={`shrink-0 ${isMatchLive ? 'text-xl' : 'text-lg'}`}>{home.flag}</span>
                             <ScrollingText text={home.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'}`} />
@@ -201,8 +201,8 @@ export const FixturesTab = ({
                         </span>
                       )}
 
-                      <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : match.teamsConfirmed ? 'text-xs text-slate-200' : 'text-xs text-slate-500 italic justify-end'} justify-end`}>
-                        {match.teamsConfirmed ? (
+                      <div className={`flex items-center gap-1.5 font-bold flex-1 justify-end min-w-0 ${isMatchLive ? 'text-sm text-slate-100 font-black' : match.teamsConfirmed && match.away ? 'text-xs text-slate-200' : 'text-xs text-slate-500 italic justify-end'} justify-end`}>
+                        {match.teamsConfirmed && match.away ? (
                           <>
                             <FifaRankBadge teamCode={match.away} />
                             <ScrollingText text={away.name} className={`${isMatchLive ? 'text-sm text-slate-100 font-black' : 'text-xs text-slate-200'} text-right justify-end`} />

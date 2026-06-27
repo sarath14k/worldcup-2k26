@@ -952,9 +952,7 @@ function App() {
     });
     Object.keys(bracket).forEach(roundKey => {
       bracket[roundKey].forEach(m => {
-        if (m.home && m.away) {
-          allMatches.push({ ...m, stage: 'knockout', teamsConfirmed: isTeamsConfirmed(m) });
-        }
+        allMatches.push({ ...m, stage: 'knockout', teamsConfirmed: isTeamsConfirmed(m) });
       });
     });
 
