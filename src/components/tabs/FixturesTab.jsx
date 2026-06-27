@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { Award, Search, X } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaRankBadge, parseMatchKickoff } from '../../utils/matchHelpers';
@@ -32,6 +32,7 @@ export const FixturesTab = ({
   const [showAllDone, setShowAllDone] = useState(false);
   const [highlightFetching, setHighlightFetching] = useState({});
   const [highlightNoResult, setHighlightNoResult] = useState({});
+  const highlightCooldownRef = useRef({});
   const [teamFilter, setTeamFilter] = useState('');
 
   const filteredUpcoming = useMemo(() => {
@@ -117,7 +118,7 @@ export const FixturesTab = ({
           </div>
         )}
 
-            <div className="flex flex-col gap-3.5 relative z-10 max-h-[680px] overflow-y-auto pr-1.5 custom-scrollbar">
+            <div className="flex flex-col gap-3.5 relative z-10">
               {(showAllUpcoming ? filteredUpcoming : filteredUpcoming.slice(0, 3)).map((match, idx) => {
                 const home = TEAMS[match.home] || { name: match.home || 'TBD', flag: '🏳️' };
                 const away = TEAMS[match.away] || { name: match.away || 'TBD', flag: '🏳️' };
@@ -346,6 +347,10 @@ export const FixturesTab = ({
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
+                            const now = Date.now();
+                            const lastCheck = highlightCooldownRef.current[match.id];
+                            if (lastCheck && now - lastCheck < 15000) return;
+                            highlightCooldownRef.current[match.id] = now;
                             setHighlightFetching(prev => ({ ...prev, [match.id]: true }));
                             onFetchHighlight(match).then(found => {
                               if (!found) {

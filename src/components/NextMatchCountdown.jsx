@@ -74,37 +74,45 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
 
   if (!nextMatch || !display) return null;
 
-  // Stop showing the banner once kickoff has passed
-  if (display === 'KICKING OFF!') return null;
-
   const home = TEAMS[nextMatch.home] || { flag: '🏳️', name: 'TBD' };
   const away = TEAMS[nextMatch.away] || { flag: '🏳️', name: 'TBD' };
 
+  const isKickingOff = display === 'KICKING OFF!';
+
   return (
-    <div className="p-4 rounded-2xl bg-gradient-to-r from-brand-neon/10 via-slate-900/80 to-brand-purple/10 border border-brand-neon/20 backdrop-blur-md relative overflow-hidden">
+    <div className={`p-4 rounded-2xl bg-gradient-to-r ${isKickingOff ? 'from-brand-neon/25 via-slate-900 to-brand-neon/25' : 'from-brand-neon/10 via-slate-900/80 to-brand-purple/10'} border ${isKickingOff ? 'border-brand-neon/60 animate-pulse' : 'border-brand-neon/20'} backdrop-blur-md relative overflow-hidden`}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,255,135,0.08),transparent_70%)] pointer-events-none" />
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <div className="flex items-center gap-1.5">
-            <span className="text-2xl">{home.flag}</span>
-            <div className="flex flex-col items-start">
-              <span className="font-black text-sm text-slate-200 truncate max-w-[100px] sm:max-w-none">{home.name}</span>
-              <FifaRankBadge teamCode={nextMatch.home} />
+      <div className="flex flex-col items-center gap-3">
+        {isKickingOff && (
+          <div className="flex items-center gap-3 text-3xl">
+            <span>{home.flag}</span>
+            <span className="font-black text-lg text-brand-neon">KICKING OFF!</span>
+            <span>{away.flag}</span>
+          </div>
+        )}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 w-full">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <div className="flex items-center gap-1.5">
+              <span className="text-2xl">{home.flag}</span>
+              <div className="flex flex-col items-start">
+                <span className="font-black text-sm text-slate-200 truncate max-w-[100px] sm:max-w-none">{home.name}</span>
+                <FifaRankBadge teamCode={nextMatch.home} />
+              </div>
+            </div>
+            <span className="text-xs font-extrabold text-slate-500 px-1">VS</span>
+            <div className="flex items-center gap-1.5">
+              <div className="flex flex-col items-end">
+                <span className="font-black text-sm text-slate-200 truncate max-w-[100px] sm:max-w-none">{away.name}</span>
+                <FifaRankBadge teamCode={nextMatch.away} />
+              </div>
+              <span className="text-2xl">{away.flag}</span>
             </div>
           </div>
-          <span className="text-xs font-extrabold text-slate-500 px-1">VS</span>
-          <div className="flex items-center gap-1.5">
-            <div className="flex flex-col items-end">
-              <span className="font-black text-sm text-slate-200 truncate max-w-[100px] sm:max-w-none">{away.name}</span>
-              <FifaRankBadge teamCode={nextMatch.away} />
+          <div className="text-center sm:text-right">
+            <div className="text-[9px] font-black uppercase tracking-widest text-slate-500">Next Match</div>
+            <div className={`font-mono font-black text-lg tracking-wider ${isKickingOff ? 'text-brand-neon' : 'text-brand-neon'}`}>
+              {!isKickingOff ? display : ''}
             </div>
-            <span className="text-2xl">{away.flag}</span>
-          </div>
-        </div>
-        <div className="text-center sm:text-right">
-          <div className="text-[9px] font-black uppercase tracking-widest text-slate-500">Next Match</div>
-          <div className={`font-mono font-black text-lg tracking-wider ${display === 'KICKING OFF!' ? 'text-brand-neon animate-pulse' : 'text-brand-neon'}`}>
-            {display}
           </div>
         </div>
       </div>

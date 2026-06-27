@@ -60,16 +60,20 @@ export const VenuesTab = ({ groupMatches, bracket, liveMatches, isLiveMatch }) =
               }`}
             >
               <div>
-                {venue.image && (
-                  <div className="relative w-full h-40 sm:h-48 -mx-4 -mt-4 sm:-mx-5 sm:-mt-5 mb-3 overflow-hidden rounded-t-2xl">
+                {venue.image ? (
+                  <div className="relative w-full h-40 sm:h-48 -mx-4 -mt-4 sm:-mx-5 sm:-mt-5 mb-3 overflow-hidden rounded-t-2xl bg-slate-900/50">
                     <img
                       src={venue.image}
                       alt={venue.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
-                      onError={(e) => { e.target.style.display = 'none'; }}
+                      onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.classList.add('broken-image'); }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-cardBg via-transparent to-transparent" />
+                  </div>
+                ) : (
+                  <div className="w-full h-28 sm:h-32 -mx-4 -mt-4 sm:-mx-5 sm:-mt-5 mb-3 rounded-t-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center">
+                    <MapPin className="w-8 h-8 text-slate-700" />
                   </div>
                 )}
                 <div className="flex justify-between items-start mb-3">

@@ -14,6 +14,7 @@ export const BracketTab = ({
   const [activeRoundTab, setActiveRoundTab] = useState('r32');
   const [lines, setLines] = useState([]);
   const [shareCopied, setShareCopied] = useState(false);
+  const [restoreMessage, setRestoreMessage] = useState(null);
   const containerRef = useRef(null);
 
   // Restore bracket from URL hash on mount
@@ -24,9 +25,13 @@ export const BracketTab = ({
         const data = JSON.parse(atob(hash.slice(9)));
         if (data && onRestoreBracket) {
           onRestoreBracket(data);
+          setRestoreMessage('Bracket restored from shared link!');
+          setTimeout(() => setRestoreMessage(null), 4000);
         }
       } catch (e) {
         console.warn('[Bracket] Failed to restore from URL:', e);
+        setRestoreMessage('Failed to restore bracket from link');
+        setTimeout(() => setRestoreMessage(null), 4000);
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -336,23 +341,41 @@ export const BracketTab = ({
           <span>{shareCopied ? 'Copied!' : 'Share Predictions'}</span>
         </button>
       </div>
+      {/* Restore feedback message */}
+      {restoreMessage && (
+        <div className={`text-xs font-bold text-center py-2 px-3 rounded-xl border mb-3 ${
+          restoreMessage.includes('Failed')
+            ? 'bg-red-500/10 border-red-500/30 text-red-300'
+            : 'bg-brand-neon/10 border-brand-neon/30 text-brand-neon'
+        }`}>
+          {restoreMessage}
+        </div>
+      )}
+
       {/* Mobile-optimized Vertical/Pill Bracket view */}
       <div className="block md:hidden">
         {/* Pills Selector */}
         <div className="flex items-center justify-between bg-slate-950/60 p-1 rounded-xl border border-slate-900 mb-4 gap-1">
           {['r32', 'r16', 'qf', 'sf', 'final'].map((rk) => {
             const label = rk === 'r32' ? 'R32' : rk === 'r16' ? 'R16' : rk === 'qf' ? 'QF' : rk === 'sf' ? 'SF' : 'Final';
+            const roundMatches = bracket[rk] || [];
+            const allDone = roundMatches.length > 0 && roundMatches.every(m => m.winner);
             return (
               <button
                 key={rk}
                 onClick={() => setActiveRoundTab(rk)}
-                className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-center transition-all cursor-pointer ${
+                className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-center transition-all cursor-pointer relative ${
                   activeRoundTab === rk 
                     ? 'bg-brand-neon text-slate-950 shadow-neon font-black' 
                     : 'text-slate-400 hover:text-slate-300'
-                }`}
+                } ${allDone && activeRoundTab !== rk ? 'ring-1 ring-brand-neon/30' : ''}`}
               >
                 {label}
+                {allDone && (
+                  <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-brand-neon rounded-full flex items-center justify-center text-[7px] text-slate-950 font-black leading-none shadow-neon">
+                    ✓
+                  </span>
+                )}
               </button>
             );
           })}

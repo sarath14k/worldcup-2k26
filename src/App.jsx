@@ -435,8 +435,6 @@ function App() {
 
   // --- Live Data Polling Effect ---
   useEffect(() => {
-    if (activeTab === 'bracket') return;
-
     const pollingIntervals = {
       fixtures: 30000,
       groups: 120000,
@@ -1312,7 +1310,7 @@ function App() {
       </header>
 
       {/* --- MAIN TABS NAV --- */}
-      <nav className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 pt-4 sm:pt-6">
+      <nav className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 pt-4 sm:pt-6" role="tablist" aria-label="Main navigation tabs">
         <div className="flex gap-2 p-1 bg-slate-950/40 backdrop-blur-md rounded-2xl border border-slate-800/40 w-full overflow-x-auto scrollbar-none sm:w-fit whitespace-nowrap">
           {[
             { id: 'fixtures', label: 'Upcoming & Results', icon: Calendar, live: activeLiveMatchesList.length },
@@ -1329,6 +1327,9 @@ function App() {
               <button
                 key={tab.id}
                 id={`tab-${tab.id}`}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${tab.id}`}
                 onClick={() => handleTabSwitch(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 select-none cursor-pointer ${
                   isActive 
@@ -1360,93 +1361,107 @@ function App() {
         {/* --- TABS --- */}
         <div>
           {activeTab === 'fixtures' && (
-            <FixturesTab 
-              hasLiveMatches={hasLiveMatches}
-              activeLiveMatchesList={activeLiveMatchesList}
-              upcomingFixtures={upcomingFixtures}
-              feedMatches={feedMatches}
-              liveMatches={liveMatches}
-              highlightsMap={highlightsMap}
-              loadingHighlightsMap={loadingHighlightsMap}
-              isLiveMatch={isLiveMatch}
-              setSelectedMatch={setSelectedMatch}
-              activeGoalFlashMatchIds={activeGoalFlashMatchIds}
-              nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}
-              onFetchHighlight={handleFetchHighlight}
-            />
+            <div role="tabpanel" id="panel-fixtures" aria-labelledby="tab-fixtures">
+              <FixturesTab 
+                hasLiveMatches={hasLiveMatches}
+                activeLiveMatchesList={activeLiveMatchesList}
+                upcomingFixtures={upcomingFixtures}
+                feedMatches={feedMatches}
+                liveMatches={liveMatches}
+                highlightsMap={highlightsMap}
+                loadingHighlightsMap={loadingHighlightsMap}
+                isLiveMatch={isLiveMatch}
+                setSelectedMatch={setSelectedMatch}
+                activeGoalFlashMatchIds={activeGoalFlashMatchIds}
+                nextMatchCountdown={<NextMatchCountdown upcomingFixtures={upcomingFixtures} />}
+                onFetchHighlight={handleFetchHighlight}
+              />
+            </div>
           )}
 
           {activeTab === 'groups' && (
-            <GroupsTab 
-              groupMatches={groupMatches}
-              standings={standings}
-              advancedTeams={advancedTeams}
-              liveMatches={liveMatches}
-              isLiveMatch={isLiveMatch}
-              setSelectedMatch={setSelectedMatch}
-            />
+            <div role="tabpanel" id="panel-groups" aria-labelledby="tab-groups">
+              <GroupsTab 
+                groupMatches={groupMatches}
+                standings={standings}
+                advancedTeams={advancedTeams}
+                liveMatches={liveMatches}
+                isLiveMatch={isLiveMatch}
+                setSelectedMatch={setSelectedMatch}
+              />
+            </div>
           )}
 
           {activeTab === 'bracket' && (
-            <BracketTab 
-              bracket={bracket}
-              standings={standings}
-              advancedTeams={advancedTeams}
-              tournamentChampion={tournamentChampion}
-              handleKnockoutWinner={handleKnockoutWinner}
-              onRestoreBracket={(winners) => {
-                setBracket(prev => {
-                  const next = JSON.parse(JSON.stringify(prev));
-                  const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
-                  rounds.forEach(rk => {
-                    next[rk] = next[rk].map(m => {
-                      const winner = winners[m.id];
-                      if (winner && m.home && m.away && (winner === m.home || winner === m.away)) {
-                        const updated = { ...m, winner };
-                        if (m.nextId) {
-                          const nextRound = m.nextId.split('_')[0];
-                          const nextMatch = next[nextRound]?.find(nm => nm.id === m.nextId);
-                          if (nextMatch) {
-                            const isHome = m.position === 'top' || m.position === 'home';
-                            if (isHome) nextMatch.home = winner;
-                            else nextMatch.away = winner;
+            <div role="tabpanel" id="panel-bracket" aria-labelledby="tab-bracket">
+              <BracketTab 
+                bracket={bracket}
+                standings={standings}
+                advancedTeams={advancedTeams}
+                tournamentChampion={tournamentChampion}
+                handleKnockoutWinner={handleKnockoutWinner}
+                onRestoreBracket={(winners) => {
+                  setBracket(prev => {
+                    const next = JSON.parse(JSON.stringify(prev));
+                    const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
+                    rounds.forEach(rk => {
+                      next[rk] = next[rk].map(m => {
+                        const winner = winners[m.id];
+                        if (winner && m.home && m.away && (winner === m.home || winner === m.away)) {
+                          const updated = { ...m, winner };
+                          if (m.nextId) {
+                            const nextRound = m.nextId.split('_')[0];
+                            const nextMatch = next[nextRound]?.find(nm => nm.id === m.nextId);
+                            if (nextMatch) {
+                              const isHome = m.position === 'top' || m.position === 'home';
+                              if (isHome) nextMatch.home = winner;
+                              else nextMatch.away = winner;
+                            }
                           }
+                          return updated;
                         }
-                        return updated;
-                      }
-                      return m;
+                        return m;
+                      });
                     });
+                    return next;
                   });
-                  return next;
-                });
-              }}
-            />
+                }}
+              />
+            </div>
           )}
 
           {activeTab === 'stats' && (
-            <StatsTab 
-              playerStats={playerStats}
-              fotmobRatings={fotmobRatings}
-            />
+            <div role="tabpanel" id="panel-stats" aria-labelledby="tab-stats">
+              <StatsTab 
+                playerStats={playerStats}
+                fotmobRatings={fotmobRatings}
+              />
+            </div>
           )}
 
           {activeTab === 'ratings' && (
-            <PlayerRatingsTab 
-              fotmobRatings={fotmobRatings}
-            />
+            <div role="tabpanel" id="panel-ratings" aria-labelledby="tab-ratings">
+              <PlayerRatingsTab 
+                fotmobRatings={fotmobRatings}
+              />
+            </div>
           )}
 
           {activeTab === 'venues' && (
-            <VenuesTab 
-              groupMatches={groupMatches}
-              bracket={bracket}
-              liveMatches={liveMatches}
-              isLiveMatch={isLiveMatch}
-            />
+            <div role="tabpanel" id="panel-venues" aria-labelledby="tab-venues">
+              <VenuesTab 
+                groupMatches={groupMatches}
+                bracket={bracket}
+                liveMatches={liveMatches}
+                isLiveMatch={isLiveMatch}
+              />
+            </div>
           )}
 
           {activeTab === 'system' && (
-            <SystemTab />
+            <div role="tabpanel" id="panel-system" aria-labelledby="tab-system">
+              <SystemTab />
+            </div>
           )}
         </div>
 

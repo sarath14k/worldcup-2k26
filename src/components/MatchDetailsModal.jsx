@@ -218,7 +218,7 @@ export const MatchDetailsModal = ({
             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               <span>⚽</span> Goal Scorers
               {details.scorersSimulated && (
-                <span className="text-[7px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-1 py-0.5 rounded-full tracking-wider uppercase ml-1">
+                <span className="text-[10px] font-black text-amber-300 bg-amber-500/15 border border-amber-500/40 px-1.5 py-0.5 rounded-full tracking-wider uppercase ml-1 shadow-[0_0_6px_rgba(245,158,11,0.2)]">
                   Simulated
                 </span>
               )}
@@ -353,7 +353,7 @@ export const MatchDetailsModal = ({
             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
               Match Statistics
               {details.statsSimulated && (
-                <span className="text-[7px] font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-1 py-0.5 rounded-full tracking-wider uppercase">
+                <span className="text-[10px] font-black text-amber-300 bg-amber-500/15 border border-amber-500/40 px-1.5 py-0.5 rounded-full tracking-wider uppercase shadow-[0_0_6px_rgba(245,158,11,0.2)]">
                   Simulated
                 </span>
               )}

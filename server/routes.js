@@ -72,7 +72,6 @@ export function registerRoutes(app) {
 
   // Analytics API
   app.get('/api/scraper-analytics', (req, res) => {
-    scraperAnalytics.server.uptime = Math.floor((Date.now() - new Date(scraperAnalytics.server.startedAt).getTime()) / 1000);
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.json(scraperAnalytics);
   });

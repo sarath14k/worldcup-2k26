@@ -71,7 +71,7 @@ export const GroupsTab = ({
                     }`}
                   >
                     {g}
-                    <span className={`absolute -top-1 -right-1 text-[7px] font-mono font-black px-1 py-0.5 rounded-full leading-none ${
+                    <span className={`absolute -top-1.5 -right-1.5 text-[8px] font-mono font-black min-w-[14px] h-[14px] flex items-center justify-center rounded-full leading-none ${
                       isDone
                         ? 'bg-brand-neon text-slate-950'
                         : prog.played > 0
