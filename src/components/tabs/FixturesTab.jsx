@@ -134,7 +134,9 @@ export const FixturesTab = ({
                   >
                     <div className="flex justify-between items-center text-[10px] text-slate-500 font-bold">
                       <span className="text-brand-neon uppercase font-extrabold flex items-center gap-1">
-                        Group {match.group} • Match {((match.id - 1) % 6) + 1}
+                        {match.stage === 'knockout'
+                          ? (match.title || `Match ${match.id}`)
+                          : `Group ${match.group} • Match ${((match.id - 1) % 6) + 1}`}
                         {isFlashing ? (
                           <span className="bg-brand-neon text-slate-950 text-[8px] px-1 py-0.5 rounded font-black animate-bounce ml-1.5 shadow-[0_0_8px_rgba(0,255,135,0.4)]">⚽ GOAL!</span>
                         ) : isMatchLive ? (
@@ -272,7 +274,11 @@ export const FixturesTab = ({
                   >
                     <div className="flex justify-between items-center text-[10px] font-bold">
                       <div className="flex items-center gap-2">
-                        <span className="text-slate-500 font-mono">Group {match.group} • Match {((match.id - 1) % 6) + 1}</span>
+                        <span className="text-slate-500 font-mono">
+                          {match.stage === 'knockout'
+                            ? (match.title || `Match ${match.id}`)
+                            : `Group ${match.group} • Match ${((match.id - 1) % 6) + 1}`}
+                        </span>
                       </div>
                       <span className="text-[9px] text-slate-500 font-mono">{formatDisplayDate(match.date)}</span>
                     </div>
