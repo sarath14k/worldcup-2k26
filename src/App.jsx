@@ -15,6 +15,7 @@ import { MatchDetailsModal } from './components/MatchDetailsModal';
 import { LiveMatchesBanner } from './components/LiveMatchesBanner';
 import { ConfettiShower } from './components/ConfettiShower';
 import { NextMatchCountdown } from './components/NextMatchCountdown';
+import { PlayerAvatar } from './components/PlayerAvatar';
 import { FixturesTab } from './components/tabs/FixturesTab';
 import { GroupsTab } from './components/tabs/GroupsTab';
 import { BracketTab } from './components/tabs/BracketTab';
