@@ -58,7 +58,7 @@ export const calculateStandings = (teams, groupMatches) => {
       code,
       played: 0, won: 0, drawn: 0, lost: 0,
       gf: 0, ga: 0, gd: 0, points: 0,
-      form: generateHistoricalForm(code)
+      form: []
     };
   });
 
