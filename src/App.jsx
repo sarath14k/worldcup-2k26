@@ -95,6 +95,27 @@ const BASE_RATINGS = {
   "Yoane Wissa": 7.2,
 };
 
+const ACCENTS = {
+  neon: { main: '#00FF87', shadow: 'rgba(0, 255, 135, 0.4)', label: 'Neon' },
+  royal: { main: '#3B82F6', shadow: 'rgba(59, 130, 246, 0.4)', label: 'Royal' },
+  gold: { main: '#FBBF24', shadow: 'rgba(251, 191, 36, 0.4)', label: 'Gold' },
+  purple: { main: '#A855F7', shadow: 'rgba(168, 85, 247, 0.4)', label: 'Purple' },
+  ruby: { main: '#EF4444', shadow: 'rgba(239, 68, 68, 0.4)', label: 'Ruby' },
+  rose: { main: '#F43F5E', shadow: 'rgba(244, 63, 94, 0.4)', label: 'Rose' },
+  coral: { main: '#FF6B6B', shadow: 'rgba(255, 107, 107, 0.4)', label: 'Coral' },
+  orange: { main: '#FB923C', shadow: 'rgba(251, 146, 60, 0.4)', label: 'Orange' },
+  amber: { main: '#F59E0B', shadow: 'rgba(245, 158, 11, 0.4)', label: 'Amber' },
+  lime: { main: '#84CC16', shadow: 'rgba(132, 204, 22, 0.4)', label: 'Lime' },
+  teal: { main: '#14B8A6', shadow: 'rgba(20, 184, 166, 0.4)', label: 'Teal' },
+  cyan: { main: '#06B6D4', shadow: 'rgba(6, 182, 212, 0.4)', label: 'Cyan' },
+  sky: { main: '#0EA5E9', shadow: 'rgba(14, 165, 233, 0.4)', label: 'Sky' },
+  indigo: { main: '#6366F1', shadow: 'rgba(99, 102, 241, 0.4)', label: 'Indigo' },
+  violet: { main: '#7C3AED', shadow: 'rgba(124, 58, 237, 0.4)', label: 'Violet' },
+  pink: { main: '#EC4899', shadow: 'rgba(236, 72, 153, 0.4)', label: 'Pink' },
+  emerald: { main: '#10B981', shadow: 'rgba(16, 185, 129, 0.4)', label: 'Emerald' },
+  ice: { main: '#67E8F9', shadow: 'rgba(103, 232, 249, 0.4)', label: 'Ice' }
+};
+
 function App() {
   // --- State ---
   const [activeTab, setActiveTab] = useState(() => localStorage.getItem('worldcup2026_activeTab') || 'fixtures'); // 'fixtures', 'groups', 'bracket', 'stats', 'venues'
@@ -102,26 +123,6 @@ function App() {
   const [accent, setAccent] = useState(() => localStorage.getItem('worldcup2026_accent') || 'neon');
   const [showBackToTop, setShowBackToTop] = useState(false);
 
-  const ACCENTS = {
-    neon: { main: '#00FF87', shadow: 'rgba(0, 255, 135, 0.4)', label: 'Neon' },
-    royal: { main: '#3B82F6', shadow: 'rgba(59, 130, 246, 0.4)', label: 'Royal' },
-    gold: { main: '#FBBF24', shadow: 'rgba(251, 191, 36, 0.4)', label: 'Gold' },
-    purple: { main: '#A855F7', shadow: 'rgba(168, 85, 247, 0.4)', label: 'Purple' },
-    ruby: { main: '#EF4444', shadow: 'rgba(239, 68, 68, 0.4)', label: 'Ruby' },
-    rose: { main: '#F43F5E', shadow: 'rgba(244, 63, 94, 0.4)', label: 'Rose' },
-    coral: { main: '#FF6B6B', shadow: 'rgba(255, 107, 107, 0.4)', label: 'Coral' },
-    orange: { main: '#FB923C', shadow: 'rgba(251, 146, 60, 0.4)', label: 'Orange' },
-    amber: { main: '#F59E0B', shadow: 'rgba(245, 158, 11, 0.4)', label: 'Amber' },
-    lime: { main: '#84CC16', shadow: 'rgba(132, 204, 22, 0.4)', label: 'Lime' },
-    teal: { main: '#14B8A6', shadow: 'rgba(20, 184, 166, 0.4)', label: 'Teal' },
-    cyan: { main: '#06B6D4', shadow: 'rgba(6, 182, 212, 0.4)', label: 'Cyan' },
-    sky: { main: '#0EA5E9', shadow: 'rgba(14, 165, 233, 0.4)', label: 'Sky' },
-    indigo: { main: '#6366F1', shadow: 'rgba(99, 102, 241, 0.4)', label: 'Indigo' },
-    violet: { main: '#7C3AED', shadow: 'rgba(124, 58, 237, 0.4)', label: 'Violet' },
-    pink: { main: '#EC4899', shadow: 'rgba(236, 72, 153, 0.4)', label: 'Pink' },
-    emerald: { main: '#10B981', shadow: 'rgba(16, 185, 129, 0.4)', label: 'Emerald' },
-    ice: { main: '#67E8F9', shadow: 'rgba(103, 232, 249, 0.4)', label: 'Ice' }
-  };
   const [showAccentPicker, setShowAccentPicker] = useState(false);
 
   useEffect(() => {
@@ -475,9 +476,10 @@ function App() {
         return true;
       }
       return false;
-    } catch (err) {
+    } catch {
       return false;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Auto-fetch highlights for newly completed matches

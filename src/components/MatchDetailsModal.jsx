@@ -82,7 +82,7 @@ export const MatchDetailsModal = ({
       window.removeEventListener('keydown', handleKeyDown);
       clearTimeout(timer);
     };
-  }, [onClose]);
+  }, [onClose, handleClose]);
 
   if (!selectedMatch) return null;
 

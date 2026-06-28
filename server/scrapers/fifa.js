@@ -39,7 +39,7 @@ async function scrapeMatchDetails(page, href) {
             
             // Clean minute string and parse to number
             const clean = minuteStr.replace(/[^0-9+-]/g, '');
-            let minute = 0;
+            let minute;
             if (clean.includes('+')) {
               const parts = clean.split('+');
               minute = (parseInt(parts[0]) || 0) + (parseInt(parts[1]) || 0);
@@ -75,7 +75,7 @@ async function scrapeMatchDetails(page, href) {
             
             // Clean minute string and parse to number
             const clean = minuteStr.replace(/[^0-9+-]/g, '');
-            let minute = 0;
+            let minute;
             if (clean.includes('+')) {
               const parts = clean.split('+');
               minute = (parseInt(parts[0]) || 0) + (parseInt(parts[1]) || 0);
@@ -180,8 +180,8 @@ async function scrapeMatchDetails(page, href) {
               const headline = update.headline;
               const time = new Date(update.datePublished).getTime();
               
-              let min = 0;
-              let minuteStr = '';
+              let min;
+              let minuteStr;
               
               if (headline === 'Coin Toss') {
                 min = 0;
@@ -220,7 +220,7 @@ async function scrapeMatchDetails(page, href) {
             });
             break;
           }
-        } catch (e) {
+        } catch {
           // ignore
         }
       }
@@ -342,10 +342,9 @@ export async function scrapeFifa() {
         
         // Scores & Status
         const statusContainer = $el.find('[class*="match-row_matchRowStatus__"]').first();
-        let status = '';
+        let status;
         let homeScore = null;
         let awayScore = null;
-        let kickoffTime = null;
         let winner = null;
         
         const scoreEls = statusContainer.find('[class*="match-row_score__"]');
@@ -378,7 +377,7 @@ export async function scrapeFifa() {
           status = 'SCHEDULED';
           const timeEl = statusContainer.find('[class*="match-row_matchTime__"]');
           if (timeEl.length > 0) {
-            kickoffTime = timeEl.text().trim();
+            // kickoff time available but unused
           }
         }
         

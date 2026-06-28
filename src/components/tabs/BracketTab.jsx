@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Star, Share2 } from 'lucide-react';
-import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
 import { BracketTeamSlot } from '../BracketTeamSlot';
 
@@ -22,7 +21,6 @@ export const BracketTab = ({
     return matches.length > 0 && matches.every(m => m.winner);
   };
   const firstIncompleteIdx = ROUND_ORDER.findIndex(rk => !isRoundDone(rk));
-  const unlockedRounds = ROUND_ORDER.map(rk => isRoundDone(rk));
 
   // Auto-advance to next incomplete round when current round is fully predicted
   useEffect(() => {
@@ -30,6 +28,7 @@ export const BracketTab = ({
     if (curIdx >= 0 && curIdx < ROUND_ORDER.length - 1 && isRoundDone(activeRoundTab)) {
       setActiveRoundTab(ROUND_ORDER[curIdx + 1]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bracket, activeRoundTab]);
 
   // Restore bracket from URL hash on mount
@@ -149,8 +148,6 @@ export const BracketTab = ({
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           {matches.map((match, idx) => {
-            const homeTeam = TEAMS[match.home];
-            const awayTeam = TEAMS[match.away];
             const isHomeWinner = match.winner === match.home && match.winner !== null;
             const isAwayWinner = match.winner === match.away && match.winner !== null;
 

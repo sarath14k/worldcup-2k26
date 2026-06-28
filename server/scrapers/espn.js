@@ -24,7 +24,7 @@ const knockoutMapping = {
 };
 
 // Fetch match details (stats, scorers, timeline) from ESPN match summary API
-async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId, awayTeamId) {
+async function fetchMatchDetails(eventId, homeTeamAbbr, awayTeamAbbr, homeTeamId) {
   const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=${eventId}`;
   console.log(`[ESPN Sync] Fetching match details for event ${eventId} (${homeTeamAbbr} vs ${awayTeamAbbr})`);
   

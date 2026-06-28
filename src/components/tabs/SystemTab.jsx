@@ -221,7 +221,7 @@ export default function SystemTab() {
     try {
       const deployRes = await fetch('/api/deploy-status');
       if (deployRes.ok) setDeployStatus(await deployRes.json());
-    } catch {}
+    } catch { /* empty */ }
   }, []);
 
   const fetchAnalytics = useCallback(async () => {
@@ -262,6 +262,7 @@ export default function SystemTab() {
     const id = setInterval(() => {
       if (!document.hidden) forceUpdate(t => t + 1);
     }, 60000);
+    return () => clearInterval(id);
   }, []);
 
   if (error && !analytics) {

@@ -72,7 +72,7 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
       clearInterval(timers[0]);
       timers[0] = setInterval(tick, 1000);
     }, msToLastMin));
-    return () => timers.forEach(t => { try { clearInterval(t); clearTimeout(t); } catch {} });
+    return () => timers.forEach(t => { try { clearInterval(t); clearTimeout(t); } catch { /* ignore */ } });
   }, [nextMatch?.date, nextMatch?.id]);
 
   if (!nextMatch || !display) return null;

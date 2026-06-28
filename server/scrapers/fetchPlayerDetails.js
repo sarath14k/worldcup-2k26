@@ -101,7 +101,7 @@ export async function syncPlayerDetails() {
   // Load existing progress
   let details = {};
   if (fs.existsSync(outputPath)) {
-    try { details = JSON.parse(fs.readFileSync(outputPath, 'utf8')); } catch {}
+    try { details = JSON.parse(fs.readFileSync(outputPath, 'utf8')); } catch { /* file not found */ }
   }
 
   const buildId = await getBuildAndSlugs();

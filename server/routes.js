@@ -82,7 +82,7 @@ export function registerRoutes(app) {
   // Deploy status — checks both server and latest GitHub commit
   app.get('/api/deploy-status', async (req, res) => {
     const commitFile = path.join(__dirname, '../public/commit.txt');
-    let deployedCommit = '';
+    let deployedCommit;
     try {
       deployedCommit = fs.readFileSync(commitFile, 'utf8').trim();
     } catch {
@@ -99,7 +99,7 @@ export function registerRoutes(app) {
           date: body.commit?.commit?.committer?.date || ''
         };
       }
-    } catch {}
+    } catch { /* empty */ }
     const ahead = latestCommit && deployedCommit ? latestCommit.sha !== deployedCommit : false;
     res.json({
       deployedCommit,
@@ -143,7 +143,7 @@ export function registerRoutes(app) {
       if (!fs.existsSync(p)) continue;
       try {
         const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-        for (const [mid, m] of Object.entries(data)) {
+        for (const [, m] of Object.entries(data)) {
           const hasGranular = m.timeline?.some(t => {
             const lower = (t.type || '').toLowerCase();
             return lower.includes('shot') || lower.includes('foul') || lower.includes('corner');

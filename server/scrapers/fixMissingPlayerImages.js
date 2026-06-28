@@ -153,7 +153,6 @@ async function main() {
       playerImages.byName[player.name] = img;
       if (player.playerId) playerImages.byId[player.playerId] = img;
       found++;
-      const total = Object.keys(playerImages.byName).length;
       console.log(`  [${i + 1}/${missing.length}] FOUND ${player.name} → ${usedVariant}`);
     } else {
       console.log(`  [${i + 1}/${missing.length}] MISS ${player.name}`);
