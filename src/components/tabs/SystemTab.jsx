@@ -321,13 +321,6 @@ export default function SystemTab() {
         </button>
       </div>
 
-      {/* Scraper cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <ScraperCard data={analytics.espn} scraperKey="espn" onSync={triggerSync} />
-        <ScraperCard data={analytics.ratings} scraperKey="ratings" onSync={triggerSync} />
-        <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" onSync={triggerSync} />
-      </div>
-
       {/* Scheduler intervals table */}
         <div className="rounded-2xl border border-slate-700/30 bg-slate-800/20 backdrop-blur-sm p-5 mb-6">
           <div className="flex items-center gap-2 mb-3">
@@ -415,6 +408,13 @@ export default function SystemTab() {
         ) : (
           <div className="text-slate-500 text-xs py-2">Loading deploy status...</div>
         )}
+      </div>
+
+      {/* Scraper cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <ScraperCard data={analytics.espn} scraperKey="espn" onSync={triggerSync} />
+        <ScraperCard data={analytics.ratings} scraperKey="ratings" onSync={triggerSync} />
+        <ScraperCard data={analytics.liveRatings} scraperKey="liveRatings" onSync={triggerSync} />
       </div>
 
       {/* Recent ESPN runs timeline */}
