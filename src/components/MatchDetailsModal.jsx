@@ -16,6 +16,7 @@ export const MatchDetailsModal = ({
   groupMatches = [], 
   standings = {}, 
   bracket = {}, 
+  highlightsMap = {},
   onClose 
 }) => {
   const [closing, setClosing] = useState(false);
@@ -235,6 +236,46 @@ export const MatchDetailsModal = ({
             <ScrollingText text={away.name} className="text-xs font-black text-slate-100 text-center w-full justify-center" />
           </div>
         </div>
+
+        {/* Official Match Highlights */}
+        {(() => {
+          const hl = highlightsMap[selectedMatch.id];
+          if (hl && hl.url) {
+            return (
+              <div className="flex flex-col gap-2 mt-1 shrink-0">
+                <div 
+                  onClick={() => window.open(hl.url, '_blank', 'noopener,noreferrer')}
+                  className="w-full relative rounded-2xl overflow-hidden cursor-pointer border border-red-500/25 hover:border-red-500/50 group transition-all"
+                >
+                  <img
+                    src={hl.thumbnail || "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=60"}
+                    alt={hl.title || "Match Highlights"}
+                    className="w-full h-28 object-cover opacity-60 group-hover:opacity-85 transition-opacity"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-3">
+                    <span className="text-[10px] text-red-400 font-extrabold uppercase tracking-[0.2em] flex items-center gap-1.5 mb-1.5 animate-pulse">
+                      <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                      Official Highlights Available
+                    </span>
+                    <h4 className="text-xs font-black text-slate-100 group-hover:text-white line-clamp-1">
+                      {hl.title || `${home.name} vs ${away.name} Highlights`}
+                    </h4>
+                    <div className="flex items-center justify-between text-[9px] text-slate-450 font-bold font-mono mt-1">
+                      <span>{hl.duration ? `Duration: ${hl.duration}` : 'FIFA.com'}</span>
+                      <span className="text-brand-neon group-hover:underline flex items-center gap-0.5">
+                        Watch Now
+                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })()}
 
         {/* Scorers Section */}
         {hasStarted && (

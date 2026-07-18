@@ -1765,6 +1765,7 @@ function App() {
           groupMatches={groupMatches}
           standings={standings}
           bracket={bracket}
+          highlightsMap={highlightsMap}
           onClose={() => setSelectedMatch(null)}
         />
       )}
