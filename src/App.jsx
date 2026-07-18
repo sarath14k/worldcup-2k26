@@ -745,12 +745,16 @@ function App() {
       });
       setGroupMatches(parsedMatches);
       const savedBracketData = JSON.parse(savedBracket);
-      // Override stale title/date from localStorage with fresh KNOCKOUT_MATCHES values
       Object.keys(KNOCKOUT_MATCHES).forEach(roundKey => {
         if (savedBracketData[roundKey]) {
           savedBracketData[roundKey] = savedBracketData[roundKey].map((m, i) => {
             const fresh = KNOCKOUT_MATCHES[roundKey][i];
-            if (fresh) return { ...m, title: fresh.title, date: fresh.date };
+            if (fresh) {
+              const cleaned = { ...m, title: fresh.title, date: fresh.date };
+              if (!TEAMS[cleaned.home]) cleaned.home = fresh.home;
+              if (!TEAMS[cleaned.away]) cleaned.away = fresh.away;
+              return cleaned;
+            }
             return m;
           });
         }
