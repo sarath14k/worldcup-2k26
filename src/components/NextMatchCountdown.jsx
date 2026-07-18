@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { TEAMS } from '../data/worldcupData';
 import { FifaRankBadge } from '../utils/matchHelpers';
 
@@ -42,7 +42,7 @@ function formatDiff(ms) {
   return `${m}m`;
 }
 
-export const NextMatchCountdown = ({ upcomingFixtures }) => {
+export const NextMatchCountdown = memo(({ upcomingFixtures }) => {
   const nextMatch = upcomingFixtures?.[0];
   const [display, setDisplay] = useState('');
 
@@ -128,4 +128,4 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
       </div>
     </div>
   );
-};
+});

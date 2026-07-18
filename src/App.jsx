@@ -651,13 +651,17 @@ function App() {
       fixtures: 30000,
       groups: 120000,
     };
+    let lastLiveText = '';
     const fetchLiveScores = () => {
       fetch('/live-matches.json')
         .then(res => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
+          return res.text();
         })
-        .then(data => {
+        .then(text => {
+          if (text === lastLiveText) return;
+          lastLiveText = text;
+          const data = JSON.parse(text);
           if (data && typeof data === 'object') {
             setRawLiveMatches(data);
           }

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { TEAMS } from '../data/worldcupData';
 import { ScrollingText } from './ScrollingText';
 import { FifaRankBadge } from '../utils/matchHelpers';
@@ -17,7 +18,7 @@ const getRoundName = (match) => {
   return ROUND_NAMES[key] || null;
 };
 
-export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
+export const LiveMatchesList = memo(({ activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
   return (
     <div className="flex flex-col gap-3.5 mt-4 w-full">
       {activeLiveMatchesList.map(live => {
@@ -147,9 +148,9 @@ export const LiveMatchesList = ({ activeLiveMatchesList, setSelectedMatch, activ
       })}
     </div>
   );
-};
+});
 
-export const LiveMatchesBanner = ({ hasLiveMatches, activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
+export const LiveMatchesBanner = memo(({ hasLiveMatches, activeLiveMatchesList, setSelectedMatch, activeGoalFlashMatchIds = [] }) => {
   if (!hasLiveMatches || activeLiveMatchesList.length === 0) return null;
 
   return (
@@ -161,4 +162,4 @@ export const LiveMatchesBanner = ({ hasLiveMatches, activeLiveMatchesList, setSe
       />
     </div>
   );
-};
+});
