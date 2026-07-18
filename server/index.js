@@ -21,12 +21,7 @@ app.use(compression());
 
 registerRoutes(app);
 
-app.use(express.static(path.join(__dirname, '../dist')));
-
-app.use((req, res) => {
-  const htmlPath = path.join(__dirname, '../dist', 'index.html');
-  let html = fs.readFileSync(htmlPath, 'utf8');
-
+function injectBracketData(html) {
   try {
     const livePaths = [
       path.join(__dirname, '../public', 'live-matches.json'),
@@ -57,8 +52,24 @@ app.use((req, res) => {
   } catch (e) {
     console.warn('[Server] Could not inject bracket data:', e.message);
   }
+  return html;
+}
 
+function serveIndex(req, res) {
+  const htmlPath = path.join(__dirname, '../dist', 'index.html');
+  let html = fs.readFileSync(htmlPath, 'utf8');
+  html = injectBracketData(html);
   res.send(html);
+}
+
+// Route / before static middleware so it catches it first
+app.get('/', serveIndex);
+
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// SPA fallback for unknown routes
+app.use((req, res) => {
+  serveIndex(req, res);
 });
 
 app.listen(PORT, () => {
