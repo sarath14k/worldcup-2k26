@@ -531,9 +531,6 @@ function App() {
       fixtures: 30000,
       groups: 120000,
     };
-    const interval = pollingIntervals[activeTab];
-    if (!interval) return;
-
     const fetchLiveScores = () => {
       fetch('/live-matches.json')
         .then(res => {
@@ -548,13 +545,17 @@ function App() {
         .catch(err => console.warn('[Live Polling] Ignored failure during live updates fetch:', err));
     };
 
-    const onVisible = () => { if (!document.hidden) fetchLiveScores(); };
+    const interval = pollingIntervals[activeTab];
 
     fetchLiveScores();
+    const onVisible = () => { if (!document.hidden) fetchLiveScores(); };
     document.addEventListener('visibilitychange', onVisible);
 
-    const timer = setInterval(fetchLiveScores, interval);
-    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', onVisible); };
+    if (interval) {
+      const timer = setInterval(fetchLiveScores, interval);
+      return () => { clearInterval(timer); document.removeEventListener('visibilitychange', onVisible); };
+    }
+    return () => { document.removeEventListener('visibilitychange', onVisible); };
   }, [activeTab]);
 
   // --- Ratings Polling Effect ---
