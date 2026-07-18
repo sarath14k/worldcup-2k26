@@ -25,6 +25,33 @@ import { VenuesTab } from './components/tabs/VenuesTab';
 import SystemTab from './components/tabs/SystemTab';
 import defaultFotmobRatings from './data/fotmobPlayerRatings.json';
 
+function propagateLoserToBronze(match, bracketCopy) {
+  if (!match.loserNextId || !match.loserPosition || !match.winner) return;
+  if (!match.home || !match.away) return;
+  let loserCode;
+  if (match.winner === 'home' || match.winner === 'away') {
+    loserCode = match.winner === 'home' ? match.away : match.home;
+  } else if (match.winner === match.home) {
+    loserCode = match.away;
+  } else if (match.winner === match.away) {
+    loserCode = match.home;
+  } else {
+    loserCode = null;
+  }
+  if (!loserCode) return;
+  let loserMatch = null;
+  for (const [, ms] of Object.entries(bracketCopy)) {
+    loserMatch = ms.find(nm => nm.id === match.loserNextId);
+    if (loserMatch) break;
+  }
+  if (!loserMatch) return;
+  if (match.loserPosition === 'top' || match.loserPosition === 'home') {
+    loserMatch.home = loserCode;
+  } else {
+    loserMatch.away = loserCode;
+  }
+}
+
 const BASE_RATINGS = {
   "Lionel Messi": 8.4,
   "Erling Haaland": 8.3,
@@ -176,6 +203,10 @@ function App() {
             }
           }
         }
+      }
+      // propagate losers to bronze final
+      for (const [, matches] of Object.entries(bracketCopy)) {
+        for (const m of matches) propagateLoserToBronze(m, bracketCopy);
       }
       try { localStorage.setItem('worldcup2026_bracket', JSON.stringify(bracketCopy)); } catch {}
       return bracketCopy;
@@ -698,6 +729,7 @@ function App() {
                 }
                 break;
               }
+              propagateLoserToBronze(updatedMatch, nextBracket);
               return updatedMatch;
             }
           }
@@ -914,6 +946,7 @@ function App() {
                 }
                 break;
               }
+              propagateLoserToBronze(updatedMatch, nextBracket);
               return updatedMatch;
             }
             return m;
@@ -972,7 +1005,7 @@ function App() {
           break;
         }
       }
-      
+      propagateLoserToBronze(currentMatch, newBracket);
       return newBracket;
     });
   };

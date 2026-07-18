@@ -228,8 +228,8 @@ export const KNOCKOUT_MATCHES = {
 
   // Semi Finals — official FIFA match numbers & dates (ET → IST)
   sf: [
-    { id: 'sf_1', nextId: 'final', position: 'home', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 101', date: 'July 15, 12:30 AM IST' },
-    { id: 'sf_2', nextId: 'final', position: 'away', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 102', date: 'July 16, 12:30 AM IST' },
+    { id: 'sf_1', nextId: 'final', position: 'home', loserNextId: 'bronze', loserPosition: 'home', slot: 1, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 101', date: 'July 15, 12:30 AM IST' },
+    { id: 'sf_2', nextId: 'final', position: 'away', loserNextId: 'bronze', loserPosition: 'away', slot: 2, home: null, away: null, homeScore: null, awayScore: null, winner: null, title: 'Match 102', date: 'July 16, 12:30 AM IST' },
   ],
 
   // Final & Bronze Final — official FIFA dates (ET → IST)
