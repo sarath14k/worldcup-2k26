@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { Search, X, Star, Filter } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { ScrollingText } from '../ScrollingText';
