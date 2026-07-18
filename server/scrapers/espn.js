@@ -374,11 +374,14 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData, appHom
   
   let homeScore = parseInt(homeComp?.score || '0', 10);
   let awayScore = parseInt(awayComp?.score || '0', 10);
+  let homeWinner = homeComp?.winner;
+  let awayWinner = awayComp?.winner;
   
   if (appHome && appAway && homeAbbr === appAway && awayAbbr === appHome) {
     [homeAbbr, awayAbbr] = [awayAbbr, homeAbbr];
     [homeScore, awayScore] = [awayScore, homeScore];
     [homeTeamId, awayTeamId] = [awayTeamId, homeTeamId];
+    [homeWinner, awayWinner] = [awayWinner, homeWinner];
   }
   
   const isCompleted = state === 'post';
@@ -386,7 +389,9 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData, appHom
   
   let winner = null;
   if (isCompleted) {
-    if (homeScore > awayScore) winner = 'home';
+    if (homeWinner === true) winner = 'home';
+    else if (awayWinner === true) winner = 'away';
+    else if (homeScore > awayScore) winner = 'home';
     else if (awayScore > homeScore) winner = 'away';
     else winner = 'draw';
   }
@@ -451,11 +456,14 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome,
   
   let homeScore = parseInt(homeComp?.score || '0', 10);
   let awayScore = parseInt(awayComp?.score || '0', 10);
+  let homeWinner = homeComp?.winner;
+  let awayWinner = awayComp?.winner;
   
   if (appHome && appAway && homeAbbr === appAway && awayAbbr === appHome) {
     [homeAbbr, awayAbbr] = [awayAbbr, homeAbbr];
     [homeScore, awayScore] = [awayScore, homeScore];
     [homeTeamId, awayTeamId] = [awayTeamId, homeTeamId];
+    [homeWinner, awayWinner] = [awayWinner, homeWinner];
   }
   
   const isCompleted = state === 'post';
@@ -463,7 +471,9 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome,
   
   let winner = null;
   if (isCompleted) {
-    if (homeScore > awayScore) winner = 'home';
+    if (homeWinner === true) winner = 'home';
+    else if (awayWinner === true) winner = 'away';
+    else if (homeScore > awayScore) winner = 'home';
     else if (awayScore > homeScore) winner = 'away';
     else winner = 'draw';
   }

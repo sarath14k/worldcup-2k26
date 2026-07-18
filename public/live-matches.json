@@ -55588,7 +55588,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
-    "winner": "draw",
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -56532,7 +56532,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
-    "winner": "draw",
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -63965,7 +63965,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
-    "winner": "draw",
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -72002,7 +72002,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
-    "winner": "draw",
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
