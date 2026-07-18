@@ -558,5 +558,13 @@
     "channel": "FIFA.com (Direct)",
     "duration": "2:14",
     "thumbnail": "https://digitalhub.fifa.com/transform/90f29f1a-8183-480e-9447-53a98644a3cf/Cabo-Verde-v-Saudi-Arabia?focuspoint=0.5,0.5"
+  },
+  "tur_vs_usa": {
+    "videoId": "qE2AtDA3GeQvnPPOcQCmi",
+    "url": "https://www.fifa.com/en/watch/qE2AtDA3GeQvnPPOcQCmi",
+    "title": "Türkiye v USA",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/ce1ba06a-30a3-43b7-8094-0519e157c8fc/Turkiye-v-USA"
   }
 }

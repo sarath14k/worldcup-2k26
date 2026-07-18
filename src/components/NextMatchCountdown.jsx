@@ -51,28 +51,35 @@ export const NextMatchCountdown = ({ upcomingFixtures }) => {
     if (!kickoff) { setDisplay(''); return; }
 
     const tick = () => {
-      if (document.hidden) return;
       setDisplay(formatDiff(kickoff.getTime() - Date.now()));
     };
 
+    const onVisible = () => { if (!document.hidden) tick(); };
+
     tick();
+    document.addEventListener('visibilitychange', onVisible);
     const diff = kickoff.getTime() - Date.now();
 
-    if (diff < -60000) return;
-
-    if (diff < 60000) {
-      const id = setInterval(tick, 1000);
-      return () => clearInterval(id);
+    if (diff < -60000) {
+      document.removeEventListener('visibilitychange', onVisible);
+      return;
     }
 
-    // More than a minute away: use 60s tick, switch to 1s in the last minute
-    const timers = [setInterval(tick, 60000)];
-    const msToLastMin = diff - 60000;
-    timers.push(setTimeout(() => {
-      clearInterval(timers[0]);
-      timers[0] = setInterval(tick, 1000);
-    }, msToLastMin));
-    return () => timers.forEach(t => { try { clearInterval(t); clearTimeout(t); } catch { /* ignore */ } });
+    let cleanup;
+    if (diff < 60000) {
+      const id = setInterval(tick, 1000);
+      cleanup = () => { clearInterval(id); document.removeEventListener('visibilitychange', onVisible); };
+    } else {
+      // More than a minute away: use 60s tick, switch to 1s in the last minute
+      const timers = [setInterval(tick, 60000)];
+      const msToLastMin = diff - 60000;
+      timers.push(setTimeout(() => {
+        clearInterval(timers[0]);
+        timers[0] = setInterval(tick, 1000);
+      }, msToLastMin));
+      cleanup = () => { timers.forEach(t => { try { clearInterval(t); clearTimeout(t); } catch { /* ignore */ } }); document.removeEventListener('visibilitychange', onVisible); };
+    }
+    return cleanup;
   }, [nextMatch?.date, nextMatch?.id]);
 
   if (!nextMatch || !display) return null;

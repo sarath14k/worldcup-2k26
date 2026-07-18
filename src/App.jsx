@@ -517,7 +517,6 @@ function App() {
     if (!interval) return;
 
     const fetchLiveScores = () => {
-      if (document.hidden) return;
       fetch('/live-matches.json')
         .then(res => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -531,16 +530,18 @@ function App() {
         .catch(err => console.warn('[Live Polling] Ignored failure during live updates fetch:', err));
     };
 
+    const onVisible = () => { if (!document.hidden) fetchLiveScores(); };
+
     fetchLiveScores();
+    document.addEventListener('visibilitychange', onVisible);
 
     const timer = setInterval(fetchLiveScores, interval);
-    return () => clearInterval(timer);
+    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', onVisible); };
   }, [activeTab]);
 
   // --- Ratings Polling Effect ---
   useEffect(() => {
     const fetchRatings = () => {
-      if (document.hidden) return;
       fetch('/fotmobPlayerRatings.json')
         .then(res => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -566,9 +567,12 @@ function App() {
         .catch(err => console.warn('[Live Ratings Polling] Ignored failure during live ratings fetch:', err));
     };
 
+    const onVisible = () => { if (!document.hidden) fetchRatings(); };
+
     fetchRatings();
-    const timer = setInterval(fetchRatings, 300000); // refresh ratings every 5 minutes (300000ms)
-    return () => clearInterval(timer);
+    document.addEventListener('visibilitychange', onVisible);
+    const timer = setInterval(fetchRatings, 300000);
+    return () => { clearInterval(timer); document.removeEventListener('visibilitychange', onVisible); };
   }, []);
 
   // --- Auto-complete finished matches in both groupMatches and bracket states ---
