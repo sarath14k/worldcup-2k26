@@ -220,23 +220,33 @@ html.light .skeleton-shimmer {
   transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Animated Possession Momentum Flow */
-.possession-flow-home {
-  background: linear-gradient(45deg, #dc2626 25%, #ef4444 25%, #ef4444 50%, #dc2626 50%, #dc2626 75%, #ef4444 75%, #ef4444);
-  background-size: 40px 40px;
-  animation: possession-flow 2s linear infinite;
+/* Animated Possession Momentum Flow (GPU-composited via transform) */
+.possession-flow-home, .possession-flow-away {
+  position: relative;
+  overflow: hidden;
 }
 
-.possession-flow-away {
-  background: linear-gradient(45deg, #4f46e5 25%, #6366f1 25%, #6366f1 50%, #4f46e5 50%, #4f46e5 75%, #6366f1 75%, #6366f1);
+.possession-flow-home::before, .possession-flow-away::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background-size: 40px 40px;
-  animation: possession-flow 2s linear infinite;
+  animation: possession-flow-slide 2s linear infinite;
+  transform: translateZ(0);
 }
 
-@keyframes possession-flow { 0% { background-position: 0 0; } 100% { background-position: 40px 0; } }
+.possession-flow-home::before {
+  background-image: linear-gradient(45deg, #dc2626 25%, #ef4444 25%, #ef4444 50%, #dc2626 50%, #dc2626 75%, #ef4444 75%, #ef4444);
+}
+
+.possession-flow-away::before {
+  background-image: linear-gradient(45deg, #4f46e5 25%, #6366f1 25%, #6366f1 50%, #4f46e5 50%, #4f46e5 75%, #6366f1 75%, #6366f1);
+}
+
+@keyframes possession-flow-slide { 0% { transform: translateX(0); } 100% { transform: translateX(40px); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .possession-flow-home, .possession-flow-away { animation: none; }
+  .possession-flow-home::before, .possession-flow-away::before { animation: none; }
 }
 
 /* Holographic Shine & Champions Reveal Card */
@@ -265,11 +275,16 @@ html.light .skeleton-shimmer {
 
 @keyframes holo-sweep { 0% { background-position: -200% -200%; } 100% { background-position: 200% 200%; } }
 
+.holo-shine, .holo-card-shine::before {
+  will-change: background-position;
+}
+
 @keyframes connector-flow { to { stroke-dashoffset: -40; } }
 
 .active-connector-path {
   stroke-dasharray: 8, 4;
   animation: connector-flow 1.2s linear infinite;
+  will-change: stroke-dashoffset;
 }
 
 /* Goal Alert Center Modal Popup Animation */
