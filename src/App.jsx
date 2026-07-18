@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback, memo } from 'react';
 import { Users, MapPin, Calendar, TrendingUp, Award, Heart, Moon, Zap, Star, Activity } from 'lucide-react';
 import { TEAMS, generateGroupMatches, KNOCKOUT_MATCHES } from './data/worldcupData';
 import { calculateStandings, getAdvancedTeams, populateRoundOf32 } from './data/simulation';
@@ -152,6 +152,23 @@ function App() {
 
   const [showAccentPicker, setShowAccentPicker] = useState(false);
 
+  const audioCtxRef = useRef(null);
+  const getAudioContext = useCallback(() => {
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtxRef.current.state === 'suspended') {
+      audioCtxRef.current.resume();
+    }
+    return audioCtxRef.current;
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      audioCtxRef.current?.close();
+    };
+  }, []);
+
   useEffect(() => {
     const choice = ACCENTS[accent] || ACCENTS.neon;
     document.documentElement.style.setProperty('--color-brand-neon', choice.main);
@@ -178,7 +195,7 @@ function App() {
     // 1. Server-injected live data (fastest, no fetch needed)
     const initData = typeof window !== 'undefined' ? window.__INITIAL_BRACKET_DATA__ : null;
     if (initData && Object.keys(initData).length > 0) {
-      const bracketCopy = JSON.parse(JSON.stringify(KNOCKOUT_MATCHES));
+      const bracketCopy = structuredClone(KNOCKOUT_MATCHES);
       Object.keys(bracketCopy).forEach(roundKey => {
         bracketCopy[roundKey] = bracketCopy[roundKey].map(m => {
           const live = initData[m.id];
@@ -425,7 +442,7 @@ function App() {
 
           // Play goal alert sound
           try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const ctx = getAudioContext();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.connect(gain);
@@ -436,6 +453,11 @@ function App() {
             gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
             osc.start(ctx.currentTime);
             osc.stop(ctx.currentTime + 0.4);
+            // Clean up audio nodes after playback
+            osc.onended = () => {
+              try { osc.disconnect(); } catch (_) {}
+              try { gain.disconnect(); } catch (_) {}
+            };
           } catch {
             // Audio not available
           }
@@ -497,15 +519,22 @@ function App() {
 
   // Bulk-load all cached highlights + fallback for uncached matches
   useEffect(() => {
+    const controllers = [];
+    let cancelled = false;
+
     const allMatches = [...groupMatches];
     Object.values(bracket).forEach(round => {
       if (Array.isArray(round)) allMatches.push(...round);
     });
     if (allMatches.length === 0) return;
 
-    fetch('/api/all-highlights')
+    const mainCtrl = new AbortController();
+    controllers.push(mainCtrl);
+
+    fetch('/api/all-highlights', { signal: mainCtrl.signal })
       .then(res => res.json())
       .then(cache => {
+        if (cancelled) return;
         const mapping = {};
         Object.entries(cache).forEach(([key, entry]) => {
           if (entry.url) {
@@ -528,19 +557,28 @@ function App() {
 
         // Fallback: fetch uncached matches individually via the old match-highlights API
         missing.forEach(m => {
+          const ctrl = new AbortController();
+          controllers.push(ctrl);
           const homeName = TEAMS[m.home]?.name || m.home;
           const awayName = TEAMS[m.away]?.name || m.away;
-          fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`)
+          fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`, { signal: ctrl.signal })
             .then(res => res.ok ? res.json() : null)
             .then(data => {
-              if (data && data.url) {
+              if (!cancelled && data && data.url) {
                 setHighlightsMap(prev => ({ ...prev, [m.id]: data }));
               }
             })
             .catch(() => {});
         });
       })
-      .catch(err => console.warn('[Highlights] Bulk load failed:', err));
+      .catch(err => {
+        if (!cancelled) console.warn('[Highlights] Bulk load failed:', err);
+      });
+
+    return () => {
+      cancelled = true;
+      controllers.forEach(c => c.abort());
+    };
   }, [groupMatches, bracket]);
 
   const [fotmobRatings, setFotmobRatings] = useState(defaultFotmobRatings || []);
@@ -571,7 +609,11 @@ function App() {
 
   // Auto-fetch highlights for newly completed matches
   const autoFetchedRef = useRef({});
+  const autoFetchControllersRef = useRef([]);
   useEffect(() => {
+    const localControllers = [];
+    let cancelled = false;
+
     if (!liveMatches || Object.keys(liveMatches).length === 0) return;
     for (const [, m] of Object.entries(liveMatches)) {
       if (!m.isCompleted && m.minute !== 'FT') continue;
@@ -583,15 +625,24 @@ function App() {
       autoFetchedRef.current[key] = true;
       const homeName = TEAMS[m.home]?.name || m.home;
       const awayName = TEAMS[m.away]?.name || m.away;
-      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`)
+      const ctrl = new AbortController();
+      localControllers.push(ctrl);
+      fetch(`/api/match-highlights?home=${encodeURIComponent(homeName)}&away=${encodeURIComponent(awayName)}&homeCode=${encodeURIComponent(m.home)}&awayCode=${encodeURIComponent(m.away)}`, { signal: ctrl.signal })
         .then(res => res.ok ? res.json() : null)
         .then(data => {
-          if (data && data.url && matchId) {
+          if (!cancelled && data && data.url && matchId) {
             setHighlightsMap(prev => ({ ...prev, [matchId]: data }));
           }
         })
         .catch(() => {});
     }
+
+    autoFetchControllersRef.current = localControllers;
+
+    return () => {
+      cancelled = true;
+      localControllers.forEach(c => c.abort());
+    };
   }, [liveMatches, groupMatches, bracket, highlightsMap]);
 
   // --- Live Data Polling Effect ---
@@ -689,8 +740,17 @@ function App() {
     });
 
     setBracket(prevBracket => {
+      // Early exit: skip clone if no bracket match has a completed live update
+      const hasBracketUpdates = Object.keys(prevBracket).some(roundKey =>
+        prevBracket[roundKey].some(m => {
+          const live = liveMatches[m.id];
+          return live && (live.minute === 'FT' || live.isCompleted);
+        })
+      );
+      if (!hasBracketUpdates) return prevBracket;
+
       let changed = false;
-      const nextBracket = JSON.parse(JSON.stringify(prevBracket));
+      const nextBracket = structuredClone(prevBracket);
 
       Object.keys(nextBracket).forEach(roundKey => {
         nextBracket[roundKey] = nextBracket[roundKey].map(m => {
@@ -808,12 +868,19 @@ function App() {
     setIsLoaded(true);
   }, []);
 
-  // --- Auto-Save to localStorage when predictions change ---
+  // --- Auto-Save to localStorage when predictions change (debounced) ---
+  const persistRef = useRef({ groupMatches, bracket, standingsOverrides });
+  persistRef.current = { groupMatches, bracket, standingsOverrides };
+
   useEffect(() => {
     if (!isLoaded) return;
-    localStorage.setItem('worldcup2026_groupMatches', JSON.stringify(groupMatches));
-    localStorage.setItem('worldcup2026_bracket', JSON.stringify(bracket));
-    localStorage.setItem('worldcup2026_standingsOverrides', JSON.stringify(standingsOverrides));
+    const timer = setTimeout(() => {
+      const data = persistRef.current;
+      localStorage.setItem('worldcup2026_groupMatches', JSON.stringify(data.groupMatches));
+      localStorage.setItem('worldcup2026_bracket', JSON.stringify(data.bracket));
+      localStorage.setItem('worldcup2026_standingsOverrides', JSON.stringify(data.standingsOverrides));
+    }, 2000);
+    return () => clearTimeout(timer);
   }, [groupMatches, bracket, standingsOverrides, isLoaded]);
 
   // --- Theme synchronization effect ---
@@ -964,7 +1031,7 @@ function App() {
     if (!winnerCode) return;
     
     setBracket(prevBracket => {
-      const newBracket = JSON.parse(JSON.stringify(prevBracket));
+      const newBracket = structuredClone(prevBracket);
       const currentMatch = newBracket[roundKey]?.[matchIndex];
       if (!currentMatch) return prevBracket;
       if (currentMatch.isCompleted) return prevBracket;
@@ -1012,7 +1079,7 @@ function App() {
 
   const handleResetPredictions = () => {
     setBracket(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
+      const next = structuredClone(prev);
       const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
       rounds.forEach(rk => {
         next[rk] = next[rk].map(m => {
@@ -1582,7 +1649,7 @@ function App() {
                 onResetPredictions={handleResetPredictions}
                 onRestoreBracket={(winners) => {
                   setBracket(prev => {
-                    const next = JSON.parse(JSON.stringify(prev));
+                    const next = structuredClone(prev);
                     const rounds = ['r32', 'r16', 'qf', 'sf', 'final'];
                     rounds.forEach(rk => {
                       next[rk] = next[rk].map(m => {

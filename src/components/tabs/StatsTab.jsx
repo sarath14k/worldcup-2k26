@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { TEAMS } from '../../data/worldcupData';
 import { WorldCupTrophyIcon, GoldenBootTrophyIcon, PlaymakerIcon } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
@@ -7,7 +7,7 @@ import { PlayerDetailModal } from '../PlayerDetailModal';
 import { getPositionLabel, getPositionCategory, getCategoryColor, normalizePosition } from '../../utils/positions';
 import playerDetails from '../../data/fotmobPlayerDetails.json';
 
-export const StatsTab = ({ playerStats, fotmobRatings }) => {
+export const StatsTab = memo(({ playerStats, fotmobRatings }) => {
   const [activeSubTab, setActiveSubTab] = useState('scorers');
   const [detailPlayer, setDetailPlayer] = useState(null);
 
@@ -228,4 +228,4 @@ export const StatsTab = ({ playerStats, fotmobRatings }) => {
       <PlayerDetailModal playerId={detailPlayer.id} name={detailPlayer.name} onClose={() => setDetailPlayer(null)} />
     )}</>
   );
-};
+});

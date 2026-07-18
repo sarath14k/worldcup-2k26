@@ -173,7 +173,7 @@ export const getAdvancedTeams = (groupsStandings) => {
 // Populate the Round of 32 bracket based on group standings
 export const populateRoundOf32 = (bracket, advancedTeams) => {
   const { firsts, seconds, thirds } = advancedTeams;
-  const newBracket = JSON.parse(JSON.stringify(bracket));
+  const newBracket = structuredClone(bracket);
   
   // Make sure we have enough advanced teams (in case group stage isn't simulated fully yet)
   const getTeamCode = (team) => team ? team.code : null;

@@ -797,7 +797,11 @@ export async function scrapeFifa() {
     return { success: false, error: error.message };
   } finally {
     if (browser) {
-      await browser.close();
+      try {
+        await browser.close();
+      } catch (closeErr) {
+        console.error('[FIFA Scraper] Error closing browser:', closeErr.message);
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { Activity, CheckCircle, XCircle, Timer, Server, Wifi, WifiOff, RefreshCw, Zap, AlertTriangle, Cloud, CloudOff } from 'lucide-react';
 
 function formatRelativeTime(isoString) {
@@ -211,7 +211,7 @@ function RecentRunsTimeline({ runs }) {
   );
 }
 
-export default function SystemTab() {
+const SystemTab = memo(function SystemTab() {
   const [analytics, setAnalytics] = useState(null);
   const [error, setError] = useState(null);
   const [lastFetch, setLastFetch] = useState(null);
@@ -449,4 +449,6 @@ export default function SystemTab() {
       </div>
     </div>
   );
-}
+});
+
+export default SystemTab;

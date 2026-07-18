@@ -45,6 +45,9 @@ let scrapeTimeout = null;
 let ratingsTimeout = null;
 let liveRatingsTimeout = null;
 let currentlyLiveMatches = false;
+let schedulersStarted = false;
+
+const SCRAPE_TIMEOUT_MS = 120000; // 2 minutes max per scrape
 
 async function runScrape() {
   const analytics = scraperAnalytics.espn;
@@ -52,6 +55,14 @@ async function runScrape() {
   analytics.isRunning = true;
   analytics.lastRun = new Date().toISOString();
   const startTime = Date.now();
+
+  // Safety timeout: release isRunning lock if scrape hangs
+  const hangTimer = setTimeout(() => {
+    if (analytics.isRunning) {
+      console.warn('[ESPN Scraper] Timeout reached — releasing isRunning lock');
+      analytics.isRunning = false;
+    }
+  }, SCRAPE_TIMEOUT_MS);
 
   let scheduleData = { liveCount: 0, nextMatchTime: null, lastMatchEndTime: null };
 
@@ -116,6 +127,7 @@ async function runScrape() {
     console.error('[ESPN Scraper] Failed:', err.message);
   } finally {
     analytics.isRunning = false;
+    clearTimeout(hangTimer);
     if (scrapeTimeout) clearTimeout(scrapeTimeout);
 
     const { delay, mode, reason } = computeScrapeDelay(scheduleData);
@@ -135,6 +147,13 @@ async function runRatingsSync() {
   analytics.lastRun = new Date().toISOString();
   const startTime = Date.now();
 
+  const hangTimer = setTimeout(() => {
+    if (analytics.isRunning) {
+      console.warn('[Ratings Scraper] Timeout reached — releasing isRunning lock');
+      analytics.isRunning = false;
+    }
+  }, SCRAPE_TIMEOUT_MS);
+
   try {
     await syncRatings();
     const duration = Date.now() - startTime;
@@ -147,6 +166,7 @@ async function runRatingsSync() {
     console.error('[Ratings Scraper] Failed:', err.message);
   } finally {
     analytics.isRunning = false;
+    clearTimeout(hangTimer);
     if (ratingsTimeout) clearTimeout(ratingsTimeout);
     const delay = currentlyLiveMatches ? 1800000 : 10800000;
     analytics.mode = currentlyLiveMatches ? 'live' : 'standby';
@@ -164,6 +184,13 @@ async function runLiveRatingsSync() {
   analytics.lastRun = new Date().toISOString();
   const startTime = Date.now();
 
+  const hangTimer = setTimeout(() => {
+    if (analytics.isRunning) {
+      console.warn('[Live Ratings Scraper] Timeout reached — releasing isRunning lock');
+      analytics.isRunning = false;
+    }
+  }, SCRAPE_TIMEOUT_MS);
+
   try {
     await scrapeLiveRatings();
     const duration = Date.now() - startTime;
@@ -176,6 +203,7 @@ async function runLiveRatingsSync() {
     console.error('[Live Ratings Scraper] Failed:', err.message);
   } finally {
     analytics.isRunning = false;
+    clearTimeout(hangTimer);
     if (liveRatingsTimeout) clearTimeout(liveRatingsTimeout);
     const delay = currentlyLiveMatches ? 120000 : 10800000;
     analytics.mode = currentlyLiveMatches ? 'live' : 'standby';
@@ -187,6 +215,15 @@ async function runLiveRatingsSync() {
 }
 
 export function startSchedulers() {
+  if (schedulersStarted) {
+    console.warn('[Scheduler] Already started — ignoring duplicate call');
+    return;
+  }
+  schedulersStarted = true;
+  // Clear any existing timers before starting fresh
+  if (scrapeTimeout) clearTimeout(scrapeTimeout);
+  if (ratingsTimeout) clearTimeout(ratingsTimeout);
+  if (liveRatingsTimeout) clearTimeout(liveRatingsTimeout);
   runScrape();
   runRatingsSync();
   runLiveRatingsSync();

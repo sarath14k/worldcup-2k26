@@ -1,10 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GROUPS, TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime, FifaRankBadge } from '../../utils/matchHelpers';
 import { ScrollingText } from '../ScrollingText';
 
-export const GroupsTab = ({ 
+export const GroupsTab = memo(({ 
   groupMatches, 
   standings, 
   advancedTeams, 
@@ -296,4 +296,4 @@ export const GroupsTab = ({
       </div>
     </div>
   );
-};
+});

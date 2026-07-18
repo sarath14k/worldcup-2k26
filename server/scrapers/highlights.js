@@ -29,6 +29,8 @@ export function normalizeTeamName(name) {
 // --- Cache management ---
 const CACHE_FILE = path.join(__dirname, '../../src/data/highlights-cache.json');
 
+const MAX_CACHE_SIZE = 500;
+
 function ensureDirectoryExistence(filePath) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
 }
@@ -43,9 +45,21 @@ try {
   console.warn('[Highlights Cache] Failed to load:', err.message);
 }
 
+function evictOldestEntries() {
+  const keys = Object.keys(highlightsCache);
+  if (keys.length <= MAX_CACHE_SIZE) return;
+  // Remove oldest entries (object key insertion order is guaranteed in modern JS)
+  const toRemove = keys.slice(0, keys.length - MAX_CACHE_SIZE);
+  for (const key of toRemove) {
+    delete highlightsCache[key];
+  }
+  console.log('[Highlights Cache] Evicted ' + toRemove.length + ' old entries (now ' + Object.keys(highlightsCache).length + ')');
+}
+
 function saveCache() {
   try {
     ensureDirectoryExistence(CACHE_FILE);
+    evictOldestEntries();
     fs.writeFileSync(CACHE_FILE, JSON.stringify(highlightsCache, null, 2), 'utf8');
   } catch (err) {
     console.error('[Highlights Cache] Failed to save:', err.message);

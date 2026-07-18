@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, memo } from 'react';
 import { Award, Search, X } from 'lucide-react';
 import { TEAMS } from '../../data/worldcupData';
 import { formatDisplayDate, formatLiveMatchTime, getPossessionWithContest, FifaRankBadge } from '../../utils/matchHelpers';
@@ -21,7 +21,7 @@ const getRoundName = (match) => {
   return ROUND_NAMES[key] || null;
 };
 
-export const FixturesTab = ({
+export const FixturesTab = memo(({
   hasLiveMatches,
   activeLiveMatchesList,
   upcomingFixtures,
@@ -409,4 +409,4 @@ export const FixturesTab = ({
           </div>
       </div>
   );
-};
+});

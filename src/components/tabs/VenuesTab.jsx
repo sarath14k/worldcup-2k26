@@ -1,9 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, memo } from 'react';
 import { MapPin } from 'lucide-react';
 import { VENUES, TEAMS } from '../../data/worldcupData';
 import { getMatchVenue, formatDisplayDate } from '../../utils/matchHelpers';
 
-export const VenuesTab = ({ groupMatches, bracket, liveMatches, isLiveMatch }) => {
+export const VenuesTab = memo(({ groupMatches, bracket, liveMatches, isLiveMatch }) => {
   const [expandedVenue, setExpandedVenue] = useState(null);
 
   // Compute matches at the currently expanded venue
@@ -175,4 +175,4 @@ export const VenuesTab = ({ groupMatches, bracket, liveMatches, isLiveMatch }) =
       </div>
     </div>
   );
-};
+});

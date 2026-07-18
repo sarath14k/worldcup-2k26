@@ -6,7 +6,7 @@ import { PlayerAvatar } from '../PlayerAvatar';
 import { PlayerDetailModal } from '../PlayerDetailModal';
 import { getPositionLabel, getPositionCategory, getCategoryColor, POSITION_CATEGORIES } from '../../utils/positions';
 
-export const PlayerRatingsTab = ({ fotmobRatings }) => {
+export const PlayerRatingsTab = memo(({ fotmobRatings }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [visibleCount, setVisibleCount] = useState(10);
   const [positionFilter, setPositionFilter] = useState('');
@@ -222,4 +222,4 @@ export const PlayerRatingsTab = ({ fotmobRatings }) => {
       <PlayerDetailModal playerId={detailPlayer.id} name={detailPlayer.name} onClose={() => setDetailPlayer(null)} />
     )}</>
   );
-};
+});

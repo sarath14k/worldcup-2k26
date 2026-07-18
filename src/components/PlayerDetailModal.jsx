@@ -32,15 +32,16 @@ export const PlayerDetailModal = ({ playerId, name, onClose }) => {
 
   useEffect(() => {
     if (!playerId) return;
+    let cancelled = false;
     setLoading(true);
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 8000);
     fetch(`/api/player-detail/${playerId}`, { signal: controller.signal })
       .then(r => r.ok ? r.json() : null)
-      .then(d => { setData(d); setLoading(false); })
-      .catch(() => setLoading(false))
+      .then(d => { if (!cancelled) { setData(d); setLoading(false); } })
+      .catch(() => { if (!cancelled) setLoading(false); })
       .finally(() => clearTimeout(timeout));
-    return () => { clearTimeout(timeout); controller.abort(); };
+    return () => { cancelled = true; clearTimeout(timeout); controller.abort(); };
   }, [playerId]);
 
   const imageUrl = FOTMOB_IMG(playerId);

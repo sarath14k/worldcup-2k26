@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { Star, Share2 } from 'lucide-react';
 import { WorldCupTrophyIcon, formatDisplayDate } from '../../utils/matchHelpers';
 import { BracketTeamSlot } from '../BracketTeamSlot';
 
-export const BracketTab = ({
+export const BracketTab = memo(({
   bracket,
   tournamentChampion,
   burnedMatches = new Set(),
@@ -255,4 +255,4 @@ export const BracketTab = ({
       {renderMobileRound()}
     </div>
   );
-};
+});
