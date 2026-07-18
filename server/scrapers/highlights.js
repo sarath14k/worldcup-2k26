@@ -86,8 +86,10 @@ export async function searchHighlights({ home, away, homeCode, awayCode }) {
         const pageData = await pageResp.json();
         const sections = pageData.sections || [];
         for (const section of sections) {
-          if (section.entryType !== 'sectionPromoCarousel' || !section.entryEndpoint) continue;
-          const carResp = await fetch(`https://cxm-api.fifa.com/fifaplusweb/api/${section.entryEndpoint}`, {
+          if (!section.entryEndpoint) continue;
+          if (section.entryType !== 'sectionPromoCarousel' && section.entryType !== 'news') continue;
+          const ep = section.entryEndpoint.startsWith('/') ? section.entryEndpoint.slice(1) : section.entryEndpoint;
+          const carResp = await fetch(`https://cxm-api.fifa.com/fifaplusweb/api/${ep}`, {
             headers: { 'User-Agent': 'Mozilla/5.0' }
           });
           if (!carResp.ok) continue;
