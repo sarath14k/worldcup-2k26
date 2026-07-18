@@ -147,6 +147,8 @@ function App() {
   const [groupMatches, setGroupMatches] = useState([]);
   
   // Bracket State (lazy-init from localStorage to avoid TBD flash)
+  const isValidTeamCode = (code) => code && code.length === 3 && TEAMS[code];
+
   const [bracket, setBracket] = useState(() => {
     try {
       const saved = localStorage.getItem('worldcup2026_bracket');
@@ -156,7 +158,12 @@ function App() {
           if (parsed[roundKey]) {
             parsed[roundKey] = parsed[roundKey].map((m, i) => {
               const fresh = KNOCKOUT_MATCHES[roundKey][i];
-              if (fresh) return { ...m, title: fresh.title, date: fresh.date };
+              if (fresh) {
+                const cleaned = { ...m, title: fresh.title, date: fresh.date };
+                if (!isValidTeamCode(cleaned.home)) cleaned.home = fresh.home;
+                if (!isValidTeamCode(cleaned.away)) cleaned.away = fresh.away;
+                return cleaned;
+              }
               return m;
             });
           }
