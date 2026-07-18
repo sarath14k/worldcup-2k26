@@ -621,19 +621,21 @@ function App() {
 
               // Propagate winner to nextId in nextBracket
               let nextId = m.nextId;
-              let currentWinner = liveWinner;
-              let currentPosition = m.position;
+              let currentWinnerCode;
+              if (liveWinner === 'home') currentWinnerCode = m.home;
+              else if (liveWinner === 'away') currentWinnerCode = m.away;
+              else currentWinnerCode = null;
 
-              while (nextId) {
+              while (nextId && currentWinnerCode) {
                 const roundCode = nextId.split('_')[0];
                 const nextMatch = nextBracket[roundCode].find(nm => nm.id === nextId);
                 if (!nextMatch) break;
 
-                const isHome = currentPosition === 'top' || currentPosition === 'home';
+                const isHome = m.position === 'top' || m.position === 'home';
                 if (isHome) {
-                  nextMatch.home = currentWinner;
+                  nextMatch.home = currentWinnerCode;
                 } else {
-                  nextMatch.away = currentWinner;
+                  nextMatch.away = currentWinnerCode;
                 }
                 break;
               }
@@ -939,7 +941,7 @@ function App() {
     Object.values(bracket).forEach(round => {
       if (Array.isArray(round)) {
         round.forEach(m => {
-          if (m.isCompleted) completedKnockouts.push(m);
+          if (m.isCompleted) completedKnockouts.push({ ...m, stage: 'knockout' });
         });
       }
     });
