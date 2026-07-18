@@ -146,8 +146,26 @@ function App() {
   // Group Stage State
   const [groupMatches, setGroupMatches] = useState([]);
   
-  // Bracket State
-  const [bracket, setBracket] = useState(KNOCKOUT_MATCHES);
+  // Bracket State (lazy-init from localStorage to avoid TBD flash)
+  const [bracket, setBracket] = useState(() => {
+    try {
+      const saved = localStorage.getItem('worldcup2026_bracket');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        Object.keys(KNOCKOUT_MATCHES).forEach(roundKey => {
+          if (parsed[roundKey]) {
+            parsed[roundKey] = parsed[roundKey].map((m, i) => {
+              const fresh = KNOCKOUT_MATCHES[roundKey][i];
+              if (fresh) return { ...m, title: fresh.title, date: fresh.date };
+              return m;
+            });
+          }
+        });
+        return parsed;
+      }
+    } catch {}
+    return KNOCKOUT_MATCHES;
+  });
   
   // Group Standing Override State
   const [standingsOverrides, setStandingsOverrides] = useState({});
