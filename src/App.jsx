@@ -1021,6 +1021,7 @@ function App() {
       const assistsPerPlayer = {};
 
       matchScorers.forEach(s => {
+        if (!s.player) return;
         const isOG = s.player.includes('(OG)') || s.player.includes('ownGoal') || s.player.includes('OG');
         if (isOG) return;
 

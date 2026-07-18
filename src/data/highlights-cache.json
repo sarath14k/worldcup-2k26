@@ -566,5 +566,53 @@
     "channel": "FIFA.com (Direct)",
     "duration": "2:14",
     "thumbnail": "https://digitalhub.fifa.com/transform/ce1ba06a-30a3-43b7-8094-0519e157c8fc/Turkiye-v-USA"
+  },
+  "arg_vs_jor": {
+    "videoId": "5BIvKB59XPeexfnCVgq1on",
+    "url": "https://www.fifa.com/en/watch/5BIvKB59XPeexfnCVgq1on",
+    "title": "Jordan v Argentina",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/6ca102c9-0fa5-42a5-85c9-232f3a331dfe/Jordan-v-Argentina?focuspoint=0.5,0.5"
+  },
+  "alg_vs_aut": {
+    "videoId": "2bOGz6Fht3JL0EejbQh0vv",
+    "url": "https://www.fifa.com/en/watch/2bOGz6Fht3JL0EejbQh0vv",
+    "title": "Algeria v Austria",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/65c1a383-6bc1-4864-8252-96149686acd2/Algeria-v-Austria?focuspoint=0.5,0.5"
+  },
+  "por_vs_col": {
+    "videoId": "8tSsUTDaizPYqH3tPtPym",
+    "url": "https://www.fifa.com/en/watch/8tSsUTDaizPYqH3tPtPym",
+    "title": "Colombia v Portugal",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/e770fd67-dfbc-4971-b11e-bfc745913326/Colombia-v-Portugal?focuspoint=0.5,0.5"
+  },
+  "cod_vs_uzb": {
+    "videoId": "3qv3zdDeGxu5KG6WPOZ9eW",
+    "url": "https://www.fifa.com/en/watch/3qv3zdDeGxu5KG6WPOZ9eW",
+    "title": "Congo DR v Uzbekistan",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/e474f227-4027-432b-a1c3-7208b2abe52a/Congo-DR-v-Uzbekistan?focuspoint=0.5,0.5"
+  },
+  "eng_vs_pan": {
+    "videoId": "22YjMVCjKIb6m3PjnvWtXB",
+    "url": "https://www.fifa.com/en/watch/22YjMVCjKIb6m3PjnvWtXB",
+    "title": "Panama v England",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/a8953600-9cb5-4671-875f-f51d0cd945ad/Panama-v-England?focuspoint=0.5,0.5"
+  },
+  "cro_vs_gha": {
+    "videoId": "DZ0FHbTgZcLaZe4t8YQew",
+    "url": "https://www.fifa.com/en/watch/DZ0FHbTgZcLaZe4t8YQew",
+    "title": "Croatia v Ghana",
+    "channel": "FIFA.com (Direct)",
+    "duration": "2:14",
+    "thumbnail": "https://digitalhub.fifa.com/transform/3db90e73-e6a7-429a-9460-eb201706ee62/Croatia-v-Ghana?focuspoint=0.5,0.5"
   }
 }
