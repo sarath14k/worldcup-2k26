@@ -626,25 +626,25 @@ function App() {
         nextBracket[roundKey] = nextBracket[roundKey].map(m => {
           const live = liveMatches[m.id];
           if (live && (live.minute === 'FT' || live.isCompleted)) {
-            // Only update if bracket's teams match live data's teams (both codes and names)
-            const teamsMatch = m.home === live.home && m.away === live.away;
-            if (!teamsMatch) return m;
+            if (!live.home || !live.away) return m;
             const liveWinner = live.winner;
-            if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore || m.winner !== liveWinner) {
+            if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore || m.winner !== liveWinner || m.home !== live.home || m.away !== live.away) {
               changed = true;
               const updatedMatch = {
                 ...m,
+                home: live.home,
+                away: live.away,
                 homeScore: live.homeScore,
                 awayScore: live.awayScore,
                 winner: liveWinner,
                 isCompleted: true
               };
 
-              // Propagate winner to nextId in nextBracket
+              // Propagate winner to nextId in nextBracket using live data's team codes
               let nextId = m.nextId;
               let currentWinnerCode;
-              if (liveWinner === 'home') currentWinnerCode = m.home;
-              else if (liveWinner === 'away') currentWinnerCode = m.away;
+              if (liveWinner === 'home') currentWinnerCode = live.home;
+              else if (liveWinner === 'away') currentWinnerCode = live.away;
               else currentWinnerCode = null;
 
               while (nextId && currentWinnerCode) {
