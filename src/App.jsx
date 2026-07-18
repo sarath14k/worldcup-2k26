@@ -240,7 +240,7 @@ function App() {
     }
 
     return aligned;
-  }, [rawLiveMatches, groupMatches, bracket]);
+  }, [rawLiveMatches, groupMatches]);
 
   // --- Memoized calculations for matches, ticker, stats ---
   const activeLiveMatchesList = useMemo(() => {
@@ -626,6 +626,9 @@ function App() {
         nextBracket[roundKey] = nextBracket[roundKey].map(m => {
           const live = liveMatches[m.id];
           if (live && (live.minute === 'FT' || live.isCompleted)) {
+            // Only update if bracket's teams match live data's teams (both codes and names)
+            const teamsMatch = m.home === live.home && m.away === live.away;
+            if (!teamsMatch) return m;
             const liveWinner = live.winner;
             if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore || m.winner !== liveWinner) {
               changed = true;
@@ -637,7 +640,7 @@ function App() {
                 isCompleted: true
               };
 
-              // Propagate winner to nextId in nextBracket using bracket's team codes
+              // Propagate winner to nextId in nextBracket
               let nextId = m.nextId;
               let currentWinnerCode;
               if (liveWinner === 'home') currentWinnerCode = m.home;
