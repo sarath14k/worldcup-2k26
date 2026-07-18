@@ -607,39 +607,41 @@ function App() {
       Object.keys(nextBracket).forEach(roundKey => {
         nextBracket[roundKey] = nextBracket[roundKey].map(m => {
           const live = liveMatches[m.id];
-          if (live && (live.minute === 'FT' || live.isCompleted)) {
-            const liveWinner = live.winner;
-            if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore || m.winner !== liveWinner) {
-              changed = true;
-              const updatedMatch = {
-                ...m,
-                homeScore: live.homeScore,
-                awayScore: live.awayScore,
-                winner: liveWinner,
-                isCompleted: true
-              };
+            if (live && (live.minute === 'FT' || live.isCompleted)) {
+              if (!live.home || !live.away) return m;
+              const liveWinner = live.winner;
+              if (!m.isCompleted || m.homeScore !== live.homeScore || m.awayScore !== live.awayScore || m.winner !== liveWinner || m.home !== live.home || m.away !== live.away) {
+                changed = true;
+                const updatedMatch = {
+                  ...m,
+                  home: live.home,
+                  away: live.away,
+                  homeScore: live.homeScore,
+                  awayScore: live.awayScore,
+                  winner: liveWinner,
+                  isCompleted: true
+                };
 
-              // Propagate winner to nextId in nextBracket
-              let nextId = m.nextId;
-              let currentWinnerCode;
-              if (liveWinner === 'home') currentWinnerCode = m.home;
-              else if (liveWinner === 'away') currentWinnerCode = m.away;
-              else currentWinnerCode = null;
+                // Propagate winner to nextId in nextBracket
+                let nextId = m.nextId;
+                let currentWinnerCode;
+                if (liveWinner === 'home') currentWinnerCode = live.home;
+                else if (liveWinner === 'away') currentWinnerCode = live.away;
+                else currentWinnerCode = null;
 
-              while (nextId && currentWinnerCode) {
-                const roundCode = nextId.split('_')[0];
-                const nextMatch = nextBracket[roundCode].find(nm => nm.id === nextId);
-                if (!nextMatch) break;
+                while (nextId && currentWinnerCode) {
+                  const roundCode = nextId.split('_')[0];
+                  const nextMatch = nextBracket[roundCode].find(nm => nm.id === nextId);
+                  if (!nextMatch) break;
 
-                const isHome = m.position === 'top' || m.position === 'home';
-                if (isHome) {
-                  nextMatch.home = currentWinnerCode;
-                } else {
-                  nextMatch.away = currentWinnerCode;
+                  if (m.position === 'top' || m.position === 'home') {
+                    nextMatch.home = currentWinnerCode;
+                  } else {
+                    nextMatch.away = currentWinnerCode;
+                  }
+                  break;
                 }
-                break;
-              }
-              return updatedMatch;
+                return updatedMatch;
             }
           }
           return m;
