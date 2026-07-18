@@ -9,18 +9,47 @@ const __dirname = path.dirname(__filename);
 const filePath = path.join(__dirname, '../../public/live-matches.json');
 const distPath = path.join(__dirname, '../../dist/live-matches.json');
 
+// Index mapping: knockout events from ESPN are sorted chronologically (by match date).
+// The app's bracket IDs must map to the correct chronological index by FIFA match number.
+// R32: M73-M88, R16: M89-M96, QF: M97-M100, SF: M101-M102, Bronze, Final
 const knockoutMapping = {
-  // Round of 32
-  'r32_1': 0, 'r32_2': 1, 'r32_3': 2, 'r32_4': 3, 'r32_5': 4, 'r32_6': 5, 'r32_7': 6, 'r32_8': 7,
-  'r32_9': 8, 'r32_10': 9, 'r32_11': 10, 'r32_12': 11, 'r32_13': 12, 'r32_14': 13, 'r32_15': 14, 'r32_16': 15,
-  // Round of 16
-  'r16_1': 16, 'r16_2': 17, 'r16_3': 18, 'r16_4': 19, 'r16_5': 20, 'r16_6': 21, 'r16_7': 22, 'r16_8': 23,
-  // Quarter-finals
-  'qf_1': 24, 'qf_2': 25, 'qf_3': 26, 'qf_4': 27,
-  // Semi-finals
-  'sf_1': 28, 'sf_2': 29,
+  // Round of 32 (by match number M73-M88 → chronological index 0-15)
+  'r32_1': 0,   // M73
+  'r32_3': 1,   // M74
+  'r32_4': 2,   // M75
+  'r32_2': 3,   // M76
+  'r32_6': 4,   // M77
+  'r32_5': 5,   // M78
+  'r32_7': 6,   // M79
+  'r32_8': 7,   // M80
+  'r32_10': 8,  // M81
+  'r32_9': 9,   // M82
+  'r32_12': 10, // M83
+  'r32_11': 11, // M84
+  'r32_13': 12, // M85
+  'r32_15': 13, // M86
+  'r32_16': 14, // M87
+  'r32_14': 15, // M88
+  // Round of 16 (M89-M96 → chronological index 16-23)
+  'r16_2': 16,  // M89
+  'r16_1': 17,  // M90
+  'r16_3': 18,  // M91
+  'r16_4': 19,  // M92
+  'r16_5': 20,  // M93
+  'r16_6': 21,  // M94
+  'r16_7': 22,  // M95
+  'r16_8': 23,  // M96
+  // Quarter-finals (M97-M100 → 24-27)
+  'qf_1': 24,   // M97
+  'qf_2': 25,   // M98
+  'qf_3': 26,   // M99
+  'qf_4': 27,   // M100
+  // Semi-finals (M101-M102 → 28-29)
+  'sf_1': 28,   // M101
+  'sf_2': 29,   // M102
   // Bronze / Final
-  'bronze': 30, 'final': 31
+  'bronze': 30,
+  'final': 31
 };
 
 // Fetch match details (stats, scorers, timeline) from ESPN match summary API
@@ -183,7 +212,7 @@ export async function syncWithEspn() {
     
     const knockoutEvents = events.filter(e => {
       const note = e.competitions?.[0]?.altGameNote || '';
-      return note === 'FIFA World Cup';
+      return note.startsWith('FIFA World Cup') && !note.startsWith('FIFA World Cup, Group');
     });
     
     // Sort knockout events chronologically by date ascending
