@@ -228,15 +228,15 @@ function App() {
   const activeLiveMatchesList = useMemo(() => {
     const list = [];
     Object.entries(liveMatches).forEach(([idStr, live]) => {
-      const matchId = Number(idStr);
       if (live && !live.isCompleted && live.minute !== 'FT' && live.minute !== null && live.minute !== undefined && live.minute !== '') {
-        let match = groupMatches.find(m => m.id === matchId);
+        const numId = Number(idStr);
+        let match = groupMatches.find(m => m.id === numId);
         let roundName = 'Group Stage';
         if (match) {
           roundName = `Group ${match.group}`;
         } else {
           Object.keys(bracket).forEach(roundKey => {
-            const found = bracket[roundKey].find(m => m.id === matchId);
+            const found = bracket[roundKey].find(m => String(m.id) === idStr);
             if (found) {
               match = found;
               if (roundKey === 'r32') roundName = 'Round of 32';
@@ -250,7 +250,7 @@ function App() {
         
         if (match) {
           list.push({
-            id: matchId,
+            id: idStr,
             home: match.home,
             away: match.away,
             round: roundName,
@@ -923,7 +923,7 @@ function App() {
     });
   };
 
-  const sortedMatches = useMemo(() => {
+  const sortedGroupMatches = useMemo(() => {
     return [...groupMatches].sort((a, b) => {
       const dateA = parseMatchKickoff(a);
       const dateB = parseMatchKickoff(b);
@@ -935,10 +935,26 @@ function App() {
   }, [groupMatches]);
 
   const feedMatches = useMemo(() => {
-    return sortedMatches
+    const completedKnockouts = [];
+    Object.values(bracket).forEach(round => {
+      if (Array.isArray(round)) {
+        round.forEach(m => {
+          if (m.isCompleted) completedKnockouts.push(m);
+        });
+      }
+    });
+    return [...sortedGroupMatches, ...completedKnockouts]
       .filter(m => m.isCompleted)
+      .sort((a, b) => {
+        const dateA = parseMatchKickoff(a);
+        const dateB = parseMatchKickoff(b);
+        if (!dateA && !dateB) return 0;
+        if (!dateA) return 1;
+        if (!dateB) return -1;
+        return dateA.getTime() - dateB.getTime();
+      })
       .reverse();
-  }, [sortedMatches]);
+  }, [sortedGroupMatches, bracket]);
 
   const upcomingFixtures = useMemo(() => {
     const ROUND_ORDER = ['r32', 'r16', 'qf', 'sf', 'final'];

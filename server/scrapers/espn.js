@@ -384,6 +384,13 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData, appHom
   const isCompleted = state === 'post';
   const isLive = state === 'in';
   
+  let winner = null;
+  if (isCompleted) {
+    if (homeScore > awayScore) winner = 'home';
+    else if (awayScore > homeScore) winner = 'away';
+    else winner = 'draw';
+  }
+  
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
@@ -399,6 +406,7 @@ async function processEvent(espnEvent, appId, existingLiveData, liveData, appHom
     minute,
     second: 0,
     isCompleted,
+    winner,
     isDetailedScraped: cached?.isDetailedScraped || false,
     isScorersFixed: cached?.isScorersFixed || false,
     events: cached?.events || [],
@@ -453,6 +461,13 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome,
   const isCompleted = state === 'post';
   const isLive = state === 'in';
   
+  let winner = null;
+  if (isCompleted) {
+    if (homeScore > awayScore) winner = 'home';
+    else if (awayScore > homeScore) winner = 'away';
+    else winner = 'draw';
+  }
+  
   const minute = isCompleted ? 'FT' : (status.displayClock || 'LIVE');
   
   const cached = existingLiveData[appId];
@@ -468,6 +483,7 @@ function processEventSync(espnEvent, appId, existingLiveData, liveData, appHome,
     minute,
     second: 0,
     isCompleted,
+    winner,
     isDetailedScraped: cached?.isDetailedScraped || false,
     isScorersFixed: cached?.isScorersFixed || false,
     events: cached?.events || [],

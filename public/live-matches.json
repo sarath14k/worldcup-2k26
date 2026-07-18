@@ -5,6 +5,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -708,6 +709,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -1434,6 +1436,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -2012,6 +2015,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -2751,6 +2755,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -3465,6 +3470,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -4043,6 +4049,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -4920,6 +4927,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -5755,6 +5763,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -6682,6 +6691,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -7436,6 +7446,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -8222,6 +8233,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -9037,6 +9049,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -9866,6 +9879,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -10828,6 +10842,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -11620,6 +11635,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -12252,6 +12268,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -13056,6 +13073,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -13989,6 +14007,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -14905,6 +14924,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -15662,6 +15682,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -16491,6 +16512,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -17591,6 +17613,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -18441,6 +18464,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -18977,6 +19001,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -19788,6 +19813,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -20510,6 +20536,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -21140,6 +21167,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -21946,6 +21974,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -22636,6 +22665,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -23249,6 +23279,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -23878,6 +23909,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -24553,6 +24585,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -25282,6 +25315,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -25917,6 +25951,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -26618,6 +26653,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -27441,6 +27477,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -28252,6 +28289,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -28977,6 +29015,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -29675,6 +29714,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -30490,6 +30530,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -31279,6 +31320,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -32150,6 +32192,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -32818,6 +32861,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -33587,6 +33631,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -34228,6 +34273,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -34977,6 +35023,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -35723,6 +35770,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -36481,6 +36529,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -37068,6 +37117,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -37822,6 +37872,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -38344,6 +38395,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -39050,6 +39102,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -39780,6 +39833,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -40636,6 +40690,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -41272,6 +41327,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -41997,6 +42053,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -42754,6 +42811,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -43378,6 +43436,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -44067,6 +44126,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -44610,6 +44670,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -45211,6 +45272,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -45948,6 +46010,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -46750,6 +46813,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -47562,6 +47626,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -48296,6 +48361,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -49045,6 +49111,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -49810,6 +49877,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -50502,6 +50570,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -51392,6 +51461,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -52096,6 +52166,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -53003,6 +53074,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -53639,6 +53711,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -54361,6 +54434,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -55514,6 +55588,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -56457,6 +56532,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -57081,6 +57157,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -57831,6 +57908,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -58449,6 +58527,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -59182,6 +59261,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -59878,6 +59958,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -60629,6 +60710,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -61611,6 +61693,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -62379,6 +62462,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -63171,6 +63255,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -63880,6 +63965,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -64778,6 +64864,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -65602,6 +65689,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -66557,6 +66645,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -67291,6 +67380,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -68221,6 +68311,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -68785,6 +68876,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -69605,6 +69697,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -70327,6 +70420,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -71081,6 +71175,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -71907,6 +72002,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "draw",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [],
@@ -73055,6 +73151,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -73728,6 +73825,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -74586,6 +74684,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -75420,6 +75519,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "home",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -76427,6 +76527,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
@@ -77208,6 +77309,7 @@
     "minute": "FT",
     "second": 0,
     "isCompleted": true,
+    "winner": "away",
     "isDetailedScraped": true,
     "isScorersFixed": true,
     "events": [
