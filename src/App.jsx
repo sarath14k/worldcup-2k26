@@ -885,6 +885,8 @@ function App() {
               const liveWinner = live.winner;
               const updatedMatch = {
                 ...m,
+                home: live.home,
+                away: live.away,
                 homeScore: live.homeScore,
                 awayScore: live.awayScore,
                 winner: liveWinner,
@@ -893,19 +895,22 @@ function App() {
 
               // Propagate winner
               let nextId = m.nextId;
-              let currentWinner = liveWinner;
+              let currentWinnerCode;
+              if (liveWinner === 'home') currentWinnerCode = live.home;
+              else if (liveWinner === 'away') currentWinnerCode = live.away;
+              else currentWinnerCode = null;
               let currentPosition = m.position;
 
-              while (nextId) {
+              while (nextId && currentWinnerCode) {
                 const roundCode = nextId.split('_')[0];
                 const nextMatch = nextBracket[roundCode].find(nm => nm.id === nextId);
                 if (!nextMatch) break;
 
                 const isHome = currentPosition === 'top' || currentPosition === 'home';
                 if (isHome) {
-                  nextMatch.home = currentWinner;
+                  nextMatch.home = currentWinnerCode;
                 } else {
-                  nextMatch.away = currentWinner;
+                  nextMatch.away = currentWinnerCode;
                 }
                 break;
               }
