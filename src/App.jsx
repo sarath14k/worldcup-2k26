@@ -146,10 +146,41 @@ function App() {
   // Group Stage State
   const [groupMatches, setGroupMatches] = useState([]);
   
-  // Bracket State (lazy-init from localStorage to avoid TBD flash)
-  const isValidTeamCode = (code) => code && code.length === 3 && TEAMS[code];
-
+  // Bracket State (lazy-init from server-injected data, then localStorage, then KNOCKOUT_MATCHES)
   const [bracket, setBracket] = useState(() => {
+    // 1. Server-injected live data (fastest, no fetch needed)
+    const initData = typeof window !== 'undefined' ? window.__INITIAL_BRACKET_DATA__ : null;
+    if (initData && Object.keys(initData).length > 0) {
+      const bracketCopy = JSON.parse(JSON.stringify(KNOCKOUT_MATCHES));
+      Object.keys(bracketCopy).forEach(roundKey => {
+        bracketCopy[roundKey] = bracketCopy[roundKey].map(m => {
+          const live = initData[m.id];
+          if (live && live.home && live.away) {
+            return { ...m, ...live };
+          }
+          return m;
+        });
+      });
+      // propagate winners
+      for (const [, matches] of Object.entries(bracketCopy)) {
+        for (const m of matches) {
+          if (m.isCompleted && m.winner && m.nextId) {
+            const winnerCode = m.winner === 'home' ? m.home : m.winner === 'away' ? m.away : null;
+            if (winnerCode) {
+              const nextRoundCode = m.nextId.split('_')[0];
+              const nextMatch = bracketCopy[nextRoundCode]?.find(nm => nm.id === m.nextId);
+              if (nextMatch) {
+                if (m.position === 'top' || m.position === 'home') nextMatch.home = winnerCode;
+                else nextMatch.away = winnerCode;
+              }
+            }
+          }
+        }
+      }
+      try { localStorage.setItem('worldcup2026_bracket', JSON.stringify(bracketCopy)); } catch {}
+      return bracketCopy;
+    }
+    // 2. localStorage
     try {
       const saved = localStorage.getItem('worldcup2026_bracket');
       if (saved) {
@@ -160,8 +191,8 @@ function App() {
               const fresh = KNOCKOUT_MATCHES[roundKey][i];
               if (fresh) {
                 const cleaned = { ...m, title: fresh.title, date: fresh.date };
-                if (!isValidTeamCode(cleaned.home)) cleaned.home = fresh.home;
-                if (!isValidTeamCode(cleaned.away)) cleaned.away = fresh.away;
+                if (!TEAMS[cleaned.home]) cleaned.home = fresh.home;
+                if (!TEAMS[cleaned.away]) cleaned.away = fresh.away;
                 return cleaned;
               }
               return m;
